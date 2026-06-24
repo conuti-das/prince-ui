@@ -1,0 +1,73 @@
+{
+  "name": "prince-ui-bpmn",
+  "version": "0.0.0",
+  "description": "BPMN-Viewer und -Editor im prince-ui-Look auf Basis von bpmn-js (Original-bpmn.io-Icons, Apple-Styling).",
+  "license": "MIT",
+  "private": false,
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles.css": "./dist/index.css",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "prince-ui-tokens": "workspace:*",
+    "bpmn-js": "^18.0.0",
+    "diagram-js": "^15.0.0",
+    "bpmn-font": "^0.12.1",
+    "bpmn-js-properties-panel": "^5.0.0",
+    "@bpmn-io/properties-panel": "^3.0.0",
+    "@bpmn-io/cm-theme": "^0.2.0",
+    "bpmnlint": "^11.0.0",
+    "bpmn-js-bpmnlint": "^0.24.0",
+    "camunda-bpmn-moddle": "^7.0.0"
+  },
+  "peerDependencies": {
+    "prince-ui": "workspace:*",
+    "react": ">=18 <20",
+    "react-dom": ">=18 <20"
+  },
+  "devDependencies": {
+    "prince-ui": "workspace:*",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.0.1",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitest/coverage-v8": "^2.1.5",
+    "jsdom": "^25.0.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tsup": "^8.3.0",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.5"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/conuti-das/prince-ui.git",
+    "directory": "packages/bpmn"
+  }
+}

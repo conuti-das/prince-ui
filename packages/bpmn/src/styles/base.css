@@ -1,0 +1,15 @@
+/**
+ * Basis-Styles des prince-ui-bpmn-Pakets.
+ * - Bindet die Original-bpmn.io-Icons ein (Font als Data-URI, kein Extra-Asset).
+ * - Token-getriebene Overrides für Canvas/Palette/Context-Pad/Properties-Panel
+ *   gehören in die jeweiligen Komponenten-CSS-Dateien (kein !important, nur --prn-*).
+ */
+@import "bpmn-font/dist/css/bpmn-embedded.css";
+
+.prn-bpmn {
+  --prn-bpmn-canvas-bg: var(--prn-bg);
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--prn-bpmn-canvas-bg);
+}

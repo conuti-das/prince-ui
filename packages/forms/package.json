@@ -1,0 +1,72 @@
+{
+  "name": "prince-ui-forms",
+  "version": "0.0.0",
+  "description": "Schema-getriebener Formular-Renderer und nativer Form-Builder im prince-ui-Look (form-js-kompatibel, form-js-editor als Experten-Fallback).",
+  "license": "MIT",
+  "private": false,
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles.css": "./dist/index.css",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "prince-ui-tokens": "workspace:*"
+  },
+  "peerDependencies": {
+    "prince-ui": "workspace:*",
+    "react": ">=18 <20",
+    "react-dom": ">=18 <20",
+    "@bpmn-io/form-js": "^1.21.0"
+  },
+  "peerDependenciesMeta": {
+    "@bpmn-io/form-js": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "prince-ui": "workspace:*",
+    "@bpmn-io/form-js": "^1.21.0",
+    "@bpmn-io/cm-theme": "^0.2.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.0.1",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitest/coverage-v8": "^2.1.5",
+    "jsdom": "^25.0.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tsup": "^8.3.0",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.5"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/conuti-das/prince-ui.git",
+    "directory": "packages/forms"
+  }
+}

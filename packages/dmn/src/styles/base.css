@@ -1,0 +1,11 @@
+/**
+ * Basis-Styles des prince-ui-dmn-Pakets.
+ * Token-getriebene Overrides für die DMN-Tabelle und den dmn-js-Expertenmodus
+ * gehören in die Komponenten-CSS (kein !important, nur --prn-*).
+ */
+.prn-dmn {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--prn-bg);
+}

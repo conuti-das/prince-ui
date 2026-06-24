@@ -1,0 +1,9 @@
+/**
+ * Basis-Styles des prince-ui-forms-Pakets.
+ * Renderer/Builder stylen ausschließlich über --prn-* Tokens; ein etwaiger
+ * form-js-Experten-Fallback wird per Token-CSS übertüncht (kein Carbon-Look).
+ */
+.prn-form {
+  display: block;
+  width: 100%;
+}
