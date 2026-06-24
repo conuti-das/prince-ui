@@ -180,6 +180,8 @@ export interface BadgeProps {
   color?: string;
   /** Textfarbe bei `color` (Default: Weiß für solid, `color` selbst für soft). */
   textColor?: string;
+  /** Escape-Hatch: Inline-Styles (z. B. fixe Größe/Radius/Font für Tabellen-Chips). */
+  style?: CSSProperties;
   children?: ReactNode;
   className?: string;
 }
@@ -190,23 +192,22 @@ export function Badge({
   icon,
   color,
   textColor,
+  style,
   children,
   className,
 }: BadgeProps) {
-  const style =
-    color != null
-      ? ({
-          "--prn-badge-color": color,
-          ...(textColor != null ? { "--prn-badge-text-color": textColor } : {}),
-        } as CSSProperties)
-      : undefined;
+  const mergedStyle = {
+    ...(color != null ? { "--prn-badge-color": color } : {}),
+    ...(textColor != null ? { "--prn-badge-text-color": textColor } : {}),
+    ...style,
+  } as CSSProperties;
   return (
     <span
       className={cx("prn-badge", className)}
       data-tone={tone}
       data-variant={variant}
       data-custom-color={color != null ? "" : undefined}
-      style={style}
+      style={mergedStyle}
     >
       {icon != null && (
         <span className="prn-badge-icon" aria-hidden>
