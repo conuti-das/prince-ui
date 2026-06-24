@@ -6,6 +6,42 @@ Properties (`--prn-*`) mit Light/Dark via `data-theme` am `<html>`.
 
 Live-Doku (Storybook): https://conuti-das.github.io/prince-ui/
 
+## Warum prince-ui
+
+Dieselbe Designsprache wurde in mehreren conuti-/MaKo-Apps (finops, roadmap,
+maco-process-studio, das-tippspiel, das-superprod) immer wieder unabhängig
+nachgebaut — jede mit eigenem Token-Präfix und eigener Komponenten-API. Ergebnis:
+Doppelarbeit, Inkonsistenzen und divergierende Barrierefreiheit.
+
+prince-ui zentralisiert diese Sprache in **einer** versionierten, getesteten
+Quelle: ein Satz Tokens, eine Komponenten-API, ein konsistentes Light/Dark-Verhalten
+— über alle Apps hinweg. Ziel: Oberflächen aus fertigen, barrierefreien Bausteinen
+zusammensetzen, statt Optik und Interaktionsmuster jedes Mal neu zu erfinden.
+
+## Designprinzipien
+
+- **Klarheit zuerst.** Inhalt führt, Chrome tritt zurück. Lesbare Typo-Skala,
+  großzügiger Weißraum, ruhige Flächen.
+- **Zurückhaltung.** Die Oberfläche dient dem Inhalt: dezente Materialien, weiche
+  Trennlinien, sparsamer Farbeinsatz — ein klarer Akzent (Lime/CONUTI-Grün) plus
+  eindeutige semantische Farben (Erfolg / Warnung / Fehler / Info).
+- **Tiefe & Hierarchie.** Ebenen, weiche Schatten und Vibrancy schaffen Struktur;
+  Bewegung (Spring-/Ease-Kurven) erklärt Übergänge, statt zu dekorieren.
+- **Barrierefreiheit ist Pflicht, nicht Option.** Auf **React Aria** gebaut:
+  Fokus-Management, Tastaturbedienung, ARIA-Rollen und Screenreader-Unterstützung
+  sind eingebaut. Mindest-Trefferflächen (44 px), sichtbare Fokus-Ringe, ausreichende
+  Kontraste.
+- **Light & Dark gleichwertig.** Beide Modi sind erstklassig, getrieben aus denselben
+  Tokens via `data-theme`.
+- **Token-getrieben, eine Quelle der Wahrheit.** Niemals rohe Hex-/Pixelwerte in
+  Komponenten — alles fließt aus `--prn-*`. Konsistenz per Konstruktion, zentral
+  anpassbar.
+- **Komposition statt Konfiguration.** Kleine, kombinierbare Bausteine
+  (Primitives → Komposita → Datenschicht) mit klaren, deklarativen APIs; Konsumenten
+  müssen interne Libraries (TanStack u. a.) nicht kennen.
+- **Vorhersehbar & getestet.** Jede Komponente mit Tests und Storybook-Beispiel;
+  verbindliche APIs in [`CONTRACTS.md`](packages/ui/CONTRACTS.md).
+
 ## Pakete
 
 | Paket | Zweck |
