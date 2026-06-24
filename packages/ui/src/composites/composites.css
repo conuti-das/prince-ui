@@ -211,6 +211,25 @@
   color: var(--prn-teal);
 }
 
+/* Solid-Variante: vollflächig gefüllt (für Marken-/Status-Pills) */
+.prn-badge[data-variant="solid"][data-tone="neutral"],
+.prn-badge[data-variant="solid"][data-tone="gray"] { background: var(--prn-neutral); color: #fff; }
+.prn-badge[data-variant="solid"][data-tone="green"] { background: var(--prn-green); color: var(--prn-on-status-fill); }
+.prn-badge[data-variant="solid"][data-tone="red"] { background: var(--prn-red); color: #fff; }
+.prn-badge[data-variant="solid"][data-tone="orange"] { background: var(--prn-orange); color: var(--prn-on-status-fill); }
+.prn-badge[data-variant="solid"][data-tone="blue"] { background: var(--prn-blue); color: #fff; }
+.prn-badge[data-variant="solid"][data-tone="teal"] { background: var(--prn-teal); color: #fff; }
+
+/* Beliebige Markenfarbe (überschreibt tone), für beide Varianten */
+.prn-badge[data-custom-color][data-variant="soft"] {
+  background: color-mix(in srgb, var(--prn-badge-color) 18%, transparent);
+  color: var(--prn-badge-color);
+}
+.prn-badge[data-custom-color][data-variant="solid"] {
+  background: var(--prn-badge-color);
+  color: var(--prn-badge-text-color, #fff);
+}
+
 /* ============================================================
  * Amount
  * ============================================================ */

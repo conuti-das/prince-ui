@@ -47,7 +47,8 @@ Inline-Styles für App-lokale Maße/Status-Border),
 `KpiCard` (label, value, delta?, trend?, icon?, **`tone?: "positive"|"critical"|"negative"`**
 — färbt den Wert, **`onPress?`** — klickbar als `<button>` mit Hover-Lift, **`accent?`** —
 Vollflächen-Akzent-„Hero"-Kachel mit dunkler Schrift),
-`Badge` (tone, seit 0.3.1 **`icon?`** — Leading-Icon-Slot), `Amount` (**`value: number | string`** — Zahl wird i18n-formatiert,
+`Badge` (tone, seit 0.3.1 **`icon?`** — Leading-Icon-Slot; seit 0.3.2 **`variant?: "soft"|"solid"`**
++ **`color?`/`textColor?`** — beliebige Marken-/Team-Farbe), `Amount` (**`value: number | string`** — Zahl wird i18n-formatiert,
 bereits formatierter String wird unverändert übernommen; currency?, locale?,
 minimum/maximumFractionDigits?, colored?, signed?, **`dimDecimals?`** — optische
 Abschwächung der Nachkommastellen), `List`/`ListRow`

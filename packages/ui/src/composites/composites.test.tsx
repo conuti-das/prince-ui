@@ -46,6 +46,18 @@ describe("composites", () => {
     expect(screen.getByTestId("ic")).toBeInTheDocument();
   });
 
+  it("Badge supports solid variant and arbitrary brand color", () => {
+    render(
+      <Badge variant="solid" color="#e8112a" textColor="#fff">
+        TEAM
+      </Badge>,
+    );
+    const badge = screen.getByText("TEAM");
+    expect(badge).toHaveAttribute("data-variant", "solid");
+    expect(badge).toHaveAttribute("data-custom-color");
+    expect(badge).toHaveStyle({ "--prn-badge-color": "#e8112a" });
+  });
+
   it("Card is pressable, renders as a button and forwards style", async () => {
     const onPress = vi.fn();
     render(

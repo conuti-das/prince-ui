@@ -172,15 +172,42 @@ export type BadgeTone =
 
 export interface BadgeProps {
   tone?: BadgeTone;
+  /** Soft = getönt (Default), solid = vollflächig gefüllt. */
+  variant?: "soft" | "solid";
   /** Optionales Leading-Icon (SVG/Emoji/ReactNode), links vom Text. */
   icon?: ReactNode;
+  /** Beliebige Markenfarbe (überschreibt `tone`). Z. B. Team-Farbe. */
+  color?: string;
+  /** Textfarbe bei `color` (Default: Weiß für solid, `color` selbst für soft). */
+  textColor?: string;
   children?: ReactNode;
   className?: string;
 }
 
-export function Badge({ tone = "neutral", icon, children, className }: BadgeProps) {
+export function Badge({
+  tone = "neutral",
+  variant = "soft",
+  icon,
+  color,
+  textColor,
+  children,
+  className,
+}: BadgeProps) {
+  const style =
+    color != null
+      ? ({
+          "--prn-badge-color": color,
+          ...(textColor != null ? { "--prn-badge-text-color": textColor } : {}),
+        } as CSSProperties)
+      : undefined;
   return (
-    <span className={cx("prn-badge", className)} data-tone={tone}>
+    <span
+      className={cx("prn-badge", className)}
+      data-tone={tone}
+      data-variant={variant}
+      data-custom-color={color != null ? "" : undefined}
+      style={style}
+    >
       {icon != null && (
         <span className="prn-badge-icon" aria-hidden>
           {icon}
