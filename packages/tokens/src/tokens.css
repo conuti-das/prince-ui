@@ -36,6 +36,7 @@
   --prn-app-bg: radial-gradient(120% 120% at 0% 0%, #ffffff 0%, #f1f2f1 60%, #eceeec 100%);
   --prn-bg-elevated: #ffffff;
   --prn-bg-elevated-2: #ffffff;
+  --prn-bg-elevated-translucent: rgba(255, 255, 255, 0.62); /* Glas-Card (Bento), Blur-tauglich */
   --prn-bg-head: #ffffff;                       /* opaker Sticky-Tabellenkopf */
   --prn-bg-bar: rgba(255, 255, 255, 0.68);      /* Toolbar/Nav mit Vibrancy */
   --prn-bg-sidebar: rgba(248, 249, 248, 0.7);
@@ -148,6 +149,7 @@
     --prn-app-bg: radial-gradient(130% 130% at 12% 0%, #2b343d 0%, #222a31 48%, #1b2229 100%);
     --prn-bg-elevated: #2a333b;
     --prn-bg-elevated-2: #333e48;
+    --prn-bg-elevated-translucent: rgba(34, 42, 49, 0.52); /* Glas-Card (Bento), Blur-tauglich */
     --prn-bg-head: #1e252b;
     --prn-bg-bar: rgba(34, 42, 49, 0.55);
     --prn-bg-sidebar: rgba(34, 42, 49, 0.6);
@@ -223,6 +225,7 @@
   --prn-app-bg: radial-gradient(130% 130% at 12% 0%, #2b343d 0%, #222a31 48%, #1b2229 100%);
   --prn-bg-elevated: #2a333b;
   --prn-bg-elevated-2: #333e48;
+  --prn-bg-elevated-translucent: rgba(34, 42, 49, 0.52); /* Glas-Card (Bento), Blur-tauglich */
   --prn-bg-head: #1e252b;
   --prn-bg-bar: rgba(34, 42, 49, 0.55);
   --prn-bg-sidebar: rgba(34, 42, 49, 0.6);

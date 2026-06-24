@@ -40,11 +40,26 @@ Verbindliche Prop-APIs. App-Sessions (Wave 3) codieren gegen diese Signaturen;
 ## Wave 2 — L2-Komposita + Charts + L3-Datenschicht
 
 ### Composites (`composites/composites`)
-`Card` (title?, header?, padding), `KpiCard` (label, value, delta?, trend?, icon?),
-`Badge` (tone), `Amount` (value, currency?, colored?, signed?), `List`/`ListRow`
-(leading/title/subtitle/trailing, onPress?), `Sidebar` (groups, selectedKey/onSelect),
+`Card` (title?, header?, padding, **`translucent?`** — Glas-Optik via
+`--prn-bg-elevated-translucent` + `backdrop-filter: var(--prn-blur)`, in Light & Dark),
+`KpiCard` (label, value, delta?, trend?, icon?, **`tone?: "positive"|"critical"|"negative"`**
+— färbt den Wert, **`onPress?`** — klickbar als `<button>` mit Hover-Lift, **`accent?`** —
+Vollflächen-Akzent-„Hero"-Kachel mit dunkler Schrift),
+`Badge` (tone), `Amount` (**`value: number | string`** — Zahl wird i18n-formatiert,
+bereits formatierter String wird unverändert übernommen; currency?, locale?,
+minimum/maximumFractionDigits?, colored?, signed?, **`dimDecimals?`** — optische
+Abschwächung der Nachkommastellen), `List`/`ListRow`
+(leading/title/subtitle/trailing, onPress?),
+`Sidebar` (groups, selectedKey/onSelect) — `SidebarGroup` zusätzlich **`collapsible?`** /
+**`defaultCollapsed?`** (aufklappbare Gruppe: Chevron + Tastatur via React-Aria-Button,
+`aria-expanded`; Persistenz bleibt App-Sache),
 `Toolbar` (leading/title/subtitle/actions), `EmptyState` (icon, title, description, action?),
-`Notice` (tone: info|positive|critical|negative).
+`Notice` (tone: info|positive|critical|negative),
+**`DescriptionList`** (children, `layout?: "stacked"|"inline"`) + **`Field`** (label,
+value? | children) — schlankes read-only Label/Wert-Primitive (semantisches `<dl>`/`<dt>`/`<dd>`).
+
+**Neues Token:** `--prn-bg-elevated-translucent` (Light + Dark, Blur-taugliches rgba) für
+Glas-Cards (Bento). Ergänzt die `--prn-bg-elevated*`-Reihe.
 
 ### Charts (`charts/charts`) — eigene SVG
 `Sparkline` (data:number[]), `AreaChart` (data, axes?), `BarChart` (data:{label,value}[]),

@@ -13,6 +13,8 @@ import {
   Toolbar,
   EmptyState,
   Notice,
+  DescriptionList,
+  Field,
 } from "./composites";
 
 describe("composites", () => {
@@ -128,5 +130,96 @@ describe("composites", () => {
     expect(notice).toHaveAttribute("data-tone", "negative");
     expect(screen.getByText("Fehler")).toBeInTheDocument();
     expect(screen.getByText("Segment UNH ungültig")).toBeInTheDocument();
+  });
+
+  it("KpiCard colors the value via tone", () => {
+    render(<KpiCard label="Fehlerquote" value="3,2 %" tone="negative" />);
+    expect(screen.getByText("3,2 %")).toHaveAttribute("data-tone", "negative");
+  });
+
+  it("KpiCard is pressable, renders as a button and supports accent", async () => {
+    const onPress = vi.fn();
+    render(<KpiCard label="Offen" value="248" onPress={onPress} accent />);
+    const card = screen.getByRole("button", { name: /Offen/ });
+    expect(card).toHaveAttribute("data-accent", "");
+    await userEvent.click(card);
+    expect(onPress).toHaveBeenCalledOnce();
+  });
+
+  it("Amount accepts a pre-formatted string and detects its sign", () => {
+    render(<Amount value="-1.234,56 €" colored />);
+    const el = screen.getByText("-1.234,56 €");
+    expect(el).toHaveAttribute("data-sign", "neg");
+    expect(el).toHaveAttribute("data-colored", "");
+  });
+
+  it("Amount dims the decimal tail when dimDecimals is set", () => {
+    const { container } = render(<Amount value={1234.5} dimDecimals />);
+    const dec = container.querySelector(".prn-amount-dec");
+    expect(dec).not.toBeNull();
+    // de-DE: Tausenderpunkt + Dezimalkomma → Tail = ",5"
+    expect(dec?.textContent).toContain(",5");
+  });
+
+  it("Card applies translucent glass styling", () => {
+    const { container } = render(<Card translucent>Glas</Card>);
+    expect(container.querySelector(".prn-card")).toHaveAttribute("data-translucent", "");
+  });
+
+  it("Sidebar collapses a collapsible group and hides its items", async () => {
+    render(
+      <Sidebar
+        groups={[
+          {
+            label: "Verwaltung",
+            collapsible: true,
+            items: [
+              { id: "x", label: "Benutzer" },
+              { id: "y", label: "Rollen" },
+            ],
+          },
+        ]}
+      />,
+    );
+    const toggle = screen.getByRole("button", { name: /Verwaltung/ });
+    expect(toggle).toHaveAttribute("aria-expanded", "true");
+    const benutzer = screen.getByText("Benutzer");
+    expect(benutzer).toBeVisible();
+    await userEvent.click(toggle);
+    expect(toggle).toHaveAttribute("aria-expanded", "false");
+    // Items stehen in einem [hidden] Container → nicht mehr sichtbar
+    expect(benutzer).not.toBeVisible();
+  });
+
+  it("Sidebar honors defaultCollapsed", () => {
+    render(
+      <Sidebar
+        groups={[
+          {
+            label: "Archiv",
+            collapsible: true,
+            defaultCollapsed: true,
+            items: [{ id: "z", label: "Alt" }],
+          },
+        ]}
+      />,
+    );
+    expect(screen.getByRole("button", { name: /Archiv/ })).toHaveAttribute(
+      "aria-expanded",
+      "false",
+    );
+  });
+
+  it("DescriptionList + Field render label/value pairs as a dl", () => {
+    render(
+      <DescriptionList layout="inline">
+        <Field label="Marktpartner" value="Stadtwerke" />
+        <Field label="Code">9900123000007</Field>
+      </DescriptionList>,
+    );
+    expect(screen.getByText("Marktpartner")).toBeInTheDocument();
+    expect(screen.getByText("Stadtwerke")).toBeInTheDocument();
+    expect(screen.getByText("Code")).toBeInTheDocument();
+    expect(screen.getByText("9900123000007")).toBeInTheDocument();
   });
 });

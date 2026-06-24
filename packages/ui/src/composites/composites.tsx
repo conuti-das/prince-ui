@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { Button as RACButton } from "react-aria-components";
 import { cx } from "../utils";
 import "./composites.css";
@@ -17,14 +17,27 @@ export interface CardProps {
   header?: ReactNode;
   /** Innenabstand-Variante. */
   padding?: "none" | "compact" | "regular" | "spacious";
+  /** Glas-Optik: halbtransparenter Hintergrund + Blur (Light & Dark). */
+  translucent?: boolean;
   children?: ReactNode;
   className?: string;
 }
 
-export function Card({ title, header, padding = "regular", children, className }: CardProps) {
+export function Card({
+  title,
+  header,
+  padding = "regular",
+  translucent = false,
+  children,
+  className,
+}: CardProps) {
   const hasHeader = title != null || header != null;
   return (
-    <section className={cx("prn-card", className)} data-padding={padding}>
+    <section
+      className={cx("prn-card", className)}
+      data-padding={padding}
+      data-translucent={translucent ? "" : undefined}
+    >
       {hasHeader && (
         <header className="prn-card-head">
           {title != null && <h3 className="prn-card-title">{title}</h3>}
@@ -40,6 +53,9 @@ export function Card({ title, header, padding = "regular", children, className }
 
 export type Trend = "up" | "down" | "flat";
 
+/** Färbung des KPI-Werts (Drill-down-Semantik). */
+export type KpiTone = "positive" | "critical" | "negative";
+
 export interface KpiCardProps {
   label: ReactNode;
   value: ReactNode;
@@ -47,6 +63,12 @@ export interface KpiCardProps {
   delta?: ReactNode;
   /** Richtung der Färbung. Wird `delta` ohne `trend` gesetzt, bleibt es neutral. */
   trend?: Trend;
+  /** Färbt den Wert semantisch (grün/orange/rot). */
+  tone?: KpiTone;
+  /** Macht die Kachel klickbar (react-aria Button) mit Hover-Lift. */
+  onPress?: () => void;
+  /** Akzent-„Hero"-Kachel: Vollflächen-Akzent mit dunkler Schrift. */
+  accent?: boolean;
   /** Optionales Leading-Icon (z. B. SVG/Emoji). */
   icon?: ReactNode;
   className?: string;
@@ -54,9 +76,19 @@ export interface KpiCardProps {
 
 const TREND_GLYPH: Record<Trend, string> = { up: "↑", down: "↓", flat: "→" };
 
-export function KpiCard({ label, value, delta, trend, icon, className }: KpiCardProps) {
-  return (
-    <section className={cx("prn-kpi", className)}>
+export function KpiCard({
+  label,
+  value,
+  delta,
+  trend,
+  tone,
+  onPress,
+  accent = false,
+  icon,
+  className,
+}: KpiCardProps) {
+  const inner = (
+    <>
       <div className="prn-kpi-top">
         {icon != null && (
           <span className="prn-kpi-icon" aria-hidden>
@@ -65,7 +97,9 @@ export function KpiCard({ label, value, delta, trend, icon, className }: KpiCard
         )}
         <span className="prn-kpi-label">{label}</span>
       </div>
-      <div className="prn-kpi-value prn-tnum">{value}</div>
+      <div className="prn-kpi-value prn-tnum" data-tone={tone}>
+        {value}
+      </div>
       {delta != null && (
         <div className="prn-kpi-delta" data-trend={trend ?? "flat"}>
           {trend != null && (
@@ -76,6 +110,24 @@ export function KpiCard({ label, value, delta, trend, icon, className }: KpiCard
           <span>{delta}</span>
         </div>
       )}
+    </>
+  );
+
+  if (onPress) {
+    return (
+      <RACButton
+        className={cx("prn-kpi prn-kpi-pressable", className)}
+        data-accent={accent ? "" : undefined}
+        onPress={onPress}
+      >
+        {inner}
+      </RACButton>
+    );
+  }
+
+  return (
+    <section className={cx("prn-kpi", className)} data-accent={accent ? "" : undefined}>
+      {inner}
     </section>
   );
 }
@@ -108,19 +160,37 @@ export function Badge({ tone = "neutral", children, className }: BadgeProps) {
 /* ---------------- Amount ---------------- */
 
 export interface AmountProps {
-  value: number;
-  /** ISO-Währungscode, z. B. "EUR". Ohne → reine Zahl. */
+  /**
+   * Zahl → wird i18n-formatiert. Bereits formatierter String → wird unverändert
+   * angezeigt (String-Modus; `currency`/`locale`/`fractionDigits` werden ignoriert).
+   */
+  value: number | string;
+  /** ISO-Währungscode, z. B. "EUR". Ohne → reine Zahl. (Nur Zahl-Modus.) */
   currency?: string;
-  /** BCP-47-Locale für Formatierung (Default "de-DE"). */
+  /** BCP-47-Locale für Formatierung (Default "de-DE"). (Nur Zahl-Modus.) */
   locale?: string;
-  /** Min/Max Nachkommastellen. */
+  /** Min/Max Nachkommastellen. (Nur Zahl-Modus.) */
   minimumFractionDigits?: number;
   maximumFractionDigits?: number;
   /** Negativ rot / positiv grün einfärben. */
   colored?: boolean;
-  /** Immer Vorzeichen anzeigen (auch +). */
+  /** Immer Vorzeichen anzeigen (auch +). (Nur Zahl-Modus.) */
   signed?: boolean;
+  /**
+   * Optische Abschwächung der Nachkommastellen (Tail leiser/kleiner).
+   * Erkennt das Dezimaltrennzeichen der Ausgabe und dämpft alles dahinter.
+   */
+  dimDecimals?: boolean;
   className?: string;
+}
+
+/** Trennt eine formatierte Zahl in Integer-Kopf + Dezimal-Tail (inkl. Trenner). */
+function splitDecimals(text: string): { head: string; tail: string | null } {
+  // letztes "," oder "." gefolgt von Ziffern bis Stringende (lässt Währungssuffix zu)
+  const match = text.match(/^(.*[\d\s])([.,]\d+)(\D*)$/);
+  if (!match) return { head: text, tail: null };
+  const [, head = "", dec = "", suffix = ""] = match;
+  return { head, tail: dec + suffix };
 }
 
 export function Amount({
@@ -131,16 +201,33 @@ export function Amount({
   maximumFractionDigits,
   colored = false,
   signed = false,
+  dimDecimals = false,
   className,
 }: AmountProps) {
-  const formatted = new Intl.NumberFormat(locale, {
-    ...(currency ? { style: "currency", currency } : {}),
-    ...(minimumFractionDigits != null ? { minimumFractionDigits } : {}),
-    ...(maximumFractionDigits != null ? { maximumFractionDigits } : {}),
-    signDisplay: signed ? "exceptZero" : "auto",
-  }).format(value);
+  const isString = typeof value === "string";
 
-  const sign: "pos" | "neg" | "zero" = value > 0 ? "pos" : value < 0 ? "neg" : "zero";
+  const formatted = isString
+    ? value
+    : new Intl.NumberFormat(locale, {
+        ...(currency ? { style: "currency", currency } : {}),
+        ...(minimumFractionDigits != null ? { minimumFractionDigits } : {}),
+        ...(maximumFractionDigits != null ? { maximumFractionDigits } : {}),
+        signDisplay: signed ? "exceptZero" : "auto",
+      }).format(value);
+
+  const sign: "pos" | "neg" | "zero" = isString
+    ? value.trimStart().startsWith("-")
+      ? "neg"
+      : "pos"
+    : value > 0
+      ? "pos"
+      : value < 0
+        ? "neg"
+        : "zero";
+
+  const { head, tail } = dimDecimals
+    ? splitDecimals(formatted)
+    : { head: formatted, tail: null };
 
   return (
     <span
@@ -148,7 +235,16 @@ export function Amount({
       data-colored={colored ? "" : undefined}
       data-sign={sign}
     >
-      {formatted}
+      {tail != null ? (
+        <>
+          {head}
+          <span className="prn-amount-dec" aria-hidden={false}>
+            {tail}
+          </span>
+        </>
+      ) : (
+        formatted
+      )}
     </span>
   );
 }
@@ -250,6 +346,71 @@ export interface SidebarGroup {
   /** Gruppentitel (optional). */
   label?: ReactNode;
   items: SidebarItem[];
+  /** Macht die Gruppe auf-/zuklappbar (Chevron, klickbarer Titel). Braucht `label`. */
+  collapsible?: boolean;
+  /** Startzustand zugeklappt (nur bei `collapsible`). */
+  defaultCollapsed?: boolean;
+}
+
+/** Eine Sidebar-Gruppe; verwaltet bei `collapsible` ihren Auf-/Zuklapp-Zustand. */
+function SidebarGroupView({
+  group,
+  selectedKey,
+  onSelect,
+}: {
+  group: SidebarGroup;
+  selectedKey?: string;
+  onSelect?: (id: string) => void;
+}) {
+  const collapsible = group.collapsible === true && group.label != null;
+  const [collapsed, setCollapsed] = useState(
+    collapsible ? group.defaultCollapsed === true : false,
+  );
+
+  const items = (
+    <div className="prn-sidebar-group-items" role={collapsible ? "group" : undefined} hidden={collapsed}>
+      {group.items.map((item) => (
+        <RACButton
+          key={item.id}
+          className="prn-sidebar-item"
+          data-active={item.id === selectedKey ? "" : undefined}
+          onPress={() => onSelect?.(item.id)}
+        >
+          {item.icon != null && (
+            <span className="prn-sidebar-item-icon" aria-hidden>
+              {item.icon}
+            </span>
+          )}
+          <span className="prn-sidebar-item-label">{item.label}</span>
+          {item.trailing != null && (
+            <span className="prn-sidebar-item-trailing">{item.trailing}</span>
+          )}
+        </RACButton>
+      ))}
+    </div>
+  );
+
+  return (
+    <div className="prn-sidebar-group" data-collapsible={collapsible ? "" : undefined}>
+      {group.label != null &&
+        (collapsible ? (
+          <RACButton
+            className="prn-sidebar-group-label prn-sidebar-group-toggle"
+            aria-expanded={!collapsed}
+            data-collapsed={collapsed ? "" : undefined}
+            onPress={() => setCollapsed((c) => !c)}
+          >
+            <span className="prn-sidebar-group-chevron" aria-hidden>
+              ›
+            </span>
+            <span className="prn-sidebar-group-label-text">{group.label}</span>
+          </RACButton>
+        ) : (
+          <div className="prn-sidebar-group-label">{group.label}</div>
+        ))}
+      {items}
+    </div>
+  );
 }
 
 export interface SidebarProps {
@@ -277,29 +438,12 @@ export function Sidebar({
       {header != null && <div className="prn-sidebar-header">{header}</div>}
       <div className="prn-sidebar-scroll">
         {groups.map((group, gi) => (
-          <div className="prn-sidebar-group" key={gi}>
-            {group.label != null && (
-              <div className="prn-sidebar-group-label">{group.label}</div>
-            )}
-            {group.items.map((item) => (
-              <RACButton
-                key={item.id}
-                className="prn-sidebar-item"
-                data-active={item.id === selectedKey ? "" : undefined}
-                onPress={() => onSelect?.(item.id)}
-              >
-                {item.icon != null && (
-                  <span className="prn-sidebar-item-icon" aria-hidden>
-                    {item.icon}
-                  </span>
-                )}
-                <span className="prn-sidebar-item-label">{item.label}</span>
-                {item.trailing != null && (
-                  <span className="prn-sidebar-item-trailing">{item.trailing}</span>
-                )}
-              </RACButton>
-            ))}
-          </div>
+          <SidebarGroupView
+            key={gi}
+            group={group}
+            selectedKey={selectedKey}
+            onSelect={onSelect}
+          />
         ))}
       </div>
       {footer != null && <div className="prn-sidebar-footer">{footer}</div>}
@@ -389,6 +533,50 @@ export function Notice({ tone = "info", title, icon, children, className }: Noti
         {title != null && <div className="prn-notice-title">{title}</div>}
         {children != null && <div className="prn-notice-text">{children}</div>}
       </div>
+    </div>
+  );
+}
+
+/* ---------------- DescriptionList + Field ---------------- */
+
+export interface DescriptionListProps {
+  children?: ReactNode;
+  /**
+   * Layout der Label/Wert-Paare:
+   * - `stacked` (Default): Label über dem Wert.
+   * - `inline`: Label links, Wert rechts (zweispaltig).
+   */
+  layout?: "stacked" | "inline";
+  className?: string;
+}
+
+/** Schlanke read-only Label/Wert-Liste (semantisches `<dl>`). */
+export function DescriptionList({
+  children,
+  layout = "stacked",
+  className,
+}: DescriptionListProps) {
+  return (
+    <dl className={cx("prn-dl", className)} data-layout={layout}>
+      {children}
+    </dl>
+  );
+}
+
+export interface FieldProps {
+  label: ReactNode;
+  /** Anzuzeigender Wert (read-only). */
+  value?: ReactNode;
+  children?: ReactNode;
+  className?: string;
+}
+
+/** Ein read-only Label/Wert-Paar (`<dt>`/`<dd>`) für `DescriptionList`. */
+export function Field({ label, value, children, className }: FieldProps) {
+  return (
+    <div className={cx("prn-field", className)}>
+      <dt className="prn-field-label">{label}</dt>
+      <dd className="prn-field-value">{value ?? children}</dd>
     </div>
   );
 }
