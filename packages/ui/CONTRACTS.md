@@ -41,11 +41,13 @@ Verbindliche Prop-APIs. App-Sessions (Wave 3) codieren gegen diese Signaturen;
 
 ### Composites (`composites/composites`)
 `Card` (title?, header?, padding, **`translucent?`** — Glas-Optik via
-`--prn-bg-elevated-translucent` + `backdrop-filter: var(--prn-blur)`, in Light & Dark),
+`--prn-bg-elevated-translucent` + `backdrop-filter: var(--prn-blur)`, in Light & Dark;
+seit 0.3.1 **`onPress?`** — klickbar als react-aria `<button>` mit Hover-Lift, **`style?`** —
+Inline-Styles für App-lokale Maße/Status-Border),
 `KpiCard` (label, value, delta?, trend?, icon?, **`tone?: "positive"|"critical"|"negative"`**
 — färbt den Wert, **`onPress?`** — klickbar als `<button>` mit Hover-Lift, **`accent?`** —
 Vollflächen-Akzent-„Hero"-Kachel mit dunkler Schrift),
-`Badge` (tone), `Amount` (**`value: number | string`** — Zahl wird i18n-formatiert,
+`Badge` (tone, seit 0.3.1 **`icon?`** — Leading-Icon-Slot), `Amount` (**`value: number | string`** — Zahl wird i18n-formatiert,
 bereits formatierter String wird unverändert übernommen; currency?, locale?,
 minimum/maximumFractionDigits?, colored?, signed?, **`dimDecimals?`** — optische
 Abschwächung der Nachkommastellen), `List`/`ListRow`

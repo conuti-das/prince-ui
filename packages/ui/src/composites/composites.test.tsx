@@ -41,6 +41,25 @@ describe("composites", () => {
     expect(badge).toHaveAttribute("data-tone", "green");
   });
 
+  it("Badge renders a leading icon", () => {
+    render(<Badge tone="blue" icon={<svg data-testid="ic" />}>Live</Badge>);
+    expect(screen.getByTestId("ic")).toBeInTheDocument();
+  });
+
+  it("Card is pressable, renders as a button and forwards style", async () => {
+    const onPress = vi.fn();
+    render(
+      <Card onPress={onPress} style={{ minWidth: 140 }}>
+        Klick
+      </Card>,
+    );
+    const btn = screen.getByRole("button");
+    expect(btn).toHaveClass("prn-card-pressable");
+    expect(btn).toHaveStyle({ minWidth: "140px" });
+    await userEvent.click(btn);
+    expect(onPress).toHaveBeenCalledTimes(1);
+  });
+
   it("Amount formats a negative signed currency value", () => {
     render(<Amount value={-5} currency="EUR" signed colored />);
     const el = screen.getByText(/-/);

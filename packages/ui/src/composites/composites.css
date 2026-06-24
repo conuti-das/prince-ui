@@ -24,6 +24,36 @@
   backdrop-filter: var(--prn-blur);
 }
 
+/* Klickbare Karte (react-aria Button) — Button-Defaults zurücksetzen + Hover-Lift */
+.prn-card-pressable {
+  display: block;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  transition:
+    transform var(--prn-dur-fast) var(--prn-ease-out),
+    box-shadow var(--prn-dur-fast) var(--prn-ease-out);
+}
+.prn-card-pressable[data-hovered] {
+  transform: translateY(-2px);
+  box-shadow: var(--prn-shadow-raised);
+}
+.prn-card-pressable[data-pressed] {
+  transform: translateY(0);
+  box-shadow: var(--prn-shadow);
+}
+.prn-card-pressable[data-focus-visible] {
+  outline: none;
+  box-shadow: var(--prn-focus);
+}
+
+/* Badge-Leading-Icon */
+.prn-badge-icon {
+  display: inline-flex;
+  align-items: center;
+}
+
 .prn-card-head {
   display: flex;
   align-items: center;

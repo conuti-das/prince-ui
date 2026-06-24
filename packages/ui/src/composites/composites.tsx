@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import { useState, type CSSProperties, type ReactNode } from "react";
 import { Button as RACButton } from "react-aria-components";
 import { cx } from "../utils";
 import "./composites.css";
@@ -19,6 +19,10 @@ export interface CardProps {
   padding?: "none" | "compact" | "regular" | "spacious";
   /** Glas-Optik: halbtransparenter Hintergrund + Blur (Light & Dark). */
   translucent?: boolean;
+  /** Macht die Karte klickbar (react-aria Button) mit Hover-Lift — wie KpiCard. */
+  onPress?: () => void;
+  /** Inline-Styles (z. B. App-lokale Maße/Status-Border) auf das Card-Element. */
+  style?: CSSProperties;
   children?: ReactNode;
   className?: string;
 }
@@ -28,16 +32,14 @@ export function Card({
   header,
   padding = "regular",
   translucent = false,
+  onPress,
+  style,
   children,
   className,
 }: CardProps) {
   const hasHeader = title != null || header != null;
-  return (
-    <section
-      className={cx("prn-card", className)}
-      data-padding={padding}
-      data-translucent={translucent ? "" : undefined}
-    >
+  const inner = (
+    <>
       {hasHeader && (
         <header className="prn-card-head">
           {title != null && <h3 className="prn-card-title">{title}</h3>}
@@ -45,6 +47,31 @@ export function Card({
         </header>
       )}
       {children}
+    </>
+  );
+
+  if (onPress) {
+    return (
+      <RACButton
+        className={cx("prn-card", "prn-card-pressable", className)}
+        style={style}
+        data-padding={padding}
+        data-translucent={translucent ? "" : undefined}
+        onPress={onPress}
+      >
+        {inner}
+      </RACButton>
+    );
+  }
+
+  return (
+    <section
+      className={cx("prn-card", className)}
+      style={style}
+      data-padding={padding}
+      data-translucent={translucent ? "" : undefined}
+    >
+      {inner}
     </section>
   );
 }
@@ -145,13 +172,20 @@ export type BadgeTone =
 
 export interface BadgeProps {
   tone?: BadgeTone;
+  /** Optionales Leading-Icon (SVG/Emoji/ReactNode), links vom Text. */
+  icon?: ReactNode;
   children?: ReactNode;
   className?: string;
 }
 
-export function Badge({ tone = "neutral", children, className }: BadgeProps) {
+export function Badge({ tone = "neutral", icon, children, className }: BadgeProps) {
   return (
     <span className={cx("prn-badge", className)} data-tone={tone}>
+      {icon != null && (
+        <span className="prn-badge-icon" aria-hidden>
+          {icon}
+        </span>
+      )}
       {children}
     </span>
   );
