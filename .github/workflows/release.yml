@@ -7,8 +7,6 @@ name: Release (Publish to npm)
 # Voraussetzung: Repo-Secret NPM_TOKEN (npm Automation-Token mit Publish-Recht).
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
