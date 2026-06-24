@@ -8,3 +8,6 @@ coverage/
 
 # lokaler gstack-Cache
 .gstack/
+
+# Brainstorming-Begleiter (lokal, nicht versionieren)
+.superpowers/
