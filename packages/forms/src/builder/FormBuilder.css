@@ -1,0 +1,209 @@
+/* FormBuilder — nativer Drag&Drop-Designer im prince-ui-Look. Nur --prn-*. */
+
+.prn-form-builder {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  container-type: inline-size;
+}
+
+.prn-fb-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* 4-Spalten-Layout: Palette | Canvas | Eigenschaften | Vorschau.
+   Auf schmalen Containern stapeln. */
+.prn-fb-grid {
+  display: grid;
+  grid-template-columns: 180px minmax(220px, 1fr) 280px minmax(220px, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+@container (max-width: 900px) {
+  .prn-fb-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ---- Palette ---- */
+.prn-fb-palette-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.prn-fb-palette-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid var(--prn-separator);
+  border-radius: var(--prn-radius-md);
+  background: var(--prn-bg-elevated);
+  color: var(--prn-label);
+  font: var(--prn-text-subhead);
+  text-align: left;
+  cursor: grab;
+  transition: background var(--prn-dur-fast) var(--prn-ease-standard),
+    border-color var(--prn-dur-fast) var(--prn-ease-standard);
+}
+
+.prn-fb-palette-item:hover {
+  background: var(--prn-accent-soft);
+  border-color: var(--prn-accent);
+}
+
+.prn-fb-palette-item:active {
+  cursor: grabbing;
+}
+
+.prn-fb-palette-glyph {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: var(--prn-radius-sm);
+  background: var(--prn-accent-soft);
+  color: var(--prn-accent-strong);
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+/* ---- Canvas ---- */
+.prn-fb-canvas-drop {
+  min-height: 120px;
+}
+
+.prn-fb-canvas-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.prn-fb-canvas-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--prn-separator);
+  border-radius: var(--prn-radius-md);
+  background: var(--prn-bg-elevated);
+  cursor: grab;
+  transition: border-color var(--prn-dur-fast) var(--prn-ease-standard),
+    box-shadow var(--prn-dur-fast) var(--prn-ease-standard);
+}
+
+.prn-fb-canvas-item[data-selected] {
+  border-color: var(--prn-accent);
+  box-shadow: 0 0 0 2px var(--prn-accent-soft);
+}
+
+.prn-fb-canvas-item[data-dropbefore] {
+  border-top: 2px solid var(--prn-accent);
+}
+
+.prn-fb-item-type {
+  font: var(--prn-text-caption);
+  color: var(--prn-accent-strong);
+  background: var(--prn-accent-soft);
+  border-radius: var(--prn-radius-pill);
+  padding: 2px 8px;
+  flex-shrink: 0;
+}
+
+.prn-fb-item-label {
+  flex: 1;
+  font: var(--prn-text-subhead);
+  color: var(--prn-label);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.prn-fb-item-remove {
+  flex-shrink: 0;
+}
+
+/* ---- Properties ---- */
+.prn-fb-props-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.prn-fb-props-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.prn-fb-props-row > * {
+  flex: 1;
+}
+
+.prn-fb-props-empty {
+  color: var(--prn-label-3);
+  font: var(--prn-text-subhead);
+  margin: 0;
+}
+
+.prn-fb-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-top: 1px solid var(--prn-separator);
+  padding-top: 10px;
+}
+
+.prn-fb-options-head {
+  font: var(--prn-text-subhead);
+  font-weight: 600;
+  color: var(--prn-label);
+}
+
+.prn-fb-delete {
+  margin-top: 4px;
+}
+
+/* ---- Expert (form-js) fallback ---- */
+.prn-fb-expert {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.prn-fb-expert-host {
+  height: 600px;
+  width: 100%;
+  border: 1px solid var(--prn-separator);
+  border-radius: var(--prn-radius-md);
+  overflow: hidden;
+  background: var(--prn-bg-elevated);
+}
+
+/* Carbon-/form-js-Hardcodes best effort über --prn-* übertünchen
+   (funktional, nicht pixelgleich — siehe Spec §7.4). */
+.prn-fb-expert-host .fjs-container,
+.prn-fb-expert-host .fjs-editor-container {
+  background: var(--prn-bg-elevated);
+  color: var(--prn-label);
+}
+
+.prn-fb-expert-host .fjs-palette,
+.prn-fb-expert-host .fjs-properties-panel {
+  background: var(--prn-bg-sidebar);
+  border-color: var(--prn-separator);
+}
+
+.prn-fb-expert-host .fjs-form-field {
+  color: var(--prn-label);
+}

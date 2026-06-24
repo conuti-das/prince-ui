@@ -14,7 +14,48 @@ export type {
   CamundaVariables,
 } from "./types";
 
-// --- Komponenten (Phase 1) ---
-// export { FormRenderer } from "./renderer/FormRenderer";  // ③ Stream C
-// export { FormBuilder } from "./builder/FormBuilder";     // ④ Stream C
-// export { taskFormToSchema } from "./model/task-form";    // Camunda-Mapping
+// --- Model-Layer (pure Logik) ---
+export {
+  taskFormToSchema,
+  camundaTypeName,
+  camundaTypeToFieldType,
+  camundaSubmitType,
+  formDataToCamundaVariables,
+  camundaTypeOf,
+  validateForm,
+  validateField,
+  VALIDATION_MESSAGES,
+  evalConditional,
+  getPath,
+  setPath,
+  flattenFields,
+  dataFields,
+  isDataField,
+  PRESENTATIONAL_TYPES,
+} from "./model";
+
+// --- ③ FormRenderer (Stream C) ---
+export { FormRenderer } from "./renderer/FormRenderer";
+export type {
+  FormRendererProps,
+  FormRendererSubmit,
+  SubmitVariableFormat,
+} from "./renderer/FormRenderer";
+
+// --- ④ FormBuilder (Stream C) ---
+export { FormBuilder } from "./builder/FormBuilder";
+export type {
+  FormBuilderProps,
+  FormBuilderMode,
+  BuilderFieldType,
+} from "./builder/FormBuilder";
+export {
+  BUILDER_FIELD_TYPES,
+  FIELD_TYPE_LABELS,
+  createField,
+  emptySchema,
+  insertField,
+  removeFieldAt,
+  moveField,
+  updateFieldAt,
+} from "./builder/builder-model";

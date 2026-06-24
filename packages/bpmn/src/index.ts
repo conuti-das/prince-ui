@@ -18,6 +18,23 @@ export {
   type DiagramColors,
 } from "./theme/diagram-theme";
 
-// --- Komponenten (Phase 1) ---
-// export { BpmnViewer } from "./viewer/BpmnViewer";   // ① Stream A
-// export { BpmnEditor } from "./editor/BpmnEditor";   // ② Stream A
+// --- ① BpmnViewer (Stream A) ---
+export { BpmnViewer, default as BpmnViewerDefault } from "./viewer/BpmnViewer";
+export type { BpmnViewerProps } from "./viewer/BpmnViewer";
+export {
+  computeElementStatuses,
+  computeExecutedFlows,
+  buildActivityMap,
+  matchActivity,
+  deriveStatus,
+  STATUS_TOKEN,
+  STATUS_LABEL,
+  type ElementStatusEntry,
+} from "./viewer/status";
+
+// --- ② BpmnEditor (Stream A) ---
+export { BpmnEditor, default as BpmnEditorDefault } from "./editor/BpmnEditor";
+export type { BpmnEditorProps } from "./editor/BpmnEditor";
+export type { LintIssue, LintRuleConfig } from "./editor/lintConfig";
+export { lintHint, type LintHint } from "./editor/lintHints";
+export { BpmnTableView, type BpmnTableViewProps } from "./editor/BpmnTableView";

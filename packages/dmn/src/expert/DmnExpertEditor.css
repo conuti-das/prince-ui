@@ -1,0 +1,112 @@
+/**
+ * dmn-js-Experten-Modus — Layout + Token-getriebenes Restyling der gewrappten
+ * HTML-Views (decision-table, literal-expression) und des Properties-Panels.
+ * Nur --prn-*-Tokens, kein !important.
+ */
+
+.prn-dmn-expert {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  background: var(--prn-bg);
+  color: var(--prn-label);
+  font-family: var(--prn-font-sans, system-ui, sans-serif);
+}
+
+/* Toolbar (geteilt mit der Tabellenansicht, hier eigenständig definiert). */
+.prn-dmn-expert .prn-dmn-toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--prn-space-3, 0.75rem);
+  flex-shrink: 0;
+  padding: var(--prn-space-2, 0.5rem) var(--prn-space-3, 0.75rem);
+  border-bottom: 1px solid var(--prn-separator, rgba(0, 0, 0, 0.1));
+}
+
+.prn-dmn-expert .prn-dmn-title__name {
+  font-weight: 600;
+  font-size: var(--prn-text-base, 0.9375rem);
+}
+
+.prn-dmn-expert .prn-dmn-spacer {
+  flex: 1 1 auto;
+}
+
+.prn-dmn-expert .prn-dmn-toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: var(--prn-space-2, 0.5rem);
+}
+
+.prn-dmn-expert .prn-dmn-lint {
+  flex-shrink: 0;
+  padding: var(--prn-space-2, 0.5rem) var(--prn-space-3, 0.75rem);
+  font-size: var(--prn-text-sm, 0.8125rem);
+}
+
+.prn-dmn-expert .prn-dmn-lint[data-tone="negative"] {
+  color: var(--prn-red, #ff3b30);
+  background: color-mix(in srgb, var(--prn-red, #ff3b30) 8%, transparent);
+}
+
+/* Bühne: dmn-js braucht eine feste Höhe (kein auto-growing Container). */
+.prn-dmn-expert__stage {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 22rem;
+  display: flex;
+  overflow: hidden;
+}
+
+.prn-dmn-expert__canvas {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 100%;
+  background: var(--prn-bg);
+}
+
+.prn-dmn-expert__panel {
+  width: 0;
+  flex-shrink: 0;
+  overflow-y: auto;
+  border-left: 1px solid var(--prn-separator, rgba(0, 0, 0, 0.1));
+  background: var(--prn-bg-elevated, var(--prn-bg));
+}
+
+.prn-dmn-expert__panel[data-visible="true"] {
+  width: 18rem;
+}
+
+.prn-dmn-expert__loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--prn-label-secondary, rgba(60, 60, 67, 0.6));
+  font-size: var(--prn-text-sm, 0.8125rem);
+  background: var(--prn-bg);
+  z-index: 2;
+}
+
+/* ---------------- Token-Restyling der dmn-js-HTML-Views ----------------
+ * dmn-js bringt eigenes Carbon-CSS mit; hier auf prince-ui-Tokens umlenken.
+ * Bewusst zurückhaltend (Geometrie/Funktion unberührt). */
+
+.prn-dmn-expert .dmn-decision-table-container,
+.prn-dmn-expert .dmn-literal-expression-container {
+  background: var(--prn-bg);
+  color: var(--prn-label);
+}
+
+.prn-dmn-expert .tjs-table th,
+.prn-dmn-expert .tjs-table td {
+  border-color: var(--prn-separator, rgba(0, 0, 0, 0.1));
+  color: var(--prn-label);
+}
+
+.prn-dmn-expert .input-cell,
+.prn-dmn-expert .output-cell {
+  background: var(--prn-bg-elevated, var(--prn-bg));
+}

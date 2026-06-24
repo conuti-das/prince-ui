@@ -1,0 +1,278 @@
+/**
+ * DMN-Tabelleneditor — Token-getriebenes Styling (nur --prn-*, kein !important).
+ * Light/Dark folgen automatisch über die prince-ui-Tokens.
+ */
+
+.prn-dmn-table {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  background: var(--prn-bg);
+  color: var(--prn-label);
+  font-family: var(--prn-font-sans, system-ui, sans-serif);
+}
+
+/* ---------------- Toolbars ---------------- */
+
+.prn-dmn-toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--prn-space-3, 0.75rem);
+  flex-wrap: wrap;
+  flex-shrink: 0;
+  padding: var(--prn-space-2, 0.5rem) var(--prn-space-3, 0.75rem);
+  border-bottom: 1px solid var(--prn-separator, rgba(0, 0, 0, 0.1));
+}
+
+.prn-dmn-toolbar--sub {
+  background: var(--prn-bg-elevated, transparent);
+}
+
+.prn-dmn-title {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.prn-dmn-title__name {
+  font-weight: 600;
+  font-size: var(--prn-text-base, 0.9375rem);
+  color: var(--prn-label);
+}
+
+.prn-dmn-title__meta {
+  font-size: var(--prn-text-sm, 0.8125rem);
+  color: var(--prn-label-secondary, rgba(60, 60, 67, 0.6));
+}
+
+.prn-dmn-spacer {
+  flex: 1 1 auto;
+}
+
+.prn-dmn-toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: var(--prn-space-2, 0.5rem);
+}
+
+/* ---------------- Lint-Banner ---------------- */
+
+.prn-dmn-lint {
+  flex-shrink: 0;
+  padding: var(--prn-space-2, 0.5rem) var(--prn-space-3, 0.75rem);
+  font-size: var(--prn-text-sm, 0.8125rem);
+  font-weight: 500;
+  border-bottom: 1px solid var(--prn-separator, rgba(0, 0, 0, 0.1));
+}
+
+.prn-dmn-lint[data-tone="positive"] {
+  color: var(--prn-green, #34c759);
+  background: color-mix(in srgb, var(--prn-green, #34c759) 8%, transparent);
+}
+
+.prn-dmn-lint[data-tone="negative"] {
+  color: var(--prn-red, #ff3b30);
+  background: color-mix(in srgb, var(--prn-red, #ff3b30) 8%, transparent);
+}
+
+/* ---------------- Tabellen-Wrapper ---------------- */
+
+.prn-dmn-table__body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+}
+
+/* ---------------- Kopf-Akzentkanten (Input/Output) ---------------- */
+
+.prn-dmn-colhead {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 2px 0;
+  border-top: 3px solid transparent;
+}
+
+.prn-dmn-colhead[data-kind="input"] {
+  border-top-color: var(--prn-blue, #0a84ff);
+}
+
+.prn-dmn-colhead[data-kind="output"] {
+  border-top-color: var(--prn-green, #34c759);
+}
+
+.prn-dmn-colhead__kind {
+  font-size: var(--prn-text-xs, 0.6875rem);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--prn-label-secondary, rgba(60, 60, 67, 0.6));
+}
+
+.prn-dmn-colhead[data-kind="input"] .prn-dmn-colhead__kind {
+  color: var(--prn-blue, #0a84ff);
+}
+
+.prn-dmn-colhead[data-kind="output"] .prn-dmn-colhead__kind {
+  color: var(--prn-green, #34c759);
+}
+
+.prn-dmn-colhead__label {
+  font-weight: 600;
+  font-size: var(--prn-text-sm, 0.8125rem);
+}
+
+.prn-dmn-colhead__expr {
+  font-family: var(--prn-font-mono, ui-monospace, monospace);
+  font-size: var(--prn-text-xs, 0.6875rem);
+  color: var(--prn-label-secondary, rgba(60, 60, 67, 0.6));
+  font-weight: 400;
+}
+
+.prn-dmn-colhead__edit {
+  margin-top: 2px;
+  align-self: flex-start;
+}
+
+/* ---------------- Zellen ---------------- */
+
+.prn-dmn-cell {
+  display: flex;
+  align-items: center;
+  gap: var(--prn-space-1, 0.25rem);
+  min-height: 28px;
+  width: 100%;
+  cursor: text;
+  border-radius: var(--prn-radius-sm, 6px);
+  padding: 2px 4px;
+  font-family: var(--prn-font-mono, ui-monospace, monospace);
+  font-size: var(--prn-text-sm, 0.8125rem);
+  transition: box-shadow var(--prn-dur-fast, 120ms) var(--prn-ease-out, ease);
+}
+
+.prn-dmn-cell:hover {
+  background: var(--prn-fill-quaternary, rgba(120, 120, 128, 0.08));
+}
+
+.prn-dmn-cell[data-invalid="true"] {
+  box-shadow: inset 0 0 0 1.5px var(--prn-red, #ff3b30);
+}
+
+.prn-dmn-cell__empty {
+  color: var(--prn-label-tertiary, rgba(60, 60, 67, 0.3));
+  font-style: italic;
+}
+
+.prn-dmn-cell__warn {
+  margin-left: auto;
+  color: var(--prn-red, #ff3b30);
+  font-size: var(--prn-text-xs, 0.6875rem);
+}
+
+.prn-dmn-cell__input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: var(--prn-bg-elevated, #fff);
+  color: var(--prn-label);
+  font-family: var(--prn-font-mono, ui-monospace, monospace);
+  font-size: var(--prn-text-sm, 0.8125rem);
+  padding: 2px 4px;
+  border-radius: var(--prn-radius-sm, 6px);
+  box-shadow: inset 0 0 0 1.5px var(--prn-blue, #0a84ff);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .prn-dmn-cell {
+    transition: none;
+  }
+}
+
+/* ---------------- FEEL-Editor (im Modal) ---------------- */
+
+.prn-dmn-feel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--prn-space-3, 0.75rem);
+  width: min(36rem, 86vw);
+}
+
+.prn-dmn-feel__editor {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 5rem;
+  resize: vertical;
+  font-family: var(--prn-font-mono, ui-monospace, monospace);
+  font-size: var(--prn-text-base, 0.9375rem);
+  line-height: 1.5;
+  padding: var(--prn-space-2, 0.5rem) var(--prn-space-3, 0.75rem);
+  border-radius: var(--prn-radius-md, 8px);
+  background: var(--prn-bg);
+  color: var(--prn-label);
+  border: 1.5px solid var(--prn-separator, rgba(0, 0, 0, 0.12));
+  outline: none;
+}
+
+.prn-dmn-feel__editor[data-valid="true"] {
+  border-color: var(--prn-green, #34c759);
+}
+
+.prn-dmn-feel__editor[data-valid="false"] {
+  border-color: var(--prn-red, #ff3b30);
+}
+
+.prn-dmn-feel__status {
+  display: flex;
+  align-items: center;
+  gap: var(--prn-space-2, 0.5rem);
+  font-size: var(--prn-text-sm, 0.8125rem);
+}
+
+.prn-dmn-feel__status[data-valid="true"] {
+  color: var(--prn-green, #34c759);
+}
+
+.prn-dmn-feel__status[data-valid="false"] {
+  color: var(--prn-red, #ff3b30);
+}
+
+.prn-dmn-feel__type {
+  margin-left: auto;
+  padding: 1px 8px;
+  border-radius: var(--prn-radius-pill, 999px);
+  font-size: var(--prn-text-xs, 0.6875rem);
+  font-weight: 600;
+  background: var(--prn-fill-tertiary, rgba(120, 120, 128, 0.12));
+  color: var(--prn-label-secondary, rgba(60, 60, 67, 0.6));
+}
+
+.prn-dmn-feel__snippets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--prn-space-1, 0.25rem);
+}
+
+.prn-dmn-feel__hint {
+  font-size: var(--prn-text-sm, 0.8125rem);
+  color: var(--prn-label-secondary, rgba(60, 60, 67, 0.6));
+}
+
+.prn-dmn-feel__hint code {
+  font-family: var(--prn-font-mono, ui-monospace, monospace);
+}
+
+.prn-dmn-feel__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--prn-space-2, 0.5rem);
+}
+
+/* ---------------- Index/Annotation-Zelle ---------------- */
+
+.prn-dmn-index {
+  font-variant-numeric: tabular-nums;
+  color: var(--prn-label-secondary, rgba(60, 60, 67, 0.6));
+  font-weight: 600;
+  font-size: var(--prn-text-xs, 0.6875rem);
+}

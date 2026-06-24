@@ -1,0 +1,80 @@
+/* FormRenderer — Layout über prince-ui-Felder. Nur --prn-*-Tokens. */
+
+.prn-form-renderer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.prn-form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.prn-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Statischer Text. */
+.prn-form-text {
+  font: var(--prn-text-body);
+  color: var(--prn-label-2);
+  line-height: 1.5;
+}
+
+/* Spacer. */
+.prn-form-spacer {
+  height: 12px;
+}
+
+/* Separator (zusätzlicher Abstand). */
+.prn-form-separator {
+  margin: 4px 0;
+}
+
+/* Gruppe (verschachtelte Felder). */
+.prn-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border: 1px solid var(--prn-separator);
+  border-radius: var(--prn-radius-md);
+  padding: 16px;
+  margin: 0;
+}
+
+.prn-form-group-legend {
+  font: var(--prn-text-subhead);
+  font-weight: 600;
+  color: var(--prn-label);
+  padding: 0 6px;
+}
+
+/* Select-Wrapper (eigene Beschreibung/Fehlermeldung, da Select-Primitive
+   keine description/errorMessage-Slots hat). */
+.prn-form-select-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.prn-form-hint {
+  font: var(--prn-text-footnote);
+  color: var(--prn-label-3);
+}
+
+.prn-form-error {
+  font: var(--prn-text-footnote);
+  color: var(--prn-red);
+}
+
+/* Taglist (ComboBox + Tags). */
+.prn-form-taglist {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

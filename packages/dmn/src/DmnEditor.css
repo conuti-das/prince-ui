@@ -1,0 +1,12 @@
+/** Umschalter-Container: füllt den verfügbaren Raum, gibt die Höhe an die Kinder. */
+.prn-dmn-editor {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+.prn-dmn-editor > * {
+  flex: 1 1 auto;
+  min-height: 0;
+}

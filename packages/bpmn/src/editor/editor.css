@@ -1,0 +1,188 @@
+/**
+ * BpmnEditor-Styling — Layout + Properties-Panel-Restyle (token-getrieben).
+ *
+ * Canvas-Assets (diagram-js/bpmn-js) kommen über `viewer.css`. Hier zusätzlich
+ * das Properties-Panel-CSS + ein dünner Restyle-Layer auf `--prn-*`-Tokens
+ * (kein !important-Hack für Farben, nur Variablen-Mapping).
+ *
+ * Hinweis: Das separate `bpmn-js-properties-panel`-CSS existiert in v5 nicht
+ * mehr als Asset; nur `@bpmn-io/properties-panel/assets/properties-panel.css`
+ * wird benötigt.
+ */
+
+@import "bpmn-js/dist/assets/diagram-js.css";
+@import "bpmn-js/dist/assets/bpmn-js.css";
+@import "@bpmn-io/properties-panel/assets/properties-panel.css";
+
+/* ---- Layout ---- */
+.prn-bpmn-editor {
+  display: flex;
+  flex-direction: column;
+  min-height: 320px;
+  background: var(--prn-bg);
+}
+
+.prn-bpmn-editor-toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--prn-space-2, 8px);
+  padding: var(--prn-space-2, 8px) var(--prn-space-3, 12px);
+  background: var(--prn-bg-bar);
+  backdrop-filter: var(--prn-blur, blur(20px));
+  border-bottom: 1px solid var(--prn-separator);
+}
+.prn-bpmn-editor-toolbar-spacer {
+  flex: 1;
+}
+
+.prn-bpmn-editor-main {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.prn-bpmn-editor-stage {
+  flex: 1;
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.prn-bpmn-editor-table,
+.prn-bpmn-editor-table > .prn-bpmn-table {
+  position: absolute;
+  inset: 0;
+  overflow: auto;
+  background: var(--prn-bg-elevated);
+}
+
+.prn-bpmn-editor-properties {
+  width: 320px;
+  flex-shrink: 0;
+  overflow-y: auto;
+  border-left: 1px solid var(--prn-separator);
+  background: var(--prn-bg-elevated);
+}
+
+/* ---- Linter-Footer ---- */
+.prn-bpmn-editor-lintbar {
+  display: flex;
+  align-items: center;
+  gap: var(--prn-space-3, 12px);
+  width: 100%;
+  padding: var(--prn-space-2, 8px) var(--prn-space-3, 12px);
+  border: none;
+  border-top: 1px solid var(--prn-separator);
+  background: var(--prn-bg-bar);
+  font: var(--prn-text-footnote, 0.8125rem system-ui);
+  text-align: left;
+  cursor: pointer;
+}
+.prn-bpmn-lint-error {
+  color: var(--prn-red);
+}
+.prn-bpmn-lint-warning {
+  color: var(--prn-orange);
+}
+
+/* ---- ErrorPanel ---- */
+.prn-bpmn-errorpanel {
+  display: flex;
+  flex-direction: column;
+  max-height: 40%;
+  border-top: 1px solid var(--prn-separator);
+  background: var(--prn-bg-elevated);
+}
+.prn-bpmn-errorpanel-head {
+  display: flex;
+  align-items: center;
+  gap: var(--prn-space-2, 8px);
+  padding: var(--prn-space-2, 8px) var(--prn-space-3, 12px);
+  border-bottom: 1px solid var(--prn-separator);
+  color: var(--prn-label);
+}
+.prn-bpmn-errorpanel-actions {
+  margin-left: auto;
+  display: flex;
+  gap: var(--prn-space-1, 4px);
+  align-items: center;
+}
+.prn-bpmn-errorpanel-list {
+  list-style: none;
+  margin: 0;
+  padding: var(--prn-space-2, 8px);
+  overflow-y: auto;
+}
+.prn-bpmn-errorpanel-item {
+  padding: var(--prn-space-2, 8px) 0;
+  border-bottom: 1px solid var(--prn-separator);
+}
+.prn-bpmn-errorpanel-title {
+  display: flex;
+  align-items: center;
+  gap: var(--prn-space-2, 8px);
+  font-weight: 600;
+  color: var(--prn-label);
+}
+.prn-bpmn-errorpanel-item[data-category="error"] .prn-bpmn-errorpanel-icon {
+  color: var(--prn-red);
+}
+.prn-bpmn-errorpanel-item[data-category="warning"] .prn-bpmn-errorpanel-icon {
+  color: var(--prn-orange);
+}
+.prn-bpmn-errorpanel-text {
+  margin: 2px 0 0;
+  font: var(--prn-text-footnote, 0.8125rem system-ui);
+}
+.prn-bpmn-errorpanel-meta {
+  margin: 2px 0 0;
+  font-style: italic;
+  font-size: 0.7rem;
+}
+
+/* ---- TableView ---- */
+.prn-bpmn-table {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.prn-bpmn-table-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--prn-space-2, 8px);
+  padding: var(--prn-space-2, 8px) var(--prn-space-3, 12px);
+  border-bottom: 1px solid var(--prn-separator);
+  flex-shrink: 0;
+}
+.prn-bpmn-table-count {
+  white-space: nowrap;
+}
+.prn-bpmn-table-body {
+  flex: 1;
+  min-height: 0;
+}
+
+/* ---- Shared helpers ---- */
+.prn-bpmn-muted {
+  color: var(--prn-label-2);
+  font-size: 0.8125rem;
+}
+.prn-bpmn-mono {
+  font-family: var(--prn-font-mono, ui-monospace, monospace);
+  font-size: 0.72rem;
+  color: var(--prn-label-2);
+}
+
+/* ---- Properties-Panel-Restyle (Token-Mapping, kein Farb-!important) ---- */
+.prn-bpmn-editor-properties .bio-properties-panel {
+  --bio-properties-panel-background-color: var(--prn-bg-elevated);
+  --bio-properties-panel-text-color: var(--prn-label);
+  --bio-properties-panel-text-color-light: var(--prn-label-2);
+  --bio-properties-panel-border-color: var(--prn-separator);
+  --bio-properties-panel-input-background-color: var(--prn-fill);
+  --bio-properties-panel-input-border-color: var(--prn-separator);
+  --bio-properties-panel-group-title-color: var(--prn-label);
+  --bio-properties-panel-active-color: var(--prn-accent);
+  font-family: var(--prn-font, system-ui, sans-serif);
+}

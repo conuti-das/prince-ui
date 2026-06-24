@@ -1,0 +1,123 @@
+/**
+ * BpmnViewer-Styling — Canvas-Assets + token-getriebenes Status-Highlighting.
+ *
+ * Status wird über diagram-js-Marker (CSS-Klassen) gesetzt; die Färbung
+ * erfolgt hier ausschließlich über `--prn-*`-Tokens (keine rohen Hex/px für
+ * Farben). Aktiv = blau, abgeschlossen = grün, Incident = rot, abgebrochen = orange.
+ */
+
+@import "bpmn-js/dist/assets/diagram-js.css";
+@import "bpmn-js/dist/assets/bpmn-js.css";
+
+.prn-bpmn-viewer {
+  display: flex;
+  flex-direction: column;
+  min-height: 240px;
+}
+
+.prn-bpmn-canvas {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  background: var(--prn-bg);
+}
+
+/* diagram-js Outline an die Akzentfarbe koppeln */
+.prn-bpmn .djs-outline {
+  stroke: var(--prn-accent);
+}
+
+/* ---- Zoom-Steuerung ---- */
+.prn-bpmn-zoom {
+  position: absolute;
+  top: var(--prn-space-3, 12px);
+  right: var(--prn-space-3, 12px);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: var(--prn-space-1, 4px);
+}
+
+/* ---- Fehlerzustand ---- */
+.prn-bpmn-error {
+  padding: var(--prn-space-3, 12px);
+  color: var(--prn-red);
+  font: var(--prn-text-footnote, 0.8125rem system-ui);
+  background: var(--prn-bg-elevated);
+  border-top: 1px solid var(--prn-separator);
+}
+
+/* ---- Status-Marker (Element-Kontur/Füllung) ----
+   Wir färben die Hauptkontur des bpmn-js-SVG. `.djs-visual > :first-child`
+   ist bei Tasks das Rechteck, bei Events der Kreis, bei Gateways das Polygon. */
+.prn-bpmn .djs-element.prn-bpmn-status-active .djs-visual > :nth-child(1) {
+  stroke: var(--prn-blue) !important;
+  stroke-width: 2.5px !important;
+}
+.prn-bpmn .djs-element.prn-bpmn-status-completed .djs-visual > :nth-child(1) {
+  stroke: var(--prn-green) !important;
+  stroke-width: 2.5px !important;
+}
+.prn-bpmn .djs-element.prn-bpmn-status-incident .djs-visual > :nth-child(1) {
+  stroke: var(--prn-red) !important;
+  stroke-width: 2.5px !important;
+}
+.prn-bpmn .djs-element.prn-bpmn-status-canceled .djs-visual > :nth-child(1) {
+  stroke: var(--prn-orange) !important;
+  stroke-width: 2.5px !important;
+}
+
+/* dezente Tönung der Füllung je Status (rgba aus Token via color-mix) */
+.prn-bpmn .djs-element.prn-bpmn-status-active .djs-visual > rect,
+.prn-bpmn .djs-element.prn-bpmn-status-active .djs-visual > circle,
+.prn-bpmn .djs-element.prn-bpmn-status-active .djs-visual > polygon {
+  fill: color-mix(in srgb, var(--prn-blue) 12%, var(--prn-bg-elevated)) !important;
+}
+.prn-bpmn .djs-element.prn-bpmn-status-completed .djs-visual > rect,
+.prn-bpmn .djs-element.prn-bpmn-status-completed .djs-visual > circle,
+.prn-bpmn .djs-element.prn-bpmn-status-completed .djs-visual > polygon {
+  fill: color-mix(in srgb, var(--prn-green) 12%, var(--prn-bg-elevated)) !important;
+}
+.prn-bpmn .djs-element.prn-bpmn-status-incident .djs-visual > rect,
+.prn-bpmn .djs-element.prn-bpmn-status-incident .djs-visual > circle,
+.prn-bpmn .djs-element.prn-bpmn-status-incident .djs-visual > polygon {
+  fill: color-mix(in srgb, var(--prn-red) 14%, var(--prn-bg-elevated)) !important;
+}
+.prn-bpmn .djs-element.prn-bpmn-status-canceled .djs-visual > rect,
+.prn-bpmn .djs-element.prn-bpmn-status-canceled .djs-visual > circle,
+.prn-bpmn .djs-element.prn-bpmn-status-canceled .djs-visual > polygon {
+  fill: color-mix(in srgb, var(--prn-orange) 12%, var(--prn-bg-elevated)) !important;
+}
+
+/* Mehrfachdurchlauf: heller darstellen */
+.prn-bpmn .djs-element.prn-bpmn-status-multi .djs-visual > :nth-child(1) {
+  stroke-dasharray: 4 3;
+}
+
+/* ausgeführte Sequenzflüsse grün */
+.prn-bpmn .djs-connection.prn-bpmn-flow-executed .djs-visual > path {
+  stroke: var(--prn-green) !important;
+  stroke-width: 2.5px !important;
+}
+
+/* ---- Status-Overlay (kleiner Punkt am Element) ---- */
+.prn-bpmn-overlay {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--prn-bg-elevated);
+  pointer-events: none;
+}
+.prn-bpmn-overlay-active {
+  background: var(--prn-blue);
+}
+.prn-bpmn-overlay-completed {
+  background: var(--prn-green);
+}
+.prn-bpmn-overlay-incident {
+  background: var(--prn-red);
+}
+.prn-bpmn-overlay-canceled {
+  background: var(--prn-orange);
+}
