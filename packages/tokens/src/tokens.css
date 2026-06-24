@@ -1,23 +1,31 @@
 /*
  * prince-ui-tokens — Single Source of Truth für die Prince-Designsprache.
  *
- * Konsolidiert aus finops (--prn-*, Lime-geführt) und roadmap (reichere Typo-/
- * Motion-Skala). Namespace: --prn-*. Lime-Akzent ist die Marke (Light + Dark).
+ * Drei Modes (Namespace: --prn-*):
+ *   - Apple Dark  → :root (Default + Fallback) und :root[data-theme="dark"]
+ *   - Apple Light → @media (prefers-color-scheme: light) ohne data-theme,
+ *                   sowie :root[data-theme="light"]
+ *   - CU          → :root[data-theme="cu"] — das CONUTI-Community-Styling
+ *                   (CI-Grün #A0D22B, Inter-Font, grünes Bento-Mesh)
  *
- * Theming:
- *   - Default (:root)                          → Light
- *   - @media (prefers-color-scheme: dark)      → Dark (sofern nicht data-theme="light")
- *   - :root[data-theme="dark"]                 → Dark erzwingen (gewinnt über System)
- *   - :root[data-theme="light"]                → Light erzwingen
+ * Theme-Logik:
+ *   1. Ohne data-theme folgt es dem OS, fällt aber auf DARK zurück
+ *      (System-Light → Apple Light, sonst Apple Dark).
+ *   2. data-theme="light" | "dark" | "cu" erzwingt den jeweiligen Mode.
+ *
+ * Light/Dark sind „original Apple" (SF-Fonts, Apple-System-Farben, Apple-Grün
+ * als Akzent). CU ist die frühere Community-Optik, 1:1 erhalten.
  *
  * Regel: niemals rohe Hex/RGB in Komponenten — immer diese Tokens.
  */
 
 :root {
-  /* ---- Typografie ---- */
-  --prn-font: system-ui, "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --prn-font-mono: ui-monospace, Menlo, Consolas, monospace;
-  --prn-font-rounded: var(--prn-font);
+  /* ============================================================
+   *  Typografie (mode-unabhängig — Apple SF-Stack)
+   * ============================================================ */
+  --prn-font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", system-ui, sans-serif;
+  --prn-font-mono: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
+  --prn-font-rounded: "SF Pro Rounded", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
 
   /* Typo-Skala (Large Title → Body → Caption) */
   --prn-text-metric: 800 2.75rem/1 var(--prn-font);       /* Hero-KPI */
@@ -31,103 +39,27 @@
   --prn-text-footnote: 400 0.8125rem/1.4 var(--prn-font);
   --prn-text-caption: 400 0.75rem/1.35 var(--prn-font);
 
-  /* ---- Flächen (Light) ---- */
-  --prn-bg: #f4f5f4;
-  --prn-app-bg: radial-gradient(120% 120% at 0% 0%, #ffffff 0%, #f1f2f1 60%, #eceeec 100%);
-  --prn-bg-elevated: #ffffff;
-  --prn-bg-elevated-2: #ffffff;
-  --prn-bg-elevated-translucent: rgba(255, 255, 255, 0.62); /* Glas-Card (Bento), Blur-tauglich */
-  --prn-bg-head: #ffffff;                       /* opaker Sticky-Tabellenkopf */
-  --prn-bg-bar: rgba(255, 255, 255, 0.68);      /* Toolbar/Nav mit Vibrancy */
-  --prn-bg-sidebar: rgba(248, 249, 248, 0.7);
-  --prn-fill: rgba(120, 120, 128, 0.1);         /* Eingabefelder, Segmented-Track */
-  --prn-fill-strong: rgba(120, 120, 128, 0.18);
-  --prn-hover: rgba(0, 0, 0, 0.04);
-  --prn-pressed: rgba(0, 0, 0, 0.08);
-
-  /* ---- Text (label-Hierarchie) ---- */
-  --prn-label: #14151a;
-  --prn-label-2: rgba(60, 60, 67, 0.62);
-  --prn-label-3: rgba(60, 60, 67, 0.34);
-  --prn-label-4: rgba(60, 60, 67, 0.18);
-
-  /* ---- Linien ---- */
-  --prn-separator: rgba(60, 60, 67, 0.1);
-  --prn-separator-opaque: #d1d1d6;
-  --prn-hairline: rgba(60, 60, 67, 0.07);
-  --prn-border: rgba(60, 60, 67, 0.12);
-
-  /* ---- CONUTI-Akzent (CI-Grün #A0D22B, Marke) ---- */
-  --prn-accent: #a0d22b;
-  --prn-accent-strong: #5e7d14;
-  --prn-accent-hover: #add945;
-  --prn-accent-pressed: #8cba20;
-  --prn-accent-soft: rgba(160, 210, 43, 0.16);
-  --prn-on-accent: #1b2410;
-
-  /* ---- Semantik ---- */
-  --prn-green: #7ca41c;
-  --prn-red: #e0322a;
-  --prn-orange: #ef8a3e;
-  --prn-yellow: #e0b800;
-  --prn-blue: #0a84ff;
-  --prn-teal: #2f9a92;
-  --prn-neutral: #9b9f9a;
-  --prn-on-status-fill: #14150f;                /* Text auf gefüllten Statusflächen */
-
-  /* getönte Hintergründe (Notices, Zeilen-Tönung) */
-  --prn-tint-positive: rgba(124, 164, 28, 0.16);
-  --prn-tint-critical: rgba(239, 138, 62, 0.16);
-  --prn-tint-negative: rgba(224, 50, 42, 0.12);
-  --prn-tint-info: rgba(10, 132, 255, 0.12);
-  --prn-warn-soft: rgba(239, 138, 62, 0.16);
-
-  /* ---- Eigene Chart-Palette (für SVG-Charts, Lime-geführt) ---- */
-  --prn-chart-1: #84ad1c;
-  --prn-chart-2: #1e414e;
-  --prn-chart-3: #ef8a3e;
-  --prn-chart-4: #c6a800;
-  --prn-chart-5: #6a9e7e;
-  --prn-chart-6: #9b9f9a;
-  --prn-chart-7: #a0b41c;
-  --prn-chart-8: #5aa0d0;
-
-  /* ---- Overlays ---- */
-  --prn-scrim: rgba(20, 20, 25, 0.32);
-  --prn-backdrop: rgba(0, 0, 0, 0.32);
-  --prn-focus: 0 0 0 3px rgba(160, 210, 43, 0.45);
-
-  /* ---- Radien ---- */
+  /* ============================================================
+   *  Radien (mode-unabhängig)
+   * ============================================================ */
   --prn-radius-xs: 6px;
-  --prn-radius-sm: 9px;
-  --prn-radius-md: 11px;
-  --prn-radius: 14px;
-  --prn-radius-lg: 20px;
-  --prn-radius-xl: 26px;
-  --prn-radius-card: 20px;
+  --prn-radius-sm: 8px;
+  --prn-radius-md: 10px;
+  --prn-radius: 12px;
+  --prn-radius-lg: 16px;
+  --prn-radius-xl: 22px;
+  --prn-radius-card: 16px;
   --prn-radius-pill: 999px;
 
-  /* ---- Schatten / Tiefe ---- */
-  --prn-shadow: 0 1px 2px rgba(20, 20, 25, 0.06), 0 8px 24px rgba(20, 20, 25, 0.05);
-  --prn-shadow-pop: 0 12px 40px rgba(20, 20, 25, 0.18);
-  --prn-shadow-raised: 0 2px 6px rgba(0, 0, 0, 0.08), 0 12px 32px rgba(0, 0, 0, 0.12);
-  --prn-shadow-bar: 0 1px 0 var(--prn-separator);
-
-  /* ---- Vibrancy / Glas ---- */
+  /* ============================================================
+   *  Vibrancy / Blur (mode-unabhängig)
+   * ============================================================ */
   --prn-blur: saturate(180%) blur(20px);
   --prn-blur-sheet: saturate(180%) blur(30px);
-  --prn-card-border: 1px solid rgba(60, 60, 67, 0.08);
-  --prn-card-blur: none;
 
-  /* ---- Bento-Ambient (Foto-Mesh, Light) ---- */
-  --prn-bento-bg:
-    radial-gradient(1000px 760px at 10% 92%, rgba(132, 204, 22, 0.22) 0%, rgba(132, 204, 22, 0) 58%),
-    radial-gradient(1100px 720px at 92% 8%, rgba(214, 188, 140, 0.3) 0%, rgba(214, 188, 140, 0) 55%),
-    radial-gradient(900px 720px at 78% 96%, rgba(196, 184, 162, 0.28) 0%, rgba(196, 184, 162, 0) 52%),
-    radial-gradient(760px 760px at 36% 16%, rgba(150, 170, 186, 0.26) 0%, rgba(150, 170, 186, 0) 52%),
-    linear-gradient(135deg, #eef1ea 0%, #f3f1e6 45%, #e7eadf 100%);
-
-  /* ---- Bewegung ---- */
+  /* ============================================================
+   *  Bewegung (mode-unabhängig)
+   * ============================================================ */
   --prn-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --prn-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   --prn-ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
@@ -135,92 +67,328 @@
   --prn-dur: 240ms;
   --prn-dur-slow: 360ms;
 
-  /* ---- Maße ---- */
+  /* ============================================================
+   *  Maße (mode-unabhängig)
+   * ============================================================ */
   --prn-space: 8px;
   --prn-hit: 44px;                              /* Mindest-Trefferfläche */
+
+  /* ============================================================
+   *  APPLE DARK (Default + Fallback)
+   * ============================================================ */
+
+  /* ---- Flächen ---- */
+  --prn-bg: #1c1c1e;
+  --prn-app-bg: linear-gradient(180deg, #1f1f21 0%, #161618 100%);
+  --prn-bg-elevated: #2c2c2e;
+  --prn-bg-elevated-2: #3a3a3c;
+  --prn-bg-elevated-translucent: rgba(44, 44, 46, 0.72);
+  --prn-bg-head: #1c1c1e;
+  --prn-bg-bar: rgba(30, 30, 32, 0.72);
+  --prn-bg-sidebar: rgba(30, 30, 32, 0.78);
+  --prn-fill: rgba(120, 120, 128, 0.36);
+  --prn-fill-strong: rgba(120, 120, 128, 0.48);
+  --prn-hover: rgba(255, 255, 255, 0.06);
+  --prn-pressed: rgba(255, 255, 255, 0.12);
+
+  /* ---- Text (label-Hierarchie) ---- */
+  --prn-label: #ffffff;
+  --prn-label-2: rgba(235, 235, 245, 0.6);
+  --prn-label-3: rgba(235, 235, 245, 0.3);
+  --prn-label-4: rgba(235, 235, 245, 0.18);
+
+  /* ---- Linien ---- */
+  --prn-separator: rgba(84, 84, 88, 0.6);
+  --prn-separator-opaque: #38383a;
+  --prn-hairline: rgba(255, 255, 255, 0.06);
+  --prn-border: rgba(255, 255, 255, 0.1);
+
+  /* ---- Akzent (Apple-Grün, Dark) ---- */
+  --prn-accent: #30d158;
+  --prn-accent-strong: #28b14a;
+  --prn-accent-hover: #3ee066;
+  --prn-accent-pressed: #28b14a;
+  --prn-accent-soft: rgba(48, 209, 88, 0.18);
+  --prn-on-accent: #ffffff;
+
+  /* ---- Semantik (Apple System Colors, Dark) ---- */
+  --prn-green: #30d158;
+  --prn-red: #ff453a;
+  --prn-orange: #ff9f0a;
+  --prn-yellow: #ffd60a;
+  --prn-blue: #0a84ff;
+  --prn-teal: #40c8e0;
+  --prn-neutral: #8e8e93;
+  --prn-on-status-fill: #ffffff;
+
+  /* getönte Hintergründe (Notices, Zeilen-Tönung) */
+  --prn-tint-positive: rgba(48, 209, 88, 0.18);
+  --prn-tint-critical: rgba(255, 159, 10, 0.18);
+  --prn-tint-negative: rgba(255, 69, 58, 0.18);
+  --prn-tint-info: rgba(10, 132, 255, 0.2);
+  --prn-warn-soft: rgba(255, 159, 10, 0.16);
+
+  /* ---- Chart-Palette (Apple System, Dark) ---- */
+  --prn-chart-1: #0a84ff;
+  --prn-chart-2: #30d158;
+  --prn-chart-3: #ff9f0a;
+  --prn-chart-4: #bf5af2;
+  --prn-chart-5: #40c8e0;
+  --prn-chart-6: #ff453a;
+  --prn-chart-7: #ffd60a;
+  --prn-chart-8: #5e5ce6;
+
+  /* ---- Overlays ---- */
+  --prn-scrim: rgba(0, 0, 0, 0.48);
+  --prn-backdrop: rgba(0, 0, 0, 0.48);
+  --prn-focus: 0 0 0 3px rgba(48, 209, 88, 0.5);
+
+  /* ---- Schatten / Tiefe ---- */
+  --prn-shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 10px 30px rgba(0, 0, 0, 0.35);
+  --prn-shadow-pop: 0 16px 48px rgba(0, 0, 0, 0.6);
+  --prn-shadow-raised: 0 4px 12px rgba(0, 0, 0, 0.5), 0 16px 48px rgba(0, 0, 0, 0.6);
+  --prn-shadow-bar: 0 1px 0 var(--prn-separator);
+
+  /* ---- Glas (mode-spezifischer Border/Blur) ---- */
+  --prn-card-border: 1px solid rgba(255, 255, 255, 0.08);
+  --prn-card-blur: saturate(160%) blur(22px);
+
+  /* ---- Bento-Ambient (neutral, Dark) ---- */
+  --prn-bento-bg: linear-gradient(135deg, #232325 0%, #1a1a1c 55%, #161618 100%);
+
+  color-scheme: dark;
+}
+
+/* ---------- Apple Light (System-Light, nichts erzwungen) ---------- */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    --prn-bg: #f2f2f7;
+    --prn-app-bg: linear-gradient(180deg, #ffffff 0%, #f2f2f7 100%);
+    --prn-bg-elevated: #ffffff;
+    --prn-bg-elevated-2: #ffffff;
+    --prn-bg-elevated-translucent: rgba(255, 255, 255, 0.72);
+    --prn-bg-head: #ffffff;
+    --prn-bg-bar: rgba(255, 255, 255, 0.72);
+    --prn-bg-sidebar: rgba(246, 246, 248, 0.8);
+    --prn-fill: rgba(120, 120, 128, 0.12);
+    --prn-fill-strong: rgba(120, 120, 128, 0.2);
+    --prn-hover: rgba(0, 0, 0, 0.04);
+    --prn-pressed: rgba(0, 0, 0, 0.08);
+
+    --prn-label: #000000;
+    --prn-label-2: rgba(60, 60, 67, 0.6);
+    --prn-label-3: rgba(60, 60, 67, 0.3);
+    --prn-label-4: rgba(60, 60, 67, 0.18);
+
+    --prn-separator: rgba(60, 60, 67, 0.29);
+    --prn-separator-opaque: #c6c6c8;
+    --prn-hairline: rgba(60, 60, 67, 0.1);
+    --prn-border: rgba(60, 60, 67, 0.12);
+
+    --prn-accent: #34c759;
+    --prn-accent-strong: #248a3d;
+    --prn-accent-hover: #30d158;
+    --prn-accent-pressed: #248a3d;
+    --prn-accent-soft: rgba(52, 199, 89, 0.16);
+    --prn-on-accent: #ffffff;
+
+    --prn-green: #34c759;
+    --prn-red: #ff3b30;
+    --prn-orange: #ff9500;
+    --prn-yellow: #ffcc00;
+    --prn-blue: #007aff;
+    --prn-teal: #30b0c7;
+    --prn-neutral: #8e8e93;
+    --prn-on-status-fill: #ffffff;
+
+    --prn-tint-positive: rgba(52, 199, 89, 0.16);
+    --prn-tint-critical: rgba(255, 149, 0, 0.16);
+    --prn-tint-negative: rgba(255, 59, 48, 0.12);
+    --prn-tint-info: rgba(0, 122, 255, 0.12);
+    --prn-warn-soft: rgba(255, 149, 0, 0.16);
+
+    --prn-chart-1: #007aff;
+    --prn-chart-2: #34c759;
+    --prn-chart-3: #ff9500;
+    --prn-chart-4: #af52de;
+    --prn-chart-5: #30b0c7;
+    --prn-chart-6: #ff3b30;
+    --prn-chart-7: #ffcc00;
+    --prn-chart-8: #5856d6;
+
+    --prn-scrim: rgba(0, 0, 0, 0.32);
+    --prn-backdrop: rgba(0, 0, 0, 0.32);
+    --prn-focus: 0 0 0 3px rgba(52, 199, 89, 0.45);
+
+    --prn-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.05);
+    --prn-shadow-pop: 0 12px 40px rgba(0, 0, 0, 0.18);
+    --prn-shadow-raised: 0 2px 6px rgba(0, 0, 0, 0.08), 0 12px 32px rgba(0, 0, 0, 0.12);
+    --prn-shadow-bar: 0 1px 0 var(--prn-separator);
+
+    --prn-card-border: 1px solid rgba(60, 60, 67, 0.08);
+    --prn-card-blur: saturate(160%) blur(22px);
+
+    --prn-bento-bg: linear-gradient(135deg, #f5f5f7 0%, #ececef 55%, #e6e6ea 100%);
+
+    color-scheme: light;
+  }
+}
+
+/* ---------- Apple Light (erzwungen) ---------- */
+:root[data-theme="light"] {
+  --prn-bg: #f2f2f7;
+  --prn-app-bg: linear-gradient(180deg, #ffffff 0%, #f2f2f7 100%);
+  --prn-bg-elevated: #ffffff;
+  --prn-bg-elevated-2: #ffffff;
+  --prn-bg-elevated-translucent: rgba(255, 255, 255, 0.72);
+  --prn-bg-head: #ffffff;
+  --prn-bg-bar: rgba(255, 255, 255, 0.72);
+  --prn-bg-sidebar: rgba(246, 246, 248, 0.8);
+  --prn-fill: rgba(120, 120, 128, 0.12);
+  --prn-fill-strong: rgba(120, 120, 128, 0.2);
+  --prn-hover: rgba(0, 0, 0, 0.04);
+  --prn-pressed: rgba(0, 0, 0, 0.08);
+
+  --prn-label: #000000;
+  --prn-label-2: rgba(60, 60, 67, 0.6);
+  --prn-label-3: rgba(60, 60, 67, 0.3);
+  --prn-label-4: rgba(60, 60, 67, 0.18);
+
+  --prn-separator: rgba(60, 60, 67, 0.29);
+  --prn-separator-opaque: #c6c6c8;
+  --prn-hairline: rgba(60, 60, 67, 0.1);
+  --prn-border: rgba(60, 60, 67, 0.12);
+
+  --prn-accent: #34c759;
+  --prn-accent-strong: #248a3d;
+  --prn-accent-hover: #30d158;
+  --prn-accent-pressed: #248a3d;
+  --prn-accent-soft: rgba(52, 199, 89, 0.16);
+  --prn-on-accent: #ffffff;
+
+  --prn-green: #34c759;
+  --prn-red: #ff3b30;
+  --prn-orange: #ff9500;
+  --prn-yellow: #ffcc00;
+  --prn-blue: #007aff;
+  --prn-teal: #30b0c7;
+  --prn-neutral: #8e8e93;
+  --prn-on-status-fill: #ffffff;
+
+  --prn-tint-positive: rgba(52, 199, 89, 0.16);
+  --prn-tint-critical: rgba(255, 149, 0, 0.16);
+  --prn-tint-negative: rgba(255, 59, 48, 0.12);
+  --prn-tint-info: rgba(0, 122, 255, 0.12);
+  --prn-warn-soft: rgba(255, 149, 0, 0.16);
+
+  --prn-chart-1: #007aff;
+  --prn-chart-2: #34c759;
+  --prn-chart-3: #ff9500;
+  --prn-chart-4: #af52de;
+  --prn-chart-5: #30b0c7;
+  --prn-chart-6: #ff3b30;
+  --prn-chart-7: #ffcc00;
+  --prn-chart-8: #5856d6;
+
+  --prn-scrim: rgba(0, 0, 0, 0.32);
+  --prn-backdrop: rgba(0, 0, 0, 0.32);
+  --prn-focus: 0 0 0 3px rgba(52, 199, 89, 0.45);
+
+  --prn-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.05);
+  --prn-shadow-pop: 0 12px 40px rgba(0, 0, 0, 0.18);
+  --prn-shadow-raised: 0 2px 6px rgba(0, 0, 0, 0.08), 0 12px 32px rgba(0, 0, 0, 0.12);
+  --prn-shadow-bar: 0 1px 0 var(--prn-separator);
+
+  --prn-card-border: 1px solid rgba(60, 60, 67, 0.08);
+  --prn-card-blur: saturate(160%) blur(22px);
+
+  --prn-bento-bg: linear-gradient(135deg, #f5f5f7 0%, #ececef 55%, #e6e6ea 100%);
 
   color-scheme: light;
 }
 
-/* ---------- Dark (System) ---------- */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --prn-bg: #222a31;
-    --prn-app-bg: radial-gradient(130% 130% at 12% 0%, #2b343d 0%, #222a31 48%, #1b2229 100%);
-    --prn-bg-elevated: #2a333b;
-    --prn-bg-elevated-2: #333e48;
-    --prn-bg-elevated-translucent: rgba(34, 42, 49, 0.52); /* Glas-Card (Bento), Blur-tauglich */
-    --prn-bg-head: #1e252b;
-    --prn-bg-bar: rgba(34, 42, 49, 0.55);
-    --prn-bg-sidebar: rgba(34, 42, 49, 0.6);
-    --prn-fill: rgba(255, 255, 255, 0.08);
-    --prn-fill-strong: rgba(255, 255, 255, 0.14);
-    --prn-hover: rgba(255, 255, 255, 0.06);
-    --prn-pressed: rgba(255, 255, 255, 0.12);
+/* ---------- Apple Dark (erzwungen — entspricht :root) ---------- */
+:root[data-theme="dark"] {
+  --prn-bg: #1c1c1e;
+  --prn-app-bg: linear-gradient(180deg, #1f1f21 0%, #161618 100%);
+  --prn-bg-elevated: #2c2c2e;
+  --prn-bg-elevated-2: #3a3a3c;
+  --prn-bg-elevated-translucent: rgba(44, 44, 46, 0.72);
+  --prn-bg-head: #1c1c1e;
+  --prn-bg-bar: rgba(30, 30, 32, 0.72);
+  --prn-bg-sidebar: rgba(30, 30, 32, 0.78);
+  --prn-fill: rgba(120, 120, 128, 0.36);
+  --prn-fill-strong: rgba(120, 120, 128, 0.48);
+  --prn-hover: rgba(255, 255, 255, 0.06);
+  --prn-pressed: rgba(255, 255, 255, 0.12);
 
-    --prn-label: #f3f4f2;
-    --prn-label-2: rgba(236, 238, 233, 0.78);
-    --prn-label-3: rgba(235, 238, 233, 0.46);
-    --prn-label-4: rgba(235, 235, 245, 0.18);
+  --prn-label: #ffffff;
+  --prn-label-2: rgba(235, 235, 245, 0.6);
+  --prn-label-3: rgba(235, 235, 245, 0.3);
+  --prn-label-4: rgba(235, 235, 245, 0.18);
 
-    --prn-separator: rgba(255, 255, 255, 0.08);
-    --prn-separator-opaque: #38383a;
-    --prn-hairline: rgba(255, 255, 255, 0.06);
-    --prn-border: rgba(255, 255, 255, 0.1);
+  --prn-separator: rgba(84, 84, 88, 0.6);
+  --prn-separator-opaque: #38383a;
+  --prn-hairline: rgba(255, 255, 255, 0.06);
+  --prn-border: rgba(255, 255, 255, 0.1);
 
-    --prn-accent: #a0d22b;
-    --prn-accent-strong: #b4de5a;
-    --prn-accent-hover: #aedd44;
-    --prn-accent-pressed: #8cba20;
-    --prn-accent-soft: rgba(160, 210, 43, 0.16);
-    --prn-on-accent: #1b2410;
+  --prn-accent: #30d158;
+  --prn-accent-strong: #28b14a;
+  --prn-accent-hover: #3ee066;
+  --prn-accent-pressed: #28b14a;
+  --prn-accent-soft: rgba(48, 209, 88, 0.18);
+  --prn-on-accent: #ffffff;
 
-    --prn-green: #a0d22b;
-    --prn-red: #ff5a52;
-    --prn-orange: #ff9f62;
-    --prn-yellow: #ffe665;
-    --prn-blue: #5ec8fa;
-    --prn-teal: #b5dec2;
-    --prn-neutral: #9b9f9a;
+  --prn-green: #30d158;
+  --prn-red: #ff453a;
+  --prn-orange: #ff9f0a;
+  --prn-yellow: #ffd60a;
+  --prn-blue: #0a84ff;
+  --prn-teal: #40c8e0;
+  --prn-neutral: #8e8e93;
+  --prn-on-status-fill: #ffffff;
 
-    --prn-tint-positive: rgba(160, 210, 43, 0.18);
-    --prn-tint-critical: rgba(255, 159, 98, 0.18);
-    --prn-tint-negative: rgba(255, 90, 82, 0.18);
-    --prn-tint-info: rgba(94, 200, 250, 0.2);
-    --prn-warn-soft: rgba(255, 159, 98, 0.16);
+  --prn-tint-positive: rgba(48, 209, 88, 0.18);
+  --prn-tint-critical: rgba(255, 159, 10, 0.18);
+  --prn-tint-negative: rgba(255, 69, 58, 0.18);
+  --prn-tint-info: rgba(10, 132, 255, 0.2);
+  --prn-warn-soft: rgba(255, 159, 10, 0.16);
 
-    --prn-chart-1: #a0d22b;
-    --prn-chart-2: #b5dec2;
-    --prn-chart-3: #ff9f62;
-    --prn-chart-4: #ffe665;
-    --prn-chart-5: #6aa6bd;
-    --prn-chart-6: #c6cd83;
-    --prn-chart-7: #9b9f9a;
-    --prn-chart-8: #5ec8c0;
+  --prn-chart-1: #0a84ff;
+  --prn-chart-2: #30d158;
+  --prn-chart-3: #ff9f0a;
+  --prn-chart-4: #bf5af2;
+  --prn-chart-5: #40c8e0;
+  --prn-chart-6: #ff453a;
+  --prn-chart-7: #ffd60a;
+  --prn-chart-8: #5e5ce6;
 
-    --prn-scrim: rgba(0, 0, 0, 0.5);
-    --prn-backdrop: rgba(0, 0, 0, 0.5);
-    --prn-focus: 0 0 0 3px rgba(160, 210, 43, 0.42);
+  --prn-scrim: rgba(0, 0, 0, 0.48);
+  --prn-backdrop: rgba(0, 0, 0, 0.48);
+  --prn-focus: 0 0 0 3px rgba(48, 209, 88, 0.5);
 
-    --prn-shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 10px 30px rgba(0, 0, 0, 0.35);
-    --prn-shadow-pop: 0 16px 48px rgba(0, 0, 0, 0.6);
-    --prn-shadow-raised: 0 4px 12px rgba(0, 0, 0, 0.5), 0 16px 48px rgba(0, 0, 0, 0.6);
-    --prn-card-border: 1px solid rgba(255, 255, 255, 0.07);
-    --prn-card-blur: saturate(160%) blur(22px);
+  --prn-shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 10px 30px rgba(0, 0, 0, 0.35);
+  --prn-shadow-pop: 0 16px 48px rgba(0, 0, 0, 0.6);
+  --prn-shadow-raised: 0 4px 12px rgba(0, 0, 0, 0.5), 0 16px 48px rgba(0, 0, 0, 0.6);
+  --prn-shadow-bar: 0 1px 0 var(--prn-separator);
 
-    --prn-bento-bg:
-      radial-gradient(1000px 760px at 10% 92%, rgba(96, 132, 64, 0.55) 0%, rgba(96, 132, 64, 0) 58%),
-      radial-gradient(1100px 720px at 92% 8%, rgba(150, 120, 72, 0.5) 0%, rgba(150, 120, 72, 0) 55%),
-      radial-gradient(900px 720px at 78% 96%, rgba(86, 70, 50, 0.45) 0%, rgba(86, 70, 50, 0) 52%),
-      radial-gradient(760px 760px at 36% 16%, rgba(70, 86, 96, 0.4) 0%, rgba(70, 86, 96, 0) 52%),
-      linear-gradient(135deg, #191b18 0%, #232318 45%, #14160f 100%);
+  --prn-card-border: 1px solid rgba(255, 255, 255, 0.08);
+  --prn-card-blur: saturate(160%) blur(22px);
 
-    color-scheme: dark;
-  }
+  --prn-bento-bg: linear-gradient(135deg, #232325 0%, #1a1a1c 55%, #161618 100%);
+
+  color-scheme: dark;
 }
 
-/* ---------- Dark (manuell erzwungen, gewinnt über System) ---------- */
-:root[data-theme="dark"] {
+/* ============================================================
+ *  CU — CONUTI Community-Styling (CI-Grün #A0D22B)
+ *  Frühere Dark-Optik, 1:1 erhalten: Inter-Font + grünes Bento-Mesh.
+ * ============================================================ */
+:root[data-theme="cu"] {
+  /* Community-Font (Inter-geführt statt SF) */
+  --prn-font: system-ui, "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --prn-font-rounded: var(--prn-font);
+
   --prn-bg: #222a31;
   --prn-app-bg: radial-gradient(130% 130% at 12% 0%, #2b343d 0%, #222a31 48%, #1b2229 100%);
   --prn-bg-elevated: #2a333b;
@@ -258,6 +426,7 @@
   --prn-blue: #5ec8fa;
   --prn-teal: #b5dec2;
   --prn-neutral: #9b9f9a;
+  --prn-on-status-fill: #14150f;
 
   --prn-tint-positive: rgba(160, 210, 43, 0.18);
   --prn-tint-critical: rgba(255, 159, 98, 0.18);
@@ -281,6 +450,8 @@
   --prn-shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 10px 30px rgba(0, 0, 0, 0.35);
   --prn-shadow-pop: 0 16px 48px rgba(0, 0, 0, 0.6);
   --prn-shadow-raised: 0 4px 12px rgba(0, 0, 0, 0.5), 0 16px 48px rgba(0, 0, 0, 0.6);
+  --prn-shadow-bar: 0 1px 0 var(--prn-separator);
+
   --prn-card-border: 1px solid rgba(255, 255, 255, 0.07);
   --prn-card-blur: saturate(160%) blur(22px);
 
@@ -294,7 +465,7 @@
   color-scheme: dark;
 }
 
-/* ---------- Globale Basis-Helfer (optional, aber von finops genutzt) ---------- */
+/* ---------- Globale Basis-Helfer ---------- */
 
 /* Sichtbarer Fokus-Ring (A11y) statt outline:none */
 :where(:focus-visible) {

@@ -5,16 +5,29 @@
  * (dist/index.css → Import via "prince-ui/styles.css").
  */
 
-export const PRINCE_UI_VERSION = "0.2.0";
+export const PRINCE_UI_VERSION = "0.4.0";
 
-/** Setzt das Theme am <html>-Element. `null` → System (prefers-color-scheme). */
-export function setTheme(theme: "light" | "dark" | null): void {
+/** Die drei Prince-Modes. `null` = System folgen (prefers-color-scheme, Fallback Dark). */
+export type PrinceTheme = "light" | "dark" | "cu";
+
+/**
+ * Setzt das Theme am <html>-Element.
+ * - `"light"` / `"dark"` → Apple-Optik (SF-Fonts, Apple-System-Farben, Apple-Grün)
+ * - `"cu"`               → CONUTI Community-Styling (CI-Grün)
+ * - `null`               → System folgen (Light bei OS-Light, sonst Dark)
+ */
+export function setTheme(theme: PrinceTheme | null): void {
   const root = document.documentElement;
   if (theme === null) {
     root.removeAttribute("data-theme");
   } else {
     root.setAttribute("data-theme", theme);
   }
+}
+
+/** Liest das aktuell erzwungene Theme oder `null`, wenn dem System gefolgt wird. */
+export function getTheme(): PrinceTheme | null {
+  return (document.documentElement.getAttribute("data-theme") as PrinceTheme | null) ?? null;
 }
 
 export * from "./utils";
