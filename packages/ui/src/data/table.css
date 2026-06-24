@@ -1,0 +1,312 @@
+/* Zusätzliche Styles für die erweiterte AnalyticalTable (SAP-Parität).
+ * Basis-Styles liegen in data.css; hier nur additive neue Klassen.
+ * Tokens: prince-ui-tokens — niemals rohe Hex/RGB. */
+
+/* ---- Titel & Extension (B14) ---- */
+.prn-table-title {
+  padding: 12px 16px 8px;
+  font: var(--prn-text-headline);
+  font-weight: 700;
+  color: var(--prn-label);
+}
+.prn-table-extension {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--prn-separator);
+}
+
+/* ---- Viewport-Wrapper (für Overlay) ---- */
+.prn-table-viewport-wrap {
+  position: relative;
+  width: 100%;
+}
+
+/* ---- Sort-Index-Badge (Multi-Sort) ---- */
+.prn-th-sortidx {
+  font-size: 0.7em;
+  font-weight: 700;
+  margin-left: 1px;
+  color: var(--prn-accent-strong);
+}
+
+/* ---- Spalten-Filter im Header (B3) ---- */
+.prn-th-filter {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 2px;
+}
+.prn-th-filter-btn {
+  min-width: 0;
+  padding: 0 4px;
+  font-size: 0.9em;
+  line-height: 1;
+  opacity: 0.5;
+}
+.prn-th:hover .prn-th-filter-btn {
+  opacity: 0.9;
+}
+.prn-th-filter-btn-active {
+  opacity: 1;
+  color: var(--prn-accent-strong);
+}
+.prn-th-filter-popover {
+  padding: 12px;
+  min-width: 220px;
+}
+.prn-th-filter-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ---- Column-Resizer (B6) ---- */
+.prn-th {
+  position: sticky; /* aus data.css geerbt; hier nur für Resizer-Kontext relevant */
+}
+.prn-th-resizer {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 6px;
+  cursor: col-resize;
+  user-select: none;
+  touch-action: none;
+  z-index: 3;
+}
+.prn-th-resizer:hover,
+.prn-th-resizer[data-resizing] {
+  background: var(--prn-accent);
+  opacity: 0.6;
+}
+
+.prn-th-resizer[data-autoresizable] {
+  cursor: col-resize;
+}
+
+/* ---- Drag&Drop-Reorder Hinweis ---- */
+.prn-th[draggable="true"] {
+  cursor: grab;
+}
+
+/* ---- Custom-Header-Popover (B1.5) ---- */
+.prn-th-popover {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 2px;
+}
+.prn-th-popover-btn {
+  min-width: 0;
+  padding: 0 4px;
+  font-size: 0.9em;
+  line-height: 1;
+  opacity: 0.5;
+}
+.prn-th:hover .prn-th-popover-btn {
+  opacity: 0.9;
+}
+.prn-th-popover-content {
+  padding: 12px;
+  min-width: 200px;
+}
+
+/* ---- Row Sub-Component (B13.1) ---- */
+.prn-table-subrow {
+  display: contents;
+}
+.prn-subcomponent {
+  padding: 12px 16px;
+  background: var(--prn-bg-elevated);
+  border-bottom: 1px solid var(--prn-separator);
+}
+.prn-subcomponent-toggle {
+  color: var(--prn-accent-strong);
+}
+
+/* ---- Tree-Table (B8) ---- */
+.prn-tree-chevron {
+  display: inline-grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  margin-right: 4px;
+  border: none;
+  background: transparent;
+  color: var(--prn-label-2);
+  cursor: pointer;
+  border-radius: var(--prn-radius-xs);
+  font-size: 12px;
+  line-height: 1;
+}
+.prn-tree-chevron:hover {
+  background: var(--prn-fill-strong);
+  color: var(--prn-label);
+}
+.prn-td-content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+/* ---- Vertikale Ausrichtung (B1) ---- */
+.prn-td[data-valign="top"] {
+  align-items: flex-start;
+}
+.prn-td[data-valign="bottom"] {
+  align-items: flex-end;
+}
+
+/* ---- Zebra (B10) ---- */
+.prn-table-zebra .prn-table-row[data-zebra] .prn-td {
+  background: var(--prn-fill);
+}
+.prn-table-zebra .prn-table-row[data-hovered] .prn-td {
+  background: var(--prn-hover);
+}
+.prn-table-zebra .prn-table-row[data-selected] .prn-td {
+  background: var(--prn-accent-soft);
+}
+
+/* ---- Row-Highlight Farbband (B10) ----
+ * Das Farbband ist ein eigener, schmaler führender Grid-Track (Breite via
+ * --prn-row-highlight-width, siehe grid-template-columns in table.tsx). Es belegt
+ * automatisch die erste Spalte jeder Datenzeile; im Kopf hält .prn-th-highlight
+ * denselben Track frei, damit Header und Body exakt aligned bleiben. */
+.prn-row-highlight {
+  align-self: stretch;
+  width: 3px;
+  background: transparent;
+  border-bottom: 1px solid var(--prn-hairline);
+}
+/* Header-Platzhalter für den Highlight-Track (leer, nur Track-Reservierung). */
+.prn-th-highlight {
+  min-width: 0;
+  padding: 0;
+  background: var(--prn-bg-head);
+  border-bottom: 1px solid var(--prn-separator);
+}
+.prn-table-row[data-highlight="information"] .prn-row-highlight {
+  background: var(--prn-blue);
+}
+.prn-table-row[data-highlight="positive"] .prn-row-highlight {
+  background: var(--prn-green);
+}
+.prn-table-row[data-highlight="critical"] .prn-row-highlight {
+  background: var(--prn-orange);
+}
+.prn-table-row[data-highlight="negative"] .prn-row-highlight {
+  background: var(--prn-red);
+}
+
+/* ---- Navigations-Spalte (B10) ---- */
+.prn-th-nav,
+.prn-td-nav {
+  justify-content: center;
+  padding: 0 6px;
+  max-width: 36px;
+}
+.prn-nav-arrow {
+  color: var(--prn-label-3);
+  font-size: 1.1em;
+  opacity: 0;
+}
+.prn-td-nav[data-navigated] .prn-nav-arrow,
+.prn-table-row[data-hovered] .prn-td-nav .prn-nav-arrow {
+  opacity: 1;
+  color: var(--prn-accent-strong);
+}
+
+/* ---- Leerzeilen (B7) ---- */
+.prn-table-row-empty .prn-td-empty {
+  min-height: 44px;
+  border-bottom: 1px solid var(--prn-hairline);
+  background: var(--prn-bg-elevated);
+}
+
+/* ---- Responsive Pop-In (B11) ----
+ * Die erste Zelle nimmt zusätzlich die eingeklappten Spalten auf. Damit der
+ * Hauptwert (z. B. ID) NICHT vom Pop-In-Block verdrängt/abgeschnitten wird,
+ * stapelt eine Pop-In-tragende Zelle vertikal statt horizontal. */
+.prn-td:has(.prn-popin) {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  white-space: normal;
+  overflow: visible;
+}
+.prn-td:has(.prn-popin) .prn-td-content {
+  white-space: nowrap;
+}
+.prn-popin {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 2px;
+  font: var(--prn-text-footnote);
+  color: var(--prn-label-2);
+}
+.prn-popin-item[data-display="inline"] {
+  display: inline;
+}
+.prn-popin-label {
+  color: var(--prn-label-3);
+}
+.prn-popin-value {
+  color: var(--prn-label);
+  font-weight: 500;
+}
+
+/* ---- Busy-Indicator / Overlay (B12) ---- */
+.prn-table-busy {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+}
+.prn-table-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--prn-bg-elevated) 60%, transparent);
+  z-index: 5;
+}
+.prn-busy-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.prn-busy-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--prn-accent);
+  animation: prn-busy-pulse 1s infinite ease-in-out;
+}
+.prn-busy-dot:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.prn-busy-dot:nth-child(3) {
+  animation-delay: 0.3s;
+}
+@keyframes prn-busy-pulse {
+  0%,
+  80%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ---- Grid-Tastaturnavigation Fokus (B14) ---- */
+.prn-td:focus-visible {
+  outline: 2px solid var(--prn-accent);
+  outline-offset: -2px;
+  border-radius: var(--prn-radius-xs);
+}

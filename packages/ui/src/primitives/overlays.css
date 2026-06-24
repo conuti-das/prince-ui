@@ -1,0 +1,98 @@
+/* Overlay-Primitives — Modal, Menu, Popover, Tooltip (React Aria). */
+
+/* ---- Modal ---- */
+.prn-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: var(--prn-scrim);
+  backdrop-filter: blur(2px);
+}
+.prn-modal-overlay[data-entering] { animation: prn-overlay-in var(--prn-dur) var(--prn-ease-out); }
+.prn-modal-overlay[data-exiting] { animation: prn-overlay-in var(--prn-dur) var(--prn-ease-out) reverse; }
+
+.prn-modal {
+  max-width: 560px;
+  width: 100%;
+  max-height: 85vh;
+  overflow: auto;
+  background: var(--prn-bg-elevated);
+  border: var(--prn-card-border);
+  border-radius: var(--prn-radius-lg);
+  box-shadow: var(--prn-shadow-pop);
+  backdrop-filter: var(--prn-card-blur);
+}
+.prn-modal[data-entering] { animation: prn-modal-in var(--prn-dur) var(--prn-ease-spring); }
+
+.prn-dialog {
+  padding: 22px;
+  outline: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.prn-dialog-title {
+  margin: 0;
+  font: var(--prn-text-title);
+  color: var(--prn-label);
+}
+
+@keyframes prn-overlay-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes prn-modal-in {
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+
+/* ---- Popover (Menu/Select/Tooltip-Container) ---- */
+.prn-popover {
+  background: var(--prn-bg-elevated);
+  border: var(--prn-card-border);
+  border-radius: var(--prn-radius-md);
+  box-shadow: var(--prn-shadow-pop);
+  backdrop-filter: var(--prn-card-blur);
+  padding: 6px;
+  min-width: 180px;
+}
+.prn-popover[data-entering] { animation: prn-pop-in var(--prn-dur-fast) var(--prn-ease-out); }
+@keyframes prn-pop-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+
+/* ---- Menu / ListBox-Optionen ---- */
+.prn-menu, .prn-listbox { outline: none; display: flex; flex-direction: column; gap: 2px; max-height: inherit; }
+.prn-menu-item, .prn-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border-radius: var(--prn-radius-sm);
+  font: var(--prn-text-body);
+  color: var(--prn-label);
+  cursor: pointer;
+  outline: none;
+}
+.prn-menu-item[data-focused], .prn-option[data-focused] {
+  background: var(--prn-accent-soft);
+}
+.prn-menu-item[data-disabled], .prn-option[data-disabled] { opacity: 0.4; cursor: default; }
+.prn-option[data-selected]::after {
+  content: "✓";
+  margin-left: auto;
+  color: var(--prn-accent-strong);
+  font-weight: 700;
+}
+
+/* ---- Tooltip ---- */
+.prn-tooltip {
+  background: var(--prn-label);
+  color: var(--prn-bg-elevated);
+  padding: 5px 9px;
+  border-radius: var(--prn-radius-sm);
+  font: var(--prn-text-footnote);
+  box-shadow: var(--prn-shadow);
+  max-width: 240px;
+}
+.prn-tooltip[data-entering] { animation: prn-pop-in var(--prn-dur-fast) var(--prn-ease-out); }
+.prn-tooltip-arrow svg { fill: var(--prn-label); }
+.prn-tooltip-arrow { display: block; }

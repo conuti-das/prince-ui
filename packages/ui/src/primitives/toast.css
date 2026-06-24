@@ -1,0 +1,113 @@
+/* Toast-Primitives — Prince-Look auf React Aria (UNSTABLE_Toast). */
+
+/* ---- Region: fixiert unten ---- */
+.prn-toast-region {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 16px;
+  pointer-events: none;
+  outline: none;
+}
+.prn-toast-region[data-focus-visible] {
+  outline: none;
+}
+
+/* ---- Toast-Karte ---- */
+.prn-toast {
+  pointer-events: auto;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: min(380px, calc(100vw - 32px));
+  padding: 12px 14px;
+  border-radius: var(--prn-radius-lg);
+  background: var(--prn-bg-elevated);
+  border: 0.5px solid var(--prn-separator);
+  box-shadow: var(--prn-shadow-pop);
+  animation: prn-toast-in var(--prn-dur) var(--prn-ease-spring);
+}
+.prn-toast[data-focus-visible] {
+  box-shadow: var(--prn-shadow-pop), var(--prn-focus);
+}
+
+@keyframes prn-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .prn-toast { animation: none; }
+}
+
+/* Akzentstreifen je nach Variante */
+.prn-toast::before {
+  content: "";
+  align-self: stretch;
+  width: 3px;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: var(--prn-accent);
+}
+.prn-toast[data-variant="success"]::before { background: var(--prn-green); }
+.prn-toast[data-variant="warning"]::before { background: var(--prn-orange); }
+.prn-toast[data-variant="error"]::before { background: var(--prn-red); }
+
+/* ---- Inhalt ---- */
+.prn-toast-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.prn-toast-title {
+  font: var(--prn-text-subhead);
+  font-weight: 590;
+  color: var(--prn-label);
+}
+.prn-toast-desc {
+  font: var(--prn-text-footnote);
+  color: var(--prn-label-2);
+}
+
+/* ---- Schließen-Button ---- */
+.prn-toast-close {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  margin: -2px -2px 0 0;
+  padding: 0;
+  border: none;
+  border-radius: var(--prn-radius-sm);
+  background: transparent;
+  color: var(--prn-label-3);
+  cursor: pointer;
+  transition: background var(--prn-dur-fast) var(--prn-ease-standard);
+}
+.prn-toast-close[data-hovered] { background: var(--prn-fill); }
+.prn-toast-close[data-pressed] { background: var(--prn-fill-strong); }
+.prn-toast-close[data-focus-visible] { box-shadow: var(--prn-focus); }
+.prn-toast-close-icon {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  fill: none;
+}

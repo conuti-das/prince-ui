@@ -1,0 +1,46 @@
+<style>
+  /* ------------------------------------------------------------------ *
+   * Docs-Seiten an die Prince-UI-Tokens koppeln.
+   *
+   * Das Storybook-Docs-Theme (.storybook/theme.ts) ist statisch "dark"
+   * (appContentBg/textColor hart kodiert). Beim Umschalten auf Light gehen
+   * nur die Story-Inhalte (var(--prn-*)) auf helle Werte, der Docs-Rahmen
+   * blieb dunkel → dunkler Text auf dunklem Grund. Hier koppeln wir die
+   * Docs-Flächen an dieselben Tokens; var() löst gegen das vom Theme-
+   * Decorator gesetzte data-theme auf, also schaltet die Docs-Seite mit.
+   * Dark bleibt dadurch unverändert (gleiche Werte wie zuvor).
+   * ------------------------------------------------------------------ */
+  .sbdocs.sbdocs-wrapper { background: var(--prn-bg) !important; }
+  .sbdocs-content { background: transparent !important; }
+  .docs-story { background: var(--prn-bg) !important; }
+
+  .sbdocs-title, .sbdocs-h1, .sbdocs-h2, .sbdocs-h3, .sbdocs-h4,
+  .sbdocs-p, .sbdocs-li, .sbdocs-td, .sbdocs-th,
+  .sbdocs-wrapper p, .sbdocs-wrapper li { color: var(--prn-label) !important; }
+  .sbdocs-subtitle { color: var(--prn-label-2) !important; }
+
+  .sbdocs-h1, .sbdocs-h2 { border-bottom-color: var(--prn-separator) !important; }
+  .sbdocs a { color: var(--prn-accent) !important; }
+
+  /* Props-/Args-Tabelle der Autodocs.
+     Die <td>/<th> tragen einen eigenen (dunklen) Emotion-Hintergrund — auf
+     transparent setzen, damit die token-gefärbte Zeile durchscheint. */
+  .docblock-argstable th,
+  .docblock-argstable td { color: var(--prn-label) !important; background: transparent !important; }
+  .docblock-argstable thead th { color: var(--prn-label-2) !important; }
+  .docblock-argstable-body tr { background: var(--prn-bg-elevated) !important; }
+  .docblock-argstable-body td,
+  .docblock-argstable-body th { border-top-color: var(--prn-separator) !important; }
+  /* Typ-Chips (z. B. T[], "none") tragen helle Schrift fürs Dark-Theme —
+     in den Wert-Spalten auf Label-Farbe ziehen (Spalte 1 = Name/„*" bleibt). */
+  .docblock-argstable-body td:not(:first-child) span,
+  .docblock-argstable-body td:not(:first-child) code { color: var(--prn-label) !important; }
+
+  /* Code-/Source-Blöcke */
+  .sbdocs-pre,
+  .docblock-source,
+  .docblock-source pre {
+    background: var(--prn-fill) !important;
+    color: var(--prn-label) !important;
+  }
+</style>

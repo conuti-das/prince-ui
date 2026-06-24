@@ -1,0 +1,21 @@
+{
+  "name": "prince-ui-tokens",
+  "version": "0.1.0",
+  "description": "Prince-Designsprache als CSS-Custom-Properties (Single Source of Truth).",
+  "license": "MIT",
+  "private": false,
+  "type": "module",
+  "files": ["src"],
+  "exports": {
+    "./tokens.css": "./src/tokens.css",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/conuti-das/prince-ui.git",
+    "directory": "packages/tokens"
+  }
+}

@@ -1,0 +1,96 @@
+/* Numeric-Primitives — Prince-Look auf React Aria. Tokens: prince-ui-tokens.
+   Felder/Inputs aus forms.css (prn-field*, prn-input) werden wiederverwendet. */
+
+/* ---- NumberField ---- */
+.prn-numberfield-group {
+  display: inline-flex;
+  align-items: center;
+  background: var(--prn-fill);
+  border-radius: var(--prn-radius-md);
+  overflow: hidden;
+}
+.prn-numberfield-group[data-focus-within],
+.prn-numberfield-group:focus-within {
+  box-shadow: var(--prn-focus);
+}
+
+.prn-numberfield-step {
+  width: 36px;
+  height: 36px;
+  flex: none;
+  border: none;
+  background: transparent;
+  color: var(--prn-label-2);
+  font-size: 17px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background var(--prn-dur-fast), color var(--prn-dur-fast);
+}
+.prn-numberfield-step[data-hovered] {
+  background: var(--prn-fill-strong);
+  color: var(--prn-accent-strong);
+}
+.prn-numberfield-step[data-disabled] { opacity: 0.4; cursor: not-allowed; }
+
+/* Höhere Spezifität als .prn-input → Input ist transparent und Teil EINER Fläche
+   (sonst doppelter Fill = hellerer Kasten-im-Kasten). */
+.prn-numberfield-group .prn-numberfield-input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  text-align: right;
+  box-shadow: none;
+}
+.prn-numberfield-group .prn-numberfield-input[data-focused],
+.prn-numberfield-group .prn-numberfield-input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* ---- Slider ---- */
+.prn-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 320px;
+}
+.prn-slider-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.prn-slider-output {
+  font: var(--prn-text-subhead);
+  color: var(--prn-label-2);
+  font-variant-numeric: tabular-nums;
+}
+.prn-slider-track {
+  position: relative;
+  height: 4px;
+  background: var(--prn-fill-strong);
+  border-radius: 999px;
+  width: 100%;
+  margin: 10px 0;
+  cursor: pointer;
+}
+.prn-slider-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--prn-accent);
+  border-radius: inherit;
+  pointer-events: none;
+}
+.prn-slider-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  top: 50%;
+}
+.prn-slider-thumb[data-focus-visible] { box-shadow: var(--prn-focus); }
+.prn-slider-thumb[data-dragging] { transform: translateY(-50%) scale(1.1); }
+
+.prn-numberfield { max-width: 200px; }

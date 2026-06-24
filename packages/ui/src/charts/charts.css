@@ -1,0 +1,117 @@
+/* Charts — reine SVG, Prince-Look. Tokens: prince-ui-tokens.
+   Regel: niemals rohe Hex/RGB — immer var(--prn-*). */
+
+/* ---- Basis ---- */
+.prn-chart {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* Sparkline füllt ihren Slot vollständig (preserveAspectRatio="none"). */
+.prn-chart-sparkline {
+  height: 100%;
+}
+
+/* ---- Achsen / Grid ---- */
+.prn-chart-grid {
+  stroke: var(--prn-separator);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+.prn-chart-axis {
+  stroke: var(--prn-separator-opaque);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+.prn-chart-axislabel {
+  font: var(--prn-text-caption);
+  fill: var(--prn-label-3);
+}
+
+/* ---- Donut ---- */
+.prn-chart-donut {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--prn-space) * 2);
+  flex-wrap: wrap;
+}
+.prn-chart-donut > .prn-chart {
+  flex: 0 0 auto;
+  width: 160px;
+  max-width: 100%;
+}
+.prn-chart-donut-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  font: var(--prn-text-title-3);
+  color: var(--prn-label);
+  line-height: 1.1;
+}
+
+/* ---- Legende ---- */
+.prn-chart-legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+.prn-chart-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font: var(--prn-text-subhead);
+  color: var(--prn-label);
+}
+.prn-chart-legend-swatch {
+  flex: 0 0 auto;
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+}
+.prn-chart-legend-label {
+  color: var(--prn-label-2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.prn-chart-legend-value {
+  margin-left: auto;
+  font-weight: 600;
+  color: var(--prn-label);
+}
+
+/* ---- Leerzustand ---- */
+.prn-chart-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 120px;
+  padding: var(--prn-space);
+  border-radius: var(--prn-radius-md);
+  color: var(--prn-label-3);
+}
+.prn-chart-empty--compact {
+  min-height: 0;
+  flex-direction: row;
+  padding: 0;
+}
+.prn-chart-empty-icon {
+  width: 40px;
+  height: 40px;
+  fill: var(--prn-label-4);
+}
+.prn-chart-empty-text {
+  font: var(--prn-text-footnote);
+  color: var(--prn-label-3);
+}

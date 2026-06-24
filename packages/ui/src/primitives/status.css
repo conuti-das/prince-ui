@@ -1,0 +1,121 @@
+/* Status-Primitives — ProgressBar, Meter, Separator, Group (React Aria).
+   Tokens: prince-ui-tokens. Wiederverwendet prn-field-label aus forms.css. */
+
+/* ---- ProgressBar ---- */
+.prn-progressbar {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+.prn-progressbar-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+.prn-progressbar-value {
+  font: var(--prn-text-footnote);
+  color: var(--prn-label-3);
+  font-variant-numeric: tabular-nums;
+}
+.prn-progressbar-track {
+  position: relative;
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--prn-fill-strong);
+  overflow: hidden;
+}
+.prn-progressbar-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--prn-accent);
+  transition: width var(--prn-dur) var(--prn-ease-standard);
+}
+.prn-progressbar-fill[data-indeterminate] {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 40%;
+  transition: none;
+  animation: prn-progress-slide 1.1s var(--prn-ease-standard) infinite;
+  background: linear-gradient(
+    90deg,
+    var(--prn-accent-soft),
+    var(--prn-accent),
+    var(--prn-accent-soft)
+  );
+}
+@keyframes prn-progress-slide {
+  from { transform: translateX(-120%); }
+  to { transform: translateX(320%); }
+}
+
+/* ---- Meter ---- */
+.prn-meter {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+.prn-meter-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+.prn-meter-value {
+  font: var(--prn-text-footnote);
+  color: var(--prn-label-3);
+  font-variant-numeric: tabular-nums;
+}
+.prn-meter-track {
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--prn-fill-strong);
+  overflow: hidden;
+}
+.prn-meter-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--prn-accent);
+  transition: width var(--prn-dur) var(--prn-ease-standard),
+    background var(--prn-dur-fast) var(--prn-ease-standard);
+}
+.prn-meter-fill[data-band="low"] { background: var(--prn-green); }
+.prn-meter-fill[data-band="medium"] { background: var(--prn-orange); }
+.prn-meter-fill[data-band="high"] { background: var(--prn-red); }
+
+/* ---- Separator ---- */
+.prn-separator {
+  margin: 0;
+  border: none;
+  background: var(--prn-separator);
+  align-self: stretch;
+  flex: none;
+}
+.prn-separator:not([aria-orientation="vertical"]) {
+  width: 100%;
+  height: 1px;
+}
+.prn-separator[aria-orientation="vertical"] {
+  width: 1px;
+  height: auto;
+  min-height: 1em;
+  align-self: stretch;
+}
+
+/* ---- Group ---- */
+.prn-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: var(--prn-radius-md);
+}
+.prn-group[data-focus-within] {
+  box-shadow: var(--prn-focus);
+}
+.prn-group[data-disabled] {
+  opacity: 0.45;
+}

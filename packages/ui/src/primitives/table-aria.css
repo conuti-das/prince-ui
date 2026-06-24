@@ -1,0 +1,84 @@
+/* Table-Primitive — Prince-Look auf React Aria `Table`. Tokens: prince-ui-tokens */
+
+.prn-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--prn-bg-elevated);
+  color: var(--prn-label);
+  font: var(--prn-text-body);
+  text-align: left;
+  /* RAC rendert ein <table>; trotzdem als reguläres Tabellen-Layout behandeln. */
+}
+
+/* ---- Kopfzeile ---- */
+.prn-table-header {
+  color: var(--prn-label-2);
+}
+.prn-table-column {
+  padding: 9px 14px;
+  font: var(--prn-text-subhead);
+  font-weight: 590;
+  color: var(--prn-label-2);
+  border-bottom: 1px solid var(--prn-separator);
+  white-space: nowrap;
+  outline: none;
+  vertical-align: middle;
+}
+.prn-table-column[data-focus-visible] { box-shadow: inset var(--prn-focus); }
+.prn-table-column[data-allows-sorting] { cursor: pointer; user-select: none; }
+.prn-table-column[data-allows-sorting][data-hovered] { color: var(--prn-label); }
+
+.prn-table-column-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.prn-table-sort-indicator {
+  font-size: 0.65em;
+  color: var(--prn-accent-strong);
+  line-height: 1;
+}
+
+/* ---- Sticky-Header ---- */
+.prn-table[data-sticky] .prn-table-column {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--prn-bg-elevated);
+}
+
+/* ---- Body / Zeilen ---- */
+.prn-table-row {
+  outline: none;
+  transition: background var(--prn-dur-fast) var(--prn-ease-standard);
+}
+.prn-table-row[data-hovered] { background: var(--prn-fill); }
+.prn-table-row[data-pressed] { background: var(--prn-fill-strong); }
+.prn-table-row[data-selected] { background: var(--prn-accent-soft); }
+.prn-table-row[data-focus-visible] { box-shadow: inset var(--prn-focus); }
+.prn-table-row[data-disabled] { opacity: 0.45; }
+
+.prn-table-cell {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--prn-separator);
+  color: var(--prn-label);
+  vertical-align: middle;
+  outline: none;
+}
+.prn-table-cell[data-focus-visible] { box-shadow: inset var(--prn-focus); }
+
+.prn-table-body[data-empty] {
+  text-align: center;
+  color: var(--prn-label-3);
+  font: var(--prn-text-footnote);
+}
+
+/* ---- Auswahl-Spalte ---- */
+.prn-table-selection-cell {
+  width: 44px;
+  padding-left: 14px;
+  padding-right: 0;
+}
+.prn-table-checkbox {
+  gap: 0;
+}

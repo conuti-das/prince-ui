@@ -1,0 +1,152 @@
+/* DatePicker / DateRangePicker — Prince-Look auf React Aria.
+   Nutzt prn-field/prn-field-label/prn-field-desc/prn-field-error (forms.css)
+   und prn-popover (overlays.css). */
+
+/* ---- Trigger-Pille (Group als prn-dateinput) ---- */
+.prn-dateinput {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 34px;
+  width: 100%;
+  padding: 4px 6px 4px 12px;
+  border-radius: var(--prn-radius-md);
+  background: var(--prn-fill);
+  color: var(--prn-label);
+  font: var(--prn-text-body);
+}
+.prn-dateinput[data-focus-within] { box-shadow: var(--prn-focus); }
+
+.prn-dateinput-segments {
+  display: inline-flex;
+  align-items: center;
+  flex: 1;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.prn-date-segment {
+  padding: 0 1px;
+  border-radius: 4px;
+  font-variant-numeric: tabular-nums;
+  color: var(--prn-label);
+  outline: none;
+  text-align: center;
+}
+.prn-date-segment[data-type="literal"] { color: var(--prn-label-3); padding: 0; }
+.prn-date-segment[data-placeholder] { color: var(--prn-label-3); }
+.prn-date-segment[data-focused] {
+  background: var(--prn-accent);
+  color: var(--prn-on-accent);
+}
+.prn-date-segment[data-disabled] { color: var(--prn-label-3); }
+
+.prn-daterange-sep { color: var(--prn-label-3); padding: 0 4px; }
+.prn-daterange-group .prn-dateinput-segments { flex: none; }
+
+/* ---- Trailing-Trigger-Button ---- */
+.prn-dateinput-trigger {
+  display: inline-grid;
+  place-items: center;
+  margin-left: auto;
+  width: 28px;
+  height: 28px;
+  flex: none;
+  border: none;
+  border-radius: var(--prn-radius-sm);
+  background: transparent;
+  color: var(--prn-label-2);
+  font-size: 15px;
+  cursor: pointer;
+  transition: background var(--prn-dur-fast) var(--prn-ease-standard);
+}
+.prn-dateinput-trigger[data-hovered] { background: var(--prn-fill-strong); }
+.prn-dateinput-trigger[data-pressed] { background: var(--prn-fill-strong); filter: brightness(0.95); }
+.prn-dateinput-trigger[data-focus-visible] { box-shadow: var(--prn-focus); }
+
+/* ---- Popover / Dialog ---- */
+.prn-cal-popover { min-width: 0; padding: 12px; }
+.prn-cal-dialog { outline: none; }
+
+/* ---- Kalender ---- */
+.prn-calendar { width: max-content; }
+
+.prn-cal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.prn-cal-heading {
+  margin: 0;
+  font: var(--prn-text-subhead);
+  font-weight: 600;
+  color: var(--prn-label);
+}
+.prn-cal-nav {
+  display: inline-grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: var(--prn-radius-sm);
+  background: transparent;
+  color: var(--prn-accent-strong);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background var(--prn-dur-fast) var(--prn-ease-standard);
+}
+.prn-cal-nav[data-hovered] { background: var(--prn-fill); }
+.prn-cal-nav[data-focus-visible] { box-shadow: var(--prn-focus); }
+
+.prn-cal-grid { border-collapse: collapse; }
+.prn-cal-weekday {
+  padding: 4px 0;
+  font: var(--prn-text-footnote);
+  font-weight: 600;
+  color: var(--prn-label-3);
+  text-align: center;
+}
+
+.prn-cal-cell {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  margin: 1px;
+  border-radius: 50%;
+  font: var(--prn-text-callout);
+  color: var(--prn-label);
+  cursor: pointer;
+  outline: none;
+  transition: background var(--prn-dur-fast) var(--prn-ease-standard);
+}
+.prn-cal-cell[data-outside-month] { display: none; }
+.prn-cal-cell[data-hovered] { background: var(--prn-fill); }
+.prn-cal-cell[data-pressed] { background: var(--prn-fill-strong); }
+.prn-cal-cell[data-focus-visible] { box-shadow: var(--prn-focus); }
+.prn-cal-cell[data-today] { color: var(--prn-accent-strong); font-weight: 700; }
+.prn-cal-cell[data-selected] {
+  background: var(--prn-accent);
+  color: var(--prn-on-accent);
+  font-weight: 600;
+}
+.prn-cal-cell[data-disabled],
+.prn-cal-cell[data-unavailable] {
+  color: var(--prn-label-3);
+  cursor: default;
+}
+
+/* Range-Auswahl: durchgehender Bereich */
+.prn-cal-cell[data-selection-start],
+.prn-cal-cell[data-selection-end] {
+  background: var(--prn-accent);
+  color: var(--prn-on-accent);
+}
+.prn-cal-cell[data-selected]:not([data-selection-start]):not([data-selection-end]) {
+  background: var(--prn-accent-soft);
+  color: var(--prn-accent-strong);
+  border-radius: 0;
+}

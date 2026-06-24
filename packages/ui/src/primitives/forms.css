@@ -1,0 +1,170 @@
+/* Form-Primitives — Prince-Look auf React Aria. Tokens: prince-ui-tokens */
+
+/* ---- Button ---- */
+.prn-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 34px;
+  padding: 0 16px;
+  border: none;
+  border-radius: var(--prn-radius-md);
+  font: var(--prn-text-callout);
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  transition: filter var(--prn-dur-fast) var(--prn-ease-standard),
+    background var(--prn-dur-fast) var(--prn-ease-standard);
+}
+.prn-button[data-variant="filled"] {
+  background: var(--prn-accent);
+  color: var(--prn-on-accent);
+}
+.prn-button[data-variant="filled"][data-hovered] { background: var(--prn-accent-hover); }
+.prn-button[data-variant="filled"][data-pressed] { background: var(--prn-accent-pressed); }
+.prn-button[data-variant="tinted"] {
+  background: var(--prn-accent-soft);
+  color: var(--prn-accent-strong);
+}
+.prn-button[data-variant="tinted"][data-hovered] { filter: brightness(1.05); }
+.prn-button[data-variant="plain"] {
+  background: transparent;
+  color: var(--prn-accent-strong);
+  padding: 0 8px;
+}
+.prn-button[data-variant="plain"][data-hovered] { background: var(--prn-fill); }
+.prn-button[data-disabled] { opacity: 0.5; cursor: not-allowed; }
+/* Deaktivierter gefüllter Button: neutrale Fläche statt gedimmtem Akzent →
+   liest klar als inaktiv (statt „aktiver als getönt"). */
+.prn-button[data-variant="filled"][data-disabled] {
+  background: var(--prn-fill-strong);
+  color: var(--prn-label-3);
+  opacity: 1;
+}
+.prn-button[data-focus-visible] { box-shadow: var(--prn-focus); }
+
+/* ---- Field (gemeinsam) ---- */
+.prn-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.prn-field-label {
+  font: var(--prn-text-subhead);
+  font-weight: 590;
+  color: var(--prn-label-2);
+}
+.prn-field-desc { font: var(--prn-text-footnote); color: var(--prn-label-3); }
+.prn-field-error { font: var(--prn-text-footnote); color: var(--prn-red); }
+
+.prn-input {
+  width: 100%;
+  min-height: 34px;
+  padding: 7px 12px;
+  border: none;
+  border-radius: var(--prn-radius-md);
+  background: var(--prn-fill);
+  color: var(--prn-label);
+  font: var(--prn-text-body);
+}
+.prn-input::placeholder { color: var(--prn-label-3); }
+.prn-input[data-focused],
+.prn-input:focus { outline: none; box-shadow: var(--prn-focus); }
+
+.prn-searchfield .prn-input {
+  background-image: none;
+  padding-left: 12px;
+}
+
+/* ---- Checkbox ---- */
+.prn-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  cursor: pointer;
+  font: var(--prn-text-body);
+  color: var(--prn-label);
+}
+.prn-checkbox-box {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  background: var(--prn-fill);
+  box-shadow: inset 0 0 0 1.5px var(--prn-separator);
+  display: grid;
+  place-items: center;
+  transition: background var(--prn-dur-fast), box-shadow var(--prn-dur-fast);
+}
+.prn-checkbox-check {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: var(--prn-on-accent);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0;
+  transition: opacity var(--prn-dur-fast);
+}
+.prn-checkbox[data-selected] .prn-checkbox-box,
+.prn-checkbox[data-indeterminate] .prn-checkbox-box {
+  background: var(--prn-accent);
+  box-shadow: none;
+}
+.prn-checkbox[data-selected] .prn-checkbox-check { opacity: 1; }
+.prn-checkbox[data-focus-visible] .prn-checkbox-box { box-shadow: var(--prn-focus); }
+.prn-checkbox[data-disabled] { opacity: 0.45; cursor: not-allowed; }
+
+/* ---- Switch ---- */
+.prn-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font: var(--prn-text-body);
+  color: var(--prn-label);
+}
+.prn-switch-track {
+  width: 50px;
+  height: 30px;
+  border-radius: 999px;
+  background: var(--prn-fill-strong);
+  padding: 2px;
+  transition: background var(--prn-dur) var(--prn-ease-standard);
+  flex: none;
+}
+.prn-switch-handle {
+  display: block;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  transform: translateX(0);
+  transition: transform var(--prn-dur) var(--prn-ease-spring);
+}
+.prn-switch[data-selected] .prn-switch-track { background: var(--prn-accent); }
+.prn-switch[data-selected] .prn-switch-handle { transform: translateX(20px); }
+.prn-switch[data-focus-visible] .prn-switch-track { box-shadow: var(--prn-focus); }
+.prn-switch[data-disabled] { opacity: 0.45; cursor: not-allowed; }
+
+/* ---- Select ---- */
+.prn-select-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  min-height: 34px;
+  padding: 7px 12px;
+  border: none;
+  border-radius: var(--prn-radius-md);
+  background: var(--prn-fill);
+  color: var(--prn-label);
+  font: var(--prn-text-body);
+  cursor: pointer;
+}
+.prn-select-button[data-focus-visible] { box-shadow: var(--prn-focus); }
+.prn-select-value[data-placeholder] { color: var(--prn-label-3); }
+.prn-select-chevron { color: var(--prn-label-2); }

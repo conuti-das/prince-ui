@@ -1,0 +1,108 @@
+/* Collection-Primitives — ListBox, GridList, TagGroup (React Aria). */
+
+/* ---- ListBox (standalone) ---- */
+.prn-listbox-standalone {
+  background: var(--prn-bg-elevated);
+  border: var(--prn-card-border, 1px solid var(--prn-separator));
+  border-radius: var(--prn-radius-md);
+  padding: 6px;
+  min-width: 200px;
+  max-height: 320px;
+  overflow: auto;
+}
+
+/* ---- GridList ---- */
+.prn-gridlist {
+  outline: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: var(--prn-bg-elevated);
+  border-radius: var(--prn-radius-md);
+  padding: 6px;
+  min-width: 200px;
+}
+.prn-gridlist-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 38px;
+  padding: 8px 12px;
+  border-radius: var(--prn-radius-sm);
+  font: var(--prn-text-body);
+  color: var(--prn-label);
+  cursor: pointer;
+  outline: none;
+}
+.prn-gridlist-item[data-hovered] { background: var(--prn-fill); }
+.prn-gridlist-item[data-focus-visible] { box-shadow: var(--prn-focus); }
+.prn-gridlist-item[data-selected] { background: var(--prn-accent-soft); }
+.prn-gridlist-item[data-selected]::after {
+  content: "✓";
+  margin-left: auto;
+  color: var(--prn-accent-strong);
+  font-weight: 700;
+}
+.prn-gridlist-item[data-disabled] { opacity: 0.4; cursor: default; }
+
+/* ---- TagGroup ---- */
+.prn-taggroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.prn-taglist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  outline: none;
+}
+.prn-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 28px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--prn-fill);
+  color: var(--prn-label);
+  font: var(--prn-text-subhead);
+  cursor: default;
+  outline: none;
+  user-select: none;
+  transition: background var(--prn-dur-fast) var(--prn-ease-standard);
+}
+.prn-tag[data-hovered] { background: var(--prn-fill-strong); }
+.prn-tag[data-focus-visible] { box-shadow: var(--prn-focus); }
+.prn-tag[data-selected] {
+  background: var(--prn-accent);
+  color: var(--prn-on-accent);
+}
+.prn-tag[data-disabled] { opacity: 0.4; }
+.prn-tag-label { line-height: 1.2; }
+.prn-tag-remove {
+  display: inline-grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  margin-right: -4px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  opacity: 0.6;
+  outline: none;
+  transition: opacity var(--prn-dur-fast), background var(--prn-dur-fast);
+}
+.prn-tag-remove[data-hovered] { opacity: 1; background: rgba(127, 127, 127, 0.25); }
+.prn-tag-remove[data-focus-visible] { box-shadow: var(--prn-focus); opacity: 1; }
+.prn-tag-remove-icon {
+  width: 11px;
+  height: 11px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}

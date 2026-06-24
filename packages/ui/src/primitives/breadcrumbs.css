@@ -1,0 +1,59 @@
+/* Breadcrumbs- & Link-Primitives — Prince-Look auf React Aria. */
+
+/* ---- Breadcrumbs ---- */
+.prn-breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font: var(--prn-text-subhead);
+}
+
+/* ---- Breadcrumb ---- */
+.prn-breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--prn-label-2);
+}
+/* Chevron-Trenner nach jedem Eintrag außer dem letzten. */
+.prn-breadcrumb:not(:last-child)::after {
+  content: "›";
+  margin-left: 4px;
+  color: var(--prn-label-3);
+  font-weight: 400;
+}
+/* Aktuelle Seite: kein Link, gedeckte Label-Farbe. */
+.prn-breadcrumb[data-current] {
+  color: var(--prn-label);
+  font-weight: 590;
+}
+.prn-breadcrumb[data-current] .prn-link {
+  color: var(--prn-label);
+  cursor: default;
+  text-decoration: none;
+}
+.prn-breadcrumb[data-disabled] { opacity: 0.45; }
+
+/* ---- Link ---- */
+.prn-link {
+  color: var(--prn-accent-strong);
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: var(--prn-radius-sm);
+  transition: color var(--prn-dur-fast) var(--prn-ease-standard);
+}
+.prn-link[data-hovered] { text-decoration: underline; }
+.prn-link[data-pressed] { color: var(--prn-accent); }
+.prn-link[data-focus-visible] {
+  outline: none;
+  box-shadow: var(--prn-focus);
+}
+.prn-link[data-disabled] {
+  color: var(--prn-label-3);
+  cursor: not-allowed;
+  text-decoration: none;
+}

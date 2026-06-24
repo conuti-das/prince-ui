@@ -1,0 +1,333 @@
+/*
+ * prince-ui-tokens — Single Source of Truth für die Prince-Designsprache.
+ *
+ * Konsolidiert aus finops (--prn-*, Lime-geführt) und roadmap (reichere Typo-/
+ * Motion-Skala). Namespace: --prn-*. Lime-Akzent ist die Marke (Light + Dark).
+ *
+ * Theming:
+ *   - Default (:root)                          → Light
+ *   - @media (prefers-color-scheme: dark)      → Dark (sofern nicht data-theme="light")
+ *   - :root[data-theme="dark"]                 → Dark erzwingen (gewinnt über System)
+ *   - :root[data-theme="light"]                → Light erzwingen
+ *
+ * Regel: niemals rohe Hex/RGB in Komponenten — immer diese Tokens.
+ */
+
+:root {
+  /* ---- Typografie ---- */
+  --prn-font: system-ui, "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --prn-font-mono: ui-monospace, Menlo, Consolas, monospace;
+  --prn-font-rounded: var(--prn-font);
+
+  /* Typo-Skala (Large Title → Body → Caption) */
+  --prn-text-metric: 800 2.75rem/1 var(--prn-font);       /* Hero-KPI */
+  --prn-text-large-title: 700 2.125rem/1.1 var(--prn-font);
+  --prn-text-title: 700 1.375rem/1.2 var(--prn-font);
+  --prn-text-title-3: 600 1.1875rem/1.25 var(--prn-font);
+  --prn-text-headline: 600 1rem/1.3 var(--prn-font);
+  --prn-text-body: 400 1rem/1.45 var(--prn-font);
+  --prn-text-callout: 400 0.9375rem/1.4 var(--prn-font);
+  --prn-text-subhead: 400 0.875rem/1.4 var(--prn-font);
+  --prn-text-footnote: 400 0.8125rem/1.4 var(--prn-font);
+  --prn-text-caption: 400 0.75rem/1.35 var(--prn-font);
+
+  /* ---- Flächen (Light) ---- */
+  --prn-bg: #f4f5f4;
+  --prn-app-bg: radial-gradient(120% 120% at 0% 0%, #ffffff 0%, #f1f2f1 60%, #eceeec 100%);
+  --prn-bg-elevated: #ffffff;
+  --prn-bg-elevated-2: #ffffff;
+  --prn-bg-head: #ffffff;                       /* opaker Sticky-Tabellenkopf */
+  --prn-bg-bar: rgba(255, 255, 255, 0.68);      /* Toolbar/Nav mit Vibrancy */
+  --prn-bg-sidebar: rgba(248, 249, 248, 0.7);
+  --prn-fill: rgba(120, 120, 128, 0.1);         /* Eingabefelder, Segmented-Track */
+  --prn-fill-strong: rgba(120, 120, 128, 0.18);
+  --prn-hover: rgba(0, 0, 0, 0.04);
+  --prn-pressed: rgba(0, 0, 0, 0.08);
+
+  /* ---- Text (label-Hierarchie) ---- */
+  --prn-label: #14151a;
+  --prn-label-2: rgba(60, 60, 67, 0.62);
+  --prn-label-3: rgba(60, 60, 67, 0.34);
+  --prn-label-4: rgba(60, 60, 67, 0.18);
+
+  /* ---- Linien ---- */
+  --prn-separator: rgba(60, 60, 67, 0.1);
+  --prn-separator-opaque: #d1d1d6;
+  --prn-hairline: rgba(60, 60, 67, 0.07);
+  --prn-border: rgba(60, 60, 67, 0.12);
+
+  /* ---- CONUTI-Akzent (CI-Grün #A0D22B, Marke) ---- */
+  --prn-accent: #a0d22b;
+  --prn-accent-strong: #5e7d14;
+  --prn-accent-hover: #add945;
+  --prn-accent-pressed: #8cba20;
+  --prn-accent-soft: rgba(160, 210, 43, 0.16);
+  --prn-on-accent: #1b2410;
+
+  /* ---- Semantik ---- */
+  --prn-green: #7ca41c;
+  --prn-red: #e0322a;
+  --prn-orange: #ef8a3e;
+  --prn-yellow: #e0b800;
+  --prn-blue: #0a84ff;
+  --prn-teal: #2f9a92;
+  --prn-neutral: #9b9f9a;
+  --prn-on-status-fill: #14150f;                /* Text auf gefüllten Statusflächen */
+
+  /* getönte Hintergründe (Notices, Zeilen-Tönung) */
+  --prn-tint-positive: rgba(124, 164, 28, 0.16);
+  --prn-tint-critical: rgba(239, 138, 62, 0.16);
+  --prn-tint-negative: rgba(224, 50, 42, 0.12);
+  --prn-tint-info: rgba(10, 132, 255, 0.12);
+  --prn-warn-soft: rgba(239, 138, 62, 0.16);
+
+  /* ---- Eigene Chart-Palette (für SVG-Charts, Lime-geführt) ---- */
+  --prn-chart-1: #84ad1c;
+  --prn-chart-2: #1e414e;
+  --prn-chart-3: #ef8a3e;
+  --prn-chart-4: #c6a800;
+  --prn-chart-5: #6a9e7e;
+  --prn-chart-6: #9b9f9a;
+  --prn-chart-7: #a0b41c;
+  --prn-chart-8: #5aa0d0;
+
+  /* ---- Overlays ---- */
+  --prn-scrim: rgba(20, 20, 25, 0.32);
+  --prn-backdrop: rgba(0, 0, 0, 0.32);
+  --prn-focus: 0 0 0 3px rgba(160, 210, 43, 0.45);
+
+  /* ---- Radien ---- */
+  --prn-radius-xs: 6px;
+  --prn-radius-sm: 9px;
+  --prn-radius-md: 11px;
+  --prn-radius: 14px;
+  --prn-radius-lg: 20px;
+  --prn-radius-xl: 26px;
+  --prn-radius-card: 20px;
+  --prn-radius-pill: 999px;
+
+  /* ---- Schatten / Tiefe ---- */
+  --prn-shadow: 0 1px 2px rgba(20, 20, 25, 0.06), 0 8px 24px rgba(20, 20, 25, 0.05);
+  --prn-shadow-pop: 0 12px 40px rgba(20, 20, 25, 0.18);
+  --prn-shadow-raised: 0 2px 6px rgba(0, 0, 0, 0.08), 0 12px 32px rgba(0, 0, 0, 0.12);
+  --prn-shadow-bar: 0 1px 0 var(--prn-separator);
+
+  /* ---- Vibrancy / Glas ---- */
+  --prn-blur: saturate(180%) blur(20px);
+  --prn-blur-sheet: saturate(180%) blur(30px);
+  --prn-card-border: 1px solid rgba(60, 60, 67, 0.08);
+  --prn-card-blur: none;
+
+  /* ---- Bento-Ambient (Foto-Mesh, Light) ---- */
+  --prn-bento-bg:
+    radial-gradient(1000px 760px at 10% 92%, rgba(132, 204, 22, 0.22) 0%, rgba(132, 204, 22, 0) 58%),
+    radial-gradient(1100px 720px at 92% 8%, rgba(214, 188, 140, 0.3) 0%, rgba(214, 188, 140, 0) 55%),
+    radial-gradient(900px 720px at 78% 96%, rgba(196, 184, 162, 0.28) 0%, rgba(196, 184, 162, 0) 52%),
+    radial-gradient(760px 760px at 36% 16%, rgba(150, 170, 186, 0.26) 0%, rgba(150, 170, 186, 0) 52%),
+    linear-gradient(135deg, #eef1ea 0%, #f3f1e6 45%, #e7eadf 100%);
+
+  /* ---- Bewegung ---- */
+  --prn-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --prn-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --prn-ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --prn-dur-fast: 140ms;
+  --prn-dur: 240ms;
+  --prn-dur-slow: 360ms;
+
+  /* ---- Maße ---- */
+  --prn-space: 8px;
+  --prn-hit: 44px;                              /* Mindest-Trefferfläche */
+
+  color-scheme: light;
+}
+
+/* ---------- Dark (System) ---------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --prn-bg: #222a31;
+    --prn-app-bg: radial-gradient(130% 130% at 12% 0%, #2b343d 0%, #222a31 48%, #1b2229 100%);
+    --prn-bg-elevated: #2a333b;
+    --prn-bg-elevated-2: #333e48;
+    --prn-bg-head: #1e252b;
+    --prn-bg-bar: rgba(34, 42, 49, 0.55);
+    --prn-bg-sidebar: rgba(34, 42, 49, 0.6);
+    --prn-fill: rgba(255, 255, 255, 0.08);
+    --prn-fill-strong: rgba(255, 255, 255, 0.14);
+    --prn-hover: rgba(255, 255, 255, 0.06);
+    --prn-pressed: rgba(255, 255, 255, 0.12);
+
+    --prn-label: #f3f4f2;
+    --prn-label-2: rgba(236, 238, 233, 0.78);
+    --prn-label-3: rgba(235, 238, 233, 0.46);
+    --prn-label-4: rgba(235, 235, 245, 0.18);
+
+    --prn-separator: rgba(255, 255, 255, 0.08);
+    --prn-separator-opaque: #38383a;
+    --prn-hairline: rgba(255, 255, 255, 0.06);
+    --prn-border: rgba(255, 255, 255, 0.1);
+
+    --prn-accent: #a0d22b;
+    --prn-accent-strong: #b4de5a;
+    --prn-accent-hover: #aedd44;
+    --prn-accent-pressed: #8cba20;
+    --prn-accent-soft: rgba(160, 210, 43, 0.16);
+    --prn-on-accent: #1b2410;
+
+    --prn-green: #a0d22b;
+    --prn-red: #ff5a52;
+    --prn-orange: #ff9f62;
+    --prn-yellow: #ffe665;
+    --prn-blue: #5ec8fa;
+    --prn-teal: #b5dec2;
+    --prn-neutral: #9b9f9a;
+
+    --prn-tint-positive: rgba(160, 210, 43, 0.18);
+    --prn-tint-critical: rgba(255, 159, 98, 0.18);
+    --prn-tint-negative: rgba(255, 90, 82, 0.18);
+    --prn-tint-info: rgba(94, 200, 250, 0.2);
+    --prn-warn-soft: rgba(255, 159, 98, 0.16);
+
+    --prn-chart-1: #a0d22b;
+    --prn-chart-2: #b5dec2;
+    --prn-chart-3: #ff9f62;
+    --prn-chart-4: #ffe665;
+    --prn-chart-5: #6aa6bd;
+    --prn-chart-6: #c6cd83;
+    --prn-chart-7: #9b9f9a;
+    --prn-chart-8: #5ec8c0;
+
+    --prn-scrim: rgba(0, 0, 0, 0.5);
+    --prn-backdrop: rgba(0, 0, 0, 0.5);
+    --prn-focus: 0 0 0 3px rgba(160, 210, 43, 0.42);
+
+    --prn-shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 10px 30px rgba(0, 0, 0, 0.35);
+    --prn-shadow-pop: 0 16px 48px rgba(0, 0, 0, 0.6);
+    --prn-shadow-raised: 0 4px 12px rgba(0, 0, 0, 0.5), 0 16px 48px rgba(0, 0, 0, 0.6);
+    --prn-card-border: 1px solid rgba(255, 255, 255, 0.07);
+    --prn-card-blur: saturate(160%) blur(22px);
+
+    --prn-bento-bg:
+      radial-gradient(1000px 760px at 10% 92%, rgba(96, 132, 64, 0.55) 0%, rgba(96, 132, 64, 0) 58%),
+      radial-gradient(1100px 720px at 92% 8%, rgba(150, 120, 72, 0.5) 0%, rgba(150, 120, 72, 0) 55%),
+      radial-gradient(900px 720px at 78% 96%, rgba(86, 70, 50, 0.45) 0%, rgba(86, 70, 50, 0) 52%),
+      radial-gradient(760px 760px at 36% 16%, rgba(70, 86, 96, 0.4) 0%, rgba(70, 86, 96, 0) 52%),
+      linear-gradient(135deg, #191b18 0%, #232318 45%, #14160f 100%);
+
+    color-scheme: dark;
+  }
+}
+
+/* ---------- Dark (manuell erzwungen, gewinnt über System) ---------- */
+:root[data-theme="dark"] {
+  --prn-bg: #222a31;
+  --prn-app-bg: radial-gradient(130% 130% at 12% 0%, #2b343d 0%, #222a31 48%, #1b2229 100%);
+  --prn-bg-elevated: #2a333b;
+  --prn-bg-elevated-2: #333e48;
+  --prn-bg-head: #1e252b;
+  --prn-bg-bar: rgba(34, 42, 49, 0.55);
+  --prn-bg-sidebar: rgba(34, 42, 49, 0.6);
+  --prn-fill: rgba(255, 255, 255, 0.08);
+  --prn-fill-strong: rgba(255, 255, 255, 0.14);
+  --prn-hover: rgba(255, 255, 255, 0.06);
+  --prn-pressed: rgba(255, 255, 255, 0.12);
+
+  --prn-label: #f3f4f2;
+  --prn-label-2: rgba(236, 238, 233, 0.78);
+  --prn-label-3: rgba(235, 238, 233, 0.46);
+  --prn-label-4: rgba(235, 235, 245, 0.18);
+
+  --prn-separator: rgba(255, 255, 255, 0.08);
+  --prn-separator-opaque: #38383a;
+  --prn-hairline: rgba(255, 255, 255, 0.06);
+  --prn-border: rgba(255, 255, 255, 0.1);
+
+  --prn-accent: #a0d22b;
+  --prn-accent-strong: #b4de5a;
+  --prn-accent-hover: #aedd44;
+  --prn-accent-pressed: #8cba20;
+  --prn-accent-soft: rgba(160, 210, 43, 0.16);
+  --prn-on-accent: #1b2410;
+
+  --prn-green: #a0d22b;
+  --prn-red: #ff5a52;
+  --prn-orange: #ff9f62;
+  --prn-yellow: #ffe665;
+  --prn-blue: #5ec8fa;
+  --prn-teal: #b5dec2;
+  --prn-neutral: #9b9f9a;
+
+  --prn-tint-positive: rgba(160, 210, 43, 0.18);
+  --prn-tint-critical: rgba(255, 159, 98, 0.18);
+  --prn-tint-negative: rgba(255, 90, 82, 0.18);
+  --prn-tint-info: rgba(94, 200, 250, 0.2);
+  --prn-warn-soft: rgba(255, 159, 98, 0.16);
+
+  --prn-chart-1: #a0d22b;
+  --prn-chart-2: #b5dec2;
+  --prn-chart-3: #ff9f62;
+  --prn-chart-4: #ffe665;
+  --prn-chart-5: #6aa6bd;
+  --prn-chart-6: #c6cd83;
+  --prn-chart-7: #9b9f9a;
+  --prn-chart-8: #5ec8c0;
+
+  --prn-scrim: rgba(0, 0, 0, 0.5);
+  --prn-backdrop: rgba(0, 0, 0, 0.5);
+  --prn-focus: 0 0 0 3px rgba(160, 210, 43, 0.42);
+
+  --prn-shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 10px 30px rgba(0, 0, 0, 0.35);
+  --prn-shadow-pop: 0 16px 48px rgba(0, 0, 0, 0.6);
+  --prn-shadow-raised: 0 4px 12px rgba(0, 0, 0, 0.5), 0 16px 48px rgba(0, 0, 0, 0.6);
+  --prn-card-border: 1px solid rgba(255, 255, 255, 0.07);
+  --prn-card-blur: saturate(160%) blur(22px);
+
+  --prn-bento-bg:
+    radial-gradient(1000px 760px at 10% 92%, rgba(96, 132, 64, 0.55) 0%, rgba(96, 132, 64, 0) 58%),
+    radial-gradient(1100px 720px at 92% 8%, rgba(150, 120, 72, 0.5) 0%, rgba(150, 120, 72, 0) 55%),
+    radial-gradient(900px 720px at 78% 96%, rgba(86, 70, 50, 0.45) 0%, rgba(86, 70, 50, 0) 52%),
+    radial-gradient(760px 760px at 36% 16%, rgba(70, 86, 96, 0.4) 0%, rgba(70, 86, 96, 0) 52%),
+    linear-gradient(135deg, #191b18 0%, #232318 45%, #14160f 100%);
+
+  color-scheme: dark;
+}
+
+/* ---------- Globale Basis-Helfer (optional, aber von finops genutzt) ---------- */
+
+/* Sichtbarer Fokus-Ring (A11y) statt outline:none */
+:where(:focus-visible) {
+  outline: none;
+  box-shadow: var(--prn-focus);
+  border-radius: var(--prn-radius-sm);
+}
+
+/* Tabellenzahlen: gleichmäßige Ziffernbreite */
+.prn-tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* Loading-Skeleton-Shimmer */
+@keyframes prn-shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.prn-skeleton {
+  border-radius: 6px;
+  background: linear-gradient(90deg, var(--prn-fill) 25%, var(--prn-fill-strong) 37%, var(--prn-fill) 63%);
+  background-size: 800px 100%;
+  animation: prn-shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes prn-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* A11y: Animationen bei prefers-reduced-motion quasi anhalten */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

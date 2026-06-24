@@ -1,0 +1,124 @@
+/* Calendar-Primitives — Prince-Monatskalender auf React Aria. */
+
+.prn-calendar {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 10px;
+  width: max-content;
+  padding: 14px;
+  background: var(--prn-bg-elevated);
+  border-radius: var(--prn-radius-lg);
+  color: var(--prn-label);
+  user-select: none;
+}
+
+/* ---- Header (Monat + Navigation) ---- */
+.prn-calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 0 2px;
+}
+.prn-calendar-title {
+  margin: 0;
+  flex: 1;
+  text-align: center;
+  font: var(--prn-text-body);
+  font-weight: 600;
+  color: var(--prn-label);
+}
+.prn-calendar-nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: var(--prn-radius-md);
+  background: transparent;
+  color: var(--prn-accent-strong);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background var(--prn-dur-fast) var(--prn-ease-standard);
+}
+.prn-calendar-nav[data-hovered] { background: var(--prn-fill); }
+.prn-calendar-nav[data-pressed] { background: var(--prn-fill-strong); }
+.prn-calendar-nav[data-focus-visible] { box-shadow: var(--prn-focus); }
+.prn-calendar-nav[data-disabled] { opacity: 0.35; cursor: not-allowed; }
+
+/* ---- Gitter ---- */
+.prn-calendar-grid { border-collapse: collapse; }
+.prn-calendar-weekday {
+  padding: 4px 0;
+  font: var(--prn-text-footnote);
+  font-weight: 600;
+  color: var(--prn-label-3);
+  text-align: center;
+  text-transform: none;
+}
+
+/* ---- Tageszelle ---- */
+.prn-calendar-cell {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  margin: 1px;
+  border-radius: 50%;
+  font: var(--prn-text-body);
+  color: var(--prn-label);
+  cursor: pointer;
+  outline: none;
+  transition: background var(--prn-dur-fast) var(--prn-ease-standard),
+    color var(--prn-dur-fast) var(--prn-ease-standard);
+}
+.prn-calendar-cell[data-hovered] { background: var(--prn-fill); }
+.prn-calendar-cell[data-pressed] { background: var(--prn-fill-strong); }
+.prn-calendar-cell[data-focus-visible] { box-shadow: var(--prn-focus); }
+
+.prn-calendar-cell[data-today] {
+  box-shadow: inset 0 0 0 1.5px var(--prn-accent);
+  font-weight: 600;
+}
+
+.prn-calendar-cell[data-selected] {
+  background: var(--prn-accent);
+  color: var(--prn-on-accent);
+  box-shadow: none;
+  font-weight: 600;
+}
+
+.prn-calendar-cell[data-outside-month] {
+  color: var(--prn-label-3);
+  opacity: 0.45;
+}
+.prn-calendar-cell[data-disabled] {
+  color: var(--prn-label-3);
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+.prn-calendar-cell[data-unavailable] {
+  color: var(--prn-label-3);
+  text-decoration: line-through;
+  cursor: default;
+}
+
+/* ---- Range-Highlighting ---- */
+.prn-calendar-range .prn-calendar-cell[data-selected] {
+  border-radius: 0;
+  background: var(--prn-accent-soft);
+  color: var(--prn-accent-strong);
+  font-weight: 500;
+}
+.prn-calendar-range .prn-calendar-cell[data-selection-start],
+.prn-calendar-range .prn-calendar-cell[data-selection-end] {
+  background: var(--prn-accent);
+  color: var(--prn-on-accent);
+  font-weight: 600;
+}
+.prn-calendar-range .prn-calendar-cell[data-selection-start] { border-radius: 50% 0 0 50%; }
+.prn-calendar-range .prn-calendar-cell[data-selection-end] { border-radius: 0 50% 50% 0; }

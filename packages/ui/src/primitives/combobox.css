@@ -1,0 +1,31 @@
+/* ComboBox — Prince-gestyltes RAC-ComboBox. Popover/Option-Look stammt aus overlays.css. */
+
+.prn-combobox-control {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+}
+
+.prn-combobox-input {
+  padding-right: 34px;
+}
+
+.prn-combobox-button {
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  color: var(--prn-label-3);
+  font-size: 0.8em;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.prn-combobox-button[data-hovered] {
+  color: var(--prn-label-2);
+}

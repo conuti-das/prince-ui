@@ -1,0 +1,263 @@
+/* ObjectPage — SAP-Floorplan-Erweiterungen.
+ * Tokens: prince-ui-tokens. Niemals rohe Hex/RGB.
+ * Basis-Styles (.prn-objectpage*, .prn-kpi*, .prn-field*) bleiben in data.css;
+ * hier nur die neuen Floorplan-Bestandteile. */
+
+.prn-objectpage {
+  position: relative;
+}
+
+/* ---- Title / Top-Header ---- */
+.prn-op-top-header {
+  position: relative;
+  z-index: 3;
+  /* Header darf im Flex-Column nicht zusammengedrückt werden. */
+  flex: 0 0 auto;
+}
+.prn-op-breadcrumbs {
+  margin-bottom: 4px;
+}
+.prn-op-image {
+  flex: 0 0 auto;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--prn-radius-md);
+  overflow: hidden;
+  background: var(--prn-fill);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.prn-op-image[data-circle] {
+  border-radius: 50%;
+}
+.prn-op-image-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.prn-objectpage-title[data-clickable] {
+  cursor: pointer;
+}
+.prn-op-state-content {
+  margin-top: 6px;
+  font: var(--prn-text-footnote);
+  color: var(--prn-label-2);
+}
+.prn-op-navigation-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+.prn-op-navigation-bar + .prn-objectpage-actions {
+  margin-left: 0;
+}
+
+/* ---- A2: Header-Area / Pin / Snapping ---- */
+.prn-op-header-area {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 4px;
+  border-top: 1px solid var(--prn-separator);
+  margin-top: 4px;
+}
+.prn-op-pin {
+  flex: 0 0 auto;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: var(--prn-radius-xs);
+  background: transparent;
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 1;
+  color: var(--prn-label-2);
+}
+.prn-op-pin:hover {
+  background: var(--prn-hover);
+}
+.prn-op-pin[aria-pressed="true"] {
+  background: var(--prn-accent-soft);
+  color: var(--prn-accent-strong);
+}
+
+.prn-objectpage[data-snapped] .prn-op-top-header {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+/* ---- A1: Anchor-Bar (Tablist) ---- */
+.prn-op-anchorbar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  /* Die ObjectPage ist ein Flex-Column-Container. Bekommt sie eine feste
+   * Höhe und der expandierte Header lässt den Inhalt überlaufen, würde die
+   * Anchor-Bar als shrinkbares Flex-Item auf ~0px zusammengedrückt und die
+   * Tab-Labels verschwinden. Daher: nie schrumpfen, stabile Mindesthöhe. */
+  flex: 0 0 auto;
+  min-height: max-content;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  background: var(--prn-bg-elevated);
+  border: var(--prn-card-border);
+  border-radius: var(--prn-radius);
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.prn-op-anchor {
+  flex: 0 0 auto;
+  appearance: none;
+  border: none;
+  background: transparent;
+  padding: 7px 14px;
+  border-radius: var(--prn-radius-pill);
+  font: var(--prn-text-subhead);
+  font-weight: 500;
+  color: var(--prn-label-2);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background var(--prn-dur-fast) var(--prn-ease-standard),
+    color var(--prn-dur-fast) var(--prn-ease-standard);
+}
+.prn-op-anchor:hover {
+  background: var(--prn-hover);
+  color: var(--prn-label);
+}
+.prn-op-anchor[data-selected] {
+  background: var(--prn-accent-soft);
+  color: var(--prn-accent-strong);
+  font-weight: 600;
+}
+.prn-op-anchor:focus-visible {
+  outline: none;
+  box-shadow: var(--prn-focus);
+}
+
+/* ---- Scroll-Container + Section-Stack ---- */
+.prn-op-scroll {
+  position: relative;
+  /* Der Scroll-Container ist das einzige Flex-Item, das überlaufenden Inhalt
+   * aufnehmen soll: er wächst und schrumpft, Header/Anchor-Bar/Footer bleiben
+   * fix. min-height:0 erlaubt das Schrumpfen unter die Content-Höhe. */
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: var(--prn-op-scroll-max, none);
+  overflow-y: auto;
+}
+.prn-objectpage-sections-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.prn-op-section-anchor {
+  scroll-margin-top: 60px;
+}
+
+/* iconTabBar: aktive Sektion füllt verfügbaren Raum */
+.prn-objectpage[data-mode="iconTabBar"] .prn-op-section-anchor[data-active] {
+  min-height: 100%;
+}
+
+/* ---- A1: Section / SubSection ---- */
+.prn-op-section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px 20px;
+  background: var(--prn-bg-elevated);
+  border: var(--prn-card-border);
+  border-radius: var(--prn-radius);
+}
+.prn-op-section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+.prn-op-section-title {
+  margin: 0;
+  font: var(--prn-text-headline);
+  color: var(--prn-label);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.prn-op-section-title[data-uppercase] {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.prn-op-section-title[data-wrap] {
+  white-space: normal;
+  overflow: visible;
+}
+.prn-op-section-header-content {
+  flex: 0 0 auto;
+}
+.prn-op-section-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.prn-op-subsection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.prn-op-subsection-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.prn-op-subsection-title {
+  margin: 0;
+  font: var(--prn-text-subhead);
+  font-weight: 600;
+  color: var(--prn-label-2);
+}
+.prn-op-subsection-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.prn-op-subsection-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ---- A4: Placeholder ---- */
+.prn-op-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  padding: 40px 24px;
+  background: var(--prn-bg-elevated);
+  border: var(--prn-card-border);
+  border-radius: var(--prn-radius);
+  color: var(--prn-label-2);
+  text-align: center;
+}
+
+/* ---- A4: Floating Footer ---- */
+.prn-op-footer {
+  position: sticky;
+  bottom: 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 12px 20px;
+  background: var(--prn-bg-elevated);
+  border: var(--prn-card-border);
+  border-radius: var(--prn-radius);
+  box-shadow: var(--prn-shadow-2, 0 -2px 12px rgba(0, 0, 0, 0.08));
+}

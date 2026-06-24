@@ -1,0 +1,81 @@
+/* Color-Primitives — Prince-Look auf React Aria.
+   Baut auf .prn-field / .prn-input (forms.css) auf. */
+
+/* ---- ColorField ---- */
+.prn-colorfield-input {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+/* Checkerboard-Hintergrund für Alpha-Transparenz (geteilt). */
+.prn-colorswatch,
+.prn-colorswatch-picker-item {
+  --prn-checker: var(--prn-separator);
+  background-image:
+    linear-gradient(45deg, var(--prn-checker) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--prn-checker) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--prn-checker) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--prn-checker) 75%);
+  background-size: 10px 10px;
+  background-position: 0 0, 0 5px, 5px -5px, -5px 0;
+}
+
+/* ---- ColorSwatch ---- */
+.prn-colorswatch {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--prn-radius-md);
+  /* Die RAC-ColorSwatch setzt background: <color> inline; der Checkerboard
+     scheint nur durch transparente/alpha-Farben hindurch. */
+  box-shadow: inset 0 0 0 1px var(--prn-separator);
+}
+
+/* ---- ColorSwatchPicker ---- */
+.prn-colorswatch-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.prn-colorswatch-picker-item {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--prn-radius-md);
+  cursor: pointer;
+  position: relative;
+  outline: none;
+  transition: transform var(--prn-dur-fast) var(--prn-ease-spring);
+}
+
+/* Die innere Swatch füllt das Item. */
+.prn-colorswatch-picker-item .prn-colorswatch {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+
+.prn-colorswatch-picker-item[data-hovered] {
+  transform: scale(1.05);
+}
+.prn-colorswatch-picker-item[data-pressed] {
+  transform: scale(0.95);
+}
+
+/* Auswahl-Ring im Prince-Stil. */
+.prn-colorswatch-picker-item[data-selected]::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: calc(var(--prn-radius-md) + 3px);
+  box-shadow: 0 0 0 2px var(--prn-bg), 0 0 0 4px var(--prn-accent);
+  pointer-events: none;
+}
+
+.prn-colorswatch-picker-item[data-focus-visible] {
+  box-shadow: var(--prn-focus);
+}
+.prn-colorswatch-picker-item[data-disabled] {
+  opacity: 0.45;
+  cursor: not-allowed;
+}

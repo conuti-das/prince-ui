@@ -1,0 +1,38 @@
+name: Release (Publish to npm)
+
+# Publiziert prince-ui + prince-ui-tokens nach npm (öffentlich), sobald eine
+# neue, noch nicht veröffentlichte Version auf main landet. `changeset publish`
+# ist idempotent: bereits veröffentlichte Versionen werden übersprungen.
+#
+# Voraussetzung: Repo-Secret NPM_TOKEN (npm Automation-Token mit Publish-Recht).
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm typecheck
+      - run: pnpm build
+      - name: Publish (idempotent — nur neue Versionen)
+        run: pnpm changeset publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

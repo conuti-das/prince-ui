@@ -1,0 +1,114 @@
+/* Tree-Primitive — Prince-Look auf React Aria Tree. Tokens: prince-ui-tokens */
+
+.prn-tree {
+  outline: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 4px;
+  background: var(--prn-bg-elevated);
+  border-radius: var(--prn-radius-md);
+  color: var(--prn-label);
+  font: var(--prn-text-body);
+}
+
+.prn-tree-item {
+  outline: none;
+  border-radius: var(--prn-radius-sm);
+  /* Einrückung pro Ebene über das RAC data-level-Attribut. */
+  --prn-tree-indent: calc((var(--tree-item-level, 1) - 1) * 18px);
+}
+
+.prn-tree-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 34px;
+  padding: 0 10px;
+  padding-left: calc(10px + var(--prn-tree-indent));
+  border-radius: var(--prn-radius-sm);
+  cursor: pointer;
+  transition: background var(--prn-dur-fast) var(--prn-ease-standard);
+}
+
+.prn-tree-item[data-hovered] > .prn-tree-row {
+  background: var(--prn-fill);
+}
+.prn-tree-item[data-selected] > .prn-tree-row {
+  background: var(--prn-accent-soft);
+  color: var(--prn-accent-strong);
+}
+.prn-tree-item[data-focus-visible] > .prn-tree-row {
+  box-shadow: var(--prn-focus);
+}
+.prn-tree-item[data-disabled] > .prn-tree-row {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ---- Chevron (Aufklappen) ---- */
+.prn-tree-chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  flex: none;
+  border: none;
+  background: transparent;
+  color: var(--prn-label-3);
+  cursor: pointer;
+  padding: 0;
+  border-radius: var(--prn-radius-sm);
+  transition: transform var(--prn-dur-fast) var(--prn-ease-spring),
+    color var(--prn-dur-fast) var(--prn-ease-standard);
+}
+.prn-tree-chevron svg { width: 14px; height: 14px; }
+.prn-tree-chevron[data-hovered] { color: var(--prn-label); }
+.prn-tree-chevron[data-focus-visible] { box-shadow: var(--prn-focus); }
+.prn-tree-item[data-expanded] > .prn-tree-row .prn-tree-chevron { transform: rotate(90deg); }
+.prn-tree-chevron-spacer { cursor: default; }
+
+/* ---- Auswahl-Checkbox ---- */
+.prn-tree-check {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  cursor: pointer;
+}
+.prn-tree-check-box {
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  background: var(--prn-fill);
+  box-shadow: inset 0 0 0 1.5px var(--prn-separator);
+  display: grid;
+  place-items: center;
+  transition: background var(--prn-dur-fast), box-shadow var(--prn-dur-fast);
+}
+.prn-tree-check-mark {
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: var(--prn-on-accent);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0;
+  transition: opacity var(--prn-dur-fast);
+}
+.prn-tree-check[data-selected] .prn-tree-check-box,
+.prn-tree-check[data-indeterminate] .prn-tree-check-box {
+  background: var(--prn-accent);
+  box-shadow: none;
+}
+.prn-tree-check[data-selected] .prn-tree-check-mark { opacity: 1; }
+.prn-tree-check[data-focus-visible] .prn-tree-check-box { box-shadow: var(--prn-focus); }
+
+/* ---- Label ---- */
+.prn-tree-label {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

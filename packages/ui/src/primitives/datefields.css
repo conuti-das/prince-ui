@@ -1,0 +1,41 @@
+/* Date-/Time-Field-Primitives — Prince-Look auf React Aria. */
+
+/* ---- DateInput (Pille aus Segmenten) ---- */
+.prn-dateinput {
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  min-height: 34px;
+  padding: 6px 10px;
+  border-radius: var(--prn-radius-md);
+  background: var(--prn-fill);
+  color: var(--prn-label);
+  font: var(--prn-text-body);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.prn-dateinput[data-focus-within] { box-shadow: var(--prn-focus); }
+.prn-dateinput[data-disabled] { opacity: 0.45; }
+
+/* ---- DateSegment ---- */
+.prn-datesegment {
+  padding: 1px 3px;
+  border-radius: var(--prn-radius-sm);
+  outline: none;
+  text-align: center;
+  color: var(--prn-label);
+  font-variant-numeric: tabular-nums;
+  transition: background var(--prn-dur-fast) var(--prn-ease-standard),
+    color var(--prn-dur-fast) var(--prn-ease-standard);
+}
+.prn-datesegment[data-type="literal"] {
+  padding: 0 1px;
+  color: var(--prn-label-3);
+}
+.prn-datesegment[data-placeholder] { color: var(--prn-label-3); }
+.prn-datesegment[data-focused] {
+  background: var(--prn-accent-soft);
+  color: var(--prn-accent-strong);
+}
+.prn-datesegment[data-invalid] { color: var(--prn-red); }
+.prn-datesegment[data-disabled] { color: var(--prn-label-3); }

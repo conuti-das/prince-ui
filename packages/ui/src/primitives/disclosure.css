@@ -1,0 +1,77 @@
+/* Disclosure-Primitives — Prince-Akkordeon auf React Aria. */
+
+/* ---- Disclosure ---- */
+.prn-disclosure {
+  border-radius: var(--prn-radius-md);
+  overflow: hidden;
+}
+
+.prn-disclosure-heading {
+  margin: 0;
+  font: inherit;
+  font-weight: inherit;
+}
+
+.prn-disclosure-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 14px;
+  border: none;
+  border-radius: var(--prn-radius-md);
+  background: transparent;
+  color: var(--prn-label);
+  font: var(--prn-text-body);
+  font-weight: 590;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  transition: background var(--prn-dur-fast) var(--prn-ease-standard);
+}
+.prn-disclosure-trigger[data-hovered] { background: var(--prn-fill); }
+.prn-disclosure-trigger[data-pressed] { background: var(--prn-fill-strong); }
+.prn-disclosure-trigger[data-focus-visible] { box-shadow: var(--prn-focus); }
+.prn-disclosure-trigger[data-disabled] { opacity: 0.45; cursor: not-allowed; }
+
+.prn-disclosure-title { flex: 1; min-width: 0; }
+
+.prn-disclosure-chevron {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: var(--prn-label-3);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform var(--prn-dur) var(--prn-ease-spring);
+}
+.prn-disclosure-trigger[data-expanded] .prn-disclosure-chevron {
+  transform: rotate(90deg);
+}
+
+.prn-disclosure-panel {
+  padding: 4px 14px 14px;
+  font: var(--prn-text-body);
+  color: var(--prn-label-2);
+  outline: none;
+}
+
+/* ---- DisclosureGroup ---- */
+.prn-disclosure-group {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--prn-radius-lg);
+  background: var(--prn-bg-elevated);
+  border: var(--prn-card-border);
+  overflow: hidden;
+}
+.prn-disclosure-group .prn-disclosure {
+  border-radius: 0;
+}
+.prn-disclosure-group .prn-disclosure + .prn-disclosure {
+  border-top: 1px solid var(--prn-separator);
+}

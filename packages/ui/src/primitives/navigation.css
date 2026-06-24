@@ -1,0 +1,57 @@
+/* Navigation-Primitives — SegmentedControl, Tabs (React Aria). */
+
+/* ---- SegmentedControl ---- */
+.prn-segmented {
+  display: inline-flex;
+  gap: 2px;
+  padding: 2px;
+  border-radius: var(--prn-radius-md);
+  background: rgba(0, 0, 0, 0.2); /* eingelassene Spur (in Light + Dark dunkler als die Fläche) */
+}
+.prn-segment {
+  appearance: none;
+  border: none;
+  background: transparent;
+  padding: 5px 14px;
+  border-radius: calc(var(--prn-radius-md) - 2px);
+  font: var(--prn-text-subhead);
+  font-weight: 590;
+  color: var(--prn-label-2);
+  cursor: pointer;
+  transition: background var(--prn-dur-fast), color var(--prn-dur-fast);
+}
+.prn-segment[data-hovered] { color: var(--prn-label); }
+.prn-segment[data-selected] {
+  background: var(--prn-bg-elevated);
+  color: var(--prn-label);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.28);
+}
+.prn-segment[data-focus-visible] { box-shadow: var(--prn-focus); }
+.prn-segment[data-disabled] { opacity: 0.45; cursor: not-allowed; }
+
+/* ---- Tabs ---- */
+.prn-tabs { display: flex; flex-direction: column; gap: 14px; }
+.prn-tablist {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--prn-separator);
+}
+.prn-tab {
+  position: relative;
+  padding: 8px 12px;
+  font: var(--prn-text-subhead);
+  font-weight: 590;
+  color: var(--prn-label-2);
+  cursor: pointer;
+  outline: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color var(--prn-dur-fast);
+}
+.prn-tab[data-hovered] { color: var(--prn-label); }
+.prn-tab[data-selected] {
+  color: var(--prn-accent-strong);
+  border-bottom-color: var(--prn-accent);
+}
+.prn-tab[data-focus-visible] { box-shadow: var(--prn-focus); border-radius: var(--prn-radius-sm); }
+.prn-tabpanel { outline: none; }

@@ -1,0 +1,29 @@
+/* DropZone-Primitive — Prince-Look auf React Aria. */
+
+.prn-dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 140px;
+  padding: 24px;
+  text-align: center;
+  border: 1.5px dashed var(--prn-separator);
+  border-radius: var(--prn-radius-lg);
+  background: var(--prn-bg);
+  color: var(--prn-label-2);
+  font: var(--prn-text-callout);
+  outline: none;
+  transition: background var(--prn-dur-fast) var(--prn-ease-standard),
+    border-color var(--prn-dur-fast) var(--prn-ease-standard);
+}
+.prn-dropzone[data-hovered] { border-color: var(--prn-label-3); }
+.prn-dropzone[data-drop-target] {
+  border-color: var(--prn-accent);
+  border-style: solid;
+  background: var(--prn-accent-soft);
+  color: var(--prn-accent-strong);
+}
+.prn-dropzone[data-focus-visible] { box-shadow: var(--prn-focus); }
+.prn-dropzone[data-disabled] { opacity: 0.45; }

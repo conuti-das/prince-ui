@@ -1,0 +1,115 @@
+/* Color-Picker-Primitives — Prince-Look auf React Aria (color). */
+
+/* ---- gemeinsamer Thumb (Area/Slider/Wheel) ---- */
+.prn-color-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25), 0 1px 3px rgba(0, 0, 0, 0.35);
+  box-sizing: border-box;
+}
+.prn-color-thumb[data-focus-visible] {
+  box-shadow: var(--prn-focus), 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+.prn-color-thumb[data-dragging] { cursor: grabbing; }
+.prn-color-thumb[data-disabled] { opacity: 0.5; }
+
+/* ---- ColorArea ---- */
+.prn-colorarea {
+  width: 220px;
+  height: 220px;
+  border-radius: var(--prn-radius-lg);
+  flex: none;
+  forced-color-adjust: none;
+}
+.prn-colorarea[data-disabled] { opacity: 0.5; }
+
+/* ---- ColorSlider ---- */
+.prn-colorslider {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 220px;
+}
+.prn-colorslider-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+.prn-colorslider-output {
+  font: var(--prn-text-footnote);
+  color: var(--prn-label-3);
+  font-variant-numeric: tabular-nums;
+}
+.prn-colorslider-track {
+  height: 24px;
+  border-radius: 999px;
+  forced-color-adjust: none;
+  box-shadow: inset 0 0 0 1px var(--prn-separator);
+}
+.prn-colorslider[data-orientation="vertical"] {
+  width: auto;
+  height: 200px;
+}
+.prn-colorslider[data-orientation="vertical"] .prn-colorslider-track {
+  width: 24px;
+  height: 100%;
+}
+.prn-colorslider[data-disabled] { opacity: 0.5; }
+
+/* ---- ColorWheel ---- */
+.prn-colorwheel {
+  forced-color-adjust: none;
+}
+.prn-colorwheel-track {
+  forced-color-adjust: none;
+}
+.prn-colorwheel[data-disabled] { opacity: 0.5; }
+
+/* ---- ColorField ---- */
+.prn-colorfield .prn-input {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- ColorPicker ---- */
+.prn-colorpicker-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 34px;
+  padding: 6px 10px 6px 8px;
+  border: none;
+  border-radius: var(--prn-radius-md);
+  background: var(--prn-fill);
+  color: var(--prn-label);
+  font: var(--prn-text-body);
+  cursor: pointer;
+}
+.prn-colorpicker-trigger[data-hovered] { background: var(--prn-fill-strong); }
+.prn-colorpicker-trigger[data-focus-visible] { box-shadow: var(--prn-focus); }
+.prn-colorpicker-trigger[data-disabled] { opacity: 0.45; cursor: not-allowed; }
+.prn-colorpicker-swatch {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
+  forced-color-adjust: none;
+  flex: none;
+}
+.prn-colorpicker-label {
+  font: var(--prn-text-subhead);
+  font-weight: 590;
+  color: var(--prn-label-2);
+}
+
+.prn-colorpicker-popover { min-width: 244px; }
+.prn-colorpicker-dialog {
+  outline: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 6px;
+}
+.prn-colorpicker-area { width: 100%; }
