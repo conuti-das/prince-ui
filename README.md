@@ -6,18 +6,6 @@ Properties (`--prn-*`) mit Light/Dark via `data-theme` am `<html>`.
 
 Live-Doku (Storybook): https://conuti-das.github.io/prince-ui/
 
-## Warum prince-ui
-
-Dieselbe Designsprache wurde in mehreren conuti-/MaKo-Apps (finops, roadmap,
-maco-process-studio, das-tippspiel, das-superprod) immer wieder unabhängig
-nachgebaut — jede mit eigenem Token-Präfix und eigener Komponenten-API. Ergebnis:
-Doppelarbeit, Inkonsistenzen und divergierende Barrierefreiheit.
-
-prince-ui zentralisiert diese Sprache in **einer** versionierten, getesteten
-Quelle: ein Satz Tokens, eine Komponenten-API, ein konsistentes Light/Dark-Verhalten
-— über alle Apps hinweg. Ziel: Oberflächen aus fertigen, barrierefreien Bausteinen
-zusammensetzen, statt Optik und Interaktionsmuster jedes Mal neu zu erfinden.
-
 ## Designprinzipien
 
 - **Klarheit zuerst.** Inhalt führt, Chrome tritt zurück. Lesbare Typo-Skala,
