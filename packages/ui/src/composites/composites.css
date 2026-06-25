@@ -391,7 +391,9 @@
   font-weight: 590;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: var(--prn-label-3);
+  /* label-2 statt label-3: Gruppen-Header sind Section-Labels und müssen
+     WCAG-AA erfüllen (label-3 @0.3 alpha = 2.48 Kontrast; label-2 @0.6 ≈ 6:1). */
+  color: var(--prn-label-2);
 }
 .prn-sidebar-group-items {
   display: flex;
