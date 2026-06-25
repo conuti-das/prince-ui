@@ -1,0 +1,86 @@
+/* ============================================================
+ *  Liquid Glass — dünne Optik-Schicht (Apple HIG)
+ *
+ *  NUR Styling, kein Verhalten. Sparsam und ausschließlich auf der
+ *  „Navigationsebene" über dem Content einsetzen: Top-Bar/Toolbar,
+ *  Sidebar, Overlays (Popover/Menu/Dialog/Tooltip/Toast), schwebende
+ *  Controls und Übersichtskarten, die über Content liegen.
+ *
+ *  NICHT auf datendichte Tabellen/Listen, Eingabefelder oder Fließtext.
+ *  Kein „Glas auf Glas" — Glasflächen nie stapeln/verschachteln.
+ *
+ *  Lesbarkeit hat Vorrang (HIG): Default ist der OPAKE Fallback; echtes
+ *  Glas nur, wenn `backdrop-filter` unterstützt wird. Bei
+ *  `prefers-reduced-transparency: reduce` zurück auf opak.
+ * ============================================================ */
+
+.prn-glass {
+  /* Fallback zuerst: solide Fläche mit Kontrast — kein „durchsichtiges Nichts". */
+  background-color: var(--prn-glass-bg-opaque);
+  /* Optionaler Branding-Tint unter dem Inhalt (via --prn-glass-tint inline). */
+  background-image: linear-gradient(
+    var(--prn-glass-tint, transparent),
+    var(--prn-glass-tint, transparent)
+  );
+  color: var(--prn-label);
+}
+
+/* Echtes Glas nur, wo backdrop-filter unterstützt wird. */
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .prn-glass {
+    background-color: var(--prn-glass-bg);
+    -webkit-backdrop-filter: var(--prn-glass-blur);
+    backdrop-filter: var(--prn-glass-blur);
+  }
+}
+
+/* ---- Varianten: nur Kanten/Radius/Schatten; das Material kommt von .prn-glass ---- */
+
+/* Top-Bar / Header / Toolbar — randlos, nur untere Hairline. */
+.prn-glass-bar {
+  border-radius: 0;
+  border-bottom: 1px solid var(--prn-glass-border);
+}
+
+/* Sidebar / Navigationsleiste — randlos, nur rechte Hairline. */
+.prn-glass-sidebar {
+  border-radius: 0;
+  border-right: 1px solid var(--prn-glass-border);
+}
+
+/* Overlays: Popover, Menu, Dialog, Tooltip, Toast. */
+.prn-glass-overlay {
+  border: 1px solid var(--prn-glass-border);
+  border-radius: var(--prn-radius-lg);
+  box-shadow: var(--prn-glass-shadow);
+}
+
+/* Übersichtskarten (Dashboard-Kacheln, die über Content schweben). */
+.prn-glass-card {
+  border: 1px solid var(--prn-glass-border);
+  border-radius: var(--prn-radius-card);
+  box-shadow: var(--prn-glass-shadow);
+}
+
+/* Schwebende Controls / FAB. */
+.prn-glass-floating {
+  border: 1px solid var(--prn-glass-border);
+  border-radius: var(--prn-radius-pill);
+  box-shadow: var(--prn-glass-shadow);
+}
+
+/* A11y: reduzierte Transparenz → garantiert opak, kein Blur. */
+@media (prefers-reduced-transparency: reduce) {
+  .prn-glass {
+    background-color: var(--prn-glass-bg-opaque);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+/* A11y: reduzierte Bewegung → kein animiertes Glas. */
+@media (prefers-reduced-motion: reduce) {
+  .prn-glass {
+    transition: none;
+  }
+}

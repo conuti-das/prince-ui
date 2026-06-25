@@ -5,7 +5,7 @@
  * (dist/index.css → Import via "prince-ui/styles.css").
  */
 
-export const PRINCE_UI_VERSION = "0.4.0";
+export const PRINCE_UI_VERSION = "0.5.0";
 
 /** Die drei Prince-Modes. `null` = System folgen (prefers-color-scheme, Fallback Dark). */
 export type PrinceTheme = "light" | "dark" | "cu";
@@ -68,3 +68,7 @@ export * from "./primitives/color-pickers";
 export * from "./primitives/status";
 export * from "./primitives/toast";
 export * from "./primitives/dropzone";
+
+// Liquid-Glass-Optik-Schicht — zuletzt, damit glass.css NACH dem Komponenten-CSS
+// gebündelt wird und die opt-in Glas-Klassen (z. B. auf Popover) gewinnen.
+export * from "./surfaces/glass";

@@ -1,6 +1,6 @@
 {
   "name": "prince-ui-tokens",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Prince-Designsprache als CSS-Custom-Properties (Single Source of Truth).",
   "license": "MIT",
   "private": false,

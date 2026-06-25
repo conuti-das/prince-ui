@@ -484,6 +484,8 @@ export interface SidebarProps {
   header?: ReactNode;
   /** Fußbereich (z. B. Account). */
   footer?: ReactNode;
+  /** „Liquid Glass"-Optik (transluzent + Blur). Nur über Content sinnvoll. */
+  glass?: boolean;
   className?: string;
 }
 
@@ -493,10 +495,14 @@ export function Sidebar({
   onSelect,
   header,
   footer,
+  glass,
   className,
 }: SidebarProps) {
   return (
-    <nav className={cx("prn-sidebar", className)} aria-label="Seitenleiste">
+    <nav
+      className={cx("prn-sidebar", glass && "prn-glass prn-glass-sidebar", className)}
+      aria-label="Seitenleiste"
+    >
       {header != null && <div className="prn-sidebar-header">{header}</div>}
       <div className="prn-sidebar-scroll">
         {groups.map((group, gi) => (
@@ -523,12 +529,14 @@ export interface ToolbarProps {
   leading?: ReactNode;
   /** Aktionen rechts. */
   actions?: ReactNode;
+  /** „Liquid Glass"-Optik (transluzent + Blur). Nur über Content sinnvoll. */
+  glass?: boolean;
   className?: string;
 }
 
-export function Toolbar({ title, subtitle, leading, actions, className }: ToolbarProps) {
+export function Toolbar({ title, subtitle, leading, actions, glass, className }: ToolbarProps) {
   return (
-    <header className={cx("prn-toolbar", className)}>
+    <header className={cx("prn-toolbar", glass && "prn-glass prn-glass-bar", className)}>
       {leading != null && <div className="prn-toolbar-leading">{leading}</div>}
       <div className="prn-toolbar-titles">
         {title != null && <span className="prn-toolbar-title">{title}</span>}

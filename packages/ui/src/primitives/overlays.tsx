@@ -80,12 +80,17 @@ export function MenuItem({ className, ...props }: MenuItemPropsExt) {
 /* ---------------- Popover (frei) ---------------- */
 
 export interface AplPopoverProps extends Omit<PopoverProps, "className"> {
+  /** „Liquid Glass"-Optik (transluzent + Blur) statt opaker Fläche. */
+  glass?: boolean;
   className?: string;
 }
 
-export function Popover({ className, children, ...props }: AplPopoverProps) {
+export function Popover({ glass, className, children, ...props }: AplPopoverProps) {
   return (
-    <RACPopover {...props} className={cx("prn-popover", className)}>
+    <RACPopover
+      {...props}
+      className={cx("prn-popover", glass && "prn-glass prn-glass-overlay", className)}
+    >
       {children}
     </RACPopover>
   );
