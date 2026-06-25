@@ -1,17 +1,24 @@
 {
   "name": "prince-ui-bo4e",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Smart-Viewer/-Editor für BO4E-cDoc (Marktkommunikation) auf prince-ui.",
   "license": "MIT",
   "private": false,
   "type": "module",
-  "sideEffects": ["*.css"],
-  "files": ["dist"],
+  "sideEffects": [
+    "*.css"
+  ],
+  "files": [
+    "dist"
+  ],
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
-    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" },
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
     "./styles.css": "./dist/index.css",
     "./package.json": "./package.json"
   },
@@ -47,6 +54,12 @@
     "typescript": "^5.6.3",
     "vitest": "^2.1.5"
   },
-  "publishConfig": { "registry": "https://registry.npmjs.org" },
-  "repository": { "type": "git", "url": "git+https://github.com/conuti-das/prince-ui.git", "directory": "packages/bo4e" }
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/conuti-das/prince-ui.git",
+    "directory": "packages/bo4e"
+  }
 }

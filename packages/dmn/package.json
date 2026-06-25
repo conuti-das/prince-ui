@@ -1,6 +1,6 @@
 {
   "name": "prince-ui-dmn",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "DMN-Entscheidungstabellen-Editor (einstiegsfreundlich auf prince-ui AnalyticalTable) und dmn-js-Expertenmodus.",
   "license": "MIT",
   "private": false,

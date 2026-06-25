@@ -1,5 +1,12 @@
 # prince-ui-bpmn
 
+## 1.0.1
+
+### Patch Changes
+
+- Updated dependencies [2481455]
+  - prince-ui@0.9.1
+
 ## 1.0.0
 
 ### Minor Changes
