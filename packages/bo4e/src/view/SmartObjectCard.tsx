@@ -13,12 +13,21 @@ export interface SmartObjectCardProps {
 
 export function SmartObjectCard({ schema, boTyp, obj, header, children }: SmartObjectCardProps) {
   const [full, setFull] = useState(false);
+  const [edit, setEdit] = useState(false);
+
   return (
     <div className="prn-bo-card">
       {header}
       {children}
       {full ? (
-        <FullDetail schema={schema} boTyp={boTyp} obj={obj} />
+        <>
+          <div className="prn-bo-detailbar">
+            <button type="button" className="prn-bo-editbtn" aria-pressed={edit} onClick={() => setEdit((e) => !e)}>
+              {edit ? "Fertig" : "Bearbeiten"}
+            </button>
+          </div>
+          <FullDetail schema={schema} boTyp={boTyp} obj={obj} editable={edit} />
+        </>
       ) : (
         <button type="button" className="prn-bo-moreb" onClick={() => setFull(true)}>
           + Alle Details
