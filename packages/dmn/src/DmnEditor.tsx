@@ -8,7 +8,7 @@
  */
 
 import { useState, type ReactNode } from "react";
-import { SegmentedControl, Segment } from "prince-ui";
+import { SegmentedControl, Segment } from "@conuti-das/prince-ui";
 import { DmnTableEditor, type DmnTableEditorProps } from "./table/DmnTableEditor";
 import { DmnExpertEditor } from "./expert/DmnExpertEditor";
 import type { DiagramColorScheme } from "./types";

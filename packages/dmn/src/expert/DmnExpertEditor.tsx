@@ -15,7 +15,7 @@
  */
 
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
-import { Button } from "prince-ui";
+import { Button } from "@conuti-das/prince-ui";
 import type { DiagramColorScheme } from "../types";
 import { getDiagramColors, onThemeChange } from "../theme/diagram-theme";
 import "./DmnExpertEditor.css";

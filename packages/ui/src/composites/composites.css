@@ -115,16 +115,19 @@
   background: var(--prn-accent);
   border-color: transparent;
 }
+/* Dunkle Schrift auf der Akzent-Fläche (Kommentar oben): var(--prn-on-accent) ist
+   weiß und ergab ~2.22 Kontrast auf Apple-Grün. Dunkler Text trifft ~7:1 auf
+   Grün/Lime in allen Themes. */
 .prn-kpi[data-accent] .prn-kpi-label,
 .prn-kpi[data-accent] .prn-kpi-value,
 .prn-kpi[data-accent] .prn-kpi-delta {
-  color: var(--prn-on-accent);
+  color: rgba(0, 0, 0, 0.82);
 }
 .prn-kpi[data-accent] .prn-kpi-icon {
   background: rgba(0, 0, 0, 0.12);
-  color: var(--prn-on-accent);
+  color: rgba(0, 0, 0, 0.82);
 }
-.prn-kpi[data-accent] .prn-kpi-value[data-tone] { color: var(--prn-on-accent); }
+.prn-kpi[data-accent] .prn-kpi-value[data-tone] { color: rgba(0, 0, 0, 0.82); }
 
 .prn-kpi-top {
   display: inline-flex;
@@ -391,7 +394,9 @@
   font-weight: 590;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: var(--prn-label-3);
+  /* label-2 statt label-3: Gruppen-Header sind Section-Labels und müssen
+     WCAG-AA erfüllen (label-3 @0.3 alpha = 2.48 Kontrast; label-2 @0.6 ≈ 6:1). */
+  color: var(--prn-label-2);
 }
 .prn-sidebar-group-items {
   display: flex;

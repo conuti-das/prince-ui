@@ -33,7 +33,9 @@
 }
 .prn-lp-section-sub {
   font: var(--prn-text-subhead);
-  color: var(--prn-label-3);
+  /* label-2 statt label-3: Subtitle trägt echte Info (z.B. "62 aktive Ziele"),
+     muss lesbar sein — label-3 (0.3 alpha) war ~1.71 Kontrast im Light-Mode. */
+  color: var(--prn-label-2);
 }
 
 /* ---- Grid ---- */

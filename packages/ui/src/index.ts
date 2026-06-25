@@ -2,7 +2,7 @@
  * prince-ui — Prince-Look React-Komponenten auf React Aria.
  *
  * Wave 1: L1-Primitives. CSS wird über die Bereichsmodule gebündelt
- * (dist/index.css → Import via "prince-ui/styles.css").
+ * (dist/index.css → Import via "@conuti-das/prince-ui/styles.css").
  */
 
 export const PRINCE_UI_VERSION = "0.8.0";

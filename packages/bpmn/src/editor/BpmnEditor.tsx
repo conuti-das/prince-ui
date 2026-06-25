@@ -17,7 +17,7 @@
  */
 
 import { useEffect, useRef, useState, useCallback, type ReactNode } from "react";
-import { Button, SegmentedControl, Segment, Notice } from "prince-ui";
+import { Button, SegmentedControl, Segment, Notice } from "@conuti-das/prince-ui";
 import type { DiagramColorScheme } from "../types";
 import { getDiagramColors, onThemeChange } from "../theme/diagram-theme";
 import { buildRendererConfig, createAppleRendererModule } from "../theme/apple-renderer";

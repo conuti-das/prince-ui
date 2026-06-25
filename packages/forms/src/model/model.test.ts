@@ -35,7 +35,7 @@ describe("taskFormToSchema", () => {
     const schema = taskFormToSchema(fields);
     expect(schema.type).toBe("default");
     expect(schema.components).toHaveLength(5);
-    expect(schema.exporter?.name).toBe("prince-ui-forms");
+    expect(schema.exporter?.name).toBe("@conuti-das/prince-ui-forms");
   });
 
   it("mappt Camunda-Typen auf FormFieldTypes", () => {

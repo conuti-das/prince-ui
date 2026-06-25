@@ -25,7 +25,7 @@ import {
   TagGroup,
   Tag,
   TextField,
-} from "prince-ui";
+} from "@conuti-das/prince-ui";
 import type {
   CamundaVariables,
   FormData,

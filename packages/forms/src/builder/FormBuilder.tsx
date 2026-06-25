@@ -18,7 +18,7 @@ import {
   Select,
   SelectItem,
   TextField,
-} from "prince-ui";
+} from "@conuti-das/prince-ui";
 import type { FormField, FormFieldOption, FormSchema } from "../types";
 import { FormRenderer } from "../renderer/FormRenderer";
 import {

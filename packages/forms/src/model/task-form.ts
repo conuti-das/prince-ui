@@ -139,6 +139,6 @@ export function taskFormToSchema(fields: TaskFormField[]): FormSchema {
     type: "default",
     components,
     schemaVersion: 1,
-    exporter: { name: "prince-ui-forms", version: "0.1.0" },
+    exporter: { name: "@conuti-das/prince-ui-forms", version: "0.1.0" },
   };
 }

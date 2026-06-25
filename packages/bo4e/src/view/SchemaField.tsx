@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { Button, DialogTrigger, Dialog } from "react-aria-components";
-import { Popover } from "prince-ui";
+import { Popover } from "@conuti-das/prince-ui";
 import type { Bo4eSchema } from "../schema/load-schema";
 import { resolveField } from "../schema/load-schema";
 import { SchemaPopoverBody } from "./SchemaPopover";

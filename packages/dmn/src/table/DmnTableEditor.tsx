@@ -24,7 +24,7 @@ import {
   SelectItem,
   TextField,
   Modal,
-} from "prince-ui";
+} from "@conuti-das/prince-ui";
 import type {
   Aggregation,
   DmnCellPlugin,

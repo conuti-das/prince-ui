@@ -4,7 +4,7 @@
  * optionaler KI-Fix-Button. Portiert aus maco `BpmnEditor/ErrorPanel.tsx`.
  */
 import type { ReactNode } from "react";
-import { Button, Link } from "prince-ui";
+import { Button, Link } from "@conuti-das/prince-ui";
 import { lintHint } from "./lintHints";
 import type { LintIssue } from "./lintConfig";
 import "./editor.css";
