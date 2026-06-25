@@ -1,0 +1,22 @@
+{
+  "MARKTLOKATION": {
+    "description": "Ort, an dem Energie eines bestimmten Typs entnommen oder eingespeist wird. Die Marktlokation wird ueber die MaLo-ID identifiziert.",
+    "properties": ["marktlokationsId", "sparte", "kundengruppe", "bilanzierungsgebiet", "lieferrichtung", "netzebene", "verbrauchsart", "zaehlverfahren", "adresse", "eigentuemer", "zugeordneteMesslokationen"]
+  },
+  "MESSLOKATION": {
+    "description": "Ort, an dem eine physikalische Messung durchgefuehrt wird. Wird ueber die 33-stellige MeLo-ID identifiziert.",
+    "properties": ["messlokationsId", "katasteradresse", "geraete", "messart", "bilanzierungsmethode", "zuordnungstyp"]
+  },
+  "ZAEHLER": {
+    "description": "Physisches Messgeraet zur Erfassung des Energieverbrauchs oder der Energieeinspeisung.",
+    "properties": ["zaehlernummer", "zaehlertyp", "einbaudatum", "ausbaudatum"]
+  },
+  "GESCHAEFTSPARTNER": {
+    "description": "Ein Marktpartner im Energiemarkt (Lieferant, Netzbetreiber, MSB, etc.).",
+    "properties": ["name1", "name2", "iln", "rollencodevergabe"]
+  },
+  "VERTRAG": {
+    "description": "Vertragliche Vereinbarung zwischen Marktpartnern (Liefervertrag, Netznutzung, Messstellenbetrieb).",
+    "properties": ["vertragsnummer", "vertragsart", "vertragspartner", "vertragsbeginn", "vertragsende", "status"]
+  }
+}

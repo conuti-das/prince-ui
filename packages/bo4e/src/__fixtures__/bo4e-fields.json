@@ -1,0 +1,2538 @@
+{
+  "ADHOCSTEUERKANAL": {
+    "boTyp": {
+      "translation": "BO-Typ",
+      "enumRef": "BOTYP"
+    },
+    "versionStruktur": {
+      "description": "versionStruktur",
+      "example": "1",
+      "translation": "Versionsstruktur"
+    },
+    "konfigurationsprodukt": {
+      "description": "konfigurationsprodukt",
+      "pattern": "^\\d{14}$",
+      "example": "55555555555555",
+      "translation": "Konfigurationsprodukt"
+    },
+    "zieladresse": {
+      "translation": "Zieladresse"
+    },
+    "aussteller": {
+      "translation": "Aussteller"
+    },
+    "zertifikatsNutzer": {
+      "translation": "Zertifikats Nutzer"
+    },
+    "IPAdresseCLSDevice": {
+      "translation": "IP Adresse CLS Device"
+    }
+  },
+  "ANFRAGE": {
+    "boTyp": {
+      "translation": "BO-Typ",
+      "enumRef": "BOTYP"
+    },
+    "versionStruktur": {
+      "description": "versionStruktur",
+      "example": "1",
+      "translation": "Versionsstruktur"
+    },
+    "lokationsTyp": {
+      "translation": "Lokations Typ",
+      "enumRef": "LOKATIONSTYP"
+    },
+    "lokationsId": {
+      "description": "Für welche Markt- oder Messlokation gilt diese Anfrage.",
+      "pattern": "^\\d{11}$",
+      "example": "55555555555",
+      "translation": "Lokations-ID"
+    },
+    "anfragetyp": {
+      "description": "Typ/Art der Anfrage (ORDERS ORDRSP IMD 7081)",
+      "translation": "Anfragetyp",
+      "enumRef": "ANFRAGETYP"
+    },
+    "abonnement": {
+      "description": "Start oder Ende Abo",
+      "translation": "Abonnement",
+      "enumRef": "ABONNEMENT"
+    },
+    "anfragereferenz": {
+      "description": "anfragereferenz",
+      "example": "REF000000",
+      "translation": "Anfragereferenz"
+    },
+    "allgemeineInformationen": {
+      "description": "allgemeineInformationen",
+      "translation": "Allgemeine Informationen"
+    },
+    "anfragekategorie": {
+      "description": "Kategorie der Anfrage (ORDERS ORDRSP BGM 1001)",
+      "translation": "Anfragekategorie",
+      "enumRef": "ANFRAGEKATEGORIE"
+    },
+    "energierichtung": {
+      "translation": "Energierichtung",
+      "enumRef": "ENERGIERICHTUNG"
+    },
+    "gueltigkeitszeitspanne": {
+      "description": "gueltigkeitszeitspanne",
+      "pattern": "^\\d{6}$",
+      "example": "555555",
+      "translation": "Gueltigkeitszeitspanne"
+    },
+    "gueltigAb": {
+      "description": "gueltigAb",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Gueltig Ab"
+    }
+  },
+  "ANGEBOT": {
+    "boTyp": {
+      "translation": "BO-Typ",
+      "enumRef": "BOTYP"
+    },
+    "versionStruktur": {
+      "description": "versionStruktur",
+      "example": "1",
+      "translation": "Versionsstruktur"
+    },
+    "angebotsnummer": {
+      "description": "Eindeutige Nummer des Angebotes.",
+      "pattern": "^\\d{3}$",
+      "example": "555",
+      "translation": "Angebotsnummer"
+    },
+    "anfragereferenz": {
+      "description": "Referenz auf eine Anfrage oder Ausschreibung. Kann dem Empfänger des Angebotes bei Zuordnung des Angebotes zur Anfrage bzw.Ausschreibung helfen.",
+      "example": "REF000000",
+      "translation": "Anfragereferenz"
+    },
+    "angebotsdatum": {
+      "description": "Erstellungsdatum des Angebots",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Angebotsdatum"
+    },
+    "sparte": {
+      "description": "Sparte",
+      "translation": "Sparte",
+      "enumRef": "SPARTE"
+    },
+    "bindefrist": {
+      "description": "Bis zu diesem Zeitpunkt(Tag/Uhrzeit) inklusive gilt das Angebot",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Bindefrist"
+    },
+    "angebotgeber": {
+      "description": "Link auf den Ersteller des Angebots.",
+      "translation": "Angebotgeber"
+    },
+    "angebotnehmer": {
+      "description": "Link auf den Empfänger des Angebots.",
+      "translation": "Angebotnehmer"
+    },
+    "unterzeichnerAngebotsnehmer": {
+      "description": "Link auf die Person, die als Angebotsnehmer das Angebot angenommen hat.",
+      "translation": "Unterzeichner Angebotsnehmer"
+    },
+    "unterzeichnerAngebotsgeber": {
+      "description": "Link auf die Person, die als Angebotsgeber das Angebots ausgestellt hat.",
+      "translation": "Unterzeichner Angebotsgeber"
+    },
+    "zeitspanneEinrichtungUebermittlungWerte": {
+      "description": "zeitspanneEinrichtungUebermittlungWerte",
+      "translation": "Zeitspanne Einrichtung Uebermittlung Werte"
+    },
+    "bindefristAngebot": {
+      "description": "Bis zu diesem Zeitpunkt(Tag/Uhrzeit) inklusive gilt das Angebot",
+      "translation": "Bindefrist Angebot"
+    },
+    "varianten": {
+      "description": "Eine oder mehrere Varianten des Angebots mit den Angebotsteilen. Ein Angebot besteht mindestens aus einer Variante.",
+      "translation": "Varianten"
+    },
+    "positionsdaten": {
+      "description": "Ein oder mehrere Angebotspositionen",
+      "translation": "Positionsdaten"
+    }
+  },
+  "ANSPRECHPARTNER": {
+    "boTyp": {
+      "translation": "BO-Typ",
+      "enumRef": "BOTYP"
+    },
+    "versionStruktur": {
+      "description": "versionStruktur",
+      "example": "1",
+      "translation": "Versionsstruktur"
+    },
+    "nachname": {
+      "description": "Nachname (Familienname) des Ansprechpartners",
+      "example": "Müller",
+      "translation": "Nachname"
+    },
+    "eMailAdresse": {
+      "description": "E-Mail Adresse",
+      "example": "max.mueller@example.com",
+      "translation": "E Mail Adresse"
+    },
+    "rufnummern": {
+      "description": "Liste der Telefonnummern, unter denen der Ansprechpartner erreichbar ist.",
+      "translation": "Rufnummern"
+    }
+  },
+  "AUFTRAG": {
+    "boTyp": {
+      "translation": "BO-Typ",
+      "enumRef": "BOTYP"
+    },
+    "versionStruktur": {
+      "description": "versionStruktur",
+      "example": "1",
+      "translation": "Versionsstruktur"
+    },
+    "ausfuehrungsdatum": {
+      "description": "Das Ausführungsdatum beschreibt zu welchem Zeitpunkt ein Auftrag ausgeführt werden soll.",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Ausführungsdatum"
+    },
+    "fertigstellungsdatum": {
+      "description": "Das Fertigstellungsdatum beschreibt zu welchem Zeitpunkt ein Auftrag ausgeführt wurde/wird.",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Fertigstellungsdatum"
+    },
+    "startdatum": {
+      "description": "Das Startdatum beschreibt zu welchem Zeitpunkt ein Auftrag gestartet wurde/wird.",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Startdatum"
+    },
+    "enddatum": {
+      "description": "Das Enddatum beschreibt zu welchem Zeitpunkt ein Auftrag endete oder enden wird.",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Enddatum"
+    },
+    "sparte": {
+      "description": "Die Sparte in der der Auftrag relevant ist",
+      "translation": "Sparte",
+      "enumRef": "SPARTE"
+    },
+    "lieferanschrift": {
+      "description": "Die Adresse, die sich in Belieferung befindet.",
+      "translation": "Lieferanschrift"
+    },
+    "marktlokationsId": {
+      "description": "Die ID der Marktlokation der der zu sperrende Zähler zugeordnet ist.",
+      "pattern": "^\\d{11}$",
+      "example": "55555555555",
+      "translation": "Marktlokations-ID"
+    },
+    "mindestpreis": {
+      "description": "Der Mindestpreis eines Auftrags (z.B. für eine Sperrung)",
+      "translation": "Mindestpreis"
+    },
+    "hoechstpreis": {
+      "description": "Der Höchstpreis eines Auftrags (z.B. für eine Sperrung)",
+      "translation": "Hoechstpreis"
+    },
+    "energierichtung": {
+      "translation": "Energierichtung",
+      "enumRef": "ENERGIERICHTUNG"
+    },
+    "berechnungspreis": {
+      "description": "berechnungspreis",
+      "example": "1.5",
+      "translation": "Berechnungspreis"
+    },
+    "summeGesamt": {
+      "description": "summeGesamt",
+      "example": "1.5",
+      "translation": "Summe Gesamt"
+    },
+    "verschobenerAbmeldetermin": {
+      "description": "verschobenerAbmeldetermin",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Verschobener Abmeldetermin"
+    },
+    "behebungsZeitpunkt": {
+      "description": "behebungsZeitpunkt",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Behebungs Zeitpunkt"
+    },
+    "lieferadresseAltgeraete": {
+      "translation": "Lieferadresse Altgeraete"
+    },
+    "definitionsTyp": {
+      "translation": "Definitions Typ",
+      "enumRef": "DEFINITIONSTYP"
+    },
+    "positionsdaten": {
+      "description": "positionsdaten",
+      "translation": "Positionsdaten"
+    },
+    "bemerkungen": {
+      "description": "bemerkungen",
+      "translation": "Bemerkungen"
+    }
+  },
+  "AVIS": {
+    "boTyp": {
+      "translation": "BO-Typ",
+      "enumRef": "BOTYP"
+    },
+    "versionStruktur": {
+      "description": "versionStruktur",
+      "example": "1",
+      "translation": "Versionsstruktur"
+    },
+    "avisNummer": {
+      "description": "Eine im Verwendungskontext eindeutige Nummer für das Avis.",
+      "pattern": "^\\d{10}$",
+      "example": "5555555555",
+      "translation": "Avis Nummer"
+    },
+    "avisTyp": {
+      "description": "Gibt den Typ des Avis an.",
+      "translation": "Avis Typ",
+      "enumRef": "AVISTYP"
+    },
+    "zuZahlen": {
+      "description": "Summenbetrag",
+      "translation": "Zu Zahlen"
+    },
+    "positionen": {
+      "description": "Avispositionen",
+      "translation": "Positionen"
+    }
+  },
+  "BERECHNUNGSFORMEL": {
+    "boTyp": {
+      "translation": "BO-Typ",
+      "enumRef": "BOTYP"
+    },
+    "versionStruktur": {
+      "description": "versionStruktur",
+      "example": "1",
+      "translation": "Versionsstruktur"
+    },
+    "beginndatum": {
+      "description": "Der inklusive Zeitpunkt ab dem die Berechnungsformel gültig ist",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Beginndatum"
+    },
+    "notwendigkeit": {
+      "description": "Beschreibt ob eine Berechnungsformel notwendig ist",
+      "translation": "Notwendigkeit",
+      "enumRef": "BERECHNUNGSFORMELNOTWENDIGKEIT"
+    },
+    "lieferrichtung": {
+      "description": "The UTILTS 'Lieferrichtung der Marktlokation' is contained in the marktlokations-bo also the relation between Berechnungsformel↔ Marktlokation is modelled as 'link'",
+      "translation": "Lieferrichtung",
+      "enumRef": "ENERGIERICHTUNG"
+    },
+    "rechenschrittId": {
+      "description": "ID des Rechenschritts [1 - 99999]",
+      "example": "1",
+      "translation": "Rechenschritt Id"
+    },
+    "rechenschritt": {
+      "translation": "Rechenschritt"
+    },
+    "rechenschritte": {
+      "description": "Eine Berechnungsformel enthält, falls sie notwendig ist, einen oder mehrere Berechnungschritte, die hier rekursiv abgebildet werden.",
+      "translation": "Rechenschritte"
+    },
+    "verwendungszweck": {
+      "description": "Verwendungszweck der Werte",
+      "translation": "Verwendungszweck"
+    },
+    "gueltigkeitszeitraum": {
+      "description": "Gültigkeitszeitraum der Werte",
+      "translation": "Gueltigkeitszeitraum"
+    },
+    "lokationsId": {
+      "description": "Eindeutige Nummer der Lokation, zu der die Berechnungsformel gehört. Verwendung für notwendige interne Zuordnungen.",
+      "pattern": "^\\d{11}$",
+      "example": "55555555555",
+      "translation": "Lokations-ID"
+    },
+    "lokationsTyp": {
+      "description": "Gibt an,um welchen Lokationstyp es sich handelt. Verwendung für notwendige interne Zuordnungen.",
+      "translation": "Lokations Typ",
+      "enumRef": "LOKATIONSTYP"
+    }
+  },
+  "BILANZIERUNG": {
+    "boTyp": {
+      "translation": "BO-Typ",
+      "enumRef": "BOTYP"
+    },
+    "versionStruktur": {
+      "description": "versionStruktur",
+      "example": "1",
+      "translation": "Versionsstruktur"
+    },
+    "marktlokationsId": {
+      "description": "Für welche Marktlokation gelten diese Bilanzierungsdaten",
+      "pattern": "^\\d{11}$",
+      "example": "55555555555",
+      "translation": "Marktlokations-ID"
+    },
+    "aggregationsverantwortung": {
+      "description": "Aggregationsverantwortung",
+      "translation": "Aggregationsverantwortung",
+      "enumRef": "AGGREGATIONSVERANTWORTUNG"
+    },
+    "zeitreihentyp": {
+      "description": "Zeitreihentyp",
+      "translation": "Zeitreihentyp",
+      "enumRef": "ZEITREIHENTYP"
+    },
+    "prognosegrundlage": {
+      "description": "Prognosegrundlage",
+      "translation": "Prognosegrundlage",
+      "enumRef": "PROGNOSEGRUNDLAGE"
+    },
+    "bilanzierungsbeginn": {
+      "description": "Inklusiver Start der Bilanzierung",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Bilanzierungsbeginn"
+    },
+    "bilanzierungsende": {
+      "description": "Exklusives Ende der Bilanzierung",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Bilanzierungsende"
+    },
+    "bilanzkreis": {
+      "description": "Bilanzkreis",
+      "translation": "Bilanzkreis"
+    },
+    "bilanzkreise": {
+      "description": "Bilanzkreis",
+      "translation": "Bilanzkreise"
+    },
+    "fallgruppenzuordnung": {
+      "description": "Fallgruppenzuordnung (für gas RLM)",
+      "translation": "Fallgruppenzuordnung",
+      "enumRef": "FALLGRUPPENZUORDNUNG"
+    },
+    "temperaturarbeit": {
+      "description": "Kundenwert TLP",
+      "translation": "Temperaturarbeit"
+    },
+    "jahresverbrauchsprognose": {
+      "description": "Jahresverbrauchsprognose",
+      "translation": "Jahresverbrauchsprognose"
+    },
+    "kundenwert": {
+      "description": "Kundenwert",
+      "translation": "Kundenwert"
+    },
+    "verbrauchsaufteilung": {
+      "description": "Verbrauchsaufteilung",
+      "translation": "Verbrauchsaufteilung"
+    },
+    "wahlrechtPrognosegrundlage": {
+      "description": "Wahlrecht der Prognosegrundlage (true = Wahlrecht beim Lieferanten vorhanden)",
+      "translation": "Wahlrecht Prognosegrundlage",
+      "enumRef": "WAHLRECHTPROGNOSEGRUNDLAGE"
+    },
+    "grundWahlrechtPrognosegrundlage": {
+      "description": "Grund Wahlrecht der Prognosegrundlage (true = Wahlrecht beim Lieferanten vorhanden)",
+      "translation": "Grund Wahlrecht Prognosegrundlage",
+      "enumRef": "WAHLRECHTPROGNOSEGRUNDLAGE"
+    },
+    "abwicklungsmodell": {
+      "description": "Abwicklungsmodell",
+      "translation": "Abwicklungsmodell",
+      "enumRef": "ABWICKLUNGSMODELL"
+    },
+    "vorjahresverbrauch": {
+      "description": "Vorjahresverbrauch",
+      "translation": "Vorjahresverbrauch"
+    },
+    "datenqualitaet": {
+      "description": "Datenqualität",
+      "translation": "Datenqualität",
+      "enumRef": "DATENQUALITAET"
+    },
+    "gueltigkeitszeitraum": {
+      "description": "Gültigkeitszeitraum",
+      "translation": "Gueltigkeitszeitraum"
+    },
+    "lastprofile": {
+      "description": "Eine Liste der verwendeten Lastprofile (SLP, SLP/TLP, ALP etc.)",
+      "translation": "Lastprofile"
+    },
+    "lastprofileBilanzierungsbeteiligter": {
+      "description": "Lastprofile des Bilanzierungsbeteiligten",
+      "translation": "Lastprofile Bilanzierungsbeteiligter"
+    },
+    "detailsPrognosegrundlage": {
+      "description": "Prognosegrundlage - Besteht der Bedarf ein tagesparameteräbhängiges Lastprofil mit gemeinsamer Messung anzugeben, so ist dies über die 2 -malige Wiederholung des CAV Segments mit der Angabe der Codes E02 und E14 möglich.",
+      "translation": "Details Prognosegrundlage"
+    }
+  },
+  "BILANZKREIS": {
+    "boTyp": {
+      "translation": "BO-Typ",
+      "enumRef": "BOTYP"
+    },
+    "versionStruktur": {
+      "description": "versionStruktur",
+      "example": "1",
+      "translation": "Versionsstruktur"
+    },
+    "bezeichnung": {
+      "description": "Externe Bezeichnung",
+      "translation": "Bezeichnung"
+    },
+    "prioritaet": {
+      "description": "prioritaet",
+      "example": "1",
+      "translation": "Prioritaet"
+    }
+  },
+  "ENERGIEMENGE": {
+    "boTyp": {
+      "translation": "BO-Typ",
+      "enumRef": "BOTYP"
+    },
+    "versionStruktur": {
+      "description": "versionStruktur",
+      "example": "1",
+      "translation": "Versionsstruktur"
+    },
+    "lokationsId": {
+      "description": "Eindeutige Nummer der Marktlokation bzw. der Messlokation, zu der die Energiemenge gehört",
+      "pattern": "^\\d{11}$",
+      "example": "55555555555",
+      "translation": "Lokations-ID"
+    },
+    "lokationsTyp": {
+      "description": "Gibt an, ob es sich um eine Markt- oder Messlokation handelt.",
+      "translation": "Lokations Typ",
+      "enumRef": "LOKATIONSTYP"
+    },
+    "fertigstellungsdatum": {
+      "description": "fertigstellungsdatum",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Fertigstellungsdatum"
+    },
+    "startdatum": {
+      "description": "Gibt Tag und Uhrzeit (falls vorhanden) an, wann der Zeitraum startet.",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Startdatum"
+    },
+    "enddatum": {
+      "description": "Gibt Tag und Uhrzeit (falls vorhanden) an, wann der Zeitraum endet.",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Enddatum"
+    },
+    "bilanzierungsdatum": {
+      "description": "bilanzierungsdatum",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Bilanzierungsdatum"
+    },
+    "beginndatum": {
+      "description": "beginndatum",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Beginndatum"
+    },
+    "referenzStammdatenmeldungMsb": {
+      "description": "referenzStammdatenmeldungMsb",
+      "example": "REF000000",
+      "translation": "Referenz Stammdatenmeldung Msb"
+    },
+    "konfiguration": {
+      "description": "konfiguration",
+      "translation": "Konfiguration"
+    },
+    "energieverbrauch": {
+      "description": "Gibt den Verbrauch in einer Zeiteinheit an.",
+      "translation": "Energieverbrauch"
+    }
+  },
+  "GESCHAEFTSPARTNER": {
+    "boTyp": {
+      "translation": "BO-Typ",
+      "enumRef": "BOTYP"
+    },
+    "versionStruktur": {
+      "description": "versionStruktur",
+      "example": "1",
+      "translation": "Versionsstruktur"
+    },
+    "anrede": {
+      "description": "Die Anrede für den GePa, Z.B. Herr.",
+      "example": "Herr",
+      "translation": "Anrede"
+    },
+    "name1": {
+      "description": "Erster Teil des Namens. Hier kann der Firmenname oder bei Privatpersonen\nbeispielsweise der Nachname dargestellt werden. Beispiele: Yellow Strom GmbH\noder Hagen",
+      "example": "Müller",
+      "translation": "Name1"
+    },
+    "name2": {
+      "description": "Zweiter Teil des Namens. Hier kann der eine Erweiterung zum Firmennamen oder\nbei Privatpersonen beispielsweise der Vorname dargestellt werden. Beispiele:\nBereich Süd oder Nina",
+      "example": "Max",
+      "translation": "Name2"
+    },
+    "name3": {
+      "description": "Dritter Teil des Namens. Hier können weitere Ergänzungen zum Firmennamen oder\nbei Privatpersonen Zusätze zum Namen dargestellt werden. Beispiele: und Afrika\noder Sängerin",
+      "translation": "Name3"
+    },
+    "name4": {
+      "description": "name4",
+      "translation": "Name4"
+    },
+    "umsatzsteuerId": {
+      "description": "Die Umsatzsteuer-ID des Geschäftspartners. Beispiel: DE 813281825",
+      "example": "DE000000000",
+      "translation": "Umsatzsteuer-ID"
+    },
+    "glaeubigerId": {
+      "description": "* Die Gläubiger-ID welche im Zahlungsverkehr verwendet wird- Z.B. DE 47116789",
+      "pattern": "^\\d{6}$",
+      "example": "555555",
+      "translation": "Gläubiger-ID"
+    },
+    "emailAdresse": {
+      "description": "emailAdresse",
+      "example": "max.mueller@example.com",
+      "translation": "E-Mail-Adresse"
+    },
+    "website": {
+      "description": "Internetseite des Marktpartners. Beispiel: www.mp-energie.de",
+      "example": "https://www.example.com",
+      "translation": "Website"
+    },
+    "gewerbekennzeichnung": {
+      "description": "Kennzeichnung ob es sich um einen Gewerbe/Unternehmen (gewerbeKennzeichnung = true)\noder eine Privatperson handelt. (gewerbeKennzeichnung = false)",
+      "example": "false",
+      "translation": "Gewerbekennzeichnung"
+    },
+    "hrnummer": {
+      "description": "Handelsregisternummer des Geschäftspartners",
+      "pattern": "^\\d{6}$",
+      "example": "555555",
+      "translation": "HR-Nummer"
+    },
+    "amtsgericht": {
+      "description": "Amtsgericht bzw Handelsregistergericht, das die Handelsregisternummer herausgegeben hat",
+      "example": "Berlin",
+      "translation": "Amtsgericht"
+    },
+    "partneradresse": {
+      "description": "Adresse des Geschäftspartners, an der sich der Hauptsitz befindet. Details",
+      "translation": "Partneradresse"
+    },
+    "externeKundenummerLieferant": {
+      "description": "externeKundenummerLieferant",
+      "pattern": "^\\d{6}$",
+      "example": "555555",
+      "translation": "Externe Kundennummer Lieferant"
+    },
+    "externeReferenzen": {
+      "description": "Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer) (Details siehe\nExterneReferenz)",
+      "translation": "Externe Referenzen"
+    },
+    "geschaeftspartnerrolle": {
+      "description": "Rolle, die der Geschäftspartner hat (z.B. Interessent, Kunde).",
+      "translation": "Geschäftspartnerrolle"
+    },
+    "kontaktweg": {
+      "description": "Bevorzugter Kontaktweg des Geschäftspartners.",
+      "translation": "Kontaktweg"
+    }
+  },
+  "HANDELSUNSTIMMIGKEIT": {
+    "boTyp": {
+      "translation": "BO-Typ",
+      "enumRef": "BOTYP"
+    },
+    "versionStruktur": {
+      "description": "versionStruktur",
+      "example": "1",
+      "translation": "Versionsstruktur"
+    },
+    "nummer": {
+      "description": "Handelsunstimmigkeitsnummer",
+      "pattern": "^\\d{6}$",
+      "example": "555555",
+      "translation": "Nummer"
+    },
+    "typ": {
+      "description": "Gibt den Typ der Handelsunstimmigkeit an.",
+      "translation": "Typ",
+      "enumRef": "HANDELSUNSTIMMIGKEITSTYP"
+    },
+    "begruendung": {
+      "description": "Handelsunstimmigskeitsbegründung",
+      "translation": "Begruendung"
+    },
+    "zuZahlen": {
+      "description": "angeforderter Betrag",
+      "translation": "Zu Zahlen"
+    }
+  },
+  "KOMMUNIKATIONSDATEN": {
+    "boTyp": {
+      "translation": "BO-Typ",
+      "enumRef": "BOTYP"
+    },
+    "versionStruktur": {
+      "description": "versionStruktur",
+      "example": "1",
+      "translation": "Versionsstruktur"
+    },
+    "gueltigkeit": {
+      "description": "gueltigkeit",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Gueltigkeit"
+    },
+    "kommunikationsDatenBlattInaktiv": {
+      "description": "kommunikationsDatenBlattInaktiv",
+      "example": "false",
+      "translation": "Kommunikations Daten Blatt Inaktiv"
+    },
+    "marktteilnehmer": {
+      "translation": "Marktteilnehmer"
+    },
+    "kommunikationsangaben": {
+      "description": "kommunikationsangaben",
+      "translation": "Kommunikationsangaben"
+    }
+  },
+  "LEISTUNGSKURVENDEFINITION": {
+    "boTyp": {
+      "translation": "BO-Typ",
+      "enumRef": "BOTYP"
+    },
+    "versionStruktur": {
+      "description": "versionStruktur",
+      "example": "1",
+      "translation": "Versionsstruktur"
+    },
+    "beginndatum": {
+      "description": "beginndatum",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Beginndatum"
+    },
+    "endedatum": {
+      "description": "endedatum",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Endedatum"
+    },
+    "version": {
+      "description": "version",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Version"
+    },
+    "code": {
+      "description": "code",
+      "example": "CODE_0000",
+      "translation": "Code"
+    },
+    "notwendigkeit": {
+      "translation": "Notwendigkeit",
+      "enumRef": "DEFINITIONENNOTWENDIGKEIT"
+    },
+    "leistungskurven": {
+      "description": "leistungskurven",
+      "translation": "Leistungskurven"
+    }
+  },
+  "LOKATIONSBUENDEL": {
+    "boTyp": {
+      "translation": "BO-Typ",
+      "enumRef": "BOTYP"
+    },
+    "versionStruktur": {
+      "description": "versionStruktur",
+      "example": "1",
+      "translation": "Versionsstruktur"
+    },
+    "lokationsbuendelstrukturId": {
+      "description": "lokationsbuendelstrukturId",
+      "pattern": "^\\d{11}$",
+      "example": "55555555555",
+      "translation": "Lokationsbuendelstruktur Id"
+    },
+    "lokationsbuendelNummer": {
+      "description": "lokationsbuendelNummer",
+      "example": "1",
+      "translation": "Lokationsbuendel Nummer"
+    },
+    "standardisierteLokationsbuendelstruktur": {
+      "description": "standardisierteLokationsbuendelstruktur",
+      "example": "false",
+      "translation": "Standardisierte Lokationsbuendelstruktur"
+    },
+    "datenqualitaet": {
+      "translation": "Datenqualität",
+      "enumRef": "DATENQUALITAET"
+    },
+    "gueltigkeitszeitraum": {
+      "translation": "Gueltigkeitszeitraum"
+    },
+    "zuordnungObjectcode": {
+      "description": "zuordnungObjectcode",
+      "translation": "Zuordnung Objectcode"
+    }
+  },
+  "MARKTLOKATION": {
+    "boTyp": {
+      "translation": "BO-Typ",
+      "enumRef": "BOTYP"
+    },
+    "versionStruktur": {
+      "description": "versionStruktur",
+      "example": "1",
+      "translation": "Versionsstruktur"
+    },
+    "marktlokationsId": {
+      "description": "Identifikationsnummer einer Marktlokation, an der Energie entweder\nverbraucht, oder erzeugt wird",
+      "pattern": "^\\d{11}$",
+      "example": "55555555555",
+      "translation": "Marktlokations-ID"
+    },
+    "sparte": {
+      "description": "Strom oder Gas.",
+      "translation": "Sparte"
+    },
+    "energierichtung": {
+      "description": "Kennzeichnung, ob Energie eingespeist oder entnommen (ausgespeist) wird.",
+      "translation": "Energierichtung",
+      "enumRef": "ENERGIERICHTUNG"
+    },
+    "bilanzierungsmethode": {
+      "description": "Bilanzierungsmethode",
+      "translation": "Bilanzierungsmethode",
+      "enumRef": "BILANZIERUNGSMETHODE"
+    },
+    "verbrauchsart": {
+      "description": "Stromverbrauchsart/Verbrauchsart Marktlokation",
+      "translation": "Verbrauchsart"
+    },
+    "unterbrechbar": {
+      "description": "Gibt an, ob es sich um eine unterbrechbare Belieferung handelt.",
+      "example": "false",
+      "translation": "Unterbrechbar"
+    },
+    "netzebene": {
+      "description": "Netzebene, in der der Bezug der Energie erfolgt. Bei Strom Spannungsebene der\nLieferung, bei Gas Druckstufe. Beispiel Strom: Niederspannung Beispiel Gas:\nNiederdruck.",
+      "translation": "Netzebene",
+      "enumRef": "NETZEBENE"
+    },
+    "umspannung": {
+      "translation": "Umspannung",
+      "enumRef": "NETZEBENE"
+    },
+    "netzbetreiberCodeNr": {
+      "description": "Codenummer des Netzbetreibers, an dessen Netz diese Marktlokation\nangeschlossen ist.",
+      "pattern": "^\\d{10}$",
+      "example": "5555555555",
+      "translation": "Netzbetreiber-Codenummer"
+    },
+    "gebietTyp": {
+      "description": "Typ des Netzgebietes,z.B.Verteilnetz.",
+      "translation": "Gebietstyp",
+      "enumRef": "GEBIETTYP"
+    },
+    "netzgebietNr": {
+      "description": "Die Nummer des Netzgebietes in der ene't-Datenbank.",
+      "pattern": "^\\d{10}$",
+      "example": "5555555555",
+      "translation": "Netzgebietsnummer"
+    },
+    "bilanzierungsgebiet": {
+      "description": "Bilanzierungsgebiet, dem das Netzgebiet zugeordnet ist - im Falle eines Strom Netzes.",
+      "translation": "Bilanzierungsgebiet"
+    },
+    "grundversorgerCodeNr": {
+      "description": "CodeNummer des Grundversorgers, der für diese Marktlokation zuständig ist.",
+      "pattern": "^\\d{10}$",
+      "example": "5555555555",
+      "translation": "Grundversorger-Codenummer"
+    },
+    "gasqualitaet": {
+      "description": "gasqualitaet für EDIFACT mapping",
+      "translation": "Gasqualität",
+      "enumRef": "GASQUALITAET"
+    },
+    "endkunde": {
+      "description": "Link zum Geschäftspartner, dem diese Marktlokation gehört.",
+      "translation": "Endkunde"
+    },
+    "lokationsadresse": {
+      "description": "Die Adresse, an der die Energie-Lieferung oder -Einspeisung erfolgt.",
+      "translation": "Lokationsadresse"
+    },
+    "katasterinformation": {
+      "description": "Alternativ zu einer postalischen Adresse und Geokoordinaten kann hier eine\nOrtsangabe mittels Gemarkung und Flurstück erfolgen.\nAchtung: Es darf immer nur eine Art der Ortsangabe vorhanden sein (entweder\neine Adresse oder eine GeoKoordinate oder eine Katasteradresse.",
+      "translation": "Katasterinformation"
+    },
+    "regelzone": {
+      "description": "für EDIFACT mapping",
+      "translation": "Regelzone"
+    },
+    "marktgebiet": {
+      "description": "für EDIFACT mapping",
+      "translation": "Marktgebiet"
+    },
+    "zeitreihentyp": {
+      "description": "für EDIFACT mapping",
+      "translation": "Zeitreihentyp",
+      "enumRef": "ZEITREIHENTYP"
+    },
+    "messtechnischeEinordnung": {
+      "description": "Messtechnische Einordnung aus der UTILMD (IMS, KME_MME, KEINE_MESSUNG)",
+      "translation": "Messtechnische Einordnung",
+      "enumRef": "MESSTECHNISCHEEINORDNUNG"
+    },
+    "sperrstatus": {
+      "description": "Sperrstatus",
+      "translation": "Sperrstatus",
+      "enumRef": "SPERRSTATUS"
+    },
+    "referenzMarktlokationsId": {
+      "description": "referenzMarktlokationsId",
+      "pattern": "^\\d{11}$",
+      "example": "55555555555",
+      "translation": "Referenz Marktlokations Id"
+    },
+    "versorgungsart": {
+      "translation": "Versorgungsart",
+      "enumRef": "VERSORGUNGSART"
+    },
+    "eigentuemer": {
+      "translation": "Eigentuemer"
+    },
+    "hausverwalter": {
+      "translation": "Hausverwalter"
+    },
+    "verguetungEmpfaenger": {
+      "translation": "Verguetung Empfaenger",
+      "enumRef": "VERGUETUNGEMPFAENGER"
+    },
+    "statusErzeugendeMalo": {
+      "translation": "Status Erzeugende Malo",
+      "enumRef": "STATUSERZEUGENDEMARKTLOKATION"
+    },
+    "fernsteuerbarkeit": {
+      "translation": "Fernsteuerbarkeit",
+      "enumRef": "FERNSTEUERBARKEIT"
+    },
+    "foerderungsLand": {
+      "description": "foerderungsLand",
+      "translation": "Foerderungs Land"
+    },
+    "redispatch": {
+      "description": "redispatch",
+      "example": "false",
+      "translation": "Redispatch"
+    },
+    "zukuenftigerMeldepunkt": {
+      "description": "zukuenftigerMeldepunkt",
+      "example": "false",
+      "translation": "Zukuenftiger Meldepunkt"
+    },
+    "lokationszuordnung": {
+      "translation": "Lokationszuordnung",
+      "enumRef": "LOKATIONSZUORDNUNG"
+    },
+    "konfigurationsprodukt": {
+      "description": "konfigurationsprodukt",
+      "translation": "Konfigurationsprodukt"
+    },
+    "leistungskurvendefinition": {
+      "description": "Code der Zugeordnete Leistungskurvendefinition für das Objekt",
+      "translation": "Leistungskurvendefinition"
+    },
+    "produktdatenRelevanteRolle": {
+      "translation": "Produktdaten Relevante Rolle",
+      "enumRef": "MARKTROLLE"
+    },
+    "beteiligterMarktpartner": {
+      "translation": "Beteiligter Marktpartner"
+    },
+    "modulNetzentgelte": {
+      "translation": "Modul Netzentgelte",
+      "enumRef": "MODULNETZENTGELTE"
+    },
+    "datenqualitaet": {
+      "translation": "Datenqualität",
+      "enumRef": "DATENQUALITAET"
+    },
+    "gueltigkeitszeitraum": {
+      "translation": "Gueltigkeitszeitraum"
+    },
+    "marktrollen": {
+      "description": "marktrollen für EDIFACT mapping",
+      "translation": "Marktrollen"
+    },
+    "zaehlwerke": {
+      "description": "Die Zählwerke des Zählers.",
+      "translation": "Zaehlwerke"
+    },
+    "zaehlwerkeBeteiligteMarktrolle": {
+      "description": "Liste der Zählwerke der beteiligten Martrolle",
+      "translation": "Zaehlwerke Beteiligte Marktrolle"
+    },
+    "verbrauchsmenge": {
+      "description": "für EDIFACT mapping",
+      "translation": "Verbrauchsmenge"
+    },
+    "zugehoerigeMesslokationen": {
+      "description": "Aufzählung der Messlokationen, die zu dieser Marktlokation gehören.",
+      "translation": "Zugehoerige Messlokationen"
+    },
+    "netznutzungsabrechnungsdaten": {
+      "description": "Daten für die Prüfung der Netznutzungsabrechnung",
+      "translation": "Netznutzungsabrechnungsdaten"
+    },
+    "messstellenbetriebsabrechnungsdaten": {
+      "description": "messstellenbetriebsabrechnungsdaten",
+      "translation": "Messstellenbetriebsabrechnungsdaten"
+    },
+    "energieherkunft": {
+      "description": "energieherkunft",
+      "translation": "Energieherkunft"
+    },
+    "erforderlichesProduktpaket": {
+      "description": "erforderlichesProduktpaket",
+      "translation": "Erforderliches Produktpaket"
+    },
+    "geokoordinaten": {
+      "translation": "Geokoordinaten"
+    },
+    "paketId": {
+      "description": "paketId",
+      "translation": "Paket Id"
+    },
+    "marktlokationsTyp": {
+      "description": "Angabe der Typisierung der Marktlokation mit möglicher Angabe zeitlicher Gültigkeit",
+      "translation": "Marktlokations Typ"
+    }
+  },
+  "MARKTTEILNEHMER": {
+    "boTyp": {
+      "translation": "BO-Typ",
+      "enumRef": "BOTYP"
+    },
+    "versionStruktur": {
+      "description": "versionStruktur",
+      "example": "1",
+      "translation": "Versionsstruktur"
+    },
+    "geschaeftspartnerrolle": {
+      "description": "Rolle, die der Geschäftspartner hat (z.B. Interessent, Kunde).",
+      "translation": "Geschäftspartnerrolle",
+      "enumRef": "GESCHAEFTSPARTNERROLLE"
+    },
+    "anrede": {
+      "description": "Die Anrede für den GePa, Z.B. Herr.",
+      "example": "Herr",
+      "translation": "Anrede"
+    },
+    "name1": {
+      "description": "Erster Teil des Namens. Hier kann der Firmenname oder bei Privatpersonen\nbeispielsweise der Nachname dargestellt werden. Beispiele: Yellow Strom GmbH\noder Hagen",
+      "example": "Müller",
+      "translation": "Name1"
+    },
+    "name2": {
+      "description": "Zweiter Teil des Namens. Hier kann der eine Erweiterung zum Firmennamen oder\nbei Privatpersonen beispielsweise der Vorname dargestellt werden. Beispiele:\nBereich Süd oder Nina",
+      "example": "Max",
+      "translation": "Name2"
+    },
+    "name3": {
+      "description": "Dritter Teil des Namens. Hier können weitere Ergänzungen zum Firmennamen oder\nbei Privatpersonen Zusätze zum Namen dargestellt werden. Beispiele: und Afrika\noder Sängerin",
+      "translation": "Name3"
+    },
+    "name4": {
+      "description": "name4",
+      "translation": "Name4"
+    },
+    "partneradresse": {
+      "description": "Adresse des Geschäftspartners, an der sich der Hauptsitz befindet. Details",
+      "translation": "Partneradresse"
+    },
+    "gewerbekennzeichnung": {
+      "description": "Kennzeichnung ob es sich um einen Gewerbe/Unternehmen (gewerbeKennzeichnung = true)\noder eine Privatperson handelt. (gewerbeKennzeichnung = false)",
+      "example": "false",
+      "translation": "Gewerbekennzeichnung"
+    },
+    "externeKundenummerLieferant": {
+      "description": "externeKundenummerLieferant",
+      "translation": "Externe Kundennummer Lieferant"
+    },
+    "marktrolle": {
+      "description": "Gibt im Klartext die Bezeichnung der Marktrolle an.",
+      "translation": "Marktrolle",
+      "enumRef": "MARKTROLLE"
+    },
+    "rollencodenummer": {
+      "description": "Gibt die Codenummer der Marktrolle an.",
+      "pattern": "^\\d{9}$",
+      "example": "555555555",
+      "translation": "Rollencodenummer"
+    },
+    "rollencodetyp": {
+      "description": "Gibt den Typ des Codes an.",
+      "translation": "Rollencodetyp",
+      "enumRef": "ROLLENCODETYP"
+    },
+    "umsatzsteuerId": {
+      "description": "Die Umsatzsteuer-ID des Geschäftspartners. Beispiel: DE 813281825",
+      "example": "DE000000000",
+      "translation": "Umsatzsteuer-ID"
+    },
+    "steuernummer": {
+      "description": "Die Steuernummer-ID des Geschäftspartners. Beispiel: 30120345678",
+      "pattern": "^\\d{9}$",
+      "example": "555555555",
+      "translation": "Steuernummer"
+    },
+    "ansprechpartner": {
+      "description": "Ansprechpartner as in EDIFACT NAD+MS, that includes e.g. the email address of a natural person.",
+      "translation": "Ansprechpartner"
+    },
+    "makoadresse": {
+      "description": "Die 1:1-Kommunikationsadresse des Marktteilnehmers. Diese wird in der\nMarktkommunikation verwendet.",
+      "translation": "Makoadresse"
+    },
+    "downloadlinkZertifikat": {
+      "description": "downloadlinkZertifikat",
+      "example": "https://www.example.com",
+      "translation": "Downloadlink Zertifikat"
+    },
+    "amtsgericht": {
+      "description": "Amtsgericht bzw Handelsregistergericht, das die Handelsregisternummer herausgegeben hat",
+      "example": "Berlin",
+      "translation": "Amtsgericht"
+    },
+    "hrnummer": {
+      "description": "Handelsregisternummer des Geschäftspartners",
+      "pattern": "^\\d{6}$",
+      "example": "555555",
+      "translation": "HR-Nummer"
+    },
+    "website": {
+      "description": "Internetseite des Marktpartners. Beispiel: www.mp-energie.de",
+      "example": "https://www.example.com",
+      "translation": "Website"
+    },
+    "faxnummer": {
+      "description": "faxnummer",
+      "translation": "Faxnummer"
+    },
+    "kommunikationsrolle": {
+      "translation": "Kommunikationsrolle",
+      "enumRef": "KOMMUNIKATIONSROLLE"
+    },
+    "weiterverpflichtet": {
+      "description": "weiterverpflichtet",
+      "example": "false",
+      "translation": "Weiterverpflichtet"
+    },
+    "kommunikationsparameter": {
+      "translation": "Kommunikationsparameter"
+    },
+    "messstellenbetreiberEigenschaft": {
+      "translation": "Messstellenbetreiber Eigenschaft",
+      "enumRef": "MSBEIGENSCHAFT"
+    },
+    "bankverbindung": {
+      "description": "Bankverbindung",
+      "translation": "Bankverbindung"
+    },
+    "erreichbarkeit": {
+      "description": "Die Erreichbarkeit eines Unternehmens an Werktagen.",
+      "translation": "Erreichbarkeit"
+    },
+    "ipAdresse": {
+      "description": "ipAdresse",
+      "translation": "Ip Adresse"
+    },
+    "ipRange": {
+      "translation": "Ip Range"
+    },
+    "zuordnungVon": {
+      "description": "Startdatum der Zuordnung des Marktteilnehmers",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Zuordnung Von"
+    },
+    "zuordnungBis": {
+      "description": "Enddatum der Zuordnung des Marktteilnehmers",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Zuordnung Bis"
+    },
+    "bilanzkreis": {
+      "description": "Bilanzkreis",
+      "translation": "Bilanzkreis"
+    },
+    "verwendungszweckBilanzkreis": {
+      "description": "Verwendungszweck des Bilanzkreises",
+      "translation": "Verwendungszweck Bilanzkreis",
+      "enumRef": "VERWENDUNGSZWECKBILANZKREIS"
+    }
+  },
+  "MESSLOKATION": {
+    "boTyp": {
+      "translation": "BO-Typ",
+      "enumRef": "BOTYP"
+    },
+    "versionStruktur": {
+      "description": "versionStruktur",
+      "example": "1",
+      "translation": "Versionsstruktur"
+    },
+    "messlokationsId": {
+      "description": "Die Messlokations-Identifikation. Das ist die frühere Zählpunktbezeichnung,\nz.B. DE 47108151234567",
+      "pattern": "^\\d{33}$",
+      "example": "555555555555555555555555555555555",
+      "translation": "Messlokations-ID"
+    },
+    "sparte": {
+      "description": "Strom oder Gas.",
+      "translation": "Sparte",
+      "enumRef": "SPARTE"
+    },
+    "energierichtung": {
+      "translation": "Energierichtung",
+      "enumRef": "ENERGIERICHTUNG"
+    },
+    "netzebenemessung": {
+      "translation": "Netzebenemessung",
+      "enumRef": "NETZEBENE"
+    },
+    "messgebietNr": {
+      "description": "Die Nummer des Messgebietes in der ene't-Datenbank.",
+      "pattern": "^\\d{10}$",
+      "example": "5555555555",
+      "translation": "Messgebiet Nr"
+    },
+    "grundzustaendigerMSBCodeNr": {
+      "description": "Codenummer des grundzuständigen Messstellenbetreibers, der für diese\nMesslokation zuständig ist.( Dieser ist immer dann Messstellenbetreiber, wenn\nkein anderer MSB die Einrichtungen an der Messlokation betreibt.)",
+      "pattern": "^\\d{10}$",
+      "example": "5555555555",
+      "translation": "Grundzustaendiger MSB Code Nr"
+    },
+    "messadresse": {
+      "description": "Die Adresse, an der die Messeinrichtungen zu finden sind.( Nur angeben, wenn\ndiese von der Adresse der Marktlokation abweicht.)\nAchtung: Es darf immer nur eine Art der Ortsangabe vorhanden sein (entweder\neine Adresse oder eine GeoKoordinate oder eine Katasteradresse.",
+      "translation": "Messadresse"
+    },
+    "bilanzierungsmethode": {
+      "description": "Bilanzierungsmethode",
+      "translation": "Bilanzierungsmethode",
+      "enumRef": "BILANZIERUNGSMETHODE"
+    },
+    "abrechnungmessstellenbetriebnna": {
+      "description": "Dieser Wert ist true, falls die Abrechnungs des Messstellenbetriebs die Netznutzungsabrechnung enthält. false\nandernfalls",
+      "example": "false",
+      "translation": "Abrechnungmessstellenbetriebnna"
+    },
+    "gasqualitaet": {
+      "description": "gasqualitaet für EDIFACT mapping",
+      "translation": "Gasqualität",
+      "enumRef": "GASQUALITAET"
+    },
+    "verlustfaktor": {
+      "description": "verlustfaktor für EDIFACT mapping",
+      "example": "1.5",
+      "translation": "Verlustfaktor"
+    },
+    "betriebszustand": {
+      "translation": "Betriebszustand",
+      "enumRef": "BETRIEBSZUSTAND"
+    },
+    "ablesekartenempfaenger": {
+      "translation": "Ablesekartenempfaenger"
+    },
+    "referenzMarktlokationsId": {
+      "description": "referenzMarktlokationsId",
+      "pattern": "^\\d{11}$",
+      "example": "55555555555",
+      "translation": "Referenz Marktlokations Id"
+    },
+    "verwendungsumfang": {
+      "translation": "Verwendungsumfang",
+      "enumRef": "VERWENDUNGSUMFANG"
+    },
+    "zukuenftigerMeldepunkt": {
+      "description": "zukuenftigerMeldepunkt",
+      "example": "false",
+      "translation": "Zukuenftiger Meldepunkt"
+    },
+    "lokationszuordnung": {
+      "translation": "Lokationszuordnung",
+      "enumRef": "LOKATIONSZUORDNUNG"
+    },
+    "beteiligterMarktpartner": {
+      "translation": "Beteiligter Marktpartner"
+    },
+    "geraete": {
+      "description": "Liste der Geräte, die zu diesem Zähler gehören.",
+      "translation": "Geraete"
+    },
+    "messdienstleistung": {
+      "description": "Liste der Messdienstleistungen, die zu dieser Messstelle gehört.",
+      "translation": "Messdienstleistung"
+    },
+    "messlokationszaehler": {
+      "description": "Zähler, die zu dieser Messlokation gehören. Details",
+      "translation": "Messlokationszaehler"
+    },
+    "zaehlwerke": {
+      "description": "Die Zählwerke des Zählers.",
+      "translation": "Zaehlwerke"
+    },
+    "marktrollen": {
+      "description": "marktrollen für EDIFACT mapping",
+      "translation": "Marktrollen"
+    },
+    "datenqualitaet": {
+      "translation": "Datenqualität",
+      "enumRef": "DATENQUALITAET"
+    },
+    "gueltigkeitszeitraum": {
+      "translation": "Gueltigkeitszeitraum"
+    }
+  },
+  "NETZLOKATION": {
+    "boTyp": {
+      "translation": "BO-Typ",
+      "enumRef": "BOTYP"
+    },
+    "versionStruktur": {
+      "description": "versionStruktur",
+      "example": "1",
+      "translation": "Versionsstruktur"
+    },
+    "netzlokationsId": {
+      "description": "Identifikationsnummer einer Netzlokation, an der Energie entweder\nverbraucht, oder erzeugt wird (Like MarktlokationsId Marktlokation)",
+      "pattern": "^\\d{11}$",
+      "example": "55555555555",
+      "translation": "Netzlokations Id"
+    },
+    "sparte": {
+      "description": "Sparte der Netzlokation, z.B. Gas oder Strom.",
+      "translation": "Sparte",
+      "enumRef": "SPARTE"
+    },
+    "netzanschlussleistung": {
+      "description": "Netzanschlussleistungsmenge der Netzlokation",
+      "translation": "Netzanschlussleistung"
+    },
+    "grundzustaendigerMSBCodeNr": {
+      "description": "Codenummer des grundzuständigen Messstellenbetreibers, der für diese\nNetzlokation zuständig ist.",
+      "translation": "Grundzustaendiger MSB Code Nr"
+    },
+    "steuerkanal": {
+      "description": "Ob ein Steuerkanal der Netzlokation zugeordnet ist und somit die Netzlokation gesteuert\nwerden kann.\nZF2: Kein Steuerkanal vorhanden\nZF3: Steuerkanal vorhanden",
+      "example": "false",
+      "translation": "Steuerkanal"
+    },
+    "lokationszuordnung": {
+      "translation": "Lokationszuordnung",
+      "enumRef": "LOKATIONSZUORDNUNG"
+    },
+    "produktdatenRelevanteRolle": {
+      "translation": "Produktdaten Relevante Rolle",
+      "enumRef": "MARKTROLLE"
+    },
+    "auftraggebenderMarktpartner": {
+      "translation": "Auftraggebender Marktpartner"
+    },
+    "konfigurationsprodukt": {
+      "description": "konfigurationsprodukt",
+      "translation": "Konfigurationsprodukt"
+    },
+    "keinKonfigurationsprodukt": {
+      "description": "keinKonfigurationsprodukt",
+      "example": "false",
+      "translation": "Kein Konfigurationsprodukt"
+    },
+    "leistungskurvendefinition": {
+      "description": "Code der Zugeordnete Leistungskurvendefinition für das Objekt",
+      "translation": "Leistungskurvendefinition"
+    },
+    "marktrollen": {
+      "description": "marktrollen",
+      "translation": "Marktrollen"
+    },
+    "zaehlwerke": {
+      "description": "zaehlwerke",
+      "translation": "Zaehlwerke"
+    },
+    "abrechnungsdaten": {
+      "description": "abrechnungsdaten",
+      "translation": "Abrechnungsdaten"
+    },
+    "datenqualitaet": {
+      "translation": "Datenqualität",
+      "enumRef": "DATENQUALITAET"
+    },
+    "gueltigkeitszeitraum": {
+      "translation": "Gueltigkeitszeitraum"
+    }
+  },
+  "PREISBLATT": {
+    "boTyp": {
+      "translation": "BO-Typ",
+      "enumRef": "BOTYP"
+    },
+    "versionStruktur": {
+      "description": "versionStruktur",
+      "example": "1",
+      "translation": "Versionsstruktur"
+    },
+    "bezeichnung": {
+      "description": "Bezeichnung des Auf-/Abschlags",
+      "translation": "Bezeichnung"
+    },
+    "gueltigkeit": {
+      "description": "Der Zeitraum für den der Preis festgelegt ist. Details siehe Zeitraum",
+      "translation": "Gueltigkeit"
+    },
+    "preisstatus": {
+      "description": "Gibt den Status des veröffentlichten Preises an",
+      "translation": "Preisstatus",
+      "enumRef": "PREISSTATUS"
+    },
+    "sparte": {
+      "description": "Strom oder Gas.",
+      "translation": "Sparte",
+      "enumRef": "SPARTE"
+    },
+    "preisNetzbetreiberCodenummer": {
+      "description": "Preise des Netzbetreibers",
+      "translation": "Preis Netzbetreiber Codenummer"
+    },
+    "bilanzierungsdatum": {
+      "description": "bilanzierungsdatum",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Bilanzierungsdatum"
+    },
+    "regelzone": {
+      "description": "regelzone",
+      "translation": "Regelzone"
+    },
+    "leistungstyp": {
+      "description": "Standardisierte Bezeichnung für die abgerechnete Leistungserbringung. Details Leistungstyp",
+      "translation": "Leistungstyp",
+      "enumRef": "LEISTUNGSTYP"
+    },
+    "nichtGenutzt": {
+      "description": "nichtGenutzt",
+      "example": "false",
+      "translation": "Nicht Genutzt"
+    },
+    "preispositionen": {
+      "description": "Die einzelnen Positionen, die mit dem Preisblatt abgerechnet werden können. Z.B. Arbeitspreis, Grundpreis etc.\nDetails siehe Preisposition",
+      "translation": "Preispositionen"
+    }
+  },
+  "RECHNUNG": {
+    "boTyp": {
+      "translation": "BO-Typ",
+      "enumRef": "BOTYP"
+    },
+    "versionStruktur": {
+      "description": "versionStruktur",
+      "example": "1",
+      "translation": "Versionsstruktur"
+    },
+    "istSelbstausgestellt": {
+      "description": "Kennzeichen, ob es sich um eine selbstausgestellte Rechnung handelt",
+      "example": "false",
+      "translation": "Ist Selbstausgestellt"
+    },
+    "bearbeitungsdatum": {
+      "description": "bearbeitungsdatum",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Bearbeitungsdatum"
+    },
+    "rechnungsdatum": {
+      "description": "Ausstellungsdatum der Rechnung.",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Rechnungsdatum"
+    },
+    "faelligkeitsdatum": {
+      "description": "Zu diesem Datum ist die Zahlung fällig.",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Faelligkeitsdatum"
+    },
+    "rechnungsstatus": {
+      "description": "Status der Rechnung zur Kennzeichnung des Bearbeitungsstandes. Details siehe ENUM Rechnungsstatus",
+      "translation": "Rechnungsstatus",
+      "enumRef": "RECHNUNGSSTATUS"
+    },
+    "vorlaeufigerAbrechnungszeitraum": {
+      "translation": "Vorlaeufiger Abrechnungszeitraum"
+    },
+    "rechnungsperiode": {
+      "description": "Der Zeitraum der zugrunde liegenden Lieferung zur Rechnung. In der COM Zeitraum können diese angegeben werden.",
+      "translation": "Rechnungsperiode"
+    },
+    "rechnungstyp": {
+      "description": "Ein kontextbezogender Rechnungstyp, z.B. Netznutzungsrechnung. Details siehe ENUM Rechnungstyp",
+      "translation": "Rechnungstyp",
+      "enumRef": "RECHNUNGSTYP"
+    },
+    "istReverseCharge": {
+      "description": "Kennzeichen, ob bei der Rechnung das Reverse Charge verfahren angewendet wird",
+      "example": "false",
+      "translation": "Ist Reverse Charge"
+    },
+    "gesamtbrutto": {
+      "description": "Die Summe aus Netto- und Steuerbetrag. Details Betrag",
+      "translation": "Gesamtbrutto"
+    },
+    "zuZahlen": {
+      "translation": "Zu Zahlen"
+    },
+    "originalRechnungsnummer": {
+      "description": "Im Falle einer Stornorechnung (storno = true) steht hier die Rechnungsnummer der stornierten Rechnung.",
+      "example": "RN_000000",
+      "translation": "Original Rechnungsnummer"
+    },
+    "referenzNachrichtendatum": {
+      "description": "referenzNachrichtendatum",
+      "example": "REF_000000",
+      "translation": "Referenz Nachrichtendatum"
+    },
+    "referenzDokumentennummer": {
+      "description": "referenzDokumentennummer",
+      "example": "DOC_000000",
+      "translation": "Referenz Dokumentennummer"
+    },
+    "referenzVorgaengerrechnung": {
+      "description": "referenzVorgaengerrechnung",
+      "example": "RN_000000",
+      "translation": "Referenz Vorgaengerrechnung"
+    },
+    "datumVorgaengerrechnung": {
+      "description": "datumVorgaengerrechnung",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Datum Vorgaengerrechnung"
+    },
+    "preisNetzbetreiberCodenummer": {
+      "description": "preisNetzbetreiberCodenummer",
+      "translation": "Preis Netzbetreiber Codenummer"
+    },
+    "netzkonto": {
+      "description": "netzkonto",
+      "translation": "Netzkonto"
+    },
+    "vorausgezahlt": {
+      "description": "Die Summe evtl. vorausgezahlter Beträge, z.B. Abschläge. Angabe als Bruttowert. Details Betrag",
+      "translation": "Vorausgezahlt"
+    },
+    "gemeinderabatt": {
+      "translation": "Gemeinderabatt"
+    },
+    "ausfuehrungsdatum": {
+      "description": "Das Datum an dem die Leistung erbracht wurde.",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Ausführungsdatum"
+    },
+    "sonderrechnungsart": {
+      "description": "Sonderrechnungsart",
+      "translation": "Sonderrechnungsart",
+      "enumRef": "SONDERRECHNUNGSART"
+    },
+    "sonderrechnungsarten": {
+      "description": "Sonderrechnungsart",
+      "translation": "Sonderrechnungsarten"
+    },
+    "energierichtung": {
+      "translation": "Energierichtung",
+      "enumRef": "ENERGIERICHTUNG"
+    },
+    "beginnPeriodeBilanzierung": {
+      "description": "beginnPeriodeBilanzierung",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Beginn Periode Bilanzierung"
+    },
+    "endePeriodeNetznutzung": {
+      "description": "endePeriodeNetznutzung",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Ende Periode Netznutzung"
+    },
+    "steuerbetraege": {
+      "description": "Eine Liste mit Steuerbeträgen pro Steuerkennzeichen/Steuersatz. Die Summe dieser Beträge ergibt den Wert für\ngesamtsteuer. Details Steuerbetrag",
+      "translation": "Steuerbetraege"
+    },
+    "rechnungspositionen": {
+      "description": "Die Rechnungspositionen. Details siehe Rechnungsposition",
+      "translation": "Rechnungspositionen"
+    }
+  },
+  "REKLAMATION": {
+    "boTyp": {
+      "translation": "BO-Typ",
+      "enumRef": "BOTYP"
+    },
+    "versionStruktur": {
+      "description": "versionStruktur",
+      "example": "1",
+      "translation": "Versionsstruktur"
+    },
+    "lokationsId": {
+      "description": "Für welche Markt- oder Messlokation gilt diese Reklamation.",
+      "pattern": "^\\d{11}$",
+      "example": "55555555555",
+      "translation": "Lokations-ID"
+    },
+    "lokationsTyp": {
+      "description": "Gibt an, ob es sich um eine Markt- oder Messlokation handelt.",
+      "translation": "Lokations Typ",
+      "enumRef": "LOKATIONSTYP"
+    },
+    "obiskennzahl": {
+      "description": "OBIS-Kennzahl",
+      "translation": "Obiskennzahl"
+    },
+    "zeitraumMesswertanfrage": {
+      "translation": "Zeitraum Messwertanfrage"
+    },
+    "reklamationsgrund": {
+      "description": "Hier wird für die Reklamation von Werten der Reklamationsgrund angegeben.",
+      "translation": "Reklamationsgrund",
+      "enumRef": "REKLAMATIONSGRUND"
+    },
+    "reklamationsgrundBemerkung": {
+      "description": "Freitext für eine weitere Beschreibung des Reklamationsgrunds",
+      "translation": "Reklamationsgrund Bemerkung"
+    },
+    "konfiguration": {
+      "description": "konfiguration",
+      "translation": "Konfiguration"
+    }
+  },
+  "SCHALTZEITDEFINITION": {
+    "boTyp": {
+      "translation": "BO-Typ",
+      "enumRef": "BOTYP"
+    },
+    "versionStruktur": {
+      "description": "versionStruktur",
+      "example": "1",
+      "translation": "Versionsstruktur"
+    },
+    "beginndatum": {
+      "description": "beginndatum",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Beginndatum"
+    },
+    "endedatum": {
+      "description": "endedatum",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Endedatum"
+    },
+    "version": {
+      "description": "version",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Version"
+    },
+    "code": {
+      "description": "code",
+      "example": "CODE_000000",
+      "translation": "Code"
+    },
+    "notwendigkeit": {
+      "translation": "Notwendigkeit",
+      "enumRef": "DEFINITIONENNOTWENDIGKEIT"
+    },
+    "schaltzeiten": {
+      "description": "schaltzeiten",
+      "translation": "Schaltzeiten"
+    }
+  },
+  "SPERRAUFTRAG": {
+    "boTyp": {
+      "translation": "BO-Typ",
+      "enumRef": "BOTYP"
+    },
+    "versionStruktur": {
+      "description": "versionStruktur",
+      "example": "1",
+      "translation": "Versionsstruktur"
+    },
+    "treffpunkt": {
+      "translation": "Treffpunkt"
+    },
+    "sperrauftragsart": {
+      "description": "Handelt es sich um einen Auftrag zum SPERREN oder ENTSPERREN?",
+      "translation": "Sperrauftragsart",
+      "enumRef": "SPERRAUFTRAGSART"
+    },
+    "sperrauftragsstatus": {
+      "description": "Auftragsstatus",
+      "translation": "Sperrauftragsstatus",
+      "enumRef": "AUFTRAGSSTATUS"
+    },
+    "sperrauftragsablehngrund": {
+      "description": "Falls Sperrauftragsstatus = ABGELEHNT",
+      "translation": "Sperrauftragsablehngrund",
+      "enumRef": "SPERRAUFTRAGSABLEHNGRUND"
+    },
+    "sperrauftragsverhinderungsgrund": {
+      "description": "Falls Sperrauftragsstatus = GESCHEITERT",
+      "translation": "Sperrauftragsverhinderungsgrund",
+      "enumRef": "SPERRAUFTRAGSVERHINDERUNGSGRUND"
+    },
+    "zaehlernummer": {
+      "description": "Die Nummer des zu sperrenden Zählers",
+      "example": "ZAEHLER_000000",
+      "translation": "Zaehlernummer"
+    },
+    "istVomGerichtsvollzieherAngeordnet": {
+      "description": "True, falls die Sperrung vom Gerichtsvollzieher angeordnet ist.",
+      "example": "false",
+      "translation": "Ist Vom Gerichtsvollzieher Angeordnet"
+    }
+  },
+  "STATUSBERICHT": {
+    "boTyp": {
+      "translation": "BO-Typ",
+      "enumRef": "BOTYP"
+    },
+    "versionStruktur": {
+      "description": "versionStruktur",
+      "example": "1",
+      "translation": "Versionsstruktur"
+    },
+    "status": {
+      "description": "Status des Berichtes (Fehlerhaft, Erfolgreich)",
+      "translation": "Status",
+      "enumRef": "BERICHTSTATUS"
+    },
+    "pruefgegenstand": {
+      "description": "Das geprüfte Dokument, z.B. die Referenz auf die EDIFACT-Nachricht die geprüft / beanstandet wurde",
+      "translation": "Pruefgegenstand"
+    },
+    "datumPruefung": {
+      "description": "Pruefdatum (wann wurde der Pruefgegenstand geprüft)",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Datum Pruefung"
+    },
+    "fehler": {
+      "description": "Liste der Fehler",
+      "translation": "Fehler"
+    },
+    "absenderreferenz": {
+      "description": "absenderreferenz",
+      "translation": "Absenderreferenz"
+    },
+    "transaktionsReferenznummer": {
+      "description": "transaktionsReferenznummer",
+      "translation": "Transaktions Referenznummer"
+    }
+  },
+  "STATUSMITTEILUNG": {
+    "boTyp": {
+      "translation": "BO-Typ",
+      "enumRef": "BOTYP"
+    },
+    "versionStruktur": {
+      "description": "versionStruktur",
+      "example": "1",
+      "translation": "Versionsstruktur"
+    },
+    "statusObjekt": {
+      "translation": "Status Objekt",
+      "enumRef": "STATUSOBJEKT"
+    },
+    "statusanlass": {
+      "translation": "Statusanlass",
+      "enumRef": "STATUS"
+    },
+    "auftragsstatus": {
+      "translation": "Auftragsstatus",
+      "enumRef": "AUFTRAGSSTATUS"
+    },
+    "positionsdaten": {
+      "description": "positionsdaten",
+      "translation": "Positionsdaten"
+    }
+  },
+  "STEUERBARERESSOURCE": {
+    "boTyp": {
+      "translation": "BO-Typ",
+      "enumRef": "BOTYP"
+    },
+    "versionStruktur": {
+      "description": "versionStruktur",
+      "example": "1",
+      "translation": "Versionsstruktur"
+    },
+    "ressourcenId": {
+      "description": "ressourcenId",
+      "pattern": "^\\d{11}$",
+      "example": "55555555555",
+      "translation": "Ressourcen Id"
+    },
+    "sparte": {
+      "translation": "Sparte",
+      "enumRef": "SPARTE"
+    },
+    "lokationszuordnung": {
+      "translation": "Lokationszuordnung",
+      "enumRef": "LOKATIONSZUORDNUNG"
+    },
+    "konfigurationsprodukt": {
+      "description": "konfigurationsprodukt",
+      "translation": "Konfigurationsprodukt"
+    },
+    "steuerkanal": {
+      "translation": "Steuerkanal",
+      "enumRef": "STEUERKANAL"
+    },
+    "produktdatenRelevanteRolle": {
+      "translation": "Produktdaten Relevante Rolle",
+      "enumRef": "MARKTROLLE"
+    },
+    "auftraggebenderMarktpartner": {
+      "translation": "Auftraggebender Marktpartner"
+    },
+    "zugeordneteDefinition": {
+      "translation": "Zugeordnete Definition"
+    },
+    "marktrollen": {
+      "description": "marktrollen",
+      "translation": "Marktrollen"
+    },
+    "datenqualitaet": {
+      "translation": "Datenqualität",
+      "enumRef": "DATENQUALITAET"
+    },
+    "gueltigkeitszeitraum": {
+      "translation": "Gueltigkeitszeitraum"
+    },
+    "erforderlicheProdukte": {
+      "description": "erforderlicheProdukte",
+      "translation": "Erforderliche Produkte"
+    }
+  },
+  "TARIFINFO": {
+    "boTyp": {
+      "translation": "BO-Typ",
+      "enumRef": "BOTYP"
+    },
+    "versionStruktur": {
+      "description": "versionStruktur",
+      "example": "1",
+      "translation": "Versionsstruktur"
+    },
+    "anbieter": {
+      "description": "Der Marktteilnehmer (Lieferant), der diesen Tarif anbietet",
+      "translation": "Anbieter"
+    },
+    "anbietername": {
+      "description": "Der Name des Marktpartners, der den Tarif anbietet",
+      "translation": "Anbietername"
+    },
+    "anwendung_von": {
+      "description": "Angabe des inklusiven Zeitpunkts, ab dem der Tarif bzw. der Preis angewendet und abgerechnet wird",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Anwendung_von"
+    },
+    "bemerkung": {
+      "description": "Freitext",
+      "translation": "Bemerkung"
+    },
+    "bezeichnung": {
+      "description": "Name des Tarifs",
+      "translation": "Bezeichnung"
+    },
+    "energiemix": {
+      "description": "Der Energiemix, der für diesen Tarif gilt",
+      "translation": "Energiemix"
+    },
+    "kundentypen": {
+      "description": "Kundentypen für den der Tarif gilt, z.B. Privatkunden",
+      "translation": "Kundentypen"
+    },
+    "registeranzahl": {
+      "description": "Die Art des Tarifes, z.B. Eintarif oder Mehrtarif",
+      "translation": "Registeranzahl",
+      "enumRef": "REGISTERANZAHL"
+    },
+    "sparte": {
+      "description": "Strom oder Gas, etc.",
+      "translation": "Sparte",
+      "enumRef": "SPARTE"
+    },
+    "tarifmerkmale": {
+      "description": "Weitere Merkmale des Tarifs, z.B. Festpreis oder Vorkasse",
+      "translation": "Tarifmerkmale"
+    },
+    "tariftyp": {
+      "description": "Hinweis auf den Tariftyp, z.B. Grundversorgung oder Sondertarif",
+      "translation": "Tariftyp",
+      "enumRef": "TARIFTYP"
+    },
+    "vertragskonditionen": {
+      "description": "Mindestlaufzeiten und Kündigungsfristen zusammengefasst",
+      "translation": "Vertragskonditionen"
+    },
+    "website": {
+      "description": "Internetseite auf dem der Tarif zu finden ist",
+      "translation": "Website"
+    },
+    "zeitliche_gueltigkeit": {
+      "description": "Angabe, in welchem Zeitraum der Tarif gültig ist",
+      "translation": "Zeitliche_gueltigkeit"
+    }
+  },
+  "TECHNISCHERESSOURCE": {
+    "boTyp": {
+      "translation": "BO-Typ",
+      "enumRef": "BOTYP"
+    },
+    "versionStruktur": {
+      "description": "versionStruktur",
+      "example": "1",
+      "translation": "Versionsstruktur"
+    },
+    "ressourcenId": {
+      "description": "ressourcenId",
+      "pattern": "^\\d{11}$",
+      "example": "55555555555",
+      "translation": "Ressourcen Id"
+    },
+    "sparte": {
+      "translation": "Sparte",
+      "enumRef": "SPARTE"
+    },
+    "lokationszuordnung": {
+      "translation": "Lokationszuordnung",
+      "enumRef": "LOKATIONSZUORDNUNG"
+    },
+    "referenzMesslokation": {
+      "description": "referenzMesslokation",
+      "pattern": "^\\d{33}$",
+      "example": "555555555555555555555555555555555",
+      "translation": "Referenz Messlokation"
+    },
+    "referenzMarktlokation": {
+      "description": "referenzMarktlokation",
+      "pattern": "^\\d{11}$",
+      "example": "55555555555",
+      "translation": "Referenz Marktlokation"
+    },
+    "referenzNetzlokation": {
+      "description": "referenzNetzlokation",
+      "pattern": "^\\d{11}$",
+      "example": "55555555555",
+      "translation": "Referenz Netzlokation"
+    },
+    "referenzSteuerbareRessource": {
+      "description": "referenzSteuerbareRessource",
+      "pattern": "^\\d{11}$",
+      "example": "55555555555",
+      "translation": "Referenz Steuerbare Ressource"
+    },
+    "nennleistung": {
+      "translation": "Nennleistung"
+    },
+    "speicherkapazitaet": {
+      "description": "Speicherkapazität\nBeispiel: QTY+Z42:100:KWH'",
+      "example": "1.5",
+      "translation": "Speicherkapazitaet"
+    },
+    "verbrauchsart": {
+      "description": "Verbrauchsart der Technischen Ressource\nBeispiel: CAV+Z64'\n    Z64: Kraft/Licht\n    Z65: Wärme\n    ZE5: E-Mobilität\n    ZA8: Straßenbeleuchtung",
+      "translation": "Verbrauchsart"
+    },
+    "waermenutzung": {
+      "description": "Wärmenutzung\nBeispiel: CAV+Z56'\n    Z56: Speicherheizung\n    Z57: Wärmepumpe\n    Z61: Direktheizung",
+      "translation": "Waermenutzung",
+      "enumRef": "WAERMENUTZUNG"
+    },
+    "artEMobilitaet": {
+      "translation": "Art E Mobilitaet",
+      "enumRef": "ARTEMOBILITAET"
+    },
+    "erzeugungsart": {
+      "description": "Art der Erzeugung der Energie. Details Erzeugungsart\nBeispiel: CAV+ZF5'\nErzeugungsart:\n    ZF5: Solar\n    ZF6: Wind\n    ZG0: Gas\n    ZG1: Wasser\n    ZG5: Sonstige Erzeugungsart",
+      "translation": "Erzeugungsart",
+      "enumRef": "ERZEUGUNGSART"
+    },
+    "speicherart": {
+      "description": "Art der speicher. Details Speicherart\nBeispiel: CAV+ZF7'\nSpeicherart:\n    ZF7: Wasserstoffspeicher\n    ZF8: Pumpspeicher\n    ZF9: Batteriespeicher\n    ZG6: Sonstige Speicherart",
+      "translation": "Speicherart",
+      "enumRef": "SPEICHERART"
+    },
+    "enwg": {
+      "description": "enwg",
+      "example": "false",
+      "translation": "Enwg"
+    },
+    "inbetriebsetzungsdatum": {
+      "translation": "Inbetriebsetzungsdatum",
+      "enumRef": "INBETRIEBSETZUNG"
+    },
+    "einordnung": {
+      "translation": "Einordnung",
+      "enumRef": "RESSOURCEWECHSELMOEGLICHKEIT"
+    },
+    "weitereEinrichtung": {
+      "description": "weitereEinrichtung",
+      "example": "false",
+      "translation": "Weitere Einrichtung"
+    },
+    "art": {
+      "translation": "Art",
+      "enumRef": "TECHNISCHERESSOURCEART"
+    },
+    "datenqualitaet": {
+      "translation": "Datenqualität",
+      "enumRef": "DATENQUALITAET"
+    },
+    "gueltigkeitszeitraum": {
+      "translation": "Gueltigkeitszeitraum"
+    },
+    "erforderlicheProdukte": {
+      "description": "erforderlicheProdukte",
+      "translation": "Erforderliche Produkte"
+    }
+  },
+  "TRANCHE": {
+    "boTyp": {
+      "translation": "BO-Typ",
+      "enumRef": "BOTYP"
+    },
+    "versionStruktur": {
+      "description": "versionStruktur",
+      "example": "1",
+      "translation": "Versionsstruktur"
+    },
+    "tranchenId": {
+      "description": "tranchenId",
+      "pattern": "^\\d{11}$",
+      "example": "55555555555",
+      "translation": "Tranchen Id"
+    },
+    "sparte": {
+      "description": "Sparte der Tranche, z.B. Gas oder Strom.",
+      "translation": "Sparte",
+      "enumRef": "SPARTE"
+    },
+    "energierichtung": {
+      "translation": "Energierichtung",
+      "enumRef": "ENERGIERICHTUNG"
+    },
+    "bilanzierungsmethode": {
+      "translation": "Bilanzierungsmethode",
+      "enumRef": "BILANZIERUNGSMETHODE"
+    },
+    "verbrauchsart": {
+      "description": "Stromverbrauchsart/Verbrauchsart",
+      "translation": "Verbrauchsart"
+    },
+    "unterbrechbar": {
+      "description": "unterbrechbar",
+      "example": "false",
+      "translation": "Unterbrechbar"
+    },
+    "netzebene": {
+      "translation": "Netzebene",
+      "enumRef": "NETZEBENE"
+    },
+    "netzbetreiberCodeNr": {
+      "description": "netzbetreiberCodeNr",
+      "translation": "Netzbetreiber-Codenummer"
+    },
+    "gebietTyp": {
+      "translation": "Gebietstyp",
+      "enumRef": "GEBIETTYP"
+    },
+    "netzgebietNr": {
+      "description": "netzgebietNr",
+      "translation": "Netzgebietsnummer"
+    },
+    "bilanzierungsgebiet": {
+      "description": "bilanzierungsgebiet",
+      "translation": "Bilanzierungsgebiet"
+    },
+    "grundversorgerCodeNr": {
+      "description": "grundversorgerCodeNr",
+      "translation": "Grundversorger-Codenummer"
+    },
+    "gasqualitaet": {
+      "translation": "Gasqualität",
+      "enumRef": "GASQUALITAET"
+    },
+    "endkunde": {
+      "translation": "Endkunde"
+    },
+    "lokationsadresse": {
+      "translation": "Lokationsadresse"
+    },
+    "katasterinformation": {
+      "translation": "Katasterinformation"
+    },
+    "regelzone": {
+      "description": "regelzone",
+      "translation": "Regelzone"
+    },
+    "marktgebiet": {
+      "description": "marktgebiet",
+      "translation": "Marktgebiet"
+    },
+    "zeitreihentyp": {
+      "translation": "Zeitreihentyp",
+      "enumRef": "ZEITREIHENTYP"
+    },
+    "messtechnischeEinordnung": {
+      "translation": "Messtechnische Einordnung",
+      "enumRef": "MESSTECHNISCHEEINORDNUNG"
+    },
+    "sperrstatus": {
+      "translation": "Sperrstatus",
+      "enumRef": "SPERRSTATUS"
+    },
+    "referenzMarktlokationsId": {
+      "description": "referenzMarktlokationsId",
+      "pattern": "^\\d{11}$",
+      "example": "55555555555",
+      "translation": "Referenz Marktlokations Id"
+    },
+    "versorgungsart": {
+      "translation": "Versorgungsart",
+      "enumRef": "VERSORGUNGSART"
+    },
+    "fernsteuerbarkeit": {
+      "translation": "Fernsteuerbarkeit",
+      "enumRef": "FERNSTEUERBARKEIT"
+    },
+    "verguetungEmpfaenger": {
+      "translation": "Verguetung Empfaenger",
+      "enumRef": "VERGUETUNGEMPFAENGER"
+    },
+    "foerderungsLand": {
+      "description": "foerderungsLand",
+      "translation": "Foerderungs Land"
+    },
+    "statusErzeugendeMalo": {
+      "translation": "Status Erzeugende Malo",
+      "enumRef": "STATUSERZEUGENDEMARKTLOKATION"
+    },
+    "referenzTranche": {
+      "description": "referenzTranche",
+      "pattern": "^\\d{11}$",
+      "example": "55555555555",
+      "translation": "Referenz Tranche"
+    },
+    "aufteilungsmenge": {
+      "description": "Prozentualer Anteil der Tranche an der erzeugenden Marktlokation in Prozent mit 2 Nachkommastellen",
+      "translation": "Aufteilungsmenge"
+    },
+    "bilanzkreis": {
+      "description": "bilanzkreis",
+      "translation": "Bilanzkreis"
+    },
+    "bildungTranchengroesse": {
+      "translation": "Bildung Tranchengroesse",
+      "enumRef": "BILDUNGTRANCHENGROESSE"
+    },
+    "zukuenftigerMeldepunkt": {
+      "description": "zukuenftigerMeldepunkt",
+      "example": "false",
+      "translation": "Zukuenftiger Meldepunkt"
+    },
+    "lokationszuordnung": {
+      "translation": "Lokationszuordnung",
+      "enumRef": "LOKATIONSZUORDNUNG"
+    },
+    "beteiligterMarktpartner": {
+      "translation": "Beteiligter Marktpartner"
+    },
+    "marktrollen": {
+      "description": "marktrollen",
+      "translation": "Marktrollen"
+    },
+    "zaehlwerke": {
+      "description": "zaehlwerke",
+      "translation": "Zaehlwerke"
+    },
+    "zaehlwerkeBeteiligteMarktrolle": {
+      "description": "zaehlwerkeBeteiligteMarktrolle",
+      "translation": "Zaehlwerke Beteiligte Marktrolle"
+    },
+    "verbrauchsmenge": {
+      "description": "verbrauchsmenge",
+      "translation": "Verbrauchsmenge"
+    },
+    "zugehoerigeMesslokationen": {
+      "description": "zugehoerigeMesslokationen",
+      "translation": "Zugehoerige Messlokationen"
+    },
+    "netznutzungsabrechnungsdaten": {
+      "description": "netznutzungsabrechnungsdaten",
+      "translation": "Netznutzungsabrechnungsdaten"
+    },
+    "energieherkunft": {
+      "description": "energieherkunft",
+      "translation": "Energieherkunft"
+    },
+    "datenqualitaet": {
+      "translation": "Datenqualität",
+      "enumRef": "DATENQUALITAET"
+    },
+    "gueltigkeitszeitraum": {
+      "translation": "Gueltigkeitszeitraum"
+    }
+  },
+  "VERTRAG": {
+    "boTyp": {
+      "translation": "BO-Typ",
+      "enumRef": "BOTYP"
+    },
+    "versionStruktur": {
+      "description": "obligatory version of the BO4E definition. Currently hard coded to 1",
+      "example": "1",
+      "translation": "Versionsstruktur"
+    },
+    "sparte": {
+      "description": "Unterscheidungsmöglichkeiten für die Sparte. Siehe ENUM Sparte",
+      "translation": "Sparte",
+      "enumRef": "SPARTE"
+    },
+    "vertragsart": {
+      "description": "Hier ist festgelegt, um welche Art von Vertrag es sich handelt. Z.B. Netznutzungvertrag. Details siehe ENUM\nVertragsart",
+      "translation": "Vertragsart"
+    },
+    "vertragsnummer": {
+      "description": "Eine im Verwendungskontext eindeutige Nummer für den Vertrag",
+      "translation": "Vertragsnummer"
+    },
+    "beschreibung": {
+      "description": "Freitext zur Beschreibung der Konditionen, z.B. \"Standardkonditionen Gas\"",
+      "translation": "Beschreibung"
+    },
+    "lokationsId": {
+      "description": "lokationsId",
+      "pattern": "^\\d{11}$",
+      "example": "55555555555",
+      "translation": "Lokations-ID"
+    },
+    "lokationsTyp": {
+      "translation": "Lokations Typ",
+      "enumRef": "LOKATIONSTYP"
+    },
+    "vertragsstatus": {
+      "translation": "Vertragsstatus",
+      "enumRef": "VERTRAGSTATUS"
+    },
+    "vertragsbeginn": {
+      "description": "Gibt an, wann der Vertrag beginnt.",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Vertragsbeginn"
+    },
+    "vertragsende": {
+      "description": "Gibt an, wann der Vertrag (voraussichtlich) endet oder beendet wurde.",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Vertragsende"
+    },
+    "gemeinderabatt": {
+      "description": "gemeinderabatt für EDIFACT mapping.",
+      "example": "1",
+      "translation": "Gemeinderabatt"
+    },
+    "vertragskonditionen": {
+      "description": "Festlegungen zu Laufzeiten und Kündigungsfristen. Details siehe COM Vertragskonditionen",
+      "translation": "Vertragskonditionen"
+    },
+    "korrespondenzpartner": {
+      "description": "korrespondenzpartner für EDIFACT mapping",
+      "translation": "Korrespondenzpartner"
+    },
+    "abrechnungUeberNna": {
+      "description": "abrechnungUeberNna",
+      "example": "false",
+      "translation": "Abrechnung Ueber Nna"
+    },
+    "datenqualitaet": {
+      "translation": "Datenqualität",
+      "enumRef": "DATENQUALITAET"
+    },
+    "gueltigkeitszeitraum": {
+      "translation": "Gueltigkeitszeitraum"
+    },
+    "vertragspartner1": {
+      "description": "Der \"erstgenannte\" Vertragspartner. In der Regel der Aussteller des Vertrags. Beispiel: \"Vertrag zwischen\nVertagspartner 1 ...\" Siehe BO Geschaeftspartner",
+      "translation": "Vertragspartner1"
+    },
+    "vertragspartner2": {
+      "description": "Der \"zweitgenannte\" Vertragspartner. In der Regel der Empfänger des Vertrags. Beispiel \"Vertrag zwischen\nVertagspartner 1 und Vertragspartner 2\". Siehe BO Geschaeftspartner",
+      "translation": "Vertragspartner2"
+    },
+    "enFG": {
+      "description": "enFG",
+      "translation": "En FG"
+    }
+  },
+  "VERWENDUNGSZEITRAUM": {
+    "boTyp": {
+      "translation": "BO-Typ",
+      "enumRef": "BOTYP"
+    },
+    "versionStruktur": {
+      "description": "versionStruktur",
+      "example": "1",
+      "translation": "Versionsstruktur"
+    },
+    "verwendungAb": {
+      "description": "verwendungAb",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Verwendung Ab"
+    },
+    "verwendungBis": {
+      "description": "verwendungBis",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Verwendung Bis"
+    },
+    "zeitraumId": {
+      "description": "zeitraumId",
+      "example": "1",
+      "translation": "Zeitraum Id"
+    },
+    "datenqualitaet": {
+      "translation": "Datenqualität",
+      "enumRef": "DATENQUALITAET"
+    }
+  },
+  "WERTENACHTYP2": {
+    "boTyp": {
+      "translation": "BO-Typ",
+      "enumRef": "BOTYP"
+    },
+    "versionStruktur": {
+      "description": "versionStruktur",
+      "example": "1",
+      "translation": "Versionsstruktur"
+    },
+    "konfigurationsprodukt": {
+      "description": "konfigurationsprodukt",
+      "translation": "Konfigurationsprodukt"
+    },
+    "messprodukt": {
+      "description": "messprodukt",
+      "translation": "Messprodukt"
+    },
+    "zieladresse": {
+      "translation": "Zieladresse"
+    },
+    "aussteller": {
+      "translation": "Aussteller"
+    },
+    "zertifikatsNutzer": {
+      "translation": "Zertifikats Nutzer"
+    },
+    "aenderungsmoeglichkeitKonfiguration": {
+      "translation": "Aenderungsmoeglichkeit Konfiguration",
+      "enumRef": "AENDERUNGSMOEGLICHKEITKONFIGURATION"
+    },
+    "schwellwerte": {
+      "description": "schwellwerte",
+      "translation": "Schwellwerte"
+    },
+    "zaehlwerke": {
+      "description": "Zählwerke",
+      "translation": "Zaehlwerke"
+    }
+  },
+  "ZAEHLER": {
+    "boTyp": {
+      "translation": "BO-Typ",
+      "enumRef": "BOTYP"
+    },
+    "versionStruktur": {
+      "description": "versionStruktur",
+      "example": "1",
+      "translation": "Versionsstruktur"
+    },
+    "zaehlernummer": {
+      "description": "Nummerierung des Zählers, vergeben durch den Messstellenbetreiber",
+      "example": "ZAEHLER_000000",
+      "translation": "Zaehlernummer"
+    },
+    "sparte": {
+      "description": "Strom oder Gas.",
+      "translation": "Sparte",
+      "enumRef": "SPARTE"
+    },
+    "zaehlerauspraegung": {
+      "description": "Spezifikation die Richtung des Zählers betreffend.",
+      "translation": "Zaehlerauspraegung",
+      "enumRef": "ZAEHLERAUSPRAEGUNG"
+    },
+    "zaehlertyp": {
+      "description": "Typisierung des Zählers",
+      "translation": "Zaehlertyp",
+      "enumRef": "ZAEHLERTYP"
+    },
+    "tarifart": {
+      "description": "Spezifikation bezüglich unterstützter Tarifarten.",
+      "translation": "Tarifart",
+      "enumRef": "TARIFART"
+    },
+    "zaehlerkonstante": {
+      "description": "Zählerkonstante auf dem Zähler.",
+      "example": "1.5",
+      "translation": "Zaehlerkonstante"
+    },
+    "eichungBis": {
+      "description": "Bis zu diesem Datum ist der Zähler geeicht.",
+      "pattern": "^\\d{4}$",
+      "example": "5555",
+      "translation": "Eichung Bis"
+    },
+    "zaehlerhersteller": {
+      "description": "Der Hersteller des Zählers. Details Geschaeftspartner",
+      "translation": "Zaehlerhersteller"
+    },
+    "gateway": {
+      "description": "Angabe eines SMGW, mit dem der Zaehler parametrisiert ist",
+      "example": "GATEWAY_000000",
+      "translation": "Gateway"
+    },
+    "fernschaltung": {
+      "description": "Fernschaltung",
+      "translation": "Fernschaltung",
+      "enumRef": "FERNSCHALTUNG"
+    },
+    "messwerterfassung": {
+      "description": "Messwerterfassung am Zählpunkt",
+      "translation": "Messwerterfassung",
+      "enumRef": "MESSWERTERFASSUNG"
+    },
+    "zaehlertypspezifikation": {
+      "description": "Typisierung des Zählers (spezifikation für EHZ und MME)",
+      "translation": "Zaehlertypspezifikation",
+      "enumRef": "ZAEHLERTYPSPEZIFIKATION"
+    },
+    "befestigungsart": {
+      "description": "Befestigungsart",
+      "translation": "Befestigungsart",
+      "enumRef": "BEFESTIGUNGSART"
+    },
+    "zaehlergroesse": {
+      "description": "Zaehlergroesse",
+      "translation": "Zaehlergroesse",
+      "enumRef": "GERAETEMERKMAL"
+    },
+    "mengenumwertertyp": {
+      "translation": "Mengenumwertertyp",
+      "enumRef": "MENGENUMWERTERTYP"
+    },
+    "volumenerfassung": {
+      "translation": "Volumenerfassung",
+      "enumRef": "VOLUMENERFASSUNG"
+    },
+    "serialnummer": {
+      "description": "serialnummer",
+      "pattern": "^\\d{10}$",
+      "example": "5555555555",
+      "translation": "Serialnummer"
+    },
+    "geraetemerkmal": {
+      "description": "Weitere Merkmale des Geräts, zum Beispiel Mehrtarif, Eintarif etc.. Details Geraetemerkmal",
+      "translation": "Geraetemerkmal",
+      "enumRef": "GERAETEMERKMAL"
+    },
+    "herstellungsdatum": {
+      "description": "herstellungsdatum",
+      "pattern": "^\\d{4}$",
+      "example": "5555",
+      "translation": "Herstellungsdatum"
+    },
+    "baujahr": {
+      "description": "baujahr",
+      "pattern": "^\\d{4}$",
+      "example": "5555",
+      "translation": "Baujahr"
+    },
+    "messlokationsId": {
+      "description": "messlokationsId",
+      "pattern": "^\\d{33}$",
+      "example": "555555555555555555555555555555555",
+      "translation": "Messlokations-ID"
+    },
+    "marktlokationsId": {
+      "description": "marktlokationsId",
+      "pattern": "^\\d{11}$",
+      "example": "55555555555",
+      "translation": "Marktlokations-ID"
+    },
+    "geraete": {
+      "description": "Liste der Geräte, die zu diesem Zähler gehören.",
+      "translation": "Geraete"
+    },
+    "zaehlwerke": {
+      "description": "Die Zählwerke des Zählers.",
+      "translation": "Zaehlwerke"
+    },
+    "datenqualitaet": {
+      "translation": "Datenqualität",
+      "enumRef": "DATENQUALITAET"
+    },
+    "gueltigkeitszeitraum": {
+      "translation": "Gueltigkeitszeitraum"
+    }
+  },
+  "ZAEHLZEITDEFINITION": {
+    "boTyp": {
+      "translation": "BO-Typ",
+      "enumRef": "BOTYP"
+    },
+    "versionStruktur": {
+      "description": "versionStruktur",
+      "example": "1",
+      "translation": "Versionsstruktur"
+    },
+    "beginndatum": {
+      "description": "Der inklusive Zeitpunkt ab dem die Zaehlzeitdefinitionen ausgerollt sind",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Beginndatum"
+    },
+    "endedatum": {
+      "description": "Der exklusive Zeitpunkt bis zu dem die Zaehlzeitdefinitionen ausgerollt sind",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Endedatum"
+    },
+    "version": {
+      "description": "Version der Zählzeitdefinition als Datum",
+      "example": "2025-01-01T00:00:00Z",
+      "translation": "Version"
+    },
+    "notwendigkeit": {
+      "description": "Beschreibt ob eine Zaehlzeitdefinitionen notwendig ist",
+      "translation": "Notwendigkeit",
+      "enumRef": "DEFINITIONENNOTWENDIGKEIT"
+    },
+    "versionsangabe": {
+      "description": "versionsangabe",
+      "example": "VERSION_000000",
+      "translation": "Versionsangabe"
+    },
+    "code": {
+      "description": "Zählzeitdefinition",
+      "example": "CODE_000000",
+      "translation": "Code"
+    },
+    "zaehlzeiten": {
+      "description": "Liste der Zählzeiten [1 - 99999]",
+      "translation": "Zaehlzeiten"
+    },
+    "zaehlzeitregister": {
+      "description": "Liste der Zählzeitregister",
+      "translation": "Zaehlzeitregister"
+    }
+  }
+}
