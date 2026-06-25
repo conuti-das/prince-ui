@@ -35,6 +35,13 @@ const LAB: Record<string, string> = {
 export function humanize(key: string): string {
   const known = LAB[key];
   if (known) return known;
+  // ALL_CAPS group/enum keys -> Title Case ("ENERGIELIEFERVERTRAG" -> "Energieliefervertrag")
+  if (/^[A-Z0-9]+(_[A-Z0-9]+)*$/.test(key)) {
+    return key
+      .split("_")
+      .map((w) => w.charAt(0) + w.slice(1).toLowerCase())
+      .join(" ");
+  }
   const s = key.replace(/([a-z0-9])([A-Z])/g, "$1 $2").replace(/_/g, " ");
   return s.charAt(0).toUpperCase() + s.slice(1);
 }
