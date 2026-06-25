@@ -27,6 +27,10 @@ jobs:
           node-version: 20
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      # Workspace-Pakete (prince-ui + bpmn/dmn/forms) bauen, damit Storybook ihre
+      # dist-Entries auflösen kann — sonst: "Failed to resolve entry for package prince-ui".
+      - name: Build packages
+        run: pnpm -r --filter "./packages/*" build
       - name: Build Storybook (Subpath /prince-ui/)
         run: pnpm build-storybook
         env:

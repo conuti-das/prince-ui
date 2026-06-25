@@ -3,7 +3,7 @@ import { I18nProvider } from "react-aria-components";
 import "prince-ui-tokens/tokens.css";
 import theme from "./theme";
 
-/** Theme-Umschalter in der Storybook-Toolbar (Light/Dark/System) + deutsche Locale,
+/** Theme-Umschalter in der Storybook-Toolbar (Apple Dark/Light, CU, System) + deutsche Locale,
  *  damit Datums-/Zeit-/Kalender-Komponenten TT.MM.JJJJ und deutsche Wochentage zeigen. */
 const withTheme: Decorator = (Story, context) => {
   const theme = context.globals.theme as string;
@@ -35,8 +35,9 @@ const preview: Preview = {
         title: "Theme",
         icon: "circlehollow",
         items: [
-          { value: "light", title: "Light" },
-          { value: "dark", title: "Dark" },
+          { value: "dark", title: "Apple Dark" },
+          { value: "light", title: "Apple Light" },
+          { value: "cu", title: "CU (Community)" },
           { value: "system", title: "System" },
         ],
         dynamicTitle: true,
