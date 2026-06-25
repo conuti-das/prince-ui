@@ -17,7 +17,7 @@
  */
 
 import { useEffect, useRef, useState, useCallback, type ReactNode } from "react";
-import { Button, SegmentedControl, Segment, Notice } from "@conuti-das/prince-ui";
+import { Button, SegmentedControl, Segment, Notice, Icon } from "@conuti-das/prince-ui";
 import type { DiagramColorScheme } from "../types";
 import { getDiagramColors, onThemeChange } from "../theme/diagram-theme";
 import { buildRendererConfig, createAppleRendererModule } from "../theme/apple-renderer";
@@ -100,6 +100,12 @@ export function BpmnEditor({
   const [tableXml, setTableXml] = useState("");
   const [saving, setSaving] = useState(false);
   const [themeTick, setThemeTick] = useState(0);
+  // Ungespeicherte Änderungen (Command-Stack) → Speichern-Button gaten (B10).
+  const [dirty, setDirty] = useState(false);
+  // Properties-Panel sichtbar (schließbar via X, B11).
+  const [propsOpen, setPropsOpen] = useState(true);
+  // Aktuell selektiertes Element (für Tabellen-Highlight, B9).
+  const [selectedId, setSelectedId] = useState<string | undefined>(undefined);
 
   // latest callbacks in refs (avoid re-init on identity change)
   const cb = useRef({ onChange, onElementSelect, onDirtyChange });
@@ -279,8 +285,11 @@ export function BpmnEditor({
       eventBus.on("selection.changed", (e) => {
         const sel = (e as { newSelection?: { id?: string; businessObject?: { name?: string } }[] }).newSelection ?? [];
         const only = sel.length === 1 ? sel[0] : undefined;
+        setSelectedId(only?.id);
         if (only?.id) {
           cb.current.onElementSelect?.({ id: only.id, name: only.businessObject?.name });
+          // Auswahl eines Elements öffnet das Properties-Panel wieder (B11/B9).
+          setPropsOpen(true);
         } else {
           cb.current.onElementSelect?.(null);
         }
@@ -288,6 +297,7 @@ export function BpmnEditor({
 
       // changes → onChange + dirty
       eventBus.on("commandStack.changed", () => {
+        setDirty(true);
         cb.current.onDirtyChange?.(true);
         if (cb.current.onChange) {
           void modeler.saveXML({ format: true }).then(({ xml }) => {
@@ -302,6 +312,9 @@ export function BpmnEditor({
         try {
           await modeler.importXML(initialXml);
           lastImportedRef.current = initialXml;
+          // Initialer Import zählt nicht als ungespeicherte Änderung (B10).
+          setDirty(false);
+          cb.current.onDirtyChange?.(false);
           fitWithPadding();
         } catch (err) {
           if (!cancelled) setError((err as Error).message);
@@ -335,6 +348,9 @@ export function BpmnEditor({
     void modeler.importXML(value).then(() => {
       if (cancelled) return;
       lastImportedRef.current = value;
+      // Externer Reimport (anderes Artefakt) ist kein Dirty-State (B10).
+      setDirty(false);
+      cb.current.onDirtyChange?.(false);
       fitWithPadding();
     });
     return () => {
@@ -377,6 +393,7 @@ export function BpmnEditor({
       const xml = await getXml();
       if (xml != null) {
         await onSave(xml);
+        setDirty(false);
         cb.current.onDirtyChange?.(false);
       }
     } finally {
@@ -396,6 +413,20 @@ export function BpmnEditor({
       } catch {
         /* ignore */
       }
+    }
+  }, []);
+
+  // Zoom relativ zur aktuellen Skala (Zoom-In/-Out, B6). Zentrum bleibt erhalten.
+  const zoomBy = useCallback((factor: number) => {
+    const canvas = modelerRef.current?.get("canvas") as
+      | { zoom(level: number | string, center?: unknown): void; viewbox(): { scale: number } }
+      | undefined;
+    if (!canvas) return;
+    try {
+      const next = Math.max(0.2, Math.min(4, canvas.viewbox().scale * factor));
+      canvas.zoom(next);
+    } catch {
+      /* ignore */
     }
   }, []);
 
@@ -446,14 +477,43 @@ export function BpmnEditor({
           <Segment id="table">Tabelle</Segment>
         </SegmentedControl>
         {view === "diagram" && (
-          <Button variant="plain" onPress={handleSearch} aria-label="Element suchen">
-            🔍 Suchen
-          </Button>
+          <>
+            <Button variant="plain" onPress={handleSearch} aria-label="Element suchen">
+              <Icon name="search" />
+            </Button>
+            <div className="prn-bpmn-editor-zoom" role="group" aria-label="Zoom">
+              <Button variant="plain" onPress={() => zoomBy(1.2)} aria-label="Vergrößern">
+                <Icon name="plus" />
+              </Button>
+              <Button variant="plain" onPress={() => zoomBy(1 / 1.2)} aria-label="Verkleinern">
+                <svg
+                  width={20}
+                  height={20}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden
+                >
+                  <path d="M5 12h14" />
+                </svg>
+              </Button>
+              <Button variant="plain" onPress={fitWithPadding} aria-label="Auf Breite anpassen">
+                <Icon name="maximize" />
+              </Button>
+            </div>
+          </>
         )}
         <div className="prn-bpmn-editor-toolbar-spacer" />
         {actionsSlot}
         {onSave && (
-          <Button variant="filled" onPress={() => void handleSave()} isDisabled={saving}>
+          <Button
+            variant="filled"
+            onPress={() => void handleSave()}
+            isDisabled={saving || !dirty}
+          >
             {saving ? "Speichern…" : "Speichern"}
           </Button>
         )}
@@ -476,14 +536,35 @@ export function BpmnEditor({
           />
           {view === "table" && (
             <div className="prn-bpmn-editor-table">
-              <BpmnTableView xml={tableXml} />
+              <BpmnTableView
+                xml={tableXml}
+                selectedId={selectedId}
+                onRowSelect={selectElement}
+              />
             </div>
           )}
         </div>
 
-        {/* Properties-Panel-Container (vom Modeler befüllt) */}
-        {propertiesPanel && view === "diagram" && (
-          <div ref={propsRef} className="prn-bpmn-editor-properties" />
+        {/* Properties-Panel (vom Modeler befüllt). Immer im DOM, damit der
+            bpmn-js-Panel-Container nicht verwaist; schließbar (B11) und auch in
+            der Tabellenansicht sichtbar (B9). */}
+        {propertiesPanel && (
+          <div
+            className="prn-bpmn-editor-properties"
+            style={propsOpen ? undefined : { display: "none" }}
+          >
+            <div className="prn-bpmn-editor-properties-head">
+              <span className="prn-bpmn-editor-properties-title">Eigenschaften</span>
+              <Button
+                variant="plain"
+                onPress={() => setPropsOpen(false)}
+                aria-label="Eigenschaften-Panel schließen"
+              >
+                <Icon name="x" />
+              </Button>
+            </div>
+            <div ref={propsRef} className="prn-bpmn-editor-properties-body" />
+          </div>
         )}
       </div>
 

@@ -19,6 +19,10 @@ export interface BpmnTableViewProps {
   xml: string;
   /** Sichtbare Zeilen (Höhe der Tabelle). Default 30. */
   visibleRows?: number;
+  /** Klick auf eine Zeile → Element-ID (öffnet das Properties-Panel). */
+  onRowSelect?: (id: string) => void;
+  /** Aktuell selektierte Element-ID (Zeilen-Highlight). */
+  selectedId?: string;
   /** Klassennamen-Override. */
   className?: string;
 }
@@ -27,7 +31,13 @@ interface BpmnRow extends BpmnTableElement {
   idx: number;
 }
 
-export function BpmnTableView({ xml, visibleRows = 30, className }: BpmnTableViewProps) {
+export function BpmnTableView({
+  xml,
+  visibleRows = 30,
+  onRowSelect,
+  selectedId,
+  className,
+}: BpmnTableViewProps) {
   const [search, setSearch] = useState("");
 
   const elements = useMemo(() => parseBpmnElements(xml), [xml]);
@@ -105,7 +115,11 @@ export function BpmnTableView({ xml, visibleRows = 30, className }: BpmnTableVie
           columns={columns}
           visibleRows={visibleRows}
           alternateRowColor
-          selectionMode="none"
+          getRowId={(row) => row.id}
+          selectionMode="single"
+          selectionBehavior="row"
+          selectedKeys={selectedId ? new Set([selectedId]) : undefined}
+          onRowClick={({ row }) => onRowSelect?.(row.id)}
         />
       </div>
     </div>
