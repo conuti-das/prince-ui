@@ -1,0 +1,52 @@
+{
+  "name": "prince-ui-bo4e",
+  "version": "0.1.0",
+  "description": "Smart-Viewer/-Editor für BO4E-cDoc (Marktkommunikation) auf prince-ui.",
+  "license": "MIT",
+  "private": false,
+  "type": "module",
+  "sideEffects": ["*.css"],
+  "files": ["dist"],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" },
+    "./styles.css": "./dist/index.css",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "prince-ui-tokens": "workspace:*"
+  },
+  "peerDependencies": {
+    "prince-ui": "workspace:*",
+    "react": ">=18 <20",
+    "react-dom": ">=18 <20",
+    "react-aria-components": ">=1"
+  },
+  "devDependencies": {
+    "prince-ui": "workspace:*",
+    "react-aria-components": "^1.19.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.0.1",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitest/coverage-v8": "^2.1.5",
+    "jsdom": "^25.0.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tsup": "^8.3.0",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.5"
+  },
+  "publishConfig": { "registry": "https://registry.npmjs.org" },
+  "repository": { "type": "git", "url": "git+https://github.com/conuti-das/prince-ui.git", "directory": "packages/bo4e" }
+}
