@@ -187,7 +187,8 @@
     --prn-pressed: rgba(0, 0, 0, 0.08);
 
     --prn-label: #000000;
-    --prn-label-2: rgba(60, 60, 67, 0.6);
+    /* 0.75 statt 0.6: Sekundärtext erreicht WCAG-AA (≈4.5) auf hellem Grund. */
+    --prn-label-2: rgba(60, 60, 67, 0.75);
     --prn-label-3: rgba(60, 60, 67, 0.3);
     --prn-label-4: rgba(60, 60, 67, 0.18);
 
@@ -261,7 +262,8 @@
   --prn-pressed: rgba(0, 0, 0, 0.08);
 
   --prn-label: #000000;
-  --prn-label-2: rgba(60, 60, 67, 0.6);
+  /* 0.75 statt 0.6: Sekundärtext erreicht WCAG-AA (≈4.5) auf hellem Grund. */
+  --prn-label-2: rgba(60, 60, 67, 0.75);
   --prn-label-3: rgba(60, 60, 67, 0.3);
   --prn-label-4: rgba(60, 60, 67, 0.18);
 
