@@ -4,11 +4,18 @@ export interface Anomaly {
   severity: "warn" | "error";
   path: string;
   value: unknown;
-  rule: "placeholder" | "suspiciousChar" | "defaultValue" | "implausibleDate" | "expired";
+  rule: "placeholder" | "suspiciousChar" | "defaultValue" | "implausibleDate" | "expired" | "placeholderObject";
   message: string;
 }
 
 const END_KEYS = /gueltigBis$|enddatum$|vertragsende$/i;
+const DUMMY_OBJECT_KEYS = /geokoordinaten|katasteradresse/i;
+
+/** True if an object has string leaves that are all the dummy value "1". */
+function isDummyOnes(o: Record<string, unknown>): boolean {
+  const strings = Object.values(o).filter((x): x is string => typeof x === "string");
+  return strings.length > 0 && strings.every((x) => x === "1");
+}
 
 export function scanAnomalies(node: unknown, opts: { now?: Date } = {}): Anomaly[] {
   const now = (opts.now ?? new Date()).getTime();
@@ -39,12 +46,24 @@ export function scanAnomalies(node: unknown, opts: { now?: Date } = {}): Anomaly
       return;
     }
     if (typeof v === "object") {
-      for (const k of Object.keys(v as Record<string, unknown>)) {
-        walk((v as Record<string, unknown>)[k], path ? `${path}.${k}` : k, k);
+      const obj = v as Record<string, unknown>;
+      if (DUMMY_OBJECT_KEYS.test(key) && isDummyOnes(obj)) {
+        out.push({ severity: "warn", path, value: v, rule: "placeholderObject", message: `Platzhalter-Daten (${key}): alle Werte „1"` });
+      }
+      for (const k of Object.keys(obj)) {
+        walk(obj[k], path ? `${path}.${k}` : k, k);
       }
     }
   };
 
   walk(node, "", "");
-  return out;
+
+  // Dedup identical findings (e.g. the same "Fisch>" on Eigentümer und Hausverwalter).
+  const seen = new Set<string>();
+  return out.filter((a) => {
+    const key = `${a.rule}|${typeof a.value === "object" ? a.path : String(a.value)}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
 }

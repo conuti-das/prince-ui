@@ -26,4 +26,12 @@ describe("scanAnomalies", () => {
     const a = scanAnomalies({ content: { OUTBOUND: { vertrag: [{ lokationsId: "#x#" }] } } }, { now });
     expect(a.some((x) => x.path === "content.OUTBOUND.vertrag[0].lokationsId")).toBe(true);
   });
+  it("flags geo/kataster placeholder objects and dedups identical values", () => {
+    const a = scanAnomalies(
+      { geokoordinaten: { breitengrad: "1", laengengrad: "1" }, eigentuemer: { name2: "Fisch>" }, hausverwalter: { name2: "Fisch>" } },
+      { now },
+    );
+    expect(a.some((x) => x.rule === "placeholderObject")).toBe(true);
+    expect(a.filter((x) => x.rule === "suspiciousChar").length).toBe(1);
+  });
 });

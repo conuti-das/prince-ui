@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
-import type { CDoc, Bo4eResolvers } from "./types";
+import type { Bo4eResolvers } from "./types";
 import type { Bo4eSchema } from "./schema/load-schema";
+import { normalizeToCDoc, type SydocInput } from "./normalize";
 import { scanAnomalies } from "./core/anomalies";
 import { humanize } from "./core/humanize";
 import { SmartObjectView } from "./view/SmartObjectView";
@@ -10,18 +11,20 @@ const TRANS = "__TRANS__";
 const ZUSATZ = "__ZUSATZ__";
 
 export interface SydocViewProps {
-  doc: CDoc;
+  /** Full cDoc, a single BO, or an array of BOs. */
+  doc: SydocInput;
   schema: Bo4eSchema;
   resolvers?: Bo4eResolvers;
   now?: Date;
 }
 
 export function SydocView({ doc, schema, resolvers, now }: SydocViewProps) {
-  const directions = Object.keys(doc.content);
+  const cdoc = normalizeToCDoc(doc);
+  const directions = Object.keys(cdoc.content);
   const [dir, setDir] = useState<string>(() => (directions.includes("OUTBOUND") ? "OUTBOUND" : (directions[0] ?? "")));
   const [tab, setTab] = useState<string | null>(null);
 
-  const dd = doc.content[dir];
+  const dd = cdoc.content[dir];
   const anomalies = useMemo(() => (dd ? scanAnomalies(dd, { now }) : []), [dd, now]);
 
   if (!dd) return null;

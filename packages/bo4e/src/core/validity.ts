@@ -7,6 +7,8 @@ export function validityStatus(
   const t = now.getTime();
   const start = range.startdatum ? new Date(range.startdatum).getTime() : null;
   const end = range.enddatum ? new Date(range.enddatum).getTime() : null;
+  // A future start wins over the end check: a not-yet-active range is "zukuenftig"
+  // even if its (malformed) end already lies in the past.
   if (start != null && start > t) return "zukuenftig";
   if (end != null) {
     if (end < t) return "abgelaufen";

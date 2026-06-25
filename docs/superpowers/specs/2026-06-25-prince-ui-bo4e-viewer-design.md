@@ -86,8 +86,7 @@ Beobachtete Strukturmerkmale aus den Realdaten, die das Modell tragen muss:
 loadBo4eSchema(src: { bos; fields; enums }): Bo4eSchema
 resolveField(schema, boTyp, fieldKey): FieldDoc
 // FieldDoc = { translation?, description?, example?, pattern?, enum?: { description, values: string[] }, isRef, isCom }
-getBoOrder(schema): string[]            // stabile Tab-Sortierung
-getFieldOrder(boTyp): string[]          // kuratierte Wichtig-zuerst-Reihenfolge
+getFieldOrder(boTyp): string[]          // kuratierte Wichtig-zuerst-Reihenfolge (Tab-Reihenfolge folgt den Gruppenschlüsseln des cDoc)
 ```
 
 ### 5.2 Resolver-Dienste (pluggbar, injizierbar)
@@ -115,7 +114,7 @@ Generischer Objekt-Walk, der Datenqualitäts-Signale sammelt (read-only-Review i
 scanAnomalies(node: unknown, opts): Anomaly[]
 // Anomaly = { severity: "warn"|"error", path: string, value, rule, message }
 ```
-Regeln: Platzhalter `#…#`; Default-/Dummy-Werte (`00000000`, Datum-Jahr ≤ 1950, Kataster/Geo „1"); verdächtige Zeichen in Namensfeldern (`<`,`>`); abgelaufene Gültigkeit (über Gültigkeits-Engine); leere Pflichtbereiche. Ergebnis speist die **Auffälligkeiten-Leiste** oben in der View.
+Regeln: Platzhalter `#…#`; Default-/Dummy-Werte (`00000000`, Datum-Jahr ≤ 1950); Platzhalter-Objekte (Geo/Kataster mit lauter „1"); verdächtige Zeichen in Namensfeldern (`<`,`>`); abgelaufene Gültigkeit (über Gültigkeits-Engine). Identische Treffer (gleiche Regel + Wert) werden dedupliziert. „Leere Pflichtbereiche" braucht Schema-`required`-Info und ist einer späteren Slice vorbehalten. Ergebnis speist die **Auffälligkeiten-Leiste** oben in der View.
 
 ### 5.5 Datums-/Zeit-Formatierung (verbindlich)
 ISO-Zeitstempel kommen in **UTC** (`…Z` / `+0000`). Anzeige IMMER in **Europe/Berlin**, deutsch:
@@ -214,7 +213,7 @@ Die Bausteine bekommen saubere Props-Grenzen, damit Edit (4), Raw/Diagramm (5) u
 ---
 
 ## 10. Tests
-- **Schicht 0 (Unit, ohne DOM):** `resolveField`, `getBoOrder`/`getFieldOrder`, Normalizer (3 Eingabeformen), `validityStatus` (inkl. Grenzfälle/Stichtag), `scanAnomalies` (jede Regel), `formatDateDE`/`toUtcLabel` (DST-Wechsel: Mai=MESZ, Dez=MEZ; Tagesgrenze `2022-12-31T23:00Z`→`01.01.2023`).
+- **Schicht 0 (Unit, ohne DOM):** `resolveField`, `getFieldOrder`, `normalizeToCDoc` (3 Eingabeformen), `validityStatus` (inkl. Grenzfälle/Stichtag), `scanAnomalies` (jede Regel), `formatDateDE`/`toUtcLabel` (DST-Wechsel: Mai=MESZ, Dez=MEZ; Tagesgrenze `2022-12-31T23:00Z`→`01.01.2023`).
 - **Schicht 1 (Smoke/RTL):** Smart-View rendert entscheidende Felder; Popover öffnet; Enum→Icon/Badge; `MarktpartnerRow` löst Code→Name via injiziertem Resolver; abgelaufene Gültigkeit wird gedimmt; „+ Alle Details" zeigt Vollsicht; Datums-Popover zeigt Berlin + UTC.
 - **Schicht 2:** Tabs aus Gruppenschlüsseln; Richtungs-Umschalter; Normalizer-Pfade.
 

@@ -49,13 +49,7 @@ export function resolveField(schema: Bo4eSchema, boTyp: string, key: string): Fi
     pattern: raw?.pattern,
     enumRef,
     enum: enumDoc,
-    isRef: /Id$|Nr$|nummer$|referenz/i.test(key),
-    isCom: false,
   };
-}
-
-export function getBoOrder(schema: Bo4eSchema): string[] {
-  return Object.keys(schema.bos);
 }
 
 export function getFieldOrder(schema: Bo4eSchema, boTyp: string): string[] {

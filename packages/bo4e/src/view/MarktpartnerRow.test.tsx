@@ -15,4 +15,14 @@ describe("MarktpartnerRow", () => {
     expect(screen.getByText("Westnetz")).toBeInTheDocument();
     expect(screen.getByText("MSB")).toBeInTheDocument();
   });
+
+  it("dims an expired role", () => {
+    const { container } = render(
+      <MarktpartnerRow
+        row={{ marktrolle: "NB", rollencodenummer: "9900683000008", gueltigkeitszeitraum: { enddatum: "2025-12-31T23:00:00Z" } }}
+        now={new Date("2026-06-25T12:00:00Z")}
+      />,
+    );
+    expect(container.querySelector(".prn-bo-mpr")?.getAttribute("data-dim")).toBe("true");
+  });
 });

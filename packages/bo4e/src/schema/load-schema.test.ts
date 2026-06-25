@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { loadBo4eSchema, resolveField } from "./load-schema";
+import { loadBo4eSchema, resolveField, getFieldOrder } from "./load-schema";
 import fields from "../__fixtures__/bo4e-fields.json";
 import enums from "../__fixtures__/bo4e-enums.json";
 import bos from "../__fixtures__/bo4e-bos.json";
@@ -21,5 +21,10 @@ describe("resolveField", () => {
     const d = resolveField(schema, "MARKTLOKATION", "voelligUnbekannt");
     expect(d.translation).toBe("Voellig Unbekannt");
     expect(d.description).toBeUndefined();
+  });
+  it("getFieldOrder returns the BO's declared property order", () => {
+    const order = getFieldOrder(schema, "MARKTLOKATION");
+    expect(order.length).toBeGreaterThan(0);
+    expect(order).toContain("marktlokationsId");
   });
 });

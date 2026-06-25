@@ -2,6 +2,7 @@ import type { Bo4eObject, Bo4eResolvers } from "../types";
 import { CodeResolved } from "./CodeResolved";
 import { ValidityRange } from "./ValidityRange";
 import { validityStatus } from "../core/validity";
+import { humanize } from "../core/humanize";
 
 interface Gz {
   startdatum?: string;
@@ -22,7 +23,13 @@ export function MarktpartnerRow({ row, resolvers, now }: { row: Bo4eObject; reso
             resolvers={resolvers}
           />
         </div>
-        {row.messstellenbetreiberEigenschaft ? <div className="meig">grundzuständig</div> : null}
+        {row.messstellenbetreiberEigenschaft ? (
+          <div className="meig">
+            {row.messstellenbetreiberEigenschaft === "GRUNDZUSTAENDIGER_MESSSTELLENBETREIBER"
+              ? "grundzuständig"
+              : humanize(String(row.messstellenbetreiberEigenschaft))}
+          </div>
+        ) : null}
       </div>
       {gz.startdatum || gz.enddatum ? <ValidityRange start={gz.startdatum} end={gz.enddatum} now={now} /> : null}
     </div>

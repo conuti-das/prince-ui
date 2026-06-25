@@ -88,7 +88,7 @@
 
 /* Tabs + anomaly bar */
 .prn-bo-tabs { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 2px; }
-.prn-bo-tab { padding: 6px 12px; border-radius: var(--prn-radius-pill); font: var(--prn-text-footnote); white-space: nowrap; cursor: pointer; color: var(--prn-label-2); background: var(--prn-fill); border: none; }
+.prn-bo-tab { display: inline-flex; align-items: center; min-height: 34px; padding: 6px 14px; border-radius: var(--prn-radius-pill); font: var(--prn-text-footnote); white-space: nowrap; cursor: pointer; color: var(--prn-label-2); background: var(--prn-fill); border: none; }
 .prn-bo-tab[aria-selected="true"] { background: var(--prn-accent); color: var(--prn-on-accent); }
 .prn-bo-warn { background: var(--prn-warn-soft); border: 1px solid var(--prn-orange); border-radius: var(--prn-radius); padding: 10px 13px; }
 .prn-bo-warn summary { font: var(--prn-text-footnote); font-weight: 500; color: var(--prn-orange); cursor: pointer; }

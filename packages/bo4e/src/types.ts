@@ -25,8 +25,6 @@ export interface FieldDoc {
   pattern?: string;
   enumRef?: string;
   enum?: EnumDoc;
-  isRef: boolean;
-  isCom: boolean;
 }
 
 export interface MarktpartnerInfo {
