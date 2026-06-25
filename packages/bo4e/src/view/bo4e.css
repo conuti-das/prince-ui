@@ -85,6 +85,9 @@
 .prn-bo-kv .v { font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .prn-bo-kv .v[data-null="true"] { color: var(--prn-label-3); font-weight: 400; }
 .prn-bo-moreb { background: none; border: none; color: var(--prn-accent-strong); font: var(--prn-text-footnote); font-weight: 500; cursor: pointer; display: inline-flex; gap: 6px; align-items: center; padding: 10px 0 0; border-top: 1px solid var(--prn-separator); margin-top: 11px; width: 100%; }
+.prn-bo-detailbar { display: flex; justify-content: flex-end; border-top: 1px solid var(--prn-separator); margin-top: 11px; padding-top: 8px; }
+.prn-bo-editbtn { background: var(--prn-accent-soft); color: var(--prn-accent-strong); border: none; border-radius: var(--prn-radius-sm); padding: 5px 12px; font: var(--prn-text-footnote); font-weight: 500; cursor: pointer; }
+.prn-bo-addfield { margin-top: 12px; max-width: 260px; }
 
 /* Tabs + anomaly bar */
 .prn-bo-tabs { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 2px; }

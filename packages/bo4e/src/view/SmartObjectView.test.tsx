@@ -21,4 +21,11 @@ describe("SmartObjectView (Marktlokation)", () => {
     await userEvent.click(screen.getByRole("button", { name: /Alle Details/ }));
     expect(screen.getByText(/Bilanzierungsgebiet/i)).toBeInTheDocument();
   });
+
+  it("toggles into edit mode and shows input widgets", async () => {
+    render(<SmartObjectView schema={schema} obj={malo} now={new Date("2026-06-25T12:00:00Z")} />);
+    await userEvent.click(screen.getByRole("button", { name: /Alle Details/ }));
+    await userEvent.click(screen.getByRole("button", { name: /Bearbeiten/ }));
+    expect(screen.getAllByRole("textbox").length).toBeGreaterThan(0);
+  });
 });
