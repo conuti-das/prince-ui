@@ -41,6 +41,9 @@ importers:
       '@types/react-dom':
         specifier: ^18.3.1
         version: 18.3.7(@types/react@18.3.31)
+      preact:
+        specifier: ^10.29.2
+        version: 10.29.2
       prince-ui:
         specifier: workspace:*
         version: link:packages/ui
