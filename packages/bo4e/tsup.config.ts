@@ -8,5 +8,5 @@ export default defineConfig({
   clean: true,
   treeshake: true,
   loader: { ".json": "json" },
-  external: ["react", "react-dom", "react-aria-components", "prince-ui", "prince-ui-tokens"],
+  external: ["react", "react-dom", "react-aria-components", "@internationalized/date", "prince-ui", "prince-ui-tokens"],
 });
