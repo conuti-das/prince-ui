@@ -31,7 +31,7 @@ export interface ModalProps {
   children?: ReactNode;
   /** Klick auf Scrim schließt (Default true). */
   isDismissable?: boolean;
-  /** „Liquid Glass"-Optik (transluzent + Blur) statt opaker Fläche. */
+  /** Transluzente Glas-Optik (Blur) statt opaker Fläche. */
   glass?: boolean;
   className?: string;
 }
@@ -57,7 +57,7 @@ export interface MenuProps {
   /** Trigger-Element (z. B. <Button>). */
   trigger: ReactNode;
   children: ReactNode;
-  /** „Liquid Glass"-Optik (transluzent + Blur) statt opaker Fläche. */
+  /** Transluzente Glas-Optik (Blur) statt opaker Fläche. */
   glass?: boolean;
   className?: string;
 }
@@ -84,7 +84,7 @@ export function MenuItem({ className, ...props }: MenuItemPropsExt) {
 /* ---------------- Popover (frei) ---------------- */
 
 export interface AplPopoverProps extends Omit<PopoverProps, "className"> {
-  /** „Liquid Glass"-Optik (transluzent + Blur) statt opaker Fläche. */
+  /** Transluzente Glas-Optik (Blur) statt opaker Fläche. */
   glass?: boolean;
   className?: string;
 }

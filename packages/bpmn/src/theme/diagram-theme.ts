@@ -1,10 +1,10 @@
 /**
  * Theme-Bridge für bpmn-js/diagram-js.
  *
- * SVG-Diagramme von bpmn.io werden NICHT über CSS gethemt, sondern über die
+ * SVG-Diagramme von bpmn-js/diagram-js werden NICHT über CSS gethemt, sondern über die
  * Renderer-Config (`bpmnRenderer`/`textRenderer`). Diese Bridge liest die
  * prince-ui-Tokens (`--prn-*`) vom Dokument und liefert konkrete Farbwerte —
- * ersetzt das frühere `data-sap-theme`-Coupling aus finops/maco-process-studio.
+ * ersetzt das frühere, an ein externes Theme-Attribut gekoppelte Vorgehen aus finops/maco-process-studio.
  *
  * Kolokiert je Paket (kein geteiltes 4. Paket) — das dmn-Paket hält eine Kopie.
  */

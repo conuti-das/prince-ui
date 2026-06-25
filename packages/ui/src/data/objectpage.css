@@ -1,7 +1,7 @@
-/* ObjectPage — SAP-Floorplan-Erweiterungen.
+/* ObjectPage — Erweiterungen der Objekt-Detailseite.
  * Tokens: prince-ui-tokens. Niemals rohe Hex/RGB.
  * Basis-Styles (.prn-objectpage*, .prn-kpi*, .prn-field*) bleiben in data.css;
- * hier nur die neuen Floorplan-Bestandteile. */
+ * hier nur die neuen Layout-Bestandteile. */
 
 .prn-objectpage {
   position: relative;

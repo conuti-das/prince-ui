@@ -1,5 +1,5 @@
 /* ============================================================
- *  Launchpad — Apple-Bento-Dashboard
+ *  Launchpad — Kachel-Dashboard (Bento-Grid)
  *  Grid + Sections + polymorphe Cards + Drag-Reorder + Drill-down.
  * ============================================================ */
 
@@ -267,7 +267,7 @@
 }
 
 /* ============================================================
- *  Responsiv: iPad ≤1024 = 3 Spalten, Phone ≤640 = 1, ≤900 = 2.
+ *  Responsiv: Tablet ≤1024 = 3 Spalten, Phone ≤640 = 1, ≤900 = 2.
  *  Cards können nie breiter als die Spaltenzahl spannen.
  * ============================================================ */
 @media (max-width: 1024px) {

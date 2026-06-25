@@ -8,7 +8,7 @@
 
 ## 1. Kontext & Ziel
 
-In „Prinz" (prince-ui) soll eine Komponentenfamilie entstehen, die **BO4E-Geschäftsobjekte** (Business Objects for Energy) der Marktkommunikation elegant, Apple-artig und **sachbearbeiter-optimiert** darstellt und bearbeitet. Eingabe ist ein **cDoc** — die in MaCo verwendete Datenstruktur — sowie ein **JSON-Schema-Repo** (BO4E), das Feld-Beschreibungen, Enums und Beispiele liefert.
+In „Prinz" (prince-ui) soll eine Komponentenfamilie entstehen, die **BO4E-Geschäftsobjekte** (Business Objects for Energy) der Marktkommunikation elegant, systemnah und **sachbearbeiter-optimiert** darstellt und bearbeitet. Eingabe ist ein **cDoc** — die in MaCo verwendete Datenstruktur — sowie ein **JSON-Schema-Repo** (BO4E), das Feld-Beschreibungen, Enums und Beispiele liefert.
 
 Die Komponente ist **datengetrieben und schema-gestützt**, nicht auf konkrete BO-Typen hartcodiert. Das Schema speist Popover-Dokumentation, Edit-Widgets und (später) Monaco-IntelliSense aus einer Quelle.
 
@@ -138,7 +138,7 @@ zonedLabelWithTz(iso): string                               // "06.05.2026, 11:4
 
 Zwei Render-Modi pro Objekt, umgeschaltet über `SmartObjectCard`:
 1. **Smart-View** (Default): fachlich verdichtete, intuitive Darstellung (Komposition der Bausteine).
-2. **„+ Alle Details"**: vollständige, kompakte **2-Spalten-Label/Wert-Sicht** (rechtsbündige Labels, fette Werte, Komponenten eingerückt) — die SAP-artige Vollansicht. Lange Texte werden abgeschnitten; Volltext im Feld-Popover.
+2. **„+ Alle Details"**: vollständige, kompakte **2-Spalten-Label/Wert-Sicht** (rechtsbündige Labels, fette Werte, Komponenten eingerückt) — die dichte Vollansicht. Lange Texte werden abgeschnitten; Volltext im Feld-Popover.
 
 Jedes Feld/Icon ist klickbar → **Schema-Popover** (`SchemaField`): Was ist das Feld? (Schema-`description`) · Woher kommt der Wert? (Pfad/Herkunft) · Was bedeutet er? (Enum-Werte / Code→Name / Datums-UTC).
 

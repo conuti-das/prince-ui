@@ -1,5 +1,5 @@
 /* ============================================================
- *  Liquid Glass — dünne Optik-Schicht (Apple HIG)
+ *  Glas-Optik — dünne, transluzente Optik-Schicht (Blur)
  *
  *  NUR Styling, kein Verhalten. Sparsam und ausschließlich auf der
  *  „Navigationsebene" über dem Content einsetzen: Top-Bar/Toolbar,
@@ -9,7 +9,7 @@
  *  NICHT auf datendichte Tabellen/Listen, Eingabefelder oder Fließtext.
  *  Kein „Glas auf Glas" — Glasflächen nie stapeln/verschachteln.
  *
- *  Lesbarkeit hat Vorrang (HIG): Default ist der OPAKE Fallback; echtes
+ *  Lesbarkeit hat Vorrang: Default ist der OPAKE Fallback; echtes
  *  Glas nur, wenn `backdrop-filter` unterstützt wird. Bei
  *  `prefers-reduced-transparency: reduce` zurück auf opak.
  * ============================================================ */

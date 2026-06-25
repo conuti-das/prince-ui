@@ -1,11 +1,11 @@
 /**
- * `<BpmnEditor>` — vollwertiger bpmn-js-Modeler im Apple-Look.
+ * `<BpmnEditor>` — vollwertiger bpmn-js-Modeler im prince-ui-Look.
  *
  * - `bpmn-js/lib/Modeler` + Properties-Panel (eigener Container) +
  *   bpmnlint (Regeln lazy geladen, ErrorPanel) + camunda-moddle.
- * - Apple-Look-Custom-Renderer (`additionalModules`, `super(eventBus, 1500)`),
+ * - Custom-Renderer für die prince-ui-Optik (`additionalModules`, `super(eventBus, 1500)`),
  *   delegiert an `BpmnRenderer`, passt nur Optik an.
- * - Original-bpmn.io-Icons in Palette/Context-Pad bleiben erhalten
+ * - Original-Icons der Diagramm-Bibliothek in Palette/Context-Pad bleiben erhalten
  *   (über `bpmn-font` aus `base.css`).
  * - Controlled (`value`/`onChange`) **oder** uncontrolled (`defaultValue`),
  *   `onSave` via `saveXML({ format: true })`.
@@ -20,7 +20,7 @@ import { useEffect, useRef, useState, useCallback, type ReactNode } from "react"
 import { Button, SegmentedControl, Segment, Notice } from "@conuti-das/prince-ui";
 import type { DiagramColorScheme } from "../types";
 import { getDiagramColors, onThemeChange } from "../theme/diagram-theme";
-import { buildRendererConfig, createAppleRendererModule } from "../theme/apple-renderer";
+import { buildRendererConfig, createSurfaceRendererModule } from "../theme/surface-renderer";
 import {
   buildLintConfig,
   DEFAULT_LINT_RULES,
@@ -213,7 +213,7 @@ export function BpmnEditor({
       const colors = getDiagramColors(colorScheme);
       const additionalModules: unknown[] = [
         lintModule,
-        createAppleRendererModule(BpmnRenderer as new (...a: unknown[]) => unknown),
+        createSurfaceRendererModule(BpmnRenderer as new (...a: unknown[]) => unknown),
       ];
       if (minimap) additionalModules.push(MinimapModule);
       if (propertiesPanel) {

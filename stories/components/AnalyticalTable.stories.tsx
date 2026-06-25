@@ -107,7 +107,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Analytische Tabelle mit deklarativer Spalten-API (`AnalyticalColumn`). SAP-UI5-Paritäts-Funktionsumfang: Sortierung (inkl. `enableMultiSort`), Spalten-Filterung (`filterable`) + globaler Filter, Gruppierung & Aggregation (sum/avg/median/min/max/count/unique…), Selektion (`selectionMode` none/single/multiple, `selectionBehavior`), Spalten-Resizing & Drag-Reorder, Personalisierung (Sichtbarkeit/Reihenfolge/Pinning), Tree-Table (`isTreeTable`/`subRowsKey`), Infinite-Scroll, Zebra & Row-Highlight, responsive Pop-In, Lade-/Leer-/Overlay-Zustände, `header`/`extension`-Slots, Grid-Tastaturnavigation und ARIA-Grid-Rollen. Intern auf TanStack Table, ohne dass Konsumenten TanStack kennen müssen.",
+          "Analytische Tabelle mit deklarativer Spalten-API (`AnalyticalColumn`). Voller Funktionsumfang: Sortierung (inkl. `enableMultiSort`), Spalten-Filterung (`filterable`) + globaler Filter, Gruppierung & Aggregation (sum/avg/median/min/max/count/unique…), Selektion (`selectionMode` none/single/multiple, `selectionBehavior`), Spalten-Resizing & Drag-Reorder, Personalisierung (Sichtbarkeit/Reihenfolge/Pinning), Tree-Table (`isTreeTable`/`subRowsKey`), Infinite-Scroll, Zebra & Row-Highlight, responsive Pop-In, Lade-/Leer-/Overlay-Zustände, `header`/`extension`-Slots, Grid-Tastaturnavigation und ARIA-Grid-Rollen. Intern auf TanStack Table, ohne dass Konsumenten TanStack kennen müssen.",
       },
     },
   },

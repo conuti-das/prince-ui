@@ -16,20 +16,20 @@
 
 ### Minor Changes
 
-- 7cd49b0: 3-Mode-Theming: Apple Light/Dark als neue Default-Optik, CU als CONUTI-Community-Mode.
+- 7cd49b0: 3-Mode-Theming: Prince Light/Dark als neue Default-Optik, CU als CONUTI-Community-Mode.
 
-  - `prince-ui-tokens`: `tokens.css` neu strukturiert. `:root` ist jetzt **Apple Dark**
+  - `prince-ui-tokens`: `tokens.css` neu strukturiert. `:root` ist jetzt **Prince Dark**
     (Default + Fallback), `@media (prefers-color-scheme: light)` und `[data-theme="light"]`
-    liefern **Apple Light**, `[data-theme="cu"]` das frühere CONUTI-Community-Styling
-    (CI-Grün #A0D22B, Inter-Font, grünes Bento-Mesh). Apple-Modes nutzen SF-Fonts,
-    Apple-System-Farben und Apple-Grün (#34C759 / #30D158) als Akzent.
+    liefern **Prince Light**, `[data-theme="cu"]` das frühere CONUTI-Community-Styling
+    (CI-Grün #A0D22B, Inter-Font, grünes Bento-Mesh). Light/Dark nutzen den System-Font-Stack,
+    System-Farben und einen Grün-Akzent (#34C759 / #30D158).
     Default folgt dem OS, fällt aber auf Dark zurück.
   - `prince-ui`: `setTheme` akzeptiert nun `"cu"`; neuer Typ `PrinceTheme` und Helfer
     `getTheme()`. `PRINCE_UI_VERSION` = 0.4.0.
 
 - c8f5c49: AppShell + erweitertes Glas-Opt-in.
 
-  - Neue **`AppShell`**-Komponente: Apple-orientierte App-Hülle (Shell-Bar mit
+  - Neue **`AppShell`**-Komponente: systemnahe App-Hülle (Shell-Bar mit
     Logo/Titel/Suche/Aktionen/User + Menü-Toggle, Sidebar, scrollbarer Content).
     Glas auf Shell-Bar + Sidebar per Default; auf schmalen Screens wird die
     Sidebar zum Off-canvas-Overlay mit Scrim. Kontrolliert/unkontrolliert
@@ -38,9 +38,9 @@
     und `AnalyticalTable` (nur Toolbar, nicht die dichten Zeilen).
   - Stories: Components/AppShell (Default + Opaque).
 
-- f569c8b: AppShell mit voller ShellBar-Funktion (UI5-äquivalent) + Responsive.
+- f569c8b: AppShell mit voller Shell-Bar-Funktion + Responsive.
 
-  Die `AppShell`-Shell-Bar bekommt den UI5-ShellBar-Funktionsumfang (prince-ui-Naming):
+  Die `AppShell`-Shell-Bar bekommt den vollen Shell-Bar-Funktionsumfang (prince-ui-Naming):
 
   - `subtitle`, Titel-Dropdown via `menuItems` + `onMenuItemClick`
   - `logo` + `onLogoClick`
@@ -51,26 +51,26 @@
 
   **Responsiv (CSS-Breakpoints):**
 
-  - iPad/Tablet ≤1024: `subtitle` aus, `items` → Overflow.
+  - Tablet ≤1024: `subtitle` aus, `items` → Overflow.
   - Phone ≤767: Suche → Icon (aufklappbar als Zeile), Sidebar als Off-canvas-Overlay
     (startet eingeklappt via `matchMedia`), sekundäre Chrome (`actions`/`productSwitch`)
     ausgeblendet, damit die Bar nicht überläuft.
 
   Neue Icons: `grid`, `more`, `chevron-down`. Alles bestehende (`title`/`user`/`actions`) bleibt kompatibel.
 
-- Neue **Launchpad**-Komponente: Apple-orientiertes App-/Card-Dashboard
-  (Fiori-analog, reduziert: Launchpad → Section → Card). Polymorphe Cards
+- Neue **Launchpad**-Komponente: App-/Card-Dashboard im Kachel-Stil
+  (reduziert: Launchpad → Section → Card). Polymorphe Cards
   (`nav`/`kpi`/`trend`/`list`/`custom`), optionales Drag-Reorder (react-aria
   GridList), Drill-down-Popup mit Voll-Visualisierung. Monochrome Icons,
   theme-fähig in Light/Dark/CU.
-- 3005ab1: Apple-Light-Feinschliff + Liquid-Glass-Stilschicht.
+- 3005ab1: Light-Feinschliff + Glas-Optik-Stilschicht.
 
-  **Apple-Feinschliff (Grün-Akzent bleibt):**
+  **Optischer Feinschliff (Grün-Akzent bleibt):**
 
-  - Card-Radius 16 → 20px (Apple-„pillowy"), Body 16 → 17px, Metric-Weight 800 → 700 (Apple-Bold).
-  - Light: App-BG flach (`#f2f2f7`) statt Verlauf, Default-Schatten flacher (Apple-Grouped-Look).
+  - Card-Radius 16 → 20px (weicher), Body 16 → 17px, Metric-Weight 800 → 700 (Bold).
+  - Light: App-BG flach (`#f2f2f7`) statt Verlauf, Default-Schatten flacher (gruppierter Look).
 
-  **Liquid Glass (nur Optik über React Aria, kein Verhaltensumbau):**
+  **Glas-Optik (nur Optik über React Aria, kein Verhaltensumbau):**
 
   - Neue `--prn-glass-*`-Tokens, abgeleitet aus den mode-spezifischen Flächen → wirken automatisch in Light/Dark/CU.
   - Neue Stilschicht `.prn-glass` + Varianten `-bar/-sidebar/-overlay/-card/-floating` mit `@supports`-Gate und Fallback auf opak; respektiert `prefers-reduced-transparency` und `prefers-reduced-motion`. Optionaler `--prn-glass-tint` für Branding.
@@ -89,7 +89,7 @@
 
 ### Patch Changes
 
-- Prozess-Editoren: Benutzbarkeit, Dark-Mode-Lesbarkeit & Apple-Feinschliff.
+- Prozess-Editoren: Benutzbarkeit, Dark-Mode-Lesbarkeit & optischer Feinschliff.
 
   **BPMN-Editor**
 
@@ -100,9 +100,9 @@
   - Properties-Panel im Dark/CU korrekt eingefärbt (echtes `--color-*`-Mapping
     für `@bpmn-io/properties-panel` v3 statt wirkungsloser `--bio-*`-Variablen);
     irrelevante Camunda-Gruppen ausgeblendet.
-  - Palette/Context-Pad/Append-Popup token-getrieben (Apple-Look, alle Themes).
-  - Apple-Renderer: SF-Pro auf SVG-Labels, weiche Schatten/Hairlines, dünnere
-    Connectoren; Renderer auch im Viewer registriert; bpmn.io-Wasserzeichen aus.
+  - Palette/Context-Pad/Append-Popup token-getrieben (prince-ui-Look, alle Themes).
+  - Optik-Renderer: System-Font auf SVG-Labels, weiche Schatten/Hairlines, dünnere
+    Connectoren; Renderer auch im Viewer registriert; Attribution der Diagramm-Bibliothek bleibt sichtbar.
   - Neu: **Minimap**, **Suchfeld** (Toolbar + ⌘/Strg+F), **Element-Templates**
     (`elementTemplates`-Prop). Auto-Resize/Auto-Place aktiv.
 
@@ -118,7 +118,7 @@
 
   **Forms**
 
-  - Renderer: Datumsfeld auf prince-ui `DatePicker` (de-DE, Apple-Optik) statt
+  - Renderer: Datumsfeld auf prince-ui `DatePicker` (de-DE, prince-ui-Optik) statt
     nativem `<input type=date>`.
   - Builder: monochrome SVG-Icons statt Emojis; form-js-Experten-Editor lädt das
     korrekte Paket (`@bpmn-io/form-js-editor`) + CSS und zeigt bei fehlgeschlagenem
@@ -145,9 +145,9 @@
 
 ### Minor Changes
 
-- SAP-UI5-Parität für AnalyticalTable und ObjectPage (rückwärtskompatibel, additiv).
+- Voller Funktionsumfang für AnalyticalTable und ObjectPage (rückwärtskompatibel, additiv).
 
-  **AnalyticalTable** — auf den SAP-UI5-webcomponents-react-Funktionsumfang gebracht:
+  **AnalyticalTable** — auf vollen Funktionsumfang gebracht:
   Spalten- & Global-Filter, Sortierung inkl. Multi-Sort, `selectionMode` (none/single/
   multiple) + `selectionBehavior`, Column-Resizing + Auto-Resize + Drag&Drop-Reorder,
   Tree-Table (`isTreeTable`/`subRowsKey`), Infinite-Scroll, Zebra/Row-/Navigation-Highlight,

@@ -115,7 +115,7 @@ export interface AnalyticalColumn<T> {
   vAlign?: "top" | "middle" | "bottom";
   /** Sortierung erlauben (Default true). */
   sortable?: boolean;
-  /** Sortierung pro Spalte deaktivieren (SAP-Alias zu sortable:false). */
+  /** Sortierung pro Spalte deaktivieren (Alias zu sortable:false). */
   disableSortBy?: boolean;
   /** Sortier-Typ. */
   sortType?: SortType;
@@ -201,7 +201,7 @@ export interface AnalyticalTableProps<T> {
   selectedKeys?: Set<string>;
   /** Callback bei Auswahländerung. */
   onSelectionChange?: (keys: Set<string>) => void;
-  /** SAP-Style Selektions-Event. */
+  /** Selektions-Event. */
   onRowSelect?: (info: { row: T; selected: boolean; selectedKeys: Set<string> }) => void;
   /** Aktion bei Zeilen-Aktivierung (Klick/Enter/Space) — rückwärtskompatibel. */
   onRowAction?: (row: T) => void;
@@ -219,7 +219,7 @@ export interface AnalyticalTableProps<T> {
   defaultSorting?: { id: string; desc: boolean }[];
   /** Callback bei Sortier-Änderung (controlled-Pattern). */
   onSortingChange?: (sorting: { id: string; desc: boolean }[]) => void;
-  /** SAP-Style Sort-Event. */
+  /** Sort-Event. */
   onSort?: (sorting: { id: string; desc: boolean }[]) => void;
   /** Multi-Sort via Shift-Klick. */
   enableMultiSort?: boolean;
@@ -248,7 +248,7 @@ export interface AnalyticalTableProps<T> {
   /** Leerzustands-Titel (rückwärtskompatibel). */
   emptyTitle?: ReactNode;
   emptyDescription?: ReactNode;
-  /** Text im Leerzustand (SAP `noDataText`). */
+  /** Text im Leerzustand (`noDataText`). */
   noDataText?: ReactNode;
   /** Eigene Leerzustands-Komponente. */
   NoDataComponent?: (info: { reason: NoDataReason }) => ReactNode;
@@ -308,7 +308,7 @@ export interface AnalyticalTableProps<T> {
   header?: ReactNode;
   /** Bereich über der Tabelle (Toolbar/FilterBar). */
   extension?: ReactNode;
-  /** „Liquid Glass"-Optik auf der Tabellen-Toolbar (NICHT auf den dichten Zeilen). */
+  /** Transluzente Glas-Optik auf der Tabellen-Toolbar (NICHT auf den dichten Zeilen). */
   glass?: boolean;
   /** Barrierefreies Label der Tabelle. */
   accessibleName?: string;
@@ -341,7 +341,7 @@ export interface AnalyticalTableProps<T> {
   defaultGrouping?: string[];
   /** Callback bei Änderung der Gruppierung. */
   onGroupingChange?: (grouping: string[]) => void;
-  /** SAP-Style Group-Event. */
+  /** Group-Event. */
   onGroup?: (grouping: string[]) => void;
 
   /* ---- Personalisierung ---- */
@@ -459,7 +459,7 @@ function resolvePath(obj: unknown, path: string): unknown {
   }, obj);
 }
 
-/* Zusätzliche SAP-Aggregat-Funktionen, die TanStack nicht eingebaut hat. */
+/* Zusätzliche Aggregat-Funktionen, die TanStack nicht eingebaut hat. */
 const customAggFns: Record<string, AggregationFn<unknown>> = {
   minMax: (_columnId, leafRows) => {
     const nums = leafRows
@@ -616,7 +616,7 @@ export function AnalyticalTable<T>(props: AnalyticalTableProps<T>) {
     onGroupingChange?.(next);
     onGroup?.(next);
   };
-  // Gruppen initial offen; Tree-Zeilen initial geschlossen (SAP-Verhalten).
+  // Gruppen initial offen; Tree-Zeilen initial geschlossen (Ã¼bliches Verhalten).
   const [expanded, setExpanded] = useState<ExpandedState>(isTreeTable ? {} : true);
 
   /* Personalisierungs-State (kontrolliert/unkontrolliert). */
@@ -696,7 +696,7 @@ export function AnalyticalTable<T>(props: AnalyticalTableProps<T>) {
       for (const e of entries) {
         const w = e.contentRect?.width ?? (e.target as HTMLElement).getBoundingClientRect().width;
         measure(w);
-        /* retainColumnWidth=false (SAP-Default): manuell gesetzte Breiten beim
+        /* retainColumnWidth=false (Ã¼blicher Default): manuell gesetzte Breiten beim
          * echten Container-Resize verwerfen, damit die Spalten neu skalieren. */
         if (!retainColumnWidth && w !== prevWidth) {
           setColumnSizing((prev) => (Object.keys(prev).length ? {} : prev));

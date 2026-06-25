@@ -22,7 +22,7 @@ import type {
   Incident,
 } from "../types";
 import { getDiagramColors, onThemeChange } from "../theme/diagram-theme";
-import { buildRendererConfig, createAppleRendererModule } from "../theme/apple-renderer";
+import { buildRendererConfig, createSurfaceRendererModule } from "../theme/surface-renderer";
 import {
   computeElementStatuses,
   computeExecutedFlows,
@@ -68,7 +68,7 @@ interface ViewerInstance {
 }
 
 /**
- * Apple-styled, read-only BPMN-Viewer mit deklarativem Status-Highlighting.
+ * read-only BPMN-Viewer im prince-ui-Look mit deklarativem Status-Highlighting.
  */
 export function BpmnViewer({
   xml,
@@ -188,7 +188,7 @@ export function BpmnViewer({
       const viewer = new NavigatedViewer({
         container: containerRef.current,
         additionalModules: [
-          createAppleRendererModule(BpmnRenderer as new (...a: unknown[]) => unknown),
+          createSurfaceRendererModule(BpmnRenderer as new (...a: unknown[]) => unknown),
         ],
         ...buildRendererConfig(colors),
       }) as unknown as ViewerInstance;

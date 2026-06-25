@@ -194,7 +194,7 @@ describe("AnalyticalTable sorting / selection / row action", () => {
 });
 
 /* ---------------------------------------------------------------------------
- * Neue SAP-Paritäts-Features
+ * Neue erweiterte Features
  * ------------------------------------------------------------------------- */
 
 describe("AnalyticalTable filtering (B3)", () => {
@@ -645,7 +645,7 @@ describe("AnalyticalTable extensibility (B14.4)", () => {
 });
 
 /* ---------------------------------------------------------------------------
- * Bugfixes + neue SAP-Paritäts-Features (Runde 3)
+ * Bugfixes + neue erweiterte Features (Runde 3)
  * ------------------------------------------------------------------------- */
 
 describe("AnalyticalTable responsive pop-in (B11) — BUGFIX MED-1", () => {

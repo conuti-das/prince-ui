@@ -255,7 +255,7 @@
   --list-badge-background-color: var(--prn-fill-strong);
   --list-badge-color: var(--prn-label);
 
-  font-family: var(--prn-font, -apple-system, BlinkMacSystemFont, system-ui, sans-serif);
+  font-family: var(--prn-font, system-ui, sans-serif);
   background: var(--prn-bg-elevated);
 }
 .prn-bpmn-editor-properties .bio-properties-panel-header-labels,
@@ -277,7 +277,7 @@
 }
 
 /* ============================================================
-   Palette / Context-Pad / Append-Popup — Apple-Look, alle Themes.
+   Palette / Context-Pad / Append-Popup — prince-ui-Look, alle Themes.
    diagram-js nutzt die --color-, --palette-, --context-pad- und
    --popup-Variablen auf .djs-parent → token-getrieben überschrieben.
    ============================================================ */
@@ -324,7 +324,7 @@
   --search-result-secondary-color: var(--prn-label-2);
 }
 
-/* Palette: Apple-Karten-Optik */
+/* Palette: Karten-Optik */
 .prn-bpmn .djs-palette {
   border-radius: var(--prn-radius-md, 10px);
   border: 1px solid var(--prn-separator);
@@ -357,7 +357,7 @@
   display: none;
 }
 
-/* ---- Minimap (diagram-js-minimap) — Apple-Look, alle Themes ---- */
+/* ---- Minimap (diagram-js-minimap) — prince-ui-Look, alle Themes ---- */
 .prn-bpmn .djs-minimap {
   border-radius: var(--prn-radius-md, 10px);
   border: 1px solid var(--prn-separator);

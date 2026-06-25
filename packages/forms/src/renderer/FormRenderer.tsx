@@ -352,7 +352,7 @@ function DataFieldRenderer({
         </Checkbox>
       );
     case "datetime": {
-      // prince-ui DatePicker → de-DE-Format (TT.MM.JJJJ) + Apple-Segmente/Kalender.
+      // prince-ui DatePicker → de-DE-Format (TT.MM.JJJJ) + Segment-/Kalender-Eingabe.
       // Wert wird als ISO-Datum (yyyy-mm-dd) gehalten.
       let dateValue: CalendarDate | null = null;
       const raw = value == null ? "" : String(value).slice(0, 10);

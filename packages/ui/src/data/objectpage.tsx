@@ -19,7 +19,7 @@ import "./data.css";
 import "./objectpage.css";
 
 /* =================================================================
- * ObjectPage — SAP-UI5-äquivalenter Floorplan
+ * ObjectPage — Objekt-Detailseite mit Header, Anker-Navigation und Sektionen
  *
  * Kanonisches Modell: Kompositions-API über <ObjectPageSection> /
  * <ObjectPageSubSection> als children. Das alte deklarative
@@ -219,7 +219,7 @@ export interface ObjectPageProps {
   actionsBar?: ReactNode;
   /** Navigations-Aktionen, responsiv positioniert. */
   navigationBar?: ReactNode;
-  /** „Liquid Glass"-Optik auf der Title-/Top-Header-Leiste (transluzent + Blur). */
+  /** Transluzente Glas-Optik (Blur) auf der Title-/Top-Header-Leiste. */
   glass?: boolean;
 
   /* --- A2 Header-Area / Snapping --- */

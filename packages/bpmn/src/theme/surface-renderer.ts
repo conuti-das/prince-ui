@@ -1,5 +1,5 @@
 /**
- * Apple-Look-Custom-Renderer (diagram-js `additionalModules`).
+ * Custom-Renderer für die prince-ui-Optik (diagram-js `additionalModules`).
  *
  * Erbt vom `BpmnRenderer`, delegiert für alle Typen an die Original-Zeichenroutine
  * (Geometrie/Hit-Boxes/Bendpoints bleiben unangetastet) und passt nur die weiche
@@ -12,17 +12,17 @@
 
 import type { DiagramColors } from "./diagram-theme";
 
-/** Apple-Systemschrift-Stack (SF Pro), passend zum `--prn-font`-Token. */
-const APPLE_FONT =
-  '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, "Helvetica Neue", sans-serif';
+/** Systemschrift-Stack, passend zum `--prn-font`-Token. */
+const SURFACE_FONT =
+  'system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif';
 
 /** Baut die `bpmnRenderer`/`textRenderer`-Config aus den Token-Farben.
- *  Setzt zusätzlich SF-Pro auf alle Diagramm-Labels (interne + externe), damit
- *  die Beschriftungen nicht in der bpmn-js-Default-Schrift erscheinen. */
+ *  Setzt zusätzlich den Systemschrift-Stack auf alle Diagramm-Labels (interne +
+ *  externe), damit die Beschriftungen nicht in der bpmn-js-Default-Schrift erscheinen. */
 export function buildRendererConfig(colors: DiagramColors) {
   const labelStyle = {
     fill: colors.defaultLabelColor,
-    fontFamily: APPLE_FONT,
+    fontFamily: SURFACE_FONT,
     fontSize: 12,
     fontWeight: 500,
   };
@@ -40,42 +40,42 @@ export function buildRendererConfig(colors: DiagramColors) {
 }
 
 /**
- * Erzeugt das `additionalModules`-Eintrag-Objekt für den Apple-Look-Renderer.
+ * Erzeugt das `additionalModules`-Eintrag-Objekt für den prince-ui-Optik-Renderer.
  * `BpmnRenderer` wird injiziert (per Dynamic Import geladen), damit der Paket-Entry
  * frei von bpmn-js-Top-Level-Imports bleibt.
  */
-export function createAppleRendererModule(BpmnRenderer: new (...args: unknown[]) => unknown) {
+export function createSurfaceRendererModule(BpmnRenderer: new (...args: unknown[]) => unknown) {
   /**
    * @constructor
    * Höhere Render-Priorität (1500) als der Default-BpmnRenderer (1000),
    * damit `canRender`/`drawShape` zuerst greifen und wir an `super` delegieren.
    */
-  function AppleRenderer(this: Record<string, unknown>, ...args: unknown[]) {
+  function SurfaceRenderer(this: Record<string, unknown>, ...args: unknown[]) {
     // args: eventBus, styles, pathMap, canvas, textRenderer, ... (bpmn-js-Reihenfolge)
     Reflect.apply(BpmnRenderer as unknown as (...a: unknown[]) => void, this, args);
   }
 
-  AppleRenderer.prototype = Object.create((BpmnRenderer as unknown as { prototype: object }).prototype);
-  AppleRenderer.prototype.constructor = AppleRenderer;
+  SurfaceRenderer.prototype = Object.create((BpmnRenderer as unknown as { prototype: object }).prototype);
+  SurfaceRenderer.prototype.constructor = SurfaceRenderer;
 
   // canRender: nur Standard-BPMN-Elemente; an super delegieren.
-  AppleRenderer.prototype.canRender = function canRender(this: Record<string, unknown>, element: unknown) {
-    const parentProto = Object.getPrototypeOf(AppleRenderer.prototype);
+  SurfaceRenderer.prototype.canRender = function canRender(this: Record<string, unknown>, element: unknown) {
+    const parentProto = Object.getPrototypeOf(SurfaceRenderer.prototype);
     return parentProto.canRender.call(this, element);
   };
 
-  // drawShape: super zeichnen lassen, danach Apple-Feinschliff anwenden.
-  AppleRenderer.prototype.drawShape = function drawShape(
+  // drawShape: super zeichnen lassen, danach optischen Feinschliff anwenden.
+  SurfaceRenderer.prototype.drawShape = function drawShape(
     this: Record<string, unknown>,
     parentNode: SVGElement,
     element: { type?: string; width?: number; height?: number },
   ) {
-    const parentProto = Object.getPrototypeOf(AppleRenderer.prototype);
+    const parentProto = Object.getPrototypeOf(SurfaceRenderer.prototype);
     const gfx = parentProto.drawShape.call(this, parentNode, element) as SVGElement | undefined;
 
     try {
       const type = element.type ?? "";
-      // Task-/Activity-Rechtecke runder (Apple-Card-Radius).
+      // Task-/Activity-Rechtecke runder (Karten-Radius).
       if (type.includes("Task") || type.includes("SubProcess") || type.includes("CallActivity")) {
         const rect = parentNode.querySelector("rect");
         if (rect) {
@@ -89,7 +89,7 @@ export function createAppleRendererModule(BpmnRenderer: new (...args: unknown[])
       if (stroke && stroke.getAttribute("stroke-width") === "2") {
         stroke.setAttribute("stroke-width", "1.5");
       }
-      // Dezenter Apple-Schatten auf der gesamten Form (nicht auf Labels/Connections).
+      // Dezenter Schatten auf der gesamten Form (nicht auf Labels/Connections).
       const isLabel = type === "label";
       if (!isLabel && main?.style) {
         main.style.filter = "drop-shadow(0 1px 2px rgba(0, 0, 0, 0.12))";
@@ -102,12 +102,12 @@ export function createAppleRendererModule(BpmnRenderer: new (...args: unknown[])
   };
 
   // drawConnection: super zeichnen lassen, danach Pfeile/Linien verschlanken.
-  AppleRenderer.prototype.drawConnection = function drawConnection(
+  SurfaceRenderer.prototype.drawConnection = function drawConnection(
     this: Record<string, unknown>,
     parentNode: SVGElement,
     element: unknown,
   ) {
-    const parentProto = Object.getPrototypeOf(AppleRenderer.prototype);
+    const parentProto = Object.getPrototypeOf(SurfaceRenderer.prototype);
     const gfx = parentProto.drawConnection.call(this, parentNode, element) as SVGElement | undefined;
     try {
       const main = (gfx ?? parentNode) as SVGElement;
@@ -122,7 +122,7 @@ export function createAppleRendererModule(BpmnRenderer: new (...args: unknown[])
   };
 
   // $inject muss exakt dem BpmnRenderer entsprechen, damit DI die Args füllt.
-  AppleRenderer.$inject = (BpmnRenderer as unknown as { $inject?: string[] }).$inject ?? [
+  SurfaceRenderer.$inject = (BpmnRenderer as unknown as { $inject?: string[] }).$inject ?? [
     "config.bpmnRenderer",
     "eventBus",
     "styles",
@@ -132,7 +132,7 @@ export function createAppleRendererModule(BpmnRenderer: new (...args: unknown[])
   ];
 
   return {
-    __init__: ["appleRenderer"],
-    appleRenderer: ["type", AppleRenderer],
+    __init__: ["surfaceRenderer"],
+    surfaceRenderer: ["type", SurfaceRenderer],
   };
 }

@@ -6,14 +6,14 @@ import { Button } from "../primitives/forms";
 import { Menu, MenuItem } from "../primitives/overlays";
 import "./appshell.css";
 
-/** Eintrag im Titel-Dropdown (analog UI5 `menuItems`). */
+/** Eintrag im Titel-Dropdown (analog `menuItems`). */
 export interface AppShellMenuItem {
   id: string;
   label: ReactNode;
   icon?: ReactNode;
 }
 
-/** Aktions-Item in der Shell-Bar (analog UI5 `ShellBarItem`). */
+/** Aktions-Item in der Shell-Bar (analog `ShellBarItem`). */
 export interface AppShellItem {
   id: string;
   /** Monochromes Icon (z. B. `<Icon name="bell" />`). */
@@ -33,7 +33,7 @@ export interface AppShellProps {
   /** Marken-/Logo-Slot ganz links. */
   logo?: ReactNode;
   onLogoClick?: () => void;
-  /** Macht den Titel zu einem Dropdown (analog UI5 `menuItems`). */
+  /** Macht den Titel zu einem Dropdown (analog `menuItems`). */
   menuItems?: AppShellMenuItem[];
   onMenuItemClick?: (id: string) => void;
   /** Globale Suche; kollabiert auf Mobile zu einem Icon (aufklappbar). */
@@ -59,7 +59,7 @@ export interface AppShellProps {
   sidebarCollapsed?: boolean;
   defaultSidebarCollapsed?: boolean;
   onSidebarCollapsedChange?: (collapsed: boolean) => void;
-  /** „Liquid Glass"-Optik auf Shell-Bar + Sidebar (Default: true). */
+  /** Transluzente Glas-Optik (Blur) auf Shell-Bar + Sidebar (Default: true). */
   glass?: boolean;
   toggleLabel?: string;
   children?: ReactNode;
@@ -95,8 +95,8 @@ function BarButton({
 }
 
 /**
- * AppShell — Apple-orientierte App-Hülle mit voller ShellBar-Funktion
- * (vgl. SAP UI5 ShellBar): Logo, Titel + Untertitel + Titel-Dropdown, Suche
+ * AppShell — systemnahe App-Hülle mit voller Shell-Bar-Funktion:
+ * Logo, Titel + Untertitel + Titel-Dropdown, Suche
  * (auf Mobile kollabierbar), Aktions-Items mit Overflow, Benachrichtigungen,
  * Produkt-Wechsler, Profil — plus Sidebar (Off-canvas auf Mobile) und Content.
  *

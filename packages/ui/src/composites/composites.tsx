@@ -315,7 +315,7 @@ export function Amount({
 
 export interface ListProps {
   children?: ReactNode;
-  /** Header-Beschriftung über der Liste (macOS-Gruppentitel). */
+  /** Header-Beschriftung über der Liste (Gruppentitel). */
   label?: ReactNode;
   /** Eingerückte Trennlinien (wie iOS-Listen). */
   inset?: boolean;
@@ -484,7 +484,7 @@ export interface SidebarProps {
   header?: ReactNode;
   /** Fußbereich (z. B. Account). */
   footer?: ReactNode;
-  /** „Liquid Glass"-Optik (transluzent + Blur). Nur über Content sinnvoll. */
+  /** Transluzente Glas-Optik (Blur). Nur über Content sinnvoll. */
   glass?: boolean;
   className?: string;
 }
@@ -529,7 +529,7 @@ export interface ToolbarProps {
   leading?: ReactNode;
   /** Aktionen rechts. */
   actions?: ReactNode;
-  /** „Liquid Glass"-Optik (transluzent + Blur). Nur über Content sinnvoll. */
+  /** Transluzente Glas-Optik (Blur). Nur über Content sinnvoll. */
   glass?: boolean;
   className?: string;
 }

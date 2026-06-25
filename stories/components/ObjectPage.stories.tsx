@@ -18,7 +18,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "SAP-UI5-äquivalenter ObjectPage-Floorplan: komponierbare `ObjectPageSection`/`ObjectPageSubSection`, Anchor-/Tab-Bar mit Scroll-Spy, `mode` default (gestapelt) vs iconTabBar, kollabierbarer/snapping Header mit Pin-Button (imperative `toggleHeaderArea` via Ref), Title-Slots (breadcrumbs/header/subHeader/snapped*/actionsBar/navigationBar/KPIs), Bild/Avatar, Floating-Footer und Placeholder. Die alte deklarative API (`title`/`subtitle`/`status`/`kpis`/`sections`) bleibt als Adapter erhalten.",
+          "ObjectPage — Objekt-Detailseite: komponierbare `ObjectPageSection`/`ObjectPageSubSection`, Anchor-/Tab-Bar mit Scroll-Spy, `mode` default (gestapelt) vs iconTabBar, kollabierbarer/snapping Header mit Pin-Button (imperative `toggleHeaderArea` via Ref), Title-Slots (breadcrumbs/header/subHeader/snapped*/actionsBar/navigationBar/KPIs), Bild/Avatar, Floating-Footer und Placeholder. Die alte deklarative API (`title`/`subtitle`/`status`/`kpis`/`sections`) bleibt als Adapter erhalten.",
       },
     },
   },

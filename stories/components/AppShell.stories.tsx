@@ -6,12 +6,12 @@ import "../../packages/ui/src/primitives/forms.css";
 import "../../packages/ui/src/surfaces/glass.css";
 
 /**
- * AppShell — Apple-orientierte App-Hülle mit voller ShellBar-Funktion
- * (vgl. SAP UI5 ShellBar): Logo, Titel + Untertitel + Titel-Dropdown (`menuItems`),
+ * AppShell — systemnahe App-Hülle mit voller Shell-Bar-Funktion:
+ * Logo, Titel + Untertitel + Titel-Dropdown (`menuItems`),
  * Suche, Aktions-Items (mit Overflow), Benachrichtigungen, Produkt-Wechsler,
  * Profil — plus Sidebar und Content. Glas per Default auf Shell-Bar + Sidebar.
  *
- * Responsiv (CSS-Breakpoints): iPad/Tablet ≤1024 blendet Untertitel aus und
+ * Responsiv (CSS-Breakpoints): Tablet ≤1024 blendet Untertitel aus und
  * schiebt die Items ins „…"-Overflow-Menü; Phone ≤767 kollabiert die Suche zu
  * einem Icon und macht die Sidebar zum Off-canvas-Overlay. Light/Dark/CU über
  * die Theme-Toolbar; per `preview_resize`/Viewport testbar.

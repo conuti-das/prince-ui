@@ -69,7 +69,7 @@ Glas-Cards (Bento). Ergänzt die `--prn-bg-elevated*`-Reihe.
 `DonutChart` (segments, centerLabel?), `ChartEmpty`, Helper `smoothPath`.
 
 ### Data (`data/*`) — TanStack + React Aria
-- `AnalyticalTable<T>` — SAP-UI5-AnalyticalTable-Parität (Stand 2026-06-24, ~90 % Feature-Coverage).
+- `AnalyticalTable<T>` — voller Analyse-Tabellen-Funktionsumfang (Stand 2026-06-24, ~90 % Feature-Coverage).
   Kern: `data`, `columns: AnalyticalColumn<T>[]`, `getRowId`, Sort (Klick+Tastatur, aria-sort),
   Sticky-Header, Zeilen-Virtualisierung, Skeleton/Empty. Erweiterungen:
   - **Selektion (B5):** `selectionMode` none|single|multiple, `selectionBehavior` row|rowOnly|rowSelector,
@@ -102,7 +102,7 @@ Glas-Cards (Bento). Ergänzt die `--prn-bg-elevated*`-Reihe.
     `VisibleRowCountMode`, `ValueState`, `NoDataReason`.
 - `FilterBar` (children, `moreFields?`, `activeFilters`/`onRemoveFilter`/`onClearAll`,
   `actions?`) + `FilterField` (label + Control-Slot).
-- `ObjectPage` — SAP-UI5-ObjectPage-Floorplan-Parität (Stand 2026-06-24, ~96 % Feature-Coverage),
+- `ObjectPage` — umfangreiche Objekt-Detailseite (Stand 2026-06-24, ~96 % Feature-Coverage),
   `forwardRef<ObjectPageHandle>`. Komposition: `ObjectPageSection` (id, titleText, hideTitleText,
   titleTextUppercase, wrapTitleText, titleTextLevel H1–H6, header) + `ObjectPageSubSection`
   (id, titleText, actions, hideTitleText), als `children`.

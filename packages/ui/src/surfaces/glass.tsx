@@ -16,7 +16,7 @@ export interface GlassSurfaceProps extends HTMLAttributes<HTMLElement> {
 }
 
 /**
- * GlassSurface — dünne „Liquid Glass"-Optik-Schicht (reines CSS, kein Verhalten).
+ * GlassSurface — dünne, transluzente Glas-Optik-Schicht (reines CSS, kein Verhalten).
  *
  * Sparsam und nur auf der „Navigationsebene" über dem Content einsetzen
  * (Top-Bar, Sidebar, Overlays, schwebende Controls, Übersichtskarten).

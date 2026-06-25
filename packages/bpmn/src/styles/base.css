@@ -14,8 +14,6 @@
   background: var(--prn-bpmn-canvas-bg);
 }
 
-/* bpmn.io-Wasserzeichen ausblenden (kein Fremd-Branding im Apple-Look) —
-   gilt für Viewer und Editor, da beide unter .prn-bpmn liegen. */
-.prn-bpmn .bjs-powered-by {
-  display: none;
-}
+/* Hinweis: Die Attribution der zugrunde liegenden Diagramm-Bibliothek
+   (".bjs-powered-by") bleibt bewusst sichtbar — sie ist durch die Lizenz
+   der Bibliothek gefordert und darf nicht ausgeblendet werden. */

@@ -118,7 +118,7 @@
  * (Decision-Table-Header When/Then, Typ-Zeile, Hit-Policy, Zeilennummern,
  * Annotations, Literal-Expression, Kontextmenüs, Palette, Definitions-Box) folgt
  * automatisch. Light bleibt nah am Original; Dark UND CU (dunkle Surfaces)
- * bekommen invertierte Grau-Rampe + Apple-Akzente.
+ * bekommen invertierte Grau-Rampe + prince-ui-Akzente.
  * ========================================================================== */
 
 /* ---- Basis: Tokens an die dmn-js-Wurzeln durchreichen (alle Themes) ---- */
@@ -210,7 +210,7 @@
   max-width: 100%;
 }
 
-/* View-DRD/Edit/Simple-Mode-Buttons im Apple-Look. */
+/* View-DRD/Edit/Simple-Mode-Buttons im prince-ui-Look. */
 .prn-dmn-expert .view-drd-button,
 .prn-dmn-expert .simple-mode-button,
 .prn-dmn-expert .edit-button {
@@ -227,8 +227,6 @@
   background: var(--prn-accent-soft) !important;
 }
 
-/* dmn-js/bpmn-io-Wasserzeichen ausblenden (kein Fremd-Branding). */
-.prn-dmn-expert .bjs-powered-by,
-.prn-dmn-expert .powered-by {
-  display: none;
-}
+/* Hinweis: Die Attribution der zugrunde liegenden Diagramm-Bibliothek
+   (".bjs-powered-by"/".powered-by") bleibt bewusst sichtbar — sie ist durch
+   die Lizenz der Bibliothek gefordert und darf nicht ausgeblendet werden. */

@@ -43,7 +43,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Vollwertiger bpmn-js-Modeler im Apple-Look: Properties-Panel (camunda-moddle), bpmnlint mit ErrorPanel, Original-bpmn.io-Icons in Palette/Context-Pad, Tabellen-Umschaltung (AnalyticalTable), Save via saveXML({format:true}). value/defaultValue/onChange-Muster.",
+          "Vollwertiger bpmn-js-Modeler im prince-ui-Look: Properties-Panel (camunda-moddle), bpmnlint mit ErrorPanel, Original-Icons der Diagramm-Bibliothek in Palette/Context-Pad, Tabellen-Umschaltung (AnalyticalTable), Save via saveXML({format:true}). value/defaultValue/onChange-Muster.",
       },
     },
   },

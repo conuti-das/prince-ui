@@ -1,5 +1,5 @@
 /* ============================================================
- *  AppShell — Apple-orientierte App-Hülle (UI5-ShellBar-äquivalent)
+ *  AppShell — systemnahe App-Hülle mit Shell-Bar
  *  Shell-Bar (Logo/Titel/Suche/Items/Notifications/ProductSwitch/Profil)
  *  + Sidebar + Content. Glas (Default) auf Shell-Bar und Sidebar.
  *  Responsiv über Breakpoints: Phone ≤767, Tablet ≤1024.
@@ -221,7 +221,7 @@
 }
 
 /* ============================================================
- *  Tablet / iPad (≤1024px): Untertitel aus, Items → Overflow.
+ *  Tablet (≤1024px): Untertitel aus, Items → Overflow.
  * ============================================================ */
 @media (max-width: 1024px) {
   .prn-shellbar-subtitle {

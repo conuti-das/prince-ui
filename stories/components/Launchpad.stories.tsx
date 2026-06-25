@@ -17,12 +17,12 @@ import "../../packages/ui/src/primitives/forms.css";
 import "../../packages/ui/src/surfaces/glass.css";
 
 /**
- * Launchpad — Apple-orientiertes App-/Card-Dashboard (Fiori-Launchpad-Äquivalent).
+ * Launchpad — App-/Card-Dashboard im Kachel-Stil.
  *
  * Polymorphe Cards über `kind` (nav/kpi/trend/list/custom) — der Plug-in-Contract,
  * mit dem Apps eigene Inhalte einhängen. `editable` schaltet Drag-Reorder frei
  * (react-aria, Tastatur + Pointer); Cards mit `detail`/`trend` öffnen ein
- * Drill-down-Popup mit der Voll-Visualisierung. Responsiv (Desktop 4 / iPad 3 /
+ * Drill-down-Popup mit der Voll-Visualisierung. Responsiv (Desktop 4 / Tablet 3 /
  * Phone 1 Spalte). Light/Dark/CU über die Theme-Toolbar.
  */
 const meta: Meta<typeof Launchpad> = {

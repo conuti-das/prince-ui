@@ -12,7 +12,7 @@ export type PrinceTheme = "light" | "dark" | "cu";
 
 /**
  * Setzt das Theme am <html>-Element.
- * - `"light"` / `"dark"` → Prince Light / Prince Dark (Apple-Optik: SF-Fonts, Apple-System-Farben, Grün)
+ * - `"light"` / `"dark"` → Prince Light / Prince Dark (systemnahe Optik: System-Font-Stack, System-Farben, Grün-Akzent)
  * - `"cu"`               → CONUTI Community-Styling (CI-Grün)
  * - `null`               → System folgen (Prince Light bei OS-Light, sonst Prince Dark)
  */
@@ -72,6 +72,6 @@ export * from "./primitives/status";
 export * from "./primitives/toast";
 export * from "./primitives/dropzone";
 
-// Liquid-Glass-Optik-Schicht — zuletzt, damit glass.css NACH dem Komponenten-CSS
+// Glas-Optik-Schicht — zuletzt, damit glass.css NACH dem Komponenten-CSS
 // gebündelt wird und die opt-in Glas-Klassen (z. B. auf Popover) gewinnen.
 export * from "./surfaces/glass";

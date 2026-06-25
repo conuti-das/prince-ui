@@ -15,9 +15,9 @@ import { Sparkline, AreaChart } from "../charts/charts";
 import "./launchpad.css";
 
 /* ============================================================
- *  Launchpad — Apple-orientiertes App-/Card-Dashboard
+ *  Launchpad — App-/Card-Dashboard im Kachel-Stil
  *
- *  Struktur (Fiori-analog, reduziert): Launchpad → Section → Card.
+ *  Struktur (reduziert): Launchpad → Section → Card.
  *  Card ist polymorph über `kind` (Plug-in-Contract). `editable`
  *  schaltet Drag-Reorder frei (react-aria GridList + Drop-Indikator);
  *  ohne `editable` eine schlichte, barrierearme `role="list"`-Fläche

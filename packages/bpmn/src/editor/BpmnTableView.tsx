@@ -2,7 +2,7 @@
  * Tabellenansicht für BPMN-Prozessschritte (prince-ui).
  * Parst das BPMN-XML client-seitig (pure `parseBpmnElements`) und zeigt alle
  * Flow-Elemente als `AnalyticalTable` mit `SearchField` + `Badge` an.
- * Portiert aus maco `BpmnEditor/BpmnTableView.tsx` (UI5 → prince-ui).
+ * Portiert aus maco `BpmnEditor/BpmnTableView.tsx` (Migration auf prince-ui).
  */
 import { useMemo, useState } from "react";
 import { AnalyticalTable, Badge, SearchField, type AnalyticalColumn } from "@conuti-das/prince-ui";

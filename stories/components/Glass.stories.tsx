@@ -15,7 +15,7 @@ import "../../packages/ui/src/primitives/overlays.css";
 import "../../packages/ui/src/surfaces/glass.css";
 
 /**
- * Liquid Glass — dünne Optik-Schicht über React Aria (nur CSS, kein Verhalten).
+ * Glas-Optik — dünne, transluzente Optik-Schicht über React Aria (nur CSS, kein Verhalten).
  *
  * **Wo einsetzen:** Top-Bar, Sidebar, Overlays (Popover/Menu/Dialog/Tooltip),
  * schwebende Controls, Übersichtskarten, die über Content liegen.
@@ -27,7 +27,7 @@ import "../../packages/ui/src/surfaces/glass.css";
  * Light, Dark und CU werden über die Theme-Toolbar abgedeckt.
  */
 const meta: Meta = {
-  title: "Foundations/Liquid Glass",
+  title: "Foundations/Glas-Optik",
   parameters: { layout: "fullscreen" },
 };
 export default meta;

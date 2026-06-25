@@ -12,7 +12,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Seitenleiste im macOS-Stil mit Gruppen, Einträgen (Icon, Label, optionalem Trailing-Counter) sowie optionalem Header- und Footer-Slot.",
+          "Seitenleiste im systemnahen Stil mit Gruppen, Einträgen (Icon, Label, optionalem Trailing-Counter) sowie optionalem Header- und Footer-Slot.",
       },
     },
   },

@@ -12,7 +12,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Gruppierte Liste im macOS-Stil. Die einzelnen Zeilen werden über `ListRow` (mit Leading-Icon, Titel, Untertitel und Trailing-Slot) gerendert; pressbare Zeilen nutzen React Aria.",
+          "Gruppierte Liste im systemnahen Stil. Die einzelnen Zeilen werden über `ListRow` (mit Leading-Icon, Titel, Untertitel und Trailing-Slot) gerendert; pressbare Zeilen nutzen React Aria.",
       },
     },
   },

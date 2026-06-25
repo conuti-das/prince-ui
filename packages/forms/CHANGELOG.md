@@ -15,7 +15,7 @@
 
   - **prince-ui-bpmn**: `BpmnViewer` (read-only mit deklarativem Status-/Historie-Highlighting
     über diagram-js-Overlays/Marker, Camunda-7-Shapes) und `BpmnEditor` (bpmn-js-Modeler im
-    Apple-Look via Custom-Renderer, Original-bpmn.io-Icons, Properties-Panel, bpmnlint,
+    prince-ui-Look via Custom-Renderer, Original-Icons der Diagramm-Bibliothek, Properties-Panel, bpmnlint,
     camunda-moddle, AnalyticalTable-Ansicht). Theming über `--prn-*`/`data-theme`.
   - **prince-ui-dmn**: `DmnTableEditor` (einstiegsfreundlich auf prince-ui AnalyticalTable mit
     Inline-Edit, voller Umfang inkl. Spaltenpflege, verlustfreie dmn-moddle-Serialisierung,
@@ -26,7 +26,7 @@
 
   Persistenz/Selektion/KI als Props/Slots, Domänenlogik (z. B. Prüfidentifikatoren) als optionales Plugin.
 
-- Prozess-Editoren: Benutzbarkeit, Dark-Mode-Lesbarkeit & Apple-Feinschliff.
+- Prozess-Editoren: Benutzbarkeit, Dark-Mode-Lesbarkeit & optischer Feinschliff.
 
   **BPMN-Editor**
 
@@ -37,9 +37,9 @@
   - Properties-Panel im Dark/CU korrekt eingefärbt (echtes `--color-*`-Mapping
     für `@bpmn-io/properties-panel` v3 statt wirkungsloser `--bio-*`-Variablen);
     irrelevante Camunda-Gruppen ausgeblendet.
-  - Palette/Context-Pad/Append-Popup token-getrieben (Apple-Look, alle Themes).
-  - Apple-Renderer: SF-Pro auf SVG-Labels, weiche Schatten/Hairlines, dünnere
-    Connectoren; Renderer auch im Viewer registriert; bpmn.io-Wasserzeichen aus.
+  - Palette/Context-Pad/Append-Popup token-getrieben (prince-ui-Look, alle Themes).
+  - Optik-Renderer: System-Font auf SVG-Labels, weiche Schatten/Hairlines, dünnere
+    Connectoren; Renderer auch im Viewer registriert; Attribution der Diagramm-Bibliothek bleibt sichtbar.
   - Neu: **Minimap**, **Suchfeld** (Toolbar + ⌘/Strg+F), **Element-Templates**
     (`elementTemplates`-Prop). Auto-Resize/Auto-Place aktiv.
 
@@ -55,7 +55,7 @@
 
   **Forms**
 
-  - Renderer: Datumsfeld auf prince-ui `DatePicker` (de-DE, Apple-Optik) statt
+  - Renderer: Datumsfeld auf prince-ui `DatePicker` (de-DE, prince-ui-Optik) statt
     nativem `<input type=date>`.
   - Builder: monochrome SVG-Icons statt Emojis; form-js-Experten-Editor lädt das
     korrekte Paket (`@bpmn-io/form-js-editor`) + CSS und zeigt bei fehlgeschlagenem
