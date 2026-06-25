@@ -36,7 +36,14 @@ export type IconName =
   | "x"
   | "chevron-right"
   | "chevron-down"
-  | "chevron-up";
+  | "chevron-up"
+  | "phone"
+  | "clock"
+  | "link"
+  | "arrow-down-right"
+  | "arrow-up-right"
+  | "droplet"
+  | "file-text";
 
 const PATHS: Record<IconName, ReactNode> = {
   heart: <path d="M19 14c1.5-1.6 3-3.4 3-5.6A4.4 4.4 0 0 0 12 5 4.4 4.4 0 0 0 2 8.4c0 2.2 1.5 4 3 5.6l7 7Z" />,
@@ -148,6 +155,40 @@ const PATHS: Record<IconName, ReactNode> = {
   "chevron-right": <path d="m9 6 6 6-6 6" />,
   "chevron-down": <path d="m6 9 6 6 6-6" />,
   "chevron-up": <path d="m18 15-6-6-6 6" />,
+  phone: (
+    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z" />
+  ),
+  clock: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 7v5l3 2" />
+    </>
+  ),
+  link: (
+    <>
+      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+    </>
+  ),
+  "arrow-down-right": (
+    <>
+      <path d="M7 7l10 10" />
+      <path d="M17 7v10H7" />
+    </>
+  ),
+  "arrow-up-right": (
+    <>
+      <path d="M7 17 17 7" />
+      <path d="M7 7h10v10" />
+    </>
+  ),
+  droplet: <path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5S12.5 5 12 2.5C11.5 5 10 7 8 8.5S5 13 5 15a7 7 0 0 0 7 7Z" />,
+  "file-text": (
+    <>
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z" />
+      <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" />
+    </>
+  ),
 };
 
 export interface IconProps extends Omit<SVGProps<SVGSVGElement>, "name"> {
