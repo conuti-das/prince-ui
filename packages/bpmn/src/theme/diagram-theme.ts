@@ -39,7 +39,8 @@ export function isDarkMode(scheme: DiagramColorScheme = "auto"): boolean {
   if (scheme === "light") return false;
   if (typeof document !== "undefined") {
     const attr = document.documentElement.getAttribute("data-theme");
-    if (attr === "dark") return true;
+    // CU ist ein dunkler Surface → wie dark behandeln (Diagramm-Shapes dunkel).
+    if (attr === "dark" || attr === "cu") return true;
     if (attr === "light") return false;
   }
   if (typeof window !== "undefined" && window.matchMedia) {

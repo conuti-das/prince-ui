@@ -31,10 +31,12 @@ export type IconName =
   | "bell"
   | "grid"
   | "more"
+  | "maximize"
   | "check"
   | "x"
   | "chevron-right"
-  | "chevron-down";
+  | "chevron-down"
+  | "chevron-up";
 
 const PATHS: Record<IconName, ReactNode> = {
   heart: <path d="M19 14c1.5-1.6 3-3.4 3-5.6A4.4 4.4 0 0 0 12 5 4.4 4.4 0 0 0 2 8.4c0 2.2 1.5 4 3 5.6l7 7Z" />,
@@ -138,10 +140,14 @@ const PATHS: Record<IconName, ReactNode> = {
       <circle cx="19" cy="12" r="1.6" fill="currentColor" stroke="none" />
     </>
   ),
+  maximize: (
+    <path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3" />
+  ),
   check: <path d="M20 6 9 17l-5-5" />,
   x: <path d="M18 6 6 18M6 6l12 12" />,
   "chevron-right": <path d="m9 6 6 6-6 6" />,
   "chevron-down": <path d="m6 9 6 6 6-6" />,
+  "chevron-up": <path d="m18 15-6-6-6 6" />,
 };
 
 export interface IconProps extends Omit<SVGProps<SVGSVGElement>, "name"> {

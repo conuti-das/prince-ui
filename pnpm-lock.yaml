@@ -83,6 +83,9 @@ importers:
       bpmn-js-bpmnlint:
         specifier: ^0.24.0
         version: 0.24.0(bpmn-js@18.19.0)(bpmnlint@11.12.1)(diagram-js@15.18.0)
+      bpmn-js-element-templates:
+        specifier: ^2.26.0
+        version: 2.26.0(@bpmn-io/properties-panel@3.44.1(@bpmn-io/cm-theme@0.2.0(@codemirror/state@6.7.0)(@codemirror/view@6.43.2)))(bpmn-js-properties-panel@5.59.0(@bpmn-io/properties-panel@3.44.1(@bpmn-io/cm-theme@0.2.0(@codemirror/state@6.7.0)(@codemirror/view@6.43.2)))(bpmn-js@18.19.0)(camunda-bpmn-js-behaviors@1.16.1(bpmn-js@18.19.0)(camunda-bpmn-moddle@7.0.1)(zeebe-bpmn-moddle@1.15.0))(diagram-js@15.18.0))(bpmn-js@18.19.0)(camunda-bpmn-js-behaviors@1.16.1(bpmn-js@18.19.0)(camunda-bpmn-moddle@7.0.1)(zeebe-bpmn-moddle@1.15.0))(diagram-js@15.18.0)(preact@10.29.2)
       bpmn-js-properties-panel:
         specifier: ^5.0.0
         version: 5.59.0(@bpmn-io/properties-panel@3.44.1(@bpmn-io/cm-theme@0.2.0(@codemirror/state@6.7.0)(@codemirror/view@6.43.2)))(bpmn-js@18.19.0)(camunda-bpmn-js-behaviors@1.16.1(bpmn-js@18.19.0)(camunda-bpmn-moddle@7.0.1)(zeebe-bpmn-moddle@1.15.0))(diagram-js@15.18.0)
@@ -95,6 +98,9 @@ importers:
       diagram-js:
         specifier: ^15.0.0
         version: 15.18.0
+      diagram-js-minimap:
+        specifier: ^5.3.0
+        version: 5.3.0
       prince-ui-tokens:
         specifier: workspace:*
         version: link:../tokens
@@ -193,6 +199,9 @@ importers:
 
   packages/forms:
     dependencies:
+      '@internationalized/date':
+        specifier: 3.12.2
+        version: 3.12.2
       prince-ui-tokens:
         specifier: workspace:*
         version: link:../tokens
@@ -201,6 +210,9 @@ importers:
         specifier: ^0.2.0
         version: 0.2.0(@codemirror/state@6.7.0)(@codemirror/view@6.43.2)
       '@bpmn-io/form-js':
+        specifier: ^1.21.0
+        version: 1.21.3(@bpmn-io/cm-theme@0.2.0(@codemirror/state@6.7.0)(@codemirror/view@6.43.2))
+      '@bpmn-io/form-js-editor':
         specifier: ^1.21.0
         version: 1.21.3(@bpmn-io/cm-theme@0.2.0(@codemirror/state@6.7.0)(@codemirror/view@6.43.2))
       '@testing-library/jest-dom':
@@ -399,6 +411,9 @@ packages:
   '@bpmn-io/draggle@4.1.2':
     resolution: {integrity: sha512-k7Al5tZA5GZ6KvrsuJ+PFleB3y9WUgEr4KErD6t82Uw1SMn6IK3dXFLhwLxxzga4IrmTGke7wZWdqg6vGOxoTw==}
 
+  '@bpmn-io/element-templates-validator@2.22.0':
+    resolution: {integrity: sha512-EVn161RLPeQKkvTH8LFoReSOOkf71/ybFF3rfG6M8HgCQQX67CLIrMlUp+l6Q+j5OAVvELX0f+n4o+TdwTwK8Q==}
+
   '@bpmn-io/extract-process-variables@2.2.1':
     resolution: {integrity: sha512-1E5ydNzTqgx513NxA1nxk2CqDb9OkusfU9Tf6WejD1BiY+5u130XnZOFE/FQX0JB6ZmPOeFMx4IDEuHjrGhOzw==}
 
@@ -448,8 +463,17 @@ packages:
   '@bpmn-io/properties-panel@3.44.1':
     resolution: {integrity: sha512-8kQ59l7a9Bgfq1qvs0sTykcfqimwuJYrZPjNvr1f5OFFr+cpe3e380Pzxz9OGKk4Con1INEqVIePlaNhzrbDJg==}
 
+  '@bpmn-io/semver-compat@0.1.0':
+    resolution: {integrity: sha512-hIcW42Ku92MUioL6aknDbRoW1jK8ZEqIe8qZZ+d3cjitDO+PMEFFXj/sezJYIHMe8elu4CBz9qpjkV8WIVG9qw==}
+
+  '@camunda/element-templates-json-schema@0.21.0':
+    resolution: {integrity: sha512-3O5oovVIsCrU0tG+WMm6rcmtiGM7tYni/H+oPN1EqLG1B3HPcRiLwypNrHz1w6aQy6vnjB8ovzSJ42taapqN/w==}
+
   '@camunda/feel-builtins@1.2.0':
     resolution: {integrity: sha512-dtfv9TSDiTEivARL2l8qawxsQi9BBajoSUQQIlVXVBwt5rp/FQ9UD2DTzki//RnLnu2V2O69SxGZDhWTT28qQg==}
+
+  '@camunda/zeebe-element-templates-json-schema@0.41.1':
+    resolution: {integrity: sha512-D0qSKJmsbyAa8Uq7YZ39UuroRjWEaxm9TxfIHodvliHR1eQzeOiG6WohBw2qMt1J7Fe3WNVyMujkuXUicU0r9w==}
 
   '@carbon/grid@11.56.0':
     resolution: {integrity: sha512-AyfagUzgBt4XkFId5Wz4+P33AiNdyIdge8WvH7i0ck8N7xYyFCvmMRUICcd9vesfyz1j9pRHriHISOme9IAKpg==}
@@ -1720,6 +1744,15 @@ packages:
       bpmnlint: '>= 3.2'
       diagram-js: '*'
 
+  bpmn-js-element-templates@2.26.0:
+    resolution: {integrity: sha512-HaXzxSakk0x158dSiGugFWT/Lkwn7/UDf3YbWEtAdSmNvHMmrwhgGAb0NDSI/xNd6YeFfBKkRMk8Iom+QUKhrA==}
+    peerDependencies:
+      '@bpmn-io/properties-panel': '>= 3.41.3'
+      bpmn-js: '>= 11.5'
+      bpmn-js-properties-panel: '>= 2'
+      camunda-bpmn-js-behaviors: '>= 1.2.1'
+      diagram-js: '>= 11.9'
+
   bpmn-js-properties-panel@5.59.0:
     resolution: {integrity: sha512-h0gJv/A/lG1LT7ChrKC7zr4ajuw0x+NXw0uFmol+mE4FrCLdTmv8pSb+S9AeKEJURJ5ZcpApxV5GxzWhvxv5lA==}
     peerDependencies:
@@ -1940,6 +1973,9 @@ packages:
     resolution: {integrity: sha512-eXfd+nxJr5xt3YlCrs+E53mPi+gqBWRBkAXkR99ZPL7Pl0B3H5nkv/uiwx4Q4vJU/Sp8Jy3zVdhP/Y2c6loTjw==}
     peerDependencies:
       diagram-js: '*'
+
+  diagram-js-minimap@5.3.0:
+    resolution: {integrity: sha512-FO2yDA8td4Vnu4Yg72ZIA7n6vIOtZWAH0wwwfcg9qrZIfVaaQFgmOpa+RdIBGZtzURZb43HJr5hyiOe3yo2xDA==}
 
   diagram-js@15.18.0:
     resolution: {integrity: sha512-aOVeXrjQc1ki0jlrSuwXDoye5nKO6uAtXCtmgQopUvF/aC9aJwoaBOsNvQ2Na9GmMc6X2b3xAefhRChvGgcbgQ==}
@@ -2397,6 +2433,9 @@ packages:
     engines: {node: '>=6'}
     hasBin: true
 
+  json-source-map@0.6.1:
+    resolution: {integrity: sha512-1QoztHPsMQqhDq0hlXY5ZqcEdUzxQEIxgFkKl4WUp2pgShObl+9ovi4kRh2TfvAfxAoHOJ9vIMEqk3k4iex7tg==}
+
   json5@2.2.3:
     resolution: {integrity: sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg==}
     engines: {node: '>=6'}
@@ -2714,6 +2753,11 @@ packages:
     resolution: {integrity: sha512-FfR8sjd4em2T6fb3I2MwAJU7HWVMr9zba+enmQeeWFfCbm+UOC/0X4DS8XtpUTMwWMGbjKYP7xjfNekzyGmB3A==}
     engines: {node: ^10 || ^12 || >=14}
 
+  preact-markup@2.1.1:
+    resolution: {integrity: sha512-8JL2p36mzK8XkspOyhBxUSPjYwMxDM0L5BWBZWxsZMVW8WsGQrYQDgVuDKkRspt2hwrle+Cxr/053hpc9BJwfw==}
+    peerDependencies:
+      preact: '>=10'
+
   preact@10.15.1:
     resolution: {integrity: sha512-qs2ansoQEwzNiV5eAcRT1p1EC/dmEzaATVDJNiB3g2sRDWdA7b7MurXdJjB2+/WQktGWZwxvDrnuRFbWuIr64g==}
 
@@ -2851,6 +2895,9 @@ packages:
 
   selection-update@1.1.1:
     resolution: {integrity: sha512-sdkTSquPXiPTUUJh5KcnNoLauJqy68ctusGj7JfMo+t629f8Tv3EMx0hzTjFe8fYy7dZUzXRDAS42K/YS6Pi6Q==}
+
+  semver-compare@1.0.0:
+    resolution: {integrity: sha512-YM3/ITh2MJ5MtzaM429anh+x2jiLVjqILF4m4oyQB18W7Ggea7BfqdH/wGMK7dDiMghv/6WG7znWMwUDzJiXow==}
 
   semver@6.3.1:
     resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}
@@ -3108,6 +3155,10 @@ packages:
 
   util@0.12.5:
     resolution: {integrity: sha512-kZf/K6hEIrWHI6XqOFUiiMa+79wE/D8Q+NCNAWclkyg3b4d2k7s0QGepNjiABc+aR3N1PAyHL7p6UcLY6LmrnA==}
+
+  uuid@14.0.1:
+    resolution: {integrity: sha512-6ZxzVpzDXDa3bJWaHilVayA+BH/1zmxCJoVgvmqJnid/gPoKHxUrS/aC/T6LGQtNHT+XHG9fXPJB4d+IrU30Ew==}
+    hasBin: true
 
   uuid@9.0.1:
     resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
@@ -3398,6 +3449,13 @@ snapshots:
     dependencies:
       contra: 1.9.4
 
+  '@bpmn-io/element-templates-validator@2.22.0':
+    dependencies:
+      '@camunda/element-templates-json-schema': 0.21.0
+      '@camunda/zeebe-element-templates-json-schema': 0.41.1
+      json-source-map: 0.6.1
+      min-dash: 5.0.0
+
   '@bpmn-io/extract-process-variables@2.2.1':
     dependencies:
       min-dash: 5.0.0
@@ -3534,7 +3592,15 @@ snapshots:
     transitivePeerDependencies:
       - '@bpmn-io/cm-theme'
 
+  '@bpmn-io/semver-compat@0.1.0':
+    dependencies:
+      semver: 7.8.5
+
+  '@camunda/element-templates-json-schema@0.21.0': {}
+
   '@camunda/feel-builtins@1.2.0': {}
+
+  '@camunda/zeebe-element-templates-json-schema@0.41.1': {}
 
   '@carbon/grid@11.56.0':
     dependencies:
@@ -4717,6 +4783,27 @@ snapshots:
       min-dash: 5.0.0
       min-dom: 5.3.0
 
+  bpmn-js-element-templates@2.26.0(@bpmn-io/properties-panel@3.44.1(@bpmn-io/cm-theme@0.2.0(@codemirror/state@6.7.0)(@codemirror/view@6.43.2)))(bpmn-js-properties-panel@5.59.0(@bpmn-io/properties-panel@3.44.1(@bpmn-io/cm-theme@0.2.0(@codemirror/state@6.7.0)(@codemirror/view@6.43.2)))(bpmn-js@18.19.0)(camunda-bpmn-js-behaviors@1.16.1(bpmn-js@18.19.0)(camunda-bpmn-moddle@7.0.1)(zeebe-bpmn-moddle@1.15.0))(diagram-js@15.18.0))(bpmn-js@18.19.0)(camunda-bpmn-js-behaviors@1.16.1(bpmn-js@18.19.0)(camunda-bpmn-moddle@7.0.1)(zeebe-bpmn-moddle@1.15.0))(diagram-js@15.18.0)(preact@10.29.2):
+    dependencies:
+      '@bpmn-io/element-templates-validator': 2.22.0
+      '@bpmn-io/extract-process-variables': 2.2.1
+      '@bpmn-io/properties-panel': 3.44.1(@bpmn-io/cm-theme@0.2.0(@codemirror/state@6.7.0)(@codemirror/view@6.43.2))
+      '@bpmn-io/semver-compat': 0.1.0
+      bpmn-js: 18.19.0
+      bpmn-js-properties-panel: 5.59.0(@bpmn-io/properties-panel@3.44.1(@bpmn-io/cm-theme@0.2.0(@codemirror/state@6.7.0)(@codemirror/view@6.43.2)))(bpmn-js@18.19.0)(camunda-bpmn-js-behaviors@1.16.1(bpmn-js@18.19.0)(camunda-bpmn-moddle@7.0.1)(zeebe-bpmn-moddle@1.15.0))(diagram-js@15.18.0)
+      bpmnlint: 11.12.1
+      camunda-bpmn-js-behaviors: 1.16.1(bpmn-js@18.19.0)(camunda-bpmn-moddle@7.0.1)(zeebe-bpmn-moddle@1.15.0)
+      classnames: 2.5.1
+      diagram-js: 15.18.0
+      ids: 3.0.2
+      min-dash: 5.0.0
+      min-dom: 5.3.0
+      preact-markup: 2.1.1(preact@10.29.2)
+      semver-compare: 1.0.0
+      uuid: 14.0.1
+    transitivePeerDependencies:
+      - preact
+
   bpmn-js-properties-panel@5.59.0(@bpmn-io/properties-panel@3.44.1(@bpmn-io/cm-theme@0.2.0(@codemirror/state@6.7.0)(@codemirror/view@6.43.2)))(bpmn-js@18.19.0)(camunda-bpmn-js-behaviors@1.16.1(bpmn-js@18.19.0)(camunda-bpmn-moddle@7.0.1)(zeebe-bpmn-moddle@1.15.0))(diagram-js@15.18.0):
     dependencies:
       '@bpmn-io/extract-process-variables': 2.2.1
@@ -4945,6 +5032,12 @@ snapshots:
       diagram-js: 15.18.0
       min-dash: 5.0.0
       min-dom: 5.3.0
+
+  diagram-js-minimap@5.3.0:
+    dependencies:
+      min-dash: 5.0.0
+      min-dom: 5.3.0
+      tiny-svg: 4.1.4
 
   diagram-js@15.18.0:
     dependencies:
@@ -5570,6 +5663,8 @@ snapshots:
 
   jsesc@3.1.0: {}
 
+  json-source-map@0.6.1: {}
+
   json5@2.2.3: {}
 
   jsonfile@4.0.0:
@@ -5824,6 +5919,10 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
+  preact-markup@2.1.1(preact@10.29.2):
+    dependencies:
+      preact: 10.29.2
+
   preact@10.15.1: {}
 
   preact@10.29.2: {}
@@ -6007,6 +6106,8 @@ snapshots:
       dom-iterator: 1.0.2
 
   selection-update@1.1.1: {}
+
+  semver-compare@1.0.0: {}
 
   semver@6.3.1: {}
 
@@ -6249,6 +6350,8 @@ snapshots:
       is-generator-function: 1.1.2
       is-typed-array: 1.1.15
       which-typed-array: 1.1.22
+
+  uuid@14.0.1: {}
 
   uuid@9.0.1: {}
 

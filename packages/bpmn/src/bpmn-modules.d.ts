@@ -38,6 +38,16 @@ declare module "bpmn-js-bpmnlint" {
   export default lintModule;
 }
 
+declare module "diagram-js-minimap" {
+  const MinimapModule: unknown;
+  export default MinimapModule;
+}
+
+declare module "bpmn-js-element-templates" {
+  export const ElementTemplatesPropertiesProviderModule: unknown;
+  export const CloudElementTemplatesPropertiesProviderModule: unknown;
+}
+
 declare module "camunda-bpmn-moddle/resources/camunda.json" {
   const camunda: Record<string, unknown>;
   export default camunda;

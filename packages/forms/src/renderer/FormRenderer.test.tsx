@@ -1,6 +1,7 @@
 import "@testing-library/jest-dom/vitest";
 import { describe, it, expect, vi } from "vitest";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor, within } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { FormRenderer } from "./FormRenderer";
 import type { FormSchema } from "../types";
 
@@ -196,7 +197,8 @@ describe("FormRenderer", () => {
     expect(calls.some((c) => c[0].memo === "Hallo")).toBe(true);
   });
 
-  it("number-, datetime- und radio-Eingaben aktualisieren die Daten", () => {
+  it("number-, datetime- und radio-Eingaben aktualisieren die Daten", async () => {
+    const user = userEvent.setup();
     const onChange = vi.fn();
     const s: FormSchema = {
       type: "default",
@@ -216,7 +218,13 @@ describe("FormRenderer", () => {
     };
     render(<FormRenderer schema={s} defaultData={{ n: 5 }} onChange={onChange} />);
     fireEvent.click(screen.getByRole("button", { name: /increase/i }));
-    fireEvent.change(screen.getByLabelText("Datum"), { target: { value: "2026-07-01" } });
+    // DatePicker: Eingabe über die Datums-Segmente. Ohne I18nProvider gilt der
+    // en-US-Default (MM/TT/JJJJ) → 07, 01, 2026 ergibt das ISO-Datum 2026-07-01.
+    const dateGroup = screen.getByRole("group", { name: "Datum" });
+    const firstSegment = within(dateGroup).getAllByRole("spinbutton")[0];
+    expect(firstSegment).toBeDefined();
+    await user.click(firstSegment as HTMLElement);
+    await user.keyboard("07012026");
     fireEvent.click(screen.getByRole("radio", { name: "Eins" }));
     const calls = onChange.mock.calls;
     expect(calls.some((c) => c[0].n === 6)).toBe(true);

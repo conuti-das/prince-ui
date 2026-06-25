@@ -1,5 +1,126 @@
 # prince-ui
 
+## 0.9.0
+
+### Minor Changes
+
+- 7cd49b0: 3-Mode-Theming: Apple Light/Dark als neue Default-Optik, CU als CONUTI-Community-Mode.
+
+  - `prince-ui-tokens`: `tokens.css` neu strukturiert. `:root` ist jetzt **Apple Dark**
+    (Default + Fallback), `@media (prefers-color-scheme: light)` und `[data-theme="light"]`
+    liefern **Apple Light**, `[data-theme="cu"]` das frühere CONUTI-Community-Styling
+    (CI-Grün #A0D22B, Inter-Font, grünes Bento-Mesh). Apple-Modes nutzen SF-Fonts,
+    Apple-System-Farben und Apple-Grün (#34C759 / #30D158) als Akzent.
+    Default folgt dem OS, fällt aber auf Dark zurück.
+  - `prince-ui`: `setTheme` akzeptiert nun `"cu"`; neuer Typ `PrinceTheme` und Helfer
+    `getTheme()`. `PRINCE_UI_VERSION` = 0.4.0.
+
+- c8f5c49: AppShell + erweitertes Glas-Opt-in.
+
+  - Neue **`AppShell`**-Komponente: Apple-orientierte App-Hülle (Shell-Bar mit
+    Logo/Titel/Suche/Aktionen/User + Menü-Toggle, Sidebar, scrollbarer Content).
+    Glas auf Shell-Bar + Sidebar per Default; auf schmalen Screens wird die
+    Sidebar zum Off-canvas-Overlay mit Scrim. Kontrolliert/unkontrolliert
+    einklappbar, A11y (`<header>`/`<nav>`/`<main>`, `aria-expanded`/`-controls`).
+  - **`glass`-Opt-in** zusätzlich auf `Modal`, `Menu`, `ObjectPage` (Title/Top-Header)
+    und `AnalyticalTable` (nur Toolbar, nicht die dichten Zeilen).
+  - Stories: Components/AppShell (Default + Opaque).
+
+- f569c8b: AppShell mit voller ShellBar-Funktion (UI5-äquivalent) + Responsive.
+
+  Die `AppShell`-Shell-Bar bekommt den UI5-ShellBar-Funktionsumfang (prince-ui-Naming):
+
+  - `subtitle`, Titel-Dropdown via `menuItems` + `onMenuItemClick`
+  - `logo` + `onLogoClick`
+  - Aktions-`items` (`{id,icon,label,count,onClick}`) mit Overflow-„…"-Menü
+  - `notifications` + `notificationsCount` + `onNotificationsClick` (Glocke+Badge)
+  - `productSwitch` + `onProductSwitchClick` (Grid)
+  - `user` + `onProfileClick`, `startButton`, kollabierbare `search`
+
+  **Responsiv (CSS-Breakpoints):**
+
+  - iPad/Tablet ≤1024: `subtitle` aus, `items` → Overflow.
+  - Phone ≤767: Suche → Icon (aufklappbar als Zeile), Sidebar als Off-canvas-Overlay
+    (startet eingeklappt via `matchMedia`), sekundäre Chrome (`actions`/`productSwitch`)
+    ausgeblendet, damit die Bar nicht überläuft.
+
+  Neue Icons: `grid`, `more`, `chevron-down`. Alles bestehende (`title`/`user`/`actions`) bleibt kompatibel.
+
+- Neue **Launchpad**-Komponente: Apple-orientiertes App-/Card-Dashboard
+  (Fiori-analog, reduziert: Launchpad → Section → Card). Polymorphe Cards
+  (`nav`/`kpi`/`trend`/`list`/`custom`), optionales Drag-Reorder (react-aria
+  GridList), Drill-down-Popup mit Voll-Visualisierung. Monochrome Icons,
+  theme-fähig in Light/Dark/CU.
+- 3005ab1: Apple-Light-Feinschliff + Liquid-Glass-Stilschicht.
+
+  **Apple-Feinschliff (Grün-Akzent bleibt):**
+
+  - Card-Radius 16 → 20px (Apple-„pillowy"), Body 16 → 17px, Metric-Weight 800 → 700 (Apple-Bold).
+  - Light: App-BG flach (`#f2f2f7`) statt Verlauf, Default-Schatten flacher (Apple-Grouped-Look).
+
+  **Liquid Glass (nur Optik über React Aria, kein Verhaltensumbau):**
+
+  - Neue `--prn-glass-*`-Tokens, abgeleitet aus den mode-spezifischen Flächen → wirken automatisch in Light/Dark/CU.
+  - Neue Stilschicht `.prn-glass` + Varianten `-bar/-sidebar/-overlay/-card/-floating` mit `@supports`-Gate und Fallback auf opak; respektiert `prefers-reduced-transparency` und `prefers-reduced-motion`. Optionaler `--prn-glass-tint` für Branding.
+  - Neuer `<GlassSurface variant tintColor as>`-Wrapper.
+  - Opt-in `glass`-Prop auf `Toolbar`, `Sidebar`, `Popover` (nur className, keine RA-Logik berührt).
+
+- 897e696: Monochrome Icons statt Emoji.
+
+  - Neues **`Icon`**-Set: monochrome Linien-SVGs (`currentColor`, lucide-kompatible
+    Optik, kein externer Dependency, theme-fähig in Light/Dark/CU). `Icon`-Komponente
+    mit `name`/`size`/`title` (dekorativ `aria-hidden`, mit `title` als `img`).
+  - Komponenten-interne Emoji ersetzt: `ObjectPage`-Pin (📌/📍 → `pin`/`pin-off`),
+    `AppShell`-Toggle (☰ → `menu`), `AnalyticalTable`-Spaltenmenü (⚙ → `settings`).
+  - Stories durchgängig auf monochrome `Icon`s umgestellt (Glass, AppShell, Sidebar,
+    List, KpiCard, EmptyState) — keine bunten Emoji mehr im Storybook.
+
+### Patch Changes
+
+- Prozess-Editoren: Benutzbarkeit, Dark-Mode-Lesbarkeit & Apple-Feinschliff.
+
+  **BPMN-Editor**
+
+  - Canvas füllt jetzt die volle Editor-Höhe (vorher auf ~150px kollabiert);
+    komplette Palette sichtbar; Diagramm zentriert mit Rand.
+  - Kein „Springen" mehr beim Bearbeiten (ResizeObserver-Re-Fit entfernt;
+    Lint-Leiste als Overlay statt im Layout-Flow).
+  - Properties-Panel im Dark/CU korrekt eingefärbt (echtes `--color-*`-Mapping
+    für `@bpmn-io/properties-panel` v3 statt wirkungsloser `--bio-*`-Variablen);
+    irrelevante Camunda-Gruppen ausgeblendet.
+  - Palette/Context-Pad/Append-Popup token-getrieben (Apple-Look, alle Themes).
+  - Apple-Renderer: SF-Pro auf SVG-Labels, weiche Schatten/Hairlines, dünnere
+    Connectoren; Renderer auch im Viewer registriert; bpmn.io-Wasserzeichen aus.
+  - Neu: **Minimap**, **Suchfeld** (Toolbar + ⌘/Strg+F), **Element-Templates**
+    (`elementTemplates`-Prop). Auto-Resize/Auto-Place aktiv.
+
+  **DMN**
+
+  - Experten-Editor: fehlendes dmn-js-Layout-CSS importiert (Kollaps behoben);
+    vollständige Dark/CU-Theming-Schicht (alle `--color-*`-Primitive); DRD-Shapes
+    über korrekten Renderer-Key; großzügige Höhe.
+  - Tabellen-Editor: Spaltentitel & Decision-Name **inline editierbar**;
+    Zell-/Header-/Popup-Clipping behoben (Eingabe in neuen Zellen möglich);
+    Kontrast in allen Themes korrigiert (echte Tokens statt nicht existierender
+    Fallbacks); leere Pflicht-/Befüll-Zellen visuell markiert.
+
+  **Forms**
+
+  - Renderer: Datumsfeld auf prince-ui `DatePicker` (de-DE, Apple-Optik) statt
+    nativem `<input type=date>`.
+  - Builder: monochrome SVG-Icons statt Emojis; form-js-Experten-Editor lädt das
+    korrekte Paket (`@bpmn-io/form-js-editor`) + CSS und zeigt bei fehlgeschlagenem
+    Render einen klaren Hinweis (Verweis auf Designer).
+
+  **prince-ui (Patch)**
+
+  - Checkbox-Häkchen-SVG abgesichert (`fill="none"`, feste Größe), damit fehlendes
+    CSS nie ein Vollflächen-Dreieck erzeugt.
+
+- Updated dependencies [7cd49b0]
+- Updated dependencies [3005ab1]
+  - prince-ui-tokens@0.4.0
+
 ## 0.3.0
 
 ### Minor Changes

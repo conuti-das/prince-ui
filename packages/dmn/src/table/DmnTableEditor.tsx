@@ -264,6 +264,7 @@ export function DmnTableEditor({
           column={col}
           readOnly={readOnly}
           onEdit={() => setColumnDialog(col.id)}
+          onRename={(label) => commitModel(updateColumnOp(model, col.id, { label }))}
         />
       ),
       cellRender: ({ row }) => {
@@ -398,7 +399,15 @@ export function DmnTableEditor({
         <div className="prn-dmn-title">
           {title && <span className="prn-dmn-title__name">{title}</span>}
           {subtitle && <span className="prn-dmn-title__meta">{subtitle}</span>}
-          {!title && <span className="prn-dmn-title__name">{model.name || model.id}</span>}
+          {!title && (
+            <InlineEditableText
+              className="prn-dmn-title__name"
+              value={model.name || model.id}
+              readOnly={readOnly}
+              ariaLabel="Decision-Name bearbeiten"
+              onCommit={(v) => commitModel({ ...model, name: v })}
+            />
+          )}
         </div>
 
         <div className="prn-dmn-toolbar-group">
@@ -601,28 +610,39 @@ function ColumnHeader({
   column,
   readOnly,
   onEdit,
+  onRename,
 }: {
   column: DmnColumn;
   readOnly: boolean;
   onEdit: () => void;
+  onRename: (label: string) => void;
 }) {
   return (
     <div className="prn-dmn-colhead" data-kind={column.kind}>
-      <span className="prn-dmn-colhead__kind">
-        {column.kind === "input" ? "Input" : "Output"} · {column.typeRef}
-      </span>
-      <span className="prn-dmn-colhead__label">
-        {column.label || column.expression}
-      </span>
-      {column.label && column.expression && column.label !== column.expression && (
-        <span className="prn-dmn-colhead__expr">{column.expression}</span>
-      )}
-      {!readOnly && (
-        <span className="prn-dmn-colhead__edit">
-          <Button variant="plain" onPress={onEdit} aria-label="Spalte bearbeiten">
+      <div className="prn-dmn-colhead__top">
+        <span className="prn-dmn-colhead__kind">
+          {column.kind === "input" ? "Input" : "Output"} · {column.typeRef}
+        </span>
+        {!readOnly && (
+          <Button
+            className="prn-dmn-colhead__edit"
+            variant="plain"
+            onPress={onEdit}
+            aria-label="Spalte bearbeiten"
+          >
             ⚙
           </Button>
-        </span>
+        )}
+      </div>
+      <InlineEditableText
+        className="prn-dmn-colhead__label"
+        value={column.label || column.expression}
+        readOnly={readOnly}
+        ariaLabel="Spaltentitel bearbeiten"
+        onCommit={onRename}
+      />
+      {column.label && column.expression && column.label !== column.expression && (
+        <span className="prn-dmn-colhead__expr">{column.expression}</span>
       )}
     </div>
   );
@@ -639,23 +659,31 @@ function InlineInput({
 }) {
   const [v, setV] = useState(value);
   const ref = useRef<HTMLInputElement>(null);
+  const committed = useRef(false);
   useEffect(() => {
     ref.current?.focus();
     ref.current?.select();
   }, []);
+  const commit = () => {
+    if (committed.current) return;
+    committed.current = true;
+    onCommit(v);
+  };
   return (
     <input
       ref={ref}
       className="prn-dmn-cell__input"
       value={v}
       onChange={(e) => setV(e.target.value)}
-      onBlur={() => onCommit(v)}
+      onBlur={commit}
+      onClick={(e) => e.stopPropagation()}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === "Tab") {
           e.preventDefault();
-          onCommit(v);
+          commit();
         } else if (e.key === "Escape") {
           e.preventDefault();
+          committed.current = true;
           onCancel();
         }
       }}
@@ -750,7 +778,7 @@ function ColumnDialog({
         if (!open) onClose();
       }}
     >
-      <div className="prn-dmn-feel">
+      <div className="prn-dmn-feel prn-dmn-feel--dialog">
         <TextField label="Label" value={label} onChange={setLabel} />
         <TextField
           label={effectiveKind === "input" ? "FEEL-Expression" : "Output-Name"}
@@ -802,6 +830,73 @@ function ColumnDialog({
         </div>
       </div>
     </Modal>
+  );
+}
+
+/** Inline editierbarer Text (Klick → Input), wie der dmn-js-Experten-Editor
+ *  seine Header/Namen editiert. Enter/Blur speichert, Escape verwirft. */
+function InlineEditableText({
+  value,
+  onCommit,
+  readOnly,
+  className,
+  ariaLabel,
+}: {
+  value: string;
+  onCommit: (v: string) => void;
+  readOnly?: boolean;
+  className?: string;
+  ariaLabel?: string;
+}) {
+  const [editing, setEditing] = useState(false);
+  const [draft, setDraft] = useState(value);
+  const ref = useRef<HTMLInputElement>(null);
+  useEffect(() => {
+    if (editing) {
+      ref.current?.focus();
+      ref.current?.select();
+    }
+  }, [editing]);
+  if (readOnly) return <span className={className}>{value}</span>;
+  if (editing) {
+    return (
+      <input
+        ref={ref}
+        className={cls(className, "prn-dmn-inline-edit")}
+        value={draft}
+        aria-label={ariaLabel}
+        onChange={(e) => setDraft(e.target.value)}
+        onClick={(e) => e.stopPropagation()}
+        onBlur={() => {
+          setEditing(false);
+          if (draft !== value) onCommit(draft);
+        }}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            (e.target as HTMLInputElement).blur();
+          } else if (e.key === "Escape") {
+            e.preventDefault();
+            setDraft(value);
+            setEditing(false);
+          }
+        }}
+      />
+    );
+  }
+  return (
+    <button
+      type="button"
+      className={cls(className, "prn-dmn-inline-trigger")}
+      title="Zum Bearbeiten klicken"
+      onClick={(e) => {
+        e.stopPropagation();
+        setDraft(value);
+        setEditing(true);
+      }}
+    >
+      {value}
+    </button>
   );
 }
 

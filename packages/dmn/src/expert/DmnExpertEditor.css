@@ -2,16 +2,32 @@
  * dmn-js-Experten-Modus — Layout + Token-getriebenes Restyling der gewrappten
  * HTML-Views (decision-table, literal-expression) und des Properties-Panels.
  * Nur --prn-*-Tokens, kein !important.
+ *
+ * WICHTIG: dmn-js bringt sein Layout-CSS NICHT von selbst mit — ohne diese
+ * Imports hat das dmn-js-DOM keine Geometrie und kollabiert in die linke obere
+ * Ecke. Daher hier die Original-Assets einbinden (Build inlined sie aus
+ * node_modules, analog zum bpmn-Paket). Das Token-Restyling weiter unten
+ * überschreibt nur Farben/Flächen, nicht die Geometrie.
  */
+@import "dmn-js/dist/assets/diagram-js.css";
+@import "dmn-js/dist/assets/dmn-js-shared.css";
+@import "dmn-js/dist/assets/dmn-js-drd.css";
+@import "dmn-js/dist/assets/dmn-js-decision-table.css";
+@import "dmn-js/dist/assets/dmn-js-decision-table-controls.css";
+@import "dmn-js/dist/assets/dmn-js-literal-expression.css";
+@import "dmn-js/dist/assets/dmn-font/css/dmn.css";
 
 .prn-dmn-expert {
   display: flex;
   flex-direction: column;
   height: 100%;
-  min-height: 0;
+  /* Selbst-Mindesthöhe, falls der Eltern-Container 0 durchreicht — sonst
+     kollabiert der dmn-js-Canvas und „öffnet sich so klein". */
+  min-height: clamp(38rem, 78vh, 64rem);
+  min-width: 0;
   background: var(--prn-bg);
   color: var(--prn-label);
-  font-family: var(--prn-font-sans, system-ui, sans-serif);
+  font-family: var(--prn-font, system-ui, sans-serif);
 }
 
 /* Toolbar (geteilt mit der Tabellenansicht, hier eigenständig definiert). */
@@ -50,11 +66,12 @@
   background: color-mix(in srgb, var(--prn-red, #ff3b30) 8%, transparent);
 }
 
-/* Bühne: dmn-js braucht eine feste Höhe (kein auto-growing Container). */
+/* Bühne: dmn-js braucht eine feste, großzügige Höhe (kein auto-growing
+   Container). Vorher 22rem ≈ 352px → für DRD + Decision-Table zu klein. */
 .prn-dmn-expert__stage {
   position: relative;
   flex: 1 1 auto;
-  min-height: 22rem;
+  min-height: clamp(34rem, 70vh, 60rem);
   display: flex;
   overflow: hidden;
 }
@@ -62,6 +79,7 @@
 .prn-dmn-expert__canvas {
   flex: 1 1 auto;
   min-width: 0;
+  width: 100%;
   height: 100%;
   background: var(--prn-bg);
 }
@@ -90,23 +108,127 @@
   z-index: 2;
 }
 
-/* ---------------- Token-Restyling der dmn-js-HTML-Views ----------------
- * dmn-js bringt eigenes Carbon-CSS mit; hier auf prince-ui-Tokens umlenken.
- * Bewusst zurückhaltend (Geometrie/Funktion unberührt). */
+/* ============================================================================
+ * Token-Restyling der dmn-js-Views.
+ *
+ * Strategie: dmn-js (17.x) ist komplett CSS-Variablen-getrieben. ALLE Klassen
+ * leiten ihre Farben aus den --color-*-Primitiven auf .dmn-js-parent (HTML-Views)
+ * bzw. .djs-container (DRD-Canvas) ab. Statt jede Klasse einzeln zu überschreiben,
+ * definieren wir nur diese Primitive auf prince-ui-Tokens um → der gesamte Editor
+ * (Decision-Table-Header When/Then, Typ-Zeile, Hit-Policy, Zeilennummern,
+ * Annotations, Literal-Expression, Kontextmenüs, Palette, Definitions-Box) folgt
+ * automatisch. Light bleibt nah am Original; Dark UND CU (dunkle Surfaces)
+ * bekommen invertierte Grau-Rampe + Apple-Akzente.
+ * ========================================================================== */
 
+/* ---- Basis: Tokens an die dmn-js-Wurzeln durchreichen (alle Themes) ---- */
+.prn-dmn-expert .dmn-js-parent,
+.prn-dmn-expert .djs-container {
+  --color-white: var(--prn-bg-elevated);
+  --color-black: var(--prn-label);
+  --color-black-opacity-10: var(--prn-hairline);
+  --color-black-opacity-20: var(--prn-scrim);
+  --color-black-opacity-30: var(--prn-scrim);
+
+  --color-grey-225-10-15: var(--prn-label);
+  --color-grey-225-10-35: var(--prn-label-2);
+  --color-grey-225-10-55: var(--prn-label-2);
+  --color-grey-225-10-75: var(--prn-separator);
+  --color-grey-225-10-80: var(--prn-separator);
+  --color-grey-225-10-85: var(--prn-hairline);
+  --color-grey-225-10-90: var(--prn-hover);
+  --color-grey-225-10-95: var(--prn-hover);
+  --color-grey-225-10-97: var(--prn-bg);
+
+  --color-blue-205-100-35: var(--prn-accent-strong);
+  --color-blue-205-100-45: var(--prn-accent);
+  --color-blue-205-100-50: var(--prn-accent);
+  --color-blue-205-100-80: var(--prn-accent-soft);
+  --color-blue-205-100-95: var(--prn-accent-soft);
+
+  --color-green-150-86-44: var(--prn-green);
+  --color-red-360-100-35: var(--prn-red);
+  --color-red-360-100-45: var(--prn-red);
+  --color-red-360-100-92: var(--prn-tint-negative);
+  --color-red-360-100-97: var(--prn-tint-negative);
+}
+
+/* ---- Dark + CU: Grau-Rampe invertieren (helle Schrift, dunkle Flächen) ---- */
+[data-theme="dark"] .prn-dmn-expert .dmn-js-parent,
+[data-theme="dark"] .prn-dmn-expert .djs-container,
+[data-theme="cu"] .prn-dmn-expert .dmn-js-parent,
+[data-theme="cu"] .prn-dmn-expert .djs-container {
+  --color-white: var(--prn-bg-elevated);
+  --color-black: var(--prn-label);
+  --color-grey-225-10-15: var(--prn-label);
+  --color-grey-225-10-35: var(--prn-label-2);
+  --color-grey-225-10-55: var(--prn-label-2);
+  --color-grey-225-10-75: var(--prn-separator);
+  --color-grey-225-10-80: var(--prn-separator);
+  --color-grey-225-10-85: var(--prn-fill);
+  --color-grey-225-10-90: var(--prn-fill);
+  --color-grey-225-10-95: var(--prn-hover);
+  --color-grey-225-10-97: var(--prn-bg);
+}
+
+/* ---- Übergreifende Flächen/Schrift der HTML-View-Container ---- */
 .prn-dmn-expert .dmn-decision-table-container,
 .prn-dmn-expert .dmn-literal-expression-container {
   background: var(--prn-bg);
   color: var(--prn-label);
 }
 
-.prn-dmn-expert .tjs-table th,
-.prn-dmn-expert .tjs-table td {
-  border-color: var(--prn-separator, rgba(0, 0, 0, 0.1));
+/* Definitions-Label-Box auf dem DRD-Canvas (war fast-weiß, dunkler Text). */
+.prn-dmn-expert .dmn-definitions {
+  background-color: var(--prn-bg-elevated);
+  border-color: var(--prn-separator);
+  color: var(--prn-label);
+}
+.prn-dmn-expert .dmn-definitions .dmn-definitions-name,
+.prn-dmn-expert .dmn-definitions .dmn-definitions-id {
+  color: var(--prn-label);
+}
+.prn-dmn-expert .dmn-definitions > [contenteditable]:hover,
+.prn-dmn-expert .dmn-definitions > [contenteditable]:focus {
+  background-color: var(--prn-bg-elevated-2);
   color: var(--prn-label);
 }
 
-.prn-dmn-expert .input-cell,
-.prn-dmn-expert .output-cell {
-  background: var(--prn-bg-elevated, var(--prn-bg));
+/* Palette (linke Werkzeugleiste) — Icons im Dark sichtbar halten. */
+.prn-dmn-expert .djs-palette {
+  background: var(--prn-bg-elevated);
+  border-color: var(--prn-separator);
+}
+.prn-dmn-expert .djs-palette .entry {
+  color: var(--prn-label);
+}
+
+/* Decision-Table soll volle Breite nutzen (Vendor: width:min-content). */
+.prn-dmn-expert .dmn-decision-table-container .tjs-container,
+.prn-dmn-expert .dmn-decision-table-container .tjs-table {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* View-DRD/Edit/Simple-Mode-Buttons im Apple-Look. */
+.prn-dmn-expert .view-drd-button,
+.prn-dmn-expert .simple-mode-button,
+.prn-dmn-expert .edit-button {
+  border-radius: var(--prn-radius-sm, 8px);
+}
+
+/* CodeMirror-Zell-Editor (FEEL) im Dark lesbar. */
+.prn-dmn-expert .cell-editor .cm-editor,
+.prn-dmn-expert .cell-editor .cm-content {
+  color: var(--prn-label);
+  caret-color: var(--prn-accent);
+}
+.prn-dmn-expert .cell-editor .cm-selectionBackground {
+  background: var(--prn-accent-soft) !important;
+}
+
+/* dmn-js/bpmn-io-Wasserzeichen ausblenden (kein Fremd-Branding). */
+.prn-dmn-expert .bjs-powered-by,
+.prn-dmn-expert .powered-by {
+  display: none;
 }

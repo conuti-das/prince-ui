@@ -1,0 +1,316 @@
+/* ============================================================
+ *  Launchpad — Apple-Bento-Dashboard
+ *  Grid + Sections + polymorphe Cards + Drag-Reorder + Drill-down.
+ * ============================================================ */
+
+.prn-launchpad {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* ---- Section ---- */
+.prn-lp-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.prn-lp-section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 0 2px;
+}
+.prn-lp-section-icon {
+  display: inline-flex;
+  align-self: center;
+  color: var(--prn-label-2);
+}
+.prn-lp-section-title {
+  font: var(--prn-text-title-3);
+  color: var(--prn-label);
+  margin: 0;
+}
+.prn-lp-section-sub {
+  font: var(--prn-text-subhead);
+  color: var(--prn-label-3);
+}
+
+/* ---- Grid ---- */
+.prn-lp-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  outline: none;
+}
+
+/* ---- Zelle (GridListItem) ---- */
+.prn-lp-cell {
+  outline: none;
+  min-width: 0;
+  list-style: none;
+  /* Flex-Spalte: die Card füllt die (vom Grid gestreckte) Zellhöhe zuverlässig. */
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--prn-dur) var(--prn-ease-out), box-shadow var(--prn-dur-fast),
+    opacity var(--prn-dur-fast);
+}
+.prn-lp-cell[data-focus-visible] {
+  box-shadow: var(--prn-focus);
+  border-radius: var(--prn-radius-card);
+}
+/* Drag „aufgreifen": leicht größer + angehoben (statt weggedrückt). */
+.prn-lp-cell[data-dragging] {
+  opacity: 0.9;
+  transform: scale(1.03);
+  box-shadow: var(--prn-shadow-raised);
+  cursor: grabbing;
+}
+.prn-launchpad[data-editable] .prn-lp-cell {
+  cursor: grab;
+}
+/* Sichtbare react-aria-Einfügelinie beim Reorder (Pointer UND Tastatur). */
+.prn-lp-drop {
+  outline: none;
+}
+.prn-lp-drop[data-drop-target] {
+  outline: 2.5px solid var(--prn-accent);
+  outline-offset: 2px;
+  border-radius: var(--prn-radius-card);
+  background: var(--prn-accent-soft);
+}
+/* Direkter Zell-Inhalt füllt die (vom Grid gestreckte) Zelle. In static ist das
+   die Card; im editable-Modus ein klassenloser react-aria-Wrapper-DIV. */
+.prn-lp-cell > * {
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+}
+.prn-lp-cell > div:not(.prn-lp-card) {
+  display: flex;
+  flex-direction: column;
+}
+.prn-lp-card {
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/* Inhalt darf die Card-Breite nie sprengen (sonst clippt overflow Badges etc.). */
+.prn-lp-card,
+.prn-lp-card * {
+  min-width: 0;
+}
+/* Datencards opak — Glas bleibt der Nav-Ebene (ShellBar/Sidebar) vorbehalten. */
+.prn-lp-card {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.prn-lp-list .prn-list {
+  width: 100%;
+}
+/* width:100% + Padding ohne border-box ließ Zeilen überlaufen → Badges geclippt. */
+.prn-lp-list .prn-list-rows,
+.prn-lp-list .prn-row {
+  box-sizing: border-box;
+}
+
+/* Spalten-Span (robust über data-span statt calc im grid-column) */
+.prn-lp-cell[data-span="2"] {
+  grid-column: span 2;
+}
+.prn-lp-cell[data-span="3"] {
+  grid-column: span 3;
+}
+.prn-lp-cell[data-span="4"] {
+  grid-column: span 4;
+}
+
+/* ---- nav-Card ---- */
+.prn-lp-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+}
+.prn-lp-nav-icon {
+  display: inline-flex;
+  color: var(--prn-label);
+}
+.prn-lp-nav-title {
+  font: var(--prn-text-headline);
+  color: var(--prn-label);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.prn-lp-nav-desc {
+  font: var(--prn-text-subhead);
+  color: var(--prn-label-2);
+  overflow-wrap: anywhere;
+}
+.prn-lp-nav-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/* ---- trend-Card ---- */
+.prn-lp-trend-head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.prn-lp-trend-value {
+  font: var(--prn-text-title);
+  color: var(--prn-label);
+  font-variant-numeric: tabular-nums;
+}
+.prn-lp-delta {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font: var(--prn-text-subhead);
+  color: var(--prn-label-2);
+}
+.prn-lp-delta.is-up {
+  color: var(--prn-green);
+}
+.prn-lp-delta.is-down {
+  color: var(--prn-red);
+}
+.prn-lp-trend-chart {
+  margin: 0 -4px -4px;
+}
+.prn-lp-trend-chart svg {
+  width: 100%;
+  height: auto;
+}
+
+/* ---- list-Card ---- */
+.prn-lp-list-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.prn-lp-list-count {
+  font: var(--prn-text-footnote);
+  color: var(--prn-label-2);
+  background: var(--prn-fill);
+  border-radius: var(--prn-radius-pill);
+  padding: 1px 8px;
+}
+
+/* Expand- / Show-all-Buttons */
+.prn-lp-expand {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: var(--prn-radius-sm);
+  background: transparent;
+  color: var(--prn-label-2);
+  cursor: pointer;
+  outline: none;
+}
+/* Trefferfläche auf 44px erweitern (Touch/WCAG 2.5.5), Optik bleibt 28px. */
+.prn-lp-expand::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+}
+.prn-lp-expand:hover {
+  background: var(--prn-hover);
+  color: var(--prn-label);
+}
+.prn-lp-expand[data-focus-visible] {
+  box-shadow: var(--prn-focus);
+}
+.prn-lp-showall {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 6px;
+  min-height: var(--prn-hit);
+  padding: 8px 2px;
+  border: none;
+  background: transparent;
+  color: var(--prn-accent);
+  font: var(--prn-text-subhead);
+  cursor: pointer;
+  outline: none;
+}
+.prn-lp-showall[data-focus-visible] {
+  box-shadow: var(--prn-focus);
+  border-radius: var(--prn-radius-sm);
+}
+
+/* ---- Drill-down-Popup ---- */
+.prn-lp-modal {
+  min-width: min(560px, 92vw);
+}
+.prn-lp-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.prn-lp-detail svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ============================================================
+ *  Responsiv: iPad ≤1024 = 3 Spalten, Phone ≤640 = 1, ≤900 = 2.
+ *  Cards können nie breiter als die Spaltenzahl spannen.
+ * ============================================================ */
+@media (max-width: 1024px) {
+  .prn-lp-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .prn-lp-cell[data-span="4"] {
+    grid-column: span 3;
+  }
+}
+@media (max-width: 900px) {
+  .prn-lp-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .prn-lp-cell[data-span="3"],
+  .prn-lp-cell[data-span="4"] {
+    grid-column: span 2;
+  }
+}
+@media (max-width: 640px) {
+  .prn-launchpad {
+    gap: 22px;
+  }
+  .prn-lp-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .prn-lp-cell,
+  .prn-lp-cell[data-span="2"],
+  .prn-lp-cell[data-span="3"],
+  .prn-lp-cell[data-span="4"] {
+    grid-column: 1 / -1;
+  }
+  .prn-lp-cell:hover {
+    transform: none;
+  }
+}
+
+/* A11y: reduzierte Bewegung */
+@media (prefers-reduced-motion: reduce) {
+  .prn-lp-cell {
+    transition: none;
+  }
+  .prn-lp-cell[data-dragging] {
+    transform: none;
+    box-shadow: none;
+  }
+}

@@ -35,6 +35,20 @@ const config: StorybookConfig = {
       jsx: "automatic",
       jsxImportSource: "react",
     };
+    // form-js (Experten-Editor) rendert via Preact. Es sind zwei Preact-
+    // Versionen im Tree → ohne Dedupe bricht der Preact-Render-Kontext und
+    // der form-js-Editor mountet eine leere `.fjs-container`. Auf EINE
+    // Preact-Instanz zwingen.
+    config.resolve = {
+      ...(config.resolve ?? {}),
+      dedupe: [
+        ...((config.resolve?.dedupe as string[] | undefined) ?? []),
+        "preact",
+        "preact/hooks",
+        "preact/jsx-runtime",
+        "preact/compat",
+      ],
+    };
     return config;
   },
 };

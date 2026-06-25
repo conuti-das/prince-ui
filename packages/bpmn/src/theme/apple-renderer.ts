@@ -12,8 +12,20 @@
 
 import type { DiagramColors } from "./diagram-theme";
 
-/** Baut die `bpmnRenderer`/`textRenderer`-Config aus den Token-Farben. */
+/** Apple-Systemschrift-Stack (SF Pro), passend zum `--prn-font`-Token. */
+const APPLE_FONT =
+  '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, "Helvetica Neue", sans-serif';
+
+/** Baut die `bpmnRenderer`/`textRenderer`-Config aus den Token-Farben.
+ *  Setzt zusätzlich SF-Pro auf alle Diagramm-Labels (interne + externe), damit
+ *  die Beschriftungen nicht in der bpmn-js-Default-Schrift erscheinen. */
 export function buildRendererConfig(colors: DiagramColors) {
+  const labelStyle = {
+    fill: colors.defaultLabelColor,
+    fontFamily: APPLE_FONT,
+    fontSize: 12,
+    fontWeight: 500,
+  };
   return {
     bpmnRenderer: {
       defaultFillColor: colors.defaultFillColor,
@@ -21,7 +33,8 @@ export function buildRendererConfig(colors: DiagramColors) {
       defaultLabelColor: colors.defaultLabelColor,
     },
     textRenderer: {
-      defaultStyle: { fill: colors.defaultLabelColor },
+      defaultStyle: labelStyle,
+      externalStyle: labelStyle,
     },
   };
 }
@@ -62,7 +75,7 @@ export function createAppleRendererModule(BpmnRenderer: new (...args: unknown[])
 
     try {
       const type = element.type ?? "";
-      // Task-/Activity-Rechtecke runder + weichere Hairline.
+      // Task-/Activity-Rechtecke runder (Apple-Card-Radius).
       if (type.includes("Task") || type.includes("SubProcess") || type.includes("CallActivity")) {
         const rect = parentNode.querySelector("rect");
         if (rect) {
@@ -70,16 +83,41 @@ export function createAppleRendererModule(BpmnRenderer: new (...args: unknown[])
           rect.setAttribute("ry", "12");
         }
       }
-      // Dünne, weiche Konturen auf der Hauptform.
+      // Dünne Hairline-Konturen auf der Hauptform (statt 2px-Stock-Linien).
       const main = (gfx ?? parentNode) as SVGElement;
       const stroke = main.querySelector?.("rect, circle, polygon, path") as SVGElement | null;
       if (stroke && stroke.getAttribute("stroke-width") === "2") {
         stroke.setAttribute("stroke-width", "1.5");
       }
+      // Dezenter Apple-Schatten auf der gesamten Form (nicht auf Labels/Connections).
+      const isLabel = type === "label";
+      if (!isLabel && main?.style) {
+        main.style.filter = "drop-shadow(0 1px 2px rgba(0, 0, 0, 0.12))";
+      }
     } catch {
       /* defensiv — Optik darf das Rendern nie brechen */
     }
 
+    return gfx;
+  };
+
+  // drawConnection: super zeichnen lassen, danach Pfeile/Linien verschlanken.
+  AppleRenderer.prototype.drawConnection = function drawConnection(
+    this: Record<string, unknown>,
+    parentNode: SVGElement,
+    element: unknown,
+  ) {
+    const parentProto = Object.getPrototypeOf(AppleRenderer.prototype);
+    const gfx = parentProto.drawConnection.call(this, parentNode, element) as SVGElement | undefined;
+    try {
+      const main = (gfx ?? parentNode) as SVGElement;
+      const path = main.querySelector?.("path") as SVGElement | null;
+      if (path && path.getAttribute("stroke-width") === "2") {
+        path.setAttribute("stroke-width", "1.5");
+      }
+    } catch {
+      /* defensiv */
+    }
     return gfx;
   };
 

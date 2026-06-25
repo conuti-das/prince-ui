@@ -204,7 +204,7 @@ export function FormBuilder({
                   }}
                 >
                   <span className="prn-fb-palette-glyph" aria-hidden>
-                    {GLYPH[type] ?? "▦"}
+                    {GLYPH[type] ?? FALLBACK_GLYPH}
                   </span>
                   {FIELD_TYPE_LABELS[type]}
                 </button>
@@ -301,19 +301,83 @@ export function FormBuilder({
   );
 }
 
-const GLYPH: Partial<Record<BuilderFieldType, string>> = {
-  textfield: "T",
-  textarea: "¶",
-  number: "#",
-  checkbox: "☑",
-  checklist: "▤",
-  radio: "◉",
-  select: "▾",
-  datetime: "📅",
-  taglist: "🏷",
-  text: "𝐀",
-  separator: "—",
-  spacer: "␣",
+/** Einheitliche, monochrome Linien-Icons (SF-Symbols-Anmutung) für die Palette.
+ *  Erben `currentColor` (= --prn-accent-strong), keine bunten Emojis. */
+const ic = (children: ReactNode): ReactNode => (
+  <svg
+    viewBox="0 0 16 16"
+    width="15"
+    height="15"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.4"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    {children}
+  </svg>
+);
+
+const FALLBACK_GLYPH: ReactNode = ic(<rect x="3" y="3" width="10" height="10" rx="2.5" />);
+
+const GLYPH: Partial<Record<BuilderFieldType, ReactNode>> = {
+  textfield: ic(
+    <>
+      <rect x="2" y="5.5" width="12" height="5" rx="1.5" />
+      <path d="M4.5 8h3" />
+    </>,
+  ),
+  textarea: ic(
+    <>
+      <rect x="2" y="3" width="12" height="10" rx="1.5" />
+      <path d="M4.5 6h7M4.5 8.5h7M4.5 11h4" />
+    </>,
+  ),
+  number: ic(<path d="M6 2.5 4.5 13.5M11.5 2.5 10 13.5M2.5 5.5h11M2 10.5h11" />),
+  checkbox: ic(
+    <>
+      <rect x="2.5" y="2.5" width="11" height="11" rx="2.5" />
+      <path d="M5.5 8.2l1.8 1.8 3.2-3.6" />
+    </>,
+  ),
+  checklist: ic(
+    <>
+      <path d="M6 4.5h7.5M6 8h7.5M6 11.5h7.5" />
+      <path d="M2.3 4.2l.8.9 1.5-1.7M2.3 7.7l.8.9 1.5-1.7M2.3 11.2l.8.9 1.5-1.7" />
+    </>,
+  ),
+  radio: ic(
+    <>
+      <circle cx="8" cy="8" r="5.5" />
+      <circle cx="8" cy="8" r="2.2" fill="currentColor" stroke="none" />
+    </>,
+  ),
+  select: ic(
+    <>
+      <rect x="2" y="4" width="12" height="8" rx="1.5" />
+      <path d="M6 7.5 8 9.5 10 7.5" />
+    </>,
+  ),
+  datetime: ic(
+    <>
+      <rect x="2.25" y="3.25" width="11.5" height="10.5" rx="2.5" />
+      <path d="M2.25 6.5h11.5M5 2v2.2M11 2v2.2" />
+    </>,
+  ),
+  taglist: ic(
+    <>
+      <path d="M2.5 7.6V3.6a1 1 0 0 1 1-1h4l6 6-5 5-6-6z" />
+      <circle cx="5.4" cy="5.5" r="1" fill="currentColor" stroke="none" />
+    </>,
+  ),
+  text: ic(<path d="M4 4h8M8 4v8M6.5 12h3" />),
+  separator: ic(<path d="M2.5 8h11" />),
+  spacer: ic(
+    <>
+      <path d="M8 3v10" />
+      <path d="M5.5 5 8 2.5 10.5 5M5.5 11 8 13.5 10.5 11" />
+    </>,
+  ),
 };
 
 /* ---------------- Properties Panel ---------------- */
@@ -510,7 +574,9 @@ function ExpertEditor({
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const editorRef = useRef<unknown>(null);
-  const [status, setStatus] = useState<"loading" | "ready" | "error">("loading");
+  const [status, setStatus] = useState<"loading" | "ready" | "error" | "empty">(
+    "loading",
+  );
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   // Schema beim Mount einmal übernehmen; spätere Sync über getSchema() bei Save.
   const initialSchema = useRef(schema);
@@ -524,27 +590,55 @@ function ExpertEditor({
 
     (async () => {
       try {
-        // Optionaler Peer — dynamischer Import (Code-Splitting + graceful fallback).
+        // form-js-Editor-CSS laden (optionaler Peer → dynamisch, nur im
+        // Experten-Modus). Ohne dieses CSS rendert der Editor leer/unsichtbar.
+        await Promise.all([
+          // @ts-ignore CSS-Asset ohne Typdeklaration; vom Bundler aufgelöst.
+          import(/* @vite-ignore */ "@bpmn-io/form-js-editor/dist/assets/form-js-editor.css"),
+        ]).catch(() => {});
+        // FormEditor lebt im Editor-Paket; das Meta-Paket @bpmn-io/form-js
+        // exportiert nur den Viewer (Form) + Playground, KEIN FormEditor.
+        // `createFormEditor` ist die Factory, die Editor-Chrome (Palette +
+        // Canvas + Properties) tatsächlich rendert — `new FormEditor()` +
+        // importSchema allein rendert die Oberfläche nicht zuverlässig.
+        type FjsEditor = {
+          getSchema: () => FormSchema;
+          on: (event: string, cb: () => void) => void;
+          destroy: () => void;
+        };
         const mod = (await import(
-          /* @vite-ignore */ "@bpmn-io/form-js"
+          /* @vite-ignore */ "@bpmn-io/form-js-editor"
         )) as unknown as {
-          FormEditor: new (opts: { container: HTMLElement }) => {
-            importSchema: (s: unknown) => Promise<unknown>;
-            getSchema: () => FormSchema;
-            on: (event: string, cb: () => void) => void;
-            destroy: () => void;
-            _container?: HTMLElement;
-          };
+          createFormEditor: (opts: {
+            container: HTMLElement;
+            schema: unknown;
+          }) => Promise<FjsEditor>;
+          schemaVersion?: number;
         };
         if (cancelled) return;
-        const editor = new mod.FormEditor({ container: el });
-        editorRef.current = editor;
-        // form-js erzeugt einen internen div.fjs-container ohne Höhe → 100% setzen.
-        if (editor._container) {
-          editor._container.style.height = "100%";
-          editor._container.style.width = "100%";
+        // form-js verlangt `schemaVersion` am Schema (sonst rendert es leer).
+        const version = mod.schemaVersion ?? 18;
+        const baseSchema = {
+          schemaVersion: version,
+          ...(initialSchema.current as object),
+        };
+        let editor: FjsEditor;
+        try {
+          editor = await mod.createFormEditor({ container: el, schema: baseSchema });
+        } catch {
+          // Schema (z. B. prince-ui-spezifische Feldtypen) inkompatibel →
+          // mit leerem, gültigem form-js-Schema starten, damit die Oberfläche
+          // (Palette/Canvas/Properties) trotzdem erscheint.
+          editor = await mod.createFormEditor({
+            container: el,
+            schema: { schemaVersion: version, type: "default", components: [] },
+          });
         }
-        await editor.importSchema(initialSchema.current);
+        if (cancelled) {
+          editor.destroy();
+          return;
+        }
+        editorRef.current = editor;
         editor.on("changed", () => {
           try {
             onChange(editor.getSchema());
@@ -553,6 +647,14 @@ function ExpertEditor({
           }
         });
         if (!cancelled) setStatus("ready");
+        // Graceful-Check: in manchen Bundler-Umgebungen (doppelte Preact-
+        // Instanz unter Vite) mountet form-js eine leere `.fjs-container`
+        // ohne Fehler. Statt einer leeren Box dann einen klaren Hinweis zeigen.
+        window.setTimeout(() => {
+          if (cancelled) return;
+          const fjs = el.querySelector(".fjs-container");
+          if (fjs && fjs.children.length === 0) setStatus("empty");
+        }, 800);
       } catch (e) {
         if (!cancelled) {
           setErrorMsg((e as Error)?.message ?? String(e));
@@ -579,9 +681,16 @@ function ExpertEditor({
     <div className="prn-fb-expert">
       {status === "error" && (
         <Notice tone="negative" title="form-js nicht verfügbar">
-          Der Experten-Editor (`@bpmn-io/form-js`) konnte nicht geladen werden.
-          Stellen Sie sicher, dass das optionale Peer-Paket installiert ist.
-          {errorMsg ? ` (${errorMsg})` : ""}
+          Der Experten-Editor (`@bpmn-io/form-js-editor`) konnte nicht geladen
+          werden. Stellen Sie sicher, dass das optionale Peer-Paket installiert
+          ist.{errorMsg ? ` (${errorMsg})` : ""}
+        </Notice>
+      )}
+      {status === "empty" && (
+        <Notice tone="info" title="Experten-Editor konnte nicht gerendert werden">
+          Der form-js-Editor wurde geladen, aber in dieser Umgebung nicht
+          dargestellt (bekanntes Bundler-/Preact-Problem). Nutzen Sie bitte den
+          „Designer"-Modus — er deckt dieselben Funktionen ab.
         </Notice>
       )}
       <div

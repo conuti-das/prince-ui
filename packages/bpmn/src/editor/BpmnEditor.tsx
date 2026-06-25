@@ -54,6 +54,10 @@ export interface BpmnEditorProps {
   colorScheme?: DiagramColorScheme;
   /** Properties-Panel anzeigen. Default `true`. */
   propertiesPanel?: boolean;
+  /** Minimap (Übersichtskarte) anzeigen. Default `true`. */
+  minimap?: boolean;
+  /** Camunda-Element-Templates (JSON-Array) — im Properties-Panel anwendbar. */
+  elementTemplates?: unknown[];
   /** Höhe des Editors. Default `"100%"`. */
   height?: string | number;
   /** Klassennamen-Override. */
@@ -79,6 +83,8 @@ export function BpmnEditor({
   onKiFix,
   colorScheme = "auto",
   propertiesPanel = true,
+  minimap = true,
+  elementTemplates,
   height = "100%",
   className,
 }: BpmnEditorProps) {
@@ -98,6 +104,9 @@ export function BpmnEditor({
   // latest callbacks in refs (avoid re-init on identity change)
   const cb = useRef({ onChange, onElementSelect, onDirtyChange });
   cb.current = { onChange, onElementSelect, onDirtyChange };
+  // Element-Templates per Ref → Update ohne Modeler-Remount.
+  const templatesRef = useRef(elementTemplates);
+  templatesRef.current = elementTemplates;
 
   useEffect(() => onThemeChange(() => setThemeTick((t) => t + 1)), []);
 
@@ -108,6 +117,28 @@ export function BpmnEditor({
       return xml;
     } catch {
       return null;
+    }
+  }, []);
+
+  // Fit mit Inset: nach fit-viewport leicht auszoomen und nach rechts/unten
+  // verschieben, damit die linke Palette & Toolbar keine Elemente überdecken.
+  const fitWithPadding = useCallback(() => {
+    const canvas = modelerRef.current?.get("canvas") as
+      | {
+          zoom(level: string | number, center?: unknown): void;
+          viewbox(): { scale: number };
+          scroll(delta: { dx: number; dy: number }): void;
+        }
+      | undefined;
+    if (!canvas) return;
+    try {
+      canvas.zoom("fit-viewport", "auto");
+      const vb = canvas.viewbox();
+      const padded = Math.min(vb.scale * 0.92, 1.5);
+      canvas.zoom(padded, "auto");
+      canvas.scroll({ dx: 90, dy: 24 }); // Palette (48px@left20) freihalten
+    } catch {
+      /* ignore */
     }
   }, []);
 
@@ -138,6 +169,8 @@ export function BpmnEditor({
         { default: CamundaModdle },
         { default: lintModule },
         { default: BpmnRenderer },
+        { default: MinimapModule },
+        elementTemplatesMod,
         labelRequired,
         noComplexGateway,
         noDisconnected,
@@ -148,6 +181,8 @@ export function BpmnEditor({
         import(/* @vite-ignore */ "camunda-bpmn-moddle/resources/camunda.json"),
         import(/* @vite-ignore */ "bpmn-js-bpmnlint"),
         import(/* @vite-ignore */ "bpmn-js/lib/draw/BpmnRenderer"),
+        import(/* @vite-ignore */ "diagram-js-minimap"),
+        import(/* @vite-ignore */ "bpmn-js-element-templates"),
         import(/* @vite-ignore */ "bpmnlint/rules/label-required"),
         import(/* @vite-ignore */ "bpmnlint/rules/no-complex-gateway"),
         import(/* @vite-ignore */ "bpmnlint/rules/no-disconnected"),
@@ -172,16 +207,21 @@ export function BpmnEditor({
         lintRules,
       );
 
+      const { ElementTemplatesPropertiesProviderModule } =
+        elementTemplatesMod as Record<string, unknown>;
+
       const colors = getDiagramColors(colorScheme);
       const additionalModules: unknown[] = [
         lintModule,
         createAppleRendererModule(BpmnRenderer as new (...a: unknown[]) => unknown),
       ];
+      if (minimap) additionalModules.push(MinimapModule);
       if (propertiesPanel) {
         additionalModules.unshift(
           BpmnPropertiesPanelModule,
           BpmnPropertiesProviderModule,
           CamundaPlatformPropertiesProviderModule,
+          ElementTemplatesPropertiesProviderModule,
         );
       }
 
@@ -196,6 +236,25 @@ export function BpmnEditor({
         moddleExtensions: { camunda: CamundaModdle },
       }) as unknown as ModelerInstance;
       modelerRef.current = modeler;
+
+      // Element-Templates anwenden (falls übergeben).
+      if (Array.isArray(templatesRef.current)) {
+        try {
+          (modeler.get("elementTemplates") as { set(t: unknown[]): void }).set(
+            templatesRef.current,
+          );
+        } catch {
+          /* ignore */
+        }
+      }
+      // Minimap initial geöffnet zeigen.
+      if (minimap) {
+        try {
+          (modeler.get("minimap") as { open(): void }).open();
+        } catch {
+          /* ignore */
+        }
+      }
 
       const eventBus = modeler.get("eventBus") as {
         on(event: string, cb: (e: Record<string, unknown>) => void): void;
@@ -243,7 +302,7 @@ export function BpmnEditor({
         try {
           await modeler.importXML(initialXml);
           lastImportedRef.current = initialXml;
-          (modeler.get("canvas") as { zoom(l: string): void }).zoom("fit-viewport");
+          fitWithPadding();
         } catch (err) {
           if (!cancelled) setError((err as Error).message);
         }
@@ -262,9 +321,9 @@ export function BpmnEditor({
         modelerRef.current = null;
       }
     };
-    // re-init on theme/colorScheme/propertiesPanel; NOT on value (handled below)
+    // re-init on theme/colorScheme/propertiesPanel/minimap; NOT on value (below)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [themeTick, colorScheme, propertiesPanel]);
+  }, [themeTick, colorScheme, propertiesPanel, minimap]);
 
   // Controlled: re-import when external value changes (and differs from our echo).
   useEffect(() => {
@@ -276,39 +335,18 @@ export function BpmnEditor({
     void modeler.importXML(value).then(() => {
       if (cancelled) return;
       lastImportedRef.current = value;
-      try {
-        (modeler.get("canvas") as { zoom(l: string): void }).zoom("fit-viewport");
-      } catch {
-        /* ignore */
-      }
+      fitWithPadding();
     });
     return () => {
       cancelled = true;
     };
-  }, [value, isControlled]);
+  }, [value, isControlled, fitWithPadding]);
 
-  // ResizeObserver → fit-viewport
-  useEffect(() => {
-    if (!canvasRef.current) return;
-    let timer: ReturnType<typeof setTimeout> | null = null;
-    const ro = new ResizeObserver(() => {
-      if (timer) clearTimeout(timer);
-      timer = setTimeout(() => {
-        try {
-          (modelerRef.current?.get("canvas") as { zoom(l: string): void } | undefined)?.zoom(
-            "fit-viewport",
-          );
-        } catch {
-          /* ignore */
-        }
-      }, 150);
-    });
-    ro.observe(canvasRef.current);
-    return () => {
-      if (timer) clearTimeout(timer);
-      ro.disconnect();
-    };
-  }, []);
+  // KEIN ResizeObserver-Re-Fit mehr: diagram-js behält die Viewbox bei
+  // Container-Resize von selbst bei. Das frühere zoom("fit-viewport") bei jedem
+  // Resize ließ das Diagramm bei jeder Änderung (Lint-Leiste ein/aus →
+  // Höhenänderung) neu zentrieren/springen. Fit passiert nur noch beim
+  // initialen Import / Controlled-Reimport (fitWithPadding).
 
   const elementName = useCallback((elementId: string | undefined): string => {
     if (!elementId) return "(unbenannt)";
@@ -346,6 +384,34 @@ export function BpmnEditor({
     }
   }, [onSave, getXml]);
 
+  // Suchfeld (bpmn-js SearchPad) öffnen — via Toolbar-Button oder ⌘/Ctrl+F.
+  const handleSearch = useCallback(() => {
+    const m = modelerRef.current;
+    if (!m) return;
+    try {
+      (m.get("editorActions") as { trigger(a: string): void }).trigger("find");
+    } catch {
+      try {
+        (m.get("searchPad") as { toggle(): void }).toggle();
+      } catch {
+        /* ignore */
+      }
+    }
+  }, []);
+
+  // Element-Templates aktualisieren, ohne den Modeler neu zu bauen.
+  useEffect(() => {
+    const m = modelerRef.current;
+    if (!m) return;
+    try {
+      (m.get("elementTemplates") as { set(t: unknown[]): void }).set(
+        Array.isArray(elementTemplates) ? elementTemplates : [],
+      );
+    } catch {
+      /* ignore */
+    }
+  }, [elementTemplates]);
+
   const handleToggleView = useCallback(
     async (next: "diagram" | "table") => {
       if (next === "table") {
@@ -379,6 +445,11 @@ export function BpmnEditor({
           <Segment id="diagram">Diagramm</Segment>
           <Segment id="table">Tabelle</Segment>
         </SegmentedControl>
+        {view === "diagram" && (
+          <Button variant="plain" onPress={handleSearch} aria-label="Element suchen">
+            🔍 Suchen
+          </Button>
+        )}
         <div className="prn-bpmn-editor-toolbar-spacer" />
         {actionsSlot}
         {onSave && (

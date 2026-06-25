@@ -86,7 +86,8 @@ export function Checkbox({ children, className, ...props }: CheckboxProps) {
   return (
     <RACCheckbox {...props} className={cx("prn-checkbox", className)}>
       <span className="prn-checkbox-box" aria-hidden>
-        <svg viewBox="0 0 18 18" className="prn-checkbox-check">
+        <svg viewBox="0 0 18 18" className="prn-checkbox-check" width="14" height="14"
+          fill="none" stroke="currentColor">
           <polyline points="4,9 8,13 14,5" />
         </svg>
       </span>

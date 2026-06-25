@@ -39,6 +39,11 @@ vi.mock("bpmn-js-properties-panel", () => ({
   CamundaPlatformPropertiesProviderModule: {},
 }));
 vi.mock("bpmn-js-bpmnlint", () => ({ default: {} }));
+vi.mock("diagram-js-minimap", () => ({ default: {} }));
+vi.mock("bpmn-js-element-templates", () => ({
+  ElementTemplatesPropertiesProviderModule: {},
+  CloudElementTemplatesPropertiesProviderModule: {},
+}));
 vi.mock("camunda-bpmn-moddle/resources/camunda.json", () => ({ default: {} }));
 vi.mock("bpmnlint/rules/label-required", () => ({ default: {} }));
 vi.mock("bpmnlint/rules/no-complex-gateway", () => ({ default: {} }));

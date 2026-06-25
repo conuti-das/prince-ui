@@ -39,6 +39,7 @@ export * from "./primitives/navigation";
 // Wave 2 — L2-Komposita
 export * from "./composites/composites";
 export * from "./composites/appshell";
+export * from "./launchpad/launchpad";
 // Wave 2 — Charts (eigene SVG)
 export * from "./charts/charts";
 // Wave 2 — L3-Datenschicht

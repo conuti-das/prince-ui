@@ -11,3 +11,8 @@ coverage/
 
 # Brainstorming-Begleiter (lokal, nicht versionieren)
 .superpowers/
+
+# Vendoring-Tarballs (Build-Outputs)
+*.tgz
+# Lokale Claude-Tooling-Config
+.claude/

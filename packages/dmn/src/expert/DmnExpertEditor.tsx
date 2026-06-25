@@ -99,15 +99,21 @@ export function DmnExpertEditor({
         if (cancelled || !canvasRef.current) return;
 
         const colors = getDiagramColors(colorScheme);
+        const rendererColors = {
+          defaultFillColor: colors.defaultFillColor,
+          defaultStrokeColor: colors.defaultStrokeColor,
+          defaultLabelColor: colors.defaultLabelColor,
+        };
         const opts: Record<string, unknown> = {
           container,
           drd: {
             drawCustom: false,
-            bpmnRenderer: {
-              defaultFillColor: colors.defaultFillColor,
-              defaultStrokeColor: colors.defaultStrokeColor,
-              defaultLabelColor: colors.defaultLabelColor,
-            },
+            // dmn-js-DRD injiziert seine Renderer-Config aus `config.drdRenderer`
+            // (DrdRenderer.$inject = ['config.drdRenderer', …]). Der frühere Key
+            // `bpmnRenderer` wurde ignoriert → Shapes blieben hartcodiert weiß/
+            // schwarz. Beide Keys setzen wir zur Sicherheit.
+            drdRenderer: rendererColors,
+            bpmnRenderer: rendererColors,
           },
         };
 

@@ -53,7 +53,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Uncontrolled: Story = {
   render: () => (
-    <div style={{ height: 560 }}>
+    <div style={{ height: "calc(100vh - 32px)" }}>
       <BpmnEditor
         defaultValue={DEMO_XML}
         onSave={(xml) => console.log("[BpmnEditor] save", xml.length, "Zeichen")}
@@ -66,7 +66,7 @@ export const Controlled: Story = {
   render: () => {
     const [xml, setXml] = useState(DEMO_XML);
     return (
-      <div style={{ height: 560 }}>
+      <div style={{ height: "calc(100vh - 32px)" }}>
         <BpmnEditor
           value={xml}
           onChange={setXml}
@@ -80,7 +80,7 @@ export const Controlled: Story = {
 export const MitKiFixSlot: Story = {
   name: "Mit KI-Fix-Slot + actionsSlot",
   render: () => (
-    <div style={{ height: 560 }}>
+    <div style={{ height: "calc(100vh - 32px)" }}>
       <BpmnEditor
         defaultValue={DEMO_XML}
         actionsSlot={<Button variant="tinted">KI-Assistent</Button>}
@@ -94,7 +94,7 @@ export const MitKiFixSlot: Story = {
 export const OhnePropertiesPanel: Story = {
   name: "Ohne Properties-Panel",
   render: () => (
-    <div style={{ height: 560 }}>
+    <div style={{ height: "calc(100vh - 32px)" }}>
       <BpmnEditor defaultValue={DEMO_XML} propertiesPanel={false} />
     </div>
   ),

@@ -13,3 +13,9 @@
   height: 100%;
   background: var(--prn-bpmn-canvas-bg);
 }
+
+/* bpmn.io-Wasserzeichen ausblenden (kein Fremd-Branding im Apple-Look) —
+   gilt für Viewer und Editor, da beide unter .prn-bpmn liegen. */
+.prn-bpmn .bjs-powered-by {
+  display: none;
+}

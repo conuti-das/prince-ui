@@ -13,12 +13,30 @@
 @import "bpmn-js/dist/assets/diagram-js.css";
 @import "bpmn-js/dist/assets/bpmn-js.css";
 @import "@bpmn-io/properties-panel/assets/properties-panel.css";
+@import "diagram-js-minimap/assets/diagram-js-minimap.css";
+@import "bpmn-js-element-templates/dist/assets/element-templates.css";
 
 /* ---- Layout ---- */
 .prn-bpmn-editor {
+  position: relative; /* Anker für Lint-Overlay & ErrorPanel */
   display: flex;
   flex-direction: column;
-  min-height: 320px;
+  /* Floor, damit der Editor ohne höhen-definierten Container nicht auf
+     wenige hundert Pixel kollabiert (height:100% greift sonst ins Leere). */
+  min-height: 28rem;
+  background: var(--prn-bg);
+}
+
+/* Canvas füllt die (relative) Bühne komplett — sonst bleibt der bpmn-js-
+   Container auf seiner Default-Höhe (~150px) und der Modellierbereich + die
+   Palette sind winzig, obwohl der Editor hoch ist. Wie die Tabellen-Ansicht
+   absolut über die ganze Bühne. */
+.prn-bpmn-editor-stage > .prn-bpmn-canvas {
+  position: absolute;
+  inset: 0;
+  background: var(--prn-bg);
+}
+.prn-bpmn-editor .djs-container {
   background: var(--prn-bg);
 }
 
@@ -65,16 +83,22 @@
   background: var(--prn-bg-elevated);
 }
 
-/* ---- Linter-Footer ---- */
+/* ---- Linter-Footer (Overlay — verdrängt den Canvas NICHT in der Höhe,
+   sonst springt das Diagramm bei jeder Lint-Änderung) ---- */
 .prn-bpmn-editor-lintbar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
   display: flex;
   align-items: center;
   gap: var(--prn-space-3, 12px);
-  width: 100%;
   padding: var(--prn-space-2, 8px) var(--prn-space-3, 12px);
   border: none;
   border-top: 1px solid var(--prn-separator);
   background: var(--prn-bg-bar);
+  backdrop-filter: var(--prn-blur, blur(20px));
   font: var(--prn-text-footnote, 0.8125rem system-ui);
   text-align: left;
   cursor: pointer;
@@ -174,15 +198,204 @@
   color: var(--prn-label-2);
 }
 
-/* ---- Properties-Panel-Restyle (Token-Mapping, kein Farb-!important) ---- */
+/* ============================================================
+   Properties-Panel — echtes Theming für @bpmn-io/properties-panel 3.x.
+   Diese Version nutzt KEINE --bio-* Variablen (das alte Mapping war
+   wirkungslos → Panel blieb im Dark weiß), sondern eine --color-*-Basis-
+   palette + semantische Tokens auf .bio-properties-panel. Token-getrieben
+   → folgt automatisch Light/Dark/CU.
+   ============================================================ */
 .prn-bpmn-editor-properties .bio-properties-panel {
-  --bio-properties-panel-background-color: var(--prn-bg-elevated);
-  --bio-properties-panel-text-color: var(--prn-label);
-  --bio-properties-panel-text-color-light: var(--prn-label-2);
-  --bio-properties-panel-border-color: var(--prn-separator);
-  --bio-properties-panel-input-background-color: var(--prn-fill);
-  --bio-properties-panel-input-border-color: var(--prn-separator);
-  --bio-properties-panel-group-title-color: var(--prn-label);
-  --bio-properties-panel-active-color: var(--prn-accent);
-  font-family: var(--prn-font, system-ui, sans-serif);
+  /* Basis-Graustufen-Palette umdeuten */
+  --color-grey-225-10-97: var(--prn-bg-elevated);
+  --color-grey-225-10-95: var(--prn-bg-elevated-2);
+  --color-grey-225-10-90: var(--prn-fill);
+  --color-grey-225-10-85: var(--prn-separator);
+  --color-grey-225-10-80: var(--prn-separator);
+  --color-grey-225-10-75: var(--prn-separator);
+  --color-grey-225-10-55: var(--prn-label-2);
+  --color-grey-225-10-35: var(--prn-label-2);
+  --color-grey-225-10-15: var(--prn-label);
+  --color-white: var(--prn-bg-elevated);
+  --color-black: var(--prn-label);
+
+  /* Akzent/Blau → prince-Accent */
+  --color-blue-205-100-50: var(--prn-accent);
+  --color-blue-205-100-45: var(--prn-accent-strong);
+  --color-blue-205-100-95: var(--prn-accent-soft);
+
+  /* Rot → prince-Red */
+  --color-red-360-100-45: var(--prn-red);
+  --color-red-360-100-40: var(--prn-red);
+
+  /* Semantische Tokens explizit (Robustheit) */
+  --text-base-color: var(--prn-label);
+  --description-color: var(--prn-label-2);
+  --group-background-color: var(--prn-bg-elevated);
+  --group-bottom-border-color: var(--prn-separator);
+  --header-background-color: var(--prn-bg-elevated);
+  --header-icon-fill-color: var(--prn-label);
+  --header-bottom-border-color: var(--prn-separator);
+  --sticky-group-background-color: var(--prn-bg-elevated);
+  --sticky-group-bottom-border-color: var(--prn-separator);
+  --placeholder-background-color: var(--prn-bg-elevated);
+  --placeholder-color: var(--prn-label-2);
+  --input-background-color: var(--prn-fill);
+  --input-border-color: var(--prn-separator);
+  --input-focus-background-color: var(--prn-accent-soft);
+  --input-focus-border-color: var(--prn-accent);
+  --input-disabled-background-color: var(--prn-bg);
+  --input-disabled-color: var(--prn-label-3);
+  --toggle-switch-off-background-color: var(--prn-fill-strong);
+  --toggle-switch-on-background-color: var(--prn-accent);
+  --toggle-switch-switcher-background-color: var(--prn-bg-elevated);
+  --arrow-fill-color: var(--prn-label-2);
+  --arrow-hover-background-color: var(--prn-fill);
+  --dot-color: var(--prn-label-2);
+  --list-badge-background-color: var(--prn-fill-strong);
+  --list-badge-color: var(--prn-label);
+
+  font-family: var(--prn-font, -apple-system, BlinkMacSystemFont, system-ui, sans-serif);
+  background: var(--prn-bg-elevated);
+}
+.prn-bpmn-editor-properties .bio-properties-panel-header-labels,
+.prn-bpmn-editor-properties .bio-properties-panel-group-header-title {
+  color: var(--prn-label);
+}
+
+/* Für MaKo irrelevante Camunda-Gruppen ausblenden (rein kosmetisch).
+   IDs ggf. mit/ohne "group-"-Prefix — beide Varianten abdecken. */
+.prn-bpmn-editor-properties [data-group-id="group-CamundaPlatform__HistoryCleanup"],
+.prn-bpmn-editor-properties [data-group-id="group-CamundaPlatform__Tasklist"],
+.prn-bpmn-editor-properties [data-group-id="group-CamundaPlatform__CandidateStarter"],
+.prn-bpmn-editor-properties [data-group-id="group-CamundaPlatform__JobExecution"],
+.prn-bpmn-editor-properties [data-group-id="CamundaPlatform__HistoryCleanup"],
+.prn-bpmn-editor-properties [data-group-id="CamundaPlatform__Tasklist"],
+.prn-bpmn-editor-properties [data-group-id="CamundaPlatform__CandidateStarter"],
+.prn-bpmn-editor-properties [data-group-id="CamundaPlatform__JobExecution"] {
+  display: none;
+}
+
+/* ============================================================
+   Palette / Context-Pad / Append-Popup — Apple-Look, alle Themes.
+   diagram-js nutzt die --color-, --palette-, --context-pad- und
+   --popup-Variablen auf .djs-parent → token-getrieben überschrieben.
+   ============================================================ */
+.prn-bpmn .djs-parent {
+  --color-white: var(--prn-bg-elevated);
+  --color-black: var(--prn-label);
+  --color-grey-225-10-97: var(--prn-bg-elevated);
+  --color-grey-225-10-95: var(--prn-fill);
+  --color-grey-225-10-75: var(--prn-separator);
+  --color-grey-225-10-55: var(--prn-label-2);
+  --color-grey-225-10-35: var(--prn-label-2);
+  --color-grey-225-10-15: var(--prn-label);
+  --color-blue-205-100-45: var(--prn-accent);
+  --color-blue-205-100-50: var(--prn-accent);
+
+  --palette-background-color: var(--prn-bg-elevated);
+  --palette-border-color: var(--prn-separator);
+  --palette-entry-color: var(--prn-label);
+  --palette-entry-hover-color: var(--prn-accent);
+  --palette-entry-selected-color: var(--prn-accent);
+  --palette-separator-color: var(--prn-separator);
+  --palette-toggle-hover-background-color: var(--prn-fill);
+
+  --context-pad-entry-background-color: var(--prn-bg-elevated);
+  --context-pad-entry-hover-background-color: var(--prn-fill);
+
+  --popup-background-color: var(--prn-bg-elevated);
+  --popup-border-color: var(--prn-separator);
+  --popup-font-color: var(--prn-label);
+  --popup-entry-title-color: var(--prn-label-2);
+  --popup-entry-hover-color: var(--prn-fill);
+  --popup-description-color: var(--prn-label-2);
+  --popup-search-border-color: var(--prn-separator);
+  --popup-search-focus-border-color: var(--prn-accent);
+  --popup-search-focus-background-color: var(--prn-accent-soft);
+  --popup-header-entry-selected-color: var(--prn-accent);
+  --popup-header-group-divider-color: var(--prn-separator);
+  --popup-no-results-color: var(--prn-label-2);
+
+  --search-container-background-color: var(--prn-bg-elevated);
+  --search-input-border-color: var(--prn-separator);
+  --search-input-focus-border-color: var(--prn-accent);
+  --search-result-hover-background-color: var(--prn-fill);
+  --search-result-secondary-color: var(--prn-label-2);
+}
+
+/* Palette: Apple-Karten-Optik */
+.prn-bpmn .djs-palette {
+  border-radius: var(--prn-radius-md, 10px);
+  border: 1px solid var(--prn-separator);
+  background: var(--prn-bg-elevated);
+  box-shadow: var(--prn-shadow-raised);
+  overflow: hidden;
+}
+.prn-bpmn .djs-palette .entry {
+  color: var(--prn-label);
+}
+.prn-bpmn .djs-palette .entry:hover {
+  color: var(--prn-accent);
+}
+.prn-bpmn .djs-context-pad .entry {
+  color: var(--prn-label);
+  border-radius: var(--prn-radius-sm, 8px);
+  box-shadow: 0 0 0 1px var(--prn-separator);
+}
+.prn-bpmn .djs-context-pad .entry:hover {
+  background: var(--prn-fill);
+  color: var(--prn-accent);
+}
+
+/* bpmn-js-bpmnlint-Standard-Status-Button ("No Issues"/Fehlerliste) ausblenden:
+   wir rendern eine eigene Lint-Leiste + ErrorPanel. Das Default-Widget saß am
+   Canvas-Rand und wurde dort abgeschnitten ("◀N"-Fragment). */
+.prn-bpmn .bjsl-button,
+.prn-bpmn .bjsl-overlay,
+.prn-bpmn .bjsl-dropdown {
+  display: none;
+}
+
+/* ---- Minimap (diagram-js-minimap) — Apple-Look, alle Themes ---- */
+.prn-bpmn .djs-minimap {
+  border-radius: var(--prn-radius-md, 10px);
+  border: 1px solid var(--prn-separator);
+  background: var(--prn-bg-elevated);
+  box-shadow: var(--prn-shadow-raised);
+  overflow: hidden;
+}
+.prn-bpmn .djs-minimap .map {
+  background: var(--prn-bg);
+}
+.prn-bpmn .djs-minimap .toggle {
+  background: var(--prn-bg-elevated);
+  color: var(--prn-label);
+}
+/* Viewport-Rahmen der Minimap an Akzent koppeln */
+.prn-bpmn .djs-minimap .viewport {
+  fill: color-mix(in srgb, var(--prn-accent) 14%, transparent);
+  stroke: var(--prn-accent);
+}
+
+/* ---- Element-Templates: Auswahl/Properties folgen dem Panel-Theming ---- */
+.prn-bpmn-editor-properties .bio-properties-panel .element-templates-group,
+.prn-bpmn-editor-properties .bio-properties-panel [class*="element-template"] {
+  color: var(--prn-label);
+}
+
+/* Append-/Replace-Popup wird von diagram-js an document.body angehängt →
+   global (ohne .prn-bpmn-Präfix) themen, sonst greifen die Variablen nicht. */
+.djs-popup {
+  border-radius: var(--prn-radius-md, 10px);
+  border: 1px solid var(--prn-separator, rgba(84, 84, 88, 0.6));
+  background: var(--prn-bg-elevated, #2c2c2e);
+  box-shadow: var(--prn-shadow-pop, 0 12px 40px rgba(0, 0, 0, 0.4));
+  color: var(--prn-label, #fff);
+}
+.djs-popup .entry {
+  color: var(--prn-label, #fff);
+}
+.djs-popup .entry:hover {
+  background: var(--prn-fill, rgba(120, 120, 128, 0.24));
 }

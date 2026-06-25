@@ -11,6 +11,7 @@ import {
   CheckboxGroup,
   ComboBox,
   ComboBoxItem,
+  DatePicker,
   DescriptionList,
   Field,
   Form,
@@ -32,6 +33,7 @@ import type {
   FormSchema,
   FormSubmitResult,
 } from "../types";
+import { CalendarDate, parseDate } from "@internationalized/date";
 import { evalConditional, getPath, setPath } from "../model/conditional";
 import { dataFields, isDataField } from "../model/schema";
 import { validateForm } from "../model/validation";
@@ -349,16 +351,26 @@ function DataFieldRenderer({
           {required ? " *" : ""}
         </Checkbox>
       );
-    case "datetime":
-      // Dependency-frei: nativer Datums-Input über TextField type="date".
+    case "datetime": {
+      // prince-ui DatePicker → de-DE-Format (TT.MM.JJJJ) + Apple-Segmente/Kalender.
+      // Wert wird als ISO-Datum (yyyy-mm-dd) gehalten.
+      let dateValue: CalendarDate | null = null;
+      const raw = value == null ? "" : String(value).slice(0, 10);
+      if (raw.trim()) {
+        try {
+          dateValue = parseDate(raw);
+        } catch {
+          dateValue = null;
+        }
+      }
       return (
-        <TextField
+        <DatePicker
           {...commonField}
-          type="date"
-          value={value == null ? "" : String(value)}
-          onChange={(v) => setValue(key, v)}
+          value={dateValue}
+          onChange={(v) => setValue(key, v ? v.toString() : undefined)}
         />
       );
+    }
     case "select":
       return (
         <div className="prn-form-select-wrap">

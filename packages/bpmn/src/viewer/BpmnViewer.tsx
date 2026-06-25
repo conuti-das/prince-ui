@@ -22,7 +22,7 @@ import type {
   Incident,
 } from "../types";
 import { getDiagramColors, onThemeChange } from "../theme/diagram-theme";
-import { buildRendererConfig } from "../theme/apple-renderer";
+import { buildRendererConfig, createAppleRendererModule } from "../theme/apple-renderer";
 import {
   computeElementStatuses,
   computeExecutedFlows,
@@ -178,14 +178,18 @@ export function BpmnViewer({
       }
       overlayIdsRef.current = [];
 
-      const { default: NavigatedViewer } = await import(
-        /* @vite-ignore */ "bpmn-js/lib/NavigatedViewer"
-      );
+      const [{ default: NavigatedViewer }, { default: BpmnRenderer }] = await Promise.all([
+        import(/* @vite-ignore */ "bpmn-js/lib/NavigatedViewer"),
+        import(/* @vite-ignore */ "bpmn-js/lib/draw/BpmnRenderer"),
+      ]);
       if (cancelled || !containerRef.current) return;
 
       const colors = getDiagramColors(colorScheme);
       const viewer = new NavigatedViewer({
         container: containerRef.current,
+        additionalModules: [
+          createAppleRendererModule(BpmnRenderer as new (...a: unknown[]) => unknown),
+        ],
         ...buildRendererConfig(colors),
       }) as unknown as ViewerInstance;
       viewerRef.current = viewer;

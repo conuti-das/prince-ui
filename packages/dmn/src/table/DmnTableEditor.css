@@ -10,7 +10,7 @@
   min-height: 0;
   background: var(--prn-bg);
   color: var(--prn-label);
-  font-family: var(--prn-font-sans, system-ui, sans-serif);
+  font-family: var(--prn-font, system-ui, sans-serif);
 }
 
 /* ---------------- Toolbars ---------------- */
@@ -43,7 +43,7 @@
 
 .prn-dmn-title__meta {
   font-size: var(--prn-text-sm, 0.8125rem);
-  color: var(--prn-label-secondary, rgba(60, 60, 67, 0.6));
+  color: var(--prn-label-2);
 }
 
 .prn-dmn-spacer {
@@ -107,7 +107,7 @@
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--prn-label-secondary, rgba(60, 60, 67, 0.6));
+  color: var(--prn-label-2);
 }
 
 .prn-dmn-colhead[data-kind="input"] .prn-dmn-colhead__kind {
@@ -126,7 +126,7 @@
 .prn-dmn-colhead__expr {
   font-family: var(--prn-font-mono, ui-monospace, monospace);
   font-size: var(--prn-text-xs, 0.6875rem);
-  color: var(--prn-label-secondary, rgba(60, 60, 67, 0.6));
+  color: var(--prn-label-2);
   font-weight: 400;
 }
 
@@ -152,7 +152,7 @@
 }
 
 .prn-dmn-cell:hover {
-  background: var(--prn-fill-quaternary, rgba(120, 120, 128, 0.08));
+  background: var(--prn-hover);
 }
 
 .prn-dmn-cell[data-invalid="true"] {
@@ -160,7 +160,7 @@
 }
 
 .prn-dmn-cell__empty {
-  color: var(--prn-label-tertiary, rgba(60, 60, 67, 0.3));
+  color: var(--prn-label-2);
   font-style: italic;
 }
 
@@ -243,8 +243,8 @@
   border-radius: var(--prn-radius-pill, 999px);
   font-size: var(--prn-text-xs, 0.6875rem);
   font-weight: 600;
-  background: var(--prn-fill-tertiary, rgba(120, 120, 128, 0.12));
-  color: var(--prn-label-secondary, rgba(60, 60, 67, 0.6));
+  background: var(--prn-fill);
+  color: var(--prn-label-2);
 }
 
 .prn-dmn-feel__snippets {
@@ -255,7 +255,7 @@
 
 .prn-dmn-feel__hint {
   font-size: var(--prn-text-sm, 0.8125rem);
-  color: var(--prn-label-secondary, rgba(60, 60, 67, 0.6));
+  color: var(--prn-label-2);
 }
 
 .prn-dmn-feel__hint code {
@@ -272,7 +272,141 @@
 
 .prn-dmn-index {
   font-variant-numeric: tabular-nums;
-  color: var(--prn-label-secondary, rgba(60, 60, 67, 0.6));
+  color: var(--prn-label-2);
   font-weight: 600;
   font-size: var(--prn-text-xs, 0.6875rem);
+}
+
+/* =================================================================
+ * FIX — prince-ui AnalyticalTable clippt Zell-/Header-Inhalt
+ * (.prn-td / .prn-td-content { overflow:hidden; white-space:nowrap }).
+ * Dadurch wurden Inline-Inputs, das ⚙ im Header und Popovers auf die
+ * Zellbreite abgeschnitten → „Header nicht editierbar", „Zelle nicht
+ * eingebbar". Innerhalb der DMN-Tabelle Overflow freigeben.
+ * ================================================================= */
+.prn-dmn-table .prn-td,
+.prn-dmn-table .prn-td-content {
+  overflow: visible;
+  white-space: normal;
+  text-overflow: clip;
+}
+.prn-dmn-table .prn-td-content {
+  width: 100%;
+  min-width: 0;
+}
+.prn-dmn-table .prn-th {
+  white-space: normal;
+  align-items: flex-start;
+  min-height: 56px;
+}
+
+/* Inline-Input füllt die Zelle, gut sichtbarer Apple-Fokusring */
+.prn-dmn-table .prn-dmn-cell__input {
+  box-shadow: var(--prn-focus, inset 0 0 0 1.5px var(--prn-blue));
+  background: var(--prn-bg-elevated);
+}
+
+/* Leere (befüllbare) Zelle: dezentes Raster → „hier tippen" erkennbar */
+.prn-dmn-table .prn-dmn-cell:has(.prn-dmn-cell__empty) {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent 0 6px,
+    var(--prn-fill) 6px 7px
+  );
+}
+.prn-dmn-table .prn-dmn-cell:has(.prn-dmn-cell__empty):hover {
+  background-color: var(--prn-fill-strong);
+}
+
+/* Header-Kopfzeile: Kind-Label links, ⚙ rechts */
+.prn-dmn-table .prn-dmn-colhead__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+/* ⚙ Spalten-Edit als dezenter Icon-Button (Button trägt die Klasse direkt) */
+.prn-dmn-table .prn-dmn-colhead__edit.prn-button,
+.prn-dmn-table .prn-dmn-colhead__edit {
+  min-width: 0;
+  padding: 0 4px;
+  line-height: 1;
+  color: var(--prn-label-2);
+}
+.prn-dmn-table .prn-dmn-colhead__edit:hover {
+  color: var(--prn-label);
+}
+
+/* Inline-Edit (Spaltentitel + Decision-Name) — Klick öffnet ein Input */
+.prn-dmn-table .prn-dmn-inline-trigger {
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  text-align: left;
+  cursor: text;
+  padding: 1px 4px;
+  margin: -1px -4px;
+  border-radius: var(--prn-radius-xs, 4px);
+  max-width: 100%;
+}
+.prn-dmn-table .prn-dmn-inline-trigger:hover {
+  background: var(--prn-fill);
+}
+.prn-dmn-table .prn-dmn-inline-edit {
+  border: none;
+  background: var(--prn-bg-elevated);
+  color: var(--prn-label);
+  font: inherit;
+  font-weight: 600;
+  padding: 1px 4px;
+  margin: -1px -4px;
+  border-radius: var(--prn-radius-xs, 4px);
+  box-shadow: var(--prn-focus, inset 0 0 0 1.5px var(--prn-accent));
+  outline: none;
+  max-width: 100%;
+}
+
+/* Apple-Akzentbalken im Header: 28px-Pill statt gestauchter 3px-Kante */
+.prn-dmn-table .prn-dmn-colhead {
+  border-top: none;
+  position: relative;
+  padding-top: 8px;
+}
+.prn-dmn-table .prn-dmn-colhead::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 28px;
+  height: 3px;
+  border-radius: 999px;
+  background: transparent;
+}
+.prn-dmn-table .prn-dmn-colhead[data-kind="input"]::before {
+  background: var(--prn-blue);
+}
+.prn-dmn-table .prn-dmn-colhead[data-kind="output"]::before {
+  background: var(--prn-green);
+}
+
+/* =================================================================
+ * FIX — Spalten-Dialog: Typ-Select-Popover nicht am Modal clippen,
+ * Breite zähmen. (Popup war abgeschnitten.)
+ * ================================================================= */
+.prn-modal:has(.prn-dmn-feel--dialog) {
+  overflow: visible;
+}
+.prn-dmn-feel--dialog {
+  width: min(30rem, 80vw);
+  max-width: 100%;
+}
+@media (max-height: 640px) {
+  .prn-modal:has(.prn-dmn-feel--dialog) {
+    overflow: auto;
+  }
+  .prn-dmn-feel--dialog {
+    max-height: 70vh;
+  }
 }

@@ -189,6 +189,11 @@
   overflow: hidden;
   background: var(--prn-bg-elevated);
 }
+/* Wenn form-js leer mountet (Bundler-/Preact-Problem), die leere Box
+   ausblenden — der Hinweis darüber erklärt es. */
+.prn-fb-expert-host[data-status="empty"] {
+  display: none;
+}
 
 /* Carbon-/form-js-Hardcodes best effort über --prn-* übertünchen
    (funktional, nicht pixelgleich — siehe Spec §7.4). */

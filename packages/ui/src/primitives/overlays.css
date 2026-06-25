@@ -96,3 +96,16 @@
 .prn-tooltip[data-entering] { animation: prn-pop-in var(--prn-dur-fast) var(--prn-ease-out); }
 .prn-tooltip-arrow svg { fill: var(--prn-label); }
 .prn-tooltip-arrow { display: block; }
+
+/* A11y: reduzierte Bewegung → kein Spring/Slide, nur sofortiges Einblenden. */
+@media (prefers-reduced-motion: reduce) {
+  .prn-modal-overlay[data-entering],
+  .prn-modal-overlay[data-exiting],
+  .prn-modal[data-entering],
+  .prn-modal[data-exiting],
+  .prn-popover[data-entering],
+  .prn-popover[data-exiting],
+  .prn-tooltip[data-entering] {
+    animation: none;
+  }
+}
