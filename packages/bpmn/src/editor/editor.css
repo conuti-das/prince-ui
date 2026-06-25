@@ -40,10 +40,16 @@
   background: var(--prn-bg);
 }
 
-/* diagram-js-Selektions-Outline an die Akzentfarbe koppeln. Ohne diese Regel
-   fällt diagram-js im Editor auf seinen schwarzen Default-Stroke zurück
-   (viewer.css wird vom Editor nicht importiert) → schwarzer Rand bei Auswahl. */
-.prn-bpmn .djs-outline {
+/* diagram-js-Selektions-Outline an die Akzentfarbe koppeln. diagram-js färbt den
+   Auswahl-Rahmen über `.djs-element.selected .djs-outline` (Spezifität 0-2-1);
+   wir matchen diese Spezifität mit eigenem `.prn-bpmn`-Präfix (0-3-1) und
+   überschreiben zusätzlich die diagram-js-Variable, damit der Rahmen dem Akzent
+   folgt statt dem Default-Blau/Schwarz. */
+.prn-bpmn {
+  --element-selected-outline-stroke-color: var(--prn-accent);
+}
+.prn-bpmn .djs-element.selected .djs-outline,
+.prn-bpmn .djs-connection.selected .djs-outline {
   stroke: var(--prn-accent);
 }
 

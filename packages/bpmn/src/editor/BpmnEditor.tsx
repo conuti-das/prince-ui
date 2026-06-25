@@ -91,6 +91,8 @@ export function BpmnEditor({
   const canvasRef = useRef<HTMLDivElement>(null);
   const propsRef = useRef<HTMLDivElement>(null);
   const modelerRef = useRef<ModelerInstance | null>(null);
+  // Während importXML keinen Dirty-State setzen (Import ist keine Nutzer-Änderung).
+  const importingRef = useRef(false);
   const isControlled = value !== undefined;
 
   const [error, setError] = useState<string | null>(null);
@@ -297,6 +299,7 @@ export function BpmnEditor({
 
       // changes → onChange + dirty
       eventBus.on("commandStack.changed", () => {
+        if (importingRef.current) return; // Import-Reset, keine Nutzer-Änderung
         setDirty(true);
         cb.current.onDirtyChange?.(true);
         if (cb.current.onChange) {
@@ -309,15 +312,18 @@ export function BpmnEditor({
 
       // import initial XML
       if (initialXml && initialXml.trim()) {
+        importingRef.current = true;
         try {
           await modeler.importXML(initialXml);
           lastImportedRef.current = initialXml;
-          // Initialer Import zählt nicht als ungespeicherte Änderung (B10).
-          setDirty(false);
-          cb.current.onDirtyChange?.(false);
           fitWithPadding();
         } catch (err) {
           if (!cancelled) setError((err as Error).message);
+        } finally {
+          importingRef.current = false;
+          // Initialer Import zählt nicht als ungespeicherte Änderung (B10).
+          setDirty(false);
+          cb.current.onDirtyChange?.(false);
         }
       }
     };
@@ -345,14 +351,20 @@ export function BpmnEditor({
     const modeler = modelerRef.current;
     if (!modeler || !value.trim()) return;
     let cancelled = false;
-    void modeler.importXML(value).then(() => {
-      if (cancelled) return;
-      lastImportedRef.current = value;
-      // Externer Reimport (anderes Artefakt) ist kein Dirty-State (B10).
-      setDirty(false);
-      cb.current.onDirtyChange?.(false);
-      fitWithPadding();
-    });
+    importingRef.current = true;
+    void modeler
+      .importXML(value)
+      .then(() => {
+        if (cancelled) return;
+        lastImportedRef.current = value;
+        fitWithPadding();
+      })
+      .finally(() => {
+        importingRef.current = false;
+        // Externer Reimport (anderes Artefakt) ist kein Dirty-State (B10).
+        setDirty(false);
+        cb.current.onDirtyChange?.(false);
+      });
     return () => {
       cancelled = true;
     };

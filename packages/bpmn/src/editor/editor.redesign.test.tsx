@@ -135,6 +135,31 @@ describe("BpmnEditor Redesign-Verhalten", () => {
     errSpy.mockRestore();
   });
 
+  it("Reimport eines anderen Artefakts setzt den Dirty-State zurück (B10)", async () => {
+    const errSpy = vi.spyOn(console, "error").mockImplementation(() => {});
+    const { rerender } = render(
+      <BpmnEditor value={MINIMAL_BPMN} height={400} onSave={() => {}} />,
+    );
+    const saveBtn = screen.getByRole("button", { name: "Speichern" });
+    await waitFor(() => expect(handlers["commandStack.changed"]?.length).toBeTruthy());
+
+    fire("commandStack.changed");
+    expect(saveBtn).toBeEnabled();
+
+    // Anderer controlled value → Reimport → dirty muss wieder false sein.
+    rerender(
+      <BpmnEditor
+        value={MINIMAL_BPMN.replace("Start_1", "Start_2")}
+        height={400}
+        onSave={() => {}}
+      />,
+    );
+    await waitFor(() => expect(saveBtn).toBeDisabled());
+
+    cleanup();
+    errSpy.mockRestore();
+  });
+
   it("Properties-Panel lässt sich schließen und öffnet bei Selektion wieder (B11)", async () => {
     const errSpy = vi.spyOn(console, "error").mockImplementation(() => {});
     const { container } = render(<BpmnEditor defaultValue={MINIMAL_BPMN} height={400} />);
