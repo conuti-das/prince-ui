@@ -6,12 +6,15 @@ import "../../packages/ui/src/primitives/forms.css";
 import "../../packages/ui/src/surfaces/glass.css";
 
 /**
- * AppShell — Apple-orientierte App-Hülle (vgl. Fiori ShellBar / Carbon UI Shell).
+ * AppShell — Apple-orientierte App-Hülle mit voller ShellBar-Funktion
+ * (vgl. SAP UI5 ShellBar): Logo, Titel + Untertitel + Titel-Dropdown (`menuItems`),
+ * Suche, Aktions-Items (mit Overflow), Benachrichtigungen, Produkt-Wechsler,
+ * Profil — plus Sidebar und Content. Glas per Default auf Shell-Bar + Sidebar.
  *
- * Gibt Layout + Chrome vor: sticky Shell-Bar (Logo/Titel/Suche/Aktionen/User),
- * Sidebar links, scrollbarer Content. Glas liegt per Default auf Shell-Bar +
- * Sidebar. Auf schmalen Screens wird die Sidebar zum Off-canvas-Overlay (Toggle
- * oben links). Light/Dark/CU über die Theme-Toolbar.
+ * Responsiv (CSS-Breakpoints): iPad/Tablet ≤1024 blendet Untertitel aus und
+ * schiebt die Items ins „…"-Overflow-Menü; Phone ≤767 kollabiert die Suche zu
+ * einem Icon und macht die Sidebar zum Off-canvas-Overlay. Light/Dark/CU über
+ * die Theme-Toolbar; per `preview_resize`/Viewport testbar.
  */
 const meta: Meta<typeof AppShell> = {
   title: "Components/AppShell",
@@ -65,7 +68,25 @@ const content = (
 export const Default: Story = {
   args: {
     title: "MaCo",
+    subtitle: "Marktkommunikation",
     logo: <Icon name="bolt" size={22} />,
+    onLogoClick: () => {},
+    menuItems: [
+      { id: "home", label: "Startseite", icon: <Icon name="heart" size={16} /> },
+      { id: "switch", label: "Mandant wechseln", icon: <Icon name="building" size={16} /> },
+    ],
+    onMenuItemClick: () => {},
+    items: [
+      { id: "add", icon: <Icon name="plus" />, label: "Hinzufügen", onClick: () => {} },
+      { id: "reports", icon: <Icon name="chart" />, label: "Berichte", count: "3", onClick: () => {} },
+      { id: "mail", icon: <Icon name="mail" />, label: "Nachrichten", onClick: () => {} },
+    ],
+    notifications: true,
+    notificationsCount: 4,
+    onNotificationsClick: () => {},
+    productSwitch: true,
+    onProductSwitchClick: () => {},
+    onProfileClick: () => {},
     search: (
       <input
         aria-label="Suche"

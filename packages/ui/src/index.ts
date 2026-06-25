@@ -5,7 +5,7 @@
  * (dist/index.css → Import via "prince-ui/styles.css").
  */
 
-export const PRINCE_UI_VERSION = "0.7.0";
+export const PRINCE_UI_VERSION = "0.8.0";
 
 /** Die drei Prince-Modes. `null` = System folgen (prefers-color-scheme, Fallback Dark). */
 export type PrinceTheme = "light" | "dark" | "cu";

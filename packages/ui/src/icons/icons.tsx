@@ -29,9 +29,12 @@ export type IconName =
   | "compass"
   | "mail"
   | "bell"
+  | "grid"
+  | "more"
   | "check"
   | "x"
-  | "chevron-right";
+  | "chevron-right"
+  | "chevron-down";
 
 const PATHS: Record<IconName, ReactNode> = {
   heart: <path d="M19 14c1.5-1.6 3-3.4 3-5.6A4.4 4.4 0 0 0 12 5 4.4 4.4 0 0 0 2 8.4c0 2.2 1.5 4 3 5.6l7 7Z" />,
@@ -115,9 +118,30 @@ const PATHS: Record<IconName, ReactNode> = {
       <path d="M13.7 21a2 2 0 0 1-3.4 0" />
     </>
   ),
+  grid: (
+    <>
+      <circle cx="6" cy="6" r="1.6" fill="currentColor" stroke="none" />
+      <circle cx="12" cy="6" r="1.6" fill="currentColor" stroke="none" />
+      <circle cx="18" cy="6" r="1.6" fill="currentColor" stroke="none" />
+      <circle cx="6" cy="12" r="1.6" fill="currentColor" stroke="none" />
+      <circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none" />
+      <circle cx="18" cy="12" r="1.6" fill="currentColor" stroke="none" />
+      <circle cx="6" cy="18" r="1.6" fill="currentColor" stroke="none" />
+      <circle cx="12" cy="18" r="1.6" fill="currentColor" stroke="none" />
+      <circle cx="18" cy="18" r="1.6" fill="currentColor" stroke="none" />
+    </>
+  ),
+  more: (
+    <>
+      <circle cx="5" cy="12" r="1.6" fill="currentColor" stroke="none" />
+      <circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none" />
+      <circle cx="19" cy="12" r="1.6" fill="currentColor" stroke="none" />
+    </>
+  ),
   check: <path d="M20 6 9 17l-5-5" />,
   x: <path d="M18 6 6 18M6 6l12 12" />,
   "chevron-right": <path d="m9 6 6 6-6 6" />,
+  "chevron-down": <path d="m6 9 6 6 6-6" />,
 };
 
 export interface IconProps extends Omit<SVGProps<SVGSVGElement>, "name"> {
