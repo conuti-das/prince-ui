@@ -16,6 +16,8 @@ jobs:
           node-version: 20
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm typecheck
+      # Build first so workspace packages can resolve each other's dist types
+      # (e.g. prince-ui-dmn imports `prince-ui`), then typecheck.
       - run: pnpm build
+      - run: pnpm typecheck
       - run: pnpm build-storybook
