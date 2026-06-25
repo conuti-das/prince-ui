@@ -218,6 +218,8 @@ export interface ObjectPageProps {
   actionsBar?: ReactNode;
   /** Navigations-Aktionen, responsiv positioniert. */
   navigationBar?: ReactNode;
+  /** „Liquid Glass"-Optik auf der Title-/Top-Header-Leiste (transluzent + Blur). */
+  glass?: boolean;
 
   /* --- A2 Header-Area / Snapping --- */
   /** Expandierbarer Header-Content unter dem Title. */
@@ -303,6 +305,7 @@ export const ObjectPage = forwardRef<ObjectPageHandle, ObjectPageProps>(function
     accessibilityAttributes,
     sections,
     children,
+    glass,
     className,
     style,
   } = props;
@@ -545,7 +548,10 @@ export const ObjectPage = forwardRef<ObjectPageHandle, ObjectPageProps>(function
     >
       {/* ---- A3: Title / Top-Header ---- */}
       <header
-        className="prn-objectpage-head prn-op-top-header"
+        className={cx(
+          "prn-objectpage-head prn-op-top-header",
+          glass && "prn-glass prn-glass-bar",
+        )}
         role={topHeaderA11y?.role ?? "banner"}
         aria-label={topHeaderA11y?.["aria-label"]}
       >

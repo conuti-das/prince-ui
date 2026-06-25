@@ -31,13 +31,15 @@ export interface ModalProps {
   children?: ReactNode;
   /** Klick auf Scrim schließt (Default true). */
   isDismissable?: boolean;
+  /** „Liquid Glass"-Optik (transluzent + Blur) statt opaker Fläche. */
+  glass?: boolean;
   className?: string;
 }
 
-export function Modal({ title, children, className, isDismissable = true, ...props }: ModalProps) {
+export function Modal({ title, children, className, isDismissable = true, glass, ...props }: ModalProps) {
   return (
     <ModalOverlay {...props} isDismissable={isDismissable} className="prn-modal-overlay">
-      <RACModal className="prn-modal">
+      <RACModal className={cx("prn-modal", glass && "prn-glass prn-glass-overlay")}>
         <RACDialog className={cx("prn-dialog", className)}>
           {title && <Heading slot="title" className="prn-dialog-title">{title}</Heading>}
           {children}
@@ -55,14 +57,16 @@ export interface MenuProps {
   /** Trigger-Element (z. B. <Button>). */
   trigger: ReactNode;
   children: ReactNode;
+  /** „Liquid Glass"-Optik (transluzent + Blur) statt opaker Fläche. */
+  glass?: boolean;
   className?: string;
 }
 
-export function Menu({ trigger, children, className }: MenuProps) {
+export function Menu({ trigger, children, glass, className }: MenuProps) {
   return (
     <MenuTrigger>
       {trigger}
-      <RACPopover className="prn-popover">
+      <RACPopover className={cx("prn-popover", glass && "prn-glass prn-glass-overlay")}>
         <RACMenu className={cx("prn-menu", className)}>{children}</RACMenu>
       </RACPopover>
     </MenuTrigger>

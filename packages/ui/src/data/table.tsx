@@ -307,6 +307,8 @@ export interface AnalyticalTableProps<T> {
   header?: ReactNode;
   /** Bereich über der Tabelle (Toolbar/FilterBar). */
   extension?: ReactNode;
+  /** „Liquid Glass"-Optik auf der Tabellen-Toolbar (NICHT auf den dichten Zeilen). */
+  glass?: boolean;
   /** Barrierefreies Label der Tabelle. */
   accessibleName?: string;
   /** ID eines Elements als aria-labelledby. */
@@ -549,6 +551,7 @@ export function AnalyticalTable<T>(props: AnalyticalTableProps<T>) {
     tableWidth,
     header,
     extension,
+    glass,
     accessibleName,
     accessibleNameRef,
     className,
@@ -1173,7 +1176,7 @@ export function AnalyticalTable<T>(props: AnalyticalTableProps<T>) {
       )}
       {extension && <div className="prn-table-extension">{extension}</div>}
       {(enableGrouping || enablePersonalization) && (
-        <div className="prn-table-toolbar">
+        <div className={cx("prn-table-toolbar", glass && "prn-glass prn-glass-bar")}>
           {enableGrouping && <GroupBar table={table} columns={columns} />}
           {enablePersonalization && (
             <ColumnMenu table={table} columns={columns} onColumnsReorder={onColumnsReorder} />
