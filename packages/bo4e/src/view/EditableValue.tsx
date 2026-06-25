@@ -1,5 +1,5 @@
 import type { ZonedDateTime } from "@internationalized/date";
-import { TextField, NumberField, Switch, Select, SelectItem, DateField } from "prince-ui";
+import { TextField, NumberField, Switch, Select, SelectItem, DateField } from "@conuti-das/prince-ui";
 import type { FieldDoc } from "../types";
 import { isIsoDate } from "../core/datetime";
 import { isoToBerlin, berlinToIso } from "../core/date-edit";

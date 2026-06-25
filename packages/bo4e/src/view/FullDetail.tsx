@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Select, SelectItem } from "prince-ui";
+import { Select, SelectItem } from "@conuti-das/prince-ui";
 import type { Bo4eObject } from "../types";
 import type { Bo4eSchema } from "../schema/load-schema";
 import { resolveField, getFieldOrder } from "../schema/load-schema";

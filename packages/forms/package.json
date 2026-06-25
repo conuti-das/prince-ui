@@ -1,5 +1,5 @@
 {
-  "name": "prince-ui-forms",
+  "name": "@conuti-das/prince-ui-forms",
   "version": "1.0.1",
   "description": "Schema-getriebener Formular-Renderer und nativer Form-Builder im prince-ui-Look (form-js-kompatibel, form-js-editor als Experten-Fallback).",
   "license": "MIT",
@@ -32,10 +32,10 @@
   },
   "dependencies": {
     "@internationalized/date": "3.12.2",
-    "prince-ui-tokens": "workspace:*"
+    "@conuti-das/prince-ui-tokens": "workspace:*"
   },
   "peerDependencies": {
-    "prince-ui": "workspace:*",
+    "@conuti-das/prince-ui": "workspace:*",
     "react": ">=18 <20",
     "react-dom": ">=18 <20",
     "@bpmn-io/form-js": "^1.21.0",
@@ -50,7 +50,7 @@
     }
   },
   "devDependencies": {
-    "prince-ui": "workspace:*",
+    "@conuti-das/prince-ui": "workspace:*",
     "@bpmn-io/form-js": "^1.21.0",
     "@bpmn-io/form-js-editor": "^1.21.0",
     "@bpmn-io/cm-theme": "^0.2.0",

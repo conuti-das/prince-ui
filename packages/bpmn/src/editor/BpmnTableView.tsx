@@ -5,7 +5,7 @@
  * Portiert aus maco `BpmnEditor/BpmnTableView.tsx` (UI5 → prince-ui).
  */
 import { useMemo, useState } from "react";
-import { AnalyticalTable, Badge, SearchField, type AnalyticalColumn } from "prince-ui";
+import { AnalyticalTable, Badge, SearchField, type AnalyticalColumn } from "@conuti-das/prince-ui";
 import {
   parseBpmnElements,
   typeTone,

@@ -7,5 +7,5 @@ export default defineConfig({
   sourcemap: true,
   clean: true,
   treeshake: true,
-  external: ["react", "react-dom", "prince-ui", "prince-ui-tokens"],
+  external: ["react", "react-dom", "@conuti-das/prince-ui", "@conuti-das/prince-ui-tokens"],
 });

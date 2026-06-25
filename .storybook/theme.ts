@@ -4,7 +4,7 @@ import { create } from "@storybook/theming";
  *  weil das Manager-UI außerhalb des data-theme-Scopes der Tokens läuft. */
 export default create({
   base: "dark",
-  brandTitle: "prince-ui",
+  brandTitle: "@conuti-das/prince-ui",
   brandUrl: "https://conuti-das.github.io/prince-ui/",
 
   colorPrimary: "#a0d22b",

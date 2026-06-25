@@ -19,8 +19,8 @@
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.9",
-    "prince-ui": "workspace:*",
-    "prince-ui-tokens": "workspace:*",
+    "@conuti-das/prince-ui": "workspace:*",
+    "@conuti-das/prince-ui-tokens": "workspace:*",
     "@internationalized/date": "3.12.2",
     "preact": "^10.29.2",
     "@storybook/addon-a11y": "^8.4.0",

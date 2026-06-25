@@ -1,4 +1,4 @@
-import { Icon } from "prince-ui";
+import { Icon } from "@conuti-das/prince-ui";
 
 export interface Adresse {
   strasse?: string;

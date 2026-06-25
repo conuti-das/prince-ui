@@ -1,6 +1,6 @@
 import type { Preview, Decorator } from "@storybook/react";
 import { I18nProvider } from "react-aria-components";
-import "prince-ui-tokens/tokens.css";
+import "@conuti-das/prince-ui-tokens/tokens.css";
 import "./prince-ui-all.css";
 import theme from "./theme";
 

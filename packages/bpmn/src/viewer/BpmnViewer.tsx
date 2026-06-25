@@ -14,7 +14,7 @@
  */
 
 import { useEffect, useRef, useState, useCallback } from "react";
-import { Button } from "prince-ui";
+import { Button } from "@conuti-das/prince-ui";
 import type {
   BpmnElementClick,
   DiagramColorScheme,

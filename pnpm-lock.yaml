@@ -11,6 +11,12 @@ importers:
       '@changesets/cli':
         specifier: ^2.27.9
         version: 2.31.0
+      '@conuti-das/prince-ui':
+        specifier: workspace:*
+        version: link:packages/ui
+      '@conuti-das/prince-ui-tokens':
+        specifier: workspace:*
+        version: link:packages/tokens
       '@internationalized/date':
         specifier: 3.12.2
         version: 3.12.2
@@ -44,12 +50,6 @@ importers:
       preact:
         specifier: ^10.29.2
         version: 10.29.2
-      prince-ui:
-        specifier: workspace:*
-        version: link:packages/ui
-      prince-ui-tokens:
-        specifier: workspace:*
-        version: link:packages/tokens
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -71,13 +71,16 @@ importers:
 
   packages/bo4e:
     dependencies:
+      '@conuti-das/prince-ui-tokens':
+        specifier: workspace:*
+        version: link:../tokens
       '@internationalized/date':
         specifier: 3.12.2
         version: 3.12.2
-      prince-ui-tokens:
-        specifier: workspace:*
-        version: link:../tokens
     devDependencies:
+      '@conuti-das/prince-ui':
+        specifier: workspace:*
+        version: link:../ui
       '@testing-library/jest-dom':
         specifier: ^6.6.3
         version: 6.9.1
@@ -99,9 +102,6 @@ importers:
       jsdom:
         specifier: ^25.0.1
         version: 25.0.1
-      prince-ui:
-        specifier: workspace:*
-        version: link:../ui
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -129,6 +129,9 @@ importers:
       '@bpmn-io/properties-panel':
         specifier: ^3.0.0
         version: 3.44.1(@bpmn-io/cm-theme@0.2.0(@codemirror/state@6.7.0)(@codemirror/view@6.43.2))
+      '@conuti-das/prince-ui-tokens':
+        specifier: workspace:*
+        version: link:../tokens
       bpmn-font:
         specifier: ^0.12.1
         version: 0.12.1
@@ -156,10 +159,10 @@ importers:
       diagram-js-minimap:
         specifier: ^5.3.0
         version: 5.3.0
-      prince-ui-tokens:
-        specifier: workspace:*
-        version: link:../tokens
     devDependencies:
+      '@conuti-das/prince-ui':
+        specifier: workspace:*
+        version: link:../ui
       '@testing-library/jest-dom':
         specifier: ^6.6.3
         version: 6.9.1
@@ -181,9 +184,6 @@ importers:
       jsdom:
         specifier: ^25.0.1
         version: 25.0.1
-      prince-ui:
-        specifier: workspace:*
-        version: link:../ui
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -202,13 +202,16 @@ importers:
 
   packages/dmn:
     dependencies:
+      '@conuti-das/prince-ui-tokens':
+        specifier: workspace:*
+        version: link:../tokens
       dmn-moddle:
         specifier: ^11.0.0
         version: 11.0.0
-      prince-ui-tokens:
-        specifier: workspace:*
-        version: link:../tokens
     devDependencies:
+      '@conuti-das/prince-ui':
+        specifier: workspace:*
+        version: link:../ui
       '@testing-library/jest-dom':
         specifier: ^6.6.3
         version: 6.9.1
@@ -233,9 +236,6 @@ importers:
       jsdom:
         specifier: ^25.0.1
         version: 25.0.1
-      prince-ui:
-        specifier: workspace:*
-        version: link:../ui
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -254,12 +254,12 @@ importers:
 
   packages/forms:
     dependencies:
+      '@conuti-das/prince-ui-tokens':
+        specifier: workspace:*
+        version: link:../tokens
       '@internationalized/date':
         specifier: 3.12.2
         version: 3.12.2
-      prince-ui-tokens:
-        specifier: workspace:*
-        version: link:../tokens
     devDependencies:
       '@bpmn-io/cm-theme':
         specifier: ^0.2.0
@@ -270,6 +270,9 @@ importers:
       '@bpmn-io/form-js-editor':
         specifier: ^1.21.0
         version: 1.21.3(@bpmn-io/cm-theme@0.2.0(@codemirror/state@6.7.0)(@codemirror/view@6.43.2))
+      '@conuti-das/prince-ui':
+        specifier: workspace:*
+        version: link:../ui
       '@testing-library/jest-dom':
         specifier: ^6.6.3
         version: 6.9.1
@@ -291,9 +294,6 @@ importers:
       jsdom:
         specifier: ^25.0.1
         version: 25.0.1
-      prince-ui:
-        specifier: workspace:*
-        version: link:../ui
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -314,6 +314,9 @@ importers:
 
   packages/ui:
     dependencies:
+      '@conuti-das/prince-ui-tokens':
+        specifier: workspace:*
+        version: link:../tokens
       '@internationalized/date':
         specifier: 3.12.2
         version: 3.12.2
@@ -323,9 +326,6 @@ importers:
       '@tanstack/react-virtual':
         specifier: ^3.10.8
         version: 3.14.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      prince-ui-tokens:
-        specifier: workspace:*
-        version: link:../tokens
       react:
         specifier: '>=18 <20'
         version: 18.3.1

@@ -1,5 +1,5 @@
 {
-  "name": "prince-ui-bo4e",
+  "name": "@conuti-das/prince-ui-bo4e",
   "version": "0.3.0",
   "description": "Smart-Viewer/-Editor für BO4E-cDoc (Marktkommunikation) auf prince-ui.",
   "license": "MIT",
@@ -30,17 +30,17 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "prince-ui-tokens": "workspace:*",
+    "@conuti-das/prince-ui-tokens": "workspace:*",
     "@internationalized/date": "3.12.2"
   },
   "peerDependencies": {
-    "prince-ui": "workspace:*",
+    "@conuti-das/prince-ui": "workspace:*",
     "react": ">=18 <20",
     "react-dom": ">=18 <20",
     "react-aria-components": ">=1"
   },
   "devDependencies": {
-    "prince-ui": "workspace:*",
+    "@conuti-das/prince-ui": "workspace:*",
     "react-aria-components": "^1.19.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.0.1",

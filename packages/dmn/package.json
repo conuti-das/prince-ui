@@ -1,5 +1,5 @@
 {
-  "name": "prince-ui-dmn",
+  "name": "@conuti-das/prince-ui-dmn",
   "version": "1.0.1",
   "description": "DMN-Entscheidungstabellen-Editor (einstiegsfreundlich auf prince-ui AnalyticalTable) und dmn-js-Expertenmodus.",
   "license": "MIT",
@@ -31,11 +31,11 @@
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "prince-ui-tokens": "workspace:*",
+    "@conuti-das/prince-ui-tokens": "workspace:*",
     "dmn-moddle": "^11.0.0"
   },
   "peerDependencies": {
-    "prince-ui": "workspace:*",
+    "@conuti-das/prince-ui": "workspace:*",
     "react": ">=18 <20",
     "react-dom": ">=18 <20",
     "dmn-js": "^17.0.0"
@@ -46,7 +46,7 @@
     }
   },
   "devDependencies": {
-    "prince-ui": "workspace:*",
+    "@conuti-das/prince-ui": "workspace:*",
     "dmn-js": "^17.0.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.0.1",

@@ -1,4 +1,4 @@
-import { Icon, type IconName } from "prince-ui";
+import { Icon, type IconName } from "@conuti-das/prince-ui";
 
 const MAP: Record<string, Record<string, IconName>> = {
   SPARTE: { STROM: "bolt", GAS: "flame", WASSER: "droplet", ABWASSER: "droplet" },
