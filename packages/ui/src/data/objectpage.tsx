@@ -14,6 +14,7 @@ import {
   type ReactNode,
 } from "react";
 import { cx } from "../utils";
+import { Icon } from "../icons/icons";
 import "./data.css";
 import "./objectpage.css";
 
@@ -593,7 +594,7 @@ export const ObjectPage = forwardRef<ObjectPageHandle, ObjectPageProps>(function
               aria-label={pinned ? "Header lösen" : "Header anheften"}
               onClick={togglePin}
             >
-              <span aria-hidden>{pinned ? "📌" : "📍"}</span>
+              <Icon name={pinned ? "pin" : "pin-off"} size={16} />
             </button>
           )}
         </div>

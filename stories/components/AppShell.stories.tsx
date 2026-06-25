@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { AppShell, Sidebar, Button, KpiCard } from "../../packages/ui/src/index";
+import { AppShell, Sidebar, Button, KpiCard, Icon } from "../../packages/ui/src/index";
 import "../../packages/ui/src/composites/composites.css";
 import "../../packages/ui/src/composites/appshell.css";
 import "../../packages/ui/src/primitives/forms.css";
@@ -31,17 +31,17 @@ type Story = StoryObj<typeof AppShell>;
 const groups = [
   {
     items: [
-      { id: "summary", label: "Übersicht", icon: "❤️" },
-      { id: "activity", label: "Aktivität", icon: "🔥" },
-      { id: "sleep", label: "Schlaf", icon: "🌙" },
-      { id: "heart", label: "Herz", icon: "💟", trailing: "2" },
+      { id: "summary", label: "Übersicht", icon: <Icon name="heart" /> },
+      { id: "activity", label: "Aktivität", icon: <Icon name="flame" /> },
+      { id: "sleep", label: "Schlaf", icon: <Icon name="moon" /> },
+      { id: "heart", label: "Herz", icon: <Icon name="heart" />, trailing: "2" },
     ],
   },
   {
     label: "Verwaltung",
     items: [
-      { id: "reports", label: "Berichte", icon: "📊" },
-      { id: "settings", label: "Einstellungen", icon: "⚙️" },
+      { id: "reports", label: "Berichte", icon: <Icon name="chart" /> },
+      { id: "settings", label: "Einstellungen", icon: <Icon name="settings" /> },
     ],
   },
 ];
@@ -65,7 +65,7 @@ const content = (
 export const Default: Story = {
   args: {
     title: "MaCo",
-    logo: <span style={{ fontSize: 20 }}>🟢</span>,
+    logo: <Icon name="bolt" size={22} />,
     search: (
       <input
         aria-label="Suche"

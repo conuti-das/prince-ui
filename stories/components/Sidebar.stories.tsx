@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Sidebar, ListRow } from "../../packages/ui/src/index";
+import { Sidebar, ListRow, Icon } from "../../packages/ui/src/index";
 import "../../packages/ui/src/composites/composites.css";
 
 const meta = {
@@ -45,20 +45,20 @@ export const Playground: Story = {
             {
               label: "Monitoring",
               items: [
-                { id: "monitor", label: "Transaktionen", icon: "📊", trailing: "248" },
-                { id: "ebd", label: "EBD-Prüfung", icon: "🧭" },
-                { id: "edifact", label: "EDIFACT", icon: "📨", trailing: "12" },
+                { id: "monitor", label: "Transaktionen", icon: <Icon name="chart" />, trailing: "248" },
+                { id: "ebd", label: "EBD-Prüfung", icon: <Icon name="compass" /> },
+                { id: "edifact", label: "EDIFACT", icon: <Icon name="mail" />, trailing: "12" },
               ],
             },
             {
               label: "Verwaltung",
               items: [
-                { id: "partner", label: "Marktpartner", icon: "🏢" },
-                { id: "settings", label: "Einstellungen", icon: "⚙️" },
+                { id: "partner", label: "Marktpartner", icon: <Icon name="building" /> },
+                { id: "settings", label: "Einstellungen", icon: <Icon name="settings" /> },
               ],
             },
           ]}
-          footer={<ListRow leading="👤" title="Daniel" subtitle="Administrator" />}
+          footer={<ListRow leading={<Icon name="user" />} title="Daniel" subtitle="Administrator" />}
         />
         <div
           style={{

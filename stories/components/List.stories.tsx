@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import { List, ListRow, Badge, Amount } from "../../packages/ui/src/index";
+import { List, ListRow, Badge, Amount, Icon } from "../../packages/ui/src/index";
 import "../../packages/ui/src/composites/composites.css";
 
 const meta = {
@@ -32,7 +32,7 @@ export const Playground: Story = {
       <div style={{ display: "flex", flexDirection: "column", gap: 16, maxWidth: 480 }}>
         <List {...args}>
           <ListRow
-            leading="🏢"
+            leading={<Icon name="building" />}
             title="Stadtwerke München"
             subtitle="9900123000007 · LF"
             trailing={<Badge tone="green">OK</Badge>}
@@ -40,7 +40,7 @@ export const Playground: Story = {
             isActive={active === "a"}
           />
           <ListRow
-            leading="🏢"
+            leading={<Icon name="building" />}
             title="Netze BW"
             subtitle="9900456000003 · VNB"
             trailing={<Badge tone="orange">Wartet</Badge>}
@@ -48,7 +48,7 @@ export const Playground: Story = {
             isActive={active === "b"}
           />
           <ListRow
-            leading="🏢"
+            leading={<Icon name="building" />}
             title="E.ON Energie"
             subtitle="Deaktiviert"
             trailing="›"
@@ -78,7 +78,7 @@ export const RowVariants: Story = {
   render: () => (
     <div style={{ maxWidth: 480 }}>
       <List label="ListRow im Detail">
-        <ListRow leading="👤" title="Mit Untertitel" subtitle="Sekundäre Zeile" trailing="›" />
+        <ListRow leading={<Icon name="user" />} title="Mit Untertitel" subtitle="Sekundäre Zeile" trailing="›" />
         <ListRow title="Nur Titel + Trailing" trailing={<Badge tone="blue">Info</Badge>} />
         <ListRow title="Pressbar & aktiv" onPress={() => {}} isActive />
         <ListRow title="Deaktiviert" onPress={() => {}} isDisabled />

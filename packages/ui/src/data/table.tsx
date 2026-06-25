@@ -40,6 +40,7 @@ import { DialogTrigger } from "react-aria-components";
 import { Checkbox, Button, TextField } from "../primitives/forms";
 import { Menu, MenuItem, Popover } from "../primitives/overlays";
 import { cx } from "../utils";
+import { Icon } from "../icons/icons";
 import "./data.css";
 import "./table.css";
 
@@ -1833,7 +1834,7 @@ function ColumnMenu<T>({
     <div className="prn-colmenu">
       <DialogTrigger>
         <Button variant="plain" aria-label="Spalten">
-          ⚙ Spalten
+          <Icon name="settings" size={15} /> Spalten
         </Button>
         <Popover className="prn-colmenu-popover">
           <ul className="prn-colmenu-list" role="group" aria-label="Spalten anpassen">

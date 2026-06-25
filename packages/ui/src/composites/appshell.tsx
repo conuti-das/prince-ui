@@ -1,6 +1,7 @@
 import { useCallback, useId, useState } from "react";
 import type { ReactNode } from "react";
 import { cx } from "../utils";
+import { Icon } from "../icons/icons";
 import "./appshell.css";
 
 export interface AppShellProps {
@@ -82,9 +83,7 @@ export function AppShell({
             aria-controls={sidebarId}
             onClick={() => setCollapsed(!collapsed)}
           >
-            <span className="prn-shellbar-toggle-icon" aria-hidden>
-              ☰
-            </span>
+            <Icon name="menu" size={20} />
           </button>
         )}
         {logo != null && <div className="prn-shellbar-logo">{logo}</div>}

@@ -6,6 +6,7 @@ import {
   Popover,
   Button,
   DialogTrigger,
+  Icon,
 } from "../../packages/ui/src/index";
 import type { GlassVariant } from "../../packages/ui/src/index";
 import "../../packages/ui/src/composites/composites.css";
@@ -44,10 +45,10 @@ const backdrop: React.CSSProperties = {
 const navGroups = [
   {
     items: [
-      { id: "summary", label: "Übersicht", icon: "❤️" },
-      { id: "activity", label: "Aktivität", icon: "🔥" },
-      { id: "sleep", label: "Schlaf", icon: "🌙" },
-      { id: "heart", label: "Herz", icon: "💟", trailing: "2" },
+      { id: "summary", label: "Übersicht", icon: <Icon name="heart" /> },
+      { id: "activity", label: "Aktivität", icon: <Icon name="flame" /> },
+      { id: "sleep", label: "Schlaf", icon: <Icon name="moon" /> },
+      { id: "heart", label: "Herz", icon: <Icon name="heart" />, trailing: "2" },
     ],
   },
 ];
@@ -107,10 +108,17 @@ export const AppShell: StoryObj = {
         <GlassSurface
           variant="floating"
           as="button"
-          style={{ width: 56, height: 56, fontSize: 24, cursor: "pointer", color: "var(--prn-label)" }}
+          style={{
+            width: 56,
+            height: 56,
+            display: "grid",
+            placeItems: "center",
+            cursor: "pointer",
+            color: "var(--prn-label)",
+          }}
           aria-label="Neuer Eintrag"
         >
-          ＋
+          <Icon name="plus" size={24} />
         </GlassSurface>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { EmptyState, Card, Badge } from "../../packages/ui/src/index";
+import { EmptyState, Card, Badge, Icon } from "../../packages/ui/src/index";
 import "../../packages/ui/src/composites/composites.css";
 
 const meta = {
@@ -16,12 +16,12 @@ const meta = {
     },
   },
   argTypes: {
-    icon: { control: "text" },
+    icon: { control: false },
     title: { control: "text" },
     description: { control: "text" },
   },
   args: {
-    icon: "📭",
+    icon: <Icon name="inbox" size={28} />,
     title: "Keine Transaktionen",
     description:
       "Für den gewählten Zeitraum wurden keine Transaktionen gefunden. Passe die Filter an.",
@@ -36,7 +36,7 @@ export const InCard: Story = {
   render: () => (
     <Card padding="none">
       <EmptyState
-        icon="📭"
+        icon={<Icon name="inbox" size={28} />}
         title="Keine Transaktionen"
         description="Für den gewählten Zeitraum wurden keine Transaktionen gefunden. Passe die Filter an."
         action={<Badge tone="blue">Filter zurücksetzen</Badge>}
