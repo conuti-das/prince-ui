@@ -12,9 +12,9 @@ export type PrinceTheme = "light" | "dark" | "cu";
 
 /**
  * Setzt das Theme am <html>-Element.
- * - `"light"` / `"dark"` → Apple-Optik (SF-Fonts, Apple-System-Farben, Apple-Grün)
+ * - `"light"` / `"dark"` → Prince Light / Prince Dark (Apple-Optik: SF-Fonts, Apple-System-Farben, Grün)
  * - `"cu"`               → CONUTI Community-Styling (CI-Grün)
- * - `null`               → System folgen (Light bei OS-Light, sonst Dark)
+ * - `null`               → System folgen (Prince Light bei OS-Light, sonst Prince Dark)
  */
 export function setTheme(theme: PrinceTheme | null): void {
   const root = document.documentElement;

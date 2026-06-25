@@ -3,8 +3,9 @@ import { I18nProvider } from "react-aria-components";
 import "prince-ui-tokens/tokens.css";
 import theme from "./theme";
 
-/** Theme-Umschalter in der Storybook-Toolbar (Apple Dark/Light, CU, System) + deutsche Locale,
- *  damit Datums-/Zeit-/Kalender-Komponenten TT.MM.JJJJ und deutsche Wochentage zeigen. */
+/** Theme-Umschalter in der Storybook-Toolbar (System, Prince Dark/Light, CU) + deutsche Locale,
+ *  damit Datums-/Zeit-/Kalender-Komponenten TT.MM.JJJJ und deutsche Wochentage zeigen.
+ *  Default = "system": folgt prefers-color-scheme (Prince Light bei OS-Light, sonst Prince Dark). */
 const withTheme: Decorator = (Story, context) => {
   const theme = context.globals.theme as string;
   const root = document.documentElement;
@@ -30,15 +31,15 @@ const preview: Preview = {
   globalTypes: {
     theme: {
       description: "Prince-Theme",
-      defaultValue: "dark",
+      defaultValue: "system",
       toolbar: {
         title: "Theme",
         icon: "circlehollow",
         items: [
-          { value: "dark", title: "Apple Dark" },
-          { value: "light", title: "Apple Light" },
+          { value: "system", title: "System (Auto)" },
+          { value: "dark", title: "Prince Dark" },
+          { value: "light", title: "Prince Light" },
           { value: "cu", title: "CU (Community)" },
-          { value: "system", title: "System" },
         ],
         dynamicTitle: true,
       },
