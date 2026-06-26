@@ -7,7 +7,8 @@ function clone(node: unknown): any {
 
 export function setIn<T>(root: T, path: Path, value: unknown): T {
   if (path.length === 0) return value as T;
-  const [head, ...rest] = path;
+  const head = path[0]!;
+  const rest = path.slice(1);
   const base: any = root == null ? (typeof head === "number" ? [] : {}) : clone(root);
   base[head] = setIn(base[head], rest, value);
   return base;
@@ -15,7 +16,8 @@ export function setIn<T>(root: T, path: Path, value: unknown): T {
 
 export function deleteIn<T>(root: T, path: Path): T {
   if (path.length === 0) return root;
-  const [head, ...rest] = path;
+  const head = path[0]!;
+  const rest = path.slice(1);
   if (root == null) return root;
   const base: any = clone(root);
   if (rest.length === 0) {
