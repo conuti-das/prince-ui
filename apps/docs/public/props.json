@@ -240,6 +240,20 @@
         "required": false,
         "defaultValue": null,
         "description": ""
+      },
+      {
+        "name": "aria-label",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Barrierefreier Name des Dialogs, wenn kein sichtbarer `title` gesetzt ist."
+      },
+      {
+        "name": "aria-labelledby",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "ID-Referenz für den barrierefreien Namen (Alternative zu `title`/`aria-label`)."
       }
     ]
   },

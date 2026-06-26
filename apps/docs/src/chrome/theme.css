@@ -9,3 +9,11 @@ body { margin: 0; background: var(--prn-bg); color: var(--prn-label); font-famil
 .docs-dodont { border-left: 3px solid; padding: .75rem 1rem; margin: 1rem 0; }
 .docs-dodont-do { border-color: var(--prn-positive, #2e7d32); }
 .docs-dodont-dont { border-color: var(--prn-negative, #c62828); }
+
+/* Schwer-Editor-Demos (bpmn/dmn/forms/bo4e). Die Editoren bringen ihre eigene
+   Höhe (height auf dem inneren Wrapper) mit; hier nur Rahmen + Padding. */
+.docs-editor-example { border: 1px solid var(--prn-separator); border-radius: 12px; overflow: hidden; margin: 1.5rem 0; background: var(--prn-bg); }
+.docs-editor-example > * { padding: 0; }
+.docs-editor-loading { padding: 2rem; color: var(--prn-label-2); }
+.docs-editor-error { padding: 1rem 1.25rem; color: var(--prn-negative, #c62828); }
+.docs-editor-error pre { white-space: pre-wrap; font-size: .8rem; margin: .5rem 0 0; }

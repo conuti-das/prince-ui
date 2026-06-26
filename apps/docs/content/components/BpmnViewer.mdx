@@ -1,0 +1,45 @@
+# BpmnViewer
+
+Read-only BPMN-Viewer auf Basis von bpmn-js (`NavigatedViewer`) mit deklarativem Status-Highlighting über diagram-js-Marker und Overlays. Ideal, um einen laufenden oder abgeschlossenen Prozess samt Historie und Incidents anzuzeigen — ohne Bearbeitungsfunktionen.
+
+<EditorExample name="BpmnViewer" />
+
+## Verwendung
+
+Der Viewer ist eine kontrollierte Darstellung: Du übergibst das BPMN-XML als `xml` und beschreibst den Laufzeit-Zustand deklarativ über `activityHistory`, `runtimeActiveActivityIds` und `incidents`. Der Viewer übersetzt das in Farben:
+
+- **blau** — aktuell aktiv (`runtimeActiveActivityIds`)
+- **grün** — abgeschlossen (`activityHistory` mit `endTime`)
+- **rot** — Incident (`incidents`)
+- **orange** — abgebrochen
+
+Über `onElementClick` lassen sich Klicks auf Knoten abfangen (z. B. um ein Detail-Panel zu öffnen).
+
+<DoDont kind="do">Den Viewer für Monitoring-/Read-Ansichten nutzen — Status kommt deklarativ aus den Laufzeitdaten.</DoDont>
+<DoDont kind="dont">Den Viewer zum Bearbeiten verwenden — dafür ist `BpmnEditor` da.</DoDont>
+
+## Beispiele
+
+Das obige Demo zeigt den MaKo-Prozess „UTILMD eingegangen → Eingang prüfen → Daten anreichern → APERAK senden" mit Historie (grün), einem Runtime-aktiven Knoten (blau), einem Incident an „Daten anreichern" (rot) und Klick-Event-Anzeige.
+
+```tsx
+import { BpmnViewer } from "@conuti-das/prince-ui-bpmn";
+
+<div style={{ height: 460 }}>
+  <BpmnViewer
+    xml={xml}
+    activityHistory={history}
+    incidents={incidents}
+    runtimeActiveActivityIds={["Senden"]}
+    onElementClick={(e) => console.log(e.elementId)}
+  />
+</div>
+```
+
+## Accessibility
+
+Der Canvas ist scroll- und zoombar (diagram-js `NavigatedViewer`). Da das Diagramm eine SVG-Grafik ist, sollte der umgebende Kontext (Überschrift, Statuslegende) den Prozess auch textuell erschließen. Das „powered by bpmn.io"-Wasserzeichen bleibt aus Lizenzgründen sichtbar.
+
+## Props
+
+<PropsTable name="BpmnViewer" />

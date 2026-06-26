@@ -1,0 +1,50 @@
+# FormRenderer
+
+Schema-getriebener Formular-Renderer auf prince-ui-Feld-Primitives. Konsumiert ein form-js-kompatibles `FormSchema` und bringt Validierung, bedingte Sichtbarkeit, Read-only-Modus und Camunda-Submit-Format mit.
+
+<EditorExample name="FormRenderer" />
+
+## Verwendung
+
+Du übergibst ein `schema` (`FormSchema`) und optional `data` als Anfangswerte. `onSubmit` liefert ein `FormRendererSubmit` mit `variables` (Camunda-Format) oder `errors`. Mit `readOnly` wird das Formular zur reinen Anzeige.
+
+Bedingte Felder steuerst du über `conditional.hide` (FEEL-Ausdruck), z. B. erscheint die „Begründung" erst, wenn die Entscheidung „Ablehnen" lautet. Aus Camunda-`TaskFormField[]` erzeugt `taskFormToSchema(...)` direkt ein passendes Schema.
+
+<DoDont kind="do">Das `FormSchema` zentral pflegen und zwischen `FormBuilder` und `FormRenderer` teilen.</DoDont>
+<DoDont kind="dont">Validierung doppelt im Aufrufer implementieren — `validate`-Regeln im Schema reichen.</DoDont>
+
+## Beispiele
+
+Das Demo zeigt das Klärfall-Formular mit Pflichtfeldern, bedingter Begründung und Submit-Ausgabe als Camunda-Variablen.
+
+```tsx
+import { FormRenderer } from "@conuti-das/prince-ui-forms";
+
+<FormRenderer
+  schema={schema}
+  onSubmit={(r) => console.log(r.variables)}
+  submitLabel="Klärfall abschließen"
+/>
+```
+
+Read-only mit Vorbefüllung:
+
+```tsx
+<FormRenderer schema={schema} readOnly data={{ marktlokationsId: "12345678901" }} />
+```
+
+Aus Camunda Task-Form:
+
+```tsx
+import { FormRenderer, taskFormToSchema } from "@conuti-das/prince-ui-forms";
+
+<FormRenderer schema={taskFormToSchema(taskFields)} onSubmit={submit} />
+```
+
+## Accessibility
+
+Jedes Feld basiert auf den react-aria-gestützten prince-ui-Primitives — Labels, Beschreibungen, Fehlertexte und Fokusführung sind eingebaut. Validierungsfehler werden den Feldern zugeordnet und für Screenreader angekündigt.
+
+## Props
+
+<PropsTable name="FormRenderer" />
