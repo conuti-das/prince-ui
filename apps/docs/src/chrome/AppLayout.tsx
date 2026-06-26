@@ -1,5 +1,6 @@
 import { Outlet, Link } from "react-router-dom";
 import { ThemeSwitcher } from "./ThemeSwitcher";
+import { OnThisPage } from "./OnThisPage";
 import { navTree } from "../routes";
 
 export function AppLayout() {
@@ -18,7 +19,7 @@ export function AppLayout() {
         ))}
       </nav>
       <main className="docs-main"><Outlet /></main>
-      <aside className="docs-toc" id="on-this-page" />
+      <aside className="docs-toc"><OnThisPage /></aside>
     </div>
   );
 }
