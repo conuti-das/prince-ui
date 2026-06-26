@@ -1,0 +1,28 @@
+# Button
+
+Buttons lösen Aktionen aus — von primären Bestätigungen bis zu schlichten Inline-Aktionen.
+
+<Playground component="Button" />
+
+## Verwendung
+
+Nutze **filled** für die primäre Aktion einer Ansicht, **tinted** für sekundäre und **plain** für tertiäre/Inline-Aktionen.
+
+<DoDont kind="do">Pro Ansicht genau eine `filled`-Primäraktion.</DoDont>
+<DoDont kind="dont">Mehrere `filled`-Buttons nebeneinander um Aufmerksamkeit konkurrieren lassen.</DoDont>
+
+## Beispiele
+
+<Example code={`<div style={{ display: 'flex', gap: 16 }}>
+  <Button variant="filled">Gefüllt</Button>
+  <Button variant="tinted">Getönt</Button>
+  <Button variant="plain">Schlicht</Button>
+</div>`} />
+
+## Accessibility
+
+Button basiert auf react-aria `Button`: Fokus-Ring, Tastatur (Enter/Space) und `isDisabled` sind eingebaut. Für reine Icon-Buttons ein `aria-label` setzen.
+
+## Props
+
+<PropsTable name="Button" />
