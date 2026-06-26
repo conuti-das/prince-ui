@@ -1,6 +1,16 @@
 export type Bo4eObject = { boTyp?: string } & Record<string, unknown>;
 export type Stammdaten = Record<string, Bo4eObject[]>;
 
+/** Globaler Detailgrad des CDocView. */
+export type Density = "fachlich" | "gefuellt" | "alle";
+
+/** Optionale Struktur-Metadaten je BO-Feld (treibt verschachteltes Anlegen). */
+export interface Bo4eFieldStructure {
+  kind: "scalar" | "object" | "array";
+  ref?: string; // Ziel-boTyp für object/array
+}
+export type Bo4eStructure = Record<string, Record<string, Bo4eFieldStructure>>;
+
 export interface DirectionDoc {
   stammdaten: Stammdaten;
   transaktionsdaten?: Bo4eObject;
