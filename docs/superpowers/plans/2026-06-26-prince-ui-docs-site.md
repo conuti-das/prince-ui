@@ -1027,16 +1027,21 @@ Expected: Diagramme/Editoren sichtbar, keine „React is not defined"/leere-Cont
 
 ## Phase 8 — Suche, a11y-CI, Deploy, Storybook-Abschaltung
 
-### Task 8.1: Pagefind-Suche im Chrome
+### Task 8.1: Suche via MiniSearch (Build-Zeit-Index, SPA-tauglich)
+
+> Geändert ggü. Spec: Pagefind indiziert nur statisches HTML, die Site ist aber eine
+> client-gerenderte SPA → stattdessen Build-Zeit-Index + clientseitige Suche (MiniSearch).
 
 **Files:**
+- Create: `apps/docs/scripts/build-search-index.ts` (schreibt `public/search-index.json` aus dem MDX-Rohtext)
 - Create: `apps/docs/src/chrome/Search.tsx`
-- Modify: `apps/docs/src/chrome/AppLayout.tsx`
+- Modify: `apps/docs/src/chrome/AppLayout.tsx`, `apps/docs/package.json` (`build` ruft das Index-Script vor `vite build`)
 
-- [ ] **Step 1: `Search.tsx`** — lädt Pagefind-Bundle (`${BASE_URL}pagefind/pagefind.js`) dynamisch, Eingabe → Treffer-Liste mit Links. (Pagefind-Index entsteht im `build`-Script.)
-- [ ] **Step 2: In Sidebar oben einhängen.**
-- [ ] **Step 3: Verifizieren** — nach `pnpm --filter @conuti-das/prince-ui-docs build` + `preview`: Suche „Button" liefert Treffer.
-- [ ] **Step 4: Commit** — `git commit -m "feat(docs): Pagefind search"`
+- [ ] **Step 1: `build-search-index.ts`** — liest `content/**/*.mdx`, strippt MDX/JSX grob zu Text, schreibt `[{ id: routePath, title, text }]` nach `public/search-index.json`.
+- [ ] **Step 2: `Search.tsx`** — lädt `${BASE_URL}search-index.json`, baut einen MiniSearch-Index im Client; Eingabe → Treffer-Liste mit `<Link>`.
+- [ ] **Step 3: In Sidebar oben einhängen; `build`-Script erweitern.**
+- [ ] **Step 4: Verifizieren** — nach `build` + `preview`: Suche „Button" liefert den Button-Treffer.
+- [ ] **Step 5: Commit** — `git commit -m "feat(docs): client search via MiniSearch index"`
 
 ### Task 8.2: Playwright + axe Smoke/A11y über alle Seiten
 
@@ -1075,6 +1080,10 @@ for (const path of paths) {
 - Create: `.github/workflows/deploy-docs.yml`
 - Delete: `.github/workflows/deploy-storybook.yml`, `.storybook/`, `stories/`
 - Modify: root `package.json` (Storybook-Scripts/-deps raus, `storybook-static/` aus Repo)
+
+**SPA-Deep-Links auf Pages:** Im `build` nach `vite build` `dist/index.html` nach `dist/404.html`
+kopieren (GitHub Pages liefert `404.html` bei unbekannten Pfaden → SPA-Router übernimmt). Damit
+funktionieren Direktaufrufe wie `/prince-ui/components/button`.
 
 - [ ] **Step 1: `deploy-docs.yml`** — analog `deploy-storybook.yml`, aber baut `apps/docs` mit `DOCS_BASE_PATH=/prince-ui/`, lädt `apps/docs/dist` als Pages-Artefakt.
 
