@@ -27,7 +27,8 @@
     "dev": "tsup --watch",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "gen:structure": "node scripts/gen-structure.mjs"
   },
   "dependencies": {
     "@conuti-das/prince-ui-tokens": "workspace:*",

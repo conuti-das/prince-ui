@@ -89,6 +89,17 @@
 .prn-bo-editbtn { background: var(--prn-accent-soft); color: var(--prn-accent-strong); border: none; border-radius: var(--prn-radius-sm); padding: 5px 12px; font: var(--prn-text-footnote); font-weight: 500; cursor: pointer; }
 .prn-bo-addfield { margin-top: 12px; max-width: 260px; }
 
+/* Global detail controls (density + edit) */
+.prn-bo-controls { display: flex; align-items: center; gap: 16px; margin-bottom: 12px; flex-wrap: wrap; }
+
+/* Nested object/array blocks: full-width, escape the .v nowrap/ellipsis cell */
+.prn-bo-nested { grid-column: 1 / -1; margin: 6px 0 2px; }
+.prn-bo-nested .prn-bo-kvgrid { margin-top: 6px; padding-top: 6px; }
+.prn-bo-nestedmore { grid-column: 1 / -1; color: var(--prn-label-3); font: var(--prn-text-footnote); padding: 4px 0; }
+.prn-bo-kv-edit { grid-template-columns: 1fr auto; align-items: center; }
+.prn-bo-addbtn { background: none; border: none; color: var(--prn-accent-strong); cursor: pointer; font: var(--prn-text-footnote); font-weight: 500; padding: 0 2px; }
+.prn-bo-delbtn { background: none; border: none; color: var(--prn-label-3); cursor: pointer; font: var(--prn-text-footnote); padding: 0 4px; }
+
 /* Tabs + anomaly bar */
 .prn-bo-tabs { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 2px; }
 .prn-bo-tab { display: inline-flex; align-items: center; min-height: 34px; padding: 6px 14px; border-radius: var(--prn-radius-pill); font: var(--prn-text-footnote); white-space: nowrap; cursor: pointer; color: var(--prn-label-2); background: var(--prn-fill); border: none; }

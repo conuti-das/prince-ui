@@ -1,0 +1,924 @@
+{
+  "ADHOCSTEUERKANAL": {
+    "zieladresse": {
+      "kind": "object",
+      "ref": "ZIELADRESSE"
+    },
+    "aussteller": {
+      "kind": "object",
+      "ref": "AUSSTELLER"
+    },
+    "zertifikatsNutzer": {
+      "kind": "object",
+      "ref": "ZERTIFIKATSNUTZER"
+    },
+    "IPAdresseCLSDevice": {
+      "kind": "object",
+      "ref": "IPADRESSECLSDEVICE"
+    }
+  },
+  "ANGEBOT": {
+    "angebotgeber": {
+      "kind": "object",
+      "ref": "GESCHAEFTSPARTNER"
+    },
+    "angebotnehmer": {
+      "kind": "object",
+      "ref": "GESCHAEFTSPARTNER"
+    },
+    "unterzeichnerAngebotsnehmer": {
+      "kind": "object",
+      "ref": "ANSPRECHPARTNER"
+    },
+    "unterzeichnerAngebotsgeber": {
+      "kind": "object",
+      "ref": "ANSPRECHPARTNER"
+    },
+    "zeitspanneEinrichtungUebermittlungWerte": {
+      "kind": "object",
+      "ref": "ZEITRAUM"
+    },
+    "bindefristAngebot": {
+      "kind": "object",
+      "ref": "ZEITRAUM"
+    },
+    "varianten": {
+      "kind": "array",
+      "ref": "ANGEBOTSVARIANTE"
+    },
+    "positionsdaten": {
+      "kind": "array",
+      "ref": "ANGEBOTSPOSITION"
+    }
+  },
+  "ANSPRECHPARTNER": {
+    "rufnummern": {
+      "kind": "array",
+      "ref": "RUFNUMMER"
+    }
+  },
+  "AUFTRAG": {
+    "lieferanschrift": {
+      "kind": "object",
+      "ref": "ADRESSE"
+    },
+    "mindestpreis": {
+      "kind": "object",
+      "ref": "PREIS"
+    },
+    "hoechstpreis": {
+      "kind": "object",
+      "ref": "PREIS"
+    },
+    "lieferadresseAltgeraete": {
+      "kind": "object",
+      "ref": "GESCHAEFTSPARTNER"
+    },
+    "positionsdaten": {
+      "kind": "array",
+      "ref": "AUFTRAGPOSITION"
+    }
+  },
+  "AVIS": {
+    "zuZahlen": {
+      "kind": "object",
+      "ref": "BETRAG"
+    },
+    "positionen": {
+      "kind": "array",
+      "ref": "AVISPOSITION"
+    }
+  },
+  "BERECHNUNGSFORMEL": {
+    "rechenschritt": {
+      "kind": "object",
+      "ref": "RECHENSCHRITT"
+    },
+    "rechenschritte": {
+      "kind": "array",
+      "ref": "RECHENSCHRITT"
+    },
+    "verwendungszweck": {
+      "kind": "array",
+      "ref": "VERWENDUNGSZWECK"
+    },
+    "gueltigkeitszeitraum": {
+      "kind": "object",
+      "ref": "ZEITRAUM"
+    }
+  },
+  "BILANZIERUNG": {
+    "bilanzkreise": {
+      "kind": "array",
+      "ref": "BILANZKREIS"
+    },
+    "temperaturarbeit": {
+      "kind": "object",
+      "ref": "MENGE"
+    },
+    "jahresverbrauchsprognose": {
+      "kind": "object",
+      "ref": "MENGE"
+    },
+    "kundenwert": {
+      "kind": "object",
+      "ref": "MENGE"
+    },
+    "verbrauchsaufteilung": {
+      "kind": "object",
+      "ref": "MENGE"
+    },
+    "vorjahresverbrauch": {
+      "kind": "object",
+      "ref": "MENGE"
+    },
+    "gueltigkeitszeitraum": {
+      "kind": "object",
+      "ref": "ZEITRAUM"
+    },
+    "lastprofile": {
+      "kind": "array",
+      "ref": "LASTPROFIL"
+    },
+    "lastprofileBilanzierungsbeteiligter": {
+      "kind": "array",
+      "ref": "LASTPROFIL"
+    }
+  },
+  "ENERGIEMENGE": {
+    "energieverbrauch": {
+      "kind": "array",
+      "ref": "VERBRAUCH"
+    }
+  },
+  "GESCHAEFTSPARTNER": {
+    "partneradresse": {
+      "kind": "object",
+      "ref": "ADRESSE"
+    },
+    "externeReferenzen": {
+      "kind": "array",
+      "ref": "EXTERNEREFERENZ"
+    }
+  },
+  "HANDELSUNSTIMMIGKEIT": {
+    "begruendung": {
+      "kind": "object",
+      "ref": "HANDELSUNSTIMMIGKEITSBEGRUENDUNG"
+    },
+    "zuZahlen": {
+      "kind": "object",
+      "ref": "BETRAG"
+    }
+  },
+  "KOMMUNIKATIONSDATEN": {
+    "marktteilnehmer": {
+      "kind": "object",
+      "ref": "MARKTTEILNEHMER"
+    },
+    "kommunikationsangaben": {
+      "kind": "array",
+      "ref": "MARKTTEILNEHMER"
+    }
+  },
+  "LEISTUNGSKURVENDEFINITION": {
+    "leistungskurven": {
+      "kind": "array",
+      "ref": "LEISTUNGSKURVE"
+    }
+  },
+  "LOKATIONSBUENDEL": {
+    "gueltigkeitszeitraum": {
+      "kind": "object",
+      "ref": "ZEITRAUM"
+    },
+    "zuordnungObjectcode": {
+      "kind": "array",
+      "ref": "ZUORDNUNGOBJECTCODE"
+    }
+  },
+  "MARKTLOKATION": {
+    "endkunde": {
+      "kind": "object",
+      "ref": "GESCHAEFTSPARTNER"
+    },
+    "lokationsadresse": {
+      "kind": "object",
+      "ref": "ADRESSE"
+    },
+    "katasterinformation": {
+      "kind": "object",
+      "ref": "KATASTERADRESSE"
+    },
+    "eigentuemer": {
+      "kind": "object",
+      "ref": "GESCHAEFTSPARTNER"
+    },
+    "hausverwalter": {
+      "kind": "object",
+      "ref": "GESCHAEFTSPARTNER"
+    },
+    "beteiligterMarktpartner": {
+      "kind": "object",
+      "ref": "MARKTTEILNEHMER"
+    },
+    "gueltigkeitszeitraum": {
+      "kind": "object",
+      "ref": "ZEITRAUM"
+    },
+    "marktrollen": {
+      "kind": "array",
+      "ref": "MARKTTEILNEHMER"
+    },
+    "zaehlwerke": {
+      "kind": "array",
+      "ref": "ZAEHLWERK"
+    },
+    "verbrauchsmenge": {
+      "kind": "array",
+      "ref": "VERBRAUCH"
+    },
+    "zugehoerigeMesslokationen": {
+      "kind": "array",
+      "ref": "MESSLOKATIONSZUORDNUNG"
+    },
+    "netznutzungsabrechnungsdaten": {
+      "kind": "array",
+      "ref": "NETZNUTZUNGSABRECHNUNGSDATEN"
+    },
+    "messstellenbetriebsabrechnungsdaten": {
+      "kind": "array",
+      "ref": "MESSSTELLENBETRIEBSABRECHNUNGSDATEN"
+    },
+    "energieherkunft": {
+      "kind": "array",
+      "ref": "ENERGIEHERKUNFT"
+    },
+    "erforderlichesProduktpaket": {
+      "kind": "array",
+      "ref": "PRODUKTPAKET"
+    },
+    "geokoordinaten": {
+      "kind": "object",
+      "ref": "GEOKOORDINATEN"
+    },
+    "marktlokationsTyp": {
+      "kind": "array",
+      "ref": "MARKTLOKATIONSTYPISIERUNG"
+    },
+    "zugehoerigeMarktlokationen": {
+      "kind": "array",
+      "ref": "MARKTLOKATIONSREFERENZ"
+    }
+  },
+  "MARKTTEILNEHMER": {
+    "partneradresse": {
+      "kind": "object",
+      "ref": "ADRESSE"
+    },
+    "ansprechpartner": {
+      "kind": "object",
+      "ref": "ANSPRECHPARTNER"
+    },
+    "kommunikationsparameter": {
+      "kind": "object",
+      "ref": "KOMMUNIKATIONSPARAMETER"
+    },
+    "bankverbindung": {
+      "kind": "array",
+      "ref": "BANKVERBINDUNG"
+    },
+    "erreichbarkeit": {
+      "kind": "array",
+      "ref": "ERREICHBARKEIT"
+    },
+    "ipRange": {
+      "kind": "object",
+      "ref": "IPRANGE"
+    }
+  },
+  "MESSLOKATION": {
+    "messadresse": {
+      "kind": "object",
+      "ref": "ADRESSE"
+    },
+    "ablesekartenempfaenger": {
+      "kind": "object",
+      "ref": "GESCHAEFTSPARTNER"
+    },
+    "beteiligterMarktpartner": {
+      "kind": "object",
+      "ref": "MARKTTEILNEHMER"
+    },
+    "geraete": {
+      "kind": "array",
+      "ref": "GERAET"
+    },
+    "messdienstleistung": {
+      "kind": "array",
+      "ref": "DIENSTLEISTUNG"
+    },
+    "zaehlwerke": {
+      "kind": "array",
+      "ref": "ZAEHLWERK"
+    },
+    "marktrollen": {
+      "kind": "array",
+      "ref": "MARKTTEILNEHMER"
+    },
+    "gueltigkeitszeitraum": {
+      "kind": "object",
+      "ref": "ZEITRAUM"
+    }
+  },
+  "NETZLOKATION": {
+    "auftraggebenderMarktpartner": {
+      "kind": "object",
+      "ref": "MARKTTEILNEHMER"
+    },
+    "marktrollen": {
+      "kind": "array",
+      "ref": "MARKTTEILNEHMER"
+    },
+    "zaehlwerke": {
+      "kind": "array",
+      "ref": "ZAEHLWERK"
+    },
+    "abrechnungsdaten": {
+      "kind": "array",
+      "ref": "NETZNUTZUNGSABRECHNUNGSDATEN"
+    },
+    "gueltigkeitszeitraum": {
+      "kind": "object",
+      "ref": "ZEITRAUM"
+    }
+  },
+  "PREISBLATT": {
+    "gueltigkeit": {
+      "kind": "object",
+      "ref": "ZEITRAUM"
+    },
+    "preispositionen": {
+      "kind": "array",
+      "ref": "PREISPOSITION"
+    }
+  },
+  "RECHNUNG": {
+    "vorlaeufigerAbrechnungszeitraum": {
+      "kind": "object",
+      "ref": "ZEITRAUM"
+    },
+    "rechnungsperiode": {
+      "kind": "object",
+      "ref": "ZEITRAUM"
+    },
+    "gesamtbrutto": {
+      "kind": "object",
+      "ref": "BETRAG"
+    },
+    "zuZahlen": {
+      "kind": "object",
+      "ref": "BETRAG"
+    },
+    "vorausgezahlt": {
+      "kind": "object",
+      "ref": "BETRAG"
+    },
+    "gemeinderabatt": {
+      "kind": "object",
+      "ref": "GEMEINDERABATT"
+    },
+    "steuerbetraege": {
+      "kind": "array",
+      "ref": "STEUERBETRAG"
+    },
+    "rechnungspositionen": {
+      "kind": "array",
+      "ref": "RECHNUNGSPOSITION"
+    }
+  },
+  "REKLAMATION": {
+    "zeitraumMesswertanfrage": {
+      "kind": "object",
+      "ref": "ZEITRAUM"
+    },
+    "reklamationsgrundBemerkung": {
+      "kind": "object",
+      "ref": "REKLAMATIONSGRUNDBEMERKUNG"
+    }
+  },
+  "SCHALTZEITDEFINITION": {
+    "schaltzeiten": {
+      "kind": "array",
+      "ref": "SCHALTZEIT"
+    }
+  },
+  "SPERRAUFTRAG": {
+    "treffpunkt": {
+      "kind": "object",
+      "ref": "ADRESSE"
+    }
+  },
+  "STATUSBERICHT": {
+    "fehler": {
+      "kind": "object",
+      "ref": "FEHLER"
+    }
+  },
+  "STATUSMITTEILUNG": {
+    "positionsdaten": {
+      "kind": "array",
+      "ref": "STATUSMITTEILUNGPOSITION"
+    }
+  },
+  "STEUERBARERESSOURCE": {
+    "auftraggebenderMarktpartner": {
+      "kind": "object",
+      "ref": "MARKTTEILNEHMER"
+    },
+    "zugeordneteDefinition": {
+      "kind": "object",
+      "ref": "ZUGEORDNETEDEFINITION"
+    },
+    "marktrollen": {
+      "kind": "array",
+      "ref": "MARKTTEILNEHMER"
+    },
+    "gueltigkeitszeitraum": {
+      "kind": "object",
+      "ref": "ZEITRAUM"
+    },
+    "erforderlicheProdukte": {
+      "kind": "array",
+      "ref": "PRODUKT"
+    }
+  },
+  "TARIFINFO": {
+    "anbieter": {
+      "kind": "object",
+      "ref": "MARKTTEILNEHMER"
+    },
+    "energiemix": {
+      "kind": "object",
+      "ref": "ENERGIEMIX"
+    },
+    "vertragskonditionen": {
+      "kind": "object",
+      "ref": "VERTRAGSKONDITIONEN"
+    },
+    "zeitliche_gueltigkeit": {
+      "kind": "object",
+      "ref": "ZEITRAUM"
+    }
+  },
+  "TECHNISCHERESSOURCE": {
+    "nennleistung": {
+      "kind": "object",
+      "ref": "NENNLEISTUNG"
+    },
+    "gueltigkeitszeitraum": {
+      "kind": "object",
+      "ref": "ZEITRAUM"
+    },
+    "erforderlicheProdukte": {
+      "kind": "array",
+      "ref": "PRODUKT"
+    }
+  },
+  "TRANCHE": {
+    "endkunde": {
+      "kind": "object",
+      "ref": "GESCHAEFTSPARTNER"
+    },
+    "lokationsadresse": {
+      "kind": "object",
+      "ref": "ADRESSE"
+    },
+    "katasterinformation": {
+      "kind": "object",
+      "ref": "KATASTERADRESSE"
+    },
+    "aufteilungsmenge": {
+      "kind": "object",
+      "ref": "MENGE"
+    },
+    "beteiligterMarktpartner": {
+      "kind": "object",
+      "ref": "MARKTTEILNEHMER"
+    },
+    "marktrollen": {
+      "kind": "array",
+      "ref": "MARKTTEILNEHMER"
+    },
+    "zaehlwerke": {
+      "kind": "array",
+      "ref": "ZAEHLWERK"
+    },
+    "verbrauchsmenge": {
+      "kind": "array",
+      "ref": "VERBRAUCH"
+    },
+    "zugehoerigeMesslokationen": {
+      "kind": "array",
+      "ref": "MESSLOKATIONSZUORDNUNG"
+    },
+    "netznutzungsabrechnungsdaten": {
+      "kind": "array",
+      "ref": "NETZNUTZUNGSABRECHNUNGSDATEN"
+    },
+    "energieherkunft": {
+      "kind": "array",
+      "ref": "ENERGIEHERKUNFT"
+    },
+    "gueltigkeitszeitraum": {
+      "kind": "object",
+      "ref": "ZEITRAUM"
+    }
+  },
+  "VERTRAG": {
+    "vertragskonditionen": {
+      "kind": "object",
+      "ref": "VERTRAGSKONDITIONEN"
+    },
+    "korrespondenzpartner": {
+      "kind": "object",
+      "ref": "GESCHAEFTSPARTNER"
+    },
+    "gueltigkeitszeitraum": {
+      "kind": "object",
+      "ref": "ZEITRAUM"
+    },
+    "vertragspartner1": {
+      "kind": "array",
+      "ref": "GESCHAEFTSPARTNER"
+    },
+    "vertragspartner2": {
+      "kind": "array",
+      "ref": "GESCHAEFTSPARTNER"
+    },
+    "enFG": {
+      "kind": "array",
+      "ref": "ENFG"
+    }
+  },
+  "WERTENACHTYP2": {
+    "zieladresse": {
+      "kind": "object",
+      "ref": "ZIELADRESSE"
+    },
+    "aussteller": {
+      "kind": "object",
+      "ref": "AUSSTELLER"
+    },
+    "zertifikatsNutzer": {
+      "kind": "object",
+      "ref": "ZERTIFIKATSNUTZER"
+    },
+    "schwellwerte": {
+      "kind": "array",
+      "ref": "SCHWELLWERT"
+    },
+    "zaehlwerke": {
+      "kind": "array",
+      "ref": "ZAEHLWERK"
+    }
+  },
+  "ZAEHLER": {
+    "zaehlerhersteller": {
+      "kind": "object",
+      "ref": "GESCHAEFTSPARTNER"
+    },
+    "geraete": {
+      "kind": "array",
+      "ref": "GERAET"
+    },
+    "zaehlwerke": {
+      "kind": "array",
+      "ref": "ZAEHLWERK"
+    },
+    "gueltigkeitszeitraum": {
+      "kind": "object",
+      "ref": "ZEITRAUM"
+    }
+  },
+  "ZAEHLZEITDEFINITION": {
+    "zaehlzeiten": {
+      "kind": "array",
+      "ref": "ZAEHLZEIT"
+    },
+    "zaehlzeitregister": {
+      "kind": "array",
+      "ref": "ZAEHLZEITREGISTER"
+    }
+  },
+  "ADRESSE": {
+    "zusatzInformation": {
+      "kind": "object",
+      "ref": "ADRESSZUSATZINFORMATION"
+    }
+  },
+  "ANGEBOTSPOSITION": {
+    "positionsmenge": {
+      "kind": "object",
+      "ref": "MENGE"
+    },
+    "positionspreis": {
+      "kind": "array",
+      "ref": "PREIS"
+    },
+    "positionsbetrag": {
+      "kind": "object",
+      "ref": "BETRAG"
+    },
+    "verweisKatalognummer": {
+      "kind": "object",
+      "ref": "KATALOGVERWEIS"
+    },
+    "beteiligterMarktpartner": {
+      "kind": "object",
+      "ref": "MARKTTEILNEHMER"
+    }
+  },
+  "ANGEBOTSTEIL": {
+    "gesamtmengeangebotsteil": {
+      "kind": "object",
+      "ref": "MENGE"
+    },
+    "gesamtkostenangebotsteil": {
+      "kind": "object",
+      "ref": "BETRAG"
+    },
+    "lieferzeitraum": {
+      "kind": "object",
+      "ref": "ZEITRAUM"
+    },
+    "verweisKatalognummer": {
+      "kind": "object",
+      "ref": "KATALOGVERWEIS"
+    },
+    "lieferstellenangebotsteil": {
+      "kind": "array",
+      "ref": "MARKTLOKATION"
+    },
+    "positionen": {
+      "kind": "array",
+      "ref": "ANGEBOTSPOSITION"
+    }
+  },
+  "ANGEBOTSVARIANTE": {
+    "gesamtmenge": {
+      "kind": "object",
+      "ref": "MENGE"
+    },
+    "gesamtkosten": {
+      "kind": "object",
+      "ref": "BETRAG"
+    },
+    "teile": {
+      "kind": "array",
+      "ref": "ANGEBOTSTEIL"
+    }
+  },
+  "AUFTRAGPOSITION": {
+    "allgemeineInformationen": {
+      "kind": "object",
+      "ref": "ALLGEMEINEINFORMATIONEN"
+    },
+    "infoAbweichung": {
+      "kind": "object",
+      "ref": "INFOABWEICHUNG"
+    }
+  },
+  "AVISPOSITION": {
+    "gesamtBrutto": {
+      "kind": "object",
+      "ref": "BETRAG"
+    },
+    "zuZahlen": {
+      "kind": "object",
+      "ref": "BETRAG"
+    },
+    "abweichung": {
+      "kind": "array",
+      "ref": "ABWEICHUNG"
+    },
+    "positionen": {
+      "kind": "array",
+      "ref": "RUECKMELDUNGSPOSITION"
+    }
+  },
+  "ENERGIEMIX": {
+    "anteil": {
+      "kind": "array",
+      "ref": "ENERGIEHERKUNFT"
+    }
+  },
+  "FEHLER": {
+    "fehlerDetails": {
+      "kind": "array",
+      "ref": "FEHLERDETAIL"
+    }
+  },
+  "FEHLERDETAIL": {
+    "ursache": {
+      "kind": "object",
+      "ref": "FEHLERURSACHE"
+    },
+    "beschreibung": {
+      "kind": "object",
+      "ref": "BESCHREIBUNG"
+    }
+  },
+  "FEHLERURSACHE": {
+    "gruppe": {
+      "kind": "object",
+      "ref": "GRUPPE"
+    },
+    "beschreibung": {
+      "kind": "object",
+      "ref": "BESCHREIBUNG"
+    }
+  },
+  "GERAET": {
+    "geraeteeigenschaften": {
+      "kind": "object",
+      "ref": "GERAETEEIGENSCHAFTEN"
+    }
+  },
+  "KOMMUNIKATIONSPARAMETER": {
+    "zieladresse": {
+      "kind": "object",
+      "ref": "ZIELADRESSE"
+    },
+    "zertifikatsAussteller": {
+      "kind": "object",
+      "ref": "ZERTIFIKATSAUSSTELLER"
+    },
+    "zertifikatsNutzer": {
+      "kind": "object",
+      "ref": "ZERTIFIKATSNUTZER"
+    }
+  },
+  "LASTPROFIL": {
+    "tagesparameter": {
+      "kind": "object",
+      "ref": "TAGESPARAMETER"
+    }
+  },
+  "LEISTUNGSKURVE": {
+    "schwellwert": {
+      "kind": "object",
+      "ref": "SCHWELLWERT"
+    }
+  },
+  "NETZNUTZUNGSABRECHNUNGSDATEN": {
+    "singulaereBetriebsmittel": {
+      "kind": "object",
+      "ref": "MENGE"
+    },
+    "preisSingulaereBetriebsmittel": {
+      "kind": "object",
+      "ref": "PREIS"
+    },
+    "zaehlzeiten": {
+      "kind": "object",
+      "ref": "ZAEHLZEITREGISTER"
+    }
+  },
+  "PREISPOSITION": {
+    "verarbeitungszeitraum": {
+      "kind": "object",
+      "ref": "ZEITRAUM"
+    },
+    "zu_abschlaege": {
+      "kind": "array",
+      "ref": "POSITIONSAUFABSCHLAG"
+    },
+    "preisstaffeln": {
+      "kind": "array",
+      "ref": "PREISSTAFFEL"
+    }
+  },
+  "PREISSTAFFEL": {
+    "sigmoidparameter": {
+      "kind": "object",
+      "ref": "SIGMOIDPARAMETER"
+    }
+  },
+  "PRODUKTPAKET": {
+    "produkt": {
+      "kind": "array",
+      "ref": "PRODUKT"
+    }
+  },
+  "RECHNUNGSPOSITION": {
+    "einzelpreis": {
+      "kind": "object",
+      "ref": "PREIS"
+    },
+    "positionsMenge": {
+      "kind": "object",
+      "ref": "MENGE"
+    },
+    "teilsummeNetto": {
+      "kind": "object",
+      "ref": "BETRAG"
+    },
+    "teilsummeSteuer": {
+      "kind": "object",
+      "ref": "STEUERBETRAG"
+    },
+    "zeitbezogeneMenge": {
+      "kind": "object",
+      "ref": "MENGE"
+    },
+    "abschlag": {
+      "kind": "object",
+      "ref": "ABSCHLAG"
+    },
+    "zuschlag": {
+      "kind": "object",
+      "ref": "ZUSCHLAG"
+    },
+    "gemeinderabatt": {
+      "kind": "object",
+      "ref": "GEMEINDERABATT"
+    }
+  },
+  "RUECKMELDUNGSPOSITION": {
+    "abweichung": {
+      "kind": "array",
+      "ref": "ABWEICHUNG"
+    }
+  },
+  "STATUSMITTEILUNGPOSITION": {
+    "fehlerbeschreibung": {
+      "kind": "object",
+      "ref": "FEHLERBESCHREIBUNG"
+    },
+    "begruendung": {
+      "kind": "object",
+      "ref": "BEGRUENDUNG"
+    },
+    "allgemeineInformationen": {
+      "kind": "object",
+      "ref": "ALLGEMEINEINFORMATIONEN"
+    }
+  },
+  "VERBRAUCH": {
+    "statuszusatzinformationen": {
+      "kind": "array",
+      "ref": "STATUSZUSATZINFORMATION"
+    }
+  },
+  "VERTRAGSKONDITIONEN": {
+    "netznutzungsabrechnung": {
+      "kind": "object",
+      "ref": "ZEITRAUM"
+    },
+    "gemeinderabatt": {
+      "kind": "object",
+      "ref": "GEMEINDERABATT"
+    },
+    "geplanteTurnusablesung": {
+      "kind": "object",
+      "ref": "ZEITRAUM"
+    },
+    "kuendigungsfrist": {
+      "kind": "object",
+      "ref": "ZEITRAUM"
+    },
+    "vertragslaufzeit": {
+      "kind": "object",
+      "ref": "ZEITRAUM"
+    },
+    "abschlagszyklus": {
+      "kind": "object",
+      "ref": "ZEITRAUM"
+    },
+    "vertragsverlaengerung": {
+      "kind": "object",
+      "ref": "ZEITRAUM"
+    }
+  },
+  "ZAEHLWERK": {
+    "konzessionsabgabe": {
+      "kind": "object",
+      "ref": "KONZESSIONSABGABE"
+    },
+    "zaehlzeiten": {
+      "kind": "object",
+      "ref": "ZAEHLZEITREGISTER"
+    },
+    "verwendungszwecke": {
+      "kind": "array",
+      "ref": "VERWENDUNGSZWECK"
+    }
+  },
+  "ZUORDNUNGOBJECTCODE": {
+    "objectcode": {
+      "kind": "array",
+      "ref": "OBJECTCODE"
+    }
+  }
+}

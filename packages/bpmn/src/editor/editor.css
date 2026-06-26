@@ -21,9 +21,10 @@
   position: relative; /* Anker für Lint-Overlay & ErrorPanel */
   display: flex;
   flex-direction: column;
-  /* Floor, damit der Editor ohne höhen-definierten Container nicht auf
-     wenige hundert Pixel kollabiert (height:100% greift sonst ins Leere). */
-  min-height: 28rem;
+  /* Kleiner Floor, damit der Editor ohne höhen-definierten Container nicht
+     ganz kollabiert; in Containern mit height:100% (Studio) wird die volle
+     Höhe genutzt statt eines festen Sockels. */
+  min-height: 12rem;
   background: var(--prn-bg);
 }
 
@@ -444,4 +445,27 @@
 }
 .djs-popup .entry:hover {
   background: var(--prn-fill, rgba(120, 120, 128, 0.24));
+}
+/* Append/Replace-Popup: nur die eigentliche Popup-Box trägt einen Hintergrund.
+   Wrapper/Backdrop, die diagram-js an document.body hängt, transparent halten,
+   damit kein überstehender schwarzer Bereich neben dem Menü erscheint. */
+.djs-popup-backdrop,
+.djs-popup-parent {
+  background: transparent !important;
+}
+.djs-popup .djs-popup-header,
+.djs-popup .djs-popup-body {
+  background: var(--prn-bg-elevated, #2c2c2e);
+}
+
+/* Kompaktere Inputs im Property-Panel (wirkten überdimensioniert). */
+.prn-bpmn-editor-properties .bio-properties-panel {
+  --input-height: 26px;
+}
+.prn-bpmn-editor-properties .bio-properties-panel input,
+.prn-bpmn-editor-properties .bio-properties-panel select,
+.prn-bpmn-editor-properties .bio-properties-panel textarea {
+  font-size: 0.8125rem;
+  padding-top: 3px;
+  padding-bottom: 3px;
 }

@@ -10,14 +10,43 @@ import bos from "../__fixtures__/bo4e-bos.json";
 const schema = loadBo4eSchema({ fields, enums, bos });
 
 describe("FullDetail", () => {
-  it("read-only shows values as text", () => {
-    render(<FullDetail schema={schema} boTyp="MARKTLOKATION" obj={{ marktlokationsId: "10037104444", sparte: "STROM" }} />);
+  it("gefuellt read-only shows values as text", () => {
+    render(
+      <FullDetail
+        schema={schema}
+        boTyp="MARKTLOKATION"
+        obj={{ boTyp: "MARKTLOKATION", marktlokationsId: "10037104444", sparte: "STROM" }}
+        density="gefuellt"
+        editable={false}
+      />,
+    );
     expect(screen.getByText("10037104444")).toBeInTheDocument();
   });
 
-  it("editable renders an input for a string field plus an add-field control", () => {
-    render(<FullDetail schema={schema} boTyp="MARKTLOKATION" obj={{ marktlokationsId: "10037104444" }} editable />);
+  it("alle read-only adds documented empty scalar ghosts", () => {
+    render(
+      <FullDetail
+        schema={schema}
+        boTyp="MARKTLOKATION"
+        obj={{ boTyp: "MARKTLOKATION", marktlokationsId: "10037104444" }}
+        density="alle"
+        editable={false}
+      />,
+    );
+    // 'sparte' is documented but absent → appears as a ghost label
+    expect(screen.getByText("Sparte")).toBeInTheDocument();
+  });
+
+  it("editable renders an input for a string field", () => {
+    render(
+      <FullDetail
+        schema={schema}
+        boTyp="MARKTLOKATION"
+        obj={{ boTyp: "MARKTLOKATION", marktlokationsId: "10037104444" }}
+        density="gefuellt"
+        editable
+      />,
+    );
     expect(screen.getByRole("textbox", { name: /Marktlokations-ID/ })).toHaveValue("10037104444");
-    expect(screen.getByRole("button", { name: /Feld hinzufügen/ })).toBeInTheDocument();
   });
 });

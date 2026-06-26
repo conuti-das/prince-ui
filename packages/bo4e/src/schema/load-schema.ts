@@ -1,4 +1,4 @@
-import type { FieldDoc, EnumDoc } from "../types";
+import type { FieldDoc, EnumDoc, Bo4eStructure, Bo4eFieldStructure } from "../types";
 import { humanize } from "../core/humanize";
 
 interface RawField {
@@ -24,14 +24,30 @@ export interface Bo4eSchema {
   fields: Record<string, Record<string, RawField>>;
   enums: Record<string, RawEnum>;
   bos: Record<string, RawBo>;
+  structure?: Bo4eStructure;
 }
 
-export function loadBo4eSchema(src: { fields: unknown; enums: unknown; bos: unknown }): Bo4eSchema {
+export function loadBo4eSchema(src: {
+  fields: unknown;
+  enums: unknown;
+  bos: unknown;
+  structure?: Bo4eStructure;
+}): Bo4eSchema {
   return {
     fields: src.fields as Bo4eSchema["fields"],
     enums: src.enums as Bo4eSchema["enums"],
     bos: src.bos as Bo4eSchema["bos"],
+    structure: src.structure,
   };
+}
+
+/** Struktur-Metadaten eines Feldes (oder undefined ohne Struktur-Map). */
+export function resolveFieldStructure(
+  schema: Bo4eSchema,
+  boTyp: string,
+  key: string,
+): Bo4eFieldStructure | undefined {
+  return schema.structure?.[boTyp]?.[key];
 }
 
 export function resolveField(schema: Bo4eSchema, boTyp: string, key: string): FieldDoc {

@@ -27,4 +27,16 @@ describe("CDocView", () => {
     await userEvent.click(screen.getByRole("tab", { name: /energieliefervertrag/i }));
     expect(screen.getByText("Vertragsart")).toBeInTheDocument();
   });
+
+  it("defaults to Fachlich with the Bearbeiten switch disabled", () => {
+    render(<CDocView doc={doc} schema={schema} now={now} />);
+    expect(screen.getByRole("radio", { name: "Fachlich" })).toBeChecked();
+    expect(screen.getByRole("switch", { name: /Bearbeiten/ })).toBeDisabled();
+  });
+
+  it("switching to Gefüllt enables the Bearbeiten switch", async () => {
+    render(<CDocView doc={doc} schema={schema} now={now} />);
+    await userEvent.click(screen.getByRole("radio", { name: "Gefüllt" }));
+    expect(screen.getByRole("switch", { name: /Bearbeiten/ })).toBeEnabled();
+  });
 });

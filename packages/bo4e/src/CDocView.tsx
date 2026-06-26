@@ -1,14 +1,22 @@
 import { useMemo, useState } from "react";
-import type { Bo4eResolvers } from "./types";
+import { SegmentedControl, Segment, Switch } from "@conuti-das/prince-ui";
+import type { Bo4eResolvers, Density } from "./types";
 import type { Bo4eSchema } from "./schema/load-schema";
 import { normalizeToCDoc, type CDocInput } from "./normalize";
 import { scanAnomalies } from "./core/anomalies";
 import { humanize } from "./core/humanize";
+import { seedTree } from "./core/array-ids";
 import { SmartObjectView } from "./view/SmartObjectView";
 import "./view/bo4e.css";
 
 const TRANS = "__TRANS__";
 const ZUSATZ = "__ZUSATZ__";
+
+const DENSITIES: { id: Density; label: string }[] = [
+  { id: "fachlich", label: "Fachlich" },
+  { id: "gefuellt", label: "Gefüllt" },
+  { id: "alle", label: "Alle Felder" },
+];
 
 export interface CDocViewProps {
   /** Full cDoc, a single BO, or an array of BOs. */
@@ -16,13 +24,18 @@ export interface CDocViewProps {
   schema: Bo4eSchema;
   resolvers?: Bo4eResolvers;
   now?: Date;
+  defaultDensity?: Density;
 }
 
-export function CDocView({ doc, schema, resolvers, now }: CDocViewProps) {
+export function CDocView({ doc, schema, resolvers, now, defaultDensity = "fachlich" }: CDocViewProps) {
   const cdoc = normalizeToCDoc(doc);
+  // One full-tree id seed before any density-dependent pruning (stable array keys).
+  useMemo(() => seedTree(cdoc), [cdoc]);
   const directions = Object.keys(cdoc.content);
   const [dir, setDir] = useState<string>(() => (directions.includes("OUTBOUND") ? "OUTBOUND" : (directions[0] ?? "")));
   const [tab, setTab] = useState<string | null>(null);
+  const [density, setDensity] = useState<Density>(defaultDensity);
+  const [editMode, setEditMode] = useState(false);
 
   const dd = cdoc.content[dir];
   const anomalies = useMemo(() => (dd ? scanAnomalies(dd, { now }) : []), [dd, now]);
@@ -38,15 +51,45 @@ export function CDocView({ doc, schema, resolvers, now }: CDocViewProps) {
 
   const tabLabel = (t: string) => (t === TRANS ? "Transaktionsdaten" : t === ZUSATZ ? "Zusatzdaten" : humanize(t));
 
+  const editable = editMode && density !== "fachlich";
+
   const renderActive = () => {
     if (active === TRANS && dd.transaktionsdaten) {
-      return <SmartObjectView schema={schema} obj={dd.transaktionsdaten} resolvers={resolvers} now={now} />;
+      return (
+        <SmartObjectView
+          schema={schema}
+          obj={dd.transaktionsdaten}
+          density={density}
+          editable={editable}
+          resolvers={resolvers}
+          now={now}
+        />
+      );
     }
     if (active === ZUSATZ && dd.zusatzdaten) {
-      return <SmartObjectView schema={schema} obj={dd.zusatzdaten} resolvers={resolvers} now={now} />;
+      return (
+        <SmartObjectView
+          schema={schema}
+          obj={dd.zusatzdaten}
+          density={density}
+          editable={editable}
+          resolvers={resolvers}
+          now={now}
+        />
+      );
     }
     const list = dd.stammdaten[active] ?? [];
-    return list.map((obj, i) => <SmartObjectView key={i} schema={schema} obj={obj} resolvers={resolvers} now={now} />);
+    return list.map((obj, i) => (
+      <SmartObjectView
+        key={i}
+        schema={schema}
+        obj={obj}
+        density={density}
+        editable={editable}
+        resolvers={resolvers}
+        now={now}
+      />
+    ));
   };
 
   return (
@@ -63,6 +106,7 @@ export function CDocView({ doc, schema, resolvers, now }: CDocViewProps) {
               onClick={() => {
                 setDir(d);
                 setTab(null);
+                setEditMode(false);
               }}
             >
               {d}
@@ -84,6 +128,26 @@ export function CDocView({ doc, schema, resolvers, now }: CDocViewProps) {
         </details>
       ) : null}
 
+      <div className="prn-bo-controls">
+        <SegmentedControl
+          aria-label="Detailgrad"
+          selectedKeys={new Set([density])}
+          onSelectionChange={(keys) => {
+            const next = [...(keys as Set<string>)][0] as Density | undefined;
+            if (next) setDensity(next);
+          }}
+        >
+          {DENSITIES.map((d) => (
+            <Segment key={d.id} id={d.id}>
+              {d.label}
+            </Segment>
+          ))}
+        </SegmentedControl>
+        <Switch isSelected={editMode} isDisabled={density === "fachlich"} onChange={setEditMode}>
+          Bearbeiten
+        </Switch>
+      </div>
+
       <div className="prn-bo-tabs" role="tablist" aria-label="Objekte">
         {tabs.map((t) => {
           const list = dd.stammdaten[t];
@@ -96,7 +160,10 @@ export function CDocView({ doc, schema, resolvers, now }: CDocViewProps) {
               data-kind={kind}
               role="tab"
               aria-selected={t === active}
-              onClick={() => setTab(t)}
+              onClick={() => {
+                setTab(t);
+                setEditMode(false);
+              }}
             >
               {tabLabel(t)}
               {list ? ` (${list.length})` : ""}

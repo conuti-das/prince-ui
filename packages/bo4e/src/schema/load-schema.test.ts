@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { loadBo4eSchema, resolveField, getFieldOrder } from "./load-schema";
+import { loadBo4eSchema, resolveField, getFieldOrder, resolveFieldStructure } from "./load-schema";
 import fields from "../__fixtures__/bo4e-fields.json";
 import enums from "../__fixtures__/bo4e-enums.json";
 import bos from "../__fixtures__/bo4e-bos.json";
@@ -26,5 +26,23 @@ describe("resolveField", () => {
     const order = getFieldOrder(schema, "MARKTLOKATION");
     expect(order.length).toBeGreaterThan(0);
     expect(order).toContain("marktlokationsId");
+  });
+});
+
+describe("resolveFieldStructure", () => {
+  it("returns undefined without a structure map", () => {
+    expect(resolveFieldStructure(schema, "MARKTLOKATION", "adresse")).toBeUndefined();
+  });
+  it("reads the optional structure map", () => {
+    const withStruct = loadBo4eSchema({
+      fields,
+      enums,
+      bos,
+      structure: { MARKTLOKATION: { adresse: { kind: "object", ref: "ADRESSE" } } },
+    });
+    expect(resolveFieldStructure(withStruct, "MARKTLOKATION", "adresse")).toEqual({
+      kind: "object",
+      ref: "ADRESSE",
+    });
   });
 });
