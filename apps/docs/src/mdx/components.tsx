@@ -1,6 +1,9 @@
 import type { MDXComponents } from "mdx/types";
+import { Playground } from "../playground/Playground";
+import { PropsTable } from "./PropsTable";
+import { Example } from "./Example";
+import { DoDont, Anatomy } from "./Callouts";
 
-// MDX-Komponenten-Mapping. Wird in Phase 4 (Playground/PropsTable/Example/
-// Callouts) erweitert; vorerst leeres Mapping, damit MDX-Standardelemente
-// gerendert werden.
-export const mdxComponents: MDXComponents = {};
+export const mdxComponents: MDXComponents = {
+  Playground, PropsTable, Example, DoDont, Anatomy,
+};
