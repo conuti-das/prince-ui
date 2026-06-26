@@ -13,7 +13,7 @@ export function generateCode(schema: ControlSchema, state: ControlState): string
   const attrs = schema.controls
     .filter((c) => c.name !== schema.childrenProp)
     .filter((c) => state[c.name] !== defaults[c.name])
-    .map((c) => attr(c.name, state[c.name]))
+    .map((c) => attr(c.name, state[c.name]!))
     .filter(Boolean)
     .join(" ");
   const open = `<${schema.component}${attrs ? " " + attrs : ""}`;

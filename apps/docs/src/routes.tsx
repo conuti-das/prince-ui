@@ -8,9 +8,10 @@ export function buildNav(modules: Record<string, unknown>): NavGroup[] {
   for (const file of Object.keys(modules)) {
     const m = file.match(/\/content\/(components|foundations)\/(.+)\.mdx$/);
     if (!m) continue;
-    const [, dir, name] = m;
+    const dir = m[1]!;
+    const name = m[2]!;
     const path = `/${dir}/${name.toLowerCase()}`;
-    const group = groups.get(dir) ?? { title: GROUP_LABEL[dir], items: [] };
+    const group = groups.get(dir) ?? { title: GROUP_LABEL[dir]!, items: [] };
     group.items.push({ path, title: name });
     groups.set(dir, group);
   }
@@ -21,7 +22,8 @@ const eager = import.meta.glob("../content/**/*.mdx", { eager: true }) as Record
 export const navTree = buildNav(eager);
 export const routeObjects: RouteObject[] = Object.entries(eager).map(([file, mod]) => {
   const m = file.match(/\/content\/(.+)\.mdx$/)!;
-  const slug = m[1] === "index" ? "/" : `/${m[1].toLowerCase()}`;
+  const rel = m[1]!;
+  const slug = rel === "index" ? "/" : `/${rel.toLowerCase()}`;
   const Comp = mod.default;
   return { path: slug, element: <Comp /> };
 });

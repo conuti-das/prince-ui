@@ -5,7 +5,7 @@ const DATA = { Button: { props: [{ name: "variant", type: '"filled" | "tinted"',
 
 describe("selectProps", () => {
   it("returns the props array for a known component", () => {
-    expect(selectProps(DATA, "Button")[0].name).toBe("variant");
+    expect(selectProps(DATA, "Button")[0]!.name).toBe("variant");
   });
   it("returns empty for unknown component", () => {
     expect(selectProps(DATA, "Nope")).toEqual([]);
