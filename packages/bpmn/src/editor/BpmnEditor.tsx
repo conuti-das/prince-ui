@@ -29,6 +29,8 @@ import {
 } from "./lintConfig";
 import { ErrorPanel } from "./ErrorPanel";
 import { BpmnTableView } from "./BpmnTableView";
+import MakoPropertiesProvider from "./MakoPropertiesProvider";
+import { registerServiceTaskDefaults } from "./makoServiceTaskDefaults";
 import "./editor.css";
 
 export interface BpmnEditorProps {
@@ -230,6 +232,11 @@ export function BpmnEditor({
           BpmnPropertiesProviderModule,
           CamundaPlatformPropertiesProviderModule,
           ElementTemplatesPropertiesProviderModule,
+          // MaKo: Property-Gruppen in Haupt-/Erweitert-Zonen umordnen.
+          {
+            __init__: ["makoPropertiesProvider"],
+            makoPropertiesProvider: ["type", MakoPropertiesProvider],
+          },
         );
       }
 
@@ -267,6 +274,16 @@ export function BpmnEditor({
       const eventBus = modeler.get("eventBus") as {
         on(event: string, cb: (e: Record<string, unknown>) => void): void;
       };
+
+      // MaKo: neue ServiceTasks automatisch als External Task (phpCoreFunction).
+      try {
+        registerServiceTaskDefaults(
+          modeler.get("eventBus") as never,
+          modeler.get("modeling") as never,
+        );
+      } catch {
+        /* ignore */
+      }
 
       eventBus.on("linting.completed", (e) => {
         const results = (e as { issues?: Record<string, { message: string; category?: string; id?: string; rule?: string }[]> }).issues ?? {};
