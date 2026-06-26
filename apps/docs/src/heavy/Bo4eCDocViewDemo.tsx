@@ -2,14 +2,16 @@ import {
   CDocView,
   loadBo4eSchema,
   type Bo4eResolvers,
+  type Bo4eStructure,
   type CDoc,
 } from "@conuti-das/prince-ui-bo4e";
 import cdoc from "./bo4e-fixtures/cdoc-example.json";
 import fields from "./bo4e-fixtures/bo4e-fields.json";
 import enums from "./bo4e-fixtures/bo4e-enums.json";
 import bos from "./bo4e-fixtures/bo4e-bos.json";
+import structure from "./bo4e-fixtures/bo4e-structure.json";
 
-const schema = loadBo4eSchema({ fields, enums, bos });
+const schema = loadBo4eSchema({ fields, enums, bos, structure: structure as Bo4eStructure });
 
 const NAMES: Record<string, string> = {
   "9906464000001": "Westnetz Messung GmbH",

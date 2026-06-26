@@ -5,6 +5,8 @@ import { loadBo4eSchema } from "../schema/load-schema";
 import fields from "../__fixtures__/bo4e-fields.json";
 import enums from "../__fixtures__/bo4e-enums.json";
 import bos from "../__fixtures__/bo4e-bos.json";
+import structure from "../__fixtures__/bo4e-structure.json";
+import type { Bo4eStructure } from "../types";
 
 const schema = loadBo4eSchema({ fields, enums, bos });
 const base = {
@@ -97,5 +99,39 @@ describe("NestedValue", () => {
       />,
     );
     expect(screen.getByText(/Eintrag hinzufügen/)).toBeInTheDocument();
+  });
+
+  it("the generated structure fixture drives create on real MALO fields", () => {
+    const s = loadBo4eSchema({ fields, enums, bos, structure: structure as Bo4eStructure });
+    // zaehlwerke is an array<ZAEHLWERK> per the generated structure map
+    render(
+      <NestedValue
+        {...base}
+        schema={s}
+        fieldKey="zaehlwerke"
+        value={[]}
+        density="alle"
+        editable
+        onChange={() => {}}
+      />,
+    );
+    expect(screen.getByText(/Eintrag hinzufügen/)).toBeInTheDocument();
+  });
+
+  it("the generated structure fixture drives component create for empty objects", () => {
+    const s = loadBo4eSchema({ fields, enums, bos, structure: structure as Bo4eStructure });
+    // gueltigkeitszeitraum is an object<ZEITRAUM> per the generated structure map
+    render(
+      <NestedValue
+        {...base}
+        schema={s}
+        fieldKey="gueltigkeitszeitraum"
+        value={{}}
+        density="alle"
+        editable
+        onChange={() => {}}
+      />,
+    );
+    expect(screen.getByText(/Komponente anlegen/)).toBeInTheDocument();
   });
 });
