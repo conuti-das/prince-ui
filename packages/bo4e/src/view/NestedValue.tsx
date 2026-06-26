@@ -7,6 +7,7 @@ import { EditableValue } from "./EditableValue";
 import { humanize } from "../core/humanize";
 import { isScalarish, displayValue } from "./value-format";
 import { isDeepEmpty } from "../core/empty";
+import { computeGhostFields } from "./useGhostFields";
 import { itemId } from "../core/array-ids";
 import type { Path } from "../core/path";
 
@@ -92,11 +93,13 @@ export function NestedValue(props: NestedValueProps) {
       // into an unknown container would produce invalid BO4E (spec).
       const isEmptyContainer = Array.isArray(value) || (value != null && typeof value === "object");
       if (st?.kind === "scalar" || (st == null && !isEmptyContainer)) {
+        // Prefill with the schema example so the user starts from a valid shape.
+        const example = resolveField(schema, boTyp, fieldKey).example ?? "";
         return (
           <div className="prn-bo-kv">
             <span className="k">{label}</span>
             <span className="v">
-              <button type="button" className="prn-bo-addbtn" onClick={() => onChange([...path], "")}>
+              <button type="button" className="prn-bo-addbtn" onClick={() => onChange([...path], example)}>
                 + anlegen
               </button>
             </span>
@@ -211,6 +214,9 @@ function NestedObject(props: {
   onChange?: (path: Path, value: unknown) => void;
 }) {
   const { schema, boTyp, obj, density, editable, path, depth, onChange } = props;
+  // At "alle", surface schema-possible-but-empty sub-fields so created/nested
+  // components reveal what can be filled (resolved via the merged field-dict).
+  const ghosts = density === "alle" ? computeGhostFields(schema, boTyp, obj) : [];
   return (
     <div className="prn-bo-kvgrid">
       {Object.keys(obj)
@@ -229,6 +235,20 @@ function NestedObject(props: {
             onChange={onChange}
           />
         ))}
+      {ghosts.map((k) => (
+        <NestedValue
+          key={`ghost-${k}`}
+          schema={schema}
+          boTyp={boTyp}
+          fieldKey={k}
+          value={null}
+          density={density}
+          editable={editable}
+          path={[...path, k]}
+          depth={depth}
+          onChange={onChange}
+        />
+      ))}
     </div>
   );
 }
