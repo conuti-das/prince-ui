@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import type { Bo4eObject, Bo4eResolvers } from "../../types";
+import type { Bo4eObject, Bo4eResolvers, Density } from "../../types";
 import type { Bo4eSchema } from "../../schema/load-schema";
 import { IdentityHeader } from "../IdentityHeader";
 import { EnumIcon } from "../EnumIcon";
@@ -40,6 +40,9 @@ export function MarktlokationBody({
 }: {
   schema: Bo4eSchema;
   obj: Bo4eObject;
+  /** Kuratiertes Fachlich-Summary; Detailgrad/Editieren übernimmt FullDetail. */
+  density?: Density;
+  editable?: boolean;
   resolvers?: Bo4eResolvers;
   now?: Date;
 }) {
