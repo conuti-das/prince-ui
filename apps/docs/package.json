@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -p tsconfig.json --noEmit && node --import tsx scripts/extract-props.ts && vite build && pagefind --site dist",
+    "build": "tsc -p tsconfig.json --noEmit && node --import tsx scripts/extract-props.ts && vite build",
     "preview": "vite preview",
     "extract-props": "node --import tsx scripts/extract-props.ts",
     "typecheck": "tsc -p tsconfig.json --noEmit"
