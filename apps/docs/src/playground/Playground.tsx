@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { resolveComponent } from "./registry";
 import { Controls } from "./Controls";
 import { generateCode } from "./codegen";
+import { usePropDocs } from "./use-prop-docs";
 import { initialState, type ControlSchema, type ControlState } from "./schema";
 import "./playground.css";
 
@@ -12,11 +13,27 @@ function schemaFor(component: string): ControlSchema | null {
   return hit ? hit[1].default : null;
 }
 
+function buildLlmText(component: string, code: string, docs: ReturnType<typeof usePropDocs>): string {
+  const lines = [`# ${component}`, "", "```tsx", code, "```"];
+  const entries = Object.entries(docs);
+  if (entries.length) {
+    lines.push("", "## Props");
+    for (const [name, d] of entries) {
+      const def = d.defaultValue ? ` (default: ${d.defaultValue})` : "";
+      const desc = d.description ? ` — ${d.description}` : "";
+      lines.push(`- \`${name}\`: ${d.type}${def}${desc}`);
+    }
+  }
+  return lines.join("\n");
+}
+
 export function Playground({ component }: { component: string }) {
   const schema = schemaFor(component);
+  const docs = usePropDocs(schema?.component ?? component);
   if (!schema) return <p><em>Kein Playground-Schema für {component}.</em></p>;
   const Comp = resolveComponent(schema.component);
   const [state, setState] = useState<ControlState>(() => initialState(schema));
+  const [copied, setCopied] = useState<"" | "code" | "llm">("");
   const code = useMemo(() => generateCode(schema, state), [schema, state]);
   const childrenProp = schema.childrenProp;
   const props = useMemo(() => {
@@ -26,12 +43,22 @@ export function Playground({ component }: { component: string }) {
   }, [state, childrenProp]);
   const children = childrenProp ? String(state[childrenProp] ?? "") : undefined;
 
+  function copy(kind: "code" | "llm") {
+    const text = kind === "code" ? code : buildLlmText(schema!.component, code, docs);
+    navigator.clipboard?.writeText(text);
+    setCopied(kind);
+    setTimeout(() => setCopied(""), 1500);
+  }
+
   return (
     <div className="pg">
       <div className="pg-stage"><Comp {...props}>{children}</Comp></div>
-      <Controls controls={schema.controls} state={state} onChange={(n, v) => setState((s) => ({ ...s, [n]: v }))} />
+      <Controls controls={schema.controls} state={state} onChange={(n, v) => setState((s) => ({ ...s, [n]: v }))} docs={docs} />
       <div className="pg-code">
-        <button className="pg-copy" onClick={() => navigator.clipboard.writeText(code)}>Copy</button>
+        <div className="pg-actions">
+          <button type="button" className="pg-copy" onClick={() => copy("code")}>{copied === "code" ? "Kopiert ✓" : "Copy"}</button>
+          <button type="button" className="pg-copy" onClick={() => copy("llm")}>{copied === "llm" ? "Kopiert ✓" : "Copy for LLM"}</button>
+        </div>
         <pre><code>{code}</code></pre>
       </div>
     </div>

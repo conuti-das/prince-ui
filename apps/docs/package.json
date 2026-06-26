@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -p tsconfig.json --noEmit && node --import tsx scripts/extract-props.ts && node --import tsx scripts/build-search-index.ts && vite build && cp dist/index.html dist/404.html",
+    "build": "tsc -p tsconfig.json --noEmit && node --import tsx scripts/extract-props.ts && node --import tsx scripts/build-search-index.ts && vite build && node --import tsx scripts/prerender-shells.ts",
     "preview": "vite preview",
     "extract-props": "node --import tsx scripts/extract-props.ts",
     "build-search-index": "node --import tsx scripts/build-search-index.ts",
+    "prerender": "node --import tsx scripts/prerender-shells.ts",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {

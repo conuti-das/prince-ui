@@ -2,7 +2,38 @@ body { margin: 0; background: var(--prn-bg); color: var(--prn-label); font-famil
 .docs-shell { display: grid; grid-template-columns: 260px minmax(0, 1fr) 220px; min-height: 100vh; }
 .docs-main { max-width: 50rem; margin: 0 auto; padding: 2.5rem 2rem 6rem; width: 100%; box-sizing: border-box; }
 .docs-toc { position: sticky; top: 2.5rem; align-self: start; padding: 2.5rem 1rem; font-size: 0.875rem; }
+
+.docs-nav { padding: 1.5rem 1rem; border-right: 1px solid var(--prn-separator); }
+.docs-brand { font-weight: 700; color: var(--prn-label); text-decoration: none; }
+.docs-nav-group { font-size: .75rem; text-transform: uppercase; color: var(--prn-label-2); }
+.docs-nav-link { color: var(--prn-label); text-decoration: none; }
+.docs-nav-link:hover, .docs-nav-link:focus { color: var(--prn-accent, #a0d22b); }
+/* Hamburger + Backdrop nur auf Mobile sichtbar (s. Media Query). */
+.docs-nav-toggle { display: none; }
+.docs-nav-backdrop { display: none; }
+
 @media (max-width: 1100px) { .docs-shell { grid-template-columns: 240px minmax(0,1fr); } .docs-toc { display: none; } }
+
+@media (max-width: 768px) {
+  .docs-shell { grid-template-columns: 1fr; }
+  .docs-main { padding-top: 4rem; }
+  .docs-nav-toggle {
+    display: inline-flex; align-items: center; justify-content: center;
+    position: fixed; top: .75rem; left: .75rem; z-index: 40;
+    width: 40px; height: 40px; font-size: 1.15rem; cursor: pointer;
+    background: var(--prn-bg-2, #1e252b); color: var(--prn-label);
+    border: 1px solid var(--prn-separator); border-radius: 8px;
+  }
+  .docs-nav {
+    position: fixed; inset: 0 auto 0 0; z-index: 50;
+    width: 280px; max-width: 85vw; overflow-y: auto; background: var(--prn-bg);
+    transform: translateX(-100%); transition: transform .2s ease;
+  }
+  .docs-shell.nav-open .docs-nav { transform: translateX(0); }
+  .docs-shell.nav-open .docs-nav-backdrop {
+    display: block; position: fixed; inset: 0; z-index: 45; background: rgba(0,0,0,.45);
+  }
+}
 .docs-visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .docs-search-input { width: 100%; box-sizing: border-box; padding: .4rem .6rem; border: 1px solid var(--prn-separator); border-radius: 8px; background: var(--prn-bg); color: var(--prn-label); font: inherit; font-size: .875rem; }
 .docs-search-results { list-style: none; margin: .25rem 0 0; padding: .25rem; border: 1px solid var(--prn-separator); border-radius: 8px; background: var(--prn-bg); }
