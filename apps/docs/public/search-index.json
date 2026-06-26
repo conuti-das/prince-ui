@@ -1,0 +1,47 @@
+[
+  {
+    "id": "/",
+    "title": "prince-ui",
+    "text": "prince-ui Das gemeinsame React-Design-System auf Basis von React Aria."
+  },
+  {
+    "id": "/components/bo4ecdocview",
+    "title": "Bo4eCDocView",
+    "text": "Bo4eCDocView Smarte, sachbearbeiter-optimierte Ansicht eines BO4E-cDoc ( aus ). Richtungs-Umschalter (INBOUND/OUTBOUND), Gruppen-Tabs (Label ≠ boTyp), Auffälligkeiten-Leiste, Marktlokation als Hero (Sparte-Icon, Status-Badges, Endkunde-Kontaktkarte, Marktrollen mit Code→Name und Gültigkeits-Ampel). Jedes Feld öffnet ein Schema-Popover; Datumsangaben in Europe/Berlin, UTC im Popover. Verwendung ist read-only und rein deklarativ. Du übergibst: - — ein vollständiges cDoc, ein einzelnes BO oder ein Array von BOs ( ). - — über aus den BO4E-Schema-JSONs geladen. - — optionale Auflösungen, z. B. , um Marktpartner-Codes mit Klarnamen anzureichern. - — Referenzzeitpunkt für die Gültigkeits-Ampel (testbar/deterministisch). in Tests fest setzen, damit die Gültigkeits-Ampel deterministisch ist. Marktpartner-Codes ungeschönt anzeigen — über Klarnamen auflösen. Beispiele Das Demo zeigt ein cDoc-Beispiel mit aufgelösten Marktpartner-Namen und festem Referenzzeitpunkt. Accessibility Die Tabs und Popover basieren auf den react-aria-gestützten prince-ui-Primitives (Tastatur, Fokusfalle, ARIA). Status-Badges und die Gültigkeits-Ampel tragen neben der Farbe immer auch Text/Icon, damit sie nicht allein über Farbe kommunizieren. Props"
+  },
+  {
+    "id": "/components/bpmneditor",
+    "title": "BpmnEditor",
+    "text": "BpmnEditor Vollwertiger bpmn-js-Modeler im Apple-Look: Properties-Panel (camunda-moddle), bpmnlint mit ErrorPanel, Original-bpmn.io-Icons in Palette und Context-Pad, Umschaltung auf eine Tabellen-Ansicht ( ) sowie Speichern über . Verwendung Der Editor folgt dem / / -Muster: - controlled — + halten das XML im React-State. - uncontrolled — setzt das Startdiagramm, der Editor verwaltet den Zustand intern. Über bekommst du das formatierte XML (z. B. zum Persistieren). blendet eigene Aktionen in die Kopfzeile ein (im Demo ein „KI-Assistent\"-Button), reicht aktuelle Lint-Befunde an einen KI-Flow weiter. Das Properties-Panel lässt sich per abschalten. zum Persistieren verwenden — es liefert formatiertes, eingerücktes XML. Bei jedem speichern — das feuert pro Modellierungsschritt; entkopple Auto-Save mit Debounce. Beispiele Das Demo oben ist controlled, hat ein Properties-Panel und einen . Minimal-Setup: Ohne Properties-Panel: Accessibility Palette und Context-Pad nutzen die Original-bpmn.io-Icons. Tastaturbedienung und Fokus folgen dem bpmn-js-Standard. Das „powered by bpmn.io\"-Wasserzeichen bleibt aus Lizenzgründen sichtbar. Props"
+  },
+  {
+    "id": "/components/bpmnviewer",
+    "title": "BpmnViewer",
+    "text": "BpmnViewer Read-only BPMN-Viewer auf Basis von bpmn-js ( ) mit deklarativem Status-Highlighting über diagram-js-Marker und Overlays. Ideal, um einen laufenden oder abgeschlossenen Prozess samt Historie und Incidents anzuzeigen — ohne Bearbeitungsfunktionen. Verwendung Der Viewer ist eine kontrollierte Darstellung: Du übergibst das BPMN-XML als und beschreibst den Laufzeit-Zustand deklarativ über , und . Der Viewer übersetzt das in Farben: - blau — aktuell aktiv ( ) - grün — abgeschlossen ( mit ) - rot — Incident ( ) - orange — abgebrochen Über lassen sich Klicks auf Knoten abfangen (z. B. um ein Detail-Panel zu öffnen). Den Viewer für Monitoring-/Read-Ansichten nutzen — Status kommt deklarativ aus den Laufzeitdaten. Den Viewer zum Bearbeiten verwenden — dafür ist da. Beispiele Das obige Demo zeigt den MaKo-Prozess „UTILMD eingegangen → Eingang prüfen → Daten anreichern → APERAK senden\" mit Historie (grün), einem Runtime-aktiven Knoten (blau), einem Incident an „Daten anreichern\" (rot) und Klick-Event-Anzeige. Accessibility Der Canvas ist scroll- und zoombar (diagram-js ). Da das Diagramm eine SVG-Grafik ist, sollte der umgebende Kontext (Überschrift, Statuslegende) den Prozess auch textuell erschließen. Das „powered by bpmn.io\"-Wasserzeichen bleibt aus Lizenzgründen sichtbar. Props"
+  },
+  {
+    "id": "/components/button",
+    "title": "Button",
+    "text": "Button Buttons lösen Aktionen aus — von primären Bestätigungen bis zu schlichten Inline-Aktionen. Verwendung Nutze filled für die primäre Aktion einer Ansicht, tinted für sekundäre und plain für tertiäre/Inline-Aktionen. Pro Ansicht genau eine -Primäraktion. Mehrere -Buttons nebeneinander um Aufmerksamkeit konkurrieren lassen. Beispiele Accessibility Button basiert auf react-aria : Fokus-Ring, Tastatur (Enter/Space) und sind eingebaut. Für reine Icon-Buttons ein setzen. Props"
+  },
+  {
+    "id": "/components/dmnexperteditor",
+    "title": "DmnExpertEditor",
+    "text": "DmnExpertEditor dmn-js-Modeler für DMN 1.3 (DRD + Decision-Table + Literal-Expression), gethemt über die prince-ui-Token-Bridge. Der „Experten-Modus\" für Anwender:innen, die die volle DMN-Notation brauchen. Verwendung Wie der BpmnEditor folgt der DmnExpertEditor dem / / -Muster und liefert über das serialisierte DMN-XML. Mit rendert der Canvas in der dunklen Token-Variante. > Hinweis: dmn-js ist ein optionaler Peer und wird lazy per dynamic import geladen. Ist nicht installiert, zeigt der Canvas eine Fehlermeldung statt des Editors. Den Experten-Editor für komplexe DMN (mehrere Decisions, Literal-Expressions) anbieten. Sachbearbeiter:innen mit der vollen DRD-Notation konfrontieren, wenn eine einzelne Entscheidungstabelle reicht — dann ist die bessere Wahl. Beispiele Das Demo zeigt die Entscheidung „Rabattstufe\" als Entscheidungstabelle mit . Accessibility Der Editor erbt Tastatur- und Fokusverhalten von dmn-js. Die prince-ui-Token-Bridge sorgt für ausreichende Kontraste in hellen und dunklen Themes. Props"
+  },
+  {
+    "id": "/components/dmntableeditor",
+    "title": "DmnTableEditor",
+    "text": "DmnTableEditor Tabellen-zentrierter DMN-Editor für genau eine Entscheidungstabelle — ohne DRD-Overhead, dafür mit Titel/Untertitel, Read-only-Modus, Zell-Plugins und optionalem Umschalter in den Experten-Modus. Die sachbearbeiter-freundliche Alternative zum . Verwendung Der Editor arbeitet ( + ) oder ( ). / beschriften die Tabelle, schaltet auf reine Anzeige. blendet einen Umschalter ein, der dieselbe Entscheidung im öffnet (gemeinsames XML). Über lassen sich einzelne Spalten mit Domänen-Editoren bestücken — z. B. ein Dropdown für die Prüfidentifikator-Spalte statt Freitext ( mit + ). Für einzelne Entscheidungstabellen (eine Decision) den Tabellen-Editor nutzen — er ist deutlich zugänglicher. DRD-Strukturen mit mehreren verknüpften Decisions hier abbilden — dafür ist der Experten-Editor da. Beispiele Das Demo zeigt die MaKo-Tabelle „Marktrolle ermitteln\" (Prüfidentifikator × Sparte → Marktrolle) mit Titel, Untertitel und Save-Callback. Read-only: Accessibility Die Tabelle baut auf den prince-ui-Daten-Primitives auf; Zellen sind per Tastatur fokussier- und editierbar. Im Read-only-Modus entfallen die Eingabe-Affordances. Props"
+  },
+  {
+    "id": "/components/formbuilder",
+    "title": "FormBuilder",
+    "text": "FormBuilder Nativer Drag&Drop-Form-Builder im prince-ui-Look: Palette, Canvas (Klick oder Drag zum Hinzufügen, Drag zum Umordnen), Eigenschafts-Panel und Live-Vorschau über den . Erzeugt ein form-js-kompatibles Schema. Verwendung Der Builder arbeitet ( + mit einem ) oder (leer starten). liefert das fertige Schema zum Persistieren. Mit mountet der Builder als Fallback den - (dynamischer Import) — nützlich, wenn die nativen Bausteine nicht ausreichen. Das erzeugte versionieren — es ist form-js-kompatibel und damit portabel. Den Expert-Modus als Default anbieten; der native Builder ist im prince-ui-Look konsistenter. Beispiele Das Demo startet mit einem MaKo-Schema (Marktlokations-ID, Prüfidentifikator, Trennlinie, Eskalations-Checkbox). Leer starten: Controlled mit Start-Schema: Accessibility Die Palette und das Canvas sind per Tastatur bedienbar; Felder lassen sich auch ohne Drag&Drop per Klick hinzufügen. Die Live-Vorschau nutzt denselben , der auch zur Laufzeit das Formular rendert. Props"
+  },
+  {
+    "id": "/components/formrenderer",
+    "title": "FormRenderer",
+    "text": "FormRenderer Schema-getriebener Formular-Renderer auf prince-ui-Feld-Primitives. Konsumiert ein form-js-kompatibles und bringt Validierung, bedingte Sichtbarkeit, Read-only-Modus und Camunda-Submit-Format mit. Verwendung Du übergibst ein ( ) und optional als Anfangswerte. liefert ein mit (Camunda-Format) oder . Mit wird das Formular zur reinen Anzeige. Bedingte Felder steuerst du über (FEEL-Ausdruck), z. B. erscheint die „Begründung\" erst, wenn die Entscheidung „Ablehnen\" lautet. Aus Camunda- erzeugt direkt ein passendes Schema. Das zentral pflegen und zwischen und teilen. Validierung doppelt im Aufrufer implementieren — -Regeln im Schema reichen. Beispiele Das Demo zeigt das Klärfall-Formular mit Pflichtfeldern, bedingter Begründung und Submit-Ausgabe als Camunda-Variablen. Read-only mit Vorbefüllung: Aus Camunda Task-Form: Accessibility Jedes Feld basiert auf den react-aria-gestützten prince-ui-Primitives — Labels, Beschreibungen, Fehlertexte und Fokusführung sind eingebaut. Validierungsfehler werden den Feldern zugeordnet und für Screenreader angekündigt. Props"
+  }
+]
