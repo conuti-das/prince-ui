@@ -1,0 +1,54 @@
+# Sidebar
+
+Die Seitenleiste im macOS-Stil bündelt die Navigation einer Ansicht in Gruppen mit Icon, Label und optionalem Trailing-Zähler — plus optionalem Header- und Footer-Slot.
+
+## Verwendung
+
+Übergib die Navigation als `groups`-Array. Jede Gruppe hat ein optionales `label` und eine `items`-Liste (`id`, `label`, optional `icon` und `trailing`). Die aktive Zeile steuerst du über `selectedKey`; auf Auswahl reagierst du mit `onSelect`. Header (z. B. App-Titel) und Footer (z. B. Account) sind freie Slots.
+
+`glass` schaltet die transluzente „Liquid-Glass"-Optik frei — sie wirkt nur, wenn die Sidebar tatsächlich über Content liegt (etwa innerhalb der `AppShell`). Auf einem opaken Hintergrund die Glas-Variante weglassen, sonst wirkt der Blur wie ein Render-Fehler.
+
+<DoDont kind="do">Verwandte Einträge in benannte `groups` bündeln (z. B. „Monitoring", „Verwaltung"), damit lange Navigationen scanbar bleiben.</DoDont>
+<DoDont kind="dont">Die Sidebar als reinen Layout-Container für beliebige Inhalte zweckentfremden — sie ist Navigation, die `items` sollen navigierbare Ziele sein.</DoDont>
+<DoDont kind="do">`selectedKey` immer mit der `id` eines vorhandenen Items synchron halten, sonst erscheint keine Zeile als aktiv.</DoDont>
+<DoDont kind="dont">`trailing` für lange Texte missbrauchen — der Slot ist für kompakte Zähler/Badges gedacht, nicht für zweite Labels.</DoDont>
+
+## Beispiele
+
+Gruppierte Navigation mit aktivem Zustand, Trailing-Zählern und Footer-Account:
+
+<Example code={`function SidebarDemo() {
+  const [sel, setSel] = React.useState("monitor");
+  return (
+    <div style={{ height: 420, display: 'flex', border: '1px solid var(--prn-separator)', borderRadius: 14, overflow: 'hidden' }}>
+      <Sidebar
+        header="FinOps MaKo"
+        selectedKey={sel}
+        onSelect={setSel}
+        groups={[
+          { label: 'Monitoring', items: [
+            { id: 'monitor', label: 'Transaktionen', icon: <Icon name="chart" />, trailing: '248' },
+            { id: 'ebd', label: 'EBD-Prüfung', icon: <Icon name="compass" /> },
+            { id: 'edifact', label: 'EDIFACT', icon: <Icon name="mail" />, trailing: '12' },
+          ]},
+          { label: 'Verwaltung', items: [
+            { id: 'partner', label: 'Marktpartner', icon: <Icon name="building" /> },
+            { id: 'settings', label: 'Einstellungen', icon: <Icon name="settings" /> },
+          ]},
+        ]}
+        footer={<ListRow leading={<Icon name="user" />} title="Daniel" subtitle="Administrator" />}
+      />
+      <div style={{ flex: 1, padding: 20, font: 'var(--prn-text-body)', color: 'var(--prn-label-2)' }}>
+        Aktiv: <strong style={{ color: 'var(--prn-label)' }}>{sel}</strong>
+      </div>
+    </div>
+  );
+}`} />
+
+## Accessibility
+
+Die Sidebar rendert als `<nav>` mit `aria-label="Seitenleiste"` — Screenreader können sie als Landmark anspringen. Die Einträge sind react-aria-`Button`s: per Tabulator erreichbar, mit Enter/Space auslösbar und mit sichtbarem Fokus-Ring. Der aktive Eintrag (`selectedKey`) wird visuell hervorgehoben; übergib `selectedKey` synchron zur tatsächlich angezeigten Ansicht, damit der visuelle Zustand der Realität entspricht. Icons sind `aria-hidden` — die Bedeutung trägt allein das Label, gib also jedem Item ein aussagekräftiges `label`.
+
+## Props
+
+<PropsTable name="Sidebar" />

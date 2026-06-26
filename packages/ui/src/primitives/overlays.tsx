@@ -34,13 +34,30 @@ export interface ModalProps {
   /** „Liquid Glass"-Optik (transluzent + Blur) statt opaker Fläche. */
   glass?: boolean;
   className?: string;
+  /** Barrierefreier Name des Dialogs, wenn kein sichtbarer `title` gesetzt ist. */
+  "aria-label"?: string;
+  /** ID-Referenz für den barrierefreien Namen (Alternative zu `title`/`aria-label`). */
+  "aria-labelledby"?: string;
 }
 
-export function Modal({ title, children, className, isDismissable = true, glass, ...props }: ModalProps) {
+export function Modal({
+  title,
+  children,
+  className,
+  isDismissable = true,
+  glass,
+  "aria-label": ariaLabel,
+  "aria-labelledby": ariaLabelledby,
+  ...props
+}: ModalProps) {
   return (
     <ModalOverlay {...props} isDismissable={isDismissable} className="prn-modal-overlay">
       <RACModal className={cx("prn-modal", glass && "prn-glass prn-glass-overlay")}>
-        <RACDialog className={cx("prn-dialog", className)}>
+        <RACDialog
+          className={cx("prn-dialog", className)}
+          aria-label={!title ? ariaLabel : undefined}
+          aria-labelledby={ariaLabelledby}
+        >
           {title && <Heading slot="title" className="prn-dialog-title">{title}</Heading>}
           {children}
         </RACDialog>

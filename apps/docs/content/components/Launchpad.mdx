@@ -1,0 +1,81 @@
+# Launchpad
+
+Das Launchpad ist ein App- und Card-Dashboard im Apple-Stil — das Äquivalent zum Fiori-Launchpad. Polymorphe Cards (`nav`/`kpi`/`trend`/`list`/`custom`) bilden den Plug-in-Contract, über den Apps eigene Inhalte in ein responsives Bento-Grid einhängen.
+
+## Verwendung
+
+Die Inhalte kommen als `sections`-Array: jede Section hat eine `id`, einen `title` und eine `cards`-Liste. Der Card-Typ steckt im `kind`-Feld und entscheidet über die geforderten Felder — `kpi` braucht `value`/`delta`/`trend`, `trend` eine `data`-Reihe, `list` `rows`, `custom` eine `render`-Funktion. Über `span` (1–4) beanspruchen Cards mehrere Grid-Spalten. Cards mit `detail`/`trend` öffnen ein Drill-down-Popup mit der Voll-Visualisierung.
+
+`editable` schaltet Drag-Reorder frei (react-aria, Tastatur **und** Pointer); auf Umsortieren reagierst du mit `onReorder`. Das Grid ist responsiv: Desktop vier, iPad drei, Phone eine Spalte.
+
+<DoDont kind="do">Den Card-`kind` zum Inhalt passend wählen — `kpi` für eine Kennzahl, `trend` für einen Verlauf, `list` für Zeilen, `custom` nur, wenn keiner der typisierten Cards passt.</DoDont>
+<DoDont kind="dont">In `custom`-Cards komplette Interaktions-Flows bauen — die Card ist eine Kachel/Einstiegspunkt; tiefe Interaktion gehört hinter den Drill-down (`detail`) oder eine eigene Ansicht.</DoDont>
+<DoDont kind="do">Zusammengehörige Cards in benannte `sections` gruppieren (z. B. „Überblick", „Services"), damit das Dashboard auch mit vielen Kacheln les­bar bleibt.</DoDont>
+<DoDont kind="dont">`editable` dauerhaft anlassen, wenn die Anordnung fix sein soll — der Drag-Modus suggeriert sonst eine Personalisierung, die nicht persistiert wird (du musst `onReorder` selbst speichern).</DoDont>
+
+## Beispiele
+
+Launchpad-Grid mit KPI-, Nav-, List- und Trend-Cards in gruppierten Sections, editierbar:
+
+<Example code={`<div style={{ background: 'var(--prn-bento-bg)', padding: 24, minHeight: 480 }}>
+  <Launchpad
+    editable
+    sections={[
+      {
+        id: 'overview',
+        title: 'Überblick',
+        cards: [
+          { id: 'tickets', kind: 'kpi', title: 'Offene Tickets', value: '12', delta: '−3', trend: 'down', icon: <Icon name="inbox" size={16} /> },
+          { id: 'budget', kind: 'kpi', title: 'Budget', value: '78 %', delta: '+6 %', trend: 'up', accent: true, icon: <Icon name="bolt" size={16} /> },
+          { id: 'mako', kind: 'kpi', title: 'MaKo heute', value: '1.204', icon: <Icon name="mail" size={16} /> },
+          { id: 'new', kind: 'nav', title: 'Neuer Prozess', description: 'Service starten', icon: <Icon name="bolt" size={20} /> },
+        ],
+      },
+      {
+        id: 'work',
+        title: 'Posteingang & Budget',
+        cards: [
+          {
+            id: 'inbox', kind: 'list', title: 'Inbox', icon: <Icon name="inbox" size={18} />, count: 14, span: 2,
+            rows: [
+              { id: 'r1', leading: <Icon name="mail" size={16} />, title: 'UTILMD-Antwort offen', subtitle: 'Stadtwerke München', trailing: <Badge tone="orange">Wartet</Badge> },
+              { id: 'r2', leading: <Icon name="mail" size={16} />, title: 'APERAK eingegangen', subtitle: 'Netze BW', trailing: <Badge tone="green">OK</Badge> },
+              { id: 'r3', leading: <Icon name="alert" size={16} />, title: 'Clearingfall geprüft', subtitle: 'E.ON Energie', trailing: <Badge tone="red">Fehler</Badge> },
+            ],
+          },
+          { id: 'spend', kind: 'trend', title: 'Ausgaben Q2', value: '€248.300', delta: '+4 %', trend: 'up', span: 2, data: [182, 196, 188, 214, 231, 248] },
+        ],
+      },
+    ]}
+  />
+</div>`} />
+
+`custom`-Card mit eigener Visualisierung und Drill-down auf einen größeren Chart:
+
+<Example code={`<div style={{ background: 'var(--prn-bento-bg)', padding: 24, minHeight: 320 }}>
+  <Launchpad
+    sections={[
+      {
+        id: 'services',
+        title: 'Services',
+        cards: [
+          { id: 'ebd', kind: 'nav', title: 'EBD-Prüfung', icon: <Icon name="compass" size={20} /> },
+          { id: 'partner', kind: 'nav', title: 'Marktpartner', icon: <Icon name="building" size={20} /> },
+          {
+            id: 'costs', kind: 'custom', title: 'Kosten je Stelle', span: 2,
+            render: () => <DonutChart segments={[{ label: 'MaKo', value: 48 }, { label: 'IT', value: 30 }, { label: 'Sonst', value: 22 }]} showLegend />,
+            detail: <AreaChart data={[120, 132, 128, 145, 151, 168]} width={520} height={260} showAxes />,
+          },
+        ],
+      },
+    ]}
+  />
+</div>`} />
+
+## Accessibility
+
+Die polymorphen Cards bauen auf den prince-ui-Primitiven auf: Nav-Cards sind fokussierbare, mit Enter/Space auslösbare Buttons, Drill-down-Trigger öffnen ein react-aria-Popover mit Fokus-Verwaltung. Der `editable`-Drag-Reorder ist bewusst über react-aria realisiert und damit **tastaturbedienbar** — nicht nur per Maus; das Umsortieren funktioniert also auch ohne Pointer. Icons in den Cards sind dekorativ; die Bedeutung trägt der `title` (und bei Listenzeilen `title`/`subtitle`), gib daher jeder Card einen sprechenden `title`. Wenn du den `custom`-`render`-Slot nutzt, verantwortest du dessen Barrierefreiheit selbst — sorge dort für benannte interaktive Elemente und ausreichenden Kontrast.
+
+## Props
+
+<PropsTable name="Launchpad" />

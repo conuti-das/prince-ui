@@ -1,0 +1,36 @@
+# FilterBar
+
+Filterleiste für Listen- und Tabellenansichten: sichtbare Felder, ein Überlauf-Popover für selten genutzte Filter und entfernbare Chips für die aktiven Filter.
+
+## Verwendung
+
+Direkt sichtbare Felder übergibst du als `children` — jeweils ein `FilterField`, die domänenfreie Label-+-Control-Hülle, die ein beliebiges Eingabe-Control (`Select`, `SearchField`, …) als Kind aufnimmt. Selten genutzte Felder wandern via `moreFields` in einen Überlauf-Popover (`moreLabel` benennt dessen Auslöser). Aktive Filter erscheinen als entfernbare Chips über `activeFilters` zusammen mit `onRemoveFilter` und `onClearAll`. Rechts platzierst du primäre `actions` wie „Anwenden“.
+
+<DoDont kind="do">Zeige die zwei bis drei wichtigsten Filter inline und verlagere den Rest in `moreFields`, damit die Leiste auf schmalen Breiten ruhig bleibt.</DoDont>
+<DoDont kind="dont">Die `activeFilters`-Chips weglassen, wenn Filter wirken — ohne sichtbare Chips bleibt für Nutzende unklar, warum die Liste gefiltert ist.</DoDont>
+
+## Beispiele
+
+Einzelnes `FilterField` mit Label und Control — der Baustein der FilterBar:
+
+<Example code={`<div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'flex-end' }}>
+  <FilterField label="Sparte">
+    <Select placeholder="Alle" aria-label="Sparte">
+      <SelectItem id="strom">Strom</SelectItem>
+      <SelectItem id="gas">Gas</SelectItem>
+    </Select>
+  </FilterField>
+  <FilterField label="Suche">
+    <SearchField placeholder="Transaktion suchen…" aria-label="Suche" />
+  </FilterField>
+</div>`} />
+
+Eine vollständige Leiste kombiniert sichtbare `FilterField`-`children`, `moreFields`, `activeFilters` (mit `onRemoveFilter`/`onClearAll`) und rechts platzierte `actions` — siehe den Playground-Fall der ursprünglichen Story, der die aktiven Chips zustandsbehaftet entfernt.
+
+## Accessibility
+
+Jedes `FilterField` koppelt ein sichtbares `label` an sein Control; setze zusätzlich ein `aria-label` am Control selbst, wenn dieses (wie `Select`/`SearchField`) ohne eigenes sichtbares Label rendert. Die aktiven Filter sind als bedienbare Chips mit Entfernen-Schaltfläche umgesetzt und damit per Tastatur erreichbar. Der `moreFields`-Popover ist ein fokussierbares Overlay, das den Fokus beim Öffnen aufnimmt und beim Schließen zurückgibt. `moreLabel` sollte den Inhalt des Überlaufs benennen.
+
+## Props
+
+<PropsTable name="FilterBar" />

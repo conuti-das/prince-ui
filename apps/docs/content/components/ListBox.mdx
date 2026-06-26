@@ -1,0 +1,29 @@
+# ListBox
+
+Die ListBox ist eine durchgehend sichtbare Auswahlliste mit Tastatur-Navigation und Single- oder Multi-Selektion.
+
+## Verwendung
+
+Nutze `ListBox`, wenn die Optionen dauerhaft sichtbar sein sollen (anders als beim `Select`, das einklappt). Optionen werden als `ListBoxOption` mit stabiler `id` übergeben. Steuere das Auswahlverhalten über `selectionMode`: `single` für eine Wahl, `multiple` für Mehrfachauswahl mit Auswahlhaken, `none` für eine reine, nicht selektierbare Liste. Setze immer ein `aria-label` oder eine sichtbare Beschriftung.
+
+<DoDont kind="do">`selectionMode="single"` verwenden, wenn genau ein Wert gewählt werden soll, und die Vorauswahl über `defaultSelectedKeys` setzen.</DoDont>
+<DoDont kind="dont">Eine ListBox für Aktionen nutzen — auslösbare Befehle gehören in ein `Menu`, nicht in eine Auswahlliste.</DoDont>
+
+## Beispiele
+
+Mehrfachauswahl mit vorausgewählten Einträgen:
+
+<Example code={`<ListBox aria-label="Sparten" selectionMode="multiple" defaultSelectedKeys={['strom', 'gas']} style={{ maxWidth: 280 }}>
+  <ListBoxOption id="strom">Strom</ListBoxOption>
+  <ListBoxOption id="gas">Gas</ListBoxOption>
+  <ListBoxOption id="wasser">Wasser</ListBoxOption>
+  <ListBoxOption id="fernwaerme">Fernwärme</ListBoxOption>
+</ListBox>`} />
+
+## Accessibility
+
+ListBox basiert auf react-aria `ListBox`: Der Container hat die Rolle `listbox`, Optionen die Rolle `option` mit `aria-selected`. Navigation per ↑/↓ inkl. Type-ahead, Auswahl per Enter/Space; im Multi-Modus erweitert Shift+Pfeil die Auswahl. Eine ListBox ohne sichtbares Label benötigt zwingend ein `aria-label`, sonst kann sie von Screenreadern nicht benannt werden. Der Auswahlhaken im Multi-Modus ist visuell, der Zustand wird zusätzlich über `aria-selected` transportiert.
+
+## Props
+
+<PropsTable name="ListBox" />

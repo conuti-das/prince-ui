@@ -1,0 +1,8 @@
+.pg { display: grid; grid-template-columns: 1fr 240px; gap: 1rem; background: var(--prn-bg-elevated); border: 1px solid var(--prn-separator); border-radius: 12px; padding: 1.25rem; }
+.pg-stage { display: flex; align-items: center; justify-content: center; min-height: 200px; }
+.pg-controls { display: flex; flex-direction: column; gap: .75rem; }
+.pg-control { display: flex; flex-direction: column; gap: .25rem; font-size: .8rem; }
+.pg-control-name { color: var(--prn-label-2); }
+.pg-code { grid-column: 1 / -1; position: relative; }
+.pg-code pre { background: var(--prn-bg, #11161b); border-radius: 8px; padding: 1rem; overflow: auto; }
+.pg-copy { position: absolute; top: .5rem; right: .5rem; }

@@ -1,0 +1,81 @@
+# Design-Tokens
+
+Design-Tokens sind die Single Source of Truth der Prince-Designsprache. Jede Farbe, jeder
+Radius, jeder Schatten und jeder Bewegungsverlauf ist eine CSS-Custom-Property im
+Namespace `--prn-*`, definiert in `@conuti-das/prince-ui-tokens`. Komponenten greifen
+ausschließlich auf diese Tokens zu — **niemals rohe Hex- oder RGB-Werte**. So bleibt jede
+Komponente automatisch theme-fähig: Wechselt das Theme, wechseln die Token-Werte, und alles
+zieht mit.
+
+## Warum Tokens statt Hex
+
+Ein einziger Token wie `--prn-accent` löst in Apple Dark zu `#30d158`, in Apple Light zu
+`#34c759` und im CONUTI-Community-Theme (CU) zu `#a0d22b` auf. Wer den Token verwendet,
+schreibt seinen Code genau einmal und erhält drei korrekte Modes. Wer eine Farbe hart
+codiert, bricht in mindestens zwei der drei Themes.
+
+<DoDont kind="do">`background: var(--prn-bg-elevated)` — die Fläche folgt dem aktiven Theme.</DoDont>
+<DoDont kind="dont">`background: #2c2c2e` — sieht nur in Apple Dark richtig aus, in Light und CU falsch.</DoDont>
+
+## Token-Kategorien
+
+Die Tokens gliedern sich in zwei Klassen:
+
+- **Mode-unabhängig** — gelten in jedem Theme identisch: Typo-Skala (`--prn-text-*`),
+  Radien (`--prn-radius-*`), Bewegung (`--prn-ease-*`, `--prn-dur-*`), Maße (`--prn-space`,
+  `--prn-hit`) und die Vibrancy-Blur-Werte.
+- **Mode-spezifisch** — werden je Theme neu belegt: Flächen (`--prn-bg*`), Text-Hierarchie
+  (`--prn-label*`), Linien (`--prn-separator`, `--prn-border`), Akzent (`--prn-accent*`),
+  Semantikfarben und die Chart-Palette (`--prn-chart-1` … `--prn-chart-8`).
+
+## Radien
+
+Die Radius-Skala reicht vom feinen `--prn-radius-xs` (6px) bis zur Pille
+`--prn-radius-pill` (999px). Karten nutzen `--prn-radius-card` (20px), der Default-Radius
+für Flächen ist `--prn-radius` (12px).
+
+<Example code={`<div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+  {['--prn-radius-sm', '--prn-radius-md', '--prn-radius', '--prn-radius-lg', '--prn-radius-xl'].map((r) => (
+    <div key={r} style={{ display: 'flex', flexDirection: 'column', gap: 6, width: 120 }}>
+      <div style={{ height: 56, borderRadius: 'var(' + r + ')', background: 'var(--prn-bg-elevated)', border: 'var(--prn-card-border)', boxShadow: 'var(--prn-shadow)' }} />
+      <code style={{ font: 'var(--prn-text-caption)', color: 'var(--prn-label-2)' }}>{r}</code>
+    </div>
+  ))}
+</div>`} />
+
+## Maße & Trefferflächen
+
+`--prn-space` (8px) ist die Basiseinheit des Abstandsrasters — Abstände werden als
+Vielfache davon gedacht. `--prn-hit` (44px) ist die Mindest-Trefferfläche für interaktive
+Elemente und stammt direkt aus der Apple-HIG: Buttons, Switches und Touch-Ziele dürfen
+diesen Wert nicht unterschreiten.
+
+## Bewegung
+
+Animationen verwenden die Easing-Tokens (`--prn-ease-out`, `--prn-ease-spring`,
+`--prn-ease-standard`) zusammen mit den Dauern `--prn-dur-fast` (140ms), `--prn-dur`
+(240ms) und `--prn-dur-slow` (360ms). Die Token-Basis bündelt zudem eine globale
+`prefers-reduced-motion`-Regel, die alle Animationen praktisch anhält — eigene Animationen
+müssen das nicht erneut absichern.
+
+## Verwendung im Code
+
+Tokens werden über das Tokens-CSS verfügbar, das einmal am App-Einstieg geladen wird:
+
+<Example code={`<div style={{
+  padding: 'calc(var(--prn-space) * 2)',
+  background: 'var(--prn-bg-elevated)',
+  border: 'var(--prn-card-border)',
+  borderRadius: 'var(--prn-radius-card)',
+  boxShadow: 'var(--prn-shadow-raised)',
+  color: 'var(--prn-label)'
+}}>
+  Eine Karte — komplett aus Tokens, in jedem Theme korrekt.
+</div>`} />
+
+## Accessibility
+
+Die Token-Basis enthält zwei a11y-Garantien, die jede Komponente erbt: Der globale
+`:focus-visible`-Ring (`--prn-focus`) ersetzt `outline: none` durch einen sichtbaren,
+theme-abgestimmten Fokusring, und die `prefers-reduced-motion`-Regel respektiert die
+System-Einstellung für reduzierte Bewegung. Wer Tokens nutzt, bekommt beides geschenkt.

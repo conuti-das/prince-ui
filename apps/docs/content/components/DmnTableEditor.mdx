@@ -1,0 +1,45 @@
+# DmnTableEditor
+
+Tabellen-zentrierter DMN-Editor für genau eine Entscheidungstabelle — ohne DRD-Overhead, dafür mit Titel/Untertitel, Read-only-Modus, Zell-Plugins und optionalem Umschalter in den Experten-Modus. Die sachbearbeiter-freundliche Alternative zum `DmnExpertEditor`.
+
+<EditorExample name="DmnTableEditor" />
+
+## Verwendung
+
+Der Editor arbeitet `controlled` (`value` + `onChange`) oder `uncontrolled` (`defaultValue`). `title`/`subtitle` beschriften die Tabelle, `readOnly` schaltet auf reine Anzeige. `onSwitchToExpert` blendet einen Umschalter ein, der dieselbe Entscheidung im `DmnExpertEditor` öffnet (gemeinsames XML).
+
+Über `cellPlugins` lassen sich einzelne Spalten mit Domänen-Editoren bestücken — z. B. ein Dropdown für die Prüfidentifikator-Spalte statt Freitext (`DmnCellPlugin` mit `matches` + `renderEditor`).
+
+<DoDont kind="do">Für einzelne Entscheidungstabellen (eine Decision) den Tabellen-Editor nutzen — er ist deutlich zugänglicher.</DoDont>
+<DoDont kind="dont">DRD-Strukturen mit mehreren verknüpften Decisions hier abbilden — dafür ist der Experten-Editor da.</DoDont>
+
+## Beispiele
+
+Das Demo zeigt die MaKo-Tabelle „Marktrolle ermitteln" (Prüfidentifikator × Sparte → Marktrolle) mit Titel, Untertitel und Save-Callback.
+
+```tsx
+import { DmnTableEditor } from "@conuti-das/prince-ui-dmn";
+
+<div style={{ height: 520 }}>
+  <DmnTableEditor
+    defaultValue={xml}
+    title="E_0405 — Marktrolle ermitteln"
+    subtitle="LF · 2026-04-01"
+    onSave={(xml) => persist(xml)}
+  />
+</div>
+```
+
+Read-only:
+
+```tsx
+<DmnTableEditor defaultValue={xml} title="Nur-Lesen" readOnly />
+```
+
+## Accessibility
+
+Die Tabelle baut auf den prince-ui-Daten-Primitives auf; Zellen sind per Tastatur fokussier- und editierbar. Im Read-only-Modus entfallen die Eingabe-Affordances.
+
+## Props
+
+<PropsTable name="DmnTableEditor" />

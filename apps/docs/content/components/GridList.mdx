@@ -1,0 +1,28 @@
+# GridList
+
+Die GridList ist eine selektierbare Zeilenliste — wie eine ListBox, aber jede Zeile darf eigene fokussierbare Elemente enthalten.
+
+## Verwendung
+
+Wähle `GridList` statt `ListBox`, wenn die Zeilen mehr als reinen Text tragen — etwa eine zweispaltige Darstellung mit Wert und Detailangabe oder eine Inline-Aktion pro Zeile. Zeilen werden als `GridListItem` mit `id` und (bei nicht-textuellem Inhalt) einem `textValue` für Type-ahead übergeben. `selectionMode` steuert wie bei der ListBox die Auswahl.
+
+<DoDont kind="do">Bei zusammengesetzten Zeilen ein `textValue` setzen, damit Type-ahead und Screenreader einen sinnvollen Namen haben.</DoDont>
+<DoDont kind="dont">Eine GridList nehmen, wenn die Zeilen nur einfacher Text sind — dann ist die schlankere `ListBox` die richtige Wahl.</DoDont>
+
+## Beispiele
+
+Einfachauswahl mit vorausgewählter Zeile:
+
+<Example code={`<GridList aria-label="Marktlokationen" selectionMode="single" defaultSelectedKeys={['malo-2']} style={{ maxWidth: 320 }}>
+  <GridListItem id="malo-1" textValue="MaLo 1001">MaLo 1001</GridListItem>
+  <GridListItem id="malo-2" textValue="MaLo 1002">MaLo 1002</GridListItem>
+  <GridListItem id="malo-3" textValue="MaLo 1003">MaLo 1003</GridListItem>
+</GridList>`} />
+
+## Accessibility
+
+GridList basiert auf react-aria `GridList`: Der Container hat die Rolle `grid`, Zeilen die Rolle `row`. Diese Grid-Semantik erlaubt es, innerhalb einer Zeile mit ← / → zu fokussierbaren Elementen zu navigieren, während ↑ / ↓ zwischen den Zeilen wechselt — der entscheidende Unterschied zur `ListBox`. Auswahl per Enter/Space, Multi-Select per Shift/Strg. Setze `textValue`, wenn der sichtbare Inhalt kein klarer Text ist, sonst fehlt der Zeile ein vorlesbarer Name. Ein `aria-label` für die Liste ist Pflicht.
+
+## Props
+
+<PropsTable name="GridList" />

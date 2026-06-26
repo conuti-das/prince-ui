@@ -1,0 +1,37 @@
+# Toolbar
+
+Die Toolbar ist die Kopfleiste einer Ansicht: Titel und Untertitel links, Aktionen rechtsbündig, optional ein Leading-Slot für Navigation.
+
+<Playground component="Toolbar" />
+
+## Verwendung
+
+Setze `title` als Bezeichnung der Ansicht und `subtitle` für Kontext (Zählerstände, Zeitstempel, Status). Aktionen wie Buttons oder Badges gehören in den rechtsbündigen `actions`-Slot. Der `leading`-Slot nimmt Navigationselemente auf — typischerweise einen Zurück-Pfeil in Detailansichten.
+
+<DoDont kind="do">Die wichtigste Aktion der Ansicht rechtsbündig in `actions` platzieren — der Untertitel trägt Kontext, keine Bedienelemente.</DoDont>
+<DoDont kind="dont">Den Untertitel mit langen Sätzen überladen; er ist eine knappe Statuszeile, kein Fließtext.</DoDont>
+
+## Beispiele
+
+Mit Leading-Slot (Zurück) und mehreren Aktionen:
+
+<Example code={`<div style={{ display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 720 }}>
+  <Toolbar
+    title="Transaktionen"
+    subtitle="248 offen · zuletzt aktualisiert 12:04"
+    actions={<Badge tone="blue">Auto-Refresh</Badge>}
+  />
+  <Toolbar
+    leading={<span style={{ color: 'var(--prn-accent-strong)' }}>‹ Zurück</span>}
+    title="Detailansicht"
+    actions={<><Badge tone="green">Aktiv</Badge> <Badge tone="gray">Export</Badge></>}
+  />
+</div>`} />
+
+## Accessibility
+
+Die Toolbar rendert ihren Titel als Überschrift und bildet so einen Landmark-Anker für die Seitenstruktur. Achte darauf, dass interaktive Elemente im `leading`- und `actions`-Slot selbst zugänglich sind: reine Icon-Buttons brauchen ein `aria-label`, ein Zurück-Element sollte ein echter Button oder Link mit erkennbarem Text sein und nicht nur ein dekoratives Chevron. Der `subtitle` ist statischer Text und wird mit dem Titel als Kontext vorgelesen.
+
+## Props
+
+<PropsTable name="Toolbar" />

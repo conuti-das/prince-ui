@@ -1,0 +1,28 @@
+# Select
+
+Das Select wählt aus einer festen Liste genau eine Option über ein ListBox-Popover.
+
+<Playground component="Select" />
+
+## Verwendung
+
+Nutze das Select für eine überschaubare, feste Liste, aus der genau ein Wert gewählt wird, ohne dass eine Suche nötig ist. Die Optionen sind `SelectItem`-Komponenten mit jeweils einer `id`. Über `placeholder` lässt sich ein „Bitte wählen"-Hinweis anzeigen, solange nichts gewählt ist. Wird die Liste lang oder soll getippt-gefiltert werden, ist eine [ComboBox](/components/combobox) besser; bei nur wenigen immer-sichtbaren Optionen eine [RadioGroup](/components/radiogroup).
+
+<DoDont kind="do">Jeder `SelectItem` eine stabile `id` geben und bei sinnvollem Standard `defaultSelectedKey` setzen.</DoDont>
+<DoDont kind="dont">Ein Select für lange Listen (Dutzende Einträge) verwenden, in denen Nutzer suchen wollen — dann lieber eine ComboBox.</DoDont>
+
+## Beispiele
+
+<Example code={`<Select label="Sparte" placeholder="Bitte wählen" defaultSelectedKey="strom">
+  <SelectItem id="strom">Strom</SelectItem>
+  <SelectItem id="gas">Gas</SelectItem>
+  <SelectItem id="wasser">Wasser</SelectItem>
+</Select>`} />
+
+## Accessibility
+
+Select basiert auf react-aria-components `Select`. Der Trigger-Button trägt das `label` als zugänglichen Namen und `aria-expanded`; das Popover ist eine `listbox`. Pfeiltasten navigieren die Optionen, Tippen springt per Type-ahead zum passenden Eintrag, Enter wählt und Escape schließt. Die aktuelle Auswahl wird Screenreadern am Trigger gemeldet.
+
+## Props
+
+<PropsTable name="Select" />

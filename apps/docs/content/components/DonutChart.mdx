@@ -1,0 +1,41 @@
+# DonutChart
+
+Ring-Diagramm aus SVG-Arcs mit optionalem zentralem Label und Legende — für Anteils- und Statusverteilungen.
+
+
+## Verwendung
+
+`segments` ist eine Liste aus `{ label, value, color? }`. Je Segment lässt sich eine eigene Farbe setzen; ohne `color` greift die Palette `--prn-chart-1..8`. `centerLabel` rendert Text oder Markup in der Ringmitte, `showLegend`, `size` und `thickness` steuern die Darstellung. Leeres `segments` (oder eine Gesamtsumme von 0) ergibt den Leerzustand.
+
+<DoDont kind="do">Nutze den Donut für wenige, gut unterscheidbare Anteile (3–6 Segmente) und zeige die Gesamtsumme über `centerLabel`.</DoDont>
+<DoDont kind="dont">Viele kleine Segmente abbilden, die optisch verschmelzen — ab etwa sieben Kategorien ist ein `BarChart` lesbarer.</DoDont>
+
+## Beispiele
+
+<Example code={`<div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
+  <DonutChart
+    segments={[
+      { label: 'Erfolgreich', value: 6420 },
+      { label: 'In Klärung', value: 1280 },
+      { label: 'Fehler', value: 340 },
+      { label: 'Storniert', value: 160 },
+    ]}
+    centerLabel={<><strong>8.200</strong><span>gesamt</span></>}
+  />
+  <DonutChart
+    segments={[
+      { label: 'Strom', value: 62, color: 'var(--prn-chart-1)' },
+      { label: 'Gas', value: 28, color: 'var(--prn-chart-3)' },
+      { label: 'Wasser', value: 10, color: 'var(--prn-chart-6)' },
+    ]}
+    centerLabel="100%"
+  />
+</div>`} />
+
+## Accessibility
+
+Die Segmentfarben allein dürfen keine Information tragen — die `showLegend`-Legende koppelt jede Farbe an ein Textlabel und sollte aktiviert bleiben, wenn der Donut ohne weiteren Begleittext steht. `centerLabel` ist normaler DOM-Inhalt und damit für Screenreader lesbar. Achte bei eigenen Segmentfarben auf ausreichenden Kontrast zueinander und zum Hintergrund.
+
+## Props
+
+<PropsTable name="DonutChart" />

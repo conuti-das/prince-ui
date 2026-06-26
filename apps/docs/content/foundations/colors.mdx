@@ -1,0 +1,88 @@
+# Farben
+
+Das Farbsystem ist semantisch, nicht literal: Tokens beschreiben die **Rolle** einer Farbe
+(Akzent, Fläche, Label, Status) — nicht ihren Hex-Wert. Dieselbe Rolle löst je Theme in
+einen anderen Wert auf. Apple Dark und Apple Light folgen den Apple-System-Farben mit grünem
+Akzent, CU bringt das CONUTI-CI-Grün `#a0d22b`. Alle Swatches auf dieser Seite rendern live
+aus den Tokens und ändern sich mit dem Theme-Switcher.
+
+## Akzent
+
+Der Akzent trägt die primäre Aktion und den Markenausdruck. `--prn-accent` ist die
+Grundfarbe, `--prn-accent-hover`/`--prn-accent-pressed` die Interaktionszustände,
+`--prn-accent-soft` die getönte Variante für Hintergründe. `--prn-on-accent` ist die
+garantiert lesbare Textfarbe auf gefülltem Akzent.
+
+<Example code={`<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))', gap: 16 }}>
+  {['--prn-accent', '--prn-accent-strong', '--prn-accent-hover', '--prn-accent-soft'].map((n) => (
+    <div key={n} style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+      <div style={{ height: 56, borderRadius: 'var(--prn-radius-md)', background: 'var(' + n + ')', border: '1px solid var(--prn-separator)', boxShadow: 'var(--prn-shadow)' }} />
+      <code style={{ font: 'var(--prn-text-caption)', color: 'var(--prn-label-2)' }}>{n}</code>
+    </div>
+  ))}
+</div>`} />
+
+## Flächen
+
+Flächen-Tokens bilden eine Tiefen-Hierarchie: `--prn-bg` ist der App-Grund,
+`--prn-bg-elevated` und `--prn-bg-elevated-2` heben Karten und Menüs ab, `--prn-bg-head`
+trägt Header-Leisten. `--prn-fill` und `--prn-fill-strong` sind transluzente Füllungen für
+Chips, Tracks und inaktive Zustände.
+
+<Example code={`<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))', gap: 16 }}>
+  {['--prn-bg', '--prn-bg-elevated', '--prn-bg-head', '--prn-fill', '--prn-fill-strong'].map((n) => (
+    <div key={n} style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+      <div style={{ height: 56, borderRadius: 'var(--prn-radius-md)', background: 'var(' + n + ')', border: '1px solid var(--prn-separator)', boxShadow: 'var(--prn-shadow)' }} />
+      <code style={{ font: 'var(--prn-text-caption)', color: 'var(--prn-label-2)' }}>{n}</code>
+    </div>
+  ))}
+</div>`} />
+
+## Text-Hierarchie
+
+Text nutzt nicht eine Farbe, sondern vier Stufen abnehmender Prominenz: `--prn-label`
+(primär), `--prn-label-2` (sekundär, z. B. Beschriftungen), `--prn-label-3` (tertiär,
+Platzhalter) und `--prn-label-4` (Trenn-/Deko-Linien). Im hellen Theme wurde `--prn-label-2`
+bewusst auf 75 % Deckkraft gesetzt, damit Sekundärtext WCAG-AA (≈4,5:1) erreicht.
+
+<DoDont kind="do">Sekundären Fließtext mit `--prn-label-2` setzen — kontraststark genug für AA.</DoDont>
+<DoDont kind="dont">`--prn-label-3` oder `--prn-label-4` für lesbaren Text verwenden — die sind für Platzhalter und Hairlines gedacht und unterschreiten den Kontrast.</DoDont>
+
+## Semantik
+
+Statusfarben transportieren Bedeutung: `--prn-green` (Erfolg), `--prn-red` (Fehler/destruktiv),
+`--prn-orange` (Warnung), `--prn-yellow`, `--prn-blue` (Info), `--prn-teal`, `--prn-neutral`.
+Für getönte Hintergründe gibt es passende `--prn-tint-*`-Tokens (z. B. `--prn-tint-negative`
+für eine Fehler-Notice). `--prn-on-status-fill` ist die lesbare Textfarbe auf gefülltem Status.
+
+<Example code={`<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))', gap: 16 }}>
+  {['--prn-green', '--prn-red', '--prn-orange', '--prn-yellow', '--prn-blue', '--prn-teal', '--prn-neutral'].map((n) => (
+    <div key={n} style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+      <div style={{ height: 56, borderRadius: 'var(--prn-radius-md)', background: 'var(' + n + ')', border: '1px solid var(--prn-separator)', boxShadow: 'var(--prn-shadow)' }} />
+      <code style={{ font: 'var(--prn-text-caption)', color: 'var(--prn-label-2)' }}>{n}</code>
+    </div>
+  ))}
+</div>`} />
+
+## Chart-Palette
+
+Diagramme ziehen ihre Serienfarben aus acht durchnummerierten Tokens
+(`--prn-chart-1` … `--prn-chart-8`). Die Reihenfolge ist auf maximale Unterscheidbarkeit
+benachbarter Serien optimiert. In CU ist die Palette auf die Community-Töne abgestimmt.
+
+<Example code={`<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))', gap: 16 }}>
+  {['--prn-chart-1', '--prn-chart-2', '--prn-chart-3', '--prn-chart-4', '--prn-chart-5', '--prn-chart-6', '--prn-chart-7', '--prn-chart-8'].map((n) => (
+    <div key={n} style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+      <div style={{ height: 56, borderRadius: 'var(--prn-radius-md)', background: 'var(' + n + ')', border: '1px solid var(--prn-separator)' }} />
+      <code style={{ font: 'var(--prn-text-caption)', color: 'var(--prn-label-2)' }}>{n}</code>
+    </div>
+  ))}
+</div>`} />
+
+## Accessibility
+
+Farbe darf nie der einzige Bedeutungsträger sein: Wer Status über `--prn-red`/`--prn-green`
+codiert, ergänzt immer ein Icon, Label oder einen Text — sonst geht die Information bei
+Farbsehschwäche verloren. Die Text-Tokens sind so kalibriert, dass `--prn-label` und
+`--prn-label-2` auf den vorgesehenen Flächen WCAG-AA erfüllen; die schwächeren Stufen
+`--prn-label-3`/`--prn-label-4` sind ausdrücklich nicht für lesbaren Text bestimmt.

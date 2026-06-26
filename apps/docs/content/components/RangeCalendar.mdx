@@ -1,0 +1,40 @@
+# RangeCalendar
+
+Ein eingebetteter Monatskalender zur Auswahl eines zusammenhängenden Zeitraums.
+
+<Playground component="RangeCalendar" />
+
+## Verwendung
+
+Nutze `RangeCalendar`, wenn ein Zeitraum dauerhaft sichtbar ausgewählt werden soll — etwa eine Buchungs- oder Abrechnungsspanne in einem Filter oder Dialog. Der Aufbau gleicht `Calendar`, jedoch werden Start- und Endtag in Akzentfarbe und die dazwischenliegenden Tage getönt dargestellt. Soll der Zeitraum nur bei Bedarf aufklappen, nutze `DateRangePicker`.
+
+<DoDont kind="do">Grenze die Spanne mit `minValue`/`maxValue` ein, wenn nur ein zulässiges Fenster wählbar ist.</DoDont>
+<DoDont kind="dont">Verwende keinen `RangeCalendar` für ein Einzeldatum — dafür ist `Calendar` gedacht.</DoDont>
+
+## Beispiele
+
+<Example code={`<RangeCalendar
+  aria-label="Woche"
+  defaultValue={{
+    start: new CalendarDate(2026, 6, 1),
+    end: new CalendarDate(2026, 6, 7),
+  }}
+/>`} />
+
+<Example code={`<RangeCalendar
+  aria-label="Begrenzter Zeitraum"
+  defaultValue={{
+    start: new CalendarDate(2026, 6, 10),
+    end: new CalendarDate(2026, 6, 16),
+  }}
+  minValue={new CalendarDate(2026, 6, 5)}
+  maxValue={new CalendarDate(2026, 6, 25)}
+/>`} />
+
+## Accessibility
+
+`RangeCalendar` baut auf react-aria `RangeCalendar` auf. Die Auswahl erfolgt im Tasten-Grid: Erster Enter setzt den Startpunkt, ein zweiter den Endpunkt; mit gehaltener Umschalttaste lässt sich die Spanne erweitern. Start- und Endtag werden nicht nur farblich, sondern auch über `[data-selection-start]`/`[data-selection-end]` ausgezeichnet, sodass die Grenzen für assistive Technik erkennbar bleiben. Ein `aria-label` ist erforderlich, da kein sichtbares Label gerendert wird.
+
+## Props
+
+<PropsTable name="RangeCalendar" />

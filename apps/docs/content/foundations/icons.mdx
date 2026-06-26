@@ -1,0 +1,65 @@
+# Icons
+
+prince-ui liefert einen kompakten Satz monochromer Linien-Icons als `<Icon>`-Komponente —
+bewusst **keine Emoji**. Die Icons sind reine SVGs auf einem 24×24-Grid, mit
+`stroke: currentColor`, 2px Strichstärke und runden Enden (lucide-kompatible Optik). Weil sie
+`currentColor` erben, übernehmen sie automatisch die Textfarbe ihres Kontextes und sind damit
+in jedem Theme korrekt — ganz ohne eigene Farb-Props oder externe Dependency.
+
+## Verwendung
+
+`<Icon>` braucht einen `name` aus der festen `IconName`-Liste. Über `size` (Default 20)
+steuerst du die Kantenlänge. Die Farbe kommt aus `color` des umgebenden Elements:
+
+<Example code={`<div style={{ display: 'flex', gap: 16, alignItems: 'center', color: 'var(--prn-label)' }}>
+  <Icon name="search" />
+  <Icon name="bell" size={24} />
+  <span style={{ color: 'var(--prn-accent)' }}><Icon name="check" size={28} /></span>
+  <span style={{ color: 'var(--prn-red)' }}><Icon name="alert" size={28} /></span>
+</div>`} />
+
+## Verfügbare Icons
+
+Die Galerie rendert alle Namen live aus der `IconName`-Union:
+
+<Example code={`<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(96px, 1fr))', gap: 12, color: 'var(--prn-label)' }}>
+  {['heart','flame','moon','chart','settings','menu','pin','pin-off','user','building','search','plus','bolt','alert','inbox','compass','mail','bell','grid','more','maximize','check','x','chevron-right','chevron-down','chevron-up','phone','clock','link','arrow-down-right','arrow-up-right','droplet','file-text'].map((n) => (
+    <div key={n} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, padding: 12, border: '1px solid var(--prn-separator)', borderRadius: 'var(--prn-radius-md)' }}>
+      <Icon name={n} size={24} />
+      <code style={{ font: 'var(--prn-text-caption)', color: 'var(--prn-label-2)' }}>{n}</code>
+    </div>
+  ))}
+</div>`} />
+
+## Dekorativ vs. bedeutungstragend
+
+Der `title`-Prop entscheidet über die Semantik des Icons:
+
+- **Ohne `title`** ist das Icon rein dekorativ. Es bekommt `aria-hidden="true"` und wird von
+  Screenreadern übersprungen — richtig, wenn neben dem Icon bereits ein Textlabel steht.
+- **Mit `title`** wird das Icon bedeutungstragend: Es erhält `role="img"` und ein
+  zugängliches Label. Genau das brauchst du bei reinen Icon-Buttons ohne sichtbaren Text.
+
+<Example code={`<div style={{ display: 'flex', gap: 16, alignItems: 'center', color: 'var(--prn-label)' }}>
+  <span>Posteingang <Icon name="inbox" /></span>
+  <Icon name="settings" title="Einstellungen" />
+</div>`} />
+
+## Eigene Icons
+
+Der Satz ist absichtlich klein. Wer mehr braucht, übergibt jedes beliebige monochrome
+`currentColor`-SVG (z. B. aus `lucide-react`) direkt in die `icon`- oder `leading`-Slots der
+Komponenten — ein zentrales Icon-Registry ist dafür nicht nötig.
+
+<DoDont kind="do">Bedeutungstragende Icons mit `title` versehen — `<Icon name="x" title="Schließen" />` auf einem Icon-Button.</DoDont>
+<DoDont kind="dont">Ein nacktes `<Icon name="x" />` als einzigen Inhalt eines Buttons lassen — der Screenreader liest dann nichts vor.</DoDont>
+
+## Accessibility
+
+Die `<Icon>`-Komponente automatisiert das ARIA-Verhalten: Ohne `title` ist sie
+`aria-hidden`, mit `title` trägt sie `role="img"` plus `<title>`. Setze `title` immer dann,
+wenn das Icon die einzige Information trägt (Icon-only-Buttons, Status ohne Textlabel), und
+lass es weg, wenn daneben bereits ein Textlabel steht — doppelte Vorlesung vermeidest du so.
+Da alle Icons `currentColor` erben, erfüllen sie den Kontrast des umgebenden Texts; achte bei
+gefärbten Icons (`var(--prn-red)` & Co.) darauf, dass die Bedeutung nicht allein über die
+Farbe transportiert wird.

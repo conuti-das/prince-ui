@@ -1,0 +1,46 @@
+# BpmnEditor
+
+Vollwertiger bpmn-js-Modeler im Apple-Look: Properties-Panel (camunda-moddle), bpmnlint mit ErrorPanel, Original-bpmn.io-Icons in Palette und Context-Pad, Umschaltung auf eine Tabellen-Ansicht (`AnalyticalTable`) sowie Speichern über `saveXML({ format: true })`.
+
+<EditorExample name="BpmnEditor" />
+
+## Verwendung
+
+Der Editor folgt dem `value`/`defaultValue`/`onChange`-Muster:
+
+- **controlled** — `value` + `onChange` halten das XML im React-State.
+- **uncontrolled** — `defaultValue` setzt das Startdiagramm, der Editor verwaltet den Zustand intern.
+
+Über `onSave` bekommst du das formatierte XML (z. B. zum Persistieren). `actionsSlot` blendet eigene Aktionen in die Kopfzeile ein (im Demo ein „KI-Assistent"-Button), `onKiFix` reicht aktuelle Lint-Befunde an einen KI-Flow weiter. Das Properties-Panel lässt sich per `propertiesPanel={false}` abschalten.
+
+<DoDont kind="do">`onSave` zum Persistieren verwenden — es liefert formatiertes, eingerücktes XML.</DoDont>
+<DoDont kind="dont">Bei jedem `onChange` speichern — das feuert pro Modellierungsschritt; entkopple Auto-Save mit Debounce.</DoDont>
+
+## Beispiele
+
+Das Demo oben ist controlled, hat ein Properties-Panel und einen `actionsSlot`. Minimal-Setup:
+
+```tsx
+import { BpmnEditor } from "@conuti-das/prince-ui-bpmn";
+
+<div style={{ height: 560 }}>
+  <BpmnEditor
+    defaultValue={xml}
+    onSave={(xml) => persist(xml)}
+  />
+</div>
+```
+
+Ohne Properties-Panel:
+
+```tsx
+<BpmnEditor defaultValue={xml} propertiesPanel={false} />
+```
+
+## Accessibility
+
+Palette und Context-Pad nutzen die Original-bpmn.io-Icons. Tastaturbedienung und Fokus folgen dem bpmn-js-Standard. Das „powered by bpmn.io"-Wasserzeichen bleibt aus Lizenzgründen sichtbar.
+
+## Props
+
+<PropsTable name="BpmnEditor" />

@@ -1,0 +1,95 @@
+# AppShell
+
+Die App-Hülle im Apple-Stil bündelt die komplette ShellBar — Logo, Titel mit Untertitel und Titel-Dropdown, Suche, Aktions-Items, Benachrichtigungen, Produkt-Wechsler und Profil — zusammen mit Sidebar und Content zu einem responsiven Anwendungsrahmen.
+
+## Verwendung
+
+Die AppShell ist reine Layout- und Kompositionsschicht: das Verhalten der Menüs und Overlays kommt aus den React-Aria-Primitiven. Den Inhalt der Ansicht übergibst du als `children`, die Navigation als `sidebar` (typischerweise eine `<Sidebar/>` **ohne** eigenes `glass`, da die Shell den Glas-Effekt setzt). Titel-Dropdown-Einträge kommen über `menuItems` + `onMenuItemClick`, die Aktions-Items rechts über `items`.
+
+`glass` (Default `true`) legt die „Liquid-Glass"-Optik auf Shell-Bar und Sidebar. Das responsive Verhalten steckt in CSS-Breakpoints: ab Tablet (≤1024 px) verschwindet der Untertitel und Items wandern ins „…"-Overflow-Menü, ab Phone (≤767 px) kollabiert die Suche zu einem Icon und die Sidebar wird zum Off-canvas-Overlay.
+
+<DoDont kind="do">Genau eine `AppShell` als äußersten Rahmen der Anwendung verwenden und ihr volle Höhe geben (z. B. `height: 100vh`), damit Sidebar und Content korrekt füllen.</DoDont>
+<DoDont kind="dont">Der eingebetteten `<Sidebar/>` ein eigenes `glass` setzen — die Shell steuert den Glas-Effekt zentral, doppeltes Glas überlagert sich.</DoDont>
+<DoDont kind="do">Aktions-Items mit `count` für unerledigte Vorgänge auszeichnen — der Zähler überlebt auch im Overflow-Menü auf schmalen Screens.</DoDont>
+<DoDont kind="dont">Mehr als eine Handvoll `items` in die Bar legen — auf Tablet/Phone landen alle im „…"-Menü, eine überladene Bar wird dort unübersichtlich.</DoDont>
+
+## Beispiele
+
+Volle Shell mit Suche, Aktions-Items, Benachrichtigungen, Profil und eingebetteter Sidebar:
+
+<Example code={`<div style={{ height: 520 }}>
+  <AppShell
+    title="MaCo"
+    subtitle="Marktkommunikation"
+    logo={<Icon name="bolt" size={22} />}
+    menuItems={[
+      { id: 'home', label: 'Startseite', icon: <Icon name="heart" size={16} /> },
+      { id: 'switch', label: 'Mandant wechseln', icon: <Icon name="building" size={16} /> },
+    ]}
+    items={[
+      { id: 'add', icon: <Icon name="plus" />, label: 'Hinzufügen' },
+      { id: 'reports', icon: <Icon name="chart" />, label: 'Berichte', count: '3' },
+      { id: 'mail', icon: <Icon name="mail" />, label: 'Nachrichten' },
+    ]}
+    notifications
+    notificationsCount={4}
+    productSwitch
+    actions={<Button variant="tinted">Aktion</Button>}
+    user={<span aria-label="Konto" style={{ width: 32, height: 32, borderRadius: 'var(--prn-radius-pill)', background: 'var(--prn-accent)', color: 'var(--prn-on-accent)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', font: 'var(--prn-text-footnote)' }}>DU</span>}
+    sidebar={
+      <Sidebar
+        selectedKey="summary"
+        groups={[
+          { items: [
+            { id: 'summary', label: 'Übersicht', icon: <Icon name="heart" /> },
+            { id: 'activity', label: 'Aktivität', icon: <Icon name="flame" /> },
+            { id: 'heart', label: 'Herz', icon: <Icon name="heart" />, trailing: '2' },
+          ]},
+          { label: 'Verwaltung', items: [
+            { id: 'reports', label: 'Berichte', icon: <Icon name="chart" /> },
+            { id: 'settings', label: 'Einstellungen', icon: <Icon name="settings" /> },
+          ]},
+        ]}
+      />
+    }
+  >
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 16 }}>
+      <KpiCard label="Schritte" value="3.824" delta="+12 %" trend="up" />
+      <KpiCard label="Ruhepuls" value="62 bpm" />
+      <KpiCard label="Aktivität" value="375 kcal" accent />
+      <KpiCard label="Schlaf" value="7 h 29" />
+    </div>
+  </AppShell>
+</div>`} />
+
+Opake Variante ohne Transluzenz — `glass={false}` für Kontexte ohne Glas-Look:
+
+<Example code={`<div style={{ height: 420 }}>
+  <AppShell
+    title="MaCo"
+    subtitle="Ohne Glas"
+    glass={false}
+    logo={<Icon name="bolt" size={22} />}
+    notifications
+    notificationsCount={2}
+    sidebar={
+      <Sidebar
+        selectedKey="summary"
+        groups={[{ items: [
+          { id: 'summary', label: 'Übersicht', icon: <Icon name="heart" /> },
+          { id: 'activity', label: 'Aktivität', icon: <Icon name="flame" /> },
+        ]}]}
+      />
+    }
+  >
+    <p style={{ font: 'var(--prn-text-body)', color: 'var(--prn-label-2)' }}>Opaker Content-Bereich.</p>
+  </AppShell>
+</div>`} />
+
+## Accessibility
+
+Die Shell-Bar-Icon-Buttons (Suche, Benachrichtigungen, Produkt-Wechsler, Menü-Toggle) tragen jeweils ein `aria-label`/`title`, sind also auch ohne sichtbaren Text benannt. Der Navigations-Toggle nutzt `toggleLabel` (Default „Navigation umschalten") — passe ihn an, wenn deine App eine andere Sprache oder Terminologie verlangt. Auf Phone wird die Sidebar zum Off-canvas-Overlay; das Ein-/Ausklappen kannst du über `sidebarCollapsed`/`onSidebarCollapsedChange` kontrollieren, um den Zustand mit eigener Logik (z. B. Route-Wechsel) zu synchronisieren. Übergib für den `user`-Slot ein benanntes Element (z. B. `aria-label="Konto"`), da ein reiner Avatar sonst stumm bleibt. Menü- und Overlay-Verhalten (Tastatur, Fokus-Falle) stammt aus den React-Aria-`Menu`-Primitiven.
+
+## Props
+
+<PropsTable name="AppShell" />

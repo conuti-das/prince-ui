@@ -1,0 +1,29 @@
+# NumberField
+
+Das NumberField erfasst numerische Eingaben mit Stepper-Buttons, Formatierung und Min/Max/Step.
+
+<Playground component="NumberField" />
+
+## Verwendung
+
+Nutze NumberField überall, wo der Wert eine Zahl ist und nicht freier Text — die Komponente formatiert die Eingabe und erlaubt Schritt-weises Erhöhen per Pfeiltasten oder Stepper. Über `formatOptions` werden Währungen, Prozente oder Dezimalstellen lokalisiert (de-DE) dargestellt. `step` an die fachliche Granularität anpassen (z. B. `0.5` für halbe Beträge).
+
+<DoDont kind="do">`formatOptions={{ style: 'currency', currency: 'EUR' }}` für Geldbeträge setzen, damit Tausenderpunkt und Komma korrekt erscheinen.</DoDont>
+<DoDont kind="dont">Für reine Identifikatoren wie Zählernummern ein NumberField verwenden — führende Nullen und feste Länge gehen verloren; dafür ein TextField nehmen.</DoDont>
+
+## Beispiele
+
+<Example code={`<NumberField
+  label="Betrag"
+  defaultValue={19.5}
+  step={0.5}
+  formatOptions={{ style: 'currency', currency: 'EUR' }}
+/>`} />
+
+## Accessibility
+
+NumberField basiert auf react-aria-components `NumberField`. Die Stepper-Buttons sind als solche beschriftet, die Pfeiltasten erhöhen/verringern den Wert und respektieren `minValue`/`maxValue`. Eingaben werden gegen das Zahlenformat des aktiven Locales geparst — Screenreader erhalten den rohen numerischen Wert über `aria-valuenow`.
+
+## Props
+
+<PropsTable name="NumberField" />

@@ -1,0 +1,35 @@
+# ColorArea
+
+Ein zweidimensionales Farbfeld zur gleichzeitigen Einstellung zweier Farbkanäle.
+
+
+## Verwendung
+
+Nutze `ColorArea` als Herzstück einer visuellen Farbauswahl: Über die x- und die y-Achse werden zwei Kanäle gegen einen 2D-Gradienten eingestellt — klassisch Sättigung gegen Helligkeit (`saturation`/`brightness`). Kombiniere sie mit einem Hue-`ColorSlider` und/oder `ColorField`, üblicherweise innerhalb eines `ColorPicker`.
+
+<DoDont kind="do">Wähle für `xChannel`/`yChannel` ein zueinander passendes Paar (z. B. `saturation` × `brightness` oder `red` × `green`).</DoDont>
+<DoDont kind="dont">Erwarte nicht, dass der dritte Kanal (z. B. Hue) hier einstellbar ist — den steuert ein separater `ColorSlider`/`ColorWheel`.</DoDont>
+
+## Beispiele
+
+<Example code={`<ColorArea
+  xChannel="saturation"
+  yChannel="brightness"
+  defaultValue={parseColor('hsb(220, 70%, 90%)')}
+  aria-label="Sättigung und Helligkeit"
+/>`} />
+
+<Example code={`<ColorArea
+  xChannel="red"
+  yChannel="green"
+  defaultValue={parseColor('#c84040')}
+  aria-label="Rot und Grün"
+/>`} />
+
+## Accessibility
+
+`ColorArea` baut auf react-aria `ColorArea` mit `ColorThumb` auf: Der Thumb ist per Tastatur steuerbar — Pfeiltasten bewegen ihn entlang beider Achsen, gehaltene Umschalttaste in größeren Schritten. Jede Achse ist als eigener Slider-Wert ausgezeichnet, sodass der aktuelle Kanalwert (z. B. „Sättigung 70 %") für Screenreader ansagbar bleibt. Da die Information primär visuell ist, ist ein `aria-label` erforderlich; reine Farbwahrnehmung wird nicht vorausgesetzt, weil die numerischen Kanalwerte zugänglich sind.
+
+## Props
+
+<PropsTable name="ColorArea" />

@@ -1,0 +1,32 @@
+# Glass
+
+Liquid-Glass-Optikschicht — eine dünne, rein visuelle Fläche über React Aria, die transluzenten Hintergrund mit `backdrop-filter` erzeugt.
+
+> **Import-Hinweis:** Die Glas-Fläche wird als `GlassSurface` (Typ `GlassVariant`) aus `@conuti-das/prince-ui` exportiert — es gibt keinen Export namens `Glass`. Viele Komponenten (`Toolbar`, `Sidebar`, `Popover`) bieten zusätzlich ein `glass`-Prop, das denselben Effekt opt-in aktiviert. Da `GlassSurface` ein reiner Stil-Wrapper mit freiem Inhalt ist (kein argTypes-gesteuertes Verhalten), gibt es hier keinen interaktiven Playground.
+
+## Verwendung
+
+`GlassSurface` legt eine transluzente Fläche über den darunterliegenden Content. Die `variant` (`bar`, `sidebar`, `overlay`, `card`, `floating`) wählt die passende Glas-Ausprägung; mit `tintColor` lässt sich ein leichter Farbstich setzen, mit `as` das gerenderte Element (z. B. `"button"`). **Wo einsetzen:** Top-Bar, Sidebar, Overlays (Popover/Menu/Dialog/Tooltip), schwebende Controls und Übersichtskarten, die über Content liegen. **Wo nicht:** datendichte Tabellen/Listen, Eingabefelder und Fließtext — dort haben Lesbarkeit und Performance Vorrang. Stapele kein Glas auf Glas.
+
+<DoDont kind="do">Glas nur auf Flächen einsetzen, die *über* Content schweben (Bars, Overlays, FABs).</DoDont>
+<DoDont kind="dont">Glas auf Eingabefeldern, Tabellen oder Fließtext verwenden — die Transluzenz mindert die Lesbarkeit.</DoDont>
+
+## Beispiele
+
+<Example code={`<div style={{ background: 'linear-gradient(135deg, #34c759, #007aff 55%, #af52de)', padding: 24, display: 'flex', gap: 20, flexWrap: 'wrap' }}>
+  <GlassSurface variant="card" style={{ padding: 16, display: 'grid', gap: 4, color: 'var(--prn-label)' }}>
+    <span style={{ color: 'var(--prn-label-2)' }}>Schritte</span>
+    <span style={{ font: 'var(--prn-text-metric)' }}>3.824</span>
+  </GlassSurface>
+  <GlassSurface variant="floating" as="button" aria-label="Neuer Eintrag" style={{ width: 56, height: 56, display: 'grid', placeItems: 'center', cursor: 'pointer', color: 'var(--prn-label)' }}>
+    <Icon name="plus" size={24} />
+  </GlassSurface>
+</div>`} />
+
+## Accessibility
+
+Glas ist eine reine Optikschicht ohne eigenes Verhalten — die Zugänglichkeit hängt am gewählten Element und Inhalt. Der Effekt nutzt `backdrop-filter`; fehlt Browser-Support oder ist `prefers-reduced-transparency` gesetzt, fällt jede Fläche automatisch auf einen **opaken** Hintergrund zurück, sodass der Kontrast erhalten bleibt. Prüfe den Text-zu-Hintergrund-Kontrast (WCAG-AA) gerade über bewegten/bunten Backdrops, und rendere interaktive Glas-Flächen mit `as="button"` (oder einem echten interaktiven Element) plus `aria-label`, damit sie fokussierbar und benannt sind.
+
+## Props
+
+<PropsTable name="GlassSurface" />

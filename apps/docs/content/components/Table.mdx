@@ -1,0 +1,35 @@
+# Table
+
+Die Table ist ein schlankes Tabellen-Primitive mit Tastatur-Navigation, optionaler Zeilenauswahl und sortierbaren Spalten.
+
+## Verwendung
+
+Baue die Tabelle aus `TableHeader` mit `Column`-Definitionen und `TableBody`, dessen `Row`/`Cell` du statisch oder über `items` aus Daten renderst. Markiere die identifizierende Spalte mit `isRowHeader`. Schalte Auswahl über `selectionMode` (`single`/`multiple`) frei — React Aria ergänzt dann automatisch Auswahl-Checkboxen. Sortierbare Spalten bekommen `allowsSorting`; den Sortierzustand hältst du via `sortDescriptor`/`onSortChange` selbst. Für große, virtualisierte Daten-Grids gibt es separat die `AnalyticalTable`.
+
+<DoDont kind="do">Genau eine Spalte als `isRowHeader` auszeichnen, damit Screenreader jede Zeile sinnvoll benennen.</DoDont>
+<DoDont kind="dont">Die Table für große, gefilterte und virtualisierte Datenmengen erzwingen — dafür ist die `AnalyticalTable` gedacht.</DoDont>
+
+## Beispiele
+
+Mehrfachauswahl mit Checkboxen:
+
+<Example code={`<Table aria-label="Marktpartner" selectionMode="multiple" defaultSelectedKeys={['9900123011']}>
+  <TableHeader>
+    <Column id="name" isRowHeader>Marktpartner</Column>
+    <Column id="rolle">Rolle</Column>
+    <Column id="sparte">Sparte</Column>
+  </TableHeader>
+  <TableBody>
+    <Row id="9900123010"><Cell>Stadtwerke Musterstadt</Cell><Cell>Lieferant</Cell><Cell>Strom</Cell></Row>
+    <Row id="9900123011"><Cell>EnergieNetz AG</Cell><Cell>Netzbetreiber</Cell><Cell>Strom</Cell></Row>
+    <Row id="9900123012"><Cell>GasVersorgung GmbH</Cell><Cell>Lieferant</Cell><Cell>Gas</Cell></Row>
+  </TableBody>
+</Table>`} />
+
+## Accessibility
+
+Table basiert auf react-aria `Table` und liefert die vollständige Grid-Semantik: `columnheader`, `rowheader` (über `isRowHeader`) und `gridcell` mit korrekten Zeilen-/Spaltenbezügen. Tastaturnavigation per Pfeiltasten zwischen Zellen, Auswahl per Enter/Space; sortierbare Spalten kündigen ihren Zustand über `aria-sort` an und sind selbst per Tastatur auslösbar. Die Auswahl-Checkboxen im Multi-Modus werden automatisch beschriftet. Gib der Tabelle immer ein `aria-label` oder `aria-labelledby`.
+
+## Props
+
+<PropsTable name="Table" />

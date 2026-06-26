@@ -1,0 +1,42 @@
+# Bo4eCDocView
+
+Smarte, sachbearbeiter-optimierte Ansicht eines BO4E-cDoc (`CDocView` aus `@conuti-das/prince-ui-bo4e`). Richtungs-Umschalter (INBOUND/OUTBOUND), Gruppen-Tabs (Label ≠ boTyp), Auffälligkeiten-Leiste, Marktlokation als Hero (Sparte-Icon, Status-Badges, Endkunde-Kontaktkarte, Marktrollen mit Code→Name und Gültigkeits-Ampel). Jedes Feld öffnet ein Schema-Popover; Datumsangaben in Europe/Berlin, UTC im Popover.
+
+<EditorExample name="Bo4eCDocView" />
+
+## Verwendung
+
+`CDocView` ist read-only und rein deklarativ. Du übergibst:
+
+- `doc` — ein vollständiges cDoc, ein einzelnes BO oder ein Array von BOs (`CDocInput`).
+- `schema` — über `loadBo4eSchema({ fields, enums, bos })` aus den BO4E-Schema-JSONs geladen.
+- `resolvers` — optionale Auflösungen, z. B. `marktpartner(code) → { name }`, um Marktpartner-Codes mit Klarnamen anzureichern.
+- `now` — Referenzzeitpunkt für die Gültigkeits-Ampel (testbar/deterministisch).
+
+<DoDont kind="do">`now` in Tests fest setzen, damit die Gültigkeits-Ampel deterministisch ist.</DoDont>
+<DoDont kind="dont">Marktpartner-Codes ungeschönt anzeigen — über `resolvers.marktpartner` Klarnamen auflösen.</DoDont>
+
+## Beispiele
+
+Das Demo zeigt ein cDoc-Beispiel mit aufgelösten Marktpartner-Namen und festem Referenzzeitpunkt.
+
+```tsx
+import { CDocView, loadBo4eSchema } from "@conuti-das/prince-ui-bo4e";
+
+const schema = loadBo4eSchema({ fields, enums, bos });
+
+<CDocView
+  doc={cdoc}
+  schema={schema}
+  resolvers={{ marktpartner: (code) => lookup(code) }}
+  now={new Date("2026-06-25T12:00:00Z")}
+/>
+```
+
+## Accessibility
+
+Die Tabs und Popover basieren auf den react-aria-gestützten prince-ui-Primitives (Tastatur, Fokusfalle, ARIA). Status-Badges und die Gültigkeits-Ampel tragen neben der Farbe immer auch Text/Icon, damit sie nicht allein über Farbe kommunizieren.
+
+## Props
+
+<PropsTable name="CDocView" />

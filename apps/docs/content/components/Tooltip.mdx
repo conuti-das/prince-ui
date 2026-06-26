@@ -1,0 +1,24 @@
+# Tooltip
+
+Kurzer, nicht-interaktiver Hinweis, der bei Hover oder Fokus eines Elements erscheint.
+
+## Verwendung
+
+Tooltip kapselt `TooltipTrigger` und `Tooltip` aus React Aria: Das auslösende Element wird als `trigger`-Prop übergeben, der Hinweistext als Children. Auslösung per Hover **und** Tastatur-Fokus, Verzögerung (`delay`, Standard 600 ms) und Positionierung inklusive Pfeil stammen aus React Aria. Tooltips enthalten nur knappen, ergänzenden Text — keine interaktiven Elemente und keine essenziellen Informationen, ohne die die Aktion unverständlich wäre.
+
+<DoDont kind="do">Kurze Erläuterungen oder Tastenkürzel zeigen, die das Element ergänzen.</DoDont>
+<DoDont kind="dont">Buttons, Links oder Pflicht-Informationen in einen Tooltip legen — Inhalt, der angeklickt werden muss, gehört in ein [Popover](/components/popover).</DoDont>
+
+## Beispiele
+
+<Example code={`<Tooltip trigger={<Button variant="plain">Hover für Tooltip</Button>}>
+  Zeigt EDIFACT-Rohdaten
+</Tooltip>`} />
+
+## Accessibility
+
+Tooltip basiert auf react-aria-components `TooltipTrigger`/`Tooltip`. Entscheidend: Der Tooltip erscheint auch bei **Tastatur-Fokus** des Triggers, nicht nur bei Maus-Hover — damit ist der Hinweis ohne Zeigegerät erreichbar. React Aria verknüpft den Tooltip-Text über `aria-describedby` mit dem Auslöser und blendet ihn bei Escape aus. Weil der Inhalt rein beschreibend ist, darf er keine interaktiven Elemente enthalten (diese wären per Tastatur nicht erreichbar) und keine Information, die zur Bedienung zwingend nötig ist.
+
+## Props
+
+<PropsTable name="Tooltip" />

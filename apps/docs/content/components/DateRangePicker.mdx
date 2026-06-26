@@ -1,0 +1,31 @@
+# DateRangePicker
+
+Ein Zeitraumwähler mit Start- und Endfeld und zusammenhängender Bereichshervorhebung im Kalender.
+
+<Playground component="DateRangePicker" />
+
+## Verwendung
+
+Nutze `DateRangePicker` für durchgehende Zeiträume — Abrechnungs- oder Lieferperioden, Buchungsspannen. Zwei Datums-Felder (`start`/`end`) sind durch einen Trenner verbunden; der Button öffnet einen `RangeCalendar`, der den gewählten Bereich zusammenhängend hervorhebt. Für ein einzelnes Datum nutze `DatePicker`.
+
+<DoDont kind="do">Beschrifte das Paar als Einheit nach der Bedeutung des Zeitraums (z. B. „Abrechnungszeitraum").</DoDont>
+<DoDont kind="dont">Baue keinen Zeitraum aus zwei separaten `DatePicker`n nach — der `RangeCalendar` verhindert ungültige Start-nach-Ende-Eingaben.</DoDont>
+
+## Beispiele
+
+<Example code={`<DateRangePicker
+  label="Abrechnungszeitraum"
+  description="Beginn und Ende der Lieferperiode."
+  defaultValue={{
+    start: new CalendarDate(2026, 1, 1),
+    end: new CalendarDate(2026, 12, 31),
+  }}
+/>`} />
+
+## Accessibility
+
+`DateRangePicker` baut auf react-aria `DateRangePicker` auf. Start- und Endfeld bestehen jeweils aus Spinbutton-Segmenten mit den Slots `start`/`end`; der Tabulator führt durch beide Felder und den Trigger-Button. Der `RangeCalendar` im `Popover` ist per Tastatur navigierbar und markiert Start- und Endtag (`[data-selection-start]`/`[data-selection-end]`) sowie die dazwischenliegende Spanne. Ungültige Bereiche (Ende vor Start) werden automatisch verhindert. Ohne sichtbares `label` ist eine ARIA-Beschriftung erforderlich.
+
+## Props
+
+<PropsTable name="DateRangePicker" />

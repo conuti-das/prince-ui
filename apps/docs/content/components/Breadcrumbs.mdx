@@ -1,0 +1,28 @@
+# Breadcrumbs
+
+Breadcrumbs zeigen den Pfad zur aktuellen Seite und erlauben den Sprung zu übergeordneten Ebenen.
+
+## Verwendung
+
+Übergib pro Ebene ein `Breadcrumb`. Übergeordnete Ebenen enthalten einen `Link`, der letzte Eintrag ist reiner Text und wird automatisch als aktuelle Seite (`[data-current]`) markiert. Für klickbare Breadcrumbs verzichte auf `href` und nutze stattdessen `onAction` mit `id` pro Eintrag, um die Navigation programmatisch zu steuern. Setze Breadcrumbs für hierarchische Tiefe ein — nicht als Ersatz für eine flache Hauptnavigation.
+
+<DoDont kind="do">Den letzten Eintrag als nicht verlinkten Text belassen — er ist die aktuelle Seite, kein Ziel.</DoDont>
+<DoDont kind="dont">Sehr lange Pfade ungekürzt zeigen; tiefe Hierarchien lieber kürzen (z. B. mittlere Ebenen zusammenfassen).</DoDont>
+
+## Beispiele
+
+Klickbarer Pfad über `onAction`:
+
+<Example code={`<Breadcrumbs aria-label="Pfad" onAction={(key) => alert('Klick: ' + key)}>
+  <Breadcrumb id="home"><Link>Start</Link></Breadcrumb>
+  <Breadcrumb id="vertraege"><Link>Verträge</Link></Breadcrumb>
+  <Breadcrumb id="detail">Vertrag 4711</Breadcrumb>
+</Breadcrumbs>`} />
+
+## Accessibility
+
+Breadcrumbs basieren auf react-aria `Breadcrumbs` und rendern eine `nav`-Landmark mit einer geordneten Liste — die Reihenfolge der Ebenen ist damit auch für Screenreader erkennbar. Der letzte Eintrag erhält `aria-current="page"`, sodass die aktuelle Position angekündigt wird. Gib der Navigation ein `aria-label` (z. B. „Pfad"), um sie von anderen `nav`-Bereichen zu unterscheiden. Die Chevron-Trenner werden per CSS erzeugt und sind dekorativ — sie landen nicht im Vorlesefluss.
+
+## Props
+
+<PropsTable name="Breadcrumbs" />

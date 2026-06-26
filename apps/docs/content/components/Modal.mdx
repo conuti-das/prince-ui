@@ -1,0 +1,32 @@
+# Modal
+
+Modaler Dialog für fokussierte Aufgaben und Bestätigungen, der den darunterliegenden Inhalt blockiert.
+
+## Verwendung
+
+Modal wird nicht direkt gerendert, sondern über einen `DialogTrigger` geöffnet: Der erste Child ist das auslösende Element (meist ein [Button](/components/button)), der zweite das `Modal`. Fokus-Trap, Escape-Schließen und Fokus-Rückgabe an den Auslöser übernimmt React Aria automatisch. Setze `isDismissable`, wenn ein Klick auf den Hintergrund schließen darf — bei kritischen Bestätigungen oder unsaved-changes besser weglassen. Eine Schließen-Aktion im Modal nutzt `slot="close"`.
+
+<DoDont kind="do">Eine eindeutige Primäraktion (`filled`) und einen Abbruch-Weg im Modal anbieten.</DoDont>
+<DoDont kind="dont">`isDismissable` bei Dialogen mit ungespeicherten Eingaben setzen — ein versehentlicher Hintergrundklick verwirft sonst Daten.</DoDont>
+
+## Beispiele
+
+<Example code={`<DialogTrigger>
+  <Button>Dialog öffnen</Button>
+  <Modal title="Widget konfigurieren">
+    <p style={{ color: 'var(--prn-label-2)', margin: 0 }}>
+      React Aria übernimmt Fokus-Trap, Escape und Fokus-Rückgabe automatisch.
+    </p>
+    <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
+      <Button variant="filled" slot="close">Fertig</Button>
+    </div>
+  </Modal>
+</DialogTrigger>`} />
+
+## Accessibility
+
+Modal basiert auf react-aria-components `ModalOverlay`/`Modal`/`Dialog`: Der Fokus wird beim Öffnen in den Dialog verschoben und beim Schließen an den Auslöser zurückgegeben, der Rest der Seite ist per `aria-hidden`/Fokus-Trap unzugänglich, und Escape schließt (sofern nicht unterdrückt). Der `title` wird automatisch als `aria-labelledby` mit dem Dialog verknüpft — ein Titel ist daher Pflicht, damit Screenreader den Dialog beim Öffnen ansagen.
+
+## Props
+
+<PropsTable name="Modal" />

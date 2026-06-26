@@ -1,0 +1,75 @@
+# Typografie
+
+Die Typografie folgt dem Apple-System-Stack: `--prn-font` setzt auf
+`-apple-system`/`SF Pro` und fällt sauber auf `system-ui` zurück. Daneben gibt es
+`--prn-font-mono` (SF Mono / Menlo) für Code und Zahlen-Tabellen sowie `--prn-font-rounded`
+(SF Pro Rounded) für betont freundliche Flächen. Im CU-Theme wird `--prn-font` auf den
+Inter-geführten Community-Stack umgestellt — auch hier gilt: Schrift über den Token beziehen,
+nie eine Font-Family hart setzen.
+
+## Typo-Skala
+
+Die Skala ist als fertige `font`-Shorthand-Tokens hinterlegt (Gewicht, Größe, Zeilenhöhe und
+Family in einem Wert). Du setzt damit eine Textebene mit genau einer Deklaration:
+`font: var(--prn-text-body)`. Die Stufen reichen von `--prn-text-large-title` bis
+`--prn-text-caption`; `--prn-text-metric` ist die Sonderstufe für Hero-KPIs.
+
+<Example code={`<div style={{ color: 'var(--prn-label)' }}>
+  {[
+    ['--prn-text-large-title', 'Large Title'],
+    ['--prn-text-title', 'Title'],
+    ['--prn-text-title-3', 'Title 3'],
+    ['--prn-text-headline', 'Headline'],
+    ['--prn-text-body', 'Body — Marktkommunikation in der Energiewirtschaft'],
+    ['--prn-text-callout', 'Callout'],
+    ['--prn-text-subhead', 'Subhead'],
+    ['--prn-text-footnote', 'Footnote'],
+    ['--prn-text-caption', 'Caption'],
+  ].map(([token, label]) => (
+    <div key={token} style={{ marginBottom: 12 }}>
+      <div style={{ font: 'var(' + token + ')' }}>{label}</div>
+      <code style={{ font: 'var(--prn-text-caption)', color: 'var(--prn-label-3)' }}>{token}</code>
+    </div>
+  ))}
+</div>`} />
+
+## Body ist 17px
+
+`--prn-text-body` ist mit 17px/1.47 die Apple-Body-Größe und damit der Default für lesbaren
+Fließtext. Kleinere Stufen (`--prn-text-subhead`, `--prn-text-footnote`, `--prn-text-caption`)
+sind für Metadaten, Beschriftungen und Hilfetexte reserviert — nicht für längere
+Lesepassagen.
+
+<DoDont kind="do">Fließtext mit `--prn-text-body` setzen — 17px sind komfortabel lesbar.</DoDont>
+<DoDont kind="dont">Lange Absätze in `--prn-text-caption` (12px) zwängen, um Platz zu sparen.</DoDont>
+
+## Tabellenzahlen
+
+Für Spalten mit Zahlen — Beträge, Mengen, Zeitreihen — bringt die Token-Basis die Hilfsklasse
+`.prn-tnum`, die `tabular-nums` aktiviert. Damit haben alle Ziffern dieselbe Breite und
+Zahlen fluchten sauber untereinander.
+
+<Example code={`<div style={{ font: 'var(--prn-text-body)', color: 'var(--prn-label)' }}>
+  <div className="prn-tnum">1.234,56 €</div>
+  <div className="prn-tnum">  987,10 €</div>
+  <div className="prn-tnum">   42,00 €</div>
+</div>`} />
+
+## Hierarchie aufbauen
+
+Größe und Gewicht der Skala kombinieren sich mit den Label-Farb-Tokens zu einer
+Lese-Hierarchie: prominente Überschrift in `--prn-label`, begleitender Subtext in
+`--prn-label-2`.
+
+<Example code={`<div>
+  <div style={{ font: 'var(--prn-text-title)', color: 'var(--prn-label)' }}>Lastgang</div>
+  <div style={{ font: 'var(--prn-text-subhead)', color: 'var(--prn-label-2)' }}>Viertelstundenwerte, letzte 24 Stunden</div>
+</div>`} />
+
+## Accessibility
+
+Schriftgrößen sind in `rem` definiert und skalieren damit mit der Browser- und
+System-Schriftgröße der Nutzerin — feste `px`-Overrides würden diese Skalierung aushebeln.
+Achte beim Aufbau von Hierarchie darauf, sie nicht allein über Größe zu transportieren:
+Überschriften gehören in echte `h1`–`h6`-Elemente, damit Screenreader die Struktur
+vorlesen können — eine große Schrift allein erzeugt keine semantische Überschrift.

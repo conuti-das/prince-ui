@@ -1,0 +1,31 @@
+# Slider
+
+Der Slider wählt einen Wert aus einem stetigen Bereich per Ziehen oder Tastatur.
+
+<Playground component="Slider" />
+
+## Verwendung
+
+Nutze den Slider, wenn der ungefähre Wert in einem Bereich wichtiger ist als die exakte Zahl (Lautstärke, Auslastung, Schwellwerte). Über `formatOptions` wird die Wertanzeige als Prozent, Währung oder Einheit lokalisiert dargestellt; `showValue` blendet die `Output`-Anzeige ein oder aus. Wenn der genaue Wert exakt eingegeben werden soll, ist ein [NumberField](/components/numberfield) passender.
+
+<DoDont kind="do">`step` an die fachlich sinnvolle Granularität koppeln (z. B. `0.01` bei einer Prozent-Skala von 0–1).</DoDont>
+<DoDont kind="dont">Den Slider für präzise oder weit gespreizte Eingaben einsetzen, bei denen der exakte Wert zählt — dort ist ein NumberField verlässlicher.</DoDont>
+
+## Beispiele
+
+<Example code={`<Slider
+  label="Auslastung"
+  defaultValue={0.6}
+  minValue={0}
+  maxValue={1}
+  step={0.01}
+  formatOptions={{ style: 'percent' }}
+/>`} />
+
+## Accessibility
+
+Slider basiert auf react-aria-components `Slider` (Track, Fill, Thumb, Output). Der Thumb trägt `role="slider"` mit `aria-valuemin/-max/-now`; Pfeiltasten verschieben um `step`, Pos1/Ende springen an die Grenzen. Das `label` und die `Output`-Anzeige sind verknüpft, sodass Screenreader Achse und aktuellen Wert vorlesen.
+
+## Props
+
+<PropsTable name="Slider" />

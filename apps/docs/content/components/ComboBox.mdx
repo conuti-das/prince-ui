@@ -1,0 +1,29 @@
+# ComboBox
+
+Die ComboBox kombiniert ein Texteingabefeld mit einer durchsuchbaren Auswahlliste.
+
+<Playground component="ComboBox" />
+
+## Verwendung
+
+Nutze die ComboBox, wenn die Optionsliste lang ist und Tippen das Finden beschleunigt — React Aria filtert die `ComboBoxItem`-Optionen anhand der Eingabe. Mit `allowsCustomValue` darf der Nutzer auch einen Wert eingeben, der nicht in der Liste steht; ohne diese Option wird die Eingabe auf die vorhandenen Optionen eingeschränkt. Bei einer kurzen festen Liste ohne Suchbedarf ist ein [Select](/components/select) einfacher.
+
+<DoDont kind="do">Die ComboBox bei langen Listen (Marktpartner, Codes) nehmen, wo Tippen schneller zum Ziel führt als Scrollen.</DoDont>
+<DoDont kind="dont">`allowsCustomValue` aktivieren, wenn nur definierte Schlüssel gültig sind — sonst entstehen ungültige Freitext-Werte.</DoDont>
+
+## Beispiele
+
+<Example code={`<ComboBox label="Marktrolle" placeholder="Suchen…">
+  <ComboBoxItem id="lieferant">Lieferant</ComboBoxItem>
+  <ComboBoxItem id="netzbetreiber">Netzbetreiber</ComboBoxItem>
+  <ComboBoxItem id="messstellenbetreiber">Messstellenbetreiber</ComboBoxItem>
+  <ComboBoxItem id="bilanzkoordinator">Bilanzkoordinator</ComboBoxItem>
+</ComboBox>`} />
+
+## Accessibility
+
+ComboBox basiert auf react-aria-components `ComboBox` und implementiert das ARIA-Combobox-Pattern: Das Eingabefeld trägt `role="combobox"` mit `aria-expanded` und `aria-activedescendant`, das Popover ist eine `listbox`. Pfeiltasten navigieren die Optionen, Enter wählt, Escape schließt — Auswahl und aktive Option werden Screenreadern korrekt gemeldet. Setze immer ein `label`.
+
+## Props
+
+<PropsTable name="ComboBox" />

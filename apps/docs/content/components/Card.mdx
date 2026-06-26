@@ -1,0 +1,31 @@
+# Card
+
+Glas-Container mit optionalem Titel-Header, freiem Header-Slot rechts und konfigurierbarem Innenabstand.
+
+<Playground component="Card" />
+
+## Verwendung
+
+`title` rendert eine Kopfzeile; ohne `title` ist die Karte ein reiner Glas-Container für freien Inhalt. Der `header`-Slot platziert ein beliebiges Element rechts in der Kopfzeile (z. B. ein `Badge` oder eine Aktion). `padding` steuert den Innenabstand (`none` / `compact` / `regular` / `spacious`) — wähle `none`, wenn der Inhalt selbst randlos andocken soll (etwa eine Tabelle).
+
+<DoDont kind="do">Gruppiere zusammengehörige Inhalte unter einem klaren `title` und nutze den `header`-Slot für Status oder eine einzelne Aktion.</DoDont>
+<DoDont kind="dont">Karten tief ineinander verschachteln — gestapelte Glas-Flächen mindern Kontrast und Lesbarkeit.</DoDont>
+
+## Beispiele
+
+<Example code={`<div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 16 }}>
+  <Card title="Übersicht">
+    <p style={{ margin: 0 }}>Glas-Container mit Titel-Header und regulärem Innenabstand.</p>
+  </Card>
+  <Card title="Letzte Transaktionen" header={<Badge tone="green">Live</Badge>} padding="compact">
+    <p style={{ margin: 0 }}>Header-Slot rechts (hier ein Badge), kompaktes Padding.</p>
+  </Card>
+</div>`} />
+
+## Accessibility
+
+Ein gesetzter `title` gibt der Karte eine sichtbare Überschrift, die den Inhalt einordnet — nutze ihn, wenn die Karte einen abgrenzbaren Bereich bildet. Der `header`-Slot ist normaler DOM-Inhalt; interaktive Elemente darin (Buttons, Links) bleiben eigenständig fokussierbar und in der Tab-Reihenfolge. Die Karte selbst ist ein passiver Container und fängt keinen Fokus ab.
+
+## Props
+
+<PropsTable name="Card" />

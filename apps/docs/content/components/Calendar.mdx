@@ -1,0 +1,34 @@
+# Calendar
+
+Ein eingebetteter Monatskalender zur Auswahl eines einzelnen Datums.
+
+<Playground component="Calendar" />
+
+## Verwendung
+
+Nutze `Calendar`, wenn der Kalender dauerhaft sichtbar sein soll — etwa in einer Seitenleiste oder einem Buchungsdialog, in dem das Datum visuell im Kontext stehen muss. Soll der Kalender nur bei Bedarf aufklappen, nutze stattdessen `DatePicker`. Der ausgewählte Tag erscheint in Akzentfarbe, der heutige Tag mit Ring, Tage außerhalb des Monats sind gedimmt.
+
+<DoDont kind="do">Begrenze den wählbaren Bereich mit `minValue`/`maxValue`, wenn nur bestimmte Tage gültig sind.</DoDont>
+<DoDont kind="dont">Bette keinen sichtbaren `Calendar` ein, wenn Platz knapp ist — dann ist der `DatePicker` mit Popover die kompaktere Wahl.</DoDont>
+
+## Beispiele
+
+<Example code={`<Calendar
+  aria-label="Termin"
+  defaultValue={new CalendarDate(2026, 6, 15)}
+/>`} />
+
+<Example code={`<Calendar
+  aria-label="Begrenzter Zeitraum"
+  defaultValue={new CalendarDate(2026, 6, 15)}
+  minValue={new CalendarDate(2026, 6, 5)}
+  maxValue={new CalendarDate(2026, 6, 25)}
+/>`} />
+
+## Accessibility
+
+`Calendar` baut auf react-aria `Calendar` auf und rendert ein echtes Grid (`role="grid"`): Pfeiltasten bewegen den Fokus zwischen den Tagen, Bild auf/ab wechseln den Monat, Pos1/Ende springen an Wochen-/Monatsgrenzen, Enter wählt aus. Die Navigations-Buttons tragen beschreibende Labels, der heutige Tag und Tage außerhalb des Bereichs werden auch nicht nur über Farbe (Ring/`aria-disabled`) kommuniziert. Da `Calendar` kein sichtbares `label`-Element hat, ist ein `aria-label` erforderlich.
+
+## Props
+
+<PropsTable name="Calendar" />

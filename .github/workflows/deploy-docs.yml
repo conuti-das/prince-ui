@@ -1,0 +1,52 @@
+name: Deploy Docs to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Rechte für die Pages-Bereitstellung (OIDC-Token + Pages schreiben).
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Nur ein Pages-Deploy gleichzeitig; laufende Deploys nicht abbrechen.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      # Workspace-Pakete (prince-ui + bpmn/dmn/forms/bo4e) bauen, damit die Doku
+      # ihre dist-Entries auflösen kann — sonst "Failed to resolve entry".
+      - name: Build packages
+        run: pnpm -r --filter "./packages/*" build
+      - name: Build docs (Subpath /prince-ui/)
+        run: pnpm --filter @conuti-das/prince-ui-docs build
+        env:
+          # Project-Page liegt unter conuti-das.github.io/prince-ui/ → Vite-base.
+          DOCS_BASE_PATH: /prince-ui/
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: apps/docs/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,28 @@
+# TagGroup
+
+Die TagGroup ist eine Reihe kompakter Chips — zum Filtern, Kennzeichnen oder Entfernen von Werten.
+
+## Verwendung
+
+Übergib die Chips als `Tag` mit stabiler `id`; eine sichtbare Gruppenbeschriftung setzt du über `label`. Mit `selectionMode` (`single`/`multiple`) werden die Chips auswählbar — typisch für Filterleisten. Für entfernbare Chips renderst du die Tags aus `items` und gibst einen `onRemove`-Handler an; React Aria ergänzt dann je Tag einen ×-Button. Nutze die TagGroup für überschaubare Mengen von Werten, nicht für lange Auswahllisten.
+
+<DoDont kind="do">`onRemove` nur dort einsetzen, wo das Entfernen tatsächlich erlaubt ist — der ×-Button signalisiert eine echte Aktion.</DoDont>
+<DoDont kind="dont">Auswählbare Filter-Chips und entfernbare Werte-Chips optisch vermischen — beides in einer Gruppe verwirrt die erwartete Interaktion.</DoDont>
+
+## Beispiele
+
+Entfernbare Chips mit ×-Button:
+
+<Example code={`<TagGroup label="Aktive Filter" aria-label="Aktive Filter">
+  <Tag id="strom">Strom</Tag>
+  <Tag id="gas">Gas</Tag>
+  <Tag id="wasser">Wasser</Tag>
+</TagGroup>`} />
+
+## Accessibility
+
+TagGroup basiert auf react-aria `TagGroup`/`TagList`/`Tag`: Die Liste hat die Rolle `grid` bzw. `listbox` (je nach Auswahlmodus), Tags tragen ihren Auswahlzustand über `aria-selected`. Die Chips bilden einen Roving Tabindex — mit ←/→ wandert der Fokus durch die Tags, ohne dass jeder Chip einen eigenen Tab-Stopp belegt. Bei entfernbaren Tags ist der ×-Button per Tastatur erreichbar und mit der Delete/Backspace-Taste auf dem fokussierten Tag bedienbar. Setze eine Beschriftung über `label` oder `aria-label`.
+
+## Props
+
+<PropsTable name="TagGroup" />

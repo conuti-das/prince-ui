@@ -1,0 +1,24 @@
+# SearchField
+
+Das SearchField ist ein Texteingabefeld speziell für Suchen — mit Clear-Button und Submit-/Escape-Verhalten.
+
+<Playground component="SearchField" />
+
+## Verwendung
+
+Nutze das SearchField überall, wo Inhalt gefiltert oder gesucht wird (Tabellen, Listen, Transaktionen). Im Unterschied zum TextField bringt es einen Löschen-Knopf mit, reagiert auf Enter zum Absenden und auf Escape zum Leeren. Verbinde es über `onChange`/`onSubmit` mit der Filterlogik der Ansicht. Für freie Texteingaben ohne Such-Semantik bleibt das [TextField](/components/textfield) die richtige Wahl.
+
+<DoDont kind="do">Das SearchField für Filter-/Such-Eingaben nehmen, damit Clear-Knopf und Escape-zum-Leeren erwartungsgemäß funktionieren.</DoDont>
+<DoDont kind="dont">Den Such-Begriff als einziges Feld in ein `<Form>` mit Speichern-Button packen — Suche soll laufend oder per Enter wirken, nicht via Formular-Absenden.</DoDont>
+
+## Beispiele
+
+<Example code={`<SearchField label="Suche" placeholder="Transaktion suchen…" />`} />
+
+## Accessibility
+
+SearchField basiert auf react-aria-components `SearchField` und rendert ein Input mit `type="search"`. Der Clear-Button erhält ein zugängliches Label, Escape leert das Feld, Enter sendet ab — alles per Tastatur bedienbar. Das `label` ist verknüpft; ein `placeholder` ersetzt es nicht.
+
+## Props
+
+<PropsTable name="SearchField" />

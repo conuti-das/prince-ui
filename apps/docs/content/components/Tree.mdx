@@ -1,0 +1,34 @@
+# Tree
+
+Der Tree stellt hierarchische Daten als aufklappbaren Baum dar — mit Tastatur-Navigation und optionaler Auswahl.
+
+## Verwendung
+
+Verschachtele `TreeItem`-Elemente: ein `TreeItem` mit weiteren `TreeItem`-Kindern wird zum aufklappbaren Knoten, ein Blatt hat keine Kinder. Jeder Knoten braucht eine `id` und einen `title`. Steuere die initial geöffneten Knoten über `defaultExpandedKeys` und das Auswahlverhalten über `selectionMode`. Nutze den Tree für echte Hierarchien (Marktrollen, Sparten, Ordnerstrukturen) — für flache Aufzählungen ist eine `ListBox` oder `GridList` passender.
+
+<DoDont kind="do">Wichtige Knoten über `defaultExpandedKeys` vorab öffnen, damit der relevante Kontext ohne Klick sichtbar ist.</DoDont>
+<DoDont kind="dont">Den Tree für flache, nicht-hierarchische Listen verwenden — die Einrück- und Aufklapp-Semantik suggeriert sonst eine Struktur, die es nicht gibt.</DoDont>
+
+## Beispiele
+
+Hierarchie mit Einfachauswahl:
+
+<Example code={`<Tree aria-label="Sparten" selectionMode="single" style={{ width: 320 }} defaultExpandedKeys={['strom', 'gas']}>
+  <TreeItem id="strom" title="Strom">
+    <TreeItem id="strom-rlm" title="RLM (leistungsgemessen)" />
+    <TreeItem id="strom-slp" title="SLP (Standardlastprofil)" />
+  </TreeItem>
+  <TreeItem id="gas" title="Gas">
+    <TreeItem id="gas-rlm" title="RLM (leistungsgemessen)" />
+    <TreeItem id="gas-slp" title="SLP (Standardlastprofil)" />
+  </TreeItem>
+  <TreeItem id="wasser" title="Wasser" />
+</Tree>`} />
+
+## Accessibility
+
+Tree basiert auf react-aria `Tree`: Der Container hat die Rolle `tree`, Knoten die Rolle `treeitem` mit `aria-expanded` (für Knoten mit Kindern) und `aria-level` für die Verschachtelungstiefe. Tastatur ist vollständig eingebaut — ↑/↓ wandert durch die sichtbaren Knoten, →/← klappt auf bzw. zu, Type-ahead springt zu Titeln. Auswahl per Enter/Space, sofern `selectionMode` aktiv ist. Das Aufklapp-Chevron ist visuell; der Zustand wird über `aria-expanded` transportiert. Gib dem Tree ein `aria-label`.
+
+## Props
+
+<PropsTable name="Tree" />

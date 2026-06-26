@@ -1,0 +1,31 @@
+# EmptyState
+
+Leerzustand für Bereiche ohne Daten — mit Icon, Titel, erklärender Beschreibung und optionalem Aktions-Slot.
+
+<Playground component="EmptyState" />
+
+## Verwendung
+
+Setze EmptyState ein, wenn eine Liste, Tabelle oder Karte (noch) keinen Inhalt hat. Die `description` sollte erklären, *warum* nichts da ist und *was* der Nutzer tun kann; der `action`-Slot bietet den nächsten Schritt an (Filter zurücksetzen, Datensatz anlegen). Unterscheide „leer, weil noch nichts angelegt" von „leer, weil der Filter nichts trifft" — die Texte und Aktionen sind verschieden.
+
+<DoDont kind="do">Eine konkrete Folgeaktion anbieten (`action`), statt den Nutzer in der Sackgasse zu lassen.</DoDont>
+<DoDont kind="dont">EmptyState als Fehleranzeige missbrauchen — für fehlgeschlagene Ladevorgänge ist ein Notice/Fehlerzustand passender.</DoDont>
+
+## Beispiele
+
+<Example code={`<Card padding="none">
+  <EmptyState
+    icon={<Icon name="inbox" size={28} />}
+    title="Keine Transaktionen"
+    description="Für den gewählten Zeitraum wurden keine Transaktionen gefunden. Passe die Filter an."
+    action={<Badge tone="blue">Filter zurücksetzen</Badge>}
+  />
+</Card>`} />
+
+## Accessibility
+
+EmptyState ist ein zusammengesetzter, nicht-interaktiver Inhaltsblock: `title` und `description` tragen die Botschaft in Klartext, das `icon` ist dekorativ und sollte für Screenreader nicht zusätzlich vorgelesen werden. Achte darauf, dass das im `action`-Slot platzierte Element selbst zugänglich ist — ein anklickbares „Filter zurücksetzen" gehört in einen [Button](/components/button) oder [Link](/components/link), nicht in ein rein visuelles [Badge](/components/badge), wenn es tatsächlich eine Aktion auslöst.
+
+## Props
+
+<PropsTable name="EmptyState" />

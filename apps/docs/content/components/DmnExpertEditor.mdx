@@ -1,0 +1,38 @@
+# DmnExpertEditor
+
+dmn-js-Modeler für DMN 1.3 (DRD + Decision-Table + Literal-Expression), gethemt über die prince-ui-Token-Bridge. Der „Experten-Modus" für Anwender:innen, die die volle DMN-Notation brauchen.
+
+<EditorExample name="DmnExpertEditor" />
+
+## Verwendung
+
+Wie der BpmnEditor folgt der DmnExpertEditor dem `value`/`defaultValue`/`onChange`-Muster und liefert über `onSave` das serialisierte DMN-XML. Mit `colorScheme="dark"` rendert der Canvas in der dunklen Token-Variante.
+
+> **Hinweis:** dmn-js ist ein optionaler Peer und wird lazy per dynamic import geladen. Ist `dmn-js@^17` nicht installiert, zeigt der Canvas eine Fehlermeldung statt des Editors.
+
+<DoDont kind="do">Den Experten-Editor für komplexe DMN (mehrere Decisions, Literal-Expressions) anbieten.</DoDont>
+<DoDont kind="dont">Sachbearbeiter:innen mit der vollen DRD-Notation konfrontieren, wenn eine einzelne Entscheidungstabelle reicht — dann ist `DmnTableEditor` die bessere Wahl.</DoDont>
+
+## Beispiele
+
+Das Demo zeigt die Entscheidung „Rabattstufe" als Entscheidungstabelle mit `hitPolicy="UNIQUE"`.
+
+```tsx
+import { DmnExpertEditor } from "@conuti-das/prince-ui-dmn";
+
+<div style={{ height: 520 }}>
+  <DmnExpertEditor
+    defaultValue={xml}
+    onChange={setXml}
+    onSave={(xml) => persist(xml)}
+  />
+</div>
+```
+
+## Accessibility
+
+Der Editor erbt Tastatur- und Fokusverhalten von dmn-js. Die prince-ui-Token-Bridge sorgt für ausreichende Kontraste in hellen und dunklen Themes.
+
+## Props
+
+<PropsTable name="DmnExpertEditor" />

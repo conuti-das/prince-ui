@@ -1,0 +1,30 @@
+# Meter
+
+Füllstandsanzeige für eine Menge innerhalb eines bekannten Bereichs — Speicherbelegung, Kontingente, Auslastung.
+
+<Playground component="Meter" />
+
+## Verwendung
+
+Meter stellt einen **statischen** Wert im Verhältnis zu einem Maximum dar, nicht einen laufenden Vorgang (dafür siehe [ProgressBar](/components/progressbar)). Mit `bands` färbt sich die Füllung nach Auslastung — grün im unkritischen, orange im erhöhten und rot im kritischen Bereich. Ohne `bands` nutzt Meter die neutrale Akzentfarbe.
+
+<DoDont kind="do">`bands` einschalten, wenn ein hoher Wert ein Problem signalisiert (volle Platte, Limit fast erreicht).</DoDont>
+<DoDont kind="dont">Meter für Vorgänge mit Zeitverlauf verwenden — das ist ProgressBar.</DoDont>
+
+## Beispiele
+
+<Example code={`<div style={{ display: 'flex', flexDirection: 'column', gap: 20, maxWidth: 360 }}>
+  <Meter label="Niedrig" value={30} bands />
+  <Meter label="Mittel" value={70} bands />
+  <Meter label="Hoch" value={95} bands />
+</div>`} />
+
+<Example code={`<Meter label="Akku" value={48} />`} />
+
+## Accessibility
+
+Meter basiert auf react-aria `Meter` und liefert `role="meter"` mit `aria-valuenow`/`aria-valuemin`/`aria-valuemax`. Die Band-Färbung ist eine zusätzliche, rein visuelle Ebene — die kritische Auslastung darf nicht ausschließlich über Rot kommuniziert werden; `showValue` macht die Zahl auch ohne Farbwahrnehmung lesbar. Ein `label` ist erforderlich, damit klar ist, was gemessen wird.
+
+## Props
+
+<PropsTable name="Meter" />

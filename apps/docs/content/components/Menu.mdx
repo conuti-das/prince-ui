@@ -1,0 +1,28 @@
+# Menu
+
+Das Menu ist ein Aktionsmenü, das über einen Trigger ein Popover mit auswählbaren Einträgen öffnet.
+
+## Verwendung
+
+Übergib den auslösenden Button als `trigger` und die Einträge als `MenuItem`-Kinder. Jeder `MenuItem` braucht eine stabile `id`, über die `onAction` den geklickten Eintrag meldet. Nutze ein Menu für eine kurze Liste verwandter Aktionen zu einem Objekt (Bearbeiten, Duplizieren, Löschen) — nicht für Navigation und nicht für die Auswahl eines Werts (dafür `Select` oder `ListBox`).
+
+<DoDont kind="do">Verwandte, sekundäre Aktionen zu einem Objekt bündeln und über ein „…"- oder „▾"-Trigger erreichbar machen.</DoDont>
+<DoDont kind="dont">Das Menu als Navigationsleiste oder als Ersatz für ein Auswahlfeld (`Select`) zweckentfremden.</DoDont>
+
+## Beispiele
+
+Aktionsmenü mit destruktivem Eintrag am Ende:
+
+<Example code={`<Menu trigger={<Button variant="tinted">Aktionen ▾</Button>}>
+  <MenuItem id="edit">Bearbeiten</MenuItem>
+  <MenuItem id="dup">Duplizieren</MenuItem>
+  <MenuItem id="del">Löschen</MenuItem>
+</Menu>`} />
+
+## Accessibility
+
+Menu basiert auf react-aria `MenuTrigger`/`Menu`: Der Trigger trägt `aria-haspopup` und `aria-expanded`, das Popover hat die Rolle `menu`, die Einträge `menuitem`. Tastatur ist vollständig eingebaut — Öffnen mit Enter/Space/Pfeiltaste, Navigation mit ↑/↓ inkl. Type-ahead, Schließen mit Esc, Fokus kehrt beim Schließen zum Trigger zurück. Außen-Klick und Fokus-Falle übernimmt React Aria. Da der Auslöser den Menü-Inhalt benennt, braucht ein Icon-only-Trigger ein `aria-label`.
+
+## Props
+
+<PropsTable name="Menu" />

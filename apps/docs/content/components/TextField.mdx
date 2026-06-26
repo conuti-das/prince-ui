@@ -1,0 +1,28 @@
+# TextField
+
+Das TextField erfasst einzeilige Texteingaben mit Label, optionaler Beschreibung und Feldfehler.
+
+<Playground component="TextField" />
+
+## Verwendung
+
+Setze immer ein aussagekräftiges `label` — es wird per React Aria mit dem Input verknüpft und ersetzt kein `placeholder`. Den `placeholder` nur als Beispiel-Eingabe nutzen, nicht als Ersatz für das Label. Erläuternde Hinweise (Format, Herkunft einer Nummer) gehören in `description`, damit sie dauerhaft sichtbar bleiben.
+
+<DoDont kind="do">Pflichtfelder mit `isRequired` markieren und Format-Hinweise in `description` legen (z. B. „13-stellige Codenummer").</DoDont>
+<DoDont kind="dont">Das Label durch einen `placeholder` ersetzen — er verschwindet beim Tippen und ist für Screenreader kein vollwertiges Label.</DoDont>
+
+## Beispiele
+
+<Example code={`<TextField
+  label="Marktpartner"
+  placeholder="z. B. 9900123000007"
+  description="13-stellige Codenummer des Marktpartners (DVGW/BDEW)."
+/>`} />
+
+## Accessibility
+
+TextField basiert auf react-aria-components `TextField` (Label, Input, Description, FieldError). Label und Beschreibung werden automatisch via `aria-labelledby`/`aria-describedby` verknüpft, der Fokus-Ring ist eingebaut. Validierungsfehler erscheinen im `FieldError` und werden dem Feld als `aria-describedby` zugeordnet — verlasse dich darauf statt auf reine Farb-Signale.
+
+## Props
+
+<PropsTable name="TextField" />

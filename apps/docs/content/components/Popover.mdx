@@ -1,0 +1,31 @@
+# Popover
+
+Schwebende Fläche für freien Inhalt, die an ein auslösendes Element angedockt wird — Detailinfos, kleine Formulare, Personalisierung.
+
+## Verwendung
+
+Popover wird wie [Modal](/components/modal) über einen `DialogTrigger` geöffnet: auslösendes Element zuerst, `Popover` danach. Positionierung relativ zum Trigger steuerst du über `placement` (z. B. `"bottom start"`); Außen-Klick und Escape-Schließen übernimmt React Aria. Im Gegensatz zum Modal blockiert ein Popover den restlichen Inhalt nicht — nutze es für nebensächliche, schnell schließbare Inhalte, nicht für blockierende Pflichtschritte. Dieselbe Basis nutzen FilterBar und die Spalten-Personalisierung der AnalyticalTable.
+
+<DoDont kind="do">Kurze, in sich geschlossene Inhalte zeigen, die der Nutzer mit Außen-Klick verwerfen kann.</DoDont>
+<DoDont kind="dont">Lange Formulare mit Pflichteingaben ins Popover packen — dafür ist ein Modal die richtige Wahl.</DoDont>
+
+## Beispiele
+
+<Example code={`<DialogTrigger>
+  <Button variant="tinted">Popover öffnen</Button>
+  <Popover placement="bottom start">
+    <div style={{ padding: 12, maxWidth: 260 }}>
+      <p style={{ margin: 0, color: 'var(--prn-label-2)' }}>
+        Freier Inhalt im Popover — Positionierung, Außen-Klick und Escape übernimmt React Aria.
+      </p>
+    </div>
+  </Popover>
+</DialogTrigger>`} />
+
+## Accessibility
+
+Popover basiert auf react-aria-components `Popover`. React Aria verwaltet den Fokus (Move-in beim Öffnen, Rückgabe an den Trigger beim Schließen), schließt bei Escape und Außen-Klick und positioniert die Fläche kollisionsbewusst im Viewport. Das Popover ist mit seinem Trigger über die ARIA-Beziehungen verknüpft, sodass die Auslöse-Schaltfläche den geöffneten Zustand korrekt meldet. Für reine Hover-Hinweise ohne interaktiven Inhalt nutze stattdessen [Tooltip](/components/tooltip).
+
+## Props
+
+<PropsTable name="Popover" />

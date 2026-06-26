@@ -1,0 +1,30 @@
+# ColorField
+
+Ein Eingabefeld für Hex-Farbwerte mit Parsing und Validierung.
+
+<Playground component="ColorField" />
+
+## Verwendung
+
+Nutze `ColorField`, wenn ein präziser Farbwert als Text erfasst werden soll — etwa eine Marken- oder Akzentfarbe per Hex-Code. Das Feld parst und validiert die Eingabe (z. B. `#34C759`) und teilt sich Styling und Fokus-Ring mit den übrigen Formularfeldern. Für visuelle Farbauswahl kombiniere es im `ColorPicker` mit `ColorArea`/`ColorSlider`.
+
+<DoDont kind="do">Gib im `placeholder` ein konkretes Format-Beispiel an (z. B. „Hex, z. B. #34C759").</DoDont>
+<DoDont kind="dont">Setze `ColorField` nicht als alleiniges Auswahlmittel ein, wenn Nutzer die Farbe sehen statt errechnen wollen — biete dann zusätzlich eine visuelle Auswahl.</DoDont>
+
+## Beispiele
+
+<Example code={`<ColorField label="Markenfarbe" defaultValue="#3478F6" />`} />
+
+<Example code={`<ColorField
+  label="Hintergrund"
+  description="Hex-Wert eingeben, z. B. #1C1C1E."
+  defaultValue="#1C1C1E"
+/>`} />
+
+## Accessibility
+
+`ColorField` baut auf react-aria `ColorField` auf: Die Eingabe wird beim Verlassen geparst und auf einen gültigen Farbwert normalisiert; ungültige Eingaben lösen die Validierung aus statt einen kaputten Wert zu übernehmen. `label`, `description` und `errorMessage` werden per `aria-describedby` verknüpft. Da die Information „Farbe" rein über Text läuft, ist das Feld auch ohne Farbwahrnehmung vollständig bedienbar; ein sichtbares oder per `aria-label` gesetztes Label ist erforderlich.
+
+## Props
+
+<PropsTable name="ColorField" />

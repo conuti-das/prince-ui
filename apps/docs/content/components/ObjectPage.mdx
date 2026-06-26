@@ -1,0 +1,50 @@
+# ObjectPage
+
+SAP-UI5-äquivalenter ObjectPage-Floorplan: komponierbare Abschnitte, eine Anchor-/Tab-Bar mit Scroll-Spy, ein kollabierbarer Snapping-Header und reichhaltige Title-Slots — für die Detailansicht eines einzelnen Objekts.
+
+## Verwendung
+
+Den Inhalt baust du aus `ObjectPageSection` und `ObjectPageSubSection` als `children` auf; jede Section bekommt eine `id` und `titleText` und erscheint automatisch in der Anchor-Bar mit Scroll-Spy. `mode` schaltet zwischen `default` (gestapelt) und `iconTabBar`. Der Header ist kollabierbar und snappt beim Scrollen; über eine imperative Ref (`ObjectPageHandle.toggleHeaderArea`) lässt er sich programmatisch umschalten. Die Title-Slots (`breadcrumbs`, `header`, `subHeader`, `snappedHeader`, `status`, `kpis`, `actionsBar`, `navigationBar`, `image`/`imageShapeCircle`) füllen den Kopfbereich; `footerArea` ergibt einen Floating-Footer, `placeholder` einen Ersatzinhalt. Die ältere deklarative API (`title`/`subtitle`/`status`/`kpis`/`sections`) bleibt als Adapter erhalten.
+
+<DoDont kind="do">Vergib pro Section eine stabile `id` — Anchor-Bar, Scroll-Spy und Deep-Links hängen daran.</DoDont>
+<DoDont kind="dont">Die neue komponierbare Section-API mit der deklarativen `sections`-Prop in derselben Seite mischen — entscheide dich pro Seite für einen Stil.</DoDont>
+
+## Beispiele
+
+Deklarativer Adapter (Legacy-API, bleibt gültig) — kompakt, ohne Sub-Sections:
+
+<Example code={`<ObjectPage
+  title="TX-10042"
+  subtitle="UTILMD · Anmeldung Netznutzung"
+  status={{ label: 'Fehler', tone: 'negative' }}
+  actions={<>
+    <Button variant="tinted">Erneut senden</Button>
+    <Button variant="filled">Rohdaten</Button>
+  </>}
+  kpis={[
+    { label: 'Verarbeitungszeit', value: '1,8 s' },
+    { label: 'Versuche', value: '3', tone: 'critical' },
+    { label: 'Betrag', value: '4.231,90 €' },
+  ]}
+  sections={[
+    { title: 'Stammdaten', fields: [
+      { label: 'Marktpartner', value: '9900123000007' },
+      { label: 'Sparte', value: 'Strom' },
+      { label: 'Nachrichtentyp', value: 'UTILMD' },
+    ]},
+    { title: 'Verarbeitung', fields: [
+      { label: 'Empfangen', value: '2026-06-23 08:14:02' },
+      { label: 'Status', value: 'Fehler' },
+    ]},
+  ]}
+/>`} />
+
+Den vollen Floorplan mit `ObjectPageSection`/`ObjectPageSubSection`, Anchor-Bar, Scroll-Spy, `mode="iconTabBar"`, Snapping-Header (imperative Ref) und Floating-Footer zeigen die entsprechenden Fälle der ursprünglichen Story.
+
+## Accessibility
+
+Die Anchor-/Tab-Bar ist tastaturbedienbar; der Scroll-Spy hält die aktive Section synchron, sodass die Navigation der sichtbaren Position folgt. Jede Section braucht über `titleText` eine Überschrift, damit Struktur und Sprung-Ziele für Screenreader benannt sind. Der kollabierende Header behält über `snappedHeader` einen lesbaren Kurztitel im eingeklappten Zustand. Aktionen in `actionsBar`/`navigationBar` und der `footerArea` bleiben eigenständig fokussierbar und in sinnvoller Tab-Reihenfolge.
+
+## Props
+
+<PropsTable name="ObjectPage" />

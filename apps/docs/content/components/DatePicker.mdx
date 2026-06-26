@@ -1,0 +1,34 @@
+# DatePicker
+
+Ein Datumswähler, der editierbare Datums-Segmente mit einem aufklappbaren Kalender verbindet.
+
+<Playground component="DatePicker" />
+
+## Verwendung
+
+Nutze `DatePicker`, wenn Nutzer ein Datum entweder direkt eintippen oder visuell im Kalender auswählen sollen. Die Trigger-Pille zeigt die Segmente (`DateInput`/`DateSegment`); der Button öffnet ein `Popover` mit einem `Calendar`. Für reine Tastatureingabe ohne Kalender genügt ein `DateField`; für Zeiträume gibt es `DateRangePicker`.
+
+<DoDont kind="do">Grenze wählbare Daten mit `minValue`/`maxValue` ein, wenn nur ein Zeitfenster zulässig ist.</DoDont>
+<DoDont kind="dont">Verstecke das `label` nicht — die Trigger-Segmente allein sind ohne Beschriftung schwer zuzuordnen.</DoDont>
+
+## Beispiele
+
+<Example code={`<DatePicker
+  label="Lieferdatum"
+  description="Frühestmögliches Belieferungsdatum."
+  defaultValue={new CalendarDate(2026, 7, 1)}
+/>`} />
+
+<Example code={`<DatePicker
+  label="Stichtag"
+  isInvalid
+  errorMessage="Bitte ein gültiges Datum wählen."
+/>`} />
+
+## Accessibility
+
+`DatePicker` baut auf react-aria `DatePicker` auf: Die Datums-Segmente sind Spinbuttons (Pfeiltasten, direkte Eingabe), der Trigger-Button öffnet das `Popover`-Kalendergitter, das vollständig per Tastatur navigierbar ist (Pfeiltasten zwischen Tagen, Bild auf/ab für Monate, Enter zur Auswahl). Das Popover fängt den Fokus und schließt mit Escape. `description` und `errorMessage` sind via `aria-describedby` verknüpft; bei `isReadOnly` bleibt das Feld fokussier-, aber nicht änderbar.
+
+## Props
+
+<PropsTable name="DatePicker" />

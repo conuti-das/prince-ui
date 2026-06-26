@@ -1,0 +1,40 @@
+# FormBuilder
+
+Nativer Drag&Drop-Form-Builder im prince-ui-Look: Palette, Canvas (Klick oder Drag zum Hinzufügen, Drag zum Umordnen), Eigenschafts-Panel und Live-Vorschau über den `FormRenderer`. Erzeugt ein form-js-kompatibles Schema.
+
+<EditorExample name="FormBuilder" />
+
+## Verwendung
+
+Der Builder arbeitet `controlled` (`value` + `onChange` mit einem `FormSchema`) oder `uncontrolled` (leer starten). `onSave` liefert das fertige Schema zum Persistieren.
+
+Mit `mode="expert"` mountet der Builder als Fallback den `@bpmn-io/form-js`-`FormEditor` (dynamischer Import) — nützlich, wenn die nativen Bausteine nicht ausreichen.
+
+<DoDont kind="do">Das erzeugte `FormSchema` versionieren — es ist form-js-kompatibel und damit portabel.</DoDont>
+<DoDont kind="dont">Den Expert-Modus als Default anbieten; der native Builder ist im prince-ui-Look konsistenter.</DoDont>
+
+## Beispiele
+
+Das Demo startet mit einem MaKo-Schema (Marktlokations-ID, Prüfidentifikator, Trennlinie, Eskalations-Checkbox). Leer starten:
+
+```tsx
+import { FormBuilder } from "@conuti-das/prince-ui-forms";
+
+<FormBuilder onSave={(schema) => persist(schema)} />
+```
+
+Controlled mit Start-Schema:
+
+```tsx
+const [schema, setSchema] = useState(startSchema);
+
+<FormBuilder value={schema} onChange={setSchema} onSave={persist} />
+```
+
+## Accessibility
+
+Die Palette und das Canvas sind per Tastatur bedienbar; Felder lassen sich auch ohne Drag&Drop per Klick hinzufügen. Die Live-Vorschau nutzt denselben `FormRenderer`, der auch zur Laufzeit das Formular rendert.
+
+## Props
+
+<PropsTable name="FormBuilder" />

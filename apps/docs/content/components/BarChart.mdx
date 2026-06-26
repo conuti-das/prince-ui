@@ -1,0 +1,43 @@
+# BarChart
+
+Vertikale Balken mit gerundeten Köpfen aus reinem SVG — für kompakte Tages- oder Kategorie-Vergleiche in Karten und Dashboards.
+
+
+## Verwendung
+
+`data` ist eine Liste aus `{ label, value }`. `color` setzt die Balkenfarbe (Default `--prn-chart-1`), `showLabels` blendet die x-Achsenbeschriftung ein oder aus. Bei leerem `data` rendert der Chart automatisch seinen Leerzustand — du musst diesen Fall nicht selbst abfangen.
+
+<DoDont kind="do">Halte die Kategorienzahl klein (etwa 5–12 Balken), damit jeder Balken auf schmalen Karten noch lesbar bleibt.</DoDont>
+<DoDont kind="dont">Den Chart für fortlaufende Zeitreihen mit vielen Punkten verwenden — dafür ist `AreaChart` oder `Sparkline` gedacht.</DoDont>
+
+## Beispiele
+
+<Example code={`<div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
+  <BarChart data={[
+    { label: 'Mo', value: 320 },
+    { label: 'Di', value: 540 },
+    { label: 'Mi', value: 410 },
+    { label: 'Do', value: 680 },
+    { label: 'Fr', value: 590 },
+    { label: 'Sa', value: 210 },
+    { label: 'So', value: 140 },
+  ]} />
+  <BarChart
+    data={[
+      { label: 'Mo', value: 320 },
+      { label: 'Di', value: 540 },
+      { label: 'Mi', value: 410 },
+      { label: 'Do', value: 680 },
+    ]}
+    color="var(--prn-chart-4)"
+    showLabels={false}
+  />
+</div>`} />
+
+## Accessibility
+
+BarChart ist eine rein visuelle SVG-Grafik ohne Tastatur-Interaktion. Die einzelnen Werte sind nicht als Text exponiert — gib daher den Datenkontext im umgebenden Markup wieder (z. B. Kartentitel, eine begleitende Wertetabelle oder ein `aria-label` am Container), damit Screenreader-Nutzende die Zahlen erreichen. Verlasse dich nicht allein auf `color`, um Bedeutung zu transportieren.
+
+## Props
+
+<PropsTable name="BarChart" />

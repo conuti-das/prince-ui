@@ -1,0 +1,36 @@
+# Toast
+
+Kurzlebige Benachrichtigung, die als erhöhte Karte am Bildschirmrand erscheint und nach kurzer Zeit von selbst verschwindet.
+
+> **Import-Hinweis:** Das Toast-Modul ist (noch) nicht unter `@conuti-das/prince-ui` re-exportiert. `ToastRegion`, `toastQueue` und der Typ `ToastVariant` werden direkt aus `@conuti-das/prince-ui/primitives/toast` importiert. Sobald der Re-Export ergänzt ist, kann hier ein interaktiver Playground folgen.
+
+## Verwendung
+
+Toast besteht aus zwei Teilen: einer einmalig platzierten `ToastRegion` (meist nahe der App-Wurzel) und der globalen `toastQueue`, in die Meldungen mit `toastQueue.add({ title, description, variant, timeout })` eingereiht werden. `ToastRegion` rendert die Queue als gestapelte Karten unten am Bildschirm. Wähle die `variant` (`default`, `success`, `warning`, `error`) nach Bedeutung. Toasts sind flüchtig — nutze sie für Bestätigungen und beiläufige Hinweise, nicht für Informationen, die der Nutzer zwingend lesen oder bestätigen muss (dafür [Notice](/components/notice) oder [Modal](/components/modal)).
+
+<DoDont kind="do">Genau **eine** `ToastRegion` pro Anwendung montieren und alle Toasts über die geteilte `toastQueue` einreihen.</DoDont>
+<DoDont kind="dont">Kritische Fehler, die eine Entscheidung erfordern, nur als Toast anzeigen — sie verschwinden, bevor reagiert wurde.</DoDont>
+
+## Beispiele
+
+<Example code={`<div>
+  <Button onPress={() => toastQueue.add({ title: 'Gespeichert', description: 'Diese Meldung verschwindet automatisch.', variant: 'success', timeout: 5000 })}>
+    Toast anzeigen
+  </Button>
+  <ToastRegion />
+</div>`} />
+
+<Example code={`<div style={{ display: 'flex', gap: 16 }}>
+  <Button variant="tinted" onPress={() => toastQueue.add({ title: 'Erfolg', description: 'Vorgang abgeschlossen.', variant: 'success', timeout: 5000 })}>Erfolg</Button>
+  <Button variant="tinted" onPress={() => toastQueue.add({ title: 'Achtung', description: 'Bitte prüfen.', variant: 'warning', timeout: 5000 })}>Warnung</Button>
+  <Button variant="tinted" onPress={() => toastQueue.add({ title: 'Fehler', description: 'Etwas ist schiefgelaufen.', variant: 'error', timeout: 5000 })}>Fehler</Button>
+  <ToastRegion />
+</div>`} />
+
+## Accessibility
+
+`ToastRegion` basiert auf der React-Aria-Toast-Implementierung (`UNSTABLE_Toast`/`ToastRegion`) mit der `ToastQueue` aus React Stately. Die Region wird als Landmark mit Tastatur-Zugang bereitgestellt: Über F6 (bzw. den von React Aria vorgesehenen Hotkey) ist sie erreichbar, neue Toasts werden assistiven Technologien angekündigt, ohne den Fokus zu stehlen. Verlasse dich bei der Tonalität nicht allein auf die Farbe — `title`/`description` müssen die Aussage tragen. Setze ein ausreichend langes `timeout` (oder verzichte darauf), damit auch langsam lesende Nutzer den Inhalt erfassen, bevor der Toast verschwindet.
+
+## Props
+
+<PropsTable name="ToastRegion" />
