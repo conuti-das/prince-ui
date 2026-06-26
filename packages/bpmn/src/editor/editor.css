@@ -40,6 +40,19 @@
   background: var(--prn-bg);
 }
 
+/* diagram-js-Selektions-Outline an die Akzentfarbe koppeln. diagram-js färbt den
+   Auswahl-Rahmen über `.djs-element.selected .djs-outline` (Spezifität 0-2-1);
+   wir matchen diese Spezifität mit eigenem `.prn-bpmn`-Präfix (0-3-1) und
+   überschreiben zusätzlich die diagram-js-Variable, damit der Rahmen dem Akzent
+   folgt statt dem Default-Blau/Schwarz. */
+.prn-bpmn {
+  --element-selected-outline-stroke-color: var(--prn-accent);
+}
+.prn-bpmn .djs-element.selected .djs-outline,
+.prn-bpmn .djs-connection.selected .djs-outline {
+  stroke: var(--prn-accent);
+}
+
 .prn-bpmn-editor-toolbar {
   display: flex;
   align-items: center;
@@ -51,6 +64,12 @@
 }
 .prn-bpmn-editor-toolbar-spacer {
   flex: 1;
+}
+/* Zoom-Button-Gruppe (B6) — kompakte monochrome Leiste. */
+.prn-bpmn-editor-zoom {
+  display: flex;
+  align-items: center;
+  gap: var(--prn-space-1, 4px);
 }
 
 .prn-bpmn-editor-main {
@@ -78,9 +97,30 @@
 .prn-bpmn-editor-properties {
   width: 320px;
   flex-shrink: 0;
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
   border-left: 1px solid var(--prn-separator);
   background: var(--prn-bg-elevated);
+}
+/* Kopfzeile mit Titel + Schließen-Button (B11). */
+.prn-bpmn-editor-properties-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  padding: var(--prn-space-2, 8px) var(--prn-space-2, 8px) var(--prn-space-2, 8px)
+    var(--prn-space-3, 12px);
+  border-bottom: 1px solid var(--prn-separator);
+}
+.prn-bpmn-editor-properties-title {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--prn-label);
+}
+.prn-bpmn-editor-properties-body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
 }
 
 /* ---- Linter-Footer (Overlay — verdrängt den Canvas NICHT in der Höhe,

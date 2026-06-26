@@ -93,6 +93,12 @@
 .prn-bo-tabs { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 2px; }
 .prn-bo-tab { display: inline-flex; align-items: center; min-height: 34px; padding: 6px 14px; border-radius: var(--prn-radius-pill); font: var(--prn-text-footnote); white-space: nowrap; cursor: pointer; color: var(--prn-label-2); background: var(--prn-fill); border: none; }
 .prn-bo-tab[aria-selected="true"] { background: var(--prn-accent); color: var(--prn-on-accent); }
+
+/* Meta-Tabs (Transaktions-/Zusatzdaten) klar von den Stammdaten abgesetzt: outline statt fill + Trenner */
+.prn-bo-tab[data-kind="trans"], .prn-bo-tab[data-kind="zusatz"] { background: transparent; border: 1px dashed var(--prn-border); color: var(--prn-blue); }
+.prn-bo-tab[data-kind="trans"][aria-selected="true"], .prn-bo-tab[data-kind="zusatz"][aria-selected="true"] { background: var(--prn-tint-info); color: var(--prn-blue); border-style: solid; border-color: var(--prn-blue); }
+.prn-bo-tab[data-kind="stamm"] + .prn-bo-tab[data-kind="trans"], .prn-bo-tab[data-kind="stamm"] + .prn-bo-tab[data-kind="zusatz"] { margin-left: 16px; position: relative; }
+.prn-bo-tab[data-kind="stamm"] + .prn-bo-tab[data-kind="trans"]::before, .prn-bo-tab[data-kind="stamm"] + .prn-bo-tab[data-kind="zusatz"]::before { content: ""; position: absolute; left: -9px; top: 6px; bottom: 6px; width: 1px; background: var(--prn-separator); }
 .prn-bo-warn { background: var(--prn-warn-soft); border: 1px solid var(--prn-orange); border-radius: var(--prn-radius); padding: 10px 13px; }
 .prn-bo-warn summary { font: var(--prn-text-footnote); font-weight: 500; color: var(--prn-orange); cursor: pointer; }
 .prn-bo-warn ul { margin: 9px 0 0; padding-left: 18px; }
