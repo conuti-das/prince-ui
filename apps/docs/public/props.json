@@ -1,0 +1,5344 @@
+{
+  "setTheme": {
+    "props": []
+  },
+  "getTheme": {
+    "props": []
+  },
+  "PRINCE_UI_VERSION": {
+    "props": []
+  },
+  "cx": {
+    "props": []
+  },
+  "Icon": {
+    "props": [
+      {
+        "name": "name",
+        "type": "enum",
+        "required": true,
+        "defaultValue": null,
+        "description": "Name des monochromen Icons."
+      },
+      {
+        "name": "size",
+        "type": "string | number",
+        "required": false,
+        "defaultValue": 20,
+        "description": "Kantenlänge in px (Default 20)."
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Wenn gesetzt: zugängliches Label (sonst `aria-hidden`, rein dekorativ)."
+      }
+    ]
+  },
+  "Button": {
+    "props": [
+      {
+        "name": "variant",
+        "type": "enum",
+        "required": false,
+        "defaultValue": "filled",
+        "description": "Prince-Varianten: gefüllt (Akzent), getönt (soft) oder schlicht."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "TextField": {
+    "props": [
+      {
+        "name": "label",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "description",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "errorMessage",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "placeholder",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "SearchField": {
+    "props": [
+      {
+        "name": "label",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "placeholder",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "Checkbox": {
+    "props": [
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "The children of the component. A function may be provided to alter the children based on\ncomponent state."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "Switch": {
+    "props": [
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "The children of the component. A function may be provided to alter the children based on\ncomponent state."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "Select": {
+    "props": [
+      {
+        "name": "label",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "placeholder",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Temporary text that occupies the select when it is empty."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "SelectItem": {
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "Modal": {
+    "props": [
+      {
+        "name": "isOpen",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "defaultOpen",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "onOpenChange",
+        "type": "((isOpen: boolean) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "title",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Titel als Überschrift mit slot=\"title\" (für aria-labelledby)."
+      },
+      {
+        "name": "isDismissable",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": true,
+        "description": "Klick auf Scrim schließt (Default true)."
+      },
+      {
+        "name": "glass",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "„Liquid Glass\"-Optik (transluzent + Blur) statt opaker Fläche."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "Menu": {
+    "props": [
+      {
+        "name": "trigger",
+        "type": "ReactNode",
+        "required": true,
+        "defaultValue": null,
+        "description": "Trigger-Element (z. B. <Button>)."
+      },
+      {
+        "name": "glass",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "„Liquid Glass\"-Optik (transluzent + Blur) statt opaker Fläche."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "MenuItem": {
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "Popover": {
+    "props": [
+      {
+        "name": "glass",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "„Liquid Glass\"-Optik (transluzent + Blur) statt opaker Fläche."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "Tooltip": {
+    "props": [
+      {
+        "name": "trigger",
+        "type": "ReactNode",
+        "required": true,
+        "defaultValue": null,
+        "description": "Element, das den Tooltip auslöst."
+      },
+      {
+        "name": "delay",
+        "type": "number",
+        "required": false,
+        "defaultValue": 600,
+        "description": ""
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "DialogTrigger": {
+    "props": []
+  },
+  "SegmentedControl": {
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "Segment": {
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "Tabs": {
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "TabBar": {
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "Tab": {
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "TabPanel": {
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "Card": {
+    "props": [
+      {
+        "name": "title",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optionaler Titel oben links (alternativ via `header` voll überschreibbar)."
+      },
+      {
+        "name": "header",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Freier Header-Slot rechts (z. B. Aktionen) — neben dem Titel."
+      },
+      {
+        "name": "padding",
+        "type": "enum",
+        "required": false,
+        "defaultValue": "regular",
+        "description": "Innenabstand-Variante."
+      },
+      {
+        "name": "translucent",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": false,
+        "description": "Glas-Optik: halbtransparenter Hintergrund + Blur (Light & Dark)."
+      },
+      {
+        "name": "onPress",
+        "type": "(() => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Macht die Karte klickbar (react-aria Button) mit Hover-Lift — wie KpiCard."
+      },
+      {
+        "name": "style",
+        "type": "CSSProperties",
+        "required": false,
+        "defaultValue": null,
+        "description": "Inline-Styles (z. B. App-lokale Maße/Status-Border) auf das Card-Element."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "KpiCard": {
+    "props": [
+      {
+        "name": "label",
+        "type": "ReactNode",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "value",
+        "type": "ReactNode",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "delta",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Delta-Text, z. B. \"+12 %\"."
+      },
+      {
+        "name": "trend",
+        "type": "enum",
+        "required": false,
+        "defaultValue": null,
+        "description": "Richtung der Färbung. Wird `delta` ohne `trend` gesetzt, bleibt es neutral."
+      },
+      {
+        "name": "tone",
+        "type": "enum",
+        "required": false,
+        "defaultValue": null,
+        "description": "Färbt den Wert semantisch (grün/orange/rot)."
+      },
+      {
+        "name": "onPress",
+        "type": "(() => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Macht die Kachel klickbar (react-aria Button) mit Hover-Lift."
+      },
+      {
+        "name": "accent",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": false,
+        "description": "Akzent-„Hero\"-Kachel: Vollflächen-Akzent mit dunkler Schrift."
+      },
+      {
+        "name": "icon",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optionales Leading-Icon (z. B. SVG/Emoji)."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "Badge": {
+    "props": [
+      {
+        "name": "tone",
+        "type": "enum",
+        "required": false,
+        "defaultValue": "neutral",
+        "description": ""
+      },
+      {
+        "name": "variant",
+        "type": "enum",
+        "required": false,
+        "defaultValue": "soft",
+        "description": "Soft = getönt (Default), solid = vollflächig gefüllt."
+      },
+      {
+        "name": "icon",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optionales Leading-Icon (SVG/Emoji/ReactNode), links vom Text."
+      },
+      {
+        "name": "color",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Beliebige Markenfarbe (überschreibt `tone`). Z. B. Team-Farbe."
+      },
+      {
+        "name": "textColor",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Textfarbe bei `color` (Default: Weiß für solid, `color` selbst für soft)."
+      },
+      {
+        "name": "style",
+        "type": "CSSProperties",
+        "required": false,
+        "defaultValue": null,
+        "description": "Escape-Hatch: Inline-Styles (z. B. fixe Größe/Radius/Font für Tabellen-Chips)."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "Amount": {
+    "props": [
+      {
+        "name": "value",
+        "type": "string | number",
+        "required": true,
+        "defaultValue": null,
+        "description": "Zahl → wird i18n-formatiert. Bereits formatierter String → wird unverändert\nangezeigt (String-Modus; `currency`/`locale`/`fractionDigits` werden ignoriert)."
+      },
+      {
+        "name": "currency",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "ISO-Währungscode, z. B. \"EUR\". Ohne → reine Zahl. (Nur Zahl-Modus.)"
+      },
+      {
+        "name": "locale",
+        "type": "string",
+        "required": false,
+        "defaultValue": "de-DE",
+        "description": "BCP-47-Locale für Formatierung (Default \"de-DE\"). (Nur Zahl-Modus.)"
+      },
+      {
+        "name": "minimumFractionDigits",
+        "type": "number",
+        "required": false,
+        "defaultValue": null,
+        "description": "Min/Max Nachkommastellen. (Nur Zahl-Modus.)"
+      },
+      {
+        "name": "maximumFractionDigits",
+        "type": "number",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "colored",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": false,
+        "description": "Negativ rot / positiv grün einfärben."
+      },
+      {
+        "name": "signed",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": false,
+        "description": "Immer Vorzeichen anzeigen (auch +). (Nur Zahl-Modus.)"
+      },
+      {
+        "name": "dimDecimals",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": false,
+        "description": "Optische Abschwächung der Nachkommastellen (Tail leiser/kleiner).\nErkennt das Dezimaltrennzeichen der Ausgabe und dämpft alles dahinter."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "List": {
+    "props": [
+      {
+        "name": "label",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Header-Beschriftung über der Liste (macOS-Gruppentitel)."
+      },
+      {
+        "name": "inset",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": false,
+        "description": "Eingerückte Trennlinien (wie iOS-Listen)."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "ListRow": {
+    "props": [
+      {
+        "name": "leading",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Linkes Element (Icon/Avatar)."
+      },
+      {
+        "name": "title",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "subtitle",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "trailing",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Rechtes Element (Wert, Badge, Chevron)."
+      },
+      {
+        "name": "onPress",
+        "type": "(() => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Macht die Zeile pressbar (react-aria Button)."
+      },
+      {
+        "name": "isActive",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "Aktiver/ausgewählter Zustand."
+      },
+      {
+        "name": "isDisabled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "Sidebar": {
+    "props": [
+      {
+        "name": "groups",
+        "type": "SidebarGroup[]",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "selectedKey",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Aktive Item-ID."
+      },
+      {
+        "name": "onSelect",
+        "type": "((id: string) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "header",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Kopfbereich (z. B. App-Titel/Logo)."
+      },
+      {
+        "name": "footer",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Fußbereich (z. B. Account)."
+      },
+      {
+        "name": "glass",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "„Liquid Glass\"-Optik (transluzent + Blur). Nur über Content sinnvoll."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "Toolbar": {
+    "props": [
+      {
+        "name": "title",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "subtitle",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Untertitel unter dem Titel."
+      },
+      {
+        "name": "leading",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Linker Slot (z. B. Zurück-Button) vor dem Titel."
+      },
+      {
+        "name": "actions",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Aktionen rechts."
+      },
+      {
+        "name": "glass",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "„Liquid Glass\"-Optik (transluzent + Blur). Nur über Content sinnvoll."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "EmptyState": {
+    "props": [
+      {
+        "name": "icon",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "title",
+        "type": "ReactNode",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "description",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "action",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Aktions-Slot (z. B. <Button>)."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "Notice": {
+    "props": [
+      {
+        "name": "tone",
+        "type": "enum",
+        "required": false,
+        "defaultValue": "info",
+        "description": ""
+      },
+      {
+        "name": "title",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "icon",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optionales Leading-Icon (überschreibt Default-Glyph)."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "DescriptionList": {
+    "props": [
+      {
+        "name": "layout",
+        "type": "enum",
+        "required": false,
+        "defaultValue": "stacked",
+        "description": "Layout der Label/Wert-Paare:\n- `stacked` (Default): Label über dem Wert.\n- `inline`: Label links, Wert rechts (zweispaltig)."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "Field": {
+    "props": [
+      {
+        "name": "label",
+        "type": "ReactNode",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "value",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Anzuzeigender Wert (read-only)."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "AppShell": {
+    "props": [
+      {
+        "name": "title",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "App-Titel (Primärtitel)."
+      },
+      {
+        "name": "subtitle",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Untertitel — blendet auf schmalen Screens aus."
+      },
+      {
+        "name": "logo",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Marken-/Logo-Slot ganz links."
+      },
+      {
+        "name": "onLogoClick",
+        "type": "(() => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "menuItems",
+        "type": "AppShellMenuItem[]",
+        "required": false,
+        "defaultValue": null,
+        "description": "Macht den Titel zu einem Dropdown (analog UI5 `menuItems`)."
+      },
+      {
+        "name": "onMenuItemClick",
+        "type": "((id: string) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "search",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Globale Suche; kollabiert auf Mobile zu einem Icon (aufklappbar)."
+      },
+      {
+        "name": "actions",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Freie Aktionen rechts (Buttons o. Ä.)."
+      },
+      {
+        "name": "items",
+        "type": "AppShellItem[]",
+        "required": false,
+        "defaultValue": null,
+        "description": "Aktions-Items mit Icon/Count; wandern auf schmalen Screens ins „…\"-Overflow-Menü."
+      },
+      {
+        "name": "notifications",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "Benachrichtigungs-Glocke mit optionalem Zähler."
+      },
+      {
+        "name": "notificationsCount",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "onNotificationsClick",
+        "type": "(() => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "productSwitch",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "Produkt-Wechsler (Grid-Icon)."
+      },
+      {
+        "name": "onProductSwitchClick",
+        "type": "(() => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "user",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "User-/Account-Slot ganz rechts (Avatar)."
+      },
+      {
+        "name": "onProfileClick",
+        "type": "(() => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "startButton",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Slot ganz am Anfang der Bar (vor dem Menü-Toggle)."
+      },
+      {
+        "name": "sidebar",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Seitennavigation — typischerweise ein `<Sidebar/>` (ohne eigenes `glass`)."
+      },
+      {
+        "name": "sidebarCollapsed",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "defaultSidebarCollapsed",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": false,
+        "description": ""
+      },
+      {
+        "name": "onSidebarCollapsedChange",
+        "type": "((collapsed: boolean) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "glass",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": true,
+        "description": "„Liquid Glass\"-Optik auf Shell-Bar + Sidebar (Default: true)."
+      },
+      {
+        "name": "toggleLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "Navigation umschalten",
+        "description": ""
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "Launchpad": {
+    "props": [
+      {
+        "name": "sections",
+        "type": "LaunchpadSection[]",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "editable",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": false,
+        "description": "Aktiviert Drag-&-Drop-Reorder (react-aria, Tastatur + Pointer)."
+      },
+      {
+        "name": "onReorder",
+        "type": "((sectionId: string, orderedCardIds: string[]) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "smoothPath": {
+    "props": []
+  },
+  "Sparkline": {
+    "props": [
+      {
+        "name": "data",
+        "type": "number[]",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "width",
+        "type": "number",
+        "required": false,
+        "defaultValue": 120,
+        "description": "viewBox-Breite (interne Einheiten); skaliert responsiv."
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "required": false,
+        "defaultValue": 36,
+        "description": "viewBox-Höhe (interne Einheiten)."
+      },
+      {
+        "name": "color",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Linienfarbe; Default --prn-chart-1."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "AreaChart": {
+    "props": [
+      {
+        "name": "data",
+        "type": "number[] | Pt[]",
+        "required": true,
+        "defaultValue": null,
+        "description": "Entweder reine Werte (gleichmäßig verteilt) oder explizite (x,y)-Punkte."
+      },
+      {
+        "name": "width",
+        "type": "number",
+        "required": false,
+        "defaultValue": 320,
+        "description": ""
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "required": false,
+        "defaultValue": 160,
+        "description": ""
+      },
+      {
+        "name": "color",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "showAxes",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": false,
+        "description": "Achsen + horizontale Gridlinien anzeigen."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "BarChart": {
+    "props": [
+      {
+        "name": "data",
+        "type": "BarDatum[]",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "width",
+        "type": "number",
+        "required": false,
+        "defaultValue": 320,
+        "description": ""
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "required": false,
+        "defaultValue": 160,
+        "description": ""
+      },
+      {
+        "name": "color",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "showLabels",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": true,
+        "description": "x-Achsenbeschriftung anzeigen."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "DonutChart": {
+    "props": [
+      {
+        "name": "segments",
+        "type": "DonutSegment[]",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "centerLabel",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Text in der Ringmitte (z. B. Summe)."
+      },
+      {
+        "name": "size",
+        "type": "number",
+        "required": false,
+        "defaultValue": 160,
+        "description": "Kantenlänge des SVG (interne Einheiten)."
+      },
+      {
+        "name": "thickness",
+        "type": "number",
+        "required": false,
+        "defaultValue": 0.32,
+        "description": "Ringdicke relativ zum Radius (0..1)."
+      },
+      {
+        "name": "showLegend",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": true,
+        "description": "Legende mit Label + Wert anzeigen."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "ChartEmpty": {
+    "props": [
+      {
+        "name": "message",
+        "type": "string",
+        "required": false,
+        "defaultValue": "Keine Daten",
+        "description": "Hinweistext im Leerzustand."
+      },
+      {
+        "name": "compact",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": false,
+        "description": "Kompakte Variante (z. B. für Sparkline-Slot)."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "AnalyticalTable": {
+    "props": [
+      {
+        "name": "data",
+        "type": "T[]",
+        "required": true,
+        "defaultValue": null,
+        "description": "Datenzeilen."
+      },
+      {
+        "name": "columns",
+        "type": "AnalyticalColumn<T>[]",
+        "required": true,
+        "defaultValue": null,
+        "description": "Spalten-Beschreibung."
+      },
+      {
+        "name": "getRowId",
+        "type": "((row: T, index: number) => string)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Eindeutige Zeilen-ID (für Selektion/Keys). Default: Array-Index."
+      },
+      {
+        "name": "selectionMode",
+        "type": "enum",
+        "required": false,
+        "defaultValue": null,
+        "description": "Selektionsmodus."
+      },
+      {
+        "name": "selectionBehavior",
+        "type": "enum",
+        "required": false,
+        "defaultValue": null,
+        "description": "Selektionsverhalten: row = ganze Zeile selektiert + onRowClick; rowSelector = nur über Checkbox."
+      },
+      {
+        "name": "selectable",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "Alias auf selectionMode=\"multiple\" (rückwärtskompatibel)."
+      },
+      {
+        "name": "selectedKeys",
+        "type": "Set<string>",
+        "required": false,
+        "defaultValue": null,
+        "description": "Kontrollierte Auswahl (Set ausgewählter Row-IDs)."
+      },
+      {
+        "name": "onSelectionChange",
+        "type": "((keys: Set<string>) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Callback bei Auswahländerung."
+      },
+      {
+        "name": "onRowSelect",
+        "type": "((info: { row: T; selected: boolean; selectedKeys: Set<string>; }) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "SAP-Style Selektions-Event."
+      },
+      {
+        "name": "onRowAction",
+        "type": "((row: T) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Aktion bei Zeilen-Aktivierung (Klick/Enter/Space) — rückwärtskompatibel."
+      },
+      {
+        "name": "onRowClick",
+        "type": "((info: { row: T; event: MouseEvent<Element, MouseEvent>; }) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Klick-Event auf eine Zeile (mit Event-Objekt)."
+      },
+      {
+        "name": "onRowContextMenu",
+        "type": "((info: { row: T; event: MouseEvent<Element, MouseEvent>; }) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Rechtsklick-Kontextmenü auf eine Zeile."
+      },
+      {
+        "name": "sortable",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "Globales Sortier-Flag (Default true für Spalten ohne explizites sortable)."
+      },
+      {
+        "name": "sorting",
+        "type": "{ id: string; desc: boolean; }[]",
+        "required": false,
+        "defaultValue": null,
+        "description": "Kontrollierte Sortierung."
+      },
+      {
+        "name": "defaultSorting",
+        "type": "{ id: string; desc: boolean; }[]",
+        "required": false,
+        "defaultValue": null,
+        "description": "Anfangs-Sortierung (unkontrolliert)."
+      },
+      {
+        "name": "onSortingChange",
+        "type": "((sorting: { id: string; desc: boolean; }[]) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Callback bei Sortier-Änderung (controlled-Pattern)."
+      },
+      {
+        "name": "onSort",
+        "type": "((sorting: { id: string; desc: boolean; }[]) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "SAP-Style Sort-Event."
+      },
+      {
+        "name": "enableMultiSort",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "Multi-Sort via Shift-Klick."
+      },
+      {
+        "name": "filterable",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "Spaltenfilter global aktivieren (Header-Popover)."
+      },
+      {
+        "name": "globalFilterValue",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Globaler Filter über alle Zeilen."
+      },
+      {
+        "name": "onFilter",
+        "type": "((filters: { id: string; value: string; }[]) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Callback bei Filter-Änderung (Spaltenfilter)."
+      },
+      {
+        "name": "loading",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "Ladezustand."
+      },
+      {
+        "name": "isLoading",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "Alias auf loading (rückwärtskompatibel)."
+      },
+      {
+        "name": "loadingDelay",
+        "type": "number",
+        "required": false,
+        "defaultValue": null,
+        "description": "Verzögerung in ms, bevor der Ladeindikator erscheint."
+      },
+      {
+        "name": "alwaysShowBusyIndicator",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "BusyIndicator statt Skeleton anzeigen."
+      },
+      {
+        "name": "showOverlay",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "Halbtransparentes Overlay über vorhandenen Daten."
+      },
+      {
+        "name": "skeletonRows",
+        "type": "number",
+        "required": false,
+        "defaultValue": null,
+        "description": "Anzahl Skeleton-Zeilen (Default 8)."
+      },
+      {
+        "name": "emptyTitle",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Leerzustands-Titel (rückwärtskompatibel)."
+      },
+      {
+        "name": "emptyDescription",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "noDataText",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Text im Leerzustand (SAP `noDataText`)."
+      },
+      {
+        "name": "NoDataComponent",
+        "type": "((info: { reason: NoDataReason; }) => ReactNode)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Eigene Leerzustands-Komponente."
+      },
+      {
+        "name": "rowHeight",
+        "type": "number",
+        "required": false,
+        "defaultValue": null,
+        "description": "Geschätzte Zeilenhöhe für die Virtualisierung (Default 44)."
+      },
+      {
+        "name": "headerRowHeight",
+        "type": "number",
+        "required": false,
+        "defaultValue": null,
+        "description": "Höhe der Kopfzeile (px)."
+      },
+      {
+        "name": "visibleRows",
+        "type": "number",
+        "required": false,
+        "defaultValue": null,
+        "description": "Anzahl sichtbarer Zeilen → bestimmt die Tabellenhöhe."
+      },
+      {
+        "name": "minRows",
+        "type": "number",
+        "required": false,
+        "defaultValue": null,
+        "description": "Mindestzeilenzahl (Leerzeilen-Auffüllung)."
+      },
+      {
+        "name": "visibleRowCountMode",
+        "type": "enum",
+        "required": false,
+        "defaultValue": null,
+        "description": "Höhenmodus."
+      },
+      {
+        "name": "overscanCount",
+        "type": "number",
+        "required": false,
+        "defaultValue": null,
+        "description": "Overscan der Virtualisierung (Default 10)."
+      },
+      {
+        "name": "onTableScroll",
+        "type": "((info: { scrollTop: number; scrollLeft: number; }) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Scroll-Event des Viewports."
+      },
+      {
+        "name": "maxHeight",
+        "type": "string | number",
+        "required": false,
+        "defaultValue": null,
+        "description": "Max. Höhe des Scroll-Viewports (Fallback, wenn keine visibleRows). Default `480px`."
+      },
+      {
+        "name": "isTreeTable",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "Aktiviert hierarchische Zeilen."
+      },
+      {
+        "name": "subRowsKey",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Feld, das Kindzeilen enthält (Default \"subRows\")."
+      },
+      {
+        "name": "onRowExpandChange",
+        "type": "((info: { row: T; expanded: boolean; }) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Callback bei Expand/Collapse einer Zeile."
+      },
+      {
+        "name": "infiniteScroll",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "Aktiviert Nachladen beim Scrollen."
+      },
+      {
+        "name": "infiniteScrollThreshold",
+        "type": "number",
+        "required": false,
+        "defaultValue": null,
+        "description": "Abstand (px) vom Ende, ab dem onLoadMore feuert (Default 20)."
+      },
+      {
+        "name": "onLoadMore",
+        "type": "(() => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Callback zum Nachladen."
+      },
+      {
+        "name": "alternateRowColor",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "Zebra-Streifen."
+      },
+      {
+        "name": "withRowHighlight",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "Farbband links je Zeile (ValueState)."
+      },
+      {
+        "name": "highlightField",
+        "type": "((row: T) => ValueState)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Feld, das die ValueState pro Zeile liefert."
+      },
+      {
+        "name": "withNavigationHighlight",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "Navigations-Pfeil-Spalte aktivieren."
+      },
+      {
+        "name": "markNavigatedRow",
+        "type": "((row: T) => boolean)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Markiert die navigierte Zeile (true = Pfeil hervorgehoben)."
+      },
+      {
+        "name": "tableWidth",
+        "type": "number",
+        "required": false,
+        "defaultValue": null,
+        "description": "Aktuelle Tabellenbreite (px) für Pop-In-Berechnung (Test-/SSR-Hilfe)."
+      },
+      {
+        "name": "header",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Sichtbarer Tabellen-Titel (auch accessible name)."
+      },
+      {
+        "name": "extension",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Bereich über der Tabelle (Toolbar/FilterBar)."
+      },
+      {
+        "name": "glass",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "„Liquid Glass\"-Optik auf der Tabellen-Toolbar (NICHT auf den dichten Zeilen)."
+      },
+      {
+        "name": "accessibleName",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Barrierefreies Label der Tabelle."
+      },
+      {
+        "name": "accessibleNameRef",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "ID eines Elements als aria-labelledby."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "aria-label",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Barrierefreies Label (rückwärtskompatibel)."
+      },
+      {
+        "name": "enableColumnResizing",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "Column-Resizing global aktivieren."
+      },
+      {
+        "name": "retainColumnWidth",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "Manuell gesetzte Spaltenbreiten bei Container-Resize behalten (B6)."
+      },
+      {
+        "name": "scaleWidthMode",
+        "type": "enum",
+        "required": false,
+        "defaultValue": null,
+        "description": "Breiten-Skalierungsmodus (B6)."
+      },
+      {
+        "name": "onAutoResize",
+        "type": "((info: { columnId: string; width: number; }) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Callback bei Auto-Resize (Doppelklick auf Resizer einer `autoResizable`-Spalte)."
+      },
+      {
+        "name": "enableColumnReorder",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "Drag&Drop-Reorder aktivieren."
+      },
+      {
+        "name": "onColumnsReorder",
+        "type": "((order: string[]) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Callback bei Reorder per Drag&Drop."
+      },
+      {
+        "name": "enableGrouping",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "Aktiviert Gruppierung + Group-Bar."
+      },
+      {
+        "name": "grouping",
+        "type": "string[]",
+        "required": false,
+        "defaultValue": null,
+        "description": "Kontrollierte Gruppierung (geordnete Spalten-IDs)."
+      },
+      {
+        "name": "defaultGrouping",
+        "type": "string[]",
+        "required": false,
+        "defaultValue": null,
+        "description": "Unkontrollierte Anfangs-Gruppierung."
+      },
+      {
+        "name": "onGroupingChange",
+        "type": "((grouping: string[]) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Callback bei Änderung der Gruppierung."
+      },
+      {
+        "name": "onGroup",
+        "type": "((grouping: string[]) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "SAP-Style Group-Event."
+      },
+      {
+        "name": "enablePersonalization",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "Aktiviert Spalten-Personalisierung (⚙-Menü: Sichtbarkeit/Reihenfolge/Pinning)."
+      },
+      {
+        "name": "columnVisibility",
+        "type": "Record<string, boolean>",
+        "required": false,
+        "defaultValue": null,
+        "description": "Kontrollierte Spaltensichtbarkeit."
+      },
+      {
+        "name": "defaultColumnVisibility",
+        "type": "Record<string, boolean>",
+        "required": false,
+        "defaultValue": null,
+        "description": "Unkontrollierte Anfangs-Sichtbarkeit."
+      },
+      {
+        "name": "onColumnVisibilityChange",
+        "type": "((v: Record<string, boolean>) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Callback bei Sichtbarkeitsänderung."
+      },
+      {
+        "name": "columnOrder",
+        "type": "string[]",
+        "required": false,
+        "defaultValue": null,
+        "description": "Kontrollierte Spaltenreihenfolge."
+      },
+      {
+        "name": "defaultColumnOrder",
+        "type": "string[]",
+        "required": false,
+        "defaultValue": null,
+        "description": "Unkontrollierte Anfangs-Reihenfolge."
+      },
+      {
+        "name": "onColumnOrderChange",
+        "type": "((o: string[]) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Callback bei Reihenfolgeänderung."
+      },
+      {
+        "name": "columnPinning",
+        "type": "{ left?: string[]; right?: string[]; } | undefined",
+        "required": false,
+        "defaultValue": null,
+        "description": "Kontrolliertes Spalten-Pinning."
+      },
+      {
+        "name": "defaultColumnPinning",
+        "type": "{ left?: string[]; right?: string[]; } | undefined",
+        "required": false,
+        "defaultValue": null,
+        "description": "Unkontrolliertes Anfangs-Pinning."
+      },
+      {
+        "name": "onColumnPinningChange",
+        "type": "((p: { left?: string[]; right?: string[]; }) => void) | undefined",
+        "required": false,
+        "defaultValue": null,
+        "description": "Callback bei Pinning-Änderung."
+      },
+      {
+        "name": "renderRowSubComponent",
+        "type": "((info: { row: T; }) => ReactNode)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Rendert eine Unterkomponente unter einer Zeile."
+      },
+      {
+        "name": "subComponentsBehavior",
+        "type": "enum",
+        "required": false,
+        "defaultValue": null,
+        "description": "Verhalten der Unterkomponente: ausklappbar (Chevron) oder immer sichtbar."
+      },
+      {
+        "name": "reactTableOptions",
+        "type": "Partial<TableOptions<T>>",
+        "required": false,
+        "defaultValue": null,
+        "description": "Wird in useReactTable hineingemerged (Escape-Hatch)."
+      },
+      {
+        "name": "onTableReady",
+        "type": "((table: Table<T>) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Liefert die TanStack-Tabellen-Instanz nach oben."
+      }
+    ]
+  },
+  "FilterField": {
+    "props": [
+      {
+        "name": "label",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Sichtbares Label über dem Control."
+      },
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": true,
+        "defaultValue": null,
+        "description": "Das Eingabe-Control (Select, TextField, …)."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "FilterBar": {
+    "props": [
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": true,
+        "defaultValue": null,
+        "description": "Direkt sichtbare Filter-Felder (`FilterField`)."
+      },
+      {
+        "name": "moreFields",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "In den \"Mehr Filter\"-Überlauf ausgelagerte Felder."
+      },
+      {
+        "name": "moreLabel",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": "Mehr Filter",
+        "description": "Beschriftung des Überlauf-Buttons."
+      },
+      {
+        "name": "activeFilters",
+        "type": "ActiveFilter[]",
+        "required": false,
+        "defaultValue": null,
+        "description": "Aktuell aktive Filter → werden als Chips gezeigt."
+      },
+      {
+        "name": "onRemoveFilter",
+        "type": "((id: string) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Einzelnen Filter entfernen (X am Chip)."
+      },
+      {
+        "name": "onClearAll",
+        "type": "(() => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Alle Filter zurücksetzen (\"Zurücksetzen\"-Aktion, nur bei aktiven Filtern)."
+      },
+      {
+        "name": "actions",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Zusätzliche Aktionen rechts (z. B. \"Anwenden\", Suche)."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "aria-label",
+        "type": "string",
+        "required": false,
+        "defaultValue": "Filter",
+        "description": ""
+      }
+    ]
+  },
+  "ObjectPageSection": {
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Eindeutige ID — Anker-Ziel & Selektions-Schlüssel. (Pflicht)"
+      },
+      {
+        "name": "titleText",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Sichtbarer Titel der Sektion. (Pflicht)"
+      },
+      {
+        "name": "hideTitleText",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "Titel ausblenden (Anchor-Bar nutzt weiterhin titleText)."
+      },
+      {
+        "name": "titleTextUppercase",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "Titel in Großbuchstaben darstellen."
+      },
+      {
+        "name": "wrapTitleText",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "Langen Titel umbrechen statt kürzen."
+      },
+      {
+        "name": "titleTextLevel",
+        "type": "enum",
+        "required": false,
+        "defaultValue": null,
+        "description": "Überschriften-Level (H1..H6) → aria-level + Tag. Default H3."
+      },
+      {
+        "name": "header",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Custom-Header-Inhalt rechts neben dem Titel."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "ObjectPageSubSection": {
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Eindeutige ID. (Pflicht)"
+      },
+      {
+        "name": "titleText",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Sichtbarer Titel. (Pflicht)"
+      },
+      {
+        "name": "actions",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Aktionen rechts im SubSection-Kopf."
+      },
+      {
+        "name": "hideTitleText",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "Titel ausblenden."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "ObjectPage": {
+    "props": [
+      {
+        "name": "title",
+        "type": "ReactNode",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "subtitle",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "status",
+        "type": "StatusBadge",
+        "required": false,
+        "defaultValue": null,
+        "description": "Status-Badge rechts im Kopf."
+      },
+      {
+        "name": "kpis",
+        "type": "ObjectPageKpi[]",
+        "required": false,
+        "defaultValue": null,
+        "description": "KPI-Reihe im Title-Bereich."
+      },
+      {
+        "name": "actions",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Aktionen rechts im Kopf (actionsBar)."
+      },
+      {
+        "name": "breadcrumbs",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Breadcrumb-Slot über dem Titel."
+      },
+      {
+        "name": "header",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Frei komponierbarer Kopf-/Unterkopf (überschreibt title/subtitle, wenn gesetzt)."
+      },
+      {
+        "name": "subHeader",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "snappedHeader",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Alternative Darstellung im kollabierten (snapped) Zustand."
+      },
+      {
+        "name": "snappedSubHeader",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "expandedContent",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Inhalt nur im expandierten bzw. nur im snapped Zustand."
+      },
+      {
+        "name": "snappedContent",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "actionsBar",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Aktionsleiste (Alias zu actions; actions hat Vorrang)."
+      },
+      {
+        "name": "navigationBar",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Navigations-Aktionen, responsiv positioniert."
+      },
+      {
+        "name": "glass",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "„Liquid Glass\"-Optik auf der Title-/Top-Header-Leiste (transluzent + Blur)."
+      },
+      {
+        "name": "headerArea",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Expandierbarer Header-Content unter dem Title."
+      },
+      {
+        "name": "headerPinned",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "Header fixiert (nicht kollabierbar beim Scrollen)."
+      },
+      {
+        "name": "hidePinButton",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "Pin-Button ausblenden."
+      },
+      {
+        "name": "preserveHeaderStateOnClick",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "Klick auf Title togglet den Header nicht."
+      },
+      {
+        "name": "onToggleHeaderArea",
+        "type": "((visible: boolean) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "onPinButtonToggle",
+        "type": "((pinned: boolean) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "image",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Bild/Avatar im Kopf — URL-String oder beliebiger Node."
+      },
+      {
+        "name": "imageShapeCircle",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "Bild rund darstellen."
+      },
+      {
+        "name": "footerArea",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Schwebende Footer-Aktionsleiste."
+      },
+      {
+        "name": "placeholder",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Ersetzt den gesamten Inhalt (z. B. „nicht ladbar\")."
+      },
+      {
+        "name": "mode",
+        "type": "enum",
+        "required": false,
+        "defaultValue": null,
+        "description": "`default` = alle Sektionen scrollbar, `iconTabBar` = nur aktive sichtbar."
+      },
+      {
+        "name": "selectedSectionId",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Controlled aktive Sektion."
+      },
+      {
+        "name": "selectedSubSectionId",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Controlled aktive SubSection (nur Markierung)."
+      },
+      {
+        "name": "onSelectedSectionChange",
+        "type": "((detail: SelectedSectionChangeDetail) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "onBeforeNavigate",
+        "type": "((detail: BeforeNavigateDetail) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Cancelable vor jeder Navigation."
+      },
+      {
+        "name": "accessibilityAttributes",
+        "type": "ObjectPageAccessibilityAttributes",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "sections",
+        "type": "ObjectSection[]",
+        "required": false,
+        "defaultValue": null,
+        "description": "Detail-Sektionen (Legacy-Adapter → ObjectPageSection)."
+      },
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Kompositions-children (ObjectPageSection-Elemente) bzw. freier Inhalt."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "style",
+        "type": "CSSProperties",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "useFilterState": {
+    "props": [
+      {
+        "name": "persistKey",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "localStorage-Schlüssel-Suffix (eindeutig pro Tabelle/View)."
+      },
+      {
+        "name": "defaultValues",
+        "type": "Record<string, unknown>",
+        "required": true,
+        "defaultValue": null,
+        "description": "Startwerte; definieren zugleich die Filter-Keys."
+      },
+      {
+        "name": "labels",
+        "type": "Partial<Record<keyof V, ReactNode>>",
+        "required": false,
+        "defaultValue": null,
+        "description": "Labels für die abgeleiteten activeFilters-Chips."
+      },
+      {
+        "name": "isActive",
+        "type": "((key: keyof V, value: unknown, defaultValue: unknown) => boolean)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Ob ein Wert als „aktiv\" zählt. Default: != default und nicht leer."
+      }
+    ]
+  },
+  "RadioGroup": {
+    "props": [
+      {
+        "name": "label",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "description",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "errorMessage",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": true,
+        "defaultValue": null,
+        "description": "The children of the component. A function may be provided to alter the children based on\ncomponent state."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "Radio": {
+    "props": [
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "The children of the component. A function may be provided to alter the children based on\ncomponent state."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "CheckboxGroup": {
+    "props": [
+      {
+        "name": "label",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "description",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "errorMessage",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": true,
+        "defaultValue": null,
+        "description": "The children of the component. A function may be provided to alter the children based on\ncomponent state."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "NumberField": {
+    "props": [
+      {
+        "name": "label",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "description",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "errorMessage",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "placeholder",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "Slider": {
+    "props": [
+      {
+        "name": "label",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "showValue",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": true,
+        "description": ""
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "ComboBox": {
+    "props": [
+      {
+        "name": "label",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "placeholder",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "description",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "errorMessage",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "ComboBoxItem": {
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "Form": {
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "FieldError": {
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "ListBox": {
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "ListBoxOption": {
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "GridList": {
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "GridListItem": {
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "The children of the component. A function may be provided to alter the children based on\ncomponent state."
+      }
+    ]
+  },
+  "TagGroup": {
+    "props": [
+      {
+        "name": "label",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optionales Label über der Chip-Reihe."
+      },
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": true,
+        "defaultValue": null,
+        "description": "Tags als statische Children oder via items/renderTag."
+      },
+      {
+        "name": "renderEmptyState",
+        "type": "((props: TagListRenderProps) => ReactNode)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Inhalt, wenn keine Tags vorhanden sind."
+      },
+      {
+        "name": "items",
+        "type": "Iterable<T>",
+        "required": false,
+        "defaultValue": null,
+        "description": "Dynamische Item-Quelle für die TagList."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "Tag": {
+    "props": [
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "The children of the component. A function may be provided to alter the children based on\ncomponent state."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "Breadcrumbs": {
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "Breadcrumb": {
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "Link": {
+    "props": [
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "The children of the component. A function may be provided to alter the children based on\ncomponent state."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "Disclosure": {
+    "props": [
+      {
+        "name": "title",
+        "type": "ReactNode",
+        "required": true,
+        "defaultValue": null,
+        "description": "Beschriftung des Triggers (Kopfzeile)."
+      },
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": true,
+        "defaultValue": null,
+        "description": "Inhalt des aufklappbaren Panels."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "DisclosureGroup": {
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "Tree": {
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "TreeItem": {
+    "props": [
+      {
+        "name": "title",
+        "type": "ReactNode",
+        "required": true,
+        "defaultValue": null,
+        "description": "Beschriftung der Zeile; dient zugleich als textValue für Typeahead."
+      },
+      {
+        "name": "textValue",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optionaler textValue, falls title kein reiner String ist."
+      },
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Verschachtelte TreeItems."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "Table": {
+    "props": [
+      {
+        "name": "stickyHeader",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "Header bleibt beim Scrollen oben kleben (Container muss eine feste Höhe haben)."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "TableHeader": {
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "TableBody": {
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "Column": {
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "Row": {
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "Cell": {
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "DateField": {
+    "props": [
+      {
+        "name": "label",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "description",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "errorMessage",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "TimeField": {
+    "props": [
+      {
+        "name": "label",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "description",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "errorMessage",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "Calendar": {
+    "props": [
+      {
+        "name": "errorMessage",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optionale Fehlermeldung unterhalb des Gitters."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "RangeCalendar": {
+    "props": [
+      {
+        "name": "errorMessage",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optionale Fehlermeldung unterhalb des Gitters."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "DatePicker": {
+    "props": [
+      {
+        "name": "label",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "description",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "errorMessage",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "DateRangePicker": {
+    "props": [
+      {
+        "name": "label",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "description",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "errorMessage",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "ColorField": {
+    "props": [
+      {
+        "name": "label",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "description",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "errorMessage",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "placeholder",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "ColorSwatch": {
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "ColorSwatchPicker": {
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "ColorSwatchPickerItem": {
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "parseColor": {
+    "props": []
+  },
+  "ColorArea": {
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "ColorSlider": {
+    "props": [
+      {
+        "name": "label",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Beschriftung über dem Slider."
+      },
+      {
+        "name": "showValue",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": true,
+        "description": "Aktuellen Kanalwert rechts neben dem Label anzeigen."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "ColorWheel": {
+    "props": [
+      {
+        "name": "outerRadius",
+        "type": "number",
+        "required": false,
+        "defaultValue": 100,
+        "description": "Außenradius des Rings (Default 100)."
+      },
+      {
+        "name": "innerRadius",
+        "type": "number",
+        "required": false,
+        "defaultValue": 74,
+        "description": "Innenradius des Rings (Default 74)."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "ColorPicker": {
+    "props": [
+      {
+        "name": "label",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": "Farbe",
+        "description": "Beschriftung neben dem Farb-Swatch im Trigger."
+      },
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Eigene Inhalte des Popovers. Standard: ColorArea + Hue-Slider + ColorField."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "ProgressBar": {
+    "props": [
+      {
+        "name": "label",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Sichtbares Label oberhalb des Balkens."
+      },
+      {
+        "name": "showValue",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": true,
+        "description": "Formatierten Wert (z. B. „60 %\") neben dem Label anzeigen."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "Meter": {
+    "props": [
+      {
+        "name": "label",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Sichtbares Label oberhalb des Meters."
+      },
+      {
+        "name": "showValue",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": true,
+        "description": "Formatierten Wert neben dem Label anzeigen."
+      },
+      {
+        "name": "bands",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": false,
+        "description": "Farbbänder nach Auslastung (grün/orange/rot) statt Akzentfarbe."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "Separator": {
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "Group": {
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "ToastRegion": {
+    "props": [
+      {
+        "name": "queue",
+        "type": "ToastQueue<AplToast>",
+        "required": false,
+        "defaultValue": "new RACToastQueue<AplToast>({\n  maxVisibleToasts: 5,\n})",
+        "description": "Eigene Queue (Standard: die exportierte `toastQueue`)."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "toastQueue": {
+    "props": []
+  },
+  "DropZone": {
+    "props": [
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Inhalt der Dropzone, z. B. ein Prompt-Text und ein FileTrigger."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "FileTrigger": {
+    "props": [
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": "Datei wählen",
+        "description": "Button-Beschriftung; Standard „Datei wählen\"."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "GlassSurface": {
+    "props": [
+      {
+        "name": "variant",
+        "type": "enum",
+        "required": false,
+        "defaultValue": "card",
+        "description": "Wo die Fläche sitzt (Default: `\"card\"`)."
+      },
+      {
+        "name": "tintColor",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optionaler Branding-Tint (rgba/hex), wird unter das Glas gelegt."
+      },
+      {
+        "name": "as",
+        "type": "ElementType",
+        "required": false,
+        "defaultValue": null,
+        "description": "Gerendertes Element (Default: `\"div\"`)."
+      }
+    ]
+  },
+  "CDocView": {
+    "props": [
+      {
+        "name": "doc",
+        "type": "CDocInput",
+        "required": true,
+        "defaultValue": null,
+        "description": "Full cDoc, a single BO, or an array of BOs."
+      },
+      {
+        "name": "schema",
+        "type": "Bo4eSchema",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "resolvers",
+        "type": "Bo4eResolvers",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "now",
+        "type": "Date",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "isIsoDate": {
+    "props": []
+  },
+  "toUtcLabel": {
+    "props": []
+  },
+  "zonedLabelWithTz": {
+    "props": []
+  },
+  "humanize": {
+    "props": []
+  },
+  "isoToBerlin": {
+    "props": []
+  },
+  "berlinToIso": {
+    "props": [
+      {
+        "name": "#private",
+        "type": "any",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "calendar",
+        "type": "Calendar",
+        "required": true,
+        "defaultValue": null,
+        "description": "The calendar system associated with this date, e.g. Gregorian."
+      },
+      {
+        "name": "era",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "The calendar era for this date, e.g. \"BC\" or \"AD\"."
+      },
+      {
+        "name": "year",
+        "type": "number",
+        "required": true,
+        "defaultValue": null,
+        "description": "The year of this date within the era."
+      },
+      {
+        "name": "month",
+        "type": "number",
+        "required": true,
+        "defaultValue": null,
+        "description": "The month number within the year. Note that some calendar systems such as Hebrew\nmay have a variable number of months per year. Therefore, month numbers may not\nalways correspond to the same month names in different years."
+      },
+      {
+        "name": "day",
+        "type": "number",
+        "required": true,
+        "defaultValue": null,
+        "description": "The day number within the month."
+      },
+      {
+        "name": "hour",
+        "type": "number",
+        "required": true,
+        "defaultValue": null,
+        "description": "The hour in the day, numbered from 0 to 23."
+      },
+      {
+        "name": "minute",
+        "type": "number",
+        "required": true,
+        "defaultValue": null,
+        "description": "The minute in the hour."
+      },
+      {
+        "name": "second",
+        "type": "number",
+        "required": true,
+        "defaultValue": null,
+        "description": "The second in the minute."
+      },
+      {
+        "name": "millisecond",
+        "type": "number",
+        "required": true,
+        "defaultValue": null,
+        "description": "The millisecond in the second."
+      },
+      {
+        "name": "timeZone",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "The IANA time zone identifier that this date and time is represented in."
+      },
+      {
+        "name": "offset",
+        "type": "number",
+        "required": true,
+        "defaultValue": null,
+        "description": "The UTC offset for this time, in milliseconds."
+      },
+      {
+        "name": "copy",
+        "type": "() => ZonedDateTime",
+        "required": true,
+        "defaultValue": null,
+        "description": "Returns a copy of this date."
+      },
+      {
+        "name": "add",
+        "type": "(duration: DateTimeDuration) => ZonedDateTime",
+        "required": true,
+        "defaultValue": null,
+        "description": "Returns a new `ZonedDateTime` with the given duration added to it."
+      },
+      {
+        "name": "subtract",
+        "type": "(duration: DateTimeDuration) => ZonedDateTime",
+        "required": true,
+        "defaultValue": null,
+        "description": "Returns a new `ZonedDateTime` with the given duration subtracted from it."
+      },
+      {
+        "name": "set",
+        "type": "(fields: DateFields & TimeFields, disambiguation?: Disambiguation | undefined) => ZonedDateTime",
+        "required": true,
+        "defaultValue": null,
+        "description": "Returns a new `ZonedDateTime` with the given fields set to the provided values. Other fields\nwill be constrained accordingly."
+      },
+      {
+        "name": "cycle",
+        "type": "(field: keyof DateFields | keyof TimeFields, amount: number, options?: CycleTimeOptions | undefined) => ZonedDateTime",
+        "required": true,
+        "defaultValue": null,
+        "description": "Returns a new `ZonedDateTime` with the given field adjusted by a specified amount.\nWhen the resulting value reaches the limits of the field, it wraps around."
+      },
+      {
+        "name": "toDate",
+        "type": "() => Date",
+        "required": true,
+        "defaultValue": null,
+        "description": "Converts the date to a native JavaScript Date object."
+      },
+      {
+        "name": "toString",
+        "type": "() => string",
+        "required": false,
+        "description": "Converts the date to an ISO 8601 formatted string, including the UTC offset and time zone\nidentifier."
+      },
+      {
+        "name": "toAbsoluteString",
+        "type": "() => string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Converts the date to an ISO 8601 formatted string in UTC."
+      },
+      {
+        "name": "compare",
+        "type": "(b: ZonedDateTime | CalendarDate | CalendarDateTime) => number",
+        "required": true,
+        "defaultValue": null,
+        "description": "Compares this date with another. A negative result indicates that this date is before the given\none, and a positive date indicates that it is after."
+      }
+    ]
+  },
+  "loadBo4eSchema": {
+    "props": [
+      {
+        "name": "fields",
+        "type": "unknown",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "enums",
+        "type": "unknown",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "bos",
+        "type": "unknown",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "normalizeToCDoc": {
+    "props": [
+      {
+        "name": "id",
+        "type": "unknown",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "businessKey",
+        "type": "unknown",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "content",
+        "type": "unknown",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "boTyp",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "ValidityRange": {
+    "props": [
+      {
+        "name": "start",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "end",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "now",
+        "type": "Date",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "AddressBlock": {
+    "props": [
+      {
+        "name": "adresse",
+        "type": "Adresse",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "CodeResolved": {
+    "props": [
+      {
+        "name": "code",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "codetyp",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "resolvers",
+        "type": "Bo4eResolvers",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "IdentityHeader": {
+    "props": [
+      {
+        "name": "icon",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "title",
+        "type": "ReactNode",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "subtitle",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "trailing",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "EnumIcon": {
+    "props": [
+      {
+        "name": "enumName",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "value",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "EnumBadge": {
+    "props": [
+      {
+        "name": "tone",
+        "type": "enum",
+        "required": false,
+        "defaultValue": "neutral",
+        "description": ""
+      },
+      {
+        "name": "icon",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "SchemaPopoverBody": {
+    "props": [
+      {
+        "name": "fieldKey",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "doc",
+        "type": "FieldDoc",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "value",
+        "type": "unknown",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "SchemaField": {
+    "props": [
+      {
+        "name": "schema",
+        "type": "Bo4eSchema",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "boTyp",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "fieldKey",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "value",
+        "type": "unknown",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "ContactLine": {
+    "props": [
+      {
+        "name": "person",
+        "type": "ContactPerson",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "MarktpartnerRow": {
+    "props": [
+      {
+        "name": "row",
+        "type": "Bo4eObject",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "resolvers",
+        "type": "Bo4eResolvers",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "now",
+        "type": "Date",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "FullDetail": {
+    "props": [
+      {
+        "name": "schema",
+        "type": "Bo4eSchema",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "boTyp",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "obj",
+        "type": "Bo4eObject",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "editable",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": false,
+        "description": ""
+      }
+    ]
+  },
+  "SmartObjectCard": {
+    "props": [
+      {
+        "name": "schema",
+        "type": "Bo4eSchema",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "boTyp",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "obj",
+        "type": "Bo4eObject",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "header",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "SmartObjectView": {
+    "props": [
+      {
+        "name": "schema",
+        "type": "Bo4eSchema",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "obj",
+        "type": "Bo4eObject",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "resolvers",
+        "type": "Bo4eResolvers",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "now",
+        "type": "Date",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "EditableValue": {
+    "props": [
+      {
+        "name": "doc",
+        "type": "FieldDoc",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "value",
+        "type": "unknown",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "onChange",
+        "type": "(value: unknown) => void",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "isScalarish": {
+    "props": []
+  },
+  "displayValue": {
+    "props": []
+  },
+  "GenericBody": {
+    "props": [
+      {
+        "name": "schema",
+        "type": "Bo4eSchema",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "boTyp",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "obj",
+        "type": "Bo4eObject",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "MarktlokationHeader": {
+    "props": [
+      {
+        "name": "schema",
+        "type": "Bo4eSchema",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "obj",
+        "type": "Bo4eObject",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "MarktlokationBody": {
+    "props": [
+      {
+        "name": "schema",
+        "type": "Bo4eSchema",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "obj",
+        "type": "Bo4eObject",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "resolvers",
+        "type": "Bo4eResolvers",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "now",
+        "type": "Date",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "FormFieldType": {
+    "props": []
+  },
+  "FormData": {
+    "props": []
+  },
+  "TaskFormField": {
+    "props": []
+  },
+  "CamundaVariables": {
+    "props": []
+  },
+  "taskFormToSchema": {
+    "props": []
+  },
+  "camundaTypeName": {
+    "props": [
+      {
+        "name": "name",
+        "type": "enum",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "camundaTypeToFieldType": {
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "type",
+        "type": "string | { name: \"string\" | \"boolean\" | \"long\" | \"enum\" | \"date\"; }",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "defaultValue",
+        "type": "unknown",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "validationConstraints",
+        "type": "{ name: string; configuration?: string; }[]",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "values",
+        "type": "Record<string, string>",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "camundaSubmitType": {
+    "props": []
+  },
+  "formDataToCamundaVariables": {
+    "props": []
+  },
+  "camundaTypeOf": {
+    "props": []
+  },
+  "validateForm": {
+    "props": []
+  },
+  "validateField": {
+    "props": []
+  },
+  "__object": {
+    "props": []
+  },
+  "min": {
+    "props": []
+  },
+  "max": {
+    "props": []
+  },
+  "minLength": {
+    "props": []
+  },
+  "maxLength": {
+    "props": []
+  },
+  "evalConditional": {
+    "props": []
+  },
+  "getPath": {
+    "props": []
+  },
+  "setPath": {
+    "props": []
+  },
+  "flattenFields": {
+    "props": [
+      {
+        "name": "type",
+        "type": "\"default\"",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "components",
+        "type": "FormField[]",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "schemaVersion",
+        "type": "number",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "exporter",
+        "type": "{ name: string; version: string; }",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "dataFields": {
+    "props": [
+      {
+        "name": "type",
+        "type": "\"default\"",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "components",
+        "type": "FormField[]",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "schemaVersion",
+        "type": "number",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "exporter",
+        "type": "{ name: string; version: string; }",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "isDataField": {
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "type",
+        "type": "enum",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "key",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Datenbindung (Punkt-Notation für Nesting)"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "description",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "defaultValue",
+        "type": "unknown",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "validate",
+        "type": "FormFieldValidation",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "values",
+        "type": "FormFieldOption[]",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "conditional",
+        "type": "FormFieldConditional",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "text",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "statischer Text/HTML bei type === \"text\""
+      },
+      {
+        "name": "components",
+        "type": "FormField[]",
+        "required": false,
+        "defaultValue": null,
+        "description": "verschachtelte Felder bei type === \"group\""
+      }
+    ]
+  },
+  "FormRenderer": {
+    "props": [
+      {
+        "name": "schema",
+        "type": "FormSchema",
+        "required": true,
+        "defaultValue": null,
+        "description": "form-js-kompatibles Schema (`{ type:\"default\", components:[...] }`)."
+      },
+      {
+        "name": "data",
+        "type": "FormData",
+        "required": false,
+        "defaultValue": null,
+        "description": "Kontrollierte Daten (`key -> value`)."
+      },
+      {
+        "name": "defaultData",
+        "type": "FormData",
+        "required": false,
+        "defaultValue": null,
+        "description": "Ungesteuerte Anfangsdaten."
+      },
+      {
+        "name": "onChange",
+        "type": "((data: FormData) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Datenänderungen (für controlled-Nutzung)."
+      },
+      {
+        "name": "onSubmit",
+        "type": "((result: FormRendererSubmit) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Submit-Callback; erhält Daten, Validierungsfehler und Submit-Variablen."
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": false,
+        "description": "Read-only-Darstellung über `DescriptionList`/`Field`."
+      },
+      {
+        "name": "submitVariableFormat",
+        "type": "enum",
+        "required": false,
+        "defaultValue": "camunda",
+        "description": "Submit-Variablenformat (Default `camunda`)."
+      },
+      {
+        "name": "submitLabel",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": "Absenden",
+        "description": "Label des Submit-Buttons (Default „Absenden\"). `null` → kein Button."
+      },
+      {
+        "name": "actionsSlot",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Zusätzlicher Aktions-Slot neben dem Submit-Button."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "FormBuilder": {
+    "props": [
+      {
+        "name": "value",
+        "type": "FormSchema",
+        "required": false,
+        "defaultValue": null,
+        "description": "Kontrolliertes Schema."
+      },
+      {
+        "name": "defaultValue",
+        "type": "FormSchema",
+        "required": false,
+        "defaultValue": null,
+        "description": "Ungesteuertes Anfangs-Schema."
+      },
+      {
+        "name": "onChange",
+        "type": "((schema: FormSchema) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Schema-Änderungen."
+      },
+      {
+        "name": "onSave",
+        "type": "((schema: FormSchema) => void | Promise<void>)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Persistenz-Callback (z. B. ⌘S in der App)."
+      },
+      {
+        "name": "mode",
+        "type": "enum",
+        "required": false,
+        "defaultValue": null,
+        "description": "Editor-Modus: nativer Designer oder form-js-Experten-Fallback."
+      },
+      {
+        "name": "onModeChange",
+        "type": "((mode: FormBuilderMode) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "fieldTypes",
+        "type": "readonly (\"number\" | \"textfield\" | \"textarea\" | \"checkbox\" | \"checklist\" | \"radio\" | \"select\" | \"datetime\" | \"taglist\" | \"text\" | \"separator\" | \"spacer\")[]",
+        "required": false,
+        "defaultValue": "[\n  \"textfield\",\n  \"textarea\",\n  \"number\",\n  \"checkbox\",\n  \"checklist\",\n  \"radio\",\n  \"select\",\n  \"datetime\",\n  \"taglist\",\n  \"text\",\n  \"separator\",\n  \"spacer\",\n] as const",
+        "description": "Beschränkt/erweitert die Palette (Default: alle Builder-Feldtypen)."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "BUILDER_FIELD_TYPES": {
+    "props": []
+  },
+  "createField": {
+    "props": []
+  },
+  "emptySchema": {
+    "props": []
+  },
+  "insertField": {
+    "props": []
+  },
+  "removeFieldAt": {
+    "props": []
+  },
+  "moveField": {
+    "props": []
+  },
+  "updateFieldAt": {
+    "props": []
+  },
+  "PRESENTATIONAL_TYPES": {
+    "props": []
+  },
+  "VALIDATION_MESSAGES": {
+    "props": []
+  },
+  "isPresentational": {
+    "props": []
+  },
+  "hasOptions": {
+    "props": []
+  },
+  "generateFieldId": {
+    "props": []
+  },
+  "FIELD_TYPE_LABELS": {
+    "props": []
+  },
+  "OPTION_TYPES": {
+    "props": []
+  },
+  "HitPolicy": {
+    "props": []
+  },
+  "Aggregation": {
+    "props": []
+  },
+  "FeelLintResult": {
+    "props": []
+  },
+  "DmnCellPlugin": {
+    "props": []
+  },
+  "DiagramColorScheme": {
+    "props": []
+  },
+  "getDiagramColors": {
+    "props": []
+  },
+  "isDarkMode": {
+    "props": []
+  },
+  "onThemeChange": {
+    "props": []
+  },
+  "parseDmnModel": {
+    "props": []
+  },
+  "serializeDmnModel": {
+    "props": []
+  },
+  "listDecisions": {
+    "props": []
+  },
+  "makeId": {
+    "props": []
+  },
+  "emptyRow": {
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "id der Decision"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "hitPolicy",
+        "type": "enum",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "aggregation",
+        "type": "enum",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "columns",
+        "type": "DmnColumn[]",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "rows",
+        "type": "DmnRow[]",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "addColumn": {
+    "props": []
+  },
+  "lintFeel": {
+    "props": []
+  },
+  "parseInputValues": {
+    "props": []
+  },
+  "FeelValueType": {
+    "props": []
+  },
+  "FeelLintTypedResult": {
+    "props": []
+  },
+  "DmnTableEditor": {
+    "props": [
+      {
+        "name": "value",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Controlled DMN-XML."
+      },
+      {
+        "name": "defaultValue",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Uncontrolled Start-XML."
+      },
+      {
+        "name": "onChange",
+        "type": "((xml: string) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Wird bei jeder Modelländerung mit serialisiertem XML aufgerufen."
+      },
+      {
+        "name": "onSave",
+        "type": "((xml: string) => void | Promise<void>)",
+        "required": false,
+        "defaultValue": null,
+        "description": "⌘S / Speichern-Button."
+      },
+      {
+        "name": "decisionId",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Wählt die zu editierende Decision (Default: erste mit Table)."
+      },
+      {
+        "name": "title",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Anzeigename (z. B. Prüfprozess-Code)."
+      },
+      {
+        "name": "subtitle",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Untertitel/Metadaten."
+      },
+      {
+        "name": "onSwitchToExpert",
+        "type": "(() => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Umschalten zum Experten-Modus (⑥)."
+      },
+      {
+        "name": "cellPlugins",
+        "type": "DmnCellPlugin[]",
+        "required": false,
+        "defaultValue": "[]",
+        "description": "Optionale Zell-Plugins (z. B. Prüfi-Autocomplete). Default: leer."
+      },
+      {
+        "name": "actionsSlot",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Zusätzliche Toolbar-Actions (z. B. KI-Fix)."
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": false,
+        "description": "Schreibschutz."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "DmnExpertEditor": {
+    "props": [
+      {
+        "name": "value",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Controlled DMN-XML."
+      },
+      {
+        "name": "defaultValue",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Uncontrolled Start-XML."
+      },
+      {
+        "name": "onChange",
+        "type": "((xml: string) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Bei Änderungen (commandStack.changed) mit serialisiertem XML."
+      },
+      {
+        "name": "onSave",
+        "type": "((xml: string) => void | Promise<void>)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Speichern-Callback."
+      },
+      {
+        "name": "colorScheme",
+        "type": "enum",
+        "required": false,
+        "defaultValue": "auto",
+        "description": "Light/Dark-Steuerung (Default auto via data-theme)."
+      },
+      {
+        "name": "actionsSlot",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Zusätzliche Toolbar-Actions."
+      },
+      {
+        "name": "onSwitchToTable",
+        "type": "(() => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Umschalten zur Tabellenansicht (⑤)."
+      },
+      {
+        "name": "propertiesPanel",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": true,
+        "description": "Properties-Panel anzeigen, falls die Pakete vorhanden sind (Default true)."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "DmnEditor": {
+    "props": [
+      {
+        "name": "value",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "defaultValue",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "onChange",
+        "type": "((xml: string) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "onSave",
+        "type": "((xml: string) => void | Promise<void>)",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "defaultMode",
+        "type": "enum",
+        "required": false,
+        "defaultValue": "table",
+        "description": "Start-Modus (Default 'table')."
+      },
+      {
+        "name": "mode",
+        "type": "enum",
+        "required": false,
+        "defaultValue": null,
+        "description": "Controlled-Modus."
+      },
+      {
+        "name": "onModeChange",
+        "type": "((mode: DmnEditorMode) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "colorScheme",
+        "type": "enum",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "title",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "subtitle",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "cellPlugins",
+        "type": "DmnCellPlugin[]",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "actionsSlot",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "decisionId",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "ActivityStatus": {
+    "props": []
+  },
+  "HistoryActivityInstance": {
+    "props": []
+  },
+  "Incident": {
+    "props": []
+  },
+  "HistoryVariableInstance": {
+    "props": []
+  },
+  "BpmnElementClick": {
+    "props": []
+  },
+  "readToken": {
+    "props": []
+  },
+  "BpmnViewer": {
+    "props": [
+      {
+        "name": "xml",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Das anzuzeigende BPMN 2.0 XML."
+      },
+      {
+        "name": "activityHistory",
+        "type": "HistoryActivityInstance[]",
+        "required": false,
+        "defaultValue": null,
+        "description": "Camunda-7-History-Einträge zur Status-Färbung."
+      },
+      {
+        "name": "incidents",
+        "type": "Incident[]",
+        "required": false,
+        "defaultValue": null,
+        "description": "Camunda-7-Incidents (färben das betroffene Element rot)."
+      },
+      {
+        "name": "runtimeActiveActivityIds",
+        "type": "string[]",
+        "required": false,
+        "defaultValue": null,
+        "description": "IDs der zur Laufzeit aktiven Aktivitäten (überschreiben History → blau)."
+      },
+      {
+        "name": "colorScheme",
+        "type": "enum",
+        "required": false,
+        "defaultValue": "auto",
+        "description": "Light/Dark-Steuerung. Default `auto` (folgt `data-theme`)."
+      },
+      {
+        "name": "onElementClick",
+        "type": "((event: BpmnElementClick) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Klick auf ein Element."
+      },
+      {
+        "name": "fitOnResize",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": true,
+        "description": "Bei Container-Resize automatisch neu einpassen. Default `true`."
+      },
+      {
+        "name": "showZoomControls",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": true,
+        "description": "Zoom-Steuerung (Buttons) anzeigen. Default `true`."
+      },
+      {
+        "name": "height",
+        "type": "string | number",
+        "required": false,
+        "defaultValue": "100%",
+        "description": "Höhe des Containers. Default `\"100%\"`. Canvas braucht eine feste Höhe."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optionaler Klassennamen-Override für den äußeren Container."
+      }
+    ]
+  },
+  "computeElementStatuses": {
+    "props": []
+  },
+  "computeExecutedFlows": {
+    "props": []
+  },
+  "buildActivityMap": {
+    "props": []
+  },
+  "matchActivity": {
+    "props": []
+  },
+  "deriveStatus": {
+    "props": []
+  },
+  "BpmnEditor": {
+    "props": [
+      {
+        "name": "value",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Controlled BPMN-XML. Bei gesetztem `value` ist die Komponente controlled."
+      },
+      {
+        "name": "defaultValue",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Uncontrolled Initial-XML."
+      },
+      {
+        "name": "onChange",
+        "type": "((xml: string) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Wird bei jeder Modell-Änderung mit dem aktuellen XML aufgerufen."
+      },
+      {
+        "name": "onSave",
+        "type": "((xml: string) => void | Promise<void>)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Speichern (z. B. ⌘S / Toolbar-Button) → erhält `saveXML({format:true})`."
+      },
+      {
+        "name": "lintRules",
+        "type": "LintRuleConfig",
+        "required": false,
+        "defaultValue": "{\n  \"bpmnlint/label-required\": \"error\",\n  \"bpmnlint/no-disconnected\": \"error\",\n  \"bpmnlint/no-implicit-split\": \"warn\",\n  \"bpmnlint/no-complex-gateway\": \"warn\",\n}",
+        "description": "bpmnlint-Regeln (Default: 4 MaKo-Regeln)."
+      },
+      {
+        "name": "onElementSelect",
+        "type": "((selection: { id: string; name?: string; } | null) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Element-Selektion (ID + Name)."
+      },
+      {
+        "name": "onDirtyChange",
+        "type": "((dirty: boolean) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Dirty-State (ungespeicherte Änderungen)."
+      },
+      {
+        "name": "actionsSlot",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "App-Slot für Zusatzaktionen in der Toolbar (z. B. KI-Button)."
+      },
+      {
+        "name": "onKiFix",
+        "type": "((issues: LintIssue[]) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "App-Slot im ErrorPanel (z. B. KI-Fix-Handler stellt eigenen Button bereit)."
+      },
+      {
+        "name": "colorScheme",
+        "type": "enum",
+        "required": false,
+        "defaultValue": "auto",
+        "description": "Light/Dark. Default `auto`."
+      },
+      {
+        "name": "propertiesPanel",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": true,
+        "description": "Properties-Panel anzeigen. Default `true`."
+      },
+      {
+        "name": "minimap",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": true,
+        "description": "Minimap (Übersichtskarte) anzeigen. Default `true`."
+      },
+      {
+        "name": "elementTemplates",
+        "type": "unknown[]",
+        "required": false,
+        "defaultValue": null,
+        "description": "Camunda-Element-Templates (JSON-Array) — im Properties-Panel anwendbar."
+      },
+      {
+        "name": "height",
+        "type": "string | number",
+        "required": false,
+        "defaultValue": "100%",
+        "description": "Höhe des Editors. Default `\"100%\"`."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Klassennamen-Override."
+      }
+    ]
+  },
+  "LintIssue": {
+    "props": []
+  },
+  "LintRuleConfig": {
+    "props": []
+  },
+  "lintHint": {
+    "props": []
+  },
+  "LintHint": {
+    "props": []
+  },
+  "BpmnTableView": {
+    "props": [
+      {
+        "name": "xml",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "BPMN 2.0 XML."
+      },
+      {
+        "name": "visibleRows",
+        "type": "number",
+        "required": false,
+        "defaultValue": 30,
+        "description": "Sichtbare Zeilen (Höhe der Tabelle). Default 30."
+      },
+      {
+        "name": "onRowSelect",
+        "type": "((id: string) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Klick auf eine Zeile → Element-ID (öffnet das Properties-Panel)."
+      },
+      {
+        "name": "selectedId",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Aktuell selektierte Element-ID (Zeilen-Highlight)."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Klassennamen-Override."
+      }
+    ]
+  },
+  "statusMarker": {
+    "props": []
+  },
+  "allStatusMarkers": {
+    "props": []
+  },
+  "buildStatusOverlay": {
+    "props": []
+  },
+  "MULTI_EXECUTION_MARKER": {
+    "props": []
+  },
+  "FLOW_EXECUTED_MARKER": {
+    "props": []
+  },
+  "STATUS_OVERLAY_POSITION": {
+    "props": []
+  },
+  "findMultiExecutionIds": {
+    "props": []
+  },
+  "isFlowNode": {
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "type",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "businessObject",
+        "type": "{ id?: string; name?: string; $type?: string | undefined; sourceRef?: { id?: string | undefined; } | undefined; targetRef?: { id?: string | undefined; } | undefined; } | undefined",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "isSequenceFlow": {
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "type",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "businessObject",
+        "type": "{ id?: string; name?: string; $type?: string | undefined; sourceRef?: { id?: string | undefined; } | undefined; targetRef?: { id?: string | undefined; } | undefined; } | undefined",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "hasIncident": {
+    "props": []
+  },
+  "isSequenceFlowExecuted": {
+    "props": []
+  },
+  "STATUS_TOKEN": {
+    "props": []
+  },
+  "STATUS_LABEL": {
+    "props": []
+  },
+  "buildRendererConfig": {
+    "props": [
+      {
+        "name": "defaultFillColor",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Füllfarbe der Shapes"
+      },
+      {
+        "name": "defaultStrokeColor",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Konturfarbe der Shapes/Connections"
+      },
+      {
+        "name": "defaultLabelColor",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Textfarbe der Labels"
+      },
+      {
+        "name": "canvasBackground",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Canvas-Hintergrund (für den umgebenden Container)"
+      },
+      {
+        "name": "accent",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Akzentfarbe (Selektion/aktive Elemente)"
+      }
+    ]
+  },
+  "createAppleRendererModule": {
+    "props": []
+  },
+  "buildLintConfig": {
+    "props": []
+  },
+  "DEFAULT_LINT_RULES": {
+    "props": []
+  },
+  "typeTone": {
+    "props": []
+  },
+  "parseBpmnElements": {
+    "props": []
+  },
+  "ErrorPanel": {
+    "props": [
+      {
+        "name": "issues",
+        "type": "LintIssue[]",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "elementName",
+        "type": "(elementId: string | undefined) => string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Auflösung Element-ID → Anzeigename."
+      },
+      {
+        "name": "onSelectElement",
+        "type": "(elementId: string) => void",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "onKiFix",
+        "type": "(() => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optionaler KI-Fix (z. B. Prompt an einen Agenten)."
+      },
+      {
+        "name": "onClose",
+        "type": "() => void",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "actionsSlot",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optionale zusätzliche Aktionen (App-Slot), rechts neben KI-Fix."
+      }
+    ]
+  }
+}
