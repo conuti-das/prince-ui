@@ -22,5 +22,5 @@ export * from "./view/SmartObjectCard";
 export * from "./view/SmartObjectView";
 export * from "./view/EditableValue";
 
-export { SydocView } from "./SydocView";
-export type { SydocViewProps } from "./SydocView";
+export { CDocView } from "./CDocView";
+export type { CDocViewProps } from "./CDocView";

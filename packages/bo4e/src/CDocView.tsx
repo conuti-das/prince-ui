@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import type { Bo4eResolvers } from "./types";
 import type { Bo4eSchema } from "./schema/load-schema";
-import { normalizeToCDoc, type SydocInput } from "./normalize";
+import { normalizeToCDoc, type CDocInput } from "./normalize";
 import { scanAnomalies } from "./core/anomalies";
 import { humanize } from "./core/humanize";
 import { SmartObjectView } from "./view/SmartObjectView";
@@ -10,15 +10,15 @@ import "./view/bo4e.css";
 const TRANS = "__TRANS__";
 const ZUSATZ = "__ZUSATZ__";
 
-export interface SydocViewProps {
+export interface CDocViewProps {
   /** Full cDoc, a single BO, or an array of BOs. */
-  doc: SydocInput;
+  doc: CDocInput;
   schema: Bo4eSchema;
   resolvers?: Bo4eResolvers;
   now?: Date;
 }
 
-export function SydocView({ doc, schema, resolvers, now }: SydocViewProps) {
+export function CDocView({ doc, schema, resolvers, now }: CDocViewProps) {
   const cdoc = normalizeToCDoc(doc);
   const directions = Object.keys(cdoc.content);
   const [dir, setDir] = useState<string>(() => (directions.includes("OUTBOUND") ? "OUTBOUND" : (directions[0] ?? "")));
@@ -87,11 +87,13 @@ export function SydocView({ doc, schema, resolvers, now }: SydocViewProps) {
       <div className="prn-bo-tabs" role="tablist" aria-label="Objekte">
         {tabs.map((t) => {
           const list = dd.stammdaten[t];
+          const kind = t === TRANS ? "trans" : t === ZUSATZ ? "zusatz" : "stamm";
           return (
             <button
               key={t}
               type="button"
               className="prn-bo-tab"
+              data-kind={kind}
               role="tab"
               aria-selected={t === active}
               onClick={() => setTab(t)}

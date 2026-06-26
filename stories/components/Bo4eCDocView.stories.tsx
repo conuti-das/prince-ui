@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { SydocView, loadBo4eSchema, type Bo4eResolvers } from "../../packages/bo4e/src/index";
+import { CDocView, loadBo4eSchema, type Bo4eResolvers } from "../../packages/bo4e/src/index";
 import type { CDoc } from "../../packages/bo4e/src/index";
 import cdoc from "../../packages/bo4e/src/__fixtures__/cdoc-example.json";
 import fields from "../../packages/bo4e/src/__fixtures__/bo4e-fields.json";
@@ -34,11 +34,11 @@ const resolvers: Bo4eResolvers = {
 };
 
 const meta = {
-  title: "BO4E/SydocView",
-  component: SydocView,
+  title: "BO4E/CDoc View",
+  component: CDocView,
   tags: ["autodocs"],
   parameters: { layout: "padded" },
-} satisfies Meta<typeof SydocView>;
+} satisfies Meta<typeof CDocView>;
 export default meta;
 type Story = StoryObj<typeof meta>;
 
