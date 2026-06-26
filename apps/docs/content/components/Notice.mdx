@@ -1,0 +1,29 @@
+# Notice
+
+Inline-Hinweisbox, die kontextbezogene Meldungen direkt im Seitenfluss zeigt — mit Tonalität, Leading-Glyph und optionalem Titel.
+
+<Playground component="Notice" />
+
+## Verwendung
+
+Wähle die `tone` nach Bedeutung: **info** für neutrale Hinweise, **positive** für Erfolgsmeldungen, **critical** für Situationen, die Aufmerksamkeit verlangen, aber noch kein Fehler sind, und **negative** für echte Fehler. Notice steht im Layoutfluss — nutze es für dauerhaft sichtbare Kontext-Infos, nicht für flüchtige Bestätigungen (dafür gibt es Toast).
+
+<DoDont kind="do">Tonalität an die tatsächliche Schwere koppeln: `negative` nur, wenn wirklich etwas fehlgeschlagen ist.</DoDont>
+<DoDont kind="dont">Mehrere `negative`-Notices stapeln — fasse zusammenhängende Fehler in einer Box mit Liste zusammen.</DoDont>
+
+## Beispiele
+
+<Example code={`<div style={{ display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 560 }}>
+  <Notice tone="info" title="Hinweis">Die Datenaktualisierung erfolgt alle 60 Sekunden.</Notice>
+  <Notice tone="positive" title="Erfolgreich verarbeitet">Alle 248 Transaktionen wurden ohne Fehler abgeschlossen.</Notice>
+  <Notice tone="critical" title="Aufmerksamkeit erforderlich">3 Transaktionen warten auf manuelle Klärung.</Notice>
+  <Notice tone="negative" title="Verarbeitungsfehler">EDIFACT-Segment UNH konnte nicht validiert werden.</Notice>
+</div>`} />
+
+## Accessibility
+
+Notice ist eine rein visuelle Box ohne eigene ARIA-Live-Region — der Glyph kodiert die Tonalität nur farblich/ikonisch, daher trägt der `title` (oder der Textinhalt) die eigentliche Bedeutung in Klartext. Bei dynamisch eingeblendeten Fehlern, die sofort angesagt werden sollen, umschließe das Notice mit einem `role="alert"`-Container. Verlasse dich nicht allein auf die Farbe: Titel und Text müssen die Aussage auch ohne Farbwahrnehmung tragen.
+
+## Props
+
+<PropsTable name="Notice" />

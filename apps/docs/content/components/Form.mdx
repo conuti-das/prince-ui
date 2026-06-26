@@ -1,0 +1,28 @@
+# Form
+
+Das Form bündelt Felder, native Validierung und serverseitige Fehler zu einem zugänglichen Formular.
+
+<Playground component="Form" />
+
+## Verwendung
+
+Umschließe zusammengehörige Felder mit `Form`, statt einzelne Inputs lose anzuordnen. Über `validationErrors` werden Server-Fehler den Feldern anhand ihres `name`-Attributs zugeordnet und automatisch im jeweiligen `FieldError` angezeigt — ohne dass du die Fehler manuell durchreichen musst. Gib jedem Feld ein `name`, damit Absenden und Fehlerzuordnung funktionieren.
+
+<DoDont kind="do">Server-Fehler über `validationErrors={{ feldname: 'Meldung' }}` zurückspielen, sodass sie am passenden Feld erscheinen.</DoDont>
+<DoDont kind="dont">Felder ohne `name` ins Form setzen — dann lassen sie sich weder absenden noch einem Server-Fehler zuordnen.</DoDont>
+
+## Beispiele
+
+<Example code={`<Form validationErrors={{ email: 'Bereits vergeben' }}>
+  <TextField name="marktpartner" label="Marktpartner" placeholder="z. B. 9900123000007" />
+  <TextField name="email" label="E-Mail" type="email" placeholder="name@example.com" />
+  <Button type="submit">Speichern</Button>
+</Form>`} />
+
+## Accessibility
+
+Form basiert auf react-aria-components `Form` und rendert ein natives `<form>`. Fehler aus `validationErrors` werden dem jeweiligen Feld als `aria-describedby` zugeordnet und beim Absenden an das erste ungültige Feld fokussiert — Nutzer landen direkt beim Problem. So bleiben Validierungsmeldungen für Screenreader nachvollziehbar verknüpft, nicht nur visuell.
+
+## Props
+
+<PropsTable name="Form" />

@@ -1,0 +1,42 @@
+# Disclosure
+
+Disclosures verbergen sekundäre Inhalte hinter einer aufklappbaren Sektion und halten dichte Ansichten übersichtlich.
+
+<Playground component="Disclosure" />
+
+## Verwendung
+
+Nutze ein einzelnes `Disclosure` für eine optionale Detailsektion (z. B. „Weitere Details"), die standardmäßig zusammengeklappt ist. Mehrere zusammengehörige Sektionen bündelst du in einer `DisclosureGroup`; mit `allowsMultipleExpanded` dürfen mehrere gleichzeitig offen sein, ohne das Flag verhält sich die Gruppe wie ein Akkordeon (immer nur eine Sektion offen).
+
+<DoDont kind="do">Sekundäre, nicht zwingend benötigte Informationen einklappen — der Einstieg bleibt fokussiert.</DoDont>
+<DoDont kind="dont">Pflichtfelder oder Inhalte verstecken, die für die Aufgabe zwingend gelesen werden müssen.</DoDont>
+
+## Beispiele
+
+Mehrere Sektionen als Akkordeon-Gruppe:
+
+<Example code={`<DisclosureGroup allowsMultipleExpanded defaultExpandedKeys={['allgemein']}>
+  <Disclosure id="allgemein" title="Allgemein">
+    <p style={{ margin: 0 }}>Grundlegende Einstellungen und Stammdaten.</p>
+  </Disclosure>
+  <Disclosure id="abrechnung" title="Abrechnung">
+    <p style={{ margin: 0 }}>Tarife, Zahlungsweise und Rechnungsstellung.</p>
+  </Disclosure>
+  <Disclosure id="kontakt" title="Kontakt">
+    <p style={{ margin: 0 }}>Ansprechpartner und Kommunikationswege.</p>
+  </Disclosure>
+</DisclosureGroup>`} />
+
+Vorab geöffnete Sektion:
+
+<Example code={`<Disclosure title="Vorab geöffnet" defaultExpanded>
+  <p style={{ margin: 0 }}>Dieser Abschnitt ist standardmäßig ausgeklappt.</p>
+</Disclosure>`} />
+
+## Accessibility
+
+Disclosure basiert auf react-aria `Disclosure`: Der Trigger ist ein echter Button innerhalb einer `Heading`, sodass Screenreader die Sektion in der Überschriften-Navigation finden. `aria-expanded` und die Verknüpfung zum Panel werden automatisch gesetzt; das Panel ist im eingeklappten Zustand aus dem Fokus- und Lesefluss genommen. Der Trigger ist per Enter/Space bedienbar, der Chevron ist rein dekorativ (`aria-hidden`). Bei `isDisabled` wird der Trigger korrekt als deaktiviert ausgezeichnet.
+
+## Props
+
+<PropsTable name="Disclosure" />

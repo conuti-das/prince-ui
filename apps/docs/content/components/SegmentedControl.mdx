@@ -1,0 +1,33 @@
+# SegmentedControl
+
+Das SegmentedControl ist eine kompakte Einfachauswahl aus wenigen, gleichrangigen Optionen in einer Leiste.
+
+## Verwendung
+
+Übergib die Optionen als `Segment` mit stabiler `id`. Den ausgewählten Wert hältst du über `selectedKeys`/`onSelectionChange` (kontrolliert). Setze ein SegmentedControl für 2–4 sich gegenseitig ausschließende Optionen ein, die nebeneinander sichtbar bleiben sollen — etwa Zeiträume (1h / 24h / 7 Tage) oder Ansichtsmodi. Bei mehr Optionen oder langen Labels ist ein `Select` die bessere Wahl.
+
+<DoDont kind="do">Kurze, gleich lange Beschriftungen verwenden, damit die Segmente optisch ausbalanciert sind.</DoDont>
+<DoDont kind="dont">Mehr als etwa vier Segmente oder lange Texte hineinpacken — das sprengt die kompakte Leiste; dann besser ein `Select` nutzen.</DoDont>
+
+## Beispiele
+
+Zeitraum-Auswahl mit Standardwert:
+
+<Example code={`function Zeitraum() {
+  const [seg, setSeg] = React.useState(new Set(['24h']));
+  return (
+    <SegmentedControl selectedKeys={seg} onSelectionChange={(k) => setSeg(k)}>
+      <Segment id="1h">1h</Segment>
+      <Segment id="24h">24h</Segment>
+      <Segment id="7d">7 Tage</Segment>
+    </SegmentedControl>
+  );
+}`} />
+
+## Accessibility
+
+SegmentedControl basiert auf react-aria `ToggleButtonGroup`: Die Segmente bilden eine Gruppe von Umschalt-Buttons mit Roving Tabindex — der Fokus wandert mit ←/→ durch die Segmente, nur das aktive Segment liegt im Tab-Fluss. Über `disallowEmptySelection` (Standard) bleibt stets genau ein Segment gewählt, sodass die Auswahl nie leer wird. Jedes Segment kündigt seinen Zustand über `aria-pressed` an. Gib der Gruppe bei Bedarf ein `aria-label`, wenn der Kontext den Zweck nicht eindeutig macht.
+
+## Props
+
+<PropsTable name="SegmentedControl" />

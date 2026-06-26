@@ -1,0 +1,32 @@
+# Badge
+
+Kompaktes Status-Label, das einen Zustand oder eine Kategorie in wenigen Worten markiert.
+
+<Playground component="Badge" />
+
+## Verwendung
+
+Badge fasst einen Status in ein bis zwei Wörtern zusammen. Wähle die `tone` semantisch konsistent über die App hinweg: **green** für Erfolg/aktiv, **red** für Fehler, **orange** für wartend/Warnung, **blue** für Info, **teal** für hervorgehobene Zustände, **gray** für inaktiv/Entwurf und **neutral** als unauffällige Voreinstellung. Badge ist nicht interaktiv — für anklickbare, entfernbare Marken nutze [TagGroup](/components/taggroup).
+
+<DoDont kind="do">Eine feste Tone-Bedeutung pro Status etablieren und überall gleich anwenden.</DoDont>
+<DoDont kind="dont">Ganze Sätze in ein Badge schreiben — kurze Labels halten die Liste scanbar.</DoDont>
+
+## Beispiele
+
+<Example code={`<div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
+  <Badge tone="neutral">Neutral</Badge>
+  <Badge tone="green">Erfolgreich</Badge>
+  <Badge tone="red">Fehler</Badge>
+  <Badge tone="orange">Wartet</Badge>
+  <Badge tone="blue">Info</Badge>
+  <Badge tone="teal">Aktiv</Badge>
+  <Badge tone="gray">Entwurf</Badge>
+</div>`} />
+
+## Accessibility
+
+Badge rendert reinen Text ohne eigene ARIA-Rolle — die Tonalität ist ausschließlich farblich kodiert. Der Wortlaut muss den Status deshalb selbst tragen („Fehler", nicht nur ein rotes Badge), damit er ohne Farbwahrnehmung verständlich bleibt. Steht ein Badge für einen Live-Status, der sich ändern kann, gehört die Ansage in die umgebende Region (z. B. Tabellenzelle), nicht ins Badge selbst.
+
+## Props
+
+<PropsTable name="Badge" />

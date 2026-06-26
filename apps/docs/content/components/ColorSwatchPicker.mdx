@@ -1,0 +1,37 @@
+# ColorSwatchPicker
+
+Eine auswählbare Reihe vordefinierter Farbfelder.
+
+<Playground component="ColorSwatchPicker" />
+
+## Verwendung
+
+Nutze `ColorSwatchPicker`, wenn Nutzer aus einer festen Palette wählen sollen — Status-, Marken- oder Kategoriefarben. Jedes Feld ist ein `ColorSwatchPickerItem` (mit innerer `ColorSwatch`); die Auswahl wird mit einem Akzent-Ring hervorgehoben. Über `layout` lässt sich zwischen `grid` und `stack` umschalten. Soll der Nutzer beliebige Farben einstellen statt aus einer Palette wählen, nutze `ColorPicker`.
+
+<DoDont kind="do">Halte die Palette kurz und kuratiert — wenige, klar unterscheidbare Farben.</DoDont>
+<DoDont kind="dont">Verlasse dich nicht allein auf den Farbring zur Kennzeichnung der Auswahl, wenn Farben schwer unterscheidbar sind — ergänze dann Labels.</DoDont>
+
+## Beispiele
+
+<Example code={`<ColorSwatchPicker defaultValue="#3478F6" aria-label="Farbe wählen">
+  <ColorSwatchPickerItem color="#FF3B30" />
+  <ColorSwatchPickerItem color="#FF9500" />
+  <ColorSwatchPickerItem color="#FFCC00" />
+  <ColorSwatchPickerItem color="#34C759" />
+  <ColorSwatchPickerItem color="#3478F6" />
+  <ColorSwatchPickerItem color="#AF52DE" />
+</ColorSwatchPicker>`} />
+
+<Example code={`<ColorSwatchPicker layout="stack" defaultValue="#34C759" aria-label="Status">
+  <ColorSwatchPickerItem color="#FF3B30" />
+  <ColorSwatchPickerItem color="#FF9500" />
+  <ColorSwatchPickerItem color="#34C759" />
+</ColorSwatchPicker>`} />
+
+## Accessibility
+
+`ColorSwatchPicker` baut auf react-aria `ColorSwatchPicker` auf. Die Felder bilden eine zusammenhängende Auswahlgruppe: Pfeiltasten bewegen den Fokus zwischen den Swatches, Enter/Space wählen aus; der ausgewählte Eintrag wird per `aria-selected` und sichtbarem Ring doppelt ausgezeichnet, sodass die Auswahl nicht allein über Farbe erkennbar ist. Jedes `ColorSwatchPickerItem` trägt eine zugängliche Beschreibung aus seinem Farbwert; eine Gruppen-Beschriftung (`aria-label`) ist erforderlich.
+
+## Props
+
+<PropsTable name="ColorSwatchPicker" />

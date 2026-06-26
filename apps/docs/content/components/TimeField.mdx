@@ -1,0 +1,34 @@
+# TimeField
+
+Ein Uhrzeitfeld zur segmentweisen Eingabe von Stunde und Minute.
+
+<Playground component="TimeField" />
+
+## Verwendung
+
+Nutze `TimeField` für reine Uhrzeit-Eingaben ohne Datumsanteil — etwa Start- oder Abfahrtszeiten. Die Segmente (Stunde/Minute) folgen dem Locale (`de-DE`: 24-Stunden-Format). Soll zusätzlich ein Datum erfasst werden, kombiniere `DateField` und `TimeField` oder nutze einen Datums-/Zeit-Wert mit Zeitanteil.
+
+<DoDont kind="do">Beschrifte das Feld eindeutig nach seiner Bedeutung (z. B. „Startzeit", „Abfahrt") statt generisch „Uhrzeit".</DoDont>
+<DoDont kind="dont">Erzwinge keine Sekunden-Eingabe, wenn Minuten-Granularität ausreicht — das verlängert die Eingabe unnötig.</DoDont>
+
+## Beispiele
+
+<Example code={`<TimeField
+  label="Startzeit"
+  defaultValue={parseTime('14:30')}
+  description="Stunde und Minute separat editierbar."
+/>`} />
+
+<Example code={`<TimeField
+  label="Abfahrt"
+  isInvalid
+  errorMessage="Bitte eine gültige Uhrzeit wählen."
+/>`} />
+
+## Accessibility
+
+`TimeField` baut auf react-aria `TimeField` auf. Jedes Zeit-Segment ist ein Spinbutton: Pfeiltasten hoch/runter ändern den Wert, links/rechts wechseln das Segment, direkte Zifferneingabe füllt automatisch. Das 12-/24-Stunden-Format (inkl. AM/PM-Segment) richtet sich nach dem aktiven Locale. `description` und `errorMessage` werden per `aria-describedby` verknüpft; ohne sichtbares `label` ist ein `aria-label` erforderlich.
+
+## Props
+
+<PropsTable name="TimeField" />

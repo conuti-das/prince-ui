@@ -1,0 +1,30 @@
+# Amount
+
+Lokalisiert formatierter Geldbetrag über `Intl.NumberFormat` — mit optionaler Währung, Vorzeichen und positiv/negativ-Färbung.
+
+<Playground component="Amount" />
+
+## Verwendung
+
+`value` ist die reine Zahl, `currency` der ISO-Code (z. B. `EUR`); `locale` überschreibt die aus dem `I18nProvider` geerbte Sprache. Über `minimumFractionDigits` / `maximumFractionDigits` steuerst du die Nachkommastellen. `colored` färbt positive Werte grün und negative rot, `signed` erzwingt ein sichtbares Vorzeichen.
+
+<DoDont kind="do">Gib `value` als echte `number` weiter — die Komponente übernimmt Tausendertrennung und Komma gemäß `locale`.</DoDont>
+<DoDont kind="dont">Betrag und Währung schon als vorformatierten String übergeben — damit umgehst du die Lokalisierung und brichst die Konsistenz zwischen den Locales.</DoDont>
+
+## Beispiele
+
+<Example code={`<div style={{ display: 'flex', flexDirection: 'column', gap: 12, maxWidth: 280 }}>
+  <Amount value={1234567.89} currency="EUR" />
+  <Amount value={-842.5} currency="EUR" colored signed />
+  <Amount value={1280.4} colored signed />
+  <Amount value={0} currency="EUR" colored />
+  <Amount value={98.765} maximumFractionDigits={2} />
+</div>`} />
+
+## Accessibility
+
+Der Betrag wird als zusammenhängender Text gerendert und so von Screenreadern als ganze Zahl vorgelesen. Verlasse dich bei `colored` nicht allein auf die Farbe, um positiv von negativ zu unterscheiden — kombiniere sie mit `signed`, damit das Vorzeichen auch für farbfehlsichtige Nutzende und in der Sprachausgabe eindeutig ist.
+
+## Props
+
+<PropsTable name="Amount" />

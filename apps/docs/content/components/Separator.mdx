@@ -1,0 +1,36 @@
+# Separator
+
+Trennlinie, die zusammengehörige Bereiche visuell und semantisch voneinander abgrenzt.
+
+<Playground component="Separator" />
+
+## Verwendung
+
+Separator zieht eine 1px-Linie in der System-Trennfarbe. `orientation="horizontal"` trennt gestapelte Abschnitte, `orientation="vertical"` gliedert nebeneinanderliegende Inline-Elemente wie Aktionsleisten. Setze Separatoren sparsam — nicht jede Gruppe braucht eine Linie; oft genügt Abstand (Whitespace).
+
+<DoDont kind="do">Vertikale Separatoren in Aktionsleisten zwischen logischen Gruppen einsetzen, mit ausreichend Höhe am Container.</DoDont>
+<DoDont kind="dont">Separatoren als Dekoration zwischen jedem einzelnen Element streuen — das erzeugt visuelles Rauschen.</DoDont>
+
+## Beispiele
+
+<Example code={`<div style={{ maxWidth: 320 }}>
+  <p style={{ margin: '0 0 12px' }}>Oben</p>
+  <Separator />
+  <p style={{ margin: '12px 0 0' }}>Unten</p>
+</div>`} />
+
+<Example code={`<div style={{ display: 'flex', alignItems: 'center', gap: 12, height: 24 }}>
+  <span>Bearbeiten</span>
+  <Separator orientation="vertical" />
+  <span>Duplizieren</span>
+  <Separator orientation="vertical" />
+  <span>Löschen</span>
+</div>`} />
+
+## Accessibility
+
+Separator basiert auf react-aria `Separator` und rendert ein Element mit `role="separator"` und — bei vertikaler Ausrichtung — `aria-orientation="vertical"`. Damit wird die Trennung assistiven Technologien als Struktur gemeldet, nicht nur visuell. Nutze Separator für echte Gruppentrennung; eine rein dekorative Linie ohne semantische Bedeutung gehört eher in CSS (`border`), um die ARIA-Struktur nicht mit leeren Rollen aufzublähen.
+
+## Props
+
+<PropsTable name="Separator" />

@@ -1,0 +1,28 @@
+# RadioGroup
+
+Die RadioGroup bietet aus mehreren sich gegenseitig ausschließenden Optionen genau eine Auswahl.
+
+<Playground component="RadioGroup" />
+
+## Verwendung
+
+Nutze die RadioGroup, wenn aus einer überschaubaren Liste genau eine Option gewählt werden muss. Die Optionen sind `Radio`-Komponenten mit jeweils einem `value`. Bei wenigen kurzen Optionen kann `orientation="horizontal"` Platz sparen; bei längeren Beschriftungen oder mehr als drei Optionen bleibt `vertical` lesbarer. Werden es viele Optionen, ist ein [Select](/components/select) die kompaktere Wahl.
+
+<DoDont kind="do">RadioGroup für 2–5 sich ausschließende Optionen nehmen, bei denen alle Werte sichtbar bleiben sollen.</DoDont>
+<DoDont kind="dont">Eine vorausgewählte Option weglassen, wenn ein sinnvoller Standard existiert — dann lieber `defaultValue` setzen.</DoDont>
+
+## Beispiele
+
+<Example code={`<RadioGroup label="Sparte" orientation="horizontal" defaultValue="strom">
+  <Radio value="strom">Strom</Radio>
+  <Radio value="gas">Gas</Radio>
+  <Radio value="wasser">Wasser</Radio>
+</RadioGroup>`} />
+
+## Accessibility
+
+RadioGroup basiert auf react-aria-components `RadioGroup` mit `role="radiogroup"`. Innerhalb der Gruppe wechseln die Pfeiltasten die Auswahl (nicht Tab), Tab springt aus der Gruppe heraus — so verhält sich eine native Radio-Gruppe. Das Gruppen-`label` liefert den zugänglichen Namen; jede `Radio` ist über ihre `children` beschriftet.
+
+## Props
+
+<PropsTable name="RadioGroup" />

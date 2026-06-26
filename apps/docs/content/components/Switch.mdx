@@ -1,0 +1,28 @@
+# Switch
+
+Der Switch schaltet eine Einstellung sofort an oder aus — ohne Bestätigung über einen Button.
+
+<Playground component="Switch" />
+
+## Verwendung
+
+Nutze den Switch für Einstellungen, die unmittelbar wirken, sobald sie umgelegt werden (z. B. „Auto-Refresh"). Im Unterschied zur Checkbox steht der Switch nicht für die Auswahl eines Wertes in einem Formular, das später abgeschickt wird, sondern für einen direkt aktiven Zustand. Beschrifte den Zustand neutral mit dem, was eingeschaltet wird — nicht mit „Ein/Aus".
+
+<DoDont kind="do">Den Switch nutzen, wenn die Änderung sofort greift und keinen Speichern-Schritt braucht.</DoDont>
+<DoDont kind="dont">Einen Switch in ein Formular setzen, dessen Wert erst beim Absenden gilt — dort ist eine Checkbox die richtige Erwartung.</DoDont>
+
+## Beispiele
+
+<Example code={`<div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+  <Switch isSelected>Auto-Refresh</Switch>
+  <Switch>Benachrichtigungen</Switch>
+  <Switch isDisabled>Wartungsmodus</Switch>
+</div>`} />
+
+## Accessibility
+
+Switch basiert auf react-aria-components `Switch` und rendert mit `role="switch"` und `aria-checked`. Umschalten per Leertaste/Enter sowie der Fokus-Ring sind eingebaut. Das Label kommt aus den `children` und schaltet bei Klick mit um. Da der Zustand semantisch als Switch gemeldet wird, ist keine zusätzliche „Ein/Aus"-Textanzeige nötig.
+
+## Props
+
+<PropsTable name="Switch" />

@@ -1,0 +1,55 @@
+# AnalyticalTable
+
+Analytische Tabelle mit deklarativer Spalten-API auf SAP-UI5-Paritätsniveau: Sortierung, Filterung, Gruppierung & Aggregation, Selektion, Tree-Table, Personalisierung und Infinite-Scroll — intern auf TanStack Table, ohne dass Konsumenten TanStack kennen müssen.
+
+## Verwendung
+
+Die Tabelle ist datengetrieben: `data` ist deine Zeilenliste, `columns` eine Liste aus `AnalyticalColumn`-Objekten (`header`, `accessorKey`, optional `align`, `width`, `cellRender`, `aggregate`, `groupable`, …). `getRowId` liefert stabile Schlüssel für Selektion und Expansion. Funktions-Flags schalten Features frei: `selectionMode`, `filterable`, `enableMultiSort`, `enableGrouping`, `enablePersonalization`, `isTreeTable` (mit `subRowsKey`), `infiniteScroll`. Lade- und Leerzustände kommen über `isLoading` bzw. `emptyTitle`/`emptyDescription`.
+
+<DoDont kind="do">Formatiere Werte in `cellRender` (z. B. Beträge, Status-Pills) und lass die Roh-Daten in `data` numerisch — so funktionieren Sortierung und Aggregation korrekt.</DoDont>
+<DoDont kind="dont">Selektion und Row-Action vermischen: aktiviere Selektion bewusst über `selectionMode`/`selectable` und nutze `onRowAction` getrennt für das Öffnen einer Zeile.</DoDont>
+
+## Beispiele
+
+Grundgerüst mit Spalten-Definition, rechtsbündigem Betrag und benutzerdefiniertem Zellen-Rendering:
+
+<Example code={`<AnalyticalTable
+  aria-label="Transaktionen"
+  getRowId={(r) => r.id}
+  data={[
+    { id: 'TX-10001', partner: 'Stadtwerke Musterstadt', sparte: 'Strom', betrag: 4231.9, status: 'OK' },
+    { id: 'TX-10002', partner: 'EnergieNetz AG', sparte: 'Gas', betrag: 982.5, status: 'Fehler' },
+    { id: 'TX-10003', partner: 'GasVersorgung GmbH', sparte: 'Gas', betrag: 1540.0, status: 'Wartet' },
+  ]}
+  columns={[
+    { header: 'ID', accessorKey: 'id', width: '120px' },
+    { header: 'Marktpartner', accessorKey: 'partner', width: 'minmax(180px, 1.4fr)' },
+    { header: 'Sparte', accessorKey: 'sparte', width: '100px' },
+    { header: 'Betrag', accessorKey: 'betrag', align: 'end', width: '140px',
+      cellRender: (r) => r.betrag.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' }) },
+    { header: 'Status', accessorKey: 'status', width: '120px' },
+  ]}
+/>`} />
+
+Leerzustand mit eigener Botschaft (gleiche Spalten, ohne Daten):
+
+<Example code={`<AnalyticalTable
+  aria-label="Leer"
+  data={[]}
+  columns={[
+    { header: 'ID', accessorKey: 'id', width: '120px' },
+    { header: 'Marktpartner', accessorKey: 'partner' },
+  ]}
+  emptyTitle="Keine Transaktionen"
+  emptyDescription="Passe die Filter an oder erweitere den Zeitraum."
+/>`} />
+
+Weitere Features (Gruppierung & Aggregation, Multi-Sort, Tree-Table, Personalisierung, Infinite-Scroll, responsive Pop-In) werden durch die entsprechenden Flags aktiviert — Kombinationen davon zeigt der Kitchen-Sink-Fall in der ursprünglichen Story.
+
+## Accessibility
+
+Die Tabelle setzt ARIA-Grid-Rollen und unterstützt Grid-Tastaturnavigation (Pfeiltasten zwischen Zellen, Sortier-Header per Enter/Space). Ein `aria-label` ist Pflicht, da die Tabelle sonst keinen zugänglichen Namen hat. Status und Highlights werden zusätzlich zur Färbung als Text bzw. über `withRowHighlight`/`highlightField` mit semantischem `ValueState` vermittelt — verlasse dich in `cellRender` nicht allein auf Farbe (kombiniere z. B. eine Status-Pill mit Label und Punkt). Bei Selektion kennzeichnet die Komponente ausgewählte Zeilen für Screenreader.
+
+## Props
+
+<PropsTable name="AnalyticalTable" />

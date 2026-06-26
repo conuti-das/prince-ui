@@ -1,3 +1,64 @@
 # prince-ui
 
-Das gemeinsame React-Design-System auf Basis von React Aria.
+Das gemeinsame React-Design-System der CONUTI-Energiewirtschaftsanwendungen — gebaut auf
+[React Aria](https://react-spectrum.adobe.com/react-aria/) für Zugänglichkeit von Grund auf,
+gekleidet in die Prince-Designsprache. Eine Token-Basis, drei Themes (Apple Dark, Apple Light,
+CONUTI-Community), eine konsistente Komponenten-Bibliothek von Formularen über Tabellen bis zu
+Diagrammen und ganzen App-Shells.
+
+<Example code={`<div style={{
+  display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center',
+  padding: 24, background: 'var(--prn-bg-elevated)', border: 'var(--prn-card-border)',
+  borderRadius: 'var(--prn-radius-card)', boxShadow: 'var(--prn-shadow-raised)'
+}}>
+  <Button variant="filled">Bestätigen</Button>
+  <Button variant="tinted">Abbrechen</Button>
+  <Button variant="plain">Mehr</Button>
+  <Badge>Aktiv</Badge>
+  <span style={{ color: 'var(--prn-accent)' }}><Icon name="check" size={24} /></span>
+</div>`} />
+
+## Was prince-ui ausmacht
+
+- **Token-getrieben.** Jede Farbe, Schrift, Linie und Bewegung ist eine `--prn-*`-Custom-Property.
+  Komponenten verwenden niemals rohe Hex-Werte — deshalb sind sie automatisch theme-fähig.
+- **Zugänglich per Default.** Auf React Aria aufgebaut: Tastaturbedienung, Fokus-Management,
+  ARIA-Rollen und sichtbare Fokusringe sind eingebaut, nicht nachgerüstet.
+- **Drei Themes, ein Code.** Apple Dark, Apple Light und das CONUTI-Community-Styling teilen sich
+  denselben Komponenten-Code; gewechselt wird über ein einziges Attribut am `<html>`.
+- **Deutsch & lokalisiert.** Datums-, Zahlen- und Beträge-Komponenten laufen mit `de-DE` als Locale.
+
+## Foundations
+
+Die Grundlagen, auf denen jede Komponente steht:
+
+- [Design-Tokens](/foundations/tokens) — die Single Source of Truth (`--prn-*`): Radien, Maße, Bewegung.
+- [Farben](/foundations/colors) — semantische Farbrollen: Akzent, Flächen, Text-Hierarchie, Status, Charts.
+- [Typografie](/foundations/typography) — die Apple-Typo-Skala als fertige `font`-Tokens.
+- [Theming](/foundations/theming) — `setTheme` und die drei Themes im Detail.
+- [Icons](/foundations/icons) — der monochrome `<Icon>`-Satz mit `currentColor`.
+
+## Komponenten — ein Einstieg
+
+Über 40 Komponenten stehen bereit. Ein paar Startpunkte:
+
+- **Formulare:** [Button](/components/button) · [TextField](/components/textfield) · [Select](/components/select) · [Checkbox](/components/checkbox) · [Switch](/components/switch)
+- **Daten & Tabellen:** [Table](/components/table) · [List](/components/list) · [GridList](/components/gridlist)
+- **Diagramme:** [BarChart](/components/barchart) · [AreaChart](/components/areachart) · [DonutChart](/components/donutchart) · [KpiCard](/components/kpicard)
+- **Navigation & Shell:** [Menu](/components/menu) · [Toolbar](/components/toolbar) · [Sidebar](/components/sidebar) · [AppShell](/components/appshell)
+- **Overlays & Status:** [Notice](/components/notice) · [Badge](/components/badge) · [ProgressBar](/components/progressbar) · [EmptyState](/components/emptystate)
+
+## Installation
+
+prince-ui wird als Workspace-Paket konsumiert. Lade einmalig das Tokens- und das
+Komponenten-CSS am App-Einstieg — danach stehen alle Tokens und Styles bereit:
+
+```ts
+import '@conuti-das/prince-ui-tokens/tokens.css';
+import '@conuti-das/prince-ui/styles.css';
+
+import { Button } from '@conuti-das/prince-ui';
+```
+
+Wickle deine App in den `I18nProvider` von React Aria mit `locale="de-DE"`, damit Datums-,
+Zeit- und Zahlenkomponenten korrekt lokalisiert rendern. Den Rest erledigen die Tokens.

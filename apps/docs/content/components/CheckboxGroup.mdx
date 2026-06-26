@@ -1,0 +1,28 @@
+# CheckboxGroup
+
+Die CheckboxGroup bündelt mehrere zusammengehörige Checkboxen zu einer Mehrfachauswahl mit gemeinsamem Label.
+
+<Playground component="CheckboxGroup" />
+
+## Verwendung
+
+Nutze die CheckboxGroup, wenn aus einer Liste zusammengehöriger Optionen beliebig viele (auch keine) gewählt werden dürfen. Die einzelnen Optionen sind [Checkbox](/components/checkbox)-Komponenten mit jeweils einem `value`. Das `label` der Gruppe beschreibt die Achse der Auswahl (z. B. „Sparte"), die einzelnen Checkboxen die Werte. `isDisabled` auf der Gruppe deaktiviert alle Optionen gemeinsam.
+
+<DoDont kind="do">Jeder enthaltenen `Checkbox` ein eindeutiges `value` geben — darüber liefert die Gruppe das ausgewählte Array.</DoDont>
+<DoDont kind="dont">Eine CheckboxGroup für „entweder/oder"-Entscheidungen nehmen — bei genau einer erlaubten Auswahl gehört eine RadioGroup hin.</DoDont>
+
+## Beispiele
+
+<Example code={`<CheckboxGroup label="Sparte" defaultValue={['strom']}>
+  <Checkbox value="strom">Strom</Checkbox>
+  <Checkbox value="gas">Gas</Checkbox>
+  <Checkbox value="wasser">Wasser</Checkbox>
+</CheckboxGroup>`} />
+
+## Accessibility
+
+CheckboxGroup basiert auf react-aria-components `CheckboxGroup` und rendert als `role="group"` mit dem Gruppen-`label` als zugänglichem Namen. Die Pfeiltasten und Tab-Navigation zwischen den Checkboxen sowie die Verbindung von Gruppen-Beschreibung und Feldfehler übernimmt React Aria. Setze das Gruppen-`label` immer — ohne es haben die einzelnen Optionen keinen gemeinsamen Kontext für Screenreader.
+
+## Props
+
+<PropsTable name="CheckboxGroup" />

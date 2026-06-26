@@ -1,0 +1,31 @@
+# Sparkline
+
+Kompakte, geglättete Trendlinie ohne Achsen — gedacht für KPI-Kacheln und Listenzeilen.
+
+<Playground component="Sparkline" />
+
+## Verwendung
+
+`data` ist eine reine Werteliste. Die Linie skaliert responsiv über die `viewBox` und füllt ihren Container, gib ihr also eine feste Höhe (z. B. `40px`) im umgebenden Element. `color` setzt die Linienfarbe (Default `--prn-chart-1`); eine fallende Tendenz lässt sich z. B. mit `var(--prn-red)` hervorheben. Bei leerem `data` erscheint automatisch ein kompakter Leerzustand.
+
+<DoDont kind="do">Setze die Sparkline neben eine konkrete Zahl (etwa in einer `KpiCard`) — sie ergänzt den Wert um die Tendenz.</DoDont>
+<DoDont kind="dont">Sie als eigenständige Grafik mit Achsen-Anspruch verwenden — ohne Beschriftung ist sie nur als Trend-Andeutung gedacht; nutze sonst `AreaChart`.</DoDont>
+
+## Beispiele
+
+<Example code={`<div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
+  <div style={{ height: 40, width: 180 }}>
+    <Sparkline data={[12, 18, 9, 22, 17, 28, 24, 33, 29, 41, 38, 47]} />
+  </div>
+  <div style={{ height: 40, width: 180 }}>
+    <Sparkline data={[40, 38, 41, 30, 22, 25, 18, 12, 15, 9]} color="var(--prn-red)" />
+  </div>
+</div>`} />
+
+## Accessibility
+
+Die Sparkline transportiert allein eine grobe Tendenz und nennt keine Werte. Stelle die eigentliche Kennzahl immer als Text daneben (etwa über `KpiCard`), damit die Information nicht ausschließlich grafisch vorliegt. Wenn Farbe Auf-/Abwärtstrend kodiert, ergänze ein textuelles Signal (Delta-Wert, Trend-Pfeil), da Farbe allein nicht für alle Nutzenden unterscheidbar ist.
+
+## Props
+
+<PropsTable name="Sparkline" />

@@ -1,0 +1,34 @@
+# ColorWheel
+
+Ein kreisförmiges Farbtonrad zur Einstellung des Hue-Werts.
+
+<Playground component="ColorWheel" />
+
+## Verwendung
+
+Nutze `ColorWheel`, um den Farbton (Hue) auf einer kreisförmigen Spur intuitiv einzustellen — oft in Kombination mit einer `ColorArea` für Sättigung/Helligkeit. Über `outerRadius`/`innerRadius` passt sich die Größe und Ringbreite an den verfügbaren Platz an. Wenn nur ein linearer Kanal genügt, ist `ColorSlider` die kompaktere Alternative.
+
+<DoDont kind="do">Halte `outerRadius` größer als `innerRadius`, damit ein sichtbarer Ring entsteht.</DoDont>
+<DoDont kind="dont">Erwarte vom `ColorWheel` keine Sättigungs-/Helligkeitswahl — dafür kombiniere es mit einer `ColorArea`.</DoDont>
+
+## Beispiele
+
+<Example code={`<ColorWheel
+  defaultValue={parseColor('hsl(30, 100%, 50%)')}
+  aria-label="Farbton"
+/>`} />
+
+<Example code={`<ColorWheel
+  outerRadius={72}
+  innerRadius={52}
+  defaultValue={parseColor('hsl(280, 100%, 55%)')}
+  aria-label="Farbton kompakt"
+/>`} />
+
+## Accessibility
+
+`ColorWheel` baut auf react-aria `ColorWheel` (mit `ColorWheelTrack` und `ColorThumb`) auf. Der Thumb verhält sich wie ein Slider über den 360°-Hue-Bereich: Pfeiltasten drehen ihn in Gradschritten, gehaltene Umschalttaste in größeren Sprüngen; der Wert läuft am Kreis sinnvoll um. Der aktuelle Hue-Wert wird für Screenreader angesagt, sodass die Auswahl nicht allein über das visuelle Rad erfolgt. Ein `aria-label` ist erforderlich.
+
+## Props
+
+<PropsTable name="ColorWheel" />

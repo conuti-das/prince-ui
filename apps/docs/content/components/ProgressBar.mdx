@@ -1,0 +1,30 @@
+# ProgressBar
+
+Fortschrittsbalken für laufende, messbare Vorgänge — Uploads, Importe, mehrstufige Verarbeitung.
+
+<Playground component="ProgressBar" />
+
+## Verwendung
+
+Setze `value` (0–100), solange der Fortschritt bekannt ist. Ist die Dauer unbekannt, nutze `isIndeterminate` — dann läuft ein animierter Streifen statt einer festen Füllbreite. `showValue` blendet die Prozentzahl neben dem Label ein. ProgressBar misst Aktivität; für einen statischen Füllstand (Speicher, Quote) nimm stattdessen [Meter](/components/meter).
+
+<DoDont kind="do">`isIndeterminate` verwenden, sobald keine verlässliche Prozentangabe vorliegt — kein „bei 90 % hängenbleiben".</DoDont>
+<DoDont kind="dont">ProgressBar für unveränderliche Verhältnisse (z. B. „72 % belegt") zweckentfremden — das ist Meter.</DoDont>
+
+## Beispiele
+
+<Example code={`<div style={{ display: 'flex', flexDirection: 'column', gap: 20, maxWidth: 360 }}>
+  <ProgressBar label="Gestartet" value={10} />
+  <ProgressBar label="Halb fertig" value={50} />
+  <ProgressBar label="Fast fertig" value={90} />
+</div>`} />
+
+<Example code={`<ProgressBar label="Synchronisiere…" isIndeterminate />`} />
+
+## Accessibility
+
+ProgressBar basiert auf react-aria `ProgressBar` und exponiert `role="progressbar"` mit `aria-valuenow`/`aria-valuemin`/`aria-valuemax` — der ARIA-Werttext entsteht automatisch aus `value`. Ein aussagekräftiges `label` ist Pflicht, damit Screenreader benennen können, *was* fortschreitet. Im indeterminaten Zustand entfällt `aria-valuenow` korrekt, sodass der Vorgang als „läuft, Dauer unbekannt" angesagt wird.
+
+## Props
+
+<PropsTable name="ProgressBar" />

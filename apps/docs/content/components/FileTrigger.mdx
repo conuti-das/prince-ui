@@ -1,0 +1,28 @@
+# FileTrigger
+
+Der FileTrigger öffnet den Datei-Dialog des Systems hinter einem getönten Button.
+
+<Playground component="FileTrigger" />
+
+## Verwendung
+
+Nutze den FileTrigger, wenn Nutzer Dateien per Klick auswählen sollen. Die `children` sind die Beschriftung des umschlossenen Buttons. Über `acceptedFileTypes` schränkst du die Auswahl auf bestimmte MIME-Typen ein, `allowsMultiple` erlaubt mehrere Dateien, und `onSelect` liefert die gewählten Dateien. Soll zusätzlich Drag-and-drop möglich sein, kombiniere ihn mit einer [DropZone](/components/dropzone).
+
+<DoDont kind="do">Mit `acceptedFileTypes` die erlaubten Formate vorfiltern (z. B. `['image/png', 'image/jpeg']`), damit Nutzer keine ungültigen Dateien wählen.</DoDont>
+<DoDont kind="dont">Die Button-Beschriftung leer lassen — ohne `children` fehlt dem Auslöser ein erkennbarer Zweck.</DoDont>
+
+## Beispiele
+
+<Example code={`<div style={{ display: 'flex', gap: 16 }}>
+  <FileTrigger>Datei wählen</FileTrigger>
+  <FileTrigger allowsMultiple>Mehrere Dateien wählen</FileTrigger>
+  <FileTrigger acceptedFileTypes={['image/png', 'image/jpeg']}>Bild hochladen</FileTrigger>
+</div>`} />
+
+## Accessibility
+
+FileTrigger basiert auf react-aria-components `FileTrigger` und umschließt einen echten Button — der Datei-Dialog ist also per Tastatur erreichbar und auslösbar (Enter/Space). Der zugängliche Name kommt aus den `children` des Buttons. Das native `<input type="file">` bleibt visuell verborgen, aber funktional und für Screenreader korrekt verknüpft.
+
+## Props
+
+<PropsTable name="FileTrigger" />

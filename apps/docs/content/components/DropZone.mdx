@@ -1,0 +1,27 @@
+# DropZone
+
+Die DropZone ist eine Ablagefläche, auf die Dateien per Drag-and-drop gezogen werden können.
+
+<Playground component="DropZone" />
+
+## Verwendung
+
+Nutze die DropZone für Datei-Uploads, bei denen das Ziehen von Dateien die bequemste Geste ist. Beim Darüberziehen hebt sich der Bereich über `[data-drop-target]` mit dem Akzent hervor. Da Drag-and-drop allein nicht für alle Nutzer bedienbar ist, gehört in die DropZone immer ein [FileTrigger](/components/filetrigger) als gleichwertige Klick-Alternative.
+
+<DoDont kind="do">Einen `FileTrigger` in die DropZone setzen, damit die Auswahl auch ohne Maus-Drag — per Tastatur und Klick — möglich ist.</DoDont>
+<DoDont kind="dont">Drag-and-drop als einzigen Weg zum Hochladen anbieten — das schließt Tastatur- und Touch-Nutzer aus.</DoDont>
+
+## Beispiele
+
+<Example code={`<DropZone>
+  <span>Dateien hierher ziehen</span>
+  <FileTrigger allowsMultiple>oder auswählen</FileTrigger>
+</DropZone>`} />
+
+## Accessibility
+
+DropZone basiert auf react-aria-components `DropZone`. React Aria stellt neben dem Maus-Drop auch ein Tastatur-Drag-and-drop bereit und meldet den Drop-Ziel-Zustand an Screenreader. Entscheidend bleibt der enthaltene `FileTrigger` als Klick-/Tastatur-Pfad — verlasse dich nicht auf Drag allein, und signalisiere den aktiven Drop-Zustand nicht nur über Farbe.
+
+## Props
+
+<PropsTable name="DropZone" />

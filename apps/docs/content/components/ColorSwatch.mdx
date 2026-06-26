@@ -1,0 +1,31 @@
+# ColorSwatch
+
+Eine reine Farbvorschau als abgerundetes Quadrat.
+
+<Playground component="ColorSwatch" />
+
+## Verwendung
+
+Nutze `ColorSwatch`, um eine Farbe darzustellen — als Vorschau neben einem Wert, in einer Legende oder als Trigger-Anzeige in einem `ColorPicker`. Der Swatch ist nicht interaktiv; für eine auswählbare Palette nutze `ColorSwatchPicker`. Bei Alpha-Farben scheint ein Schachbrett-Muster durch, sodass die Transparenz erkennbar bleibt.
+
+<DoDont kind="do">Gib jedem Swatch ein `aria-label` mit dem Farbnamen, wenn die Farbe Bedeutung trägt (z. B. „Rot", „Grün").</DoDont>
+<DoDont kind="dont">Verwende `ColorSwatch` nicht als Klick-Ziel — er ist eine Anzeige; für Auswahl gibt es `ColorSwatchPicker`.</DoDont>
+
+## Beispiele
+
+<Example code={`<div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+  <ColorSwatch color="#FF3B30" aria-label="Rot" />
+  <ColorSwatch color="#34C759" aria-label="Grün" />
+  <ColorSwatch color="#3478F6" aria-label="Blau" />
+  <ColorSwatch color="#FF9500" aria-label="Orange" />
+</div>`} />
+
+<Example code={`<ColorSwatch color="#3478F680" aria-label="Blau, halbtransparent" />`} />
+
+## Accessibility
+
+`ColorSwatch` baut auf react-aria `ColorSwatch` auf. Da Farbe allein keine zugängliche Information ist, sollte jeder bedeutungstragende Swatch ein `aria-label` mit dem Farbnamen oder der Bedeutung erhalten; react-aria erzeugt andernfalls eine Beschreibung aus dem Farbwert. Das durchscheinende Schachbrett-Muster macht Transparenz auch ohne Tooltip sichtbar. Der Swatch ist nicht fokussierbar, da rein darstellend.
+
+## Props
+
+<PropsTable name="ColorSwatch" />

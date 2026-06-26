@@ -1,0 +1,29 @@
+# ColorPicker
+
+Ein vollständiger Farbwähler: Trigger-Swatch mit Popover aus Fläche, Slider und Hex-Feld.
+
+<Playground component="ColorPicker" />
+
+## Verwendung
+
+Nutze `ColorPicker` als komplette Farbauswahl-Lösung. Der Trigger zeigt einen `ColorSwatch` mit Label; im `Popover` teilen sich `ColorArea`, ein Hue-`ColorSlider` und ein `ColorField` denselben Farbwert und bleiben synchron. Über `children` lässt sich das Popover-Layout frei zusammenstellen — etwa zusätzliche Slider für Sättigung oder Alpha.
+
+<DoDont kind="do">Halte die Bausteine im Popover auf einen gemeinsamen `colorSpace` abgestimmt, damit Fläche, Slider und Feld konsistent rechnen.</DoDont>
+<DoDont kind="dont">Überlade das Popover nicht mit allen denkbaren Kanälen — beschränke dich auf die Achsen, die Nutzer wirklich brauchen.</DoDont>
+
+## Beispiele
+
+<Example code={`<ColorPicker label="Akzent" defaultValue={parseColor('hsl(150, 70%, 45%)')}>
+  <ColorArea colorSpace="hsb" xChannel="saturation" yChannel="brightness" className="prn-colorpicker-area" />
+  <ColorSlider colorSpace="hsb" channel="hue" label="Farbton" />
+  <ColorSlider colorSpace="hsb" channel="saturation" label="Sättigung" />
+  <ColorField label="Hex" />
+</ColorPicker>`} />
+
+## Accessibility
+
+`ColorPicker` baut auf react-aria `ColorPicker` auf und bündelt den Farbzustand für alle Kind-Komponenten. Der Trigger ist ein regulärer Button (Enter/Space öffnen das Popover), das Popover fängt den Fokus und schließt mit Escape. Jeder eingebettete Baustein (`ColorArea`, `ColorSlider`, `ColorField`) trägt seine eigenen ARIA-Werte, sodass der Farbwert über mehrere zugängliche Wege — numerisches Hex-Feld inklusive — einstellbar ist und nicht von der Farbwahrnehmung abhängt.
+
+## Props
+
+<PropsTable name="ColorPicker" />

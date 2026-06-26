@@ -1,0 +1,28 @@
+# Checkbox
+
+Die Checkbox schaltet eine einzelne Option an oder aus und unterstützt einen Zwischenstand (indeterminate).
+
+<Playground component="Checkbox" />
+
+## Verwendung
+
+Nutze eine einzelne Checkbox für eine binäre, in sich abgeschlossene Entscheidung (z. B. einen Filter „Nur Fehler anzeigen"). Für mehrere zusammengehörige Optionen die [CheckboxGroup](/components/checkboxgroup) verwenden. Der `isIndeterminate`-State eignet sich für „Alle auswählen"-Köpfe, deren Kinder teilweise selektiert sind — er ersetzt nicht den selektierten Wert, sondern stellt nur den gemischten Zustand dar.
+
+<DoDont kind="do">`isIndeterminate` für einen „Alle auswählen"-Schalter nutzen, wenn nur ein Teil der untergeordneten Optionen aktiv ist.</DoDont>
+<DoDont kind="dont">Eine Checkbox für sich gegenseitig ausschließende Optionen verwenden — dafür ist die RadioGroup gedacht.</DoDont>
+
+## Beispiele
+
+<Example code={`<div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+  <Checkbox>Nur Fehler anzeigen</Checkbox>
+  <Checkbox isSelected>Bereits exportierte einbeziehen</Checkbox>
+  <Checkbox isIndeterminate>Teilweise ausgewählt</Checkbox>
+</div>`} />
+
+## Accessibility
+
+Checkbox basiert auf react-aria-components `Checkbox`. Das Label wird über die `children` mit der Box verknüpft, sodass auch ein Klick auf den Text umschaltet. Umschalten per Leertaste, Fokus-Ring und der `indeterminate`-Zustand (als `aria-checked="mixed"`) sind eingebaut. Verlasse dich nicht allein auf das Häkchen-Bild — der Zustand wird zusätzlich semantisch an Screenreader gemeldet.
+
+## Props
+
+<PropsTable name="Checkbox" />

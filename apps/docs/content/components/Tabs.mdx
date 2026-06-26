@@ -1,0 +1,33 @@
+# Tabs
+
+Tabs gliedern zusammengehörige Inhalte in umschaltbare Reiter, von denen immer genau einer sichtbar ist.
+
+## Verwendung
+
+Baue die Reiterleiste als `TabBar` mit `Tab`-Elementen und ordne jedem Reiter über die geteilte `id` ein `TabPanel` zu. Nutze Tabs, um verschiedene Sichten auf dasselbe Objekt zu trennen (Transaktionsdaten, Verarbeitungsschritte, Logs) — nicht, um einen mehrstufigen Prozess zu führen (dafür ein Stepper/Wizard) und nicht für Navigation zwischen Seiten.
+
+<DoDont kind="do">Tabs für gleichrangige Sichten auf denselben Kontext verwenden und die Beschriftungen kurz halten.</DoDont>
+<DoDont kind="dont">Sequenzielle Schritte mit Reihenfolge-Abhängigkeit in Tabs pressen — ein linearer Prozess gehört in einen Wizard, nicht in frei wählbare Reiter.</DoDont>
+
+## Beispiele
+
+Drei Sichten auf eine Transaktion:
+
+<Example code={`<Tabs>
+  <TabBar>
+    <Tab id="data">Transaktionsdaten</Tab>
+    <Tab id="steps">Verarbeitungsschritte</Tab>
+    <Tab id="logs">Logs</Tab>
+  </TabBar>
+  <TabPanel id="data">Stammdaten der Transaktion …</TabPanel>
+  <TabPanel id="steps">Verarbeitungsschritte …</TabPanel>
+  <TabPanel id="logs">System-Logs …</TabPanel>
+</Tabs>`} />
+
+## Accessibility
+
+Tabs basieren auf react-aria `Tabs`: Die `TabBar` hat die Rolle `tablist`, jeder `Tab` die Rolle `tab` mit `aria-selected`, jedes `TabPanel` die Rolle `tabpanel` und ist über `aria-labelledby` mit seinem Reiter verknüpft. Die Tastatur folgt dem ARIA-Pattern — ←/→ wechselt zwischen den Reitern, nur der aktive Reiter liegt im Tab-Fokusfluss (Roving Tabindex), Pos1/Ende springen zum ersten/letzten Reiter. Inaktive Panels sind aus dem Lesefluss genommen.
+
+## Props
+
+<PropsTable name="Tabs" />

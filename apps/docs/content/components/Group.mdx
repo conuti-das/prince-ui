@@ -1,0 +1,31 @@
+# Group
+
+Container, der zusammengehörige Bedienelemente zu einer benennbaren, gemeinsam fokussierbaren Einheit bündelt.
+
+## Verwendung
+
+Group fasst mehrere Controls — etwa eine Reihe von [Buttons](/components/button) — semantisch zusammen und macht sie über `aria-label` als Einheit benennbar. Wird ein Element im Inneren fokussiert, erscheint ein gemeinsamer Fokus-Ring (`data-focus-within`). `isDisabled` deaktiviert die Gruppe als Ganzes. Group ist ein neutraler Wrapper ohne eigene Tastatur-Navigation; für eine echte Aktionsleiste mit Roving-Tabindex nutze [Toolbar](/components/toolbar).
+
+<DoDont kind="do">Immer ein `aria-label` setzen, das die Gruppe benennt („Formatierung", „Aktionen").</DoDont>
+<DoDont kind="dont">Group für Elemente nutzen, die nicht logisch zusammengehören — die Gruppierung suggeriert sonst einen Zusammenhang, der nicht existiert.</DoDont>
+
+## Beispiele
+
+<Example code={`<Group aria-label="Aktionen">
+  <Button variant="tinted">Speichern</Button>
+  <Button variant="plain">Verwerfen</Button>
+</Group>`} />
+
+<Example code={`<Group aria-label="Formatierung" style={{ padding: 4 }}>
+  <Button variant="plain">Fett</Button>
+  <Button variant="plain">Kursiv</Button>
+  <Button variant="plain">Unterstrichen</Button>
+</Group>`} />
+
+## Accessibility
+
+Group basiert auf react-aria-components `Group` und rendert ein Element mit `role="group"`. Das `aria-label` ist hier zentral: Ohne Beschriftung ist die Gruppe für Screenreader nur eine namenlose Strukturhülle. Der `data-focus-within`-Fokus-Ring spiegelt visuell, dass die Tastatur sich innerhalb der Gruppe befindet. Beachte, dass Group selbst keine Pfeiltasten-Navigation zwischen den Kindern bereitstellt — die Kinder bleiben einzeln per Tab erreichbar; brauchst du Roving-Fokus, ist [Toolbar](/components/toolbar) die richtige Komponente.
+
+## Props
+
+<PropsTable name="Group" />

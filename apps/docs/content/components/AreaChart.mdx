@@ -1,0 +1,46 @@
+# AreaChart
+
+Flächenchart mit Gradient-Füllung unter einer geglätteten Linie — für Trends und Verläufe über die Zeit.
+
+<Playground component="AreaChart" />
+
+## Verwendung
+
+`data` akzeptiert entweder reine Werte (gleichmäßig verteilt) oder explizite `{ x, y }`-Punkte für ungleichmäßige Abstände. Mit `showAxes` werden Achsen plus horizontale Gridlinien eingeblendet; `color` setzt die Akzentfarbe (Default `--prn-chart-1`). Bei leerem `data` rendert die Komponente automatisch `ChartEmpty`.
+
+<DoDont kind="do">Zeige zusammenhängende Verläufe (z. B. Transaktionen pro Tag) — die Glättung betont den Trend statt einzelner Ausreißer.</DoDont>
+<DoDont kind="dont">Mehrere Flächen übereinander stapeln, um Kategorien zu vergleichen — nutze dafür getrennte Charts oder einen `DonutChart`.</DoDont>
+
+## Beispiele
+
+<Example code={`<div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
+  <AreaChart data={[12, 18, 9, 22, 17, 28, 24, 33, 29, 41, 38, 47]} />
+  <AreaChart data={[12, 18, 9, 22, 17, 28, 24, 33, 29, 41, 38, 47]} showAxes />
+  <AreaChart
+    showAxes
+    color="var(--prn-chart-2)"
+    data={[
+      { x: 0, y: 5 },
+      { x: 1, y: 9 },
+      { x: 2, y: 7 },
+      { x: 4, y: 18 },
+      { x: 7, y: 14 },
+      { x: 9, y: 26 },
+    ]}
+  />
+</div>`} />
+
+Leerer Zustand: ohne Daten erscheint automatisch `ChartEmpty`, das sich auch standalone mit eigener Meldung nutzen lässt.
+
+<Example code={`<div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
+  <AreaChart data={[]} />
+  <ChartEmpty message="Keine Transaktionen im Zeitraum" />
+</div>`} />
+
+## Accessibility
+
+Der Chart ist eine nicht-interaktive SVG-Grafik. Achsenbeschriftungen (`showAxes`) helfen sehenden Nutzenden bei der Einordnung, sind aber kein Ersatz für eine textuelle Zusammenfassung des Trends. Gib Kernaussage und Zeitraum im umgebenden Inhalt wieder und setze bei Bedarf ein `aria-label` am Container. Achte darauf, dass die `color`-Akzentfarbe ausreichend Kontrast zum Kartenhintergrund hat.
+
+## Props
+
+<PropsTable name="AreaChart" />

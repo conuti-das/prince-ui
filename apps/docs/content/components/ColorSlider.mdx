@@ -1,0 +1,28 @@
+# ColorSlider
+
+Ein Schieberegler zur Einstellung eines einzelnen Farbkanals.
+
+<Playground component="ColorSlider" />
+
+## Verwendung
+
+Nutze `ColorSlider`, um genau einen Kanal eines Farbwerts zu steuern — Farbton (`hue`), Sättigung, Helligkeit/Lightness oder Alpha. Die Spur zeigt den Gradienten des jeweiligen Kanals, sodass das Ergebnis vorab sichtbar ist. Für zwei Kanäle gleichzeitig nutze `ColorArea`, für den reinen Farbton auch `ColorWheel`. Mehrere Slider lassen sich zu einem vollständigen Farbeditor stapeln.
+
+<DoDont kind="do">Lass `showValue` aktiv, damit der numerische Kanalwert sichtbar bleibt.</DoDont>
+<DoDont kind="dont">Setze nicht denselben `channel` mehrfach übereinander — kombiniere stattdessen unterschiedliche Kanäle zu einem vollständigen Editor.</DoDont>
+
+## Beispiele
+
+<Example code={`<div style={{ display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 240 }}>
+  <ColorSlider label="Farbton" colorSpace="hsl" channel="hue" defaultValue={parseColor('hsl(140, 80%, 50%)')} />
+  <ColorSlider label="Sättigung" colorSpace="hsl" channel="saturation" defaultValue={parseColor('hsl(140, 80%, 50%)')} />
+  <ColorSlider label="Helligkeit" colorSpace="hsl" channel="lightness" defaultValue={parseColor('hsl(140, 80%, 50%)')} />
+</div>`} />
+
+## Accessibility
+
+`ColorSlider` baut auf react-aria `ColorSlider` auf (mit `SliderTrack`, `SliderOutput`, `Label`, `ColorThumb`). Der Thumb ist ein vollwertiger Slider: Pfeiltasten ändern den Wert in Einzelschritten, Bild auf/ab in größeren, Pos1/Ende setzen auf Minimum/Maximum. Der aktuelle Wert wird über `SliderOutput` ausgegeben und für Screenreader als Kanalwert (z. B. „Farbton 210°") angesagt — die Bedienung hängt also nicht von der Farbwahrnehmung ab. Ein `label` ist erforderlich.
+
+## Props
+
+<PropsTable name="ColorSlider" />

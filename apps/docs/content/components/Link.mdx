@@ -1,0 +1,31 @@
+# Link
+
+Textueller Navigations-Link für Verweise im Fließtext und auf andere Ansichten.
+
+<Playground component="Link" />
+
+## Verwendung
+
+Link führt den Nutzer **woandershin** (Seite, Anker, externe Ressource). Für Aktionen, die etwas auslösen statt zu navigieren — Speichern, Öffnen eines Dialogs — nutze stattdessen [Button](/components/button) (ggf. `variant="plain"`). Ohne `href` rendert React Aria ein zugängliches Element mit Link-Rolle, das per `onPress` clientseitig navigieren kann.
+
+<DoDont kind="do">Aussagekräftigen Linktext verwenden („Datenschutzhinweise"), der auch isoliert verständlich ist.</DoDont>
+<DoDont kind="dont">„Hier klicken" als Linktext nutzen — Screenreader-Listen aus Linktexten werden dadurch unbrauchbar.</DoDont>
+
+## Beispiele
+
+<Example code={`<p style={{ maxWidth: 420 }}>
+  Bitte beachten Sie unsere <Link href="#">Datenschutzhinweise</Link> sowie die <Link href="#">Nutzungsbedingungen</Link>, bevor Sie fortfahren.
+</p>`} />
+
+<Example code={`<div style={{ display: 'flex', gap: 20, alignItems: 'center' }}>
+  <Link href="#">Standard</Link>
+  <Link href="#" isDisabled>Deaktiviert</Link>
+</div>`} />
+
+## Accessibility
+
+Link basiert auf react-aria `Link`: Fokus-Ring, Tastaturbedienung (Enter) und das Disabled-Handling sind eingebaut. Ohne `href` setzt React Aria die korrekte Link-Rolle und Fokussierbarkeit selbst, sodass auch JavaScript-Navigation zugänglich bleibt. Der Linktext sollte das Ziel beschreiben; führt der Link aus der Anwendung heraus oder öffnet er ein neues Fenster, mache das im Text oder per `aria-label` kenntlich.
+
+## Props
+
+<PropsTable name="Link" />
