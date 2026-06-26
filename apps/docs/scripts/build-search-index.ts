@@ -1,9 +1,20 @@
-import { globSync, readFileSync, writeFileSync, mkdirSync } from "node:fs";
-import { resolve, dirname } from "node:path";
+import { readdirSync, readFileSync, writeFileSync, mkdirSync } from "node:fs";
+import { resolve, join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const contentDir = resolve(here, "../content");
+
+// node:fs/globSync gibt es erst ab Node 22; CI/Deploy laufen auf Node 20.
+function listFiles(dir: string, ext: string): string[] {
+  let rels: string[];
+  try {
+    rels = readdirSync(dir, { recursive: true }) as unknown as string[];
+  } catch {
+    return [];
+  }
+  return rels.map((rel) => join(dir, rel)).filter((f) => f.endsWith(ext));
+}
 
 type Doc = { id: string; title: string; text: string };
 
@@ -39,7 +50,7 @@ function stripMdx(src: string): { title: string; text: string } {
   return { title, text };
 }
 
-const files = globSync(resolve(contentDir, "**/*.mdx"));
+const files = listFiles(contentDir, ".mdx");
 const docs: Doc[] = files.map((file) => {
   const src = readFileSync(file, "utf8");
   const { title, text } = stripMdx(src);

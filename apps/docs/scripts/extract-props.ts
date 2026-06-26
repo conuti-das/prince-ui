@@ -1,11 +1,22 @@
 import { withCustomConfig } from "react-docgen-typescript";
-import { writeFileSync, mkdirSync } from "node:fs";
-import { globSync } from "node:fs";
-import { resolve, dirname } from "node:path";
+import { writeFileSync, mkdirSync, readdirSync } from "node:fs";
+import { resolve, join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const root = resolve(here, "../../..");
+
+// node:fs/globSync gibt es erst ab Node 22; CI/Deploy laufen auf Node 20.
+// readdirSync({ recursive }) (ab Node 20.1) + Endungs-Filter ist portabel.
+function listFiles(dir: string, exts: string[]): string[] {
+  let rels: string[];
+  try {
+    rels = readdirSync(dir, { recursive: true }) as unknown as string[];
+  } catch {
+    return [];
+  }
+  return rels.map((rel) => join(dir, rel)).filter((f) => exts.some((e) => f.endsWith(e)));
+}
 
 const parser = withCustomConfig(resolve(root, "tsconfig.base.json"), {
   shouldExtractLiteralValuesFromEnum: true,
@@ -15,8 +26,10 @@ const parser = withCustomConfig(resolve(root, "tsconfig.base.json"), {
 
 // Alle exportierten Komponenten der Pakete scannen.
 const files = [
-  ...globSync(resolve(root, "packages/ui/src/**/*.{ts,tsx}")),
-  ...globSync(resolve(root, "packages/{bpmn,dmn,forms,bo4e}/src/**/*.{ts,tsx}")),
+  ...listFiles(resolve(root, "packages/ui/src"), [".ts", ".tsx"]),
+  ...["bpmn", "dmn", "forms", "bo4e"].flatMap((p) =>
+    listFiles(resolve(root, `packages/${p}/src`), [".ts", ".tsx"]),
+  ),
 ].filter((f) => !f.endsWith(".test.ts") && !f.endsWith(".test.tsx"));
 
 const out: Record<string, { props: { name: string; type: string; required: boolean; defaultValue: string | null; description: string }[] }> = {};

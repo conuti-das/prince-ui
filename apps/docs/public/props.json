@@ -36,6 +36,20 @@
       }
     ]
   },
+  "useFieldSize": {
+    "props": []
+  },
+  "PrinceSizeProvider": {
+    "props": [
+      {
+        "name": "size",
+        "type": "enum",
+        "required": true,
+        "defaultValue": null,
+        "description": "Default-Größe für alle prince-ui Felder im Teilbaum."
+      }
+    ]
+  },
   "Button": {
     "props": [
       {
@@ -44,6 +58,13 @@
         "required": false,
         "defaultValue": "filled",
         "description": "Prince-Varianten: gefüllt (Akzent), getönt (soft) oder schlicht."
+      },
+      {
+        "name": "size",
+        "type": "enum",
+        "required": false,
+        "defaultValue": null,
+        "description": "Größe: s (kompakt) | m (Default) | l. Ohne Angabe greift der PrinceSizeProvider-Context."
       },
       {
         "name": "className",
@@ -85,6 +106,13 @@
         "description": ""
       },
       {
+        "name": "size",
+        "type": "enum",
+        "required": false,
+        "defaultValue": null,
+        "description": "Größe: s (kompakt) | m (Default) | l. Ohne Angabe greift der PrinceSizeProvider-Context."
+      },
+      {
         "name": "className",
         "type": "string",
         "required": false,
@@ -108,6 +136,13 @@
         "required": false,
         "defaultValue": null,
         "description": ""
+      },
+      {
+        "name": "size",
+        "type": "enum",
+        "required": false,
+        "defaultValue": null,
+        "description": "Größe: s (kompakt) | m (Default) | l. Ohne Angabe greift der PrinceSizeProvider-Context."
       },
       {
         "name": "className",
@@ -169,6 +204,13 @@
         "required": false,
         "defaultValue": null,
         "description": "Temporary text that occupies the select when it is empty."
+      },
+      {
+        "name": "size",
+        "type": "enum",
+        "required": false,
+        "defaultValue": null,
+        "description": "Größe: s (kompakt) | m (Default) | l. Ohne Angabe greift der PrinceSizeProvider-Context."
       },
       {
         "name": "className",
@@ -2536,6 +2578,13 @@
         "description": ""
       },
       {
+        "name": "size",
+        "type": "enum",
+        "required": false,
+        "defaultValue": null,
+        "description": "Größe: s (kompakt) | m (Default) | l. Ohne Angabe greift der PrinceSizeProvider-Context."
+      },
+      {
         "name": "className",
         "type": "string",
         "required": false,
@@ -2598,6 +2647,13 @@
         "required": false,
         "defaultValue": null,
         "description": ""
+      },
+      {
+        "name": "size",
+        "type": "enum",
+        "required": false,
+        "defaultValue": null,
+        "description": "Größe: s (kompakt) | m (Default) | l. Ohne Angabe greift der PrinceSizeProvider-Context."
       },
       {
         "name": "className",
@@ -3427,6 +3483,1256 @@
       }
     ]
   },
+  "ActivityStatus": {
+    "props": []
+  },
+  "HistoryActivityInstance": {
+    "props": []
+  },
+  "Incident": {
+    "props": []
+  },
+  "HistoryVariableInstance": {
+    "props": []
+  },
+  "BpmnElementClick": {
+    "props": []
+  },
+  "DiagramColorScheme": {
+    "props": []
+  },
+  "getDiagramColors": {
+    "props": []
+  },
+  "isDarkMode": {
+    "props": []
+  },
+  "onThemeChange": {
+    "props": []
+  },
+  "readToken": {
+    "props": []
+  },
+  "BpmnViewer": {
+    "props": [
+      {
+        "name": "xml",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Das anzuzeigende BPMN 2.0 XML."
+      },
+      {
+        "name": "activityHistory",
+        "type": "HistoryActivityInstance[]",
+        "required": false,
+        "defaultValue": null,
+        "description": "Camunda-7-History-Einträge zur Status-Färbung."
+      },
+      {
+        "name": "incidents",
+        "type": "Incident[]",
+        "required": false,
+        "defaultValue": null,
+        "description": "Camunda-7-Incidents (färben das betroffene Element rot)."
+      },
+      {
+        "name": "runtimeActiveActivityIds",
+        "type": "string[]",
+        "required": false,
+        "defaultValue": null,
+        "description": "IDs der zur Laufzeit aktiven Aktivitäten (überschreiben History → blau)."
+      },
+      {
+        "name": "colorScheme",
+        "type": "enum",
+        "required": false,
+        "defaultValue": "auto",
+        "description": "Light/Dark-Steuerung. Default `auto` (folgt `data-theme`)."
+      },
+      {
+        "name": "onElementClick",
+        "type": "((event: BpmnElementClick) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Klick auf ein Element."
+      },
+      {
+        "name": "fitOnResize",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": true,
+        "description": "Bei Container-Resize automatisch neu einpassen. Default `true`."
+      },
+      {
+        "name": "showZoomControls",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": true,
+        "description": "Zoom-Steuerung (Buttons) anzeigen. Default `true`."
+      },
+      {
+        "name": "height",
+        "type": "string | number",
+        "required": false,
+        "defaultValue": "100%",
+        "description": "Höhe des Containers. Default `\"100%\"`. Canvas braucht eine feste Höhe."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optionaler Klassennamen-Override für den äußeren Container."
+      }
+    ]
+  },
+  "computeElementStatuses": {
+    "props": []
+  },
+  "computeExecutedFlows": {
+    "props": []
+  },
+  "buildActivityMap": {
+    "props": []
+  },
+  "matchActivity": {
+    "props": []
+  },
+  "deriveStatus": {
+    "props": []
+  },
+  "BpmnEditor": {
+    "props": [
+      {
+        "name": "value",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Controlled BPMN-XML. Bei gesetztem `value` ist die Komponente controlled."
+      },
+      {
+        "name": "defaultValue",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Uncontrolled Initial-XML."
+      },
+      {
+        "name": "onChange",
+        "type": "((xml: string) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Wird bei jeder Modell-Änderung mit dem aktuellen XML aufgerufen."
+      },
+      {
+        "name": "onSave",
+        "type": "((xml: string) => void | Promise<void>)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Speichern (z. B. ⌘S / Toolbar-Button) → erhält `saveXML({format:true})`."
+      },
+      {
+        "name": "lintRules",
+        "type": "LintRuleConfig",
+        "required": false,
+        "defaultValue": "{\n  \"bpmnlint/label-required\": \"error\",\n  \"bpmnlint/no-disconnected\": \"error\",\n  \"bpmnlint/no-implicit-split\": \"warn\",\n  \"bpmnlint/no-complex-gateway\": \"warn\",\n}",
+        "description": "bpmnlint-Regeln (Default: 4 MaKo-Regeln)."
+      },
+      {
+        "name": "onElementSelect",
+        "type": "((selection: { id: string; name?: string; } | null) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Element-Selektion (ID + Name)."
+      },
+      {
+        "name": "onDirtyChange",
+        "type": "((dirty: boolean) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Dirty-State (ungespeicherte Änderungen)."
+      },
+      {
+        "name": "actionsSlot",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "App-Slot für Zusatzaktionen in der Toolbar (z. B. KI-Button)."
+      },
+      {
+        "name": "onKiFix",
+        "type": "((issues: LintIssue[]) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "App-Slot im ErrorPanel (z. B. KI-Fix-Handler stellt eigenen Button bereit)."
+      },
+      {
+        "name": "colorScheme",
+        "type": "enum",
+        "required": false,
+        "defaultValue": "auto",
+        "description": "Light/Dark. Default `auto`."
+      },
+      {
+        "name": "propertiesPanel",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": true,
+        "description": "Properties-Panel anzeigen. Default `true`."
+      },
+      {
+        "name": "minimap",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": true,
+        "description": "Minimap (Übersichtskarte) anzeigen. Default `true`."
+      },
+      {
+        "name": "elementTemplates",
+        "type": "unknown[]",
+        "required": false,
+        "defaultValue": null,
+        "description": "Camunda-Element-Templates (JSON-Array) — im Properties-Panel anwendbar."
+      },
+      {
+        "name": "height",
+        "type": "string | number",
+        "required": false,
+        "defaultValue": "100%",
+        "description": "Höhe des Editors. Default `\"100%\"`."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Klassennamen-Override."
+      }
+    ]
+  },
+  "LintIssue": {
+    "props": []
+  },
+  "LintRuleConfig": {
+    "props": []
+  },
+  "lintHint": {
+    "props": []
+  },
+  "LintHint": {
+    "props": []
+  },
+  "BpmnTableView": {
+    "props": [
+      {
+        "name": "xml",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "BPMN 2.0 XML."
+      },
+      {
+        "name": "visibleRows",
+        "type": "number",
+        "required": false,
+        "defaultValue": 30,
+        "description": "Sichtbare Zeilen (Höhe der Tabelle). Default 30."
+      },
+      {
+        "name": "onRowSelect",
+        "type": "((id: string) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Klick auf eine Zeile → Element-ID (öffnet das Properties-Panel)."
+      },
+      {
+        "name": "selectedId",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Aktuell selektierte Element-ID (Zeilen-Highlight)."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Klassennamen-Override."
+      }
+    ]
+  },
+  "ErrorPanel": {
+    "props": [
+      {
+        "name": "issues",
+        "type": "LintIssue[]",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "elementName",
+        "type": "(elementId: string | undefined) => string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Auflösung Element-ID → Anzeigename."
+      },
+      {
+        "name": "onSelectElement",
+        "type": "(elementId: string) => void",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "onKiFix",
+        "type": "(() => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optionaler KI-Fix (z. B. Prompt an einen Agenten)."
+      },
+      {
+        "name": "onClose",
+        "type": "() => void",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "actionsSlot",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optionale zusätzliche Aktionen (App-Slot), rechts neben KI-Fix."
+      }
+    ]
+  },
+  "buildLintConfig": {
+    "props": []
+  },
+  "DEFAULT_LINT_RULES": {
+    "props": []
+  },
+  "typeTone": {
+    "props": []
+  },
+  "parseBpmnElements": {
+    "props": []
+  },
+  "buildRendererConfig": {
+    "props": [
+      {
+        "name": "defaultFillColor",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Füllfarbe der Shapes"
+      },
+      {
+        "name": "defaultStrokeColor",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Konturfarbe der Shapes/Connections"
+      },
+      {
+        "name": "defaultLabelColor",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Textfarbe der Labels"
+      },
+      {
+        "name": "canvasBackground",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Canvas-Hintergrund (für den umgebenden Container)"
+      },
+      {
+        "name": "accent",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Akzentfarbe (Selektion/aktive Elemente)"
+      }
+    ]
+  },
+  "createAppleRendererModule": {
+    "props": []
+  },
+  "statusMarker": {
+    "props": []
+  },
+  "allStatusMarkers": {
+    "props": []
+  },
+  "buildStatusOverlay": {
+    "props": []
+  },
+  "MULTI_EXECUTION_MARKER": {
+    "props": []
+  },
+  "FLOW_EXECUTED_MARKER": {
+    "props": []
+  },
+  "STATUS_OVERLAY_POSITION": {
+    "props": []
+  },
+  "findMultiExecutionIds": {
+    "props": []
+  },
+  "isFlowNode": {
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "type",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "businessObject",
+        "type": "{ id?: string; name?: string; $type?: string | undefined; sourceRef?: { id?: string | undefined; } | undefined; targetRef?: { id?: string | undefined; } | undefined; } | undefined",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "isSequenceFlow": {
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "type",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "businessObject",
+        "type": "{ id?: string; name?: string; $type?: string | undefined; sourceRef?: { id?: string | undefined; } | undefined; targetRef?: { id?: string | undefined; } | undefined; } | undefined",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "hasIncident": {
+    "props": []
+  },
+  "isSequenceFlowExecuted": {
+    "props": []
+  },
+  "STATUS_TOKEN": {
+    "props": []
+  },
+  "STATUS_LABEL": {
+    "props": []
+  },
+  "DmnEditor": {
+    "props": [
+      {
+        "name": "value",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "defaultValue",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "onChange",
+        "type": "((xml: string) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "onSave",
+        "type": "((xml: string) => void | Promise<void>)",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "defaultMode",
+        "type": "enum",
+        "required": false,
+        "defaultValue": "table",
+        "description": "Start-Modus (Default 'table')."
+      },
+      {
+        "name": "mode",
+        "type": "enum",
+        "required": false,
+        "defaultValue": null,
+        "description": "Controlled-Modus."
+      },
+      {
+        "name": "onModeChange",
+        "type": "((mode: DmnEditorMode) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "colorScheme",
+        "type": "enum",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "title",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "subtitle",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "cellPlugins",
+        "type": "DmnCellPlugin[]",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "actionsSlot",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "decisionId",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "HitPolicy": {
+    "props": []
+  },
+  "Aggregation": {
+    "props": []
+  },
+  "FeelLintResult": {
+    "props": []
+  },
+  "DmnCellPlugin": {
+    "props": []
+  },
+  "parseDmnModel": {
+    "props": []
+  },
+  "serializeDmnModel": {
+    "props": []
+  },
+  "listDecisions": {
+    "props": []
+  },
+  "makeId": {
+    "props": []
+  },
+  "emptyRow": {
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "id der Decision"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "hitPolicy",
+        "type": "enum",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "aggregation",
+        "type": "enum",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "columns",
+        "type": "DmnColumn[]",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "rows",
+        "type": "DmnRow[]",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "addColumn": {
+    "props": []
+  },
+  "lintFeel": {
+    "props": []
+  },
+  "parseInputValues": {
+    "props": []
+  },
+  "FeelValueType": {
+    "props": []
+  },
+  "FeelLintTypedResult": {
+    "props": []
+  },
+  "DmnTableEditor": {
+    "props": [
+      {
+        "name": "value",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Controlled DMN-XML."
+      },
+      {
+        "name": "defaultValue",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Uncontrolled Start-XML."
+      },
+      {
+        "name": "onChange",
+        "type": "((xml: string) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Wird bei jeder Modelländerung mit serialisiertem XML aufgerufen."
+      },
+      {
+        "name": "onSave",
+        "type": "((xml: string) => void | Promise<void>)",
+        "required": false,
+        "defaultValue": null,
+        "description": "⌘S / Speichern-Button."
+      },
+      {
+        "name": "decisionId",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Wählt die zu editierende Decision (Default: erste mit Table)."
+      },
+      {
+        "name": "title",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Anzeigename (z. B. Prüfprozess-Code)."
+      },
+      {
+        "name": "subtitle",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Untertitel/Metadaten."
+      },
+      {
+        "name": "onSwitchToExpert",
+        "type": "(() => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Umschalten zum Experten-Modus (⑥)."
+      },
+      {
+        "name": "cellPlugins",
+        "type": "DmnCellPlugin[]",
+        "required": false,
+        "defaultValue": "[]",
+        "description": "Optionale Zell-Plugins (z. B. Prüfi-Autocomplete). Default: leer."
+      },
+      {
+        "name": "actionsSlot",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Zusätzliche Toolbar-Actions (z. B. KI-Fix)."
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": false,
+        "description": "Schreibschutz."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "DmnExpertEditor": {
+    "props": [
+      {
+        "name": "value",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Controlled DMN-XML."
+      },
+      {
+        "name": "defaultValue",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Uncontrolled Start-XML."
+      },
+      {
+        "name": "onChange",
+        "type": "((xml: string) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Bei Änderungen (commandStack.changed) mit serialisiertem XML."
+      },
+      {
+        "name": "onSave",
+        "type": "((xml: string) => void | Promise<void>)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Speichern-Callback."
+      },
+      {
+        "name": "colorScheme",
+        "type": "enum",
+        "required": false,
+        "defaultValue": "auto",
+        "description": "Light/Dark-Steuerung (Default auto via data-theme)."
+      },
+      {
+        "name": "actionsSlot",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Zusätzliche Toolbar-Actions."
+      },
+      {
+        "name": "onSwitchToTable",
+        "type": "(() => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Umschalten zur Tabellenansicht (⑤)."
+      },
+      {
+        "name": "propertiesPanel",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": true,
+        "description": "Properties-Panel anzeigen, falls die Pakete vorhanden sind (Default true)."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "FormFieldType": {
+    "props": []
+  },
+  "FormData": {
+    "props": []
+  },
+  "TaskFormField": {
+    "props": []
+  },
+  "CamundaVariables": {
+    "props": []
+  },
+  "taskFormToSchema": {
+    "props": []
+  },
+  "camundaTypeName": {
+    "props": [
+      {
+        "name": "name",
+        "type": "enum",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "camundaTypeToFieldType": {
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "type",
+        "type": "string | { name: \"string\" | \"boolean\" | \"long\" | \"enum\" | \"date\"; }",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "defaultValue",
+        "type": "unknown",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "validationConstraints",
+        "type": "{ name: string; configuration?: string; }[]",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "values",
+        "type": "Record<string, string>",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "camundaSubmitType": {
+    "props": []
+  },
+  "formDataToCamundaVariables": {
+    "props": []
+  },
+  "camundaTypeOf": {
+    "props": []
+  },
+  "validateForm": {
+    "props": []
+  },
+  "validateField": {
+    "props": []
+  },
+  "__object": {
+    "props": []
+  },
+  "min": {
+    "props": []
+  },
+  "max": {
+    "props": []
+  },
+  "minLength": {
+    "props": []
+  },
+  "maxLength": {
+    "props": []
+  },
+  "evalConditional": {
+    "props": []
+  },
+  "getPath": {
+    "props": []
+  },
+  "setPath": {
+    "props": []
+  },
+  "flattenFields": {
+    "props": [
+      {
+        "name": "type",
+        "type": "\"default\"",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "components",
+        "type": "FormField[]",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "schemaVersion",
+        "type": "number",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "exporter",
+        "type": "{ name: string; version: string; }",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "dataFields": {
+    "props": [
+      {
+        "name": "type",
+        "type": "\"default\"",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "components",
+        "type": "FormField[]",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "schemaVersion",
+        "type": "number",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "exporter",
+        "type": "{ name: string; version: string; }",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "isDataField": {
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "type",
+        "type": "enum",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "key",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Datenbindung (Punkt-Notation für Nesting)"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "description",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "defaultValue",
+        "type": "unknown",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "validate",
+        "type": "FormFieldValidation",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "values",
+        "type": "FormFieldOption[]",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "conditional",
+        "type": "FormFieldConditional",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "text",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "statischer Text/HTML bei type === \"text\""
+      },
+      {
+        "name": "components",
+        "type": "FormField[]",
+        "required": false,
+        "defaultValue": null,
+        "description": "verschachtelte Felder bei type === \"group\""
+      }
+    ]
+  },
+  "FormRenderer": {
+    "props": [
+      {
+        "name": "schema",
+        "type": "FormSchema",
+        "required": true,
+        "defaultValue": null,
+        "description": "form-js-kompatibles Schema (`{ type:\"default\", components:[...] }`)."
+      },
+      {
+        "name": "data",
+        "type": "FormData",
+        "required": false,
+        "defaultValue": null,
+        "description": "Kontrollierte Daten (`key -> value`)."
+      },
+      {
+        "name": "defaultData",
+        "type": "FormData",
+        "required": false,
+        "defaultValue": null,
+        "description": "Ungesteuerte Anfangsdaten."
+      },
+      {
+        "name": "onChange",
+        "type": "((data: FormData) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Datenänderungen (für controlled-Nutzung)."
+      },
+      {
+        "name": "onSubmit",
+        "type": "((result: FormRendererSubmit) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Submit-Callback; erhält Daten, Validierungsfehler und Submit-Variablen."
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": false,
+        "description": "Read-only-Darstellung über `DescriptionList`/`Field`."
+      },
+      {
+        "name": "submitVariableFormat",
+        "type": "enum",
+        "required": false,
+        "defaultValue": "camunda",
+        "description": "Submit-Variablenformat (Default `camunda`)."
+      },
+      {
+        "name": "submitLabel",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": "Absenden",
+        "description": "Label des Submit-Buttons (Default „Absenden\"). `null` → kein Button."
+      },
+      {
+        "name": "actionsSlot",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Zusätzlicher Aktions-Slot neben dem Submit-Button."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "FormBuilder": {
+    "props": [
+      {
+        "name": "value",
+        "type": "FormSchema",
+        "required": false,
+        "defaultValue": null,
+        "description": "Kontrolliertes Schema."
+      },
+      {
+        "name": "defaultValue",
+        "type": "FormSchema",
+        "required": false,
+        "defaultValue": null,
+        "description": "Ungesteuertes Anfangs-Schema."
+      },
+      {
+        "name": "onChange",
+        "type": "((schema: FormSchema) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Schema-Änderungen."
+      },
+      {
+        "name": "onSave",
+        "type": "((schema: FormSchema) => void | Promise<void>)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Persistenz-Callback (z. B. ⌘S in der App)."
+      },
+      {
+        "name": "mode",
+        "type": "enum",
+        "required": false,
+        "defaultValue": null,
+        "description": "Editor-Modus: nativer Designer oder form-js-Experten-Fallback."
+      },
+      {
+        "name": "onModeChange",
+        "type": "((mode: FormBuilderMode) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "fieldTypes",
+        "type": "readonly (\"number\" | \"textfield\" | \"textarea\" | \"checkbox\" | \"checklist\" | \"radio\" | \"select\" | \"datetime\" | \"taglist\" | \"text\" | \"separator\" | \"spacer\")[]",
+        "required": false,
+        "defaultValue": "[\n  \"textfield\",\n  \"textarea\",\n  \"number\",\n  \"checkbox\",\n  \"checklist\",\n  \"radio\",\n  \"select\",\n  \"datetime\",\n  \"taglist\",\n  \"text\",\n  \"separator\",\n  \"spacer\",\n] as const",
+        "description": "Beschränkt/erweitert die Palette (Default: alle Builder-Feldtypen)."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "BUILDER_FIELD_TYPES": {
+    "props": []
+  },
+  "createField": {
+    "props": []
+  },
+  "emptySchema": {
+    "props": []
+  },
+  "insertField": {
+    "props": []
+  },
+  "removeFieldAt": {
+    "props": []
+  },
+  "moveField": {
+    "props": []
+  },
+  "updateFieldAt": {
+    "props": []
+  },
+  "isPresentational": {
+    "props": []
+  },
+  "hasOptions": {
+    "props": []
+  },
+  "generateFieldId": {
+    "props": []
+  },
+  "FIELD_TYPE_LABELS": {
+    "props": []
+  },
+  "OPTION_TYPES": {
+    "props": []
+  },
+  "PRESENTATIONAL_TYPES": {
+    "props": []
+  },
+  "VALIDATION_MESSAGES": {
+    "props": []
+  },
   "CDocView": {
     "props": [
       {
@@ -4102,1256 +5408,6 @@
         "required": false,
         "defaultValue": null,
         "description": ""
-      }
-    ]
-  },
-  "FormFieldType": {
-    "props": []
-  },
-  "FormData": {
-    "props": []
-  },
-  "TaskFormField": {
-    "props": []
-  },
-  "CamundaVariables": {
-    "props": []
-  },
-  "taskFormToSchema": {
-    "props": []
-  },
-  "camundaTypeName": {
-    "props": [
-      {
-        "name": "name",
-        "type": "enum",
-        "required": true,
-        "defaultValue": null,
-        "description": ""
-      }
-    ]
-  },
-  "camundaTypeToFieldType": {
-    "props": [
-      {
-        "name": "id",
-        "type": "string",
-        "required": true,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "label",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "type",
-        "type": "string | { name: \"string\" | \"boolean\" | \"long\" | \"enum\" | \"date\"; }",
-        "required": true,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "defaultValue",
-        "type": "unknown",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "validationConstraints",
-        "type": "{ name: string; configuration?: string; }[]",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "values",
-        "type": "Record<string, string>",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      }
-    ]
-  },
-  "camundaSubmitType": {
-    "props": []
-  },
-  "formDataToCamundaVariables": {
-    "props": []
-  },
-  "camundaTypeOf": {
-    "props": []
-  },
-  "validateForm": {
-    "props": []
-  },
-  "validateField": {
-    "props": []
-  },
-  "__object": {
-    "props": []
-  },
-  "min": {
-    "props": []
-  },
-  "max": {
-    "props": []
-  },
-  "minLength": {
-    "props": []
-  },
-  "maxLength": {
-    "props": []
-  },
-  "evalConditional": {
-    "props": []
-  },
-  "getPath": {
-    "props": []
-  },
-  "setPath": {
-    "props": []
-  },
-  "flattenFields": {
-    "props": [
-      {
-        "name": "type",
-        "type": "\"default\"",
-        "required": true,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "components",
-        "type": "FormField[]",
-        "required": true,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "schemaVersion",
-        "type": "number",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "id",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "exporter",
-        "type": "{ name: string; version: string; }",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      }
-    ]
-  },
-  "dataFields": {
-    "props": [
-      {
-        "name": "type",
-        "type": "\"default\"",
-        "required": true,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "components",
-        "type": "FormField[]",
-        "required": true,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "schemaVersion",
-        "type": "number",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "id",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "exporter",
-        "type": "{ name: string; version: string; }",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      }
-    ]
-  },
-  "isDataField": {
-    "props": [
-      {
-        "name": "id",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "type",
-        "type": "enum",
-        "required": true,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "key",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": "Datenbindung (Punkt-Notation für Nesting)"
-      },
-      {
-        "name": "label",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "description",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "defaultValue",
-        "type": "unknown",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "validate",
-        "type": "FormFieldValidation",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "values",
-        "type": "FormFieldOption[]",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "conditional",
-        "type": "FormFieldConditional",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "text",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": "statischer Text/HTML bei type === \"text\""
-      },
-      {
-        "name": "components",
-        "type": "FormField[]",
-        "required": false,
-        "defaultValue": null,
-        "description": "verschachtelte Felder bei type === \"group\""
-      }
-    ]
-  },
-  "FormRenderer": {
-    "props": [
-      {
-        "name": "schema",
-        "type": "FormSchema",
-        "required": true,
-        "defaultValue": null,
-        "description": "form-js-kompatibles Schema (`{ type:\"default\", components:[...] }`)."
-      },
-      {
-        "name": "data",
-        "type": "FormData",
-        "required": false,
-        "defaultValue": null,
-        "description": "Kontrollierte Daten (`key -> value`)."
-      },
-      {
-        "name": "defaultData",
-        "type": "FormData",
-        "required": false,
-        "defaultValue": null,
-        "description": "Ungesteuerte Anfangsdaten."
-      },
-      {
-        "name": "onChange",
-        "type": "((data: FormData) => void)",
-        "required": false,
-        "defaultValue": null,
-        "description": "Datenänderungen (für controlled-Nutzung)."
-      },
-      {
-        "name": "onSubmit",
-        "type": "((result: FormRendererSubmit) => void)",
-        "required": false,
-        "defaultValue": null,
-        "description": "Submit-Callback; erhält Daten, Validierungsfehler und Submit-Variablen."
-      },
-      {
-        "name": "readOnly",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": false,
-        "description": "Read-only-Darstellung über `DescriptionList`/`Field`."
-      },
-      {
-        "name": "submitVariableFormat",
-        "type": "enum",
-        "required": false,
-        "defaultValue": "camunda",
-        "description": "Submit-Variablenformat (Default `camunda`)."
-      },
-      {
-        "name": "submitLabel",
-        "type": "ReactNode",
-        "required": false,
-        "defaultValue": "Absenden",
-        "description": "Label des Submit-Buttons (Default „Absenden\"). `null` → kein Button."
-      },
-      {
-        "name": "actionsSlot",
-        "type": "ReactNode",
-        "required": false,
-        "defaultValue": null,
-        "description": "Zusätzlicher Aktions-Slot neben dem Submit-Button."
-      },
-      {
-        "name": "className",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      }
-    ]
-  },
-  "FormBuilder": {
-    "props": [
-      {
-        "name": "value",
-        "type": "FormSchema",
-        "required": false,
-        "defaultValue": null,
-        "description": "Kontrolliertes Schema."
-      },
-      {
-        "name": "defaultValue",
-        "type": "FormSchema",
-        "required": false,
-        "defaultValue": null,
-        "description": "Ungesteuertes Anfangs-Schema."
-      },
-      {
-        "name": "onChange",
-        "type": "((schema: FormSchema) => void)",
-        "required": false,
-        "defaultValue": null,
-        "description": "Schema-Änderungen."
-      },
-      {
-        "name": "onSave",
-        "type": "((schema: FormSchema) => void | Promise<void>)",
-        "required": false,
-        "defaultValue": null,
-        "description": "Persistenz-Callback (z. B. ⌘S in der App)."
-      },
-      {
-        "name": "mode",
-        "type": "enum",
-        "required": false,
-        "defaultValue": null,
-        "description": "Editor-Modus: nativer Designer oder form-js-Experten-Fallback."
-      },
-      {
-        "name": "onModeChange",
-        "type": "((mode: FormBuilderMode) => void)",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "fieldTypes",
-        "type": "readonly (\"number\" | \"textfield\" | \"textarea\" | \"checkbox\" | \"checklist\" | \"radio\" | \"select\" | \"datetime\" | \"taglist\" | \"text\" | \"separator\" | \"spacer\")[]",
-        "required": false,
-        "defaultValue": "[\n  \"textfield\",\n  \"textarea\",\n  \"number\",\n  \"checkbox\",\n  \"checklist\",\n  \"radio\",\n  \"select\",\n  \"datetime\",\n  \"taglist\",\n  \"text\",\n  \"separator\",\n  \"spacer\",\n] as const",
-        "description": "Beschränkt/erweitert die Palette (Default: alle Builder-Feldtypen)."
-      },
-      {
-        "name": "className",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      }
-    ]
-  },
-  "BUILDER_FIELD_TYPES": {
-    "props": []
-  },
-  "createField": {
-    "props": []
-  },
-  "emptySchema": {
-    "props": []
-  },
-  "insertField": {
-    "props": []
-  },
-  "removeFieldAt": {
-    "props": []
-  },
-  "moveField": {
-    "props": []
-  },
-  "updateFieldAt": {
-    "props": []
-  },
-  "PRESENTATIONAL_TYPES": {
-    "props": []
-  },
-  "VALIDATION_MESSAGES": {
-    "props": []
-  },
-  "isPresentational": {
-    "props": []
-  },
-  "hasOptions": {
-    "props": []
-  },
-  "generateFieldId": {
-    "props": []
-  },
-  "FIELD_TYPE_LABELS": {
-    "props": []
-  },
-  "OPTION_TYPES": {
-    "props": []
-  },
-  "HitPolicy": {
-    "props": []
-  },
-  "Aggregation": {
-    "props": []
-  },
-  "FeelLintResult": {
-    "props": []
-  },
-  "DmnCellPlugin": {
-    "props": []
-  },
-  "DiagramColorScheme": {
-    "props": []
-  },
-  "getDiagramColors": {
-    "props": []
-  },
-  "isDarkMode": {
-    "props": []
-  },
-  "onThemeChange": {
-    "props": []
-  },
-  "parseDmnModel": {
-    "props": []
-  },
-  "serializeDmnModel": {
-    "props": []
-  },
-  "listDecisions": {
-    "props": []
-  },
-  "makeId": {
-    "props": []
-  },
-  "emptyRow": {
-    "props": [
-      {
-        "name": "id",
-        "type": "string",
-        "required": true,
-        "defaultValue": null,
-        "description": "id der Decision"
-      },
-      {
-        "name": "name",
-        "type": "string",
-        "required": true,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "hitPolicy",
-        "type": "enum",
-        "required": true,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "aggregation",
-        "type": "enum",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "columns",
-        "type": "DmnColumn[]",
-        "required": true,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "rows",
-        "type": "DmnRow[]",
-        "required": true,
-        "defaultValue": null,
-        "description": ""
-      }
-    ]
-  },
-  "addColumn": {
-    "props": []
-  },
-  "lintFeel": {
-    "props": []
-  },
-  "parseInputValues": {
-    "props": []
-  },
-  "FeelValueType": {
-    "props": []
-  },
-  "FeelLintTypedResult": {
-    "props": []
-  },
-  "DmnTableEditor": {
-    "props": [
-      {
-        "name": "value",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": "Controlled DMN-XML."
-      },
-      {
-        "name": "defaultValue",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": "Uncontrolled Start-XML."
-      },
-      {
-        "name": "onChange",
-        "type": "((xml: string) => void)",
-        "required": false,
-        "defaultValue": null,
-        "description": "Wird bei jeder Modelländerung mit serialisiertem XML aufgerufen."
-      },
-      {
-        "name": "onSave",
-        "type": "((xml: string) => void | Promise<void>)",
-        "required": false,
-        "defaultValue": null,
-        "description": "⌘S / Speichern-Button."
-      },
-      {
-        "name": "decisionId",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": "Wählt die zu editierende Decision (Default: erste mit Table)."
-      },
-      {
-        "name": "title",
-        "type": "ReactNode",
-        "required": false,
-        "defaultValue": null,
-        "description": "Anzeigename (z. B. Prüfprozess-Code)."
-      },
-      {
-        "name": "subtitle",
-        "type": "ReactNode",
-        "required": false,
-        "defaultValue": null,
-        "description": "Untertitel/Metadaten."
-      },
-      {
-        "name": "onSwitchToExpert",
-        "type": "(() => void)",
-        "required": false,
-        "defaultValue": null,
-        "description": "Umschalten zum Experten-Modus (⑥)."
-      },
-      {
-        "name": "cellPlugins",
-        "type": "DmnCellPlugin[]",
-        "required": false,
-        "defaultValue": "[]",
-        "description": "Optionale Zell-Plugins (z. B. Prüfi-Autocomplete). Default: leer."
-      },
-      {
-        "name": "actionsSlot",
-        "type": "ReactNode",
-        "required": false,
-        "defaultValue": null,
-        "description": "Zusätzliche Toolbar-Actions (z. B. KI-Fix)."
-      },
-      {
-        "name": "readOnly",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": false,
-        "description": "Schreibschutz."
-      },
-      {
-        "name": "className",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      }
-    ]
-  },
-  "DmnExpertEditor": {
-    "props": [
-      {
-        "name": "value",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": "Controlled DMN-XML."
-      },
-      {
-        "name": "defaultValue",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": "Uncontrolled Start-XML."
-      },
-      {
-        "name": "onChange",
-        "type": "((xml: string) => void)",
-        "required": false,
-        "defaultValue": null,
-        "description": "Bei Änderungen (commandStack.changed) mit serialisiertem XML."
-      },
-      {
-        "name": "onSave",
-        "type": "((xml: string) => void | Promise<void>)",
-        "required": false,
-        "defaultValue": null,
-        "description": "Speichern-Callback."
-      },
-      {
-        "name": "colorScheme",
-        "type": "enum",
-        "required": false,
-        "defaultValue": "auto",
-        "description": "Light/Dark-Steuerung (Default auto via data-theme)."
-      },
-      {
-        "name": "actionsSlot",
-        "type": "ReactNode",
-        "required": false,
-        "defaultValue": null,
-        "description": "Zusätzliche Toolbar-Actions."
-      },
-      {
-        "name": "onSwitchToTable",
-        "type": "(() => void)",
-        "required": false,
-        "defaultValue": null,
-        "description": "Umschalten zur Tabellenansicht (⑤)."
-      },
-      {
-        "name": "propertiesPanel",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": true,
-        "description": "Properties-Panel anzeigen, falls die Pakete vorhanden sind (Default true)."
-      },
-      {
-        "name": "className",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      }
-    ]
-  },
-  "DmnEditor": {
-    "props": [
-      {
-        "name": "value",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "defaultValue",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "onChange",
-        "type": "((xml: string) => void)",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "onSave",
-        "type": "((xml: string) => void | Promise<void>)",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "defaultMode",
-        "type": "enum",
-        "required": false,
-        "defaultValue": "table",
-        "description": "Start-Modus (Default 'table')."
-      },
-      {
-        "name": "mode",
-        "type": "enum",
-        "required": false,
-        "defaultValue": null,
-        "description": "Controlled-Modus."
-      },
-      {
-        "name": "onModeChange",
-        "type": "((mode: DmnEditorMode) => void)",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "colorScheme",
-        "type": "enum",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "title",
-        "type": "ReactNode",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "subtitle",
-        "type": "ReactNode",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "cellPlugins",
-        "type": "DmnCellPlugin[]",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "actionsSlot",
-        "type": "ReactNode",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "decisionId",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "className",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      }
-    ]
-  },
-  "ActivityStatus": {
-    "props": []
-  },
-  "HistoryActivityInstance": {
-    "props": []
-  },
-  "Incident": {
-    "props": []
-  },
-  "HistoryVariableInstance": {
-    "props": []
-  },
-  "BpmnElementClick": {
-    "props": []
-  },
-  "readToken": {
-    "props": []
-  },
-  "BpmnViewer": {
-    "props": [
-      {
-        "name": "xml",
-        "type": "string",
-        "required": true,
-        "defaultValue": null,
-        "description": "Das anzuzeigende BPMN 2.0 XML."
-      },
-      {
-        "name": "activityHistory",
-        "type": "HistoryActivityInstance[]",
-        "required": false,
-        "defaultValue": null,
-        "description": "Camunda-7-History-Einträge zur Status-Färbung."
-      },
-      {
-        "name": "incidents",
-        "type": "Incident[]",
-        "required": false,
-        "defaultValue": null,
-        "description": "Camunda-7-Incidents (färben das betroffene Element rot)."
-      },
-      {
-        "name": "runtimeActiveActivityIds",
-        "type": "string[]",
-        "required": false,
-        "defaultValue": null,
-        "description": "IDs der zur Laufzeit aktiven Aktivitäten (überschreiben History → blau)."
-      },
-      {
-        "name": "colorScheme",
-        "type": "enum",
-        "required": false,
-        "defaultValue": "auto",
-        "description": "Light/Dark-Steuerung. Default `auto` (folgt `data-theme`)."
-      },
-      {
-        "name": "onElementClick",
-        "type": "((event: BpmnElementClick) => void)",
-        "required": false,
-        "defaultValue": null,
-        "description": "Klick auf ein Element."
-      },
-      {
-        "name": "fitOnResize",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": true,
-        "description": "Bei Container-Resize automatisch neu einpassen. Default `true`."
-      },
-      {
-        "name": "showZoomControls",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": true,
-        "description": "Zoom-Steuerung (Buttons) anzeigen. Default `true`."
-      },
-      {
-        "name": "height",
-        "type": "string | number",
-        "required": false,
-        "defaultValue": "100%",
-        "description": "Höhe des Containers. Default `\"100%\"`. Canvas braucht eine feste Höhe."
-      },
-      {
-        "name": "className",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": "Optionaler Klassennamen-Override für den äußeren Container."
-      }
-    ]
-  },
-  "computeElementStatuses": {
-    "props": []
-  },
-  "computeExecutedFlows": {
-    "props": []
-  },
-  "buildActivityMap": {
-    "props": []
-  },
-  "matchActivity": {
-    "props": []
-  },
-  "deriveStatus": {
-    "props": []
-  },
-  "BpmnEditor": {
-    "props": [
-      {
-        "name": "value",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": "Controlled BPMN-XML. Bei gesetztem `value` ist die Komponente controlled."
-      },
-      {
-        "name": "defaultValue",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": "Uncontrolled Initial-XML."
-      },
-      {
-        "name": "onChange",
-        "type": "((xml: string) => void)",
-        "required": false,
-        "defaultValue": null,
-        "description": "Wird bei jeder Modell-Änderung mit dem aktuellen XML aufgerufen."
-      },
-      {
-        "name": "onSave",
-        "type": "((xml: string) => void | Promise<void>)",
-        "required": false,
-        "defaultValue": null,
-        "description": "Speichern (z. B. ⌘S / Toolbar-Button) → erhält `saveXML({format:true})`."
-      },
-      {
-        "name": "lintRules",
-        "type": "LintRuleConfig",
-        "required": false,
-        "defaultValue": "{\n  \"bpmnlint/label-required\": \"error\",\n  \"bpmnlint/no-disconnected\": \"error\",\n  \"bpmnlint/no-implicit-split\": \"warn\",\n  \"bpmnlint/no-complex-gateway\": \"warn\",\n}",
-        "description": "bpmnlint-Regeln (Default: 4 MaKo-Regeln)."
-      },
-      {
-        "name": "onElementSelect",
-        "type": "((selection: { id: string; name?: string; } | null) => void)",
-        "required": false,
-        "defaultValue": null,
-        "description": "Element-Selektion (ID + Name)."
-      },
-      {
-        "name": "onDirtyChange",
-        "type": "((dirty: boolean) => void)",
-        "required": false,
-        "defaultValue": null,
-        "description": "Dirty-State (ungespeicherte Änderungen)."
-      },
-      {
-        "name": "actionsSlot",
-        "type": "ReactNode",
-        "required": false,
-        "defaultValue": null,
-        "description": "App-Slot für Zusatzaktionen in der Toolbar (z. B. KI-Button)."
-      },
-      {
-        "name": "onKiFix",
-        "type": "((issues: LintIssue[]) => void)",
-        "required": false,
-        "defaultValue": null,
-        "description": "App-Slot im ErrorPanel (z. B. KI-Fix-Handler stellt eigenen Button bereit)."
-      },
-      {
-        "name": "colorScheme",
-        "type": "enum",
-        "required": false,
-        "defaultValue": "auto",
-        "description": "Light/Dark. Default `auto`."
-      },
-      {
-        "name": "propertiesPanel",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": true,
-        "description": "Properties-Panel anzeigen. Default `true`."
-      },
-      {
-        "name": "minimap",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": true,
-        "description": "Minimap (Übersichtskarte) anzeigen. Default `true`."
-      },
-      {
-        "name": "elementTemplates",
-        "type": "unknown[]",
-        "required": false,
-        "defaultValue": null,
-        "description": "Camunda-Element-Templates (JSON-Array) — im Properties-Panel anwendbar."
-      },
-      {
-        "name": "height",
-        "type": "string | number",
-        "required": false,
-        "defaultValue": "100%",
-        "description": "Höhe des Editors. Default `\"100%\"`."
-      },
-      {
-        "name": "className",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": "Klassennamen-Override."
-      }
-    ]
-  },
-  "LintIssue": {
-    "props": []
-  },
-  "LintRuleConfig": {
-    "props": []
-  },
-  "lintHint": {
-    "props": []
-  },
-  "LintHint": {
-    "props": []
-  },
-  "BpmnTableView": {
-    "props": [
-      {
-        "name": "xml",
-        "type": "string",
-        "required": true,
-        "defaultValue": null,
-        "description": "BPMN 2.0 XML."
-      },
-      {
-        "name": "visibleRows",
-        "type": "number",
-        "required": false,
-        "defaultValue": 30,
-        "description": "Sichtbare Zeilen (Höhe der Tabelle). Default 30."
-      },
-      {
-        "name": "onRowSelect",
-        "type": "((id: string) => void)",
-        "required": false,
-        "defaultValue": null,
-        "description": "Klick auf eine Zeile → Element-ID (öffnet das Properties-Panel)."
-      },
-      {
-        "name": "selectedId",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": "Aktuell selektierte Element-ID (Zeilen-Highlight)."
-      },
-      {
-        "name": "className",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": "Klassennamen-Override."
-      }
-    ]
-  },
-  "statusMarker": {
-    "props": []
-  },
-  "allStatusMarkers": {
-    "props": []
-  },
-  "buildStatusOverlay": {
-    "props": []
-  },
-  "MULTI_EXECUTION_MARKER": {
-    "props": []
-  },
-  "FLOW_EXECUTED_MARKER": {
-    "props": []
-  },
-  "STATUS_OVERLAY_POSITION": {
-    "props": []
-  },
-  "findMultiExecutionIds": {
-    "props": []
-  },
-  "isFlowNode": {
-    "props": [
-      {
-        "name": "id",
-        "type": "string",
-        "required": true,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "type",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "businessObject",
-        "type": "{ id?: string; name?: string; $type?: string | undefined; sourceRef?: { id?: string | undefined; } | undefined; targetRef?: { id?: string | undefined; } | undefined; } | undefined",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      }
-    ]
-  },
-  "isSequenceFlow": {
-    "props": [
-      {
-        "name": "id",
-        "type": "string",
-        "required": true,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "type",
-        "type": "string",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "businessObject",
-        "type": "{ id?: string; name?: string; $type?: string | undefined; sourceRef?: { id?: string | undefined; } | undefined; targetRef?: { id?: string | undefined; } | undefined; } | undefined",
-        "required": false,
-        "defaultValue": null,
-        "description": ""
-      }
-    ]
-  },
-  "hasIncident": {
-    "props": []
-  },
-  "isSequenceFlowExecuted": {
-    "props": []
-  },
-  "STATUS_TOKEN": {
-    "props": []
-  },
-  "STATUS_LABEL": {
-    "props": []
-  },
-  "buildRendererConfig": {
-    "props": [
-      {
-        "name": "defaultFillColor",
-        "type": "string",
-        "required": true,
-        "defaultValue": null,
-        "description": "Füllfarbe der Shapes"
-      },
-      {
-        "name": "defaultStrokeColor",
-        "type": "string",
-        "required": true,
-        "defaultValue": null,
-        "description": "Konturfarbe der Shapes/Connections"
-      },
-      {
-        "name": "defaultLabelColor",
-        "type": "string",
-        "required": true,
-        "defaultValue": null,
-        "description": "Textfarbe der Labels"
-      },
-      {
-        "name": "canvasBackground",
-        "type": "string",
-        "required": true,
-        "defaultValue": null,
-        "description": "Canvas-Hintergrund (für den umgebenden Container)"
-      },
-      {
-        "name": "accent",
-        "type": "string",
-        "required": true,
-        "defaultValue": null,
-        "description": "Akzentfarbe (Selektion/aktive Elemente)"
-      }
-    ]
-  },
-  "createAppleRendererModule": {
-    "props": []
-  },
-  "buildLintConfig": {
-    "props": []
-  },
-  "DEFAULT_LINT_RULES": {
-    "props": []
-  },
-  "typeTone": {
-    "props": []
-  },
-  "parseBpmnElements": {
-    "props": []
-  },
-  "ErrorPanel": {
-    "props": [
-      {
-        "name": "issues",
-        "type": "LintIssue[]",
-        "required": true,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "elementName",
-        "type": "(elementId: string | undefined) => string",
-        "required": true,
-        "defaultValue": null,
-        "description": "Auflösung Element-ID → Anzeigename."
-      },
-      {
-        "name": "onSelectElement",
-        "type": "(elementId: string) => void",
-        "required": true,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "onKiFix",
-        "type": "(() => void)",
-        "required": false,
-        "defaultValue": null,
-        "description": "Optionaler KI-Fix (z. B. Prompt an einen Agenten)."
-      },
-      {
-        "name": "onClose",
-        "type": "() => void",
-        "required": true,
-        "defaultValue": null,
-        "description": ""
-      },
-      {
-        "name": "actionsSlot",
-        "type": "ReactNode",
-        "required": false,
-        "defaultValue": null,
-        "description": "Optionale zusätzliche Aktionen (App-Slot), rechts neben KI-Fix."
       }
     ]
   }
