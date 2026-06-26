@@ -5,6 +5,12 @@ import { I18nProvider } from "react-aria-components";
 import { MDXProvider } from "@mdx-js/react";
 import "@conuti-das/prince-ui-tokens/tokens.css";
 import "@conuti-das/prince-ui/styles.css";
+// prince-ui-Wrapper-CSS der Schwer-Pakete (z. B. `.prn-bpmn-viewer { display:flex }`).
+// Ohne diese bleibt die Editor-Canvas auf Inhaltshöhe (kein flex-fit) → wirkt leer.
+import "@conuti-das/prince-ui-bpmn/styles.css";
+import "@conuti-das/prince-ui-dmn/styles.css";
+import "@conuti-das/prince-ui-forms/styles.css";
+import "@conuti-das/prince-ui-bo4e/styles.css";
 
 // Schwer-Editor-Canvas-Assets (bpmn-js/dmn-js/form-js). Die prince-ui-*-Pakete
 // importieren diese CSS zwar in ihren Komponenten-Modulen, doch ihr gebündeltes
