@@ -47,10 +47,16 @@
    folgt statt dem Default-Blau/Schwarz. */
 .prn-bpmn {
   --element-selected-outline-stroke-color: var(--prn-accent);
+  /* Mehrfachauswahl/Lasso nutzt die Sekundärfarbe — ebenfalls an den Akzent koppeln. */
+  --element-selected-outline-secondary-stroke-color: var(--prn-accent-strong);
 }
 .prn-bpmn .djs-element.selected .djs-outline,
 .prn-bpmn .djs-connection.selected .djs-outline {
   stroke: var(--prn-accent);
+}
+.prn-bpmn .djs-multi-select .djs-element.selected .djs-outline,
+.prn-bpmn .djs-dragging-active-lasso .djs-element.selected .djs-outline {
+  stroke: var(--prn-accent-strong);
 }
 
 .prn-bpmn-editor-toolbar {
