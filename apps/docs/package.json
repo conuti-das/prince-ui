@@ -1,0 +1,43 @@
+{
+  "name": "@conuti-das/prince-ui-docs",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -p tsconfig.json --noEmit && node --import tsx scripts/extract-props.ts && vite build && pagefind --site dist",
+    "preview": "vite preview",
+    "extract-props": "node --import tsx scripts/extract-props.ts",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@conuti-das/prince-ui": "workspace:*",
+    "@conuti-das/prince-ui-tokens": "workspace:*",
+    "@conuti-das/prince-ui-bpmn": "workspace:*",
+    "@conuti-das/prince-ui-dmn": "workspace:*",
+    "@conuti-das/prince-ui-forms": "workspace:*",
+    "@conuti-das/prince-ui-bo4e": "workspace:*",
+    "@internationalized/date": "3.12.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-aria-components": "1.19.0",
+    "react-router-dom": "^6.27.0",
+    "react-live": "^4.1.8"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.0",
+    "@mdx-js/rollup": "^3.1.0",
+    "@playwright/test": "^1.48.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.3",
+    "pagefind": "^1.1.1",
+    "preact": "^10.29.2",
+    "react-docgen-typescript": "^2.2.2",
+    "remark-gfm": "^4.0.0",
+    "rehype-slug": "^6.0.0",
+    "tsx": "^4.19.0",
+    "vite": "^5.4.10",
+    "vitest": "^2.1.5"
+  }
+}
