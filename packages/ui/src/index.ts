@@ -32,6 +32,7 @@ export function getTheme(): PrinceTheme | null {
 
 export * from "./utils";
 export * from "./icons/icons";
+export * from "./primitives/size";
 export * from "./primitives/forms";
 export * from "./primitives/overlays";
 export * from "./primitives/navigation";

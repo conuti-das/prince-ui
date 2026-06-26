@@ -23,6 +23,7 @@ import {
   Popover,
 } from "react-aria-components";
 import { cx } from "../utils";
+import { useFieldSize, type FieldSize } from "./size";
 import "./forms.css";
 
 /* ---------------- Button ---------------- */
@@ -30,11 +31,14 @@ import "./forms.css";
 export interface ButtonProps extends Omit<RACButtonProps, "className"> {
   /** Prince-Varianten: gefüllt (Akzent), getönt (soft) oder schlicht. */
   variant?: "filled" | "tinted" | "plain";
+  /** Größe: s (kompakt) | m (Default) | l. Ohne Angabe greift der PrinceSizeProvider-Context. */
+  size?: FieldSize;
   className?: string;
 }
 
-export function Button({ variant = "filled", className, ...props }: ButtonProps) {
-  return <RACButton {...props} data-variant={variant} className={cx("prn-button", className)} />;
+export function Button({ variant = "filled", size, className, ...props }: ButtonProps) {
+  const resolvedSize = useFieldSize(size);
+  return <RACButton {...props} data-variant={variant} data-size={resolvedSize} className={cx("prn-button", className)} />;
 }
 
 /* ---------------- TextField ---------------- */
@@ -44,12 +48,15 @@ export interface TextFieldProps extends Omit<RACTextFieldProps, "className"> {
   description?: ReactNode;
   errorMessage?: ReactNode;
   placeholder?: string;
+  /** Größe: s (kompakt) | m (Default) | l. Ohne Angabe greift der PrinceSizeProvider-Context. */
+  size?: FieldSize;
   className?: string;
 }
 
-export function TextField({ label, description, errorMessage, placeholder, className, ...props }: TextFieldProps) {
+export function TextField({ label, description, errorMessage, placeholder, size, className, ...props }: TextFieldProps) {
+  const resolvedSize = useFieldSize(size);
   return (
-    <RACTextField {...props} className={cx("prn-field", className)}>
+    <RACTextField {...props} data-size={resolvedSize} className={cx("prn-field", className)}>
       {label && <Label className="prn-field-label">{label}</Label>}
       <Input className="prn-input" placeholder={placeholder} />
       {description && <Text slot="description" className="prn-field-desc">{description}</Text>}
@@ -63,12 +70,15 @@ export function TextField({ label, description, errorMessage, placeholder, class
 export interface SearchFieldProps extends Omit<RACSearchFieldProps, "className"> {
   label?: ReactNode;
   placeholder?: string;
+  /** Größe: s (kompakt) | m (Default) | l. Ohne Angabe greift der PrinceSizeProvider-Context. */
+  size?: FieldSize;
   className?: string;
 }
 
-export function SearchField({ label, placeholder, className, ...props }: SearchFieldProps) {
+export function SearchField({ label, placeholder, size, className, ...props }: SearchFieldProps) {
+  const resolvedSize = useFieldSize(size);
   return (
-    <RACSearchField {...props} className={cx("prn-field prn-searchfield", className)}>
+    <RACSearchField {...props} data-size={resolvedSize} className={cx("prn-field prn-searchfield", className)}>
       {label && <Label className="prn-field-label">{label}</Label>}
       <Input className="prn-input" placeholder={placeholder} />
     </RACSearchField>
@@ -120,12 +130,15 @@ export interface SelectProps<T extends object> extends Omit<RACSelectProps<T>, "
   label?: ReactNode;
   placeholder?: string;
   children: ReactNode | ((item: T) => ReactNode);
+  /** Größe: s (kompakt) | m (Default) | l. Ohne Angabe greift der PrinceSizeProvider-Context. */
+  size?: FieldSize;
   className?: string;
 }
 
-export function Select<T extends object>({ label, placeholder, children, className, ...props }: SelectProps<T>) {
+export function Select<T extends object>({ label, placeholder, children, size, className, ...props }: SelectProps<T>) {
+  const resolvedSize = useFieldSize(size);
   return (
-    <RACSelect {...props} className={cx("prn-field prn-select", className)}>
+    <RACSelect {...props} data-size={resolvedSize} className={cx("prn-field prn-select", className)}>
       {label && <Label className="prn-field-label">{label}</Label>}
       <RACButton className="prn-select-button">
         <SelectValue className="prn-select-value">{placeholder}</SelectValue>

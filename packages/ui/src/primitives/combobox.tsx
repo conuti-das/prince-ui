@@ -5,6 +5,7 @@ import {
   type ListBoxItemProps, Text, FieldError,
 } from "react-aria-components";
 import { cx } from "../utils";
+import { useFieldSize, type FieldSize } from "./size";
 import "./forms.css";
 import "./overlays.css";
 import "./combobox.css";
@@ -12,11 +13,14 @@ import "./combobox.css";
 export interface ComboBoxProps<T extends object>
   extends Omit<RACComboBoxProps<T>, "className" | "children"> {
   label?: ReactNode; placeholder?: string; description?: ReactNode; errorMessage?: ReactNode;
-  children: ReactNode | ((item: T) => ReactNode); className?: string;
+  children: ReactNode | ((item: T) => ReactNode);
+  /** Größe: s (kompakt) | m (Default) | l. Ohne Angabe greift der PrinceSizeProvider-Context. */
+  size?: FieldSize; className?: string;
 }
-export function ComboBox<T extends object>({ label, placeholder, description, errorMessage, children, className, ...props }: ComboBoxProps<T>) {
+export function ComboBox<T extends object>({ label, placeholder, description, errorMessage, children, size, className, ...props }: ComboBoxProps<T>) {
+  const resolvedSize = useFieldSize(size);
   return (
-    <RACComboBox {...props} className={cx("prn-field prn-combobox", className)}>
+    <RACComboBox {...props} data-size={resolvedSize} className={cx("prn-field prn-combobox", className)}>
       {label && <Label className="prn-field-label">{label}</Label>}
       <div className="prn-combobox-control">
         <Input className="prn-input prn-combobox-input" placeholder={placeholder} />

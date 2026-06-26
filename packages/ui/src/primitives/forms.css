@@ -77,6 +77,33 @@
   padding-left: 12px;
 }
 
+/* ---- Größen (s | m | l) ----
+   m = Default (Werte oben). s = kompakt für volle UIs, l = groß/Touch.
+   data-size sitzt am Feld-Root (.prn-field) bzw. am Button (.prn-button). */
+.prn-field[data-size="s"] { gap: 3px; }
+.prn-field[data-size="s"] .prn-input,
+.prn-field[data-size="s"] .prn-select-button {
+  min-height: 28px;
+  padding: 4px 10px;
+  font: var(--prn-text-callout);
+}
+.prn-field[data-size="l"] .prn-input,
+.prn-field[data-size="l"] .prn-select-button {
+  min-height: 40px;
+  padding: 10px 14px;
+}
+
+/* NumberField: Stepper-Buttons an die kompakte/große Höhe angleichen. */
+.prn-field[data-size="s"] .prn-numberfield-step { width: 28px; height: 28px; font-size: 15px; }
+.prn-field[data-size="l"] .prn-numberfield-step { width: 40px; height: 40px; }
+
+/* ComboBox: Chevron-Button in der kompakten Variante etwas kleiner. */
+.prn-field[data-size="s"] .prn-combobox-button { width: 22px; height: 22px; }
+
+/* Button-Größen. */
+.prn-button[data-size="s"] { min-height: 28px; padding: 0 12px; font: var(--prn-text-callout); }
+.prn-button[data-size="l"] { min-height: 40px; padding: 0 20px; }
+
 /* ---- Checkbox ---- */
 .prn-checkbox {
   display: inline-flex;
