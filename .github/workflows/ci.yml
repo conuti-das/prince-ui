@@ -20,4 +20,5 @@ jobs:
       # (e.g. prince-ui-dmn imports `prince-ui`), then typecheck.
       - run: pnpm build
       - run: pnpm typecheck
-      - run: pnpm build-storybook
+      # Doku-Site bauen (löst Storybook als Build-Artefakt ab).
+      - run: pnpm --filter @conuti-das/prince-ui-docs build
