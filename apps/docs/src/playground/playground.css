@@ -1,4 +1,4 @@
-.pg { display: grid; grid-template-columns: 1fr 240px; gap: 1rem; background: var(--prn-bg-2, #1e252b); border: 1px solid var(--prn-separator); border-radius: 12px; padding: 1.25rem; }
+.pg { display: grid; grid-template-columns: 1fr 240px; gap: 1rem; background: var(--prn-bg-elevated); border: 1px solid var(--prn-separator); border-radius: 12px; padding: 1.25rem; }
 .pg-stage { display: flex; align-items: center; justify-content: center; min-height: 200px; }
 .pg-controls { display: flex; flex-direction: column; gap: .75rem; }
 .pg-control { display: flex; flex-direction: column; gap: .25rem; font-size: .8rem; }
