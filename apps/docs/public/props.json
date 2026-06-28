@@ -36,6 +36,20 @@
       }
     ]
   },
+  "useFieldSize": {
+    "props": []
+  },
+  "PrinceSizeProvider": {
+    "props": [
+      {
+        "name": "size",
+        "type": "enum",
+        "required": true,
+        "defaultValue": null,
+        "description": "Default-Größe für alle prince-ui Felder im Teilbaum."
+      }
+    ]
+  },
   "Button": {
     "props": [
       {
@@ -44,6 +58,13 @@
         "required": false,
         "defaultValue": "filled",
         "description": "Prince-Varianten: gefüllt (Akzent), getönt (soft) oder schlicht."
+      },
+      {
+        "name": "size",
+        "type": "enum",
+        "required": false,
+        "defaultValue": null,
+        "description": "Größe: s (kompakt) | m (Default) | l. Ohne Angabe greift der PrinceSizeProvider-Context."
       },
       {
         "name": "className",
@@ -85,6 +106,13 @@
         "description": ""
       },
       {
+        "name": "size",
+        "type": "enum",
+        "required": false,
+        "defaultValue": null,
+        "description": "Größe: s (kompakt) | m (Default) | l. Ohne Angabe greift der PrinceSizeProvider-Context."
+      },
+      {
         "name": "className",
         "type": "string",
         "required": false,
@@ -108,6 +136,13 @@
         "required": false,
         "defaultValue": null,
         "description": ""
+      },
+      {
+        "name": "size",
+        "type": "enum",
+        "required": false,
+        "defaultValue": null,
+        "description": "Größe: s (kompakt) | m (Default) | l. Ohne Angabe greift der PrinceSizeProvider-Context."
       },
       {
         "name": "className",
@@ -169,6 +204,13 @@
         "required": false,
         "defaultValue": null,
         "description": "Temporary text that occupies the select when it is empty."
+      },
+      {
+        "name": "size",
+        "type": "enum",
+        "required": false,
+        "defaultValue": null,
+        "description": "Größe: s (kompakt) | m (Default) | l. Ohne Angabe greift der PrinceSizeProvider-Context."
       },
       {
         "name": "className",
@@ -2536,6 +2578,13 @@
         "description": ""
       },
       {
+        "name": "size",
+        "type": "enum",
+        "required": false,
+        "defaultValue": null,
+        "description": "Größe: s (kompakt) | m (Default) | l. Ohne Angabe greift der PrinceSizeProvider-Context."
+      },
+      {
         "name": "className",
         "type": "string",
         "required": false,
@@ -2598,6 +2647,13 @@
         "required": false,
         "defaultValue": null,
         "description": ""
+      },
+      {
+        "name": "size",
+        "type": "enum",
+        "required": false,
+        "defaultValue": null,
+        "description": "Größe: s (kompakt) | m (Default) | l. Ohne Angabe greift der PrinceSizeProvider-Context."
       },
       {
         "name": "className",
@@ -4949,6 +5005,9 @@
     ]
   },
   "resolveFieldStructure": {
+    "props": []
+  },
+  "mergeFieldDicts": {
     "props": []
   },
   "normalizeToCDoc": {
