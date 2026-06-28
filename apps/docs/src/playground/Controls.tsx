@@ -13,20 +13,71 @@ export function Controls({ controls, state, onChange, docs }: {
         const doc = docs?.[c.name];
         const tip = doc ? `${doc.type}${doc.description ? ` — ${doc.description}` : ""}` : undefined;
         return (
-          <label key={c.name} className="pg-control">
+          <div key={c.name} className="pg-control">
             <span className="pg-control-name">
-              {c.name}
+              <span className="pg-control-label">{c.name}</span>
               {tip && <abbr className="pg-info" title={tip}>ⓘ</abbr>}
             </span>
-            {c.type === "text" && <input value={String(state[c.name] ?? "")} onChange={(e) => onChange(c.name, e.target.value)} />}
-            {c.type === "toggle" && <input type="checkbox" checked={Boolean(state[c.name])} onChange={(e) => onChange(c.name, e.target.checked)} />}
-            {c.type === "number" && <input type="number" value={Number(state[c.name] ?? 0)} onChange={(e) => onChange(c.name, Number(e.target.value))} />}
-            {(c.type === "select" || c.type === "segmented") && (
-              <select value={String(state[c.name])} onChange={(e) => onChange(c.name, e.target.value)}>
+
+            {c.type === "text" && (
+              <input
+                className="docs-field"
+                aria-label={c.name}
+                value={String(state[c.name] ?? "")}
+                onChange={(e) => onChange(c.name, e.target.value)}
+              />
+            )}
+
+            {c.type === "number" && (
+              <input
+                type="number"
+                className="docs-field"
+                aria-label={c.name}
+                value={Number(state[c.name] ?? 0)}
+                onChange={(e) => onChange(c.name, Number(e.target.value))}
+              />
+            )}
+
+            {c.type === "toggle" && (
+              <button
+                type="button"
+                role="switch"
+                aria-label={c.name}
+                aria-checked={Boolean(state[c.name])}
+                className="docs-switch"
+                onClick={() => onChange(c.name, !state[c.name])}
+              >
+                <span className="docs-switch-knob" />
+              </button>
+            )}
+
+            {c.type === "segmented" && (
+              <div className="docs-segmented" role="group" aria-label={c.name}>
+                {c.options.map((o) => (
+                  <button
+                    key={o}
+                    type="button"
+                    className={"docs-segment" + (String(state[c.name]) === o ? " is-active" : "")}
+                    aria-pressed={String(state[c.name]) === o}
+                    onClick={() => onChange(c.name, o)}
+                  >
+                    {o}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {c.type === "select" && (
+              <select
+                className="docs-select"
+                aria-label={c.name}
+                value={String(state[c.name])}
+                onChange={(e) => onChange(c.name, e.target.value)}
+              >
                 {c.options.map((o) => <option key={o} value={o}>{o}</option>)}
               </select>
             )}
-          </label>
+          </div>
         );
       })}
     </div>

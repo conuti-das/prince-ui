@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 88" role="img" aria-label="Toast-Vorschau">
+  <rect x="34" y="30" width="132" height="34" rx="10" fill="#1e252b" stroke="#3c454d"/>
+  <circle cx="54" cy="47" r="9" fill="none" stroke="#a0d22b" stroke-width="2"/>
+  <path d="M50 47 l3 3 l5 -6" fill="none" stroke="#a0d22b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="72" y="40" width="62" height="6" rx="3" fill="#cfd6db"/>
+  <rect x="72" y="51" width="44" height="5" rx="2.5" fill="#5b6770"/>
+  <path d="M148 42 l8 8 M156 42 l-8 8" stroke="#5b6770" stroke-width="2" stroke-linecap="round"/>
+</svg>
