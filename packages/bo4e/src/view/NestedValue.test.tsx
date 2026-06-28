@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { NestedValue } from "./NestedValue";
 import { loadBo4eSchema } from "../schema/load-schema";
 import fields from "../__fixtures__/bo4e-fields.json";
@@ -116,6 +117,26 @@ describe("NestedValue", () => {
       />,
     );
     expect(screen.getByText(/Eintrag hinzufügen/)).toBeInTheDocument();
+  });
+
+  it("prefills a created scalar with the schema example", async () => {
+    const user = userEvent.setup();
+    let captured: { path: (string | number)[]; value: unknown } | undefined;
+    // marktlokationsId has example "55555555555" in the field-dict
+    render(
+      <NestedValue
+        {...base}
+        fieldKey="marktlokationsId"
+        value={null}
+        density="alle"
+        editable
+        onChange={(path, value) => {
+          captured = { path, value };
+        }}
+      />,
+    );
+    await user.click(screen.getByText(/anlegen/));
+    expect(captured?.value).toBe("55555555555");
   });
 
   it("the generated structure fixture drives component create for empty objects", () => {

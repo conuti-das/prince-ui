@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 88" role="img" aria-label="Kalender-Vorschau">
+  <rect x="58" y="14" width="84" height="62" rx="8" fill="#11161b" stroke="#3c454d"/>
+  <rect x="58" y="14" width="84" height="16" rx="8" fill="#1e252b"/>
+  <rect x="58" y="22" width="84" height="8" fill="#1e252b"/>
+  <rect x="68" y="19" width="30" height="6" rx="3" fill="#8a949c"/>
+  <g fill="#5b6770">
+    <circle cx="70" cy="40" r="3"/><circle cx="84" cy="40" r="3"/><circle cx="98" cy="40" r="3"/><circle cx="112" cy="40" r="3"/><circle cx="126" cy="40" r="3"/>
+    <circle cx="70" cy="52" r="3"/><circle cx="84" cy="52" r="3"/>
+    <circle cx="112" cy="52" r="3"/><circle cx="126" cy="52" r="3"/>
+    <circle cx="70" cy="64" r="3"/><circle cx="84" cy="64" r="3"/><circle cx="98" cy="64" r="3"/>
+  </g>
+  <circle cx="98" cy="52" r="7" fill="#a0d22b"/>
+</svg>

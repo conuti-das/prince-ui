@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 88" role="img" aria-label="Farb-Swatches">
+  <rect x="22" y="26" width="34" height="36" rx="8" fill="#a0d22b"/>
+  <rect x="62" y="26" width="34" height="36" rx="8" fill="#6cae0f"/>
+  <rect x="102" y="26" width="34" height="36" rx="8" fill="#3f7a06"/>
+  <rect x="142" y="26" width="34" height="36" rx="8" fill="#1e252b" stroke="#3c454d"/>
+</svg>

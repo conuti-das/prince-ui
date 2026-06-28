@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 88" role="img" aria-label="Token-Variablen">
+  <rect x="24" y="18" width="152" height="52" rx="8" fill="#11161b" stroke="#3c454d"/>
+  <text x="36" y="36" font-family="ui-monospace,monospace" font-size="9" fill="#a0d22b">--prn-accent</text>
+  <text x="120" y="36" font-family="ui-monospace,monospace" font-size="9" fill="#cfd6db">#a0d22b</text>
+  <text x="36" y="50" font-family="ui-monospace,monospace" font-size="9" fill="#a0d22b">--prn-radius</text>
+  <text x="120" y="50" font-family="ui-monospace,monospace" font-size="9" fill="#cfd6db">12px</text>
+  <text x="36" y="64" font-family="ui-monospace,monospace" font-size="9" fill="#a0d22b">--prn-gap</text>
+  <text x="120" y="64" font-family="ui-monospace,monospace" font-size="9" fill="#cfd6db">8px</text>
+</svg>

@@ -3,9 +3,15 @@
 export type NavGroup = { title: string; items: { path: string; title: string }[] };
 
 const GROUP_LABEL: Record<string, string> = { components: "Components", foundations: "Foundations" };
+// Feste Gruppen-Reihenfolge laut Design-Spec (§3): Overview · Foundations · Components.
+const GROUP_ORDER = ["overview", "foundations", "components"];
 
 export function buildNav(modules: Record<string, unknown>): NavGroup[] {
   const groups = new Map<string, NavGroup>();
+  // Overview-Gruppe: Einstieg (Landingpage) immer zuerst.
+  if (Object.keys(modules).some((f) => /\/content\/index\.mdx$/.test(f))) {
+    groups.set("overview", { title: "Overview", items: [{ path: "/", title: "Einführung" }] });
+  }
   for (const file of Object.keys(modules)) {
     const m = file.match(/\/content\/(components|foundations)\/(.+)\.mdx$/);
     if (!m) continue;
@@ -16,5 +22,7 @@ export function buildNav(modules: Record<string, unknown>): NavGroup[] {
     group.items.push({ path, title: name });
     groups.set(dir, group);
   }
-  return [...groups.values()].map((g) => ({ ...g, items: g.items.sort((a, b) => a.title.localeCompare(b.title)) }));
+  return [...groups.entries()]
+    .sort(([a], [b]) => GROUP_ORDER.indexOf(a) - GROUP_ORDER.indexOf(b))
+    .map(([, g]) => ({ ...g, items: g.items.sort((a, b) => a.title.localeCompare(b.title)) }));
 }

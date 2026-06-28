@@ -1,6 +1,6 @@
 {
   "name": "@conuti-das/prince-ui-bo4e",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Smart-Viewer/-Editor für BO4E-cDoc (Marktkommunikation) auf prince-ui.",
   "license": "MIT",
   "private": false,
@@ -28,7 +28,7 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "gen:structure": "node scripts/gen-structure.mjs"
+    "gen:bo4e": "node scripts/gen-bo4e.mjs ${BO4E_SCHEMA_DIR:-../../../../Spielwiese/maco-bo4e-db/schemas/v1} src/__fixtures__ ../../apps/docs/src/heavy/bo4e-fixtures"
   },
   "dependencies": {
     "@conuti-das/prince-ui-tokens": "workspace:*",

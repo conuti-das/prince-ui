@@ -1,0 +1,5325 @@
+{
+  "ABGABEART": {
+    "values": [
+      {
+        "value": "KAS"
+      },
+      {
+        "value": "SA"
+      },
+      {
+        "value": "SAS"
+      },
+      {
+        "value": "TA"
+      },
+      {
+        "value": "TAS"
+      },
+      {
+        "value": "TK"
+      },
+      {
+        "value": "TKS"
+      },
+      {
+        "value": "TS"
+      },
+      {
+        "value": "TSS"
+      }
+    ],
+    "description": "Art der Konzessionsabgabe"
+  },
+  "ABONNEMENT": {
+    "values": [
+      {
+        "value": "START_ABO"
+      },
+      {
+        "value": "ENDE_ABO"
+      },
+      {
+        "value": "OHNE_ABO"
+      }
+    ]
+  },
+  "ABSCHLAGTYP": {
+    "values": [
+      {
+        "value": "GEMEINDERABATT_KAV"
+      },
+      {
+        "value": "ANPASSUNG_P19_STROM_NEV"
+      }
+    ]
+  },
+  "ABWEICHUNGSGRUND": {
+    "values": [
+      {
+        "value": "PREIS_RECHENREGEL_FALSCH"
+      },
+      {
+        "value": "FALSCHER_ABRECHNUNGSZEITRAUM"
+      },
+      {
+        "value": "UNBEKANNTE_MARKTLOKATION_MESSLOKATION"
+      },
+      {
+        "value": "SONSTIGER_ABWEICHUNGSGRUND"
+      },
+      {
+        "value": "DOPPELTE_RECHNUNG"
+      },
+      {
+        "value": "ABRECHNUNGSBEGINN_UNGLEICH_VERTRAGSBEGINN"
+      },
+      {
+        "value": "ABRECHNUNGSENDE_UNGLEICH_VERTRAGSENDE"
+      },
+      {
+        "value": "BETRAG_DER_ABSCHLAGSRECHNUNG_FALSCH"
+      },
+      {
+        "value": "VORAUSBEZAHLTER_BETRAG_FALSCH"
+      },
+      {
+        "value": "ARTIKEL_NICHT_VEREINBART"
+      },
+      {
+        "value": "NETZNUTZUNGSMESSWERTE_ENERGIEMENGEN_FEHLEN"
+      },
+      {
+        "value": "RECHNUNGSNUMMER_BEREITS_ERHALTEN"
+      },
+      {
+        "value": "NETZNUTZUNGSMESSWERTE_ENERGIEMENGEN_FALSCH"
+      },
+      {
+        "value": "ZEITLICHE_MENGENANGABE_FEHLERHAFT"
+      },
+      {
+        "value": "FALSCHER_BILANZIERUNGSBEGINN"
+      },
+      {
+        "value": "FALSCHES_NETZNUTZUNGSENDE"
+      },
+      {
+        "value": "BILANZIERTE_MENGE_FEHLT"
+      },
+      {
+        "value": "BILANZIERTE_MENGE_FALSCH"
+      },
+      {
+        "value": "NETZNUTZUNGSABRECHNUNG_FEHLT"
+      },
+      {
+        "value": "REVERSE_CHARGE_ANWENDUNG_FEHLT_ODER_FEHLERHAFT"
+      },
+      {
+        "value": "ALLOKATIONSLISTE_FEHLT"
+      },
+      {
+        "value": "MEHR_MINDERMENGE_FALSCH"
+      },
+      {
+        "value": "UNGUELTIGES_RECHNUNGSDATUM"
+      },
+      {
+        "value": "ZEITINTERVALL_DER_BILANZIERTEN_MENGE_INKONSISTENT"
+      },
+      {
+        "value": "RECHNUNGSEMPFAENGER_WIDERSPRICHT_DER_STEUERRECHTLICHEN_EINSCHAETZUNG_DES_RECHNUNGSSTELLERS"
+      },
+      {
+        "value": "ANGEGEBENE_QUOTES_AN_MARKTLOKATION_NICHT_VORHANDEN"
+      },
+      {
+        "value": "RECHNUNGSABWICKLUNG_NICHT_VEREINBART"
+      },
+      {
+        "value": "COMDIS_WIRD_ABGELEHNT"
+      }
+    ]
+  },
+  "ABWICKLUNGSMODELL": {
+    "values": [
+      {
+        "value": "MODELL_1_BILANZIERUNG_AN_MARKTLOKATION"
+      },
+      {
+        "value": "MODELL_2_BILANZIERUNG_IM_BILANZIERUNGSGEBIET"
+      }
+    ]
+  },
+  "AENDERUNGSMOEGLICHKEITKONFIGURATION": {
+    "values": [
+      {
+        "value": "ERFORDERLICH"
+      },
+      {
+        "value": "NICHT_ERFORDERLICH"
+      }
+    ]
+  },
+  "AGGREGATIONSVERANTWORTUNG": {
+    "values": [
+      {
+        "value": "UENB"
+      },
+      {
+        "value": "VNB"
+      }
+    ]
+  },
+  "ANFRAGEGRUND": {
+    "values": [
+      {
+        "value": "ABGRENZUNG_VON_ENERGIEMENGEN"
+      },
+      {
+        "value": "ABGRENZUNG"
+      },
+      {
+        "value": "WECHSELEREIGNIS"
+      },
+      {
+        "value": "ZWISCHENABLESUNG"
+      },
+      {
+        "value": "DIREKTER_VERTRAG_MSB_AN"
+      },
+      {
+        "value": "DIREKTER_VERTRAG_MSB_ANN"
+      },
+      {
+        "value": "AENDERUNG_IM_LOKATIONSBUENDEL"
+      },
+      {
+        "value": "NEUKONFIGURATION"
+      },
+      {
+        "value": "KONFIGURATION_UNVERAENDERT"
+      }
+    ]
+  },
+  "ANFRAGEKATEGORIE": {
+    "values": [
+      {
+        "value": "PROZESSDATENBERICHT"
+      },
+      {
+        "value": "GERAETEUEBERNAHME"
+      },
+      {
+        "value": "WEITERVERPFLICHTUNG_BETRIEB_MELO"
+      },
+      {
+        "value": "AENDERUNG_MELO"
+      },
+      {
+        "value": "STAMMDATEN_MALO_ODER_MELO"
+      },
+      {
+        "value": "BILANZIERTE_MENGE_MEHR_MINDER_MENGEN"
+      },
+      {
+        "value": "ALLOKATIONSLISTE_MEHR_MINDER_MENGEN"
+      },
+      {
+        "value": "ENERGIEMENGE_UND_LEISTUNGSMAXIMUM"
+      },
+      {
+        "value": "ABRECHNUNG_MESSSTELLENBETRIEB_MSB_AN_LF"
+      },
+      {
+        "value": "AENDERUNG_PROGNOSEGRUNDLAGE_GERAETEKONFIGURATION"
+      },
+      {
+        "value": "AENDERUNG_GERAETEKONFIGURATION"
+      },
+      {
+        "value": "REKLAMATION_VON_WERTEN"
+      },
+      {
+        "value": "LASTGANG_MALO_TRANCHE"
+      },
+      {
+        "value": "SPERRUNG"
+      },
+      {
+        "value": "ENTSPERRUNG"
+      },
+      {
+        "value": "REKLAMATION_ZAEHLZEITDEFINITION"
+      },
+      {
+        "value": "ZEITREIHEN_IM_RAHMEN_BILANZKREISABRECHNUNG"
+      },
+      {
+        "value": "GERAETEWECHSELABSICHT"
+      },
+      {
+        "value": "AENDERUNG_KONZESSIONSABGABE"
+      },
+      {
+        "value": "AENDERUNG_ZAEHLZEITDEFINITION"
+      },
+      {
+        "value": "UEBERMITTLUNG_WERTE_AN_ESA"
+      },
+      {
+        "value": "AENDERUNG"
+      },
+      {
+        "value": "BILANZKREISZUORDNUNGSLISTE"
+      },
+      {
+        "value": "CLEARINGLISTE"
+      },
+      {
+        "value": "NORMIERTES_PROFIL_PROFILSCHAR"
+      },
+      {
+        "value": "REDISPATCH_EINZELZEITREIHE_AUSFALLARBEIT"
+      },
+      {
+        "value": "REKLAMATION_PROFIL_PROFILSCHAR"
+      },
+      {
+        "value": "STAMMDATEN_MALO"
+      },
+      {
+        "value": "STAMMDATEN_MELO"
+      },
+      {
+        "value": "STAMMDATEN_TRANCHE"
+      },
+      {
+        "value": "BEENDIGUNG_EINER_KONFIGURATION"
+      },
+      {
+        "value": "BESTELLUNG_EINER_KONFIGURATION"
+      },
+      {
+        "value": "BESTELLUNG_EINES_ANGEBOTS_EINER_KONFIGURATION"
+      },
+      {
+        "value": "REKLAMATION_EINER_KONFIGURATION"
+      },
+      {
+        "value": "BESTELLUNG_AENDERUNG_NETZENTGELTE_NETZORIENTIERTER_STEUERUNGSMOEGLICHKEIT"
+      },
+      {
+        "value": "AENDERUNG_DER_TECHNIK_DER_LOKATION"
+      },
+      {
+        "value": "AENDERUNG_INDIVIDUELLER_KONFIGURATION"
+      },
+      {
+        "value": "BESTELLUNG_AENDERUNG_ABRECHNUNGSDATEN"
+      },
+      {
+        "value": "EINRICHTUNG_KONFIGURATION_AUFGRUND_ZUORDNUNG_LF"
+      },
+      {
+        "value": "REKLAMATION_DEFINITION"
+      },
+      {
+        "value": "BESTELLUNG_ANGEBOT_AENDERUNG_TECHNIK_LOKATION"
+      }
+    ]
+  },
+  "ANFRAGETYP": {
+    "values": [
+      {
+        "value": "KAUF"
+      },
+      {
+        "value": "NUTZUNGSUEBERLASSUNG"
+      },
+      {
+        "value": "ABRECHNUNGSBRENNWERT_UND_ZUSTANDSZAHL"
+      },
+      {
+        "value": "LASTGANGDATEN"
+      },
+      {
+        "value": "ZAEHLERSTAENDE"
+      },
+      {
+        "value": "WERTEERMITTLUNG"
+      },
+      {
+        "value": "ENERGIEMENGE_EINZELWERT"
+      },
+      {
+        "value": "INNERHALB_DER_ARBEITSZEIT"
+      },
+      {
+        "value": "AUCH_AUSSERHALB_DER_ARBEITSZEIT"
+      },
+      {
+        "value": "WECHSEL_SAEMTLICHER_EINRICHTUNGEN"
+      },
+      {
+        "value": "TEILWEISER_WECHSEL"
+      },
+      {
+        "value": "AENDERUNG_ZAEHLZEITDEFINITION"
+      },
+      {
+        "value": "ABBESTELLUNG_ZAEHLZEITEN"
+      },
+      {
+        "value": "ABBESTELLUNG_MESSPRODUKT"
+      },
+      {
+        "value": "ANGEBOT_AUF_BASIS_PREISBLATT"
+      },
+      {
+        "value": "INDIVIDUELLES_ANGEBOT"
+      },
+      {
+        "value": "AENDERUNG_KONFIGURATION"
+      },
+      {
+        "value": "KANN_NICHT_ANGEBOTEN_WERDEN"
+      },
+      {
+        "value": "NEUKONFIGURATION"
+      },
+      {
+        "value": "BEENDIGUNG_KONFIGURATION"
+      },
+      {
+        "value": "AKTIVIERUNG_KONFIGURATION"
+      }
+    ]
+  },
+  "ANGEBOTSSTATUS": {
+    "values": [
+      {
+        "value": "KONZEPTION"
+      },
+      {
+        "value": "UNVERBINDLICH"
+      },
+      {
+        "value": "VERBINDLICH"
+      },
+      {
+        "value": "BEAUFTRAGT"
+      },
+      {
+        "value": "UNGUELTIG"
+      },
+      {
+        "value": "ABGELEHNT"
+      },
+      {
+        "value": "NACHGEFASST"
+      },
+      {
+        "value": "AUSSTEHEND"
+      },
+      {
+        "value": "ERLEDIGT"
+      }
+    ],
+    "description": "Gibt den Status eines Angebotes an"
+  },
+  "ARITHMETISCHEOPERATION": {
+    "values": [
+      {
+        "value": "ADDITION"
+      },
+      {
+        "value": "SUBTRAKTION"
+      },
+      {
+        "value": "DIVISION"
+      },
+      {
+        "value": "DIVIDEND"
+      },
+      {
+        "value": "MULTIPLIKATION"
+      },
+      {
+        "value": "POSITIVWERT"
+      }
+    ],
+    "description": "Mit dieser Aufzählung können arithmetische Operationen festgelegt werden"
+  },
+  "ARTEMOBILITAET": {
+    "values": [
+      {
+        "value": "WB"
+      },
+      {
+        "value": "LS"
+      },
+      {
+        "value": "LP"
+      }
+    ]
+  },
+  "ARTIKELIDTYP": {
+    "values": [
+      {
+        "value": "ARTIKELID"
+      },
+      {
+        "value": "GRUPPENARTIKELID"
+      }
+    ],
+    "description": "Liste von Artikel-IDs, z.B. für standardisierte vom BDEW herausgegebene Artikel, die im Strommarkt die BDEW-Artikelnummer ablösen"
+  },
+  "AUFABSCHLAGSTYP": {
+    "values": [
+      {
+        "value": "RELATIV"
+      },
+      {
+        "value": "ABSOLUT"
+      }
+    ],
+    "description": "Festlegung, ob der Auf- oder Abschlag mit relativen oder absoluten Werten erfolgt"
+  },
+  "AUFTRAGSSTATUS": {
+    "values": [
+      {
+        "value": "GESCHEITERT"
+      },
+      {
+        "value": "ERFOLGREICH"
+      },
+      {
+        "value": "LIEFERUNG_GEPLANT"
+      },
+      {
+        "value": "GEPLANT"
+      },
+      {
+        "value": "ZUGESTIMMT"
+      },
+      {
+        "value": "WIDERSPROCHEN"
+      },
+      {
+        "value": "STOERUNGSFREI"
+      },
+      {
+        "value": "GESTOERT"
+      },
+      {
+        "value": "FESTGESTELLTE_STOERUNG"
+      },
+      {
+        "value": "VERMUTETE_STOERUNG"
+      },
+      {
+        "value": "ABGELEHNT"
+      },
+      {
+        "value": "BEENDET"
+      },
+      {
+        "value": "ANTWORT_DRITTER"
+      },
+      {
+        "value": "BESTAETIGT"
+      },
+      {
+        "value": "UMGESETZT"
+      },
+      {
+        "value": "ENFG_STROMSPEICHER_UND_VERLUSTENERGIE"
+      },
+      {
+        "value": "ENFG_ELEKTRISCH_ANGETRIEBENE_WAERMEPUMPEN"
+      },
+      {
+        "value": "ENFG_UMLAGEERHEBUNG_BEI_ANLAGEN_ZUR_VERSTROMUNG_VON_KUPPELGASEN"
+      },
+      {
+        "value": "ENFG_HERSTELLUNG_VON_GRUENEN_WASSERSTOFF"
+      },
+      {
+        "value": "ENFG_STROMKOSTENINTENSIVE_UNTERNEHMEN"
+      },
+      {
+        "value": "ENFG_HERSTELLUNG_VON_WASSERSTOFF_IN_STROMKOSTENINTENSIVEN_UNTERNEHMEN"
+      },
+      {
+        "value": "ENFG_SCHIENENBAHNEN"
+      },
+      {
+        "value": "ENFG_ELEKTRISCHE_BETRIEBENE_BUSSEN_IM_LINIENVERKEHR"
+      },
+      {
+        "value": "ENFG_LANDSTROMANLAGEN"
+      },
+      {
+        "value": "AENDERUNG_DER_DATEN"
+      },
+      {
+        "value": "KEINE_AENDERUNG_DER_DATEN"
+      }
+    ]
+  },
+  "AVISTYP": {
+    "values": [
+      {
+        "value": "ABGELEHNTE_FORDERUNG"
+      },
+      {
+        "value": "ZAHLUNGSAVIS"
+      }
+    ]
+  },
+  "BDEWARTIKELNUMMER": {
+    "values": [
+      {
+        "value": "LEISTUNG"
+      },
+      {
+        "value": "LEISTUNG_PAUSCHAL"
+      },
+      {
+        "value": "GRUNDPREIS"
+      },
+      {
+        "value": "REGELENERGIE_ARBEIT"
+      },
+      {
+        "value": "REGELENERGIE_LEISTUNG"
+      },
+      {
+        "value": "NOTSTROMLIEFERUNG_ARBEIT"
+      },
+      {
+        "value": "NOTSTROMLIEFERUNG_LEISTUNG"
+      },
+      {
+        "value": "RESERVENETZKAPAZITAET"
+      },
+      {
+        "value": "RESERVELEISTUNG"
+      },
+      {
+        "value": "ZUSAETZLICHE_ABLESUNG"
+      },
+      {
+        "value": "PRUEFGEBUEHREN_AUSSERPLANMAESSIG"
+      },
+      {
+        "value": "WIRKARBEIT"
+      },
+      {
+        "value": "SINGULAER_GENUTZTE_BETRIEBSMITTEL"
+      },
+      {
+        "value": "ABGABE_KWKG"
+      },
+      {
+        "value": "ABSCHLAG"
+      },
+      {
+        "value": "KONZESSIONSABGABE"
+      },
+      {
+        "value": "ENTGELT_FERNAUSLESUNG"
+      },
+      {
+        "value": "UNTERMESSUNG"
+      },
+      {
+        "value": "BLINDMEHRARBEIT"
+      },
+      {
+        "value": "ENTGELT_ABRECHNUNG"
+      },
+      {
+        "value": "SPERRKOSTEN"
+      },
+      {
+        "value": "ENTSPERRKOSTEN"
+      },
+      {
+        "value": "MAHNKOSTEN"
+      },
+      {
+        "value": "MEHR_MINDERMENGEN"
+      },
+      {
+        "value": "INKASSOKOSTEN"
+      },
+      {
+        "value": "BLINDMEHRLEISTUNG"
+      },
+      {
+        "value": "ENTGELT_MESSUNG_ABLESUNG"
+      },
+      {
+        "value": "ENTGELT_EINBAU_BETRIEB_WARTUNG_MESSTECHNIK"
+      },
+      {
+        "value": "AUSGLEICHSENERGIE"
+      },
+      {
+        "value": "AUSGLEICHSENERGIE_UNTERDECKUNG"
+      },
+      {
+        "value": "ZAEHLEINRICHTUNG"
+      },
+      {
+        "value": "WANDLER_MENGENUMWERTER"
+      },
+      {
+        "value": "KOMMUNIKATIONSEINRICHTUNG"
+      },
+      {
+        "value": "TECHNISCHE_STEUEREINRICHTUNG"
+      },
+      {
+        "value": "PARAGRAF_19_STROM_NEV_UMLAGE"
+      },
+      {
+        "value": "BEFESTIGUNGSEINRICHTUNG"
+      },
+      {
+        "value": "OFFSHORE_HAFTUNGSUMLAGE"
+      },
+      {
+        "value": "FIXE_ARBEITSENTGELTKOMPONENTE"
+      },
+      {
+        "value": "FIXE_LEISTUNGSENTGELTKOMPONENTE"
+      },
+      {
+        "value": "UMLAGE_ABSCHALTBARE_LASTEN"
+      },
+      {
+        "value": "MEHRMENGE"
+      },
+      {
+        "value": "MINDERMENGE"
+      },
+      {
+        "value": "ENERGIESTEUER"
+      },
+      {
+        "value": "SMARTMETER_GATEWAY"
+      },
+      {
+        "value": "STEUERBOX"
+      },
+      {
+        "value": "MSB_INKL_MESSUNG"
+      },
+      {
+        "value": "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_2_1_MSBG"
+      },
+      {
+        "value": "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_2_2_MSBG"
+      },
+      {
+        "value": "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_2_3_MSBG"
+      },
+      {
+        "value": "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_2_4_MSBG"
+      },
+      {
+        "value": "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_2_5_MSBG"
+      },
+      {
+        "value": "ZUSATZDIENSTLEISTUNG_PARAGRAPH_35_3_MSBG"
+      },
+      {
+        "value": "ENTGELT_KAPAZITAETEN"
+      }
+    ],
+    "description": "BDEW Artikelnummer"
+  },
+  "BOTYP": {
+    "values": [
+      {
+        "value": "ANSPRECHPARTNER"
+      },
+      {
+        "value": "AVIS"
+      },
+      {
+        "value": "ENERGIEMENGE"
+      },
+      {
+        "value": "GESCHAEFTSOBJEKT"
+      },
+      {
+        "value": "GESCHAEFTSPARTNER"
+      },
+      {
+        "value": "MARKTLOKATION"
+      },
+      {
+        "value": "MARKTTEILNEHMER"
+      },
+      {
+        "value": "MESSLOKATION"
+      },
+      {
+        "value": "ZAEHLER"
+      },
+      {
+        "value": "KOSTEN"
+      },
+      {
+        "value": "TARIF"
+      },
+      {
+        "value": "PREISBLATT"
+      },
+      {
+        "value": "PREISBLATTNETZNUTZUNG"
+      },
+      {
+        "value": "PREISBLATTMESSUNG"
+      },
+      {
+        "value": "PREISBLATTUMLAGEN"
+      },
+      {
+        "value": "PREISBLATTDIENSTLEISTUNG"
+      },
+      {
+        "value": "PREISBLATTKONZESSIONSABGABE"
+      },
+      {
+        "value": "ZEITREIHE"
+      },
+      {
+        "value": "LASTGANG"
+      },
+      {
+        "value": "HANDELSUNSTIMMIGKEIT"
+      },
+      {
+        "value": "ANFRAGE"
+      },
+      {
+        "value": "AUFTRAG"
+      },
+      {
+        "value": "STATUSMITTEILUNG"
+      },
+      {
+        "value": "BERECHNUNGSFORMEL"
+      },
+      {
+        "value": "RECHNUNG"
+      },
+      {
+        "value": "BILANZIERUNG"
+      },
+      {
+        "value": "NETZNUTZUNGSVERTRAG"
+      },
+      {
+        "value": "MESSSTELLENBETRIEBSVERTRAG"
+      },
+      {
+        "value": "ENERGIELIEFERVERTRAG"
+      },
+      {
+        "value": "SPERRAUFTRAG"
+      },
+      {
+        "value": "ANGEBOT"
+      },
+      {
+        "value": "TRANCHE"
+      },
+      {
+        "value": "KOMMUNIKATIONSDATEN"
+      },
+      {
+        "value": "ZAEHLZEITDEFINITION"
+      },
+      {
+        "value": "SCHALTZEITDEFINITION"
+      },
+      {
+        "value": "LEISTUNGSKURVENDEFINITION"
+      },
+      {
+        "value": "NETZLOKATION"
+      },
+      {
+        "value": "STEUERBARE_RESSOURCE"
+      },
+      {
+        "value": "TECHNISCHE_RESSOURCE"
+      },
+      {
+        "value": "AD_HOC_STEUERKANAL"
+      },
+      {
+        "value": "LOKATIONSBUENDEL"
+      },
+      {
+        "value": "WERTE_NACH_TYP2"
+      },
+      {
+        "value": "REKLAMATION"
+      },
+      {
+        "value": "STATUSBERICHT"
+      },
+      {
+        "value": "VERTRAG"
+      },
+      {
+        "value": "BILANZKREIS"
+      },
+      {
+        "value": "VERWENDUNGSZEITRAUM"
+      },
+      {
+        "value": "TARIFINFO"
+      }
+    ],
+    "description": "Typ des BO"
+  },
+  "BANKVERBINDUNGVERWENDUNGSZWECK": {
+    "values": [
+      {
+        "value": "BV_ZAHLUNG_NNA"
+      },
+      {
+        "value": "BV_ZAHLUNG_MMMA"
+      },
+      {
+        "value": "BV_ZAHLUNG_MSB_ABRECHNNUNG"
+      },
+      {
+        "value": "BV_ZAHLUNG_ENT_SPERREN_ABRECHNUNG"
+      },
+      {
+        "value": "BV_SONSTIGE"
+      }
+    ]
+  },
+  "BEAUFTRAGUNGMSB": {
+    "values": [
+      {
+        "value": "VERTRAG_AN_MSB"
+      },
+      {
+        "value": "VERTRAGSBEENDIGUNG_MSB"
+      }
+    ]
+  },
+  "BEFESTIGUNGSART": {
+    "values": [
+      {
+        "value": "STECKTECHNIK"
+      },
+      {
+        "value": "DREIPUNKT"
+      },
+      {
+        "value": "HUTSCHIENE"
+      },
+      {
+        "value": "EINSTUTZEN"
+      },
+      {
+        "value": "ZWEISTUTZEN"
+      }
+    ],
+    "description": "Befestigungsart von Zählern"
+  },
+  "BEMESSUNGSGROESSE": {
+    "values": [
+      {
+        "value": "WIRKARBEIT_EL"
+      },
+      {
+        "value": "LEISTUNG_EL"
+      },
+      {
+        "value": "BLINDARBEIT_KAP"
+      },
+      {
+        "value": "BLINDARBEIT_IND"
+      },
+      {
+        "value": "BLINDLEISTUNG_KAP"
+      },
+      {
+        "value": "BLINDLEISTUNG_IND"
+      },
+      {
+        "value": "WIRKARBEIT_TH"
+      },
+      {
+        "value": "LEISTUNG_TH"
+      },
+      {
+        "value": "VOLUMEN"
+      },
+      {
+        "value": "VOLUMENSTROM"
+      },
+      {
+        "value": "BENUTZUNGSDAUER"
+      },
+      {
+        "value": "ANZAHL"
+      }
+    ],
+    "description": "Zur Abbildung von Messgrössen und zur Verwendung in energiewirtschaftlichen Berechnungen."
+  },
+  "BERECHNUNGSFORMELNOTWENDIGKEIT": {
+    "values": [
+      {
+        "value": "BERECHNUNGSFORMEL_NOTWENDIG"
+      },
+      {
+        "value": "BERECHNUNGSFORMEL_MUSS_ANGEFRAGT_WERDEN"
+      },
+      {
+        "value": "BERECHNUNGSFORMEL_TRIVIAL"
+      },
+      {
+        "value": "BERECHNUNGSFORMEL_NICHT_NOTWENDIG"
+      }
+    ]
+  },
+  "BERICHTSTATUS": {
+    "values": [
+      {
+        "value": "ERFOLGREICH"
+      },
+      {
+        "value": "FEHLER"
+      }
+    ]
+  },
+  "BESCHREIBUNGSFORMAT": {
+    "values": [
+      {
+        "value": "CODE"
+      },
+      {
+        "value": "FREIER_TEXT"
+      },
+      {
+        "value": "TEILSTRUKTURIERT"
+      }
+    ],
+    "description": "Beschreibungsformat der Produktbeschreibung"
+  },
+  "BETRIEBSZUSTAND": {
+    "values": [
+      {
+        "value": "GESPERRT_NICHT_ENTSPERREN"
+      },
+      {
+        "value": "GESPERRT"
+      },
+      {
+        "value": "REGELBETRIEB"
+      }
+    ]
+  },
+  "BILANZIERUNGSMETHODE": {
+    "values": [
+      {
+        "value": "RLM"
+      },
+      {
+        "value": "SLP"
+      },
+      {
+        "value": "TLP_GEMEINSAM"
+      },
+      {
+        "value": "TLP_GETRENNT"
+      },
+      {
+        "value": "PAUSCHAL"
+      },
+      {
+        "value": "IMS"
+      }
+    ],
+    "description": "Mit dieser Aufzählung kann zwischen den Bilanzierungsmethoden bzw. -grundlagen unterschieden werden."
+  },
+  "BILANZKREISZUORDNUNG": {
+    "values": [
+      {
+        "value": "ERFOLGREICH"
+      },
+      {
+        "value": "GESCHEITERT"
+      }
+    ]
+  },
+  "BILDUNGTRANCHENGROESSE": {
+    "values": [
+      {
+        "value": "PROZENTUAL"
+      },
+      {
+        "value": "AUFTEILUNGSFAKTOR"
+      }
+    ]
+  },
+  "DATENQUALITAET": {
+    "values": [
+      {
+        "value": "ERWARTETE_DATEN"
+      },
+      {
+        "value": "IM_SYSTEM_VORHANDENE_DATEN"
+      },
+      {
+        "value": "INFORMATIVE_DATEN"
+      },
+      {
+        "value": "GUELTIGE_DATEN"
+      },
+      {
+        "value": "KEINE_DATEN"
+      },
+      {
+        "value": "IM_SYSTEM_KEINE_DATEN_VORHANDEN"
+      },
+      {
+        "value": "KEINE_DATEN_ERWARTET"
+      },
+      {
+        "value": "DIFFERENZ_DATEN"
+      },
+      {
+        "value": "DIFFERENZ_ERWARTETE_DATEN"
+      },
+      {
+        "value": "DIFFERENZ_IM_SYSTEM_VORHANDENE_DATEN"
+      }
+    ]
+  },
+  "DEFINITIONENNOTWENDIGKEIT": {
+    "values": [
+      {
+        "value": "ZAEHLZEITDEFINITIONEN_WERDEN_VERWENDET"
+      },
+      {
+        "value": "ZAEHLZEITDEFINITIONEN_WERDEN_NICHT_VERWENDET"
+      },
+      {
+        "value": "DEFINITIONEN_WERDEN_VERWENDET"
+      },
+      {
+        "value": "DEFINITIONEN_WERDEN_NICHT_VERWENDET"
+      }
+    ]
+  },
+  "DEFINITIONSTYP": {
+    "values": [
+      {
+        "value": "ZAEHLZEIT"
+      },
+      {
+        "value": "SCHALTZEIT"
+      },
+      {
+        "value": "LEISTUNGSKURVEN"
+      }
+    ]
+  },
+  "DIENSTLEISTUNGSTYP": {
+    "values": [
+      {
+        "value": "DATENBEREITSTELLUNG_TAEGLICH"
+      },
+      {
+        "value": "DATENBEREITSTELLUNG_WOECHENTLICH"
+      },
+      {
+        "value": "DATENBEREITSTELLUNG_MONATLICH"
+      },
+      {
+        "value": "DATENBEREITSTELLUNG_JAEHRLICH"
+      },
+      {
+        "value": "DATENBEREITSTELLUNG_HISTORISCHE_LG"
+      },
+      {
+        "value": "DATENBEREITSTELLUNG_STUENDLICH"
+      },
+      {
+        "value": "DATENBEREITSTELLUNG_VIERTELJAEHRLICH"
+      },
+      {
+        "value": "DATENBEREITSTELLUNG_HALBJAEHRLICH"
+      },
+      {
+        "value": "DATENBEREITSTELLUNG_MONATLICH_ZUSAETZLICH"
+      },
+      {
+        "value": "DATENBEREITSTELLUNG_EINMALIG"
+      },
+      {
+        "value": "AUSLESUNG_2X_TAEGLICH_FERNAUSLESUNG"
+      },
+      {
+        "value": "AUSLESUNG_TAEGLICH_FERNAUSLESUNG"
+      },
+      {
+        "value": "AUSLESUNG_LGK_MANUELL_MSB"
+      },
+      {
+        "value": "AUSLESUNG_MONATLICH_SLP_FERNAUSLESUNG"
+      },
+      {
+        "value": "AUSLESUNG_JAEHRLICH_SLP_FERNAUSLESUNG"
+      },
+      {
+        "value": "AUSLESUNG_MDE_SLP"
+      },
+      {
+        "value": "ABLESUNG_MONATLICH_SLP"
+      },
+      {
+        "value": "ABLESUNG_VIERTELJAEHRLICH_SLP"
+      },
+      {
+        "value": "ABLESUNG_HALBJAEHRLICH_SLP"
+      },
+      {
+        "value": "ABLESUNG_JAEHRLICH_SLP"
+      },
+      {
+        "value": "AUSLESUNG_SLP_FERNAUSLESUNG"
+      },
+      {
+        "value": "ABLESUNG_SLP_ZUSAETZLICH_MSB"
+      },
+      {
+        "value": "ABLESUNG_SLP_ZUSAETZLICH_KUNDE"
+      },
+      {
+        "value": "AUSLESUNG_LGK_FERNAUSLESUNG_ZUSAETZLICH_MSB"
+      },
+      {
+        "value": "AUSLESUNG_MOATLICH_FERNAUSLESUNG"
+      },
+      {
+        "value": "AUSLESUNG_STUENDLICH_FERNAUSLESUNG"
+      },
+      {
+        "value": "ABLESUNG_MONATLICH_LGK"
+      },
+      {
+        "value": "AUSLESUNG_TEMERATURMENGENUMWERTER"
+      },
+      {
+        "value": "AUSLESUNG_ZUSTANDSMENGENUMWERTER"
+      },
+      {
+        "value": "AUSLESUNG_SYSTEMMENGENUMWERTER"
+      },
+      {
+        "value": "AUSLESUNG_VORGANG_SLP"
+      },
+      {
+        "value": "AUSLESUUNG_KOMPAKTMENGENUMWERTER"
+      },
+      {
+        "value": "AUSLESUNG_MDE_LGK"
+      },
+      {
+        "value": "SPERRUNG_SLP"
+      },
+      {
+        "value": "ENTSPERRUNG_SLP"
+      },
+      {
+        "value": "SPERRUNG_RLM"
+      },
+      {
+        "value": "ENTSPERRUNG_RLM"
+      },
+      {
+        "value": "MAHNKOSTEN"
+      },
+      {
+        "value": "INKASSOKOSTEN"
+      }
+    ],
+    "description": "Auflistung möglicher abzurechnender Dienstleistungen"
+  },
+  "ENERGIEERFASSUNG": {
+    "values": [
+      {
+        "value": "SEPARAT_ERFASSEN"
+      },
+      {
+        "value": "NICHT_SEPARAT_ERFASSEN"
+      }
+    ]
+  },
+  "ENERGIERICHTUNG": {
+    "values": [
+      {
+        "value": "AUSSP"
+      },
+      {
+        "value": "EINSP"
+      }
+    ],
+    "description": "Spezifiziert die Energierichtung einer Markt- und/oder Messlokation"
+  },
+  "ERMITTLUNGLEISTUNGSMAXIMUM": {
+    "values": [
+      {
+        "value": "VERWENDUNG_HOCHLASTFENSTER"
+      },
+      {
+        "value": "KEINE_VERWENDUNG_HOCHLASTFENSTER"
+      }
+    ]
+  },
+  "ERZEUGUNGSART": {
+    "values": [
+      {
+        "value": "EEG"
+      },
+      {
+        "value": "KWK"
+      },
+      {
+        "value": "EEG_DV"
+      },
+      {
+        "value": "KWK_DV"
+      },
+      {
+        "value": "WIND"
+      },
+      {
+        "value": "SOLAR"
+      },
+      {
+        "value": "KERNKRAFT"
+      },
+      {
+        "value": "WASSER"
+      },
+      {
+        "value": "GEOTHERMIE"
+      },
+      {
+        "value": "BIOMASSE"
+      },
+      {
+        "value": "KOHLE"
+      },
+      {
+        "value": "GAS"
+      },
+      {
+        "value": "SONSTIGE"
+      },
+      {
+        "value": "SONSTIGE_EEG"
+      },
+      {
+        "value": "SONSTIGE_ERZEUGUNGSART"
+      }
+    ],
+    "description": "Auflistung der Erzeugungsarten von Energie."
+  },
+  "FALLGRUPPENZUORDNUNG": {
+    "values": [
+      {
+        "value": "GABI_RLMmT"
+      },
+      {
+        "value": "GABI_RLMoT"
+      },
+      {
+        "value": "GABI_RLMNEV"
+      }
+    ]
+  },
+  "FEHLERCODE": {
+    "values": [
+      {
+        "value": "ID_UNBEKANNT"
+      },
+      {
+        "value": "ABSENDER_NICHT_ZUGEORDNET"
+      },
+      {
+        "value": "EMPFAENGER_NICHT_ZUGEORDNET"
+      },
+      {
+        "value": "GERAET_UNBEKANNT"
+      },
+      {
+        "value": "OBIS_UNBEKANNT"
+      },
+      {
+        "value": "REFERENZIERUNG_FEHLERHAFT"
+      },
+      {
+        "value": "TUPEL_UNBEKANNT"
+      },
+      {
+        "value": "ABSENDER_TUPEL_NICHT_ZUGEORDNET"
+      },
+      {
+        "value": "EMPFAENGER_TUPEL_NICHT_ZUGEORDNET"
+      },
+      {
+        "value": "VORKOMMA_ZU_VIELE_STELLEN"
+      },
+      {
+        "value": "ZEITREIHE_UNVOLLSTAENDIG"
+      },
+      {
+        "value": "REFERENZIERTES_TUPEL_UNBEKANNT"
+      },
+      {
+        "value": "MARKTLOKATION_UNBEKANNT"
+      },
+      {
+        "value": "MESSLOKATION_UNBEKANNT"
+      },
+      {
+        "value": "MELDEPUNKT_NICHT_MEHR_IM_NETZ"
+      },
+      {
+        "value": "ERFORDERLICHE_ANGABE_FEHLT"
+      },
+      {
+        "value": "GESCHAEFTSVORFALL_ZURUECKGEWIESEN"
+      },
+      {
+        "value": "ZEITINTERVALL_NEGATIV"
+      },
+      {
+        "value": "FORMAT_NICHT_EINGEHALTEN"
+      },
+      {
+        "value": "GESCHAEFTSVORFALL_ABSENDER"
+      },
+      {
+        "value": "KONFIGURATIONSID_UNBEKANNT"
+      },
+      {
+        "value": "SEGMENTWIEDERHOLUNG_UEBERSCHRITTEN"
+      },
+      {
+        "value": "ANZAHLCODES_UEBERSCHRITTEN"
+      },
+      {
+        "value": "ZEITANGABE_UNPLAUSIBEL"
+      },
+      {
+        "value": "CODE_NICHT_ERLAUBT"
+      },
+      {
+        "value": "OBJEKT_NICHT_GEFUNDEN"
+      },
+      {
+        "value": "OBJEKT_NICHT_EINDEUTIG"
+      },
+      {
+        "value": "GESCHAEFTSVORFALL_OBJEKT_EIGENSCHAFT_NICHT_ERLAUBT"
+      },
+      {
+        "value": "EIGENSCHAFT_OBJEKT_WEICHT_VON_GESCHAEFTSVORFALL_CODIERTEN_EIGENSCHAFT_AB"
+      }
+    ]
+  },
+  "FEHLERTYP": {
+    "values": [
+      {
+        "value": "VERARBEITUNG"
+      },
+      {
+        "value": "SYNTAX"
+      }
+    ]
+  },
+  "FERNSCHALTUNG": {
+    "values": [
+      {
+        "value": "VORHANDEN"
+      },
+      {
+        "value": "NICHT_VORHANDEN"
+      }
+    ]
+  },
+  "FERNSTEUERBARKEIT": {
+    "values": [
+      {
+        "value": "TECHNISCH_NICHT_FERNSTEUERBAR"
+      },
+      {
+        "value": "TECHNISCH_FERNSTEUERBAR"
+      },
+      {
+        "value": "DURCH_LF_FERNSTEUERBAR"
+      }
+    ]
+  },
+  "GASQUALITAET": {
+    "values": [
+      {
+        "value": "H_GAS"
+      },
+      {
+        "value": "L_GAS"
+      }
+    ],
+    "description": "Unterscheidung für hoch- und niedrig-kalorisches Gas."
+  },
+  "GEBIETTYP": {
+    "values": [
+      {
+        "value": "REGELZONE"
+      },
+      {
+        "value": "MARKTGEBIET"
+      },
+      {
+        "value": "BILANZIERUNGSGEBIET"
+      },
+      {
+        "value": "VERTEILNETZ"
+      },
+      {
+        "value": "TRANSPORTNETZ"
+      },
+      {
+        "value": "REGIONALNETZ"
+      },
+      {
+        "value": "AREALNETZ"
+      },
+      {
+        "value": "GRUNDVERSORGUNGSGEBIET"
+      },
+      {
+        "value": "VERSORGUNGSGEBIET"
+      }
+    ]
+  },
+  "GERAETEMERKMAL": {
+    "values": [
+      {
+        "value": "EINTARIF"
+      },
+      {
+        "value": "ZWEITARIF"
+      },
+      {
+        "value": "MEHRTARIF"
+      },
+      {
+        "value": "GAS_G2P5"
+      },
+      {
+        "value": "GAS_G4"
+      },
+      {
+        "value": "GAS_G6"
+      },
+      {
+        "value": "GAS_G10"
+      },
+      {
+        "value": "GAS_G16"
+      },
+      {
+        "value": "GAS_G25"
+      },
+      {
+        "value": "GAS_G40"
+      },
+      {
+        "value": "GAS_G65"
+      },
+      {
+        "value": "GAS_G100"
+      },
+      {
+        "value": "GAS_G160"
+      },
+      {
+        "value": "GAS_G250"
+      },
+      {
+        "value": "GAS_G350"
+      },
+      {
+        "value": "GAS_G400"
+      },
+      {
+        "value": "GAS_G4000"
+      },
+      {
+        "value": "GAS_G650"
+      },
+      {
+        "value": "GAS_G6500"
+      },
+      {
+        "value": "GAS_G1000"
+      },
+      {
+        "value": "GAS_G10000"
+      },
+      {
+        "value": "GAS_G12500"
+      },
+      {
+        "value": "GAS_G1600"
+      },
+      {
+        "value": "GAS_G16000"
+      },
+      {
+        "value": "GAS_G2500"
+      },
+      {
+        "value": "IMPULSGEBER_G4_G100"
+      },
+      {
+        "value": "IMPULSGEBER_G100"
+      },
+      {
+        "value": "MODEM_GSM"
+      },
+      {
+        "value": "MODEM_GPRS"
+      },
+      {
+        "value": "MODEM_FUNK"
+      },
+      {
+        "value": "MODEM_GSM_O_LG"
+      },
+      {
+        "value": "MODEM_GSM_M_LG"
+      },
+      {
+        "value": "MODEM_FESTNETZ"
+      },
+      {
+        "value": "MODEM_GPRS_M_LG"
+      },
+      {
+        "value": "PLC_COM"
+      },
+      {
+        "value": "ETHERNET_KOM"
+      },
+      {
+        "value": "DSL_KOM"
+      },
+      {
+        "value": "LTE_KOM"
+      },
+      {
+        "value": "RUNDSTEUEREMPFAENGER"
+      },
+      {
+        "value": "TARIFSCHALTGERAET"
+      },
+      {
+        "value": "ZUSTANDS_MU"
+      },
+      {
+        "value": "TEMPERATUR_MU"
+      },
+      {
+        "value": "KOMPAKT_MU"
+      },
+      {
+        "value": "SYSTEM_MU"
+      },
+      {
+        "value": "UNBESTIMMT"
+      },
+      {
+        "value": "WASSER_MWZW"
+      },
+      {
+        "value": "WASSER_WZWW"
+      },
+      {
+        "value": "WASSER_WZ01"
+      },
+      {
+        "value": "WASSER_WZ02"
+      },
+      {
+        "value": "WASSER_WZ03"
+      },
+      {
+        "value": "WASSER_WZ04"
+      },
+      {
+        "value": "WASSER_WZ05"
+      },
+      {
+        "value": "WASSER_WZ06"
+      },
+      {
+        "value": "WASSER_WZ07"
+      },
+      {
+        "value": "WASSER_WZ08"
+      },
+      {
+        "value": "WASSER_WZ09"
+      },
+      {
+        "value": "WASSER_WZ10"
+      },
+      {
+        "value": "WASSER_VWZ04"
+      },
+      {
+        "value": "WASSER_VWZ05"
+      },
+      {
+        "value": "WASSER_VWZ06"
+      },
+      {
+        "value": "WASSER_VWZ07"
+      },
+      {
+        "value": "WASSER_VWZ10"
+      },
+      {
+        "value": "DICHTEMENGENUMWERTER"
+      },
+      {
+        "value": "TEMPERATURMENGENUMWERTER"
+      },
+      {
+        "value": "ZUSTANDSMENGENUMWERTER"
+      },
+      {
+        "value": "BLOCKSTROMWANDLER"
+      },
+      {
+        "value": "MESSWANDLERSATZ_IMS_MME"
+      },
+      {
+        "value": "KOMBIMESSWANDLER"
+      },
+      {
+        "value": "SPANNUNGSWANDLER"
+      }
+    ]
+  },
+  "GERAETETYP": {
+    "values": [
+      {
+        "value": "WECHSELSTROMZAEHLER"
+      },
+      {
+        "value": "DREHSTROMZAEHLER"
+      },
+      {
+        "value": "ZWEIRICHTUNGSZAEHLER"
+      },
+      {
+        "value": "RLM_ZAEHLER"
+      },
+      {
+        "value": "IMS_ZAEHLER"
+      },
+      {
+        "value": "BALGENGASZAEHLER"
+      },
+      {
+        "value": "MAXIMUMZAEHLER"
+      },
+      {
+        "value": "MULTIPLEXANLAGE"
+      },
+      {
+        "value": "PAUSCHALANLAGE"
+      },
+      {
+        "value": "VERSTAERKERANLAGE"
+      },
+      {
+        "value": "SUMMATIONSGERAET"
+      },
+      {
+        "value": "IMPULSGEBER"
+      },
+      {
+        "value": "EDL_21_ZAEHLERAUFSATZ"
+      },
+      {
+        "value": "VIER_QUADRANTEN_LASTGANGZAEHLER"
+      },
+      {
+        "value": "MENGENUMWERTER"
+      },
+      {
+        "value": "STROMWANDLER"
+      },
+      {
+        "value": "SPANNUNGSWANDLER"
+      },
+      {
+        "value": "DATENLOGGER"
+      },
+      {
+        "value": "KOMMUNIKATIONSANSCHLUSS"
+      },
+      {
+        "value": "MODEM"
+      },
+      {
+        "value": "TELEKOMMUNIKATIONSEINRICHTUNG"
+      },
+      {
+        "value": "KOMMUNIKATIONSEINRICHTUNG"
+      },
+      {
+        "value": "DREHKOLBENGASZAEHLER"
+      },
+      {
+        "value": "TURBINENRADGASZAEHLER"
+      },
+      {
+        "value": "ULTRASCHALLZAEHLER"
+      },
+      {
+        "value": "WIRBELGASZAEHLER"
+      },
+      {
+        "value": "MODERNE_MESSEINRICHTUNG"
+      },
+      {
+        "value": "ELEKTRONISCHER_HAUSHALTSZAEHLER"
+      },
+      {
+        "value": "STEUEREINRICHTUNG"
+      },
+      {
+        "value": "TECHNISCHESTEUEREINRICHTUNG"
+      },
+      {
+        "value": "TARIFSCHALTGERAET"
+      },
+      {
+        "value": "RUNDSTEUEREMPFAENGER"
+      },
+      {
+        "value": "OPTIONALE_ZUS_ZAEHLEINRICHTUNG"
+      },
+      {
+        "value": "MESSWANDLERSATZ_IMS_MME"
+      },
+      {
+        "value": "KOMBIMESSWANDLER_IMS_MME"
+      },
+      {
+        "value": "TARIFSCHALTGERAET_IMS_MME"
+      },
+      {
+        "value": "RUNDSTEUEREMPFAENGER_IMS_MME"
+      },
+      {
+        "value": "TEMPERATUR_KOMPENSATION"
+      },
+      {
+        "value": "HOECHSTBELASTUNGS_ANZEIGER"
+      },
+      {
+        "value": "SONSTIGES_GERAET"
+      },
+      {
+        "value": "SMARTMETERGATEWAY"
+      },
+      {
+        "value": "STEUERBOX"
+      },
+      {
+        "value": "BLOCKSTROMWANDLER"
+      },
+      {
+        "value": "KOMBIMESSWANDLER"
+      },
+      {
+        "value": "MODEM_GSM"
+      },
+      {
+        "value": "ETHERNET_KOM"
+      },
+      {
+        "value": "PLC_COM"
+      },
+      {
+        "value": "MODEM_FESTNETZ"
+      },
+      {
+        "value": "DSL_KOM"
+      },
+      {
+        "value": "LTE_KOM"
+      },
+      {
+        "value": "DICHTEMENGENUMWERTER"
+      },
+      {
+        "value": "TEMPERATURMENGENUMWERTER"
+      },
+      {
+        "value": "ZUSTANDSMENGENUMWERTER"
+      },
+      {
+        "value": "MESSDATENREGISTRIERGERAET"
+      },
+      {
+        "value": "WANDLER"
+      },
+      {
+        "value": "BEFESTIGUNGSEINRICHTUNG"
+      }
+    ],
+    "description": "Auflistung möglicher abzurechnender Gerätetypen"
+  },
+  "GESCHAEFTSPARTNERROLLE": {
+    "values": [
+      {
+        "value": "KUNDE"
+      },
+      {
+        "value": "LIEFERANT"
+      },
+      {
+        "value": "DIENSTLEISTER"
+      },
+      {
+        "value": "INTERESSENT"
+      },
+      {
+        "value": "MARKTPARTNER"
+      },
+      {
+        "value": "EIGENTUEMER"
+      },
+      {
+        "value": "HAUSVERWALTER"
+      },
+      {
+        "value": "KORRESPONDENZEMPFAENGER"
+      },
+      {
+        "value": "ABLESEKARTENEMPFAENGER"
+      }
+    ]
+  },
+  "GRUNDLAGEVERRINGERUNGUMLAGEN": {
+    "values": [
+      {
+        "value": "ERFUELLT_VORAUSSETZUNG_NACH_ENFG"
+      },
+      {
+        "value": "ERFUELLT_NICHT_VORAUSSETZUNG_NACH_ENFG"
+      },
+      {
+        "value": "KEINE_ANGABE"
+      }
+    ]
+  },
+  "GRUNDLAGEVERRINGERUNGUMLAGENGRUND": {
+    "values": [
+      {
+        "value": "ENFG_STROMSPEICHER_UND_VERLUSTENERGIE"
+      },
+      {
+        "value": "ENFG_ELEKTRISCH_ANGETRIEBENE_WAERMEPUMPEN"
+      },
+      {
+        "value": "ENFG_UMLAGEERHEBUNG_BEI_ANLAGEN_ZUR_VERSTROMUNG_VON_KUPPELGASEN"
+      },
+      {
+        "value": "ENFG_HERSTELLUNG_VON_GRUENEN_WASSERSTOFF"
+      },
+      {
+        "value": "ENFG_STROMKOSTENINTENSIVE_UNTERNEHMEN"
+      },
+      {
+        "value": "ENFG_HERSTELLUNG_VON_WASSERSTOFF_IN_STROMKOSTENINTENSIVEN_UNTERNEHMEN"
+      },
+      {
+        "value": "ENFG_SCHIENENBAHNEN"
+      },
+      {
+        "value": "ENFG_ELEKTRISCHE_BETRIEBENE_BUSSEN_IM_LINIENVERKEHR"
+      },
+      {
+        "value": "ENFG_LANDSTROMANLAGEN"
+      }
+    ]
+  },
+  "HAEUFIGKEITLEISTUNGSKURVE": {
+    "values": [
+      {
+        "value": "EINMALIG"
+      },
+      {
+        "value": "JAEHRLICH"
+      }
+    ]
+  },
+  "HAEUFIGKEITSCHALTZEIT": {
+    "values": [
+      {
+        "value": "EINMALIG"
+      },
+      {
+        "value": "JAEHRLICH"
+      }
+    ]
+  },
+  "HAEUFIGKEITZAEHLZEIT": {
+    "values": [
+      {
+        "value": "EINMALIG"
+      },
+      {
+        "value": "JAEHRLICH"
+      }
+    ]
+  },
+  "HANDELSUNSTIMMIGKEITSGRUND": {
+    "values": [
+      {
+        "value": "ANMELDUNG_BESTAETIGT"
+      },
+      {
+        "value": "ABRECHNUNGSBEGINN_GLEICH_BESTAETIGTEM_VERTRAGSBEGINN"
+      },
+      {
+        "value": "ABRECHNUNGSENDE_GLEICH_BESTAETIGTEM_VERTRAGSENDE"
+      },
+      {
+        "value": "NN_MSCONS_UEBERSENDET"
+      },
+      {
+        "value": "RICHTIGE_MESSWERTE_ENERGIEMENGEN_UEBERSENDET"
+      },
+      {
+        "value": "SONSTIGES_SIEHE_BEGRUENDUNG"
+      },
+      {
+        "value": "GUELTIGES_PREISBLATT_VERSENDET"
+      },
+      {
+        "value": "GUELTIGER_SPERRAUFTRAG_VORHANDEN"
+      },
+      {
+        "value": "KORREKTE_ARTIKEL_ID_IN_RECHNUNG"
+      },
+      {
+        "value": "KORREKTER_PREIS_ZU_GUELTIGEM_PREISBLATT_IN_RECHNUNG"
+      },
+      {
+        "value": "RECHNUNG_KORREKT_A05"
+      },
+      {
+        "value": "RECHNUNG_KORREKT_A10"
+      },
+      {
+        "value": "RECHNUNG_KORREKT_A11"
+      },
+      {
+        "value": "GUELTIGES_PREISBLATT_FRISTGERECHT_VERSENDET"
+      },
+      {
+        "value": "GUELTIGE_RECHNUNG_VORHANDEN"
+      },
+      {
+        "value": "ARTIKEL_ID_FUER_VERZUGSKOSTEN_VERWENDET"
+      },
+      {
+        "value": "KORREKTER_PREIS_IN_RECHNUNG_ABGERECHNET"
+      },
+      {
+        "value": "GUELTIGES_PREISBLATT_BLINDARBEIT_VERSENDET"
+      },
+      {
+        "value": "KORREKTE_ARTIKEL_ID_IST_ANGEGEBEN"
+      },
+      {
+        "value": "RECHNUNG_BREGRUENDET_KORREKT"
+      },
+      {
+        "value": "KORREKTE_ARTIKEL_ID_FUER_ABRECHNUNG_STORNIERTER_SPERRAUFTRAG_ANGEGEBEN"
+      },
+      {
+        "value": "ABRECHNUNG_BLINDARBEIT_SPARTE_GAS_NICHT_RELEVANT"
+      },
+      {
+        "value": "SONSTIGES"
+      }
+    ]
+  },
+  "HANDELSUNSTIMMIGKEITSRICHTIGKEIT": {
+    "values": [
+      {
+        "value": "MSCONS"
+      },
+      {
+        "value": "UTILMD"
+      },
+      {
+        "value": "INVOIC"
+      },
+      {
+        "value": "ORDERS"
+      },
+      {
+        "value": "PRICAT"
+      },
+      {
+        "value": "IFTSTA"
+      },
+      {
+        "value": "ORDCHG"
+      }
+    ]
+  },
+  "HANDELSUNSTIMMIGKEITSTYP": {
+    "values": [
+      {
+        "value": "HANDELSRECHNUNG"
+      },
+      {
+        "value": "LIEFERSCHEIN_HANDELSUNSTIMMIGKEITSTYP"
+      },
+      {
+        "value": "LIEFERSCHEIN_GRUND_ARBEITSPREIS"
+      },
+      {
+        "value": "LIEFERSCHEIN_ARBEITS_LEISTUNGSPREIS"
+      }
+    ]
+  },
+  "HERAUSGEBER": {
+    "values": [
+      {
+        "value": "NB"
+      },
+      {
+        "value": "BDEW"
+      },
+      {
+        "value": "TUM"
+      }
+    ]
+  },
+  "INBETRIEBSETZUNG": {
+    "values": [
+      {
+        "value": "INBETRIEBSETZUNG_NACH_2023"
+      },
+      {
+        "value": "INBETRIEBSETZUNG_VOR_2024"
+      }
+    ]
+  },
+  "KALKULATIONSMETHODE": {
+    "values": [
+      {
+        "value": "KEINE"
+      },
+      {
+        "value": "STAFFELN"
+      },
+      {
+        "value": "ZONEN"
+      },
+      {
+        "value": "VORZONEN_GP"
+      },
+      {
+        "value": "SIGMOID"
+      },
+      {
+        "value": "BLINDARBEIT_GT_50_PROZENT"
+      },
+      {
+        "value": "BLINDARBEIT_GT_40_PROZENT"
+      },
+      {
+        "value": "AP_GP_ZONEN"
+      },
+      {
+        "value": "LP_INSTALL_LEISTUNG"
+      },
+      {
+        "value": "AP_TRANSPORT_ODER_VERTEILNETZ"
+      },
+      {
+        "value": "AP_TRANSPORT_ODER_VERTEILNETZ_ORTSVERTEILNETZ_SIGMOID"
+      },
+      {
+        "value": "LP_JAHRESVERBRAUCH"
+      },
+      {
+        "value": "LP_TRANSPORT_ODER_VERTEILNETZ"
+      },
+      {
+        "value": "LP_TRANSPORT_ODER_VERTEILNETZ_ORTSVERTEILNETZ_SIGMOID"
+      },
+      {
+        "value": "FUNKTIONEN"
+      },
+      {
+        "value": "VERBRAUCH_UEBER_SLP_GRENZE_FUNKTIONSBEZOGEN_WEITERE_BERECHNUNG_ALS_LGK"
+      }
+    ],
+    "description": "Auflistung der verschiedenen Berechnungsmethoden für ein Preisblatt"
+  },
+  "KOMMUNIKATIONSROLLE": {
+    "values": [
+      {
+        "value": "DATENAUSTAUSCH"
+      },
+      {
+        "value": "RAHMENVERTRAEGE"
+      },
+      {
+        "value": "KUENDIGUNGSPROZESSE"
+      },
+      {
+        "value": "WECHSELPROZESSE"
+      },
+      {
+        "value": "STAMMDATENPROZESSE"
+      },
+      {
+        "value": "EINSPEISEPROZESSE"
+      },
+      {
+        "value": "ABRECHNUNGSPROZESSE"
+      },
+      {
+        "value": "MMMA_PROZESSE"
+      },
+      {
+        "value": "BEWEGUNGSDATEN"
+      },
+      {
+        "value": "ENT_SPERR_PROZESSE"
+      },
+      {
+        "value": "BILANZIERUNGSPROZESSE"
+      },
+      {
+        "value": "NETZANSCHLUSS_ANLAGEN"
+      }
+    ]
+  },
+  "KONTAKTART": {
+    "values": [
+      {
+        "value": "ANSCHREIBEN"
+      },
+      {
+        "value": "TELEFONAT"
+      },
+      {
+        "value": "FAX"
+      },
+      {
+        "value": "E_MAIL"
+      },
+      {
+        "value": "SMS"
+      }
+    ],
+    "description": "Gibt an, auf welchem Weg die Person oder der Geschäftspartner kontaktiert werden kann"
+  },
+  "KUNDENTYP": {
+    "values": [
+      {
+        "value": "BELEUCHTUNG_OEFFENTLICH"
+      },
+      {
+        "value": "BELEUCHTUNG_STRASSE"
+      },
+      {
+        "value": "DIREKTHEIZUNG"
+      },
+      {
+        "value": "GEMEINSCHAFT_MFH"
+      },
+      {
+        "value": "GEWERBE"
+      },
+      {
+        "value": "HAUSHALT"
+      },
+      {
+        "value": "KIRCHE"
+      },
+      {
+        "value": "KWK"
+      },
+      {
+        "value": "LADESAEULE"
+      },
+      {
+        "value": "LANDWIRT"
+      },
+      {
+        "value": "PRIVAT"
+      },
+      {
+        "value": "SONSTIGE"
+      },
+      {
+        "value": "SPEICHERHEIZUNG"
+      },
+      {
+        "value": "UNTERBR_EINRICHTUNG"
+      },
+      {
+        "value": "WAERMEPUMPE"
+      }
+    ],
+    "description": "Auflistung der Typen von Endkunden. Daraus kann das Verbrauchsprofil abgeleitet werden"
+  },
+  "LANDESCODE": {
+    "values": [
+      {
+        "value": "AC"
+      },
+      {
+        "value": "AD"
+      },
+      {
+        "value": "AE"
+      },
+      {
+        "value": "AF"
+      },
+      {
+        "value": "AG"
+      },
+      {
+        "value": "AI"
+      },
+      {
+        "value": "AL"
+      },
+      {
+        "value": "AM"
+      },
+      {
+        "value": "AN"
+      },
+      {
+        "value": "AO"
+      },
+      {
+        "value": "AQ"
+      },
+      {
+        "value": "AR"
+      },
+      {
+        "value": "AS"
+      },
+      {
+        "value": "AT"
+      },
+      {
+        "value": "AU"
+      },
+      {
+        "value": "AW"
+      },
+      {
+        "value": "AX"
+      },
+      {
+        "value": "AZ"
+      },
+      {
+        "value": "BA"
+      },
+      {
+        "value": "BB"
+      },
+      {
+        "value": "BD"
+      },
+      {
+        "value": "BE"
+      },
+      {
+        "value": "BF"
+      },
+      {
+        "value": "BG"
+      },
+      {
+        "value": "BH"
+      },
+      {
+        "value": "BI"
+      },
+      {
+        "value": "BJ"
+      },
+      {
+        "value": "BL"
+      },
+      {
+        "value": "BM"
+      },
+      {
+        "value": "BN"
+      },
+      {
+        "value": "BO"
+      },
+      {
+        "value": "BQ"
+      },
+      {
+        "value": "BR"
+      },
+      {
+        "value": "BS"
+      },
+      {
+        "value": "BT"
+      },
+      {
+        "value": "BU"
+      },
+      {
+        "value": "BV"
+      },
+      {
+        "value": "BW"
+      },
+      {
+        "value": "BY"
+      },
+      {
+        "value": "BZ"
+      },
+      {
+        "value": "CA"
+      },
+      {
+        "value": "CC"
+      },
+      {
+        "value": "CD"
+      },
+      {
+        "value": "CF"
+      },
+      {
+        "value": "CG"
+      },
+      {
+        "value": "CH"
+      },
+      {
+        "value": "CI"
+      },
+      {
+        "value": "CK"
+      },
+      {
+        "value": "CL"
+      },
+      {
+        "value": "CM"
+      },
+      {
+        "value": "CN"
+      },
+      {
+        "value": "CO"
+      },
+      {
+        "value": "CP"
+      },
+      {
+        "value": "CR"
+      },
+      {
+        "value": "CS"
+      },
+      {
+        "value": "CU"
+      },
+      {
+        "value": "CV"
+      },
+      {
+        "value": "CW"
+      },
+      {
+        "value": "CX"
+      },
+      {
+        "value": "CY"
+      },
+      {
+        "value": "CZ"
+      },
+      {
+        "value": "DE"
+      },
+      {
+        "value": "DG"
+      },
+      {
+        "value": "DJ"
+      },
+      {
+        "value": "DK"
+      },
+      {
+        "value": "DM"
+      },
+      {
+        "value": "DO"
+      },
+      {
+        "value": "DZ"
+      },
+      {
+        "value": "EA"
+      },
+      {
+        "value": "EC"
+      },
+      {
+        "value": "EE"
+      },
+      {
+        "value": "EG"
+      },
+      {
+        "value": "EH"
+      },
+      {
+        "value": "ER"
+      },
+      {
+        "value": "ES"
+      },
+      {
+        "value": "ET"
+      },
+      {
+        "value": "EU"
+      },
+      {
+        "value": "FI"
+      },
+      {
+        "value": "FJ"
+      },
+      {
+        "value": "FK"
+      },
+      {
+        "value": "FM"
+      },
+      {
+        "value": "FO"
+      },
+      {
+        "value": "FR"
+      },
+      {
+        "value": "FX"
+      },
+      {
+        "value": "GA"
+      },
+      {
+        "value": "GB"
+      },
+      {
+        "value": "GD"
+      },
+      {
+        "value": "GE"
+      },
+      {
+        "value": "GF"
+      },
+      {
+        "value": "GG"
+      },
+      {
+        "value": "GH"
+      },
+      {
+        "value": "GI"
+      },
+      {
+        "value": "GL"
+      },
+      {
+        "value": "GM"
+      },
+      {
+        "value": "GN"
+      },
+      {
+        "value": "GP"
+      },
+      {
+        "value": "GQ"
+      },
+      {
+        "value": "GR"
+      },
+      {
+        "value": "GS"
+      },
+      {
+        "value": "GT"
+      },
+      {
+        "value": "GU"
+      },
+      {
+        "value": "GW"
+      },
+      {
+        "value": "GY"
+      },
+      {
+        "value": "HK"
+      },
+      {
+        "value": "HM"
+      },
+      {
+        "value": "HN"
+      },
+      {
+        "value": "HR"
+      },
+      {
+        "value": "HT"
+      },
+      {
+        "value": "HU"
+      },
+      {
+        "value": "IC"
+      },
+      {
+        "value": "ID"
+      },
+      {
+        "value": "IE"
+      },
+      {
+        "value": "IL"
+      },
+      {
+        "value": "IM"
+      },
+      {
+        "value": "IN"
+      },
+      {
+        "value": "IO"
+      },
+      {
+        "value": "IQ"
+      },
+      {
+        "value": "IR"
+      },
+      {
+        "value": "IS"
+      },
+      {
+        "value": "IT"
+      },
+      {
+        "value": "JE"
+      },
+      {
+        "value": "JM"
+      },
+      {
+        "value": "JO"
+      },
+      {
+        "value": "JP"
+      },
+      {
+        "value": "KE"
+      },
+      {
+        "value": "KG"
+      },
+      {
+        "value": "KH"
+      },
+      {
+        "value": "KI"
+      },
+      {
+        "value": "KM"
+      },
+      {
+        "value": "KN"
+      },
+      {
+        "value": "KP"
+      },
+      {
+        "value": "KR"
+      },
+      {
+        "value": "KW"
+      },
+      {
+        "value": "KY"
+      },
+      {
+        "value": "KZ"
+      },
+      {
+        "value": "LA"
+      },
+      {
+        "value": "LB"
+      },
+      {
+        "value": "LC"
+      },
+      {
+        "value": "LI"
+      },
+      {
+        "value": "LK"
+      },
+      {
+        "value": "LR"
+      },
+      {
+        "value": "LS"
+      },
+      {
+        "value": "LT"
+      },
+      {
+        "value": "LU"
+      },
+      {
+        "value": "LV"
+      },
+      {
+        "value": "LY"
+      },
+      {
+        "value": "MA"
+      },
+      {
+        "value": "MC"
+      },
+      {
+        "value": "MD"
+      },
+      {
+        "value": "ME"
+      },
+      {
+        "value": "MF"
+      },
+      {
+        "value": "MG"
+      },
+      {
+        "value": "MH"
+      },
+      {
+        "value": "MK"
+      },
+      {
+        "value": "ML"
+      },
+      {
+        "value": "MM"
+      },
+      {
+        "value": "MN"
+      },
+      {
+        "value": "MO"
+      },
+      {
+        "value": "MP"
+      },
+      {
+        "value": "MQ"
+      },
+      {
+        "value": "MR"
+      },
+      {
+        "value": "MS"
+      },
+      {
+        "value": "MT"
+      },
+      {
+        "value": "MU"
+      },
+      {
+        "value": "MV"
+      },
+      {
+        "value": "MW"
+      },
+      {
+        "value": "MX"
+      },
+      {
+        "value": "MY"
+      },
+      {
+        "value": "MZ"
+      },
+      {
+        "value": "NA"
+      },
+      {
+        "value": "NC"
+      },
+      {
+        "value": "NE"
+      },
+      {
+        "value": "NF"
+      },
+      {
+        "value": "NG"
+      },
+      {
+        "value": "NI"
+      },
+      {
+        "value": "NL"
+      },
+      {
+        "value": "NO"
+      },
+      {
+        "value": "NP"
+      },
+      {
+        "value": "NR"
+      },
+      {
+        "value": "NT"
+      },
+      {
+        "value": "NU"
+      },
+      {
+        "value": "NZ"
+      },
+      {
+        "value": "OM"
+      },
+      {
+        "value": "PA"
+      },
+      {
+        "value": "PE"
+      },
+      {
+        "value": "PF"
+      },
+      {
+        "value": "PG"
+      },
+      {
+        "value": "PH"
+      },
+      {
+        "value": "PK"
+      },
+      {
+        "value": "PL"
+      },
+      {
+        "value": "PM"
+      },
+      {
+        "value": "PN"
+      },
+      {
+        "value": "PR"
+      },
+      {
+        "value": "PS"
+      },
+      {
+        "value": "PT"
+      },
+      {
+        "value": "PW"
+      },
+      {
+        "value": "PY"
+      },
+      {
+        "value": "QA"
+      },
+      {
+        "value": "RE"
+      },
+      {
+        "value": "RO"
+      },
+      {
+        "value": "RS"
+      },
+      {
+        "value": "RU"
+      },
+      {
+        "value": "RW"
+      },
+      {
+        "value": "SA"
+      },
+      {
+        "value": "SB"
+      },
+      {
+        "value": "SC"
+      },
+      {
+        "value": "SD"
+      },
+      {
+        "value": "SE"
+      },
+      {
+        "value": "SF"
+      },
+      {
+        "value": "SG"
+      },
+      {
+        "value": "SH"
+      },
+      {
+        "value": "SI"
+      },
+      {
+        "value": "SJ"
+      },
+      {
+        "value": "SK"
+      },
+      {
+        "value": "SL"
+      },
+      {
+        "value": "SM"
+      },
+      {
+        "value": "SN"
+      },
+      {
+        "value": "SO"
+      },
+      {
+        "value": "SR"
+      },
+      {
+        "value": "SS"
+      },
+      {
+        "value": "ST"
+      },
+      {
+        "value": "SU"
+      },
+      {
+        "value": "SV"
+      },
+      {
+        "value": "SX"
+      },
+      {
+        "value": "SY"
+      },
+      {
+        "value": "SZ"
+      },
+      {
+        "value": "TA"
+      },
+      {
+        "value": "TC"
+      },
+      {
+        "value": "TD"
+      },
+      {
+        "value": "TF"
+      },
+      {
+        "value": "TG"
+      },
+      {
+        "value": "TJ"
+      },
+      {
+        "value": "TK"
+      },
+      {
+        "value": "TL"
+      },
+      {
+        "value": "TM"
+      },
+      {
+        "value": "TN"
+      },
+      {
+        "value": "TO"
+      },
+      {
+        "value": "TP"
+      },
+      {
+        "value": "TR"
+      },
+      {
+        "value": "TT"
+      },
+      {
+        "value": "TV"
+      },
+      {
+        "value": "TW"
+      },
+      {
+        "value": "TZ"
+      },
+      {
+        "value": "UA"
+      },
+      {
+        "value": "UG"
+      },
+      {
+        "value": "UK"
+      },
+      {
+        "value": "UM"
+      },
+      {
+        "value": "US"
+      },
+      {
+        "value": "UY"
+      },
+      {
+        "value": "UZ"
+      },
+      {
+        "value": "VA"
+      },
+      {
+        "value": "VC"
+      },
+      {
+        "value": "VE"
+      },
+      {
+        "value": "VG"
+      },
+      {
+        "value": "VI"
+      },
+      {
+        "value": "VN"
+      },
+      {
+        "value": "VU"
+      },
+      {
+        "value": "WF"
+      },
+      {
+        "value": "WS"
+      },
+      {
+        "value": "XK"
+      },
+      {
+        "value": "YE"
+      },
+      {
+        "value": "YT"
+      },
+      {
+        "value": "YU"
+      },
+      {
+        "value": "ZA"
+      },
+      {
+        "value": "ZM"
+      },
+      {
+        "value": "ZR"
+      },
+      {
+        "value": "ZW"
+      }
+    ],
+    "description": "Der ISO-Landescode als Enumeration"
+  },
+  "LEISTUNGSBEZEICHNUNG": {
+    "values": [
+      {
+        "value": "POG_VERBRAUCH_IMS_UEBER_100K"
+      },
+      {
+        "value": "POG_VERBRAUCH_IMS_50K_BIS_100K"
+      },
+      {
+        "value": "POG_VERBRAUCH_IMS_20K_BIS_50K"
+      },
+      {
+        "value": "POG_VERBRAUCH_IMS_10K_BIS_20K"
+      },
+      {
+        "value": "POG_VERBRAUCH_IMS_UNTERBRECHBAR"
+      },
+      {
+        "value": "POG_VERBRAUCH_IMS_6K_BIS_10K"
+      },
+      {
+        "value": "POG_ERZEUGUNG_IMS_7_BIS_15"
+      },
+      {
+        "value": "POG_ERZEUGUNG_IMS_15_BIS_30"
+      },
+      {
+        "value": "POG_ERZEUGUNG_IMS_30_BIS_100"
+      },
+      {
+        "value": "POG_ERZEUGUNG_IMS_UEBER_100"
+      },
+      {
+        "value": "POG_MME"
+      },
+      {
+        "value": "POG_VERBRAUCH_IMS_4K_BIS_6K"
+      },
+      {
+        "value": "POG_VERBRAUCH_IMS_3K_BIS_4K"
+      },
+      {
+        "value": "POG_VERBRAUCH_IMS_2K_BIS_3K"
+      },
+      {
+        "value": "POG_VERBRAUCH_IMS_0_BIS_2K"
+      },
+      {
+        "value": "POG_ERZEUGUNG_IMS_OPTIONAL"
+      },
+      {
+        "value": "ZUSATZLEISTUNG"
+      }
+    ]
+  },
+  "LEISTUNGSTYP": {
+    "values": [
+      {
+        "value": "ARBEITSPREIS_WIRKARBEIT"
+      },
+      {
+        "value": "LEISTUNGSPREIS_WIRKLEISTUNG"
+      },
+      {
+        "value": "ARBEITSPREIS_BLINDARBEIT_IND"
+      },
+      {
+        "value": "ARBEITSPREIS_BLINDARBEIT_KAP"
+      },
+      {
+        "value": "GRUNDPREIS"
+      },
+      {
+        "value": "MEHRMINDERMENGE"
+      },
+      {
+        "value": "MESSSTELLENBETRIEB"
+      },
+      {
+        "value": "MESSDIENSTLEISTUNG"
+      },
+      {
+        "value": "MESSDIENSTLEISTUNG_INKL_MESSUNG"
+      },
+      {
+        "value": "ABRECHNUNG"
+      },
+      {
+        "value": "KONZESSIONS_ABGABE"
+      },
+      {
+        "value": "KWK_UMLAGE"
+      },
+      {
+        "value": "OFFSHORE_UMLAGE"
+      },
+      {
+        "value": "ABLAV_UMLAGE"
+      },
+      {
+        "value": "REGELENERGIE_UMLAGE"
+      },
+      {
+        "value": "BILANZIERUNG_UMLAGE"
+      },
+      {
+        "value": "AUSLESUNG_ZUSAETZLICH"
+      },
+      {
+        "value": "ABLESUNG_ZUSAETZLICH"
+      },
+      {
+        "value": "ABRECHNUNG_ZUSAETZLICH"
+      },
+      {
+        "value": "SPERRUNG"
+      },
+      {
+        "value": "ENTSPERRUNG"
+      },
+      {
+        "value": "MAHNKOSTEN"
+      },
+      {
+        "value": "INKASSOKOSTEN"
+      }
+    ]
+  },
+  "LOKATIONSTYP": {
+    "values": [
+      {
+        "value": "MALO"
+      },
+      {
+        "value": "MELO"
+      },
+      {
+        "value": "NELO"
+      },
+      {
+        "value": "TECHNISCHE_RESSOURCE"
+      },
+      {
+        "value": "STEUERBARE_RESSOURCE"
+      },
+      {
+        "value": "TRANCHE"
+      }
+    ],
+    "description": "Gibt an, ob es sich um eine Markt- oder Messlokation handelt"
+  },
+  "LOKATIONSZUORDNUNG": {
+    "values": [
+      {
+        "value": "UNVERAENDERT"
+      },
+      {
+        "value": "BEGINNT"
+      },
+      {
+        "value": "ENDET"
+      }
+    ]
+  },
+  "MSBEIGENSCHAFT": {
+    "values": [
+      {
+        "value": "GRUNDZUSTAENDIGER_MESSSTELLENBETREIBER"
+      },
+      {
+        "value": "WETTBEWERBLICHER_MESSSTELLENBETREIBER"
+      },
+      {
+        "value": "AUFFANGMESSSTELLENBETREIBER"
+      }
+    ]
+  },
+  "MARKTLOKATIONSTYP": {
+    "values": [
+      {
+        "value": "STANDARD_MARKTLOKATION"
+      },
+      {
+        "value": "RUHENDE_MARKTLOKATION"
+      },
+      {
+        "value": "KUNDENANLAGE"
+      }
+    ]
+  },
+  "MARKTROLLE": {
+    "values": [
+      {
+        "value": "NB"
+      },
+      {
+        "value": "LF"
+      },
+      {
+        "value": "MSB"
+      },
+      {
+        "value": "MSBA"
+      },
+      {
+        "value": "GMSB"
+      },
+      {
+        "value": "MDL"
+      },
+      {
+        "value": "DL"
+      },
+      {
+        "value": "BKV"
+      },
+      {
+        "value": "UENB"
+      },
+      {
+        "value": "KUNDE-SELBST-NN"
+      },
+      {
+        "value": "MGV"
+      },
+      {
+        "value": "EIV"
+      },
+      {
+        "value": "RB"
+      },
+      {
+        "value": "KUNDE"
+      },
+      {
+        "value": "INTERESSENT"
+      },
+      {
+        "value": "KN"
+      },
+      {
+        "value": "UBA"
+      },
+      {
+        "value": "BIKO"
+      },
+      {
+        "value": "ESA"
+      }
+    ],
+    "description": "Diese Rollen kann ein Marktteilnehmer einnehmen"
+  },
+  "MENGENEINHEIT": {
+    "values": [
+      {
+        "value": "W"
+      },
+      {
+        "value": "WH"
+      },
+      {
+        "value": "KW"
+      },
+      {
+        "value": "KWH"
+      },
+      {
+        "value": "KVARH"
+      },
+      {
+        "value": "MW"
+      },
+      {
+        "value": "MWH"
+      },
+      {
+        "value": "STUECK"
+      },
+      {
+        "value": "KUBIKMETER"
+      },
+      {
+        "value": "STUNDE"
+      },
+      {
+        "value": "TAG"
+      },
+      {
+        "value": "MONAT"
+      },
+      {
+        "value": "JAHR"
+      },
+      {
+        "value": "PROZENT"
+      },
+      {
+        "value": "ANZAHL"
+      },
+      {
+        "value": "VAR"
+      },
+      {
+        "value": "KVAR"
+      },
+      {
+        "value": "VARH"
+      },
+      {
+        "value": "KWHK"
+      },
+      {
+        "value": "Z16"
+      },
+      {
+        "value": "KWT"
+      }
+    ],
+    "description": "Einheit: Messgrößen, die per Messung oder Vorgabe ermittelt werden können"
+  },
+  "MENGENUMWERTERTYP": {
+    "values": [
+      {
+        "value": "DICHTEMENGENUMWERTER"
+      },
+      {
+        "value": "TEMPERATURMENGENUMWERTER"
+      },
+      {
+        "value": "ZUSTANDSMENGENUMWERTER"
+      }
+    ]
+  },
+  "MESSTECHNISCHEEINORDNUNG": {
+    "values": [
+      {
+        "value": "IMS"
+      },
+      {
+        "value": "KME_MME"
+      },
+      {
+        "value": "KEINE_MESSUNG"
+      }
+    ]
+  },
+  "MESSWERTERFASSUNG": {
+    "values": [
+      {
+        "value": "FERNAUSLESBAR"
+      },
+      {
+        "value": "MANUELL_AUSGELESENE"
+      }
+    ],
+    "description": "Die Messwerterfassung des Zählers"
+  },
+  "MESSWERTSTATUS": {
+    "values": [
+      {
+        "value": "ABGELESEN"
+      },
+      {
+        "value": "ERSATZWERT"
+      },
+      {
+        "value": "VORSCHLAGSWERT"
+      },
+      {
+        "value": "NICHT_VERWENDBAR"
+      },
+      {
+        "value": "PROGNOSEWERT"
+      },
+      {
+        "value": "ENERGIEMENGESUMMIERT"
+      },
+      {
+        "value": "VOLAEUFIGERWERT"
+      },
+      {
+        "value": "FEHLT"
+      },
+      {
+        "value": "ANGABE_FUER_LIEFERSCHEIN"
+      },
+      {
+        "value": "GRUNDLAGE_POG_ERMITTLUNG"
+      }
+    ],
+    "description": "Der Status eines Zählerstandes"
+  },
+  "MODULNETZENTGELTE": {
+    "values": [
+      {
+        "value": "PAUSCHALE_NETZGELDREDUZIERUNG_MODUL_1"
+      },
+      {
+        "value": "PROZENTUALE_REDUZIERUNG_ARBEITSPREIS_MODUL_2"
+      },
+      {
+        "value": "ANREIZMODUL_ZEITVARIABLES_NETZENTGELT_MODUL_3"
+      }
+    ]
+  },
+  "NETZEBENE": {
+    "values": [
+      {
+        "value": "NSP"
+      },
+      {
+        "value": "MSP"
+      },
+      {
+        "value": "HSP"
+      },
+      {
+        "value": "HSS"
+      },
+      {
+        "value": "MSP_NSP_UMSP"
+      },
+      {
+        "value": "HSP_MSP_UMSP"
+      },
+      {
+        "value": "HSS_HSP_UMSP"
+      },
+      {
+        "value": "HD"
+      },
+      {
+        "value": "MD"
+      },
+      {
+        "value": "ND"
+      }
+    ]
+  },
+  "NETZNUTZUNGSABRECHNUNGSGRUNDLAGE": {
+    "values": [
+      {
+        "value": "LIEFERSCHEIN"
+      },
+      {
+        "value": "ABWEICHENDE_GRUNDLAGE"
+      }
+    ]
+  },
+  "NETZNUTZUNGSABRECHNUNGSVARIANTE": {
+    "values": [
+      {
+        "value": "ARBEITSPREIS_GRUNDPREIS"
+      },
+      {
+        "value": "ARBEITSPREIS_LEISTUNGSPREIS"
+      }
+    ]
+  },
+  "NETZNUTZUNGSVERTRAG": {
+    "values": [
+      {
+        "value": "KUNDEN_NB"
+      },
+      {
+        "value": "LIEFERANTEN_NB"
+      }
+    ]
+  },
+  "NETZNUTZUNGSZAHLER": {
+    "values": [
+      {
+        "value": "KUNDE"
+      },
+      {
+        "value": "LIEFERANT"
+      }
+    ]
+  },
+  "NOTWENDIGKEITZWEITEMESSUNG": {
+    "values": [
+      {
+        "value": "VORHANDEN"
+      },
+      {
+        "value": "NICHT_VORHANDEN"
+      }
+    ]
+  },
+  "OEKOLABEL": {
+    "values": [
+      {
+        "value": "ENERGREEN"
+      },
+      {
+        "value": "GASGREEN"
+      },
+      {
+        "value": "GASGREEN_GRUENER_STROM"
+      },
+      {
+        "value": "GRUENER_STROM"
+      },
+      {
+        "value": "GRUENER_STROM_GOLD"
+      },
+      {
+        "value": "GRUENER_STROM_SILBER"
+      },
+      {
+        "value": "GRUENES_GAS"
+      },
+      {
+        "value": "NATURWATT_STROM"
+      },
+      {
+        "value": "OK_POWER"
+      },
+      {
+        "value": "RENEWABLE_PLUS"
+      },
+      {
+        "value": "WATERGREEN"
+      },
+      {
+        "value": "WATERGREEN_PLUS"
+      }
+    ]
+  },
+  "OEKOZERTIFIKAT": {
+    "values": [
+      {
+        "value": "BET"
+      },
+      {
+        "value": "CMS_EE01"
+      },
+      {
+        "value": "CMS_EE02"
+      },
+      {
+        "value": "EECS"
+      },
+      {
+        "value": "FRAUNHOFER"
+      },
+      {
+        "value": "FREIBERG"
+      },
+      {
+        "value": "KLIMA_INVEST"
+      },
+      {
+        "value": "LGA"
+      },
+      {
+        "value": "RECS"
+      },
+      {
+        "value": "REGS_EGL"
+      },
+      {
+        "value": "TUEV"
+      },
+      {
+        "value": "TUEV_HESSEN"
+      },
+      {
+        "value": "TUEV_NORD"
+      },
+      {
+        "value": "TUEV_RHEINLAND"
+      },
+      {
+        "value": "TUEV_SUED"
+      },
+      {
+        "value": "TUEV_SUED_EE01"
+      },
+      {
+        "value": "TUEV_SUED_EE02"
+      }
+    ]
+  },
+  "PREISART": {
+    "values": [
+      {
+        "value": "EINRICHTUNGSPREIS"
+      },
+      {
+        "value": "TRANSAKTIONSPREIS"
+      },
+      {
+        "value": "BETRIEBSPREIS"
+      }
+    ],
+    "description": "Preisart Code"
+  },
+  "PREISSTATUS": {
+    "values": [
+      {
+        "value": "VORLAEUFIG"
+      },
+      {
+        "value": "ENDGUELTIG"
+      }
+    ]
+  },
+  "PRIORISIERUNG": {
+    "values": [
+      {
+        "value": "PRIORITAET1"
+      },
+      {
+        "value": "PRIORITAET2"
+      },
+      {
+        "value": "PRIORITAET3"
+      },
+      {
+        "value": "PRIORITAET4"
+      },
+      {
+        "value": "PRIORITAET5"
+      }
+    ]
+  },
+  "PROFILART": {
+    "values": [
+      {
+        "value": "ART_STANDARDLASTPROFIL"
+      },
+      {
+        "value": "ART_TAGESPARAMETERABHAENGIGES_LASTPROFIL"
+      },
+      {
+        "value": "ART_LASTPROFIL"
+      }
+    ]
+  },
+  "PROFILTYP": {
+    "values": [
+      {
+        "value": "SLP_SEP"
+      },
+      {
+        "value": "TLP_TEP"
+      },
+      {
+        "value": "TEP"
+      }
+    ]
+  },
+  "PROFILVERFAHREN": {
+    "values": [
+      {
+        "value": "SYNTHETISCH"
+      },
+      {
+        "value": "ANALYTISCH"
+      }
+    ]
+  },
+  "PROGNOSEGRUNDLAGE": {
+    "values": [
+      {
+        "value": "WERTE"
+      },
+      {
+        "value": "PROFILE"
+      }
+    ]
+  },
+  "RECHNUNGSSTATUS": {
+    "values": [
+      {
+        "value": "DUPLIKAT"
+      },
+      {
+        "value": "ORIGINAL"
+      },
+      {
+        "value": "STORNIERT"
+      }
+    ]
+  },
+  "RECHNUNGSTYP": {
+    "values": [
+      {
+        "value": "ABSCHLUSSRECHNUNG"
+      },
+      {
+        "value": "ABSCHLAGSRECHNUNG"
+      },
+      {
+        "value": "TURNUSRECHNUNG"
+      },
+      {
+        "value": "MONATSRECHNUNG"
+      },
+      {
+        "value": "WIMRECHNUNG"
+      },
+      {
+        "value": "ZWISCHENRECHNUNG"
+      },
+      {
+        "value": "INTEGRIERTE_13TE_RECHNUNG"
+      },
+      {
+        "value": "ZUSAETZLICHE_13TE_RECHNUNG"
+      },
+      {
+        "value": "MEHRMINDERMENGENRECHNUNG"
+      },
+      {
+        "value": "MSBRECHNUNG"
+      },
+      {
+        "value": "KAPAZITAETSRECHNUNG"
+      },
+      {
+        "value": "SPERRUNG_INBETRIEBNAHME"
+      },
+      {
+        "value": "VERZUGSKOSTEN"
+      },
+      {
+        "value": "BLINDARBEIT"
+      },
+      {
+        "value": "SONDERRECHNUNG"
+      },
+      {
+        "value": "ABRECHNUNG_VON_KONFIGURATIONEN_UNIVERSALBESTELLPROZESS"
+      },
+      {
+        "value": "ABRECHNUNG_VON_TECHNIK"
+      }
+    ]
+  },
+  "REGISTERANZAHL": {
+    "values": [
+      {
+        "value": "EINTARIF"
+      },
+      {
+        "value": "MEHRTARIF"
+      },
+      {
+        "value": "ZWEITARIF"
+      }
+    ]
+  },
+  "REKLAMATIONSGRUND": {
+    "values": [
+      {
+        "value": "WERTE_ZU_HOCH"
+      },
+      {
+        "value": "WERTE_ZU_NIEDRIG"
+      },
+      {
+        "value": "WERTE_FEHLEN"
+      },
+      {
+        "value": "KONFIGURATION_WIRKT_NICHT"
+      },
+      {
+        "value": "KONFIGURATION_WIRKT_TEILWEISE"
+      },
+      {
+        "value": "WERTE_WERDEN_NICHT_NACH_VORGABEN_UEBERMITTELT"
+      },
+      {
+        "value": "UEBERSICHT_FEHLT"
+      },
+      {
+        "value": "UEBERSICHT_UNPLAUSIBEL"
+      },
+      {
+        "value": "AUSGEROLLTE_DEFINITION_FEHLT"
+      },
+      {
+        "value": "AUSGEROLLTE_DEFINITION_UNPLAUSIBEL"
+      }
+    ]
+  },
+  "RESSOURCEWECHSELMOEGLICHKEIT": {
+    "values": [
+      {
+        "value": "WECHSELMOEGLICHKEIT_EINMALIG_NOCH_MOEGLICH"
+      },
+      {
+        "value": "WECHSELMOEGLICHKEIT_NICHT_MOEGLICH"
+      },
+      {
+        "value": "BEFRISTET_OHNE_WECHSELMOEGLICHKEIT"
+      },
+      {
+        "value": "WECHSEL_WURDE_DURCHGEFUEHRT"
+      }
+    ]
+  },
+  "ROLLENCODETYP": {
+    "values": [
+      {
+        "value": "BDEW"
+      },
+      {
+        "value": "GS1"
+      },
+      {
+        "value": "GLN"
+      },
+      {
+        "value": "DVGW"
+      }
+    ]
+  },
+  "RUFNUMMERNART": {
+    "values": [
+      {
+        "value": "RUF_ZENTRALE"
+      },
+      {
+        "value": "FAX_ZENTRALE"
+      },
+      {
+        "value": "SAMMELRUF"
+      },
+      {
+        "value": "SAMMELFAX"
+      },
+      {
+        "value": "ABTEILUNGRUF"
+      },
+      {
+        "value": "ABTEILUNGFAX"
+      },
+      {
+        "value": "RUF_DURCHWAHL"
+      },
+      {
+        "value": "FAX_DURCHWAHL"
+      },
+      {
+        "value": "MOBIL_NUMMER"
+      }
+    ]
+  },
+  "SCHALTHANDLUNG": {
+    "values": [
+      {
+        "value": "LEISTUNG_AN"
+      },
+      {
+        "value": "LEISTUNG_AUS"
+      }
+    ]
+  },
+  "SCHWACHLASTFAEHIG": {
+    "values": [
+      {
+        "value": "SCHWACHLASTFAEHIG"
+      },
+      {
+        "value": "NICHT_SCHWACHLASTFAEHIG"
+      }
+    ]
+  },
+  "SONDERRECHNUNGSART": {
+    "values": [
+      {
+        "value": "KONZESSIONSABGABE_TESTAT"
+      },
+      {
+        "value": "INDIVIDUELL_ATYPISCH"
+      },
+      {
+        "value": "INDIVIDUELL_SINGULAER"
+      },
+      {
+        "value": "KWKG_UMLAGE"
+      },
+      {
+        "value": "OFFSHORE_UMLAGE"
+      },
+      {
+        "value": "P19_STROM_NEV_UMLAGE"
+      },
+      {
+        "value": "P18_ABLAV"
+      },
+      {
+        "value": "KONZESSIONSABGABE_WECHSEL_RLM"
+      },
+      {
+        "value": "PRIVILEGIERUNG_NACH_ENFG"
+      },
+      {
+        "value": "KONZESSIONSABGABE_WEITERGELEITETE_MENGEN"
+      }
+    ]
+  },
+  "SPARTE": {
+    "values": [
+      {
+        "value": "STROM"
+      },
+      {
+        "value": "GAS"
+      },
+      {
+        "value": "FERNWAERME"
+      },
+      {
+        "value": "NAHWAERME"
+      },
+      {
+        "value": "WASSER"
+      },
+      {
+        "value": "ABWASSER"
+      }
+    ]
+  },
+  "SPEICHERART": {
+    "values": [
+      {
+        "value": "WASSERSTOFFSPEICHER"
+      },
+      {
+        "value": "PUMPSPEICHER"
+      },
+      {
+        "value": "BATTERIESPEICHER"
+      },
+      {
+        "value": "SONSTIGE_SPEICHERART"
+      }
+    ]
+  },
+  "SPERRAUFTRAGSABLEHNGRUND": {
+    "values": [
+      {
+        "value": "DUPLIKAT"
+      },
+      {
+        "value": "FALSCHER_MSB"
+      },
+      {
+        "value": "FALSCHE_SPANNUNGSEBENE"
+      },
+      {
+        "value": "WEITERE_MALO_BETROFFEN"
+      },
+      {
+        "value": "ANDERER_ABLEHNGRUND"
+      },
+      {
+        "value": "FRISTVERLETZUNG_TERMINGEBUNDEN"
+      },
+      {
+        "value": "FRISTVERLETZUNG_NICHT_TERMINGEBUNDEN"
+      },
+      {
+        "value": "ANDERER_FEHLER"
+      },
+      {
+        "value": "LIEGT_BEREITS_VOR"
+      },
+      {
+        "value": "ANDERER_ZUKUENFTIGER_LIEFERANT"
+      },
+      {
+        "value": "BESTAETIGTER_LIEFERBEGINN"
+      }
+    ]
+  },
+  "SPERRAUFTRAGSART": {
+    "values": [
+      {
+        "value": "SPERREN"
+      },
+      {
+        "value": "ENTSPERREN"
+      }
+    ]
+  },
+  "SPERRAUFTRAGSVERHINDERUNGSGRUND": {
+    "values": [
+      {
+        "value": "RECHTLICHER_GRUND_FEHLT"
+      },
+      {
+        "value": "AKTIVE_ZUTRITTSVERWEIGERUNG"
+      },
+      {
+        "value": "PASSIVE_ZUTRITTSVERWEIGERUNG"
+      },
+      {
+        "value": "ANDERER_VERHINDERUNGSGRUND"
+      },
+      {
+        "value": "TATSAECHLICHER_VERHINDERUNGSGRUND"
+      },
+      {
+        "value": "TECHNISCHER_VERHINDERUNGSGRUND"
+      },
+      {
+        "value": "ANSCHLUSSNUTZER_WURDE_NICHT_ANGETROFFEN"
+      }
+    ]
+  },
+  "SPERRSTATUS": {
+    "values": [
+      {
+        "value": "ENTSPERRT"
+      },
+      {
+        "value": "GESPERRT"
+      }
+    ]
+  },
+  "STATUS": {
+    "values": [
+      {
+        "value": "KUNDENSELBSTABLESUNG"
+      },
+      {
+        "value": "LEERSTAND"
+      },
+      {
+        "value": "REALER_ZAEHLERUEBERLAUF_GEPRUEFT"
+      },
+      {
+        "value": "PLAUSIBEL_WG_KONTROLLABLESUNG"
+      },
+      {
+        "value": "PLAUSIBEL_WG_KUNDENHINWEIS"
+      },
+      {
+        "value": "AUSTAUSCH_DES_ERSATZWERTES"
+      },
+      {
+        "value": "RECHENWERT"
+      },
+      {
+        "value": "BASIS_MME"
+      },
+      {
+        "value": "VERGLEICHSMESSUNG_GEEICHT"
+      },
+      {
+        "value": "VERGLEICHSMESSUNG_NICHT_GEEICHT"
+      },
+      {
+        "value": "MESSWERTNACHBILDUNG_AUS_GEEICHTEN_WERTEN"
+      },
+      {
+        "value": "MESSWERTNACHBILDUNG_AUS_NICHT_GEEICHTEN_WERTEN"
+      },
+      {
+        "value": "INTERPOLATION"
+      },
+      {
+        "value": "HALTEWERT"
+      },
+      {
+        "value": "BILANZIERUNG_NETZABSCHNITT"
+      },
+      {
+        "value": "HISTORISCHE_MESSWERTE"
+      },
+      {
+        "value": "STATISTISCHE_METHODE"
+      },
+      {
+        "value": "AUFTEILUNG"
+      },
+      {
+        "value": "VERWENDUNG_VON_WERTEN_DES_STOERMENGENZAEHLWERKS"
+      },
+      {
+        "value": "UMGANGS_UND_KORREKTURMENGEN"
+      },
+      {
+        "value": "ANGABEN_MESSLOKATION"
+      },
+      {
+        "value": "KEIN_ZUGANG"
+      },
+      {
+        "value": "KOMMUNIKATIONSSTOERUNG"
+      },
+      {
+        "value": "NETZAUSFALL"
+      },
+      {
+        "value": "SPANNUNGSAUSFALL"
+      },
+      {
+        "value": "STATUS_GERAETEWECHSEL"
+      },
+      {
+        "value": "KALIBRIERUNG"
+      },
+      {
+        "value": "GERAET_ARBEITET_AUSSERHALB_DER_BETRIEBSBEDINGUNGEN"
+      },
+      {
+        "value": "MESSEINRICHTUNG_GESTOERT_DEFEKT"
+      },
+      {
+        "value": "UNSICHERHEIT_MESSUNG"
+      },
+      {
+        "value": "BERUECKSICHTIGUNG_STOERMENGENZAEHLWERK"
+      },
+      {
+        "value": "MENGENUMWERTUNG_VOLLSTAENDIG"
+      },
+      {
+        "value": "UHRZEIT_GESTELLT_SYNCHRONISATION"
+      },
+      {
+        "value": "MESSWERT_UNPLAUSIBEL"
+      },
+      {
+        "value": "FALSCHER_WANDLERFAKTOR"
+      },
+      {
+        "value": "FEHLERHAFTE_ABLESUNG"
+      },
+      {
+        "value": "AENDERUNG_DER_BERECHNUNG"
+      },
+      {
+        "value": "UMBAU_DER_MESSLOKATION"
+      },
+      {
+        "value": "DATENBEARBEITUNGSFEHLER"
+      },
+      {
+        "value": "BRENNWERTKORREKTUR"
+      },
+      {
+        "value": "Z_ZAHL_KORREKTUR"
+      },
+      {
+        "value": "STOERUNG_DEFEKT_MESSEINRICHTUNG"
+      },
+      {
+        "value": "AENDERUNG_TARIFSCHALTZEITEN"
+      },
+      {
+        "value": "TARIFSCHALTGERAET_DEFEKT"
+      },
+      {
+        "value": "IMPULSWERTIGKEIT_NICHT_AUSREICHEND"
+      },
+      {
+        "value": "ENERGIEMENGE_IN_UNGEMESSENEM_ZEITINTERVALL"
+      },
+      {
+        "value": "ENERGIEMENGE_AUS_DEM_UNGEPAIRTEN_ZEITINTERVALL"
+      },
+      {
+        "value": "WARTUNGSARBEITEN_AN_GEEICHTEM_MESSGERAET"
+      },
+      {
+        "value": "GESTOERTE_WERTE"
+      },
+      {
+        "value": "WARTUNGSARBEITEN_AN_EICHRECHTSKONFORMEN_MESSGERAETEN"
+      },
+      {
+        "value": "KONSISTENZ_UND_SYNCHRONPRUEFUNG"
+      },
+      {
+        "value": "GRUND_ANGABEN_MESSLOKATION"
+      },
+      {
+        "value": "ANFORDERUNG_IN_DIE_VERGANGENHEIT_ZUM_ANGEFORDERTEN_ZEITPUNKT_LIEGT_KEIN_WERT_VOR"
+      },
+      {
+        "value": "UMSTELLUNG_GASQUALITAET"
+      },
+      {
+        "value": "ZAEHLERSTAND_ZUM_BEGINN_DER_ANGEGEBENEN_ENERGIEMENGE_VORHANDEN_UND_KOMMUNIZIERT"
+      },
+      {
+        "value": "ZAEHLERSTAND_ZUM_ENDE_DER_ANGEGEBENEN_ENERGIEMENGE_VORHANDEN_UND_KOMMUNIZIERT"
+      },
+      {
+        "value": "ZAEHLERSTAND_ZUM_BEGINN_DER_ANGEGEBENEN_ENERGIEMENGE_NICHT_VORHANDEN_DA_MENGENABGRENZUNG"
+      },
+      {
+        "value": "ZAEHLERSTAND_ZUM_ENDE_DER_ANGEGEBENEN_ENERGIEMENGE_NICHT_VORHANDEN_DA_MENGENABGRENZUNG"
+      },
+      {
+        "value": "GESCHEITERT"
+      },
+      {
+        "value": "AUSGEBAUT"
+      }
+    ]
+  },
+  "STATUSART": {
+    "values": [
+      {
+        "value": "PLAUSIBILISIERUNGSHINWEIS"
+      },
+      {
+        "value": "ERSATZWERTBILDUNGSVERFAHREN"
+      },
+      {
+        "value": "KORREKTURGRUND"
+      },
+      {
+        "value": "GRUND_ERSATZWERTBILDUNGSVERFAHREN"
+      },
+      {
+        "value": "GASQUALITAET"
+      },
+      {
+        "value": "MESSKLASSIFIZIERUNG"
+      }
+    ]
+  },
+  "STATUSERZEUGENDEMARKTLOKATION": {
+    "values": [
+      {
+        "value": "EINSPEISEVERGUETUNG_PARAGRAPH_37"
+      },
+      {
+        "value": "GEFOERDERTE_DIREKTVERMARKTUNG"
+      },
+      {
+        "value": "SONSTIGE_DIREKTVERMARKTUNG"
+      },
+      {
+        "value": "VERMARKTUNG_OHNE_GESETZL_VERGUETUNG"
+      },
+      {
+        "value": "KWKG_VERGUETUNG"
+      },
+      {
+        "value": "EINSPEISEVERGUETUNG_PARAGRAPH_38_AUSFALLVERGUETUNG"
+      }
+    ]
+  },
+  "STATUSANLASS": {
+    "values": [
+      {
+        "value": "KOMMUNIKATIONSSTOERUNG"
+      },
+      {
+        "value": "STATUS_GERAETEWECHSEL"
+      },
+      {
+        "value": "MESSEINRICHTUNG_GESTOERT_DEFEKT"
+      },
+      {
+        "value": "KEINE_STOERUNG_FESTSTELLBAR"
+      },
+      {
+        "value": "STOERUNGSBEHEBUNG_NICHT_MOEGLICH"
+      },
+      {
+        "value": "REPARATUR_OHNE_GERAETEWECHSEL"
+      }
+    ]
+  },
+  "STATUSOBJEKT": {
+    "values": [
+      {
+        "value": "MSBWECHSEL"
+      },
+      {
+        "value": "UMBAUMELO"
+      },
+      {
+        "value": "ERSTEINBAUIMS"
+      },
+      {
+        "value": "ERSTEINBAUMME"
+      },
+      {
+        "value": "GERAET"
+      },
+      {
+        "value": "ANGEBOTANFRAGE"
+      },
+      {
+        "value": "STATUSBESTELLUNG"
+      },
+      {
+        "value": "LIEFERSCHEIN"
+      },
+      {
+        "value": "SPERREN"
+      },
+      {
+        "value": "ENTSPERREN"
+      },
+      {
+        "value": "PRIVILEGIERUNG_NACH_ENFG"
+      },
+      {
+        "value": "VERAENDERUNGSSTATUS_DER_DATEN"
+      },
+      {
+        "value": "TURNUSAUSLESUNG"
+      }
+    ]
+  },
+  "STEUERKANAL": {
+    "values": [
+      {
+        "value": "AN_AUS"
+      },
+      {
+        "value": "GESTUFT"
+      }
+    ]
+  },
+  "STEUERKENNZEICHEN": {
+    "values": [
+      {
+        "value": "UST_19"
+      },
+      {
+        "value": "UST_16"
+      },
+      {
+        "value": "UST_7"
+      },
+      {
+        "value": "VST_0"
+      },
+      {
+        "value": "VST_19"
+      },
+      {
+        "value": "VST_16"
+      },
+      {
+        "value": "VST_7"
+      },
+      {
+        "value": "RCV"
+      }
+    ]
+  },
+  "TARIFART": {
+    "values": [
+      {
+        "value": "EINTARIF"
+      },
+      {
+        "value": "ZWEITARIF"
+      },
+      {
+        "value": "MEHRTARIF"
+      },
+      {
+        "value": "SMART_METER"
+      },
+      {
+        "value": "LEISTUNGSGEMESSEN"
+      }
+    ]
+  },
+  "TARIFMERKMAL": {
+    "values": [
+      {
+        "value": "BAUSTROM"
+      },
+      {
+        "value": "FESTPREIS"
+      },
+      {
+        "value": "HAUSLICHT"
+      },
+      {
+        "value": "HEIZSTROM"
+      },
+      {
+        "value": "KOMBI"
+      },
+      {
+        "value": "ONLINE"
+      },
+      {
+        "value": "PAKET"
+      },
+      {
+        "value": "STANDARD"
+      },
+      {
+        "value": "VORKASSE"
+      }
+    ]
+  },
+  "TARIFSTUFE": {
+    "values": [
+      {
+        "value": "TARIFSTUFE_0"
+      },
+      {
+        "value": "TARIFSTUFE_1"
+      },
+      {
+        "value": "TARIFSTUFE_2"
+      },
+      {
+        "value": "TARIFSTUFE_3"
+      },
+      {
+        "value": "TARIFSTUFE_4"
+      },
+      {
+        "value": "TARIFSTUFE_5"
+      },
+      {
+        "value": "TARIFSTUFE_6"
+      },
+      {
+        "value": "TARIFSTUFE_7"
+      },
+      {
+        "value": "TARIFSTUFE_8"
+      },
+      {
+        "value": "TARIFSTUFE_9"
+      }
+    ]
+  },
+  "TARIFTYP": {
+    "values": [
+      {
+        "value": "ERSATZVERSORGUNG"
+      },
+      {
+        "value": "GRUNDVERSORGUNG"
+      },
+      {
+        "value": "GRUND_ERSATZVERSORGUNG"
+      },
+      {
+        "value": "SONDERTARIF"
+      }
+    ]
+  },
+  "TARIFZEIT": {
+    "values": [
+      {
+        "value": "TZ_STANDARD"
+      },
+      {
+        "value": "TZ_HT"
+      },
+      {
+        "value": "TZ_NT"
+      }
+    ]
+  },
+  "TECHNISCHERESSOURCEART": {
+    "values": [
+      {
+        "value": "STROMERZEUGUNG"
+      },
+      {
+        "value": "STROMVERBRAUCH"
+      },
+      {
+        "value": "SPEICHER"
+      }
+    ]
+  },
+  "UEBERMITTELBARKEITLEISTUNGSKURVE": {
+    "values": [
+      {
+        "value": "ELEKTRONISCH"
+      },
+      {
+        "value": "NICHT_ELEKTRONISCH"
+      }
+    ]
+  },
+  "UEBERMITTELBARKEITSCHALTZEIT": {
+    "values": [
+      {
+        "value": "ELEKTRONISCH"
+      },
+      {
+        "value": "NICHT_ELEKTRONISCH"
+      }
+    ]
+  },
+  "UEBERMITTELBARKEITZAEHLZEIT": {
+    "values": [
+      {
+        "value": "ELEKTRONISCH"
+      },
+      {
+        "value": "NICHT_ELEKTRONISCH"
+      }
+    ]
+  },
+  "UMSETZUNGSGRADVORGABE": {
+    "values": [
+      {
+        "value": "ZUORDNUNG_NUR_WENN_PRODUKTPAKET_UMSETZBAR"
+      },
+      {
+        "value": "ZUORDNUNG_AUCH_WENN_PRODUKTPAKET_NICHT_UMSETZBAR"
+      }
+    ]
+  },
+  "UNTERBRECHBARKEIT": {
+    "values": [
+      {
+        "value": "UV"
+      },
+      {
+        "value": "NUV"
+      }
+    ]
+  },
+  "VERBRAUCHSART": {
+    "values": [
+      {
+        "value": "KL"
+      },
+      {
+        "value": "W"
+      },
+      {
+        "value": "EMOB"
+      },
+      {
+        "value": "SB"
+      },
+      {
+        "value": "SW"
+      },
+      {
+        "value": "WK"
+      }
+    ]
+  },
+  "VERBRAUCHSMENGETYP": {
+    "values": [
+      {
+        "value": "ARBEITLEISTUNGTAGESPARAMETERABHMALO"
+      },
+      {
+        "value": "VERANSCHLAGTEJAHRESMENGE"
+      },
+      {
+        "value": "TUMKUNDENWERT"
+      }
+    ]
+  },
+  "VERFUEGBARKEIT": {
+    "values": [
+      {
+        "value": "MONTAG"
+      },
+      {
+        "value": "DIENSTAG"
+      },
+      {
+        "value": "MITTWOCH"
+      },
+      {
+        "value": "DONNERSTAG"
+      },
+      {
+        "value": "FREITAG"
+      },
+      {
+        "value": "PAUSE"
+      }
+    ]
+  },
+  "VERGUETUNGEMPFAENGER": {
+    "values": [
+      {
+        "value": "KUNDE"
+      },
+      {
+        "value": "LIEFERANT"
+      }
+    ]
+  },
+  "VERSORGUNGSART": {
+    "values": [
+      {
+        "value": "ERSATZVERSORGUNG"
+      },
+      {
+        "value": "GRUNDVERSORGUNG"
+      },
+      {
+        "value": "ERSATZBELIEFERUNG"
+      }
+    ]
+  },
+  "VERTRAGSART": {
+    "values": [
+      {
+        "value": "ENERGIELIEFERVERTRAG"
+      },
+      {
+        "value": "NETZNUTZUNGSVERTRAG"
+      },
+      {
+        "value": "BILANZIERUNGSVERTRAG"
+      },
+      {
+        "value": "MESSSTELLENBETRIEBSVERTRAG"
+      },
+      {
+        "value": "BUENDELVERTRAG"
+      }
+    ]
+  },
+  "VERTRAGSTATUS": {
+    "values": [
+      {
+        "value": "IN_ARBEIT"
+      },
+      {
+        "value": "UEBERMITTELT"
+      },
+      {
+        "value": "ANGENOMMEN"
+      },
+      {
+        "value": "AKTIV"
+      },
+      {
+        "value": "ABGELEHNT"
+      },
+      {
+        "value": "WIDERRUFEN"
+      },
+      {
+        "value": "STORNIERT"
+      },
+      {
+        "value": "GEKUENDIGT"
+      },
+      {
+        "value": "BEENDET"
+      }
+    ]
+  },
+  "VERWENDUNGSUMFANG": {
+    "values": [
+      {
+        "value": "MESSLOKATION_PROZESSUAL_BEHANDELT"
+      },
+      {
+        "value": "MESSLOKATION_LOKATIONSBUENDEL"
+      }
+    ]
+  },
+  "VERWENDUNGSZEITRAUMQUALITAET": {
+    "values": [
+      {
+        "value": "IM_SYSTEM_VORHANDENE_DATEN"
+      },
+      {
+        "value": "ERWARTETE_DATEN"
+      },
+      {
+        "value": "GUELTIGE_DATEN"
+      },
+      {
+        "value": "KEINE_DATEN"
+      },
+      {
+        "value": "IM_SYSTEM_KEINE_DATEN_VORHANDEN"
+      },
+      {
+        "value": "KEINE_DATEN_ERWARTET"
+      }
+    ]
+  },
+  "VERWENDUNGSZWECKBILANZKREIS": {
+    "values": [
+      {
+        "value": "VERBRAUCHENDE_MARKTLOKATION"
+      },
+      {
+        "value": "ERZEUGENDE_MARKTLOKATION_EEG"
+      },
+      {
+        "value": "ERZEUGENDE_MARKTLOKATION_KWKG"
+      },
+      {
+        "value": "SONSTIGE_ERZEUGENDE_MARKTLOKATION"
+      }
+    ]
+  },
+  "VERWENDUNGSZWECKVALUE": {
+    "values": [
+      {
+        "value": "NETZNUTZUNGSABRECHNUNG"
+      },
+      {
+        "value": "BILANZKREISABRECHNUNG"
+      },
+      {
+        "value": "MEHRMINDERMENGENABRECHNUNG"
+      },
+      {
+        "value": "ENDKUNDENABRECHNUNG"
+      },
+      {
+        "value": "UEBERMITTLUNG_AN_DAS_HKNR"
+      },
+      {
+        "value": "BLINDARBEITSABRECHNUNG"
+      },
+      {
+        "value": "ERMITTLUNG_AUSGEGLICHENHEIT_BILANZKREIS"
+      },
+      {
+        "value": "BLINDARBEITABRECHNUNG_BETRIEBSFUEHRUNG"
+      },
+      {
+        "value": "ES_LIEGT_KEIN_VERWENDUNGSZWECK_VOR"
+      }
+    ]
+  },
+  "VOLUMENERFASSUNG": {
+    "values": [
+      {
+        "value": "HOCHFREQUENZSONDE"
+      },
+      {
+        "value": "KENNLINIENKORREKTUR"
+      },
+      {
+        "value": "SCHLEICHMENGENUNTERDRUECKUNG"
+      }
+    ]
+  },
+  "WAEHRUNGSEINHEIT": {
+    "values": [
+      {
+        "value": "EUR"
+      },
+      {
+        "value": "CT"
+      }
+    ]
+  },
+  "WAERMENUTZUNG": {
+    "values": [
+      {
+        "value": "SPEICHERHEIZUNG"
+      },
+      {
+        "value": "WAERMEPUMPE"
+      },
+      {
+        "value": "DIREKTHEIZUNG"
+      },
+      {
+        "value": "WAERMEPUMPE_WAERME_KAELTE"
+      },
+      {
+        "value": "WAERMEPUMPE_KAELTE"
+      },
+      {
+        "value": "WAERMEPUMPE_WAERME"
+      }
+    ]
+  },
+  "WAHLRECHTPROGNOSEGRUNDLAGE": {
+    "values": [
+      {
+        "value": "DURCH_LF"
+      },
+      {
+        "value": "DURCH_LF_NICHT_GEGEBEN"
+      },
+      {
+        "value": "NICHT_WEGEN_GROSSEN_VERBRAUCHS"
+      },
+      {
+        "value": "NICHT_WEGEN_EIGENVERBRAUCH"
+      },
+      {
+        "value": "NICHT_WEGEN_TAGES_VERBRAUCH"
+      },
+      {
+        "value": "NICHT_WEGEN_ENWG"
+      }
+    ]
+  },
+  "WERTEGRANULARITAET": {
+    "values": [
+      {
+        "value": "JAEHRLICH"
+      },
+      {
+        "value": "HALBJAEHRLICH"
+      },
+      {
+        "value": "QUARTALSWEISE"
+      },
+      {
+        "value": "MONATLICH"
+      }
+    ]
+  },
+  "WERTERMITTLUNGSVERFAHREN": {
+    "values": [
+      {
+        "value": "PROGNOSE"
+      },
+      {
+        "value": "MESSUNG"
+      }
+    ]
+  },
+  "WERTEUEBERMITTLUNGVERWENDUNGSZWECK": {
+    "values": [
+      {
+        "value": "VORHANDEN"
+      },
+      {
+        "value": "NICHT_VORHANDEN"
+      }
+    ]
+  },
+  "ZAEHLERAUSPRAEGUNG": {
+    "values": [
+      {
+        "value": "EINRICHTUNGSZAEHLER"
+      },
+      {
+        "value": "ZWEIRICHTUNGSZAEHLER"
+      }
+    ]
+  },
+  "ZAEHLERTYP": {
+    "values": [
+      {
+        "value": "DREHSTROMZAEHLER"
+      },
+      {
+        "value": "BALGENGASZAEHLER"
+      },
+      {
+        "value": "DREHKOLBENZAEHLER"
+      },
+      {
+        "value": "SMARTMETER"
+      },
+      {
+        "value": "LEISTUNGSZAEHLER"
+      },
+      {
+        "value": "MAXIMUMZAEHLER"
+      },
+      {
+        "value": "TURBINENRADGASZAEHLER"
+      },
+      {
+        "value": "ULTRASCHALLGASZAEHLER"
+      },
+      {
+        "value": "WECHSELSTROMZAEHLER"
+      },
+      {
+        "value": "WIRBELGASZAEHLER"
+      },
+      {
+        "value": "MESSDATENREGISTRIERGERAET"
+      },
+      {
+        "value": "ELEKTRONISCHERHAUSHALTSZAEHLER"
+      },
+      {
+        "value": "SONDERAUSSTATTUNG"
+      },
+      {
+        "value": "WASSERZAEHLER"
+      },
+      {
+        "value": "MODERNEMESSEINRICHTUNG"
+      }
+    ]
+  },
+  "ZAEHLERTYPSPEZIFIKATION": {
+    "values": [
+      {
+        "value": "EDL40"
+      },
+      {
+        "value": "EDL21"
+      },
+      {
+        "value": "SONSTIGER_EHZ"
+      },
+      {
+        "value": "MME_STANDARD"
+      },
+      {
+        "value": "MME_MEDA"
+      }
+    ]
+  },
+  "ZAEHLZEITDEFINITIONTYP": {
+    "values": [
+      {
+        "value": "WAERMEPUMPE"
+      },
+      {
+        "value": "NACHTSPEICHERHEIZUNG"
+      },
+      {
+        "value": "SCHWACHLASTZEITFENSTER"
+      },
+      {
+        "value": "SONSTIGE"
+      },
+      {
+        "value": "HOCHLASTZEITFENSTER"
+      }
+    ]
+  },
+  "ZAHLERBLINDARBEIT": {
+    "values": [
+      {
+        "value": "ANSCHLUSSNUTZER"
+      },
+      {
+        "value": "LIEFERANT"
+      },
+      {
+        "value": "NICHT_FESTGELEGT"
+      }
+    ]
+  },
+  "ZEITEINHEIT": {
+    "values": [
+      {
+        "value": "SEKUNDE"
+      },
+      {
+        "value": "MINUTE"
+      },
+      {
+        "value": "STUNDE"
+      },
+      {
+        "value": "VIERTEL_STUNDE"
+      },
+      {
+        "value": "TAG"
+      },
+      {
+        "value": "WOCHE"
+      },
+      {
+        "value": "MONAT"
+      },
+      {
+        "value": "QUARTAL"
+      },
+      {
+        "value": "HALBJAHR"
+      },
+      {
+        "value": "JAHR"
+      }
+    ]
+  },
+  "ZEITREIHENTYP": {
+    "values": [
+      {
+        "value": "EGS"
+      },
+      {
+        "value": "LGS"
+      },
+      {
+        "value": "NZR"
+      },
+      {
+        "value": "SES"
+      },
+      {
+        "value": "SLS"
+      },
+      {
+        "value": "TES"
+      },
+      {
+        "value": "TLS"
+      },
+      {
+        "value": "SLS_TLS"
+      },
+      {
+        "value": "SES_TES"
+      },
+      {
+        "value": "AUS"
+      },
+      {
+        "value": "BAS"
+      },
+      {
+        "value": "DBA"
+      },
+      {
+        "value": "DZR"
+      },
+      {
+        "value": "DZÜ"
+      },
+      {
+        "value": "FPE"
+      },
+      {
+        "value": "FPI"
+      },
+      {
+        "value": "SRE"
+      },
+      {
+        "value": "SRI"
+      },
+      {
+        "value": "VZR"
+      },
+      {
+        "value": "BIL"
+      },
+      {
+        "value": "BIP"
+      },
+      {
+        "value": "BIT"
+      },
+      {
+        "value": "GAL"
+      },
+      {
+        "value": "GAP"
+      },
+      {
+        "value": "GAT"
+      },
+      {
+        "value": "GEL"
+      },
+      {
+        "value": "GEP"
+      },
+      {
+        "value": "GET"
+      },
+      {
+        "value": "SOL"
+      },
+      {
+        "value": "SOP"
+      },
+      {
+        "value": "SOT"
+      },
+      {
+        "value": "WFL"
+      },
+      {
+        "value": "WFP"
+      },
+      {
+        "value": "WNL"
+      },
+      {
+        "value": "WNP"
+      },
+      {
+        "value": "WNT"
+      },
+      {
+        "value": "WAL"
+      },
+      {
+        "value": "WAP"
+      },
+      {
+        "value": "WAT"
+      },
+      {
+        "value": "AU1"
+      },
+      {
+        "value": "BI1"
+      },
+      {
+        "value": "BI2"
+      },
+      {
+        "value": "BI3"
+      },
+      {
+        "value": "GAA"
+      },
+      {
+        "value": "GAB"
+      },
+      {
+        "value": "GAC"
+      },
+      {
+        "value": "GE1"
+      },
+      {
+        "value": "GE2"
+      },
+      {
+        "value": "GE3"
+      },
+      {
+        "value": "SO1"
+      },
+      {
+        "value": "SO2"
+      },
+      {
+        "value": "SO3"
+      },
+      {
+        "value": "WF1"
+      },
+      {
+        "value": "WF2"
+      },
+      {
+        "value": "WF3"
+      },
+      {
+        "value": "WN1"
+      },
+      {
+        "value": "WN2"
+      },
+      {
+        "value": "WN3"
+      },
+      {
+        "value": "WAA"
+      },
+      {
+        "value": "WAB"
+      },
+      {
+        "value": "WAC"
+      }
+    ]
+  },
+  "ZONE": {
+    "values": [
+      {
+        "value": "UTMZone31"
+      },
+      {
+        "value": "UTMZone32"
+      },
+      {
+        "value": "UTMZone33"
+      }
+    ]
+  },
+  "ZUSCHLAGTYP": {
+    "values": [
+      {
+        "value": "UMSPANNUNGSZUSCHLAG"
+      },
+      {
+        "value": "BETRIEBSMITTEL_P19_STROM_NEV"
+      },
+      {
+        "value": "ANPASSUNG_P19_STROM_NEV"
+      },
+      {
+        "value": "ANPASSUNG_PAUSCHALE_NETZENTGELTREDUZIERUNG_NACH_P14A_ENWG_AUF_HOEHE_DER_NNE"
+      }
+    ]
+  }
+}

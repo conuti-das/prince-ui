@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 88" role="img" aria-label="Chart-Vorschau">
+  <defs><linearGradient id="chA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bfe85a"/><stop offset="1" stop-color="#6cae0f"/></linearGradient></defs>
+  <line x1="28" y1="70" x2="176" y2="70" stroke="#3c454d"/>
+  <rect x="40" y="44" width="18" height="26" rx="3" fill="url(#chA)"/>
+  <rect x="70" y="30" width="18" height="40" rx="3" fill="url(#chA)"/>
+  <rect x="100" y="52" width="18" height="18" rx="3" fill="#3f7a06"/>
+  <rect x="130" y="20" width="18" height="50" rx="3" fill="url(#chA)"/>
+</svg>

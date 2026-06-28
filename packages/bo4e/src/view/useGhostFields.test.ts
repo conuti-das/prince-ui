@@ -16,4 +16,9 @@ describe("computeGhostFields", () => {
     expect(computeGhostFields(schema, "MALO", {})).not.toContain("zzz_not_in_dict");
     expect(computeGhostFields(schema, "MALO", {})).toEqual(["b", "a", "c"]);
   });
+
+  it("does not list a key that is present but empty (avoids duplicate rows)", () => {
+    // a="" is present (rendered by the caller's object-key loop) → not a ghost
+    expect(computeGhostFields(schema, "MALO", { a: "" })).toEqual(["b", "c"]);
+  });
 });

@@ -3808,10 +3808,36 @@
       }
     ]
   },
+  "reorderGroups": {
+    "props": []
+  },
+  "MakoPropertiesProvider": {
+    "props": [
+      {
+        "name": "registerProvider",
+        "type": "(priority: number, provider: unknown) => void",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "MAIN_GROUPS": {
+    "props": []
+  },
   "buildLintConfig": {
     "props": []
   },
   "DEFAULT_LINT_RULES": {
+    "props": []
+  },
+  "applyExternalTaskDefault": {
+    "props": []
+  },
+  "registerServiceTaskDefaults": {
+    "props": []
+  },
+  "PHP_TOPIC": {
     "props": []
   },
   "typeTone": {
@@ -4762,6 +4788,13 @@
         "required": false,
         "defaultValue": null,
         "description": ""
+      },
+      {
+        "name": "defaultDensity",
+        "type": "enum",
+        "required": false,
+        "defaultValue": "fachlich",
+        "description": ""
       }
     ]
   },
@@ -4930,6 +4963,15 @@
       }
     ]
   },
+  "isDeepEmpty": {
+    "props": []
+  },
+  "itemId": {
+    "props": []
+  },
+  "seedTree": {
+    "props": []
+  },
   "loadBo4eSchema": {
     "props": [
       {
@@ -4952,8 +4994,21 @@
         "required": true,
         "defaultValue": null,
         "description": ""
+      },
+      {
+        "name": "structure",
+        "type": "Bo4eStructure",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
       }
     ]
+  },
+  "resolveFieldStructure": {
+    "props": []
+  },
+  "mergeFieldDicts": {
+    "props": []
   },
   "normalizeToCDoc": {
     "props": [
@@ -5209,6 +5264,79 @@
       }
     ]
   },
+  "NestedValue": {
+    "props": [
+      {
+        "name": "schema",
+        "type": "Bo4eSchema",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "boTyp",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "fieldKey",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "value",
+        "type": "unknown",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "density",
+        "type": "enum",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "editable",
+        "type": "boolean",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "path",
+        "type": "Path",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "depth",
+        "type": "number",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "onChange",
+        "type": "((path: Path, value: unknown) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Immutable draft mutator, threaded from the card root (edit mode only)."
+      }
+    ]
+  },
+  "MAX_DEPTH": {
+    "props": []
+  },
+  "computeGhostFields": {
+    "props": []
+  },
   "FullDetail": {
     "props": [
       {
@@ -5233,10 +5361,17 @@
         "description": ""
       },
       {
+        "name": "density",
+        "type": "enum",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
         "name": "editable",
         "type": "boolean",
-        "required": false,
-        "defaultValue": false,
+        "required": true,
+        "defaultValue": null,
         "description": ""
       }
     ]
@@ -5265,6 +5400,20 @@
         "description": ""
       },
       {
+        "name": "density",
+        "type": "enum",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "editable",
+        "type": "boolean",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
         "name": "header",
         "type": "ReactNode",
         "required": false,
@@ -5285,6 +5434,20 @@
       {
         "name": "obj",
         "type": "Bo4eObject",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "density",
+        "type": "enum",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "editable",
+        "type": "boolean",
         "required": true,
         "defaultValue": null,
         "description": ""
@@ -5358,6 +5521,13 @@
         "required": true,
         "defaultValue": null,
         "description": ""
+      },
+      {
+        "name": "density",
+        "type": "enum",
+        "required": false,
+        "defaultValue": "fachlich",
+        "description": ""
       }
     ]
   },
@@ -5392,6 +5562,20 @@
         "name": "obj",
         "type": "Bo4eObject",
         "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "density",
+        "type": "enum",
+        "required": false,
+        "defaultValue": null,
+        "description": "Kuratiertes Fachlich-Summary; Detailgrad/Editieren übernimmt FullDetail."
+      },
+      {
+        "name": "editable",
+        "type": "boolean",
+        "required": false,
         "defaultValue": null,
         "description": ""
       },
