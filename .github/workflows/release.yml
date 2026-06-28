@@ -28,8 +28,10 @@ jobs:
           cache: pnpm
           registry-url: https://registry.npmjs.org
       - run: pnpm install --frozen-lockfile
-      - run: pnpm typecheck
+      # Build VOR typecheck: Workspace-Pakete brauchen die dist-Typen der anderen
+      # (z. B. prince-ui-dmn importiert prince-ui), sonst „Cannot find module".
       - run: pnpm build
+      - run: pnpm typecheck
       - name: Publish (idempotent — nur neue Versionen)
         run: pnpm changeset publish
         env:
