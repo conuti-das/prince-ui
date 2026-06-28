@@ -49,6 +49,8 @@ export function reorderGroups(groups: PanelGroup[]): PanelGroup[] {
   const advanced = groups.filter((g) => !MAIN_GROUPS.includes(g.id));
   main.sort((a, b) => rank(a.id, MAIN_GROUPS) - rank(b.id, MAIN_GROUPS));
   advanced.sort((a, b) => rank(a.id, ADVANCED_ORDER) - rank(b.id, ADVANCED_ORDER));
+  // Haupt-Zone offen (wichtige Felder sofort sichtbar), Erweitert eingeklappt.
+  for (const g of main) g.shouldOpen = true;
   for (const g of advanced) g.shouldOpen = false;
   return [...main, ...advanced];
 }
