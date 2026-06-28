@@ -6,15 +6,19 @@ import {
   SliderTrack, SliderThumb, SliderOutput,
 } from "react-aria-components";
 import { cx } from "../utils";
+import { useFieldSize, type FieldSize } from "./size";
 import "./forms.css";
 import "./numeric.css";
 
 export interface NumberFieldProps extends Omit<RACNumberFieldProps, "className"> {
-  label?: ReactNode; description?: ReactNode; errorMessage?: ReactNode; placeholder?: string; className?: string;
+  label?: ReactNode; description?: ReactNode; errorMessage?: ReactNode; placeholder?: string;
+  /** Größe: s (kompakt) | m (Default) | l. Ohne Angabe greift der PrinceSizeProvider-Context. */
+  size?: FieldSize; className?: string;
 }
-export function NumberField({ label, description, errorMessage, placeholder, className, ...props }: NumberFieldProps) {
+export function NumberField({ label, description, errorMessage, placeholder, size, className, ...props }: NumberFieldProps) {
+  const resolvedSize = useFieldSize(size);
   return (
-    <RACNumberField {...props} className={cx("prn-field prn-numberfield", className)}>
+    <RACNumberField {...props} data-size={resolvedSize} className={cx("prn-field prn-numberfield", className)}>
       {label && <Label className="prn-field-label">{label}</Label>}
       <Group className="prn-numberfield-group">
         <RACButton slot="decrement" className="prn-numberfield-step">−</RACButton>

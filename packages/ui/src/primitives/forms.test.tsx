@@ -11,6 +11,7 @@ import {
   Select,
   SelectItem,
 } from "./forms";
+import { PrinceSizeProvider } from "./size";
 
 describe("forms primitives", () => {
   it("Button fires onPress and reflects its variant", async () => {
@@ -73,5 +74,38 @@ describe("forms primitives", () => {
     await userEvent.click(screen.getByRole("button", { name: /Sparte/ }));
     await userEvent.click(screen.getByRole("option", { name: "Gas" }));
     expect(onSelectionChange).toHaveBeenCalledWith("gas");
+  });
+
+  it("TextField defaults to size m", () => {
+    render(<TextField label="Name" />);
+    expect(screen.getByLabelText("Name").closest(".prn-field")).toHaveAttribute("data-size", "m");
+  });
+
+  it("TextField reflects an explicit size on the field root", () => {
+    render(<TextField label="Name" size="s" />);
+    expect(screen.getByLabelText("Name").closest(".prn-field")).toHaveAttribute("data-size", "s");
+  });
+
+  it("Button reflects an explicit size", () => {
+    render(<Button size="s">Klick</Button>);
+    expect(screen.getByRole("button", { name: "Klick" })).toHaveAttribute("data-size", "s");
+  });
+
+  it("PrinceSizeProvider sets the default size for nested fields", () => {
+    render(
+      <PrinceSizeProvider size="s">
+        <TextField label="Name" />
+      </PrinceSizeProvider>,
+    );
+    expect(screen.getByLabelText("Name").closest(".prn-field")).toHaveAttribute("data-size", "s");
+  });
+
+  it("explicit size overrides the PrinceSizeProvider context", () => {
+    render(
+      <PrinceSizeProvider size="s">
+        <TextField label="Name" size="l" />
+      </PrinceSizeProvider>,
+    );
+    expect(screen.getByLabelText("Name").closest(".prn-field")).toHaveAttribute("data-size", "l");
   });
 });
