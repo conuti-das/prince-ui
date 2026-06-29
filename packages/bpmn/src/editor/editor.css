@@ -385,6 +385,15 @@
 .prn-bpmn .djs-palette .entry:hover {
   color: var(--prn-accent);
 }
+/* Context-Pad als zusammenhängende Karte (analog Palette) statt rohem dunklen
+   Block — behebt den "schwarzen Bereich" beim Öffnen des Element-Menüs. */
+.prn-bpmn .djs-context-pad.open {
+  border-radius: var(--prn-radius-md, 10px);
+  border: 1px solid var(--prn-separator);
+  box-shadow: var(--prn-shadow-raised);
+  padding: 4px;
+  overflow: hidden;
+}
 .prn-bpmn .djs-context-pad .entry {
   color: var(--prn-label);
   border-radius: var(--prn-radius-sm, 8px);
