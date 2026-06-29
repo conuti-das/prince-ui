@@ -1,10 +1,10 @@
 # Typografie
 
-Die Typografie folgt dem Apple-System-Stack: `--prn-font` setzt auf
-`-apple-system`/`SF Pro` und fällt sauber auf `system-ui` zurück. Daneben gibt es
-`--prn-font-mono` (SF Mono / Menlo) für Code und Zahlen-Tabellen sowie `--prn-font-rounded`
-(SF Pro Rounded) für betont freundliche Flächen. Im CU-Theme wird `--prn-font` auf den
-Inter-geführten Community-Stack umgestellt — auch hier gilt: Schrift über den Token beziehen,
+Die Typografie nutzt den nativen System-Font-Stack: `--prn-font` zieht die System-Schrift der
+jeweiligen Plattform und fällt sauber auf `system-ui` zurück. Daneben gibt es
+`--prn-font-mono` (System-Monospace) für Code und Zahlen-Tabellen sowie `--prn-font-rounded`
+(abgerundete System-Schrift) für betont freundliche Flächen. Im Cu-Theme wird `--prn-font`
+auf den Inter-geführten Stack umgestellt — auch hier gilt: Schrift über den Token beziehen,
 nie eine Font-Family hart setzen.
 
 ## Typo-Skala
@@ -20,7 +20,7 @@ Family in einem Wert). Du setzt damit eine Textebene mit genau einer Deklaration
     ['--prn-text-title', 'Title'],
     ['--prn-text-title-3', 'Title 3'],
     ['--prn-text-headline', 'Headline'],
-    ['--prn-text-body', 'Body — Marktkommunikation in der Energiewirtschaft'],
+    ['--prn-text-body', 'Body — der Standard für lesbaren Fließtext'],
     ['--prn-text-callout', 'Callout'],
     ['--prn-text-subhead', 'Subhead'],
     ['--prn-text-footnote', 'Footnote'],
@@ -35,7 +35,7 @@ Family in einem Wert). Du setzt damit eine Textebene mit genau einer Deklaration
 
 ## Body ist 17px
 
-`--prn-text-body` ist mit 17px/1.47 die Apple-Body-Größe und damit der Default für lesbaren
+`--prn-text-body` ist mit 17px/1.47 die Standard-Body-Größe und damit der Default für lesbaren
 Fließtext. Kleinere Stufen (`--prn-text-subhead`, `--prn-text-footnote`, `--prn-text-caption`)
 sind für Metadaten, Beschriftungen und Hilfetexte reserviert — nicht für längere
 Lesepassagen.

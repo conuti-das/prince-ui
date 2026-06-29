@@ -324,7 +324,7 @@
 }
 
 /* ============================================================
-   Palette / Context-Pad / Append-Popup — Apple-Look, alle Themes.
+   Palette / Context-Pad / Append-Popup — Prince-Look, alle Themes.
    diagram-js nutzt die --color-, --palette-, --context-pad- und
    --popup-Variablen auf .djs-parent → token-getrieben überschrieben.
    ============================================================ */
@@ -371,7 +371,7 @@
   --search-result-secondary-color: var(--prn-label-2);
 }
 
-/* Palette: Apple-Karten-Optik */
+/* Palette: Karten-Optik */
 .prn-bpmn .djs-palette {
   border-radius: var(--prn-radius-md, 10px);
   border: 1px solid var(--prn-separator);
@@ -413,7 +413,7 @@
   display: none;
 }
 
-/* ---- Minimap (diagram-js-minimap) — Apple-Look, alle Themes ---- */
+/* ---- Minimap (diagram-js-minimap) — Prince-Look, alle Themes ---- */
 .prn-bpmn .djs-minimap {
   border-radius: var(--prn-radius-md, 10px);
   border: 1px solid var(--prn-separator);

@@ -1,5 +1,5 @@
 /**
- * Apple-Look-Custom-Renderer (diagram-js `additionalModules`).
+ * Prince-Look-Custom-Renderer (diagram-js `additionalModules`).
  *
  * Erbt vom `BpmnRenderer`, delegiert für alle Typen an die Original-Zeichenroutine
  * (Geometrie/Hit-Boxes/Bendpoints bleiben unangetastet) und passt nur die weiche
@@ -12,12 +12,12 @@
 
 import type { DiagramColors } from "./diagram-theme";
 
-/** Apple-Systemschrift-Stack (SF Pro), passend zum `--prn-font`-Token. */
+/** System-Font-Stack, passend zum `--prn-font`-Token. */
 const APPLE_FONT =
   '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, "Helvetica Neue", sans-serif';
 
 /** Baut die `bpmnRenderer`/`textRenderer`-Config aus den Token-Farben.
- *  Setzt zusätzlich SF-Pro auf alle Diagramm-Labels (interne + externe), damit
+ *  Setzt zusätzlich den System-Font auf alle Diagramm-Labels (interne + externe), damit
  *  die Beschriftungen nicht in der bpmn-js-Default-Schrift erscheinen. */
 export function buildRendererConfig(colors: DiagramColors) {
   const labelStyle = {
@@ -40,7 +40,7 @@ export function buildRendererConfig(colors: DiagramColors) {
 }
 
 /**
- * Erzeugt das `additionalModules`-Eintrag-Objekt für den Apple-Look-Renderer.
+ * Erzeugt das `additionalModules`-Eintrag-Objekt für den Prince-Look-Renderer.
  * `BpmnRenderer` wird injiziert (per Dynamic Import geladen), damit der Paket-Entry
  * frei von bpmn-js-Top-Level-Imports bleibt.
  */
@@ -64,7 +64,7 @@ export function createAppleRendererModule(BpmnRenderer: new (...args: unknown[])
     return parentProto.canRender.call(this, element);
   };
 
-  // drawShape: super zeichnen lassen, danach Apple-Feinschliff anwenden.
+  // drawShape: super zeichnen lassen, danach den Feinschliff anwenden.
   AppleRenderer.prototype.drawShape = function drawShape(
     this: Record<string, unknown>,
     parentNode: SVGElement,
@@ -75,7 +75,7 @@ export function createAppleRendererModule(BpmnRenderer: new (...args: unknown[])
 
     try {
       const type = element.type ?? "";
-      // Task-/Activity-Rechtecke runder (Apple-Card-Radius).
+      // Task-/Activity-Rechtecke runder (Card-Radius).
       if (type.includes("Task") || type.includes("SubProcess") || type.includes("CallActivity")) {
         const rect = parentNode.querySelector("rect");
         if (rect) {
@@ -89,7 +89,7 @@ export function createAppleRendererModule(BpmnRenderer: new (...args: unknown[])
       if (stroke && stroke.getAttribute("stroke-width") === "2") {
         stroke.setAttribute("stroke-width", "1.5");
       }
-      // Dezenter Apple-Schatten auf der gesamten Form (nicht auf Labels/Connections).
+      // Dezenter, weicher Schatten auf der gesamten Form (nicht auf Labels/Connections).
       const isLabel = type === "label";
       if (!isLabel && main?.style) {
         main.style.filter = "drop-shadow(0 1px 2px rgba(0, 0, 0, 0.12))";

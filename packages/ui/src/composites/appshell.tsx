@@ -95,7 +95,7 @@ function BarButton({
 }
 
 /**
- * AppShell — Apple-orientierte App-Hülle mit voller ShellBar-Funktion
+ * AppShell — App-Hülle mit voller ShellBar-Funktion
  * (vgl. SAP UI5 ShellBar): Logo, Titel + Untertitel + Titel-Dropdown, Suche
  * (auf Mobile kollabierbar), Aktions-Items mit Overflow, Benachrichtigungen,
  * Produkt-Wechsler, Profil — plus Sidebar (Off-canvas auf Mobile) und Content.

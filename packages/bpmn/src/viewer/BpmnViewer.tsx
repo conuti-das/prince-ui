@@ -68,7 +68,7 @@ interface ViewerInstance {
 }
 
 /**
- * Apple-styled, read-only BPMN-Viewer mit deklarativem Status-Highlighting.
+ * Prince-styled, read-only BPMN-Viewer mit deklarativem Status-Highlighting.
  */
 export function BpmnViewer({
   xml,

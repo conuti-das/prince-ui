@@ -1,9 +1,9 @@
 /**
- * `<BpmnEditor>` — vollwertiger bpmn-js-Modeler im Apple-Look.
+ * `<BpmnEditor>` — vollwertiger bpmn-js-Modeler in der Prince-Designsprache.
  *
  * - `bpmn-js/lib/Modeler` + Properties-Panel (eigener Container) +
  *   bpmnlint (Regeln lazy geladen, ErrorPanel) + camunda-moddle.
- * - Apple-Look-Custom-Renderer (`additionalModules`, `super(eventBus, 1500)`),
+ * - Prince-Look-Custom-Renderer (`additionalModules`, `super(eventBus, 1500)`),
  *   delegiert an `BpmnRenderer`, passt nur Optik an.
  * - Original-bpmn.io-Icons in Palette/Context-Pad bleiben erhalten
  *   (über `bpmn-font` aus `base.css`).

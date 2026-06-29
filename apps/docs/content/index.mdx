@@ -1,10 +1,10 @@
 # prince-ui
 
-Das gemeinsame React-Design-System der CONUTI-Energiewirtschaftsanwendungen — gebaut auf
+Das gemeinsame React-Design-System für unsere Produkte — gebaut auf
 [React Aria](https://react-spectrum.adobe.com/react-aria/) für Zugänglichkeit von Grund auf,
-gekleidet in die Prince-Designsprache. Eine Token-Basis, drei Themes (Apple Dark, Apple Light,
-CONUTI-Community), eine konsistente Komponenten-Bibliothek von Formularen über Tabellen bis zu
-Diagrammen und ganzen App-Shells.
+gekleidet in die Prince-Designsprache. Eine Token-Basis, drei Themes (Dunkel, Hell, Cu),
+eine konsistente Komponenten-Bibliothek von Formularen über Tabellen bis zu Diagrammen und
+ganzen App-Shells.
 
 <Example code={`<div style={{
   display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center',
@@ -24,8 +24,8 @@ Diagrammen und ganzen App-Shells.
   Komponenten verwenden niemals rohe Hex-Werte — deshalb sind sie automatisch theme-fähig.
 - **Zugänglich per Default.** Auf React Aria aufgebaut: Tastaturbedienung, Fokus-Management,
   ARIA-Rollen und sichtbare Fokusringe sind eingebaut, nicht nachgerüstet.
-- **Drei Themes, ein Code.** Apple Dark, Apple Light und das CONUTI-Community-Styling teilen sich
-  denselben Komponenten-Code; gewechselt wird über ein einziges Attribut am `<html>`.
+- **Drei Themes, ein Code.** Dunkel, Hell und das Cu-Theme teilen sich denselben
+  Komponenten-Code; gewechselt wird über ein einziges Attribut am `<html>`.
 - **Deutsch & lokalisiert.** Datums-, Zahlen- und Beträge-Komponenten laufen mit `de-DE` als Locale.
 
 ## Foundations
@@ -34,7 +34,7 @@ Die Grundlagen, auf denen jede Komponente steht:
 
 - [Design-Tokens](/foundations/tokens) — die Single Source of Truth (`--prn-*`): Radien, Maße, Bewegung.
 - [Farben](/foundations/colors) — semantische Farbrollen: Akzent, Flächen, Text-Hierarchie, Status, Charts.
-- [Typografie](/foundations/typography) — die Apple-Typo-Skala als fertige `font`-Tokens.
+- [Typografie](/foundations/typography) — die Typo-Skala als fertige `font`-Tokens.
 - [Theming](/foundations/theming) — `setTheme` und die drei Themes im Detail.
 - [Icons](/foundations/icons) — der monochrome `<Icon>`-Satz mit `currentColor`.
 
