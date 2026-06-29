@@ -1,11 +1,30 @@
-.pg { display: grid; grid-template-columns: 1fr 240px; gap: 1rem; background: var(--prn-bg-elevated); border: 1px solid var(--prn-separator); border-radius: 12px; padding: 1.25rem; }
+.pg { display: grid; grid-template-columns: 1fr 250px; gap: 1rem; background: var(--prn-bg-elevated); border: 1px solid var(--prn-separator); border-radius: 12px; padding: 1.25rem; }
 .pg-stage { display: flex; align-items: center; justify-content: center; min-height: 200px; }
-.pg-controls { display: flex; flex-direction: column; gap: .75rem; }
-.pg-control { display: flex; flex-direction: column; gap: .25rem; font-size: .8rem; }
-.pg-control-name { color: var(--prn-label-2); }
+
+/* Live-Props: kompakte Steuerleiste, oben ausgerichtet statt über die Stage-Höhe gestreckt */
+.pg-controls { align-self: start; display: flex; flex-direction: column; gap: .15rem; background: var(--prn-bg, rgba(0,0,0,.18)); border: 1px solid var(--prn-separator); border-radius: 10px; padding: .4rem; }
+.pg-controls::before { content: "Live-Props"; font-size: .68rem; text-transform: uppercase; letter-spacing: .05em; color: var(--prn-label-3, var(--prn-label-2)); padding: .25rem .45rem .35rem; }
+
+/* Eine Zeile pro Prop: Name links, Control rechts */
+.pg-control { display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: .75rem; min-height: 30px; padding: .25rem .45rem; border-radius: 7px; font-size: .8rem; cursor: pointer; }
+.pg-control:hover { background: var(--prn-fill, rgba(255,255,255,.05)); }
+.pg-control-name { color: var(--prn-label-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* Eingaben/Selects nehmen rechts gedeckelt Platz; Checkbox bleibt kompakt */
+.pg-control input[type="text"], .pg-control input[type="number"], .pg-control select { flex: 0 1 130px; min-width: 0; background: var(--prn-bg-elevated); color: var(--prn-label); border: 1px solid var(--prn-separator); border-radius: 6px; padding: .2rem .4rem; font-size: .78rem; }
+.pg-control input[type="checkbox"] { flex: 0 0 auto; width: 16px; height: 16px; accent-color: var(--prn-accent, #a0d22b); cursor: pointer; }
+
 .pg-info { margin-left: .35rem; cursor: help; text-decoration: none; color: var(--prn-label-3, var(--prn-label-2)); border: 0; }
 .pg-code { grid-column: 1 / -1; position: relative; }
 .pg-code pre { background: var(--prn-bg, #11161b); border-radius: 8px; padding: 1rem; padding-top: 2.6rem; overflow: auto; }
 .pg-actions { position: absolute; top: .5rem; right: .5rem; display: flex; gap: .4rem; z-index: 1; }
 .pg-copy { font-size: .75rem; padding: .25rem .55rem; cursor: pointer; background: var(--prn-bg-elevated); color: var(--prn-label); border: 1px solid var(--prn-separator); border-radius: 6px; }
 .pg-copy:hover { border-color: var(--prn-accent, #a0d22b); }
+
+/* Schmale Viewports: Stage und Steuerleiste untereinander, Props als umbrechende Chips */
+@media (max-width: 640px) {
+  .pg { grid-template-columns: 1fr; }
+  .pg-controls { flex-direction: row; flex-wrap: wrap; gap: .35rem; }
+  .pg-controls::before { flex-basis: 100%; padding-bottom: 0; }
+  .pg-control { flex: 1 1 auto; border: 1px solid var(--prn-separator); }
+}
