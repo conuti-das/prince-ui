@@ -2,13 +2,13 @@
 
 prince-ui kennt drei Themes, gesteuert über das Attribut `data-theme` am `<html>`-Element:
 
-- **Apple Dark** (`data-theme="dark"`) — der Default und Fallback. Apple-System-Farben, grüner Akzent.
-- **Apple Light** (`data-theme="light"`) — die helle Apple-Optik mit WCAG-AA-justiertem Sekundärtext.
-- **CU** (`data-theme="cu"`) — das CONUTI-Community-Styling: CI-Grün `#a0d22b`, Inter-Font, grünes Bento-Mesh.
+- **Dunkel** (`data-theme="dark"`) — der Default und Fallback. Dunkle System-Farben, grüner Akzent.
+- **Hell** (`data-theme="light"`) — die helle Variante mit WCAG-AA-justiertem Sekundärtext.
+- **Cu** (`data-theme="cu"`) — das CONUTI-CI-Theme: CI-Grün `#a0d22b`, Inter-Font, grünes Bento-Mesh.
 
 Ohne `data-theme` folgt prince-ui dem Betriebssystem (`prefers-color-scheme`) und fällt bei
-fehlender Präferenz auf **Dark** zurück. Light/Dark sind „original Apple", CU ist die frühere
-Community-Optik, 1:1 erhalten.
+fehlender Präferenz auf **Dunkel** zurück. Hell und Dunkel sind die neutralen System-Themes,
+Cu ist die CONUTI-CI-Variante.
 
 ## setTheme / getTheme
 
@@ -18,8 +18,8 @@ setzt bzw. entfernt `data-theme` am Wurzelelement. `null` bedeutet „dem System
 ```ts
 import { setTheme, getTheme, type PrinceTheme } from '@conuti-das/prince-ui';
 
-setTheme('cu');     // erzwingt CONUTI-Community
-setTheme('light');  // erzwingt Apple Light
+setTheme('cu');     // erzwingt das Cu-Theme (CONUTI-CI)
+setTheme('light');  // erzwingt Hell
 setTheme(null);     // wieder dem OS folgen
 getTheme();         // => "cu" | "light" | "dark" | null
 ```
@@ -27,9 +27,9 @@ getTheme();         // => "cu" | "light" | "dark" | null
 Probiere es direkt aus — die Buttons schalten das Theme dieser Doku-Seite live um:
 
 <Example code={`<div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-  <Button variant="filled" onPress={() => setTheme('dark')}>Apple Dark</Button>
-  <Button variant="tinted" onPress={() => setTheme('light')}>Apple Light</Button>
-  <Button variant="tinted" onPress={() => setTheme('cu')}>CU</Button>
+  <Button variant="filled" onPress={() => setTheme('dark')}>Dunkel</Button>
+  <Button variant="tinted" onPress={() => setTheme('light')}>Hell</Button>
+  <Button variant="tinted" onPress={() => setTheme('cu')}>Cu</Button>
   <Button variant="plain" onPress={() => setTheme(null)}>System folgen</Button>
 </div>`} />
 
@@ -71,7 +71,7 @@ import '@conuti-das/prince-ui/styles.css';
 
 ## Accessibility
 
-Die drei Themes sind nicht nur kosmetisch: Apple Light justiert `--prn-label-2` auf 75 %
+Die drei Themes sind nicht nur kosmetisch: Hell justiert `--prn-label-2` auf 75 %
 Deckkraft, damit Sekundärtext WCAG-AA erreicht, und jedes Theme setzt das passende
 `color-scheme` (`dark`/`light`), sodass native Controls und Scrollbars korrekt rendern. Wenn
 du einen Theme-Umschalter ins UI baust, gib ihm ein zugängliches Label (`aria-label="Theme"`)

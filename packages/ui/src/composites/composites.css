@@ -116,7 +116,7 @@
   border-color: transparent;
 }
 /* Dunkle Schrift auf der Akzent-Fläche (Kommentar oben): var(--prn-on-accent) ist
-   weiß und ergab ~2.22 Kontrast auf Apple-Grün. Dunkler Text trifft ~7:1 auf
+   weiß und ergab ~2.22 Kontrast auf dem Akzentgrün. Dunkler Text trifft ~7:1 auf
    Grün/Lime in allen Themes. */
 .prn-kpi[data-accent] .prn-kpi-label,
 .prn-kpi[data-accent] .prn-kpi-value,

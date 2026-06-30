@@ -14,7 +14,7 @@
   background: var(--prn-bpmn-canvas-bg);
 }
 
-/* bpmn.io-Wasserzeichen ausblenden (kein Fremd-Branding im Apple-Look) —
+/* bpmn.io-Wasserzeichen ausblenden (kein Fremd-Branding) —
    gilt für Viewer und Editor, da beide unter .prn-bpmn liegen. */
 .prn-bpmn .bjs-powered-by {
   display: none;

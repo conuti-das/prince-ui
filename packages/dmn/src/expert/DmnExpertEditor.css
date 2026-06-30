@@ -117,8 +117,8 @@
  * definieren wir nur diese Primitive auf prince-ui-Tokens um → der gesamte Editor
  * (Decision-Table-Header When/Then, Typ-Zeile, Hit-Policy, Zeilennummern,
  * Annotations, Literal-Expression, Kontextmenüs, Palette, Definitions-Box) folgt
- * automatisch. Light bleibt nah am Original; Dark UND CU (dunkle Surfaces)
- * bekommen invertierte Grau-Rampe + Apple-Akzente.
+ * automatisch. Hell bleibt nah am Original; Dunkel UND Cu (dunkle Surfaces)
+ * bekommen invertierte Grau-Rampe + farbige Akzente.
  * ========================================================================== */
 
 /* ---- Basis: Tokens an die dmn-js-Wurzeln durchreichen (alle Themes) ---- */
@@ -210,7 +210,7 @@
   max-width: 100%;
 }
 
-/* View-DRD/Edit/Simple-Mode-Buttons im Apple-Look. */
+/* View-DRD/Edit/Simple-Mode-Buttons im Prince-Look. */
 .prn-dmn-expert .view-drd-button,
 .prn-dmn-expert .simple-mode-button,
 .prn-dmn-expert .edit-button {

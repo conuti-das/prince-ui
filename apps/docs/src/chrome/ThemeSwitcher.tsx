@@ -3,9 +3,9 @@ import { setTheme, type PrinceTheme } from "@conuti-das/prince-ui";
 
 const OPTIONS: { value: PrinceTheme | "system"; label: string }[] = [
   { value: "system", label: "System" },
-  { value: "dark", label: "Prince Dark" },
-  { value: "light", label: "Prince Light" },
-  { value: "cu", label: "CU" },
+  { value: "dark", label: "Dunkel" },
+  { value: "light", label: "Hell" },
+  { value: "cu", label: "Cu" },
 ];
 
 export function ThemeSwitcher() {

@@ -300,7 +300,7 @@
   min-height: 56px;
 }
 
-/* Inline-Input füllt die Zelle, gut sichtbarer Apple-Fokusring */
+/* Inline-Input füllt die Zelle, gut sichtbarer Fokusring */
 .prn-dmn-table .prn-dmn-cell__input {
   box-shadow: var(--prn-focus, inset 0 0 0 1.5px var(--prn-blue));
   background: var(--prn-bg-elevated);
@@ -368,7 +368,7 @@
   max-width: 100%;
 }
 
-/* Apple-Akzentbalken im Header: 28px-Pill statt gestauchter 3px-Kante */
+/* Akzentbalken im Header: 28px-Pill statt gestauchter 3px-Kante */
 .prn-dmn-table .prn-dmn-colhead {
   border-top: none;
   position: relative;

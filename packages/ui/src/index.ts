@@ -7,14 +7,14 @@
 
 export const PRINCE_UI_VERSION = "0.8.0";
 
-/** Die drei Prince-Modes. `null` = System folgen (prefers-color-scheme, Fallback Dark). */
+/** Die drei Prince-Modes. `null` = System folgen (prefers-color-scheme, Fallback Dunkel). */
 export type PrinceTheme = "light" | "dark" | "cu";
 
 /**
  * Setzt das Theme am <html>-Element.
- * - `"light"` / `"dark"` → Prince Light / Prince Dark (Apple-Optik: SF-Fonts, Apple-System-Farben, Grün)
- * - `"cu"`               → CONUTI Community-Styling (CI-Grün)
- * - `null`               → System folgen (Prince Light bei OS-Light, sonst Prince Dark)
+ * - `"light"` / `"dark"` → Hell / Dunkel (neutrale System-Themes: System-Font-Stack, System-Farben, Grün)
+ * - `"cu"`               → CONUTI-CI-Theme (CI-Grün)
+ * - `null`               → System folgen (Hell bei OS-Light, sonst Dunkel)
  */
 export function setTheme(theme: PrinceTheme | null): void {
   const root = document.documentElement;
