@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { selectProps, type PropsData } from "./props-data";
 
 export function PropsTable({ name }: { name: string }) {
@@ -9,14 +9,26 @@ export function PropsTable({ name }: { name: string }) {
   if (props.length === 0) return <p><em>Keine Props dokumentiert.</em></p>;
   return (
     <table className="docs-props-table">
-      <thead><tr><th>Name</th><th>Type</th><th>Default</th></tr></thead>
+      <thead>
+        <tr><th>Name</th><th>Type</th><th>Default</th></tr>
+      </thead>
       <tbody>
         {props.map((p) => (
-          <tr key={p.name}>
-            <td><code>{p.name}</code>{p.required && <span aria-label="erforderlich"> *</span>}<br /><small>{p.description}</small></td>
-            <td><code>{p.type}</code></td>
-            <td>{p.defaultValue ? <code>{p.defaultValue}</code> : "—"}</td>
-          </tr>
+          <Fragment key={p.name}>
+            <tr>
+              <td>
+                <code>{p.name}</code>
+                {p.required && <span className="docs-required" aria-label="erforderlich">*</span>}
+              </td>
+              <td><code className="docs-type">{p.type}</code></td>
+              <td>{p.defaultValue ? <code className="docs-default">{p.defaultValue}</code> : "—"}</td>
+            </tr>
+            {p.description && (
+              <tr className="docs-props-desc">
+                <td colSpan={3}>{p.description}</td>
+              </tr>
+            )}
+          </Fragment>
         ))}
       </tbody>
     </table>

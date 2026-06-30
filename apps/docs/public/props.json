@@ -5007,6 +5007,9 @@
   "resolveFieldStructure": {
     "props": []
   },
+  "mergeFieldDicts": {
+    "props": []
+  },
   "normalizeToCDoc": {
     "props": [
       {

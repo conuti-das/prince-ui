@@ -14,6 +14,8 @@ export function computeGhostFields(schema: Bo4eSchema, boTyp: string, obj: Bo4eO
     ...props.filter((k) => k in dict),
     ...dictKeys.filter((k) => !props.includes(k)),
   ];
-  const isFilled = (k: string) => k in obj && obj[k] != null && obj[k] !== "";
-  return ordered.filter((k) => k !== "boTyp" && !isFilled(k));
+  // Ghosts are documented fields ABSENT from the object. Keys present with an
+  // empty value are already rendered by the caller's object-key loop, so adding
+  // them here would duplicate the row.
+  return ordered.filter((k) => k !== "boTyp" && !(k in obj));
 }

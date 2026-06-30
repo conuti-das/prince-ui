@@ -1,5 +1,11 @@
 # prince-ui-bo4e
 
+## 0.4.0
+
+### Minor Changes
+
+- Sub-Felder neu erstellter Komponenten werden aufgelöst, Beispiel-Prefill und eine vereinheitlichte BO4E-Generierungspipeline (gen-bo4e ersetzt gen-structure). Inkl. Schema-Merge-Hilfen und NestedValue-Verbesserungen.
+
 ## 0.3.0
 
 ### Minor Changes

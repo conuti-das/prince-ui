@@ -1,57 +1,107 @@
-# prince-ui
+<Hero
+  eyebrow="React-Design-System"
+  title="Oberflächen mit Politur"
+  lead="prince-ui ist das gemeinsame React-Design-System für unsere Produkte: eine Token-Basis, drei Themes und über 70 zugängliche Komponenten — von Formularen über Tabellen bis zu kompletten Prozess-Editoren.">
+  <a className="docs-btn docs-btn-primary" href="/components/button">Loslegen</a>
+  <a className="docs-btn docs-btn-secondary" href="/foundations/tokens">Tokens ansehen</a>
+</Hero>
 
-Das gemeinsame React-Design-System für unsere Produkte — gebaut auf
-[React Aria](https://react-spectrum.adobe.com/react-aria/) für Zugänglichkeit von Grund auf,
-gekleidet in die Prince-Designsprache. Eine Token-Basis, drei Themes (Dunkel, Hell, Cu),
-eine konsistente Komponenten-Bibliothek von Formularen über Tabellen bis zu Diagrammen und
-ganzen App-Shells.
+<section className="docs-section">
 
-<Example code={`<div style={{
-  display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center',
-  padding: 24, background: 'var(--prn-bg-elevated)', border: 'var(--prn-card-border)',
-  borderRadius: 'var(--prn-radius-card)', boxShadow: 'var(--prn-shadow-raised)'
-}}>
-  <Button variant="filled">Bestätigen</Button>
-  <Button variant="tinted">Abbrechen</Button>
-  <Button variant="plain">Mehr</Button>
-  <Badge>Aktiv</Badge>
-  <span style={{ color: 'var(--prn-accent)' }}><Icon name="check" size={24} /></span>
-</div>`} />
+## Alles für schöne Oberflächen
 
-## Was prince-ui ausmacht
+<div className="docs-bento">
 
-- **Token-getrieben.** Jede Farbe, Schrift, Linie und Bewegung ist eine `--prn-*`-Custom-Property.
-  Komponenten verwenden niemals rohe Hex-Werte — deshalb sind sie automatisch theme-fähig.
-- **Zugänglich per Default.** Auf React Aria aufgebaut: Tastaturbedienung, Fokus-Management,
-  ARIA-Rollen und sichtbare Fokusringe sind eingebaut, nicht nachgerüstet.
-- **Drei Themes, ein Code.** Dunkel, Hell und das Cu-Theme teilen sich denselben
-  Komponenten-Code; gewechselt wird über ein einziges Attribut am `<html>`.
-- **Deutsch & lokalisiert.** Datums-, Zahlen- und Beträge-Komponenten laufen mit `de-DE` als Locale.
+<FeatureCard title="Drei Theme-Modi" icon={<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9" stroke="currentColor" strokeWidth="1.6"/><path d="M11 2a9 9 0 0 0 0 18z" fill="currentColor"/></svg>}>
+Dunkel, Hell und das Cu-Theme teilen sich denselben Komponenten-Code. Gewechselt wird über ein einziges Attribut am `html`-Element.
+</FeatureCard>
 
-## Foundations
+<FeatureCard title="Tokens statt Hex" icon={<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="16" height="16" rx="4" stroke="currentColor" strokeWidth="1.6"/><path d="M7 11h8M11 7v8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/></svg>}>
+Jede Farbe, Schrift, Linie und Bewegung ist eine `--prn-*`-Custom-Property. Komponenten verwenden nie rohe Hex-Werte — deshalb sind sie automatisch theme-fähig.
+</FeatureCard>
 
-Die Grundlagen, auf denen jede Komponente steht:
+<FeatureCard title="Zugänglich per Default" icon={<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="6" r="3" stroke="currentColor" strokeWidth="1.6"/><path d="M4 19c0-3.9 3.1-7 7-7s7 3.1 7 7" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/></svg>}>
+Auf React Aria aufgebaut: Tastaturbedienung, Fokus-Management, ARIA-Rollen und sichtbare Fokusringe sind eingebaut, nicht nachgerüstet.
+</FeatureCard>
 
-- [Design-Tokens](/foundations/tokens) — die Single Source of Truth (`--prn-*`): Radien, Maße, Bewegung.
-- [Farben](/foundations/colors) — semantische Farbrollen: Akzent, Flächen, Text-Hierarchie, Status, Charts.
-- [Typografie](/foundations/typography) — die Typo-Skala als fertige `font`-Tokens.
-- [Theming](/foundations/theming) — `setTheme` und die drei Themes im Detail.
-- [Icons](/foundations/icons) — der monochrome `<Icon>`-Satz mit `currentColor`.
+<FeatureCard title="Prozess-Editoren inklusive" variant="dark" icon={<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="4" cy="11" r="2.4" stroke="currentColor" strokeWidth="1.5"/><rect x="9" y="8" width="6" height="6" rx="1.5" stroke="currentColor" strokeWidth="1.5"/><circle cx="18.5" cy="11" r="2.4" stroke="currentColor" strokeWidth="1.5"/><path d="M6.4 11H9M15 11h1.1" stroke="currentColor" strokeWidth="1.5"/></svg>}>
+BPMN-, DMN- und Formular-Editoren sind erste Bürger der Bibliothek — fertig gestylt in der Prince-Designsprache, bereit für komplexe Prozess-Workflows.
+</FeatureCard>
 
-## Komponenten — ein Einstieg
+</div>
+</section>
 
-Über 40 Komponenten stehen bereit. Ein paar Startpunkte:
+<section className="docs-section">
 
-- **Formulare:** [Button](/components/button) · [TextField](/components/textfield) · [Select](/components/select) · [Checkbox](/components/checkbox) · [Switch](/components/switch)
-- **Daten & Tabellen:** [Table](/components/table) · [List](/components/list) · [GridList](/components/gridlist)
-- **Diagramme:** [BarChart](/components/barchart) · [AreaChart](/components/areachart) · [DonutChart](/components/donutchart) · [KpiCard](/components/kpicard)
-- **Navigation & Shell:** [Menu](/components/menu) · [Toolbar](/components/toolbar) · [Sidebar](/components/sidebar) · [AppShell](/components/appshell)
-- **Overlays & Status:** [Notice](/components/notice) · [Badge](/components/badge) · [ProgressBar](/components/progressbar) · [EmptyState](/components/emptystate)
+## Komponenten entdecken
+
+<div className="docs-card-grid">
+
+<ComponentCard title="Button" href="/components/button" visual={<img src="/landing/c-button.svg" alt="" />}>
+Aktionen auslösen — filled, tinted und plain für jede Hierarchie-Ebene.
+</ComponentCard>
+
+<ComponentCard title="Table" href="/components/table" visual={<img src="/landing/c-table.svg" alt="" />}>
+Sortier-, auswähl- und tastaturbedienbare Datentabellen mit fixem Kopf.
+</ComponentCard>
+
+<ComponentCard title="BpmnViewer" href="/components/bpmnviewer" visual={<img src="/landing/c-bpmn.svg" alt="" />}>
+BPMN-Diagramme rendern und navigieren — direkt aus dem Prozessmodell.
+</ComponentCard>
+
+<ComponentCard title="ColorSlider" href="/components/colorslider" visual={<img src="/landing/c-colorslider.svg" alt="" />}>
+Einzelne Farbkanäle präzise einstellen — Teil des Farb-Werkzeugkastens.
+</ComponentCard>
+
+<ComponentCard title="Calendar" href="/components/calendar" visual={<img src="/landing/c-calendar.svg" alt="" />}>
+Datumsauswahl mit `de-DE`-Locale, Tastatur-Navigation und Bereichsmodus.
+</ComponentCard>
+
+<ComponentCard title="Toast" href="/components/toast" visual={<img src="/landing/c-toast.svg" alt="" />}>
+Unaufdringliche Statusmeldungen mit Auto-Dismiss und Aktionen.
+</ComponentCard>
+
+<ComponentCard title="BarChart" href="/components/barchart" visual={<img src="/landing/c-chart.svg" alt="" />}>
+Themenkonforme Diagramme mit semantischen Chart-Farben aus den Tokens.
+</ComponentCard>
+
+<ComponentCard title="Badge" href="/components/badge" visual={<img src="/landing/c-toast.svg" alt="" />}>
+Kompakte Status- und Zählmarken für Listen, Tabs und Navigation.
+</ComponentCard>
+
+</div>
+</section>
+
+<section className="docs-section">
+
+## Grundlagen
+
+<div className="docs-card-grid">
+
+<ComponentCard title="Design-Tokens" href="/foundations/tokens" visual={<img src="/landing/f-tokens.svg" alt="" />}>
+Die Single Source of Truth: Radien, Maße und Bewegung als `--prn-*`.
+</ComponentCard>
+
+<ComponentCard title="Farben" href="/foundations/colors" visual={<img src="/landing/f-colors.svg" alt="" />}>
+Semantische Farbrollen: Akzent, Flächen, Text-Hierarchie, Status, Charts.
+</ComponentCard>
+
+<ComponentCard title="Typografie" href="/foundations/typography" visual={<img src="/landing/f-typography.svg" alt="" />}>
+Die Typo-Skala als fertige `font`-Tokens — von Display bis Caption.
+</ComponentCard>
+
+<ComponentCard title="Theming" href="/foundations/theming" visual={<img src="/landing/f-theming.svg" alt="" />}>
+`setTheme` und die drei Themes im Detail — ein Code, drei Erscheinungsbilder.
+</ComponentCard>
+
+</div>
+</section>
+
+<section className="docs-section">
 
 ## Installation
 
-prince-ui wird als Workspace-Paket konsumiert. Lade einmalig das Tokens- und das
-Komponenten-CSS am App-Einstieg — danach stehen alle Tokens und Styles bereit:
+prince-ui wird als Workspace-Paket konsumiert. Lade einmalig das Tokens- und das Komponenten-CSS am App-Einstieg — danach stehen alle Tokens und Styles bereit:
 
 ```ts
 import '@conuti-das/prince-ui-tokens/tokens.css';
@@ -60,5 +110,14 @@ import '@conuti-das/prince-ui/styles.css';
 import { Button } from '@conuti-das/prince-ui';
 ```
 
-Wickle deine App in den `I18nProvider` von React Aria mit `locale="de-DE"`, damit Datums-,
-Zeit- und Zahlenkomponenten korrekt lokalisiert rendern. Den Rest erledigen die Tokens.
+Wickle deine App in den `I18nProvider` von React Aria mit `locale="de-DE"`, damit Datums-, Zeit- und Zahlenkomponenten korrekt lokalisiert rendern. Den Rest erledigen die Tokens.
+
+</section>
+
+<Hero
+  eyebrow="Bereit loszulegen?"
+  title="Bau deine nächste Oberfläche"
+  lead="Starte mit dem Button, tauche in die Tokens ein — oder stöbere durch über 70 Komponenten in der Seitenleiste.">
+  <a className="docs-btn docs-btn-primary" href="/components/button">Loslegen</a>
+  <a className="docs-btn docs-btn-secondary" href="/foundations/tokens">Tokens ansehen</a>
+</Hero>

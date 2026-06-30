@@ -12,6 +12,7 @@ export function ThemeSwitcher() {
   const [value, setValue] = useState<PrinceTheme | "system">("system");
   return (
     <select
+      className="docs-theme-select"
       aria-label="Theme"
       value={value}
       onChange={(e) => {

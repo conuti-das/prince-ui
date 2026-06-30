@@ -30,10 +30,11 @@ function buildLlmText(component: string, code: string, docs: ReturnType<typeof u
 export function Playground({ component }: { component: string }) {
   const schema = schemaFor(component);
   const docs = usePropDocs(schema?.component ?? component);
+  const [expanded, setExpanded] = useState(false);
+  const [copied, setCopied] = useState<"" | "code" | "llm">("");
   if (!schema) return <p><em>Kein Playground-Schema für {component}.</em></p>;
   const Comp = resolveComponent(schema.component);
   const [state, setState] = useState<ControlState>(() => initialState(schema));
-  const [copied, setCopied] = useState<"" | "code" | "llm">("");
   const code = useMemo(() => generateCode(schema, state), [schema, state]);
   const childrenProp = schema.childrenProp;
   const props = useMemo(() => {
@@ -54,10 +55,36 @@ export function Playground({ component }: { component: string }) {
     <div className="pg">
       <div className="pg-stage"><Comp {...props}>{children}</Comp></div>
       <Controls controls={schema.controls} state={state} onChange={(n, v) => setState((s) => ({ ...s, [n]: v }))} docs={docs} />
-      <div className="pg-code">
+      <div className={"pg-code" + (expanded ? " is-expanded" : "")}>
         <div className="pg-actions">
-          <button type="button" className="pg-copy" onClick={() => copy("code")}>{copied === "code" ? "Kopiert ✓" : "Copy"}</button>
-          <button type="button" className="pg-copy" onClick={() => copy("llm")}>{copied === "llm" ? "Kopiert ✓" : "Copy for LLM"}</button>
+          <button
+            type="button"
+            className="pg-icon-btn"
+            aria-label={copied === "code" ? "Kopiert" : "Code kopieren"}
+            title="Code kopieren"
+            onClick={() => copy("code")}
+          >
+            {copied === "code" ? "✓" : "⧉"}
+          </button>
+          <button
+            type="button"
+            className="pg-icon-btn"
+            aria-label={copied === "llm" ? "Kopiert" : "Für LLM kopieren"}
+            title="Für LLM kopieren"
+            onClick={() => copy("llm")}
+          >
+            {copied === "llm" ? "✓" : "✦"}
+          </button>
+          <button
+            type="button"
+            className="pg-icon-btn"
+            aria-label={expanded ? "Code einklappen" : "Code ausklappen"}
+            aria-expanded={expanded}
+            title={expanded ? "Einklappen" : "Öffnen"}
+            onClick={() => setExpanded((v) => !v)}
+          >
+            {expanded ? "⤡" : "⤢"}
+          </button>
         </div>
         <pre><code>{code}</code></pre>
       </div>

@@ -17,7 +17,9 @@ for (const abs of globSync(resolve(contentDir, "**/*.mdx"))) {
 }
 const navTree = buildNav(modules);
 
-const paths = ["/", ...navTree.flatMap((g) => g.items.map((i) => i.path))];
+// dedupe: die Nav führt die Startseite jetzt als eigenen "Overview/Einführung"-Eintrag
+// mit Pfad "/" — sonst doppelter Test-Titel.
+const paths = [...new Set(["/", ...navTree.flatMap((g) => g.items.map((i) => i.path))])];
 
 // Die Live-Demo-Bereiche zeigen prince-ui-Komponenten unverändert (inkl. ihrer
 // eigenen Kontrast-/Token-Eigenschaften aus `packages/ui`). Deren a11y wird in den

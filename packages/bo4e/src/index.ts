@@ -8,6 +8,7 @@ export * from "./core/empty";
 export * from "./core/path";
 export * from "./core/array-ids";
 export * from "./schema/load-schema";
+export * from "./schema/merge";
 export * from "./normalize";
 
 export * from "./view/ValidityRange";

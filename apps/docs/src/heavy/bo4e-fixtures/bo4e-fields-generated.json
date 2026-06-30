@@ -1,0 +1,2541 @@
+{
+  "ADHOCSTEUERKANAL": {
+    "versionStruktur": {},
+    "konfigurationsprodukt": {},
+    "zieladresse": {},
+    "aussteller": {},
+    "zertifikatsNutzer": {},
+    "IPAdresseCLSDevice": {}
+  },
+  "ANFRAGE": {
+    "versionStruktur": {},
+    "lokationsTyp": {
+      "enumRef": "LOKATIONSTYP"
+    },
+    "lokationsId": {
+      "description": "Für welche Markt- oder Messlokation gilt diese Anfrage."
+    },
+    "anfragetyp": {
+      "enumRef": "ANFRAGETYP",
+      "description": "Typ/Art der Anfrage (ORDERS ORDRSP IMD 7081)"
+    },
+    "abonnement": {
+      "enumRef": "ABONNEMENT",
+      "description": "Start oder Ende Abo"
+    },
+    "anfragereferenz": {},
+    "allgemeineInformationen": {},
+    "anfragekategorie": {
+      "enumRef": "ANFRAGEKATEGORIE",
+      "description": "Kategorie der Anfrage (ORDERS ORDRSP BGM 1001)"
+    },
+    "energierichtung": {
+      "enumRef": "ENERGIERICHTUNG"
+    },
+    "gueltigkeitszeitspanne": {},
+    "gueltigAb": {}
+  },
+  "ANGEBOT": {
+    "versionStruktur": {},
+    "angebotsnummer": {
+      "description": "Eindeutige Nummer des Angebotes."
+    },
+    "anfragereferenz": {
+      "description": "Referenz auf eine Anfrage oder Ausschreibung. Kann dem Empfänger des Angebotes bei Zuordnung des Angebotes zur Anfrage bzw.Ausschreibung helfen."
+    },
+    "angebotsdatum": {
+      "description": "Erstellungsdatum des Angebots"
+    },
+    "sparte": {
+      "enumRef": "SPARTE"
+    },
+    "bindefrist": {
+      "description": "Bis zu diesem Zeitpunkt(Tag/Uhrzeit) inklusive gilt das Angebot"
+    },
+    "angebotgeber": {
+      "description": "Link auf den Ersteller des Angebots."
+    },
+    "angebotnehmer": {
+      "description": "Link auf den Empfänger des Angebots."
+    },
+    "unterzeichnerAngebotsnehmer": {
+      "description": "Link auf die Person, die als Angebotsnehmer das Angebot angenommen hat."
+    },
+    "unterzeichnerAngebotsgeber": {
+      "description": "Link auf die Person, die als Angebotsgeber das Angebots ausgestellt hat."
+    },
+    "zeitspanneEinrichtungUebermittlungWerte": {},
+    "bindefristAngebot": {
+      "description": "Bis zu diesem Zeitpunkt(Tag/Uhrzeit) inklusive gilt das Angebot"
+    },
+    "varianten": {
+      "description": "Eine oder mehrere Varianten des Angebots mit den Angebotsteilen. Ein Angebot besteht mindestens aus einer Variante."
+    },
+    "positionsdaten": {
+      "description": "Ein oder mehrere Angebotspositionen"
+    }
+  },
+  "ANSPRECHPARTNER": {
+    "versionStruktur": {},
+    "nachname": {
+      "description": "Nachname (Familienname) des Ansprechpartners"
+    },
+    "eMailAdresse": {
+      "description": "E-Mail Adresse"
+    },
+    "rufnummern": {
+      "description": "Liste der Telefonnummern, unter denen der Ansprechpartner erreichbar ist."
+    }
+  },
+  "AUFTRAG": {
+    "versionStruktur": {},
+    "ausfuehrungsdatum": {
+      "description": "Das Ausführungsdatum beschreibt zu welchem Zeitpunkt ein Auftrag ausgeführt werden soll."
+    },
+    "fertigstellungsdatum": {
+      "description": "Das Fertigstellungsdatum beschreibt zu welchem Zeitpunkt ein Auftrag ausgeführt wurde/wird."
+    },
+    "startdatum": {
+      "description": "Das Startdatum beschreibt zu welchem Zeitpunkt ein Auftrag gestartet wurde/wird."
+    },
+    "enddatum": {
+      "description": "Das Enddatum beschreibt zu welchem Zeitpunkt ein Auftrag endete oder enden wird."
+    },
+    "sparte": {
+      "enumRef": "SPARTE",
+      "description": "Die Sparte in der der Auftrag relevant ist"
+    },
+    "lieferanschrift": {
+      "description": "Die Adresse, die sich in Belieferung befindet."
+    },
+    "marktlokationsId": {
+      "description": "Die ID der Marktlokation der der zu sperrende Zähler zugeordnet ist."
+    },
+    "mindestpreis": {
+      "description": "Der Mindestpreis eines Auftrags (z.B. für eine Sperrung)"
+    },
+    "hoechstpreis": {
+      "description": "Der Höchstpreis eines Auftrags (z.B. für eine Sperrung)"
+    },
+    "energierichtung": {
+      "enumRef": "ENERGIERICHTUNG"
+    },
+    "berechnungspreis": {},
+    "summeGesamt": {},
+    "verschobenerAbmeldetermin": {},
+    "behebungsZeitpunkt": {},
+    "lieferadresseAltgeraete": {},
+    "definitionsTyp": {
+      "enumRef": "DEFINITIONSTYP"
+    },
+    "positionsdaten": {},
+    "bemerkungen": {}
+  },
+  "AVIS": {
+    "versionStruktur": {},
+    "avisNummer": {
+      "description": "Eine im Verwendungskontext eindeutige Nummer für das Avis."
+    },
+    "avisTyp": {
+      "enumRef": "AVISTYP",
+      "description": "Gibt den Typ des Avis an."
+    },
+    "zuZahlen": {
+      "description": "Summenbetrag"
+    },
+    "positionen": {
+      "description": "Avispositionen"
+    }
+  },
+  "BERECHNUNGSFORMEL": {
+    "versionStruktur": {},
+    "beginndatum": {
+      "description": "Der inklusive Zeitpunkt ab dem die Berechnungsformel gültig ist"
+    },
+    "notwendigkeit": {
+      "enumRef": "BERECHNUNGSFORMELNOTWENDIGKEIT",
+      "description": "Beschreibt ob eine Berechnungsformel notwendig ist"
+    },
+    "lieferrichtung": {
+      "enumRef": "ENERGIERICHTUNG",
+      "description": "The UTILTS 'Lieferrichtung der Marktlokation' is contained in the marktlokations-bo also the relation between Berechnungsformel↔ Marktlokation is modelled as 'link'"
+    },
+    "rechenschrittId": {
+      "description": "ID des Rechenschritts [1 - 99999]"
+    },
+    "rechenschritt": {},
+    "rechenschritte": {
+      "description": "Eine Berechnungsformel enthält, falls sie notwendig ist, einen oder mehrere Berechnungschritte, die hier rekursiv abgebildet werden."
+    },
+    "verwendungszweck": {
+      "description": "Verwendungszweck der Werte"
+    },
+    "gueltigkeitszeitraum": {
+      "description": "Gültigkeitszeitraum der Werte"
+    },
+    "lokationsId": {
+      "description": "Eindeutige Nummer der Lokation, zu der die Berechnungsformel gehört. Verwendung für notwendige interne Zuordnungen."
+    },
+    "lokationsTyp": {
+      "enumRef": "LOKATIONSTYP",
+      "description": "Gibt an,um welchen Lokationstyp es sich handelt. Verwendung für notwendige interne Zuordnungen."
+    }
+  },
+  "BILANZIERUNG": {
+    "versionStruktur": {},
+    "marktlokationsId": {
+      "description": "Für welche Marktlokation gelten diese Bilanzierungsdaten"
+    },
+    "aggregationsverantwortung": {
+      "enumRef": "AGGREGATIONSVERANTWORTUNG"
+    },
+    "zeitreihentyp": {
+      "enumRef": "ZEITREIHENTYP"
+    },
+    "prognosegrundlage": {
+      "enumRef": "PROGNOSEGRUNDLAGE"
+    },
+    "bilanzierungsbeginn": {
+      "description": "Inklusiver Start der Bilanzierung"
+    },
+    "bilanzierungsende": {
+      "description": "Exklusives Ende der Bilanzierung"
+    },
+    "bilanzkreis": {},
+    "bilanzkreise": {
+      "description": "Bilanzkreis"
+    },
+    "fallgruppenzuordnung": {
+      "enumRef": "FALLGRUPPENZUORDNUNG",
+      "description": "Fallgruppenzuordnung (für gas RLM)"
+    },
+    "temperaturarbeit": {
+      "description": "Kundenwert TLP"
+    },
+    "jahresverbrauchsprognose": {},
+    "kundenwert": {},
+    "verbrauchsaufteilung": {},
+    "wahlrechtPrognosegrundlage": {
+      "enumRef": "WAHLRECHTPROGNOSEGRUNDLAGE",
+      "description": "Wahlrecht der Prognosegrundlage (true = Wahlrecht beim Lieferanten vorhanden)"
+    },
+    "grundWahlrechtPrognosegrundlage": {
+      "enumRef": "WAHLRECHTPROGNOSEGRUNDLAGE",
+      "description": "Grund Wahlrecht der Prognosegrundlage (true = Wahlrecht beim Lieferanten vorhanden)"
+    },
+    "abwicklungsmodell": {
+      "enumRef": "ABWICKLUNGSMODELL"
+    },
+    "vorjahresverbrauch": {},
+    "datenqualitaet": {
+      "enumRef": "DATENQUALITAET",
+      "description": "Datenqualität"
+    },
+    "gueltigkeitszeitraum": {
+      "description": "Gültigkeitszeitraum"
+    },
+    "lastprofile": {
+      "description": "Eine Liste der verwendeten Lastprofile (SLP, SLP/TLP, ALP etc.)"
+    },
+    "lastprofileBilanzierungsbeteiligter": {
+      "description": "Lastprofile des Bilanzierungsbeteiligten"
+    },
+    "detailsPrognosegrundlage": {
+      "enumRef": "PROFILTYP",
+      "description": "Prognosegrundlage - Besteht der Bedarf ein tagesparameteräbhängiges Lastprofil mit gemeinsamer Messung anzugeben, so ist dies über die 2 -malige Wiederholung des CAV Segments mit der Angabe der Codes E02 und E14 möglich."
+    }
+  },
+  "BILANZKREIS": {
+    "versionStruktur": {},
+    "bezeichnung": {
+      "description": "Externe Bezeichnung"
+    },
+    "prioritaet": {}
+  },
+  "ENERGIEMENGE": {
+    "versionStruktur": {},
+    "lokationsId": {
+      "description": "Eindeutige Nummer der Marktlokation bzw. der Messlokation, zu der die Energiemenge gehört"
+    },
+    "lokationsTyp": {
+      "enumRef": "LOKATIONSTYP",
+      "description": "Gibt an, ob es sich um eine Markt- oder Messlokation handelt."
+    },
+    "fertigstellungsdatum": {},
+    "startdatum": {
+      "description": "Gibt Tag und Uhrzeit (falls vorhanden) an, wann der Zeitraum startet."
+    },
+    "enddatum": {
+      "description": "Gibt Tag und Uhrzeit (falls vorhanden) an, wann der Zeitraum endet."
+    },
+    "bilanzierungsdatum": {},
+    "beginndatum": {},
+    "referenzStammdatenmeldungMsb": {},
+    "konfiguration": {},
+    "energieverbrauch": {
+      "description": "Gibt den Verbrauch in einer Zeiteinheit an."
+    }
+  },
+  "GESCHAEFTSPARTNER": {
+    "versionStruktur": {},
+    "anrede": {
+      "description": "Die Anrede für den GePa, Z.B. Herr."
+    },
+    "name1": {
+      "description": "Erster Teil des Namens. Hier kann der Firmenname oder bei Privatpersonen\nbeispielsweise der Nachname dargestellt werden. Beispiele: Yellow Strom GmbH\noder Hagen"
+    },
+    "name2": {
+      "description": "Zweiter Teil des Namens. Hier kann der eine Erweiterung zum Firmennamen oder\nbei Privatpersonen beispielsweise der Vorname dargestellt werden. Beispiele:\nBereich Süd oder Nina"
+    },
+    "name3": {
+      "description": "Dritter Teil des Namens. Hier können weitere Ergänzungen zum Firmennamen oder\nbei Privatpersonen Zusätze zum Namen dargestellt werden. Beispiele: und Afrika\noder Sängerin"
+    },
+    "name4": {},
+    "umsatzsteuerId": {
+      "description": "Die Umsatzsteuer-ID des Geschäftspartners. Beispiel: DE 813281825"
+    },
+    "glaeubigerId": {
+      "description": "* Die Gläubiger-ID welche im Zahlungsverkehr verwendet wird- Z.B. DE 47116789"
+    },
+    "emailAdresse": {},
+    "website": {
+      "description": "Internetseite des Marktpartners. Beispiel: www.mp-energie.de"
+    },
+    "gewerbekennzeichnung": {
+      "description": "Kennzeichnung ob es sich um einen Gewerbe/Unternehmen (gewerbeKennzeichnung = true)\noder eine Privatperson handelt. (gewerbeKennzeichnung = false)"
+    },
+    "hrnummer": {
+      "description": "Handelsregisternummer des Geschäftspartners"
+    },
+    "amtsgericht": {
+      "description": "Amtsgericht bzw Handelsregistergericht, das die Handelsregisternummer herausgegeben hat"
+    },
+    "partneradresse": {
+      "description": "Adresse des Geschäftspartners, an der sich der Hauptsitz befindet. Details"
+    },
+    "externeKundenummerLieferant": {},
+    "externeReferenzen": {
+      "description": "Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer) (Details siehe\nExterneReferenz)"
+    },
+    "geschaeftspartnerrolle": {
+      "enumRef": "GESCHAEFTSPARTNERROLLE",
+      "description": "Rolle, die der Geschäftspartner hat (z.B. Interessent, Kunde)."
+    },
+    "kontaktweg": {
+      "enumRef": "KONTAKTART",
+      "description": "Bevorzugter Kontaktweg des Geschäftspartners."
+    }
+  },
+  "HANDELSUNSTIMMIGKEIT": {
+    "versionStruktur": {},
+    "nummer": {
+      "description": "Handelsunstimmigkeitsnummer"
+    },
+    "typ": {
+      "enumRef": "HANDELSUNSTIMMIGKEITSTYP",
+      "description": "Gibt den Typ der Handelsunstimmigkeit an."
+    },
+    "begruendung": {
+      "description": "Handelsunstimmigskeitsbegründung"
+    },
+    "zuZahlen": {
+      "description": "angeforderter Betrag"
+    }
+  },
+  "KOMMUNIKATIONSDATEN": {
+    "versionStruktur": {},
+    "gueltigkeit": {},
+    "kommunikationsDatenBlattInaktiv": {},
+    "marktteilnehmer": {},
+    "kommunikationsangaben": {}
+  },
+  "LEISTUNGSKURVENDEFINITION": {
+    "versionStruktur": {},
+    "beginndatum": {},
+    "endedatum": {},
+    "version": {},
+    "code": {},
+    "notwendigkeit": {
+      "enumRef": "DEFINITIONENNOTWENDIGKEIT"
+    },
+    "leistungskurven": {}
+  },
+  "LOKATIONSBUENDEL": {
+    "versionStruktur": {},
+    "lokationsbuendelstrukturId": {},
+    "lokationsbuendelNummer": {},
+    "standardisierteLokationsbuendelstruktur": {},
+    "datenqualitaet": {
+      "enumRef": "DATENQUALITAET"
+    },
+    "gueltigkeitszeitraum": {},
+    "zuordnungObjectcode": {}
+  },
+  "MARKTLOKATION": {
+    "versionStruktur": {},
+    "marktlokationsId": {
+      "description": "Identifikationsnummer einer Marktlokation, an der Energie entweder\nverbraucht, oder erzeugt wird"
+    },
+    "sparte": {
+      "description": "Strom oder Gas."
+    },
+    "energierichtung": {
+      "enumRef": "ENERGIERICHTUNG",
+      "description": "Kennzeichnung, ob Energie eingespeist oder entnommen (ausgespeist) wird."
+    },
+    "bilanzierungsmethode": {
+      "enumRef": "BILANZIERUNGSMETHODE"
+    },
+    "verbrauchsart": {
+      "enumRef": "VERBRAUCHSART",
+      "description": "Stromverbrauchsart/Verbrauchsart Marktlokation"
+    },
+    "unterbrechbar": {
+      "description": "Gibt an, ob es sich um eine unterbrechbare Belieferung handelt."
+    },
+    "netzebene": {
+      "enumRef": "NETZEBENE",
+      "description": "Netzebene, in der der Bezug der Energie erfolgt. Bei Strom Spannungsebene der\nLieferung, bei Gas Druckstufe. Beispiel Strom: Niederspannung Beispiel Gas:\nNiederdruck."
+    },
+    "umspannung": {
+      "enumRef": "NETZEBENE"
+    },
+    "netzbetreiberCodeNr": {
+      "description": "Codenummer des Netzbetreibers, an dessen Netz diese Marktlokation\nangeschlossen ist."
+    },
+    "gebietTyp": {
+      "enumRef": "GEBIETTYP",
+      "description": "Typ des Netzgebietes,z.B.Verteilnetz."
+    },
+    "netzgebietNr": {
+      "description": "Die Nummer des Netzgebietes in der ene't-Datenbank."
+    },
+    "bilanzierungsgebiet": {
+      "description": "Bilanzierungsgebiet, dem das Netzgebiet zugeordnet ist - im Falle eines Strom Netzes."
+    },
+    "grundversorgerCodeNr": {
+      "description": "CodeNummer des Grundversorgers, der für diese Marktlokation zuständig ist."
+    },
+    "gasqualitaet": {
+      "enumRef": "GASQUALITAET",
+      "description": "gasqualitaet für EDIFACT mapping"
+    },
+    "endkunde": {
+      "description": "Link zum Geschäftspartner, dem diese Marktlokation gehört."
+    },
+    "lokationsadresse": {
+      "description": "Die Adresse, an der die Energie-Lieferung oder -Einspeisung erfolgt."
+    },
+    "katasterinformation": {
+      "description": "Alternativ zu einer postalischen Adresse und Geokoordinaten kann hier eine\nOrtsangabe mittels Gemarkung und Flurstück erfolgen.\nAchtung: Es darf immer nur eine Art der Ortsangabe vorhanden sein (entweder\neine Adresse oder eine GeoKoordinate oder eine Katasteradresse."
+    },
+    "regelzone": {
+      "description": "für EDIFACT mapping"
+    },
+    "marktgebiet": {
+      "description": "für EDIFACT mapping"
+    },
+    "zeitreihentyp": {
+      "enumRef": "ZEITREIHENTYP",
+      "description": "für EDIFACT mapping"
+    },
+    "messtechnischeEinordnung": {
+      "enumRef": "MESSTECHNISCHEEINORDNUNG",
+      "description": "Messtechnische Einordnung aus der UTILMD (IMS, KME_MME, KEINE_MESSUNG)"
+    },
+    "sperrstatus": {
+      "enumRef": "SPERRSTATUS"
+    },
+    "referenzMarktlokationsId": {},
+    "versorgungsart": {
+      "enumRef": "VERSORGUNGSART"
+    },
+    "eigentuemer": {},
+    "hausverwalter": {},
+    "verguetungEmpfaenger": {
+      "enumRef": "VERGUETUNGEMPFAENGER"
+    },
+    "statusErzeugendeMalo": {
+      "enumRef": "STATUSERZEUGENDEMARKTLOKATION"
+    },
+    "fernsteuerbarkeit": {
+      "enumRef": "FERNSTEUERBARKEIT"
+    },
+    "foerderungsLand": {},
+    "redispatch": {},
+    "zukuenftigerMeldepunkt": {},
+    "lokationszuordnung": {
+      "enumRef": "LOKATIONSZUORDNUNG"
+    },
+    "konfigurationsprodukt": {},
+    "leistungskurvendefinition": {
+      "description": "Code der Zugeordnete Leistungskurvendefinition für das Objekt"
+    },
+    "produktdatenRelevanteRolle": {
+      "enumRef": "MARKTROLLE"
+    },
+    "beteiligterMarktpartner": {},
+    "modulNetzentgelte": {
+      "enumRef": "MODULNETZENTGELTE"
+    },
+    "datenqualitaet": {
+      "enumRef": "DATENQUALITAET"
+    },
+    "gueltigkeitszeitraum": {},
+    "marktrollen": {
+      "description": "marktrollen für EDIFACT mapping"
+    },
+    "zaehlwerke": {
+      "description": "Die Zählwerke des Zählers."
+    },
+    "zaehlwerkeBeteiligteMarktrolle": {
+      "enumRef": "MARKTROLLE",
+      "description": "Liste der Zählwerke der beteiligten Martrolle"
+    },
+    "verbrauchsmenge": {
+      "description": "für EDIFACT mapping"
+    },
+    "zugehoerigeMesslokationen": {
+      "description": "Aufzählung der Messlokationen, die zu dieser Marktlokation gehören."
+    },
+    "netznutzungsabrechnungsdaten": {
+      "description": "Daten für die Prüfung der Netznutzungsabrechnung"
+    },
+    "messstellenbetriebsabrechnungsdaten": {},
+    "energieherkunft": {},
+    "erforderlichesProduktpaket": {},
+    "geokoordinaten": {},
+    "paketId": {},
+    "marktlokationsTyp": {
+      "description": "Angabe der Typisierung der Marktlokation mit möglicher Angabe zeitlicher Gültigkeit"
+    },
+    "zugehoerigeMarktlokationen": {
+      "description": "Referenzen zugehöriger Marktlokationen"
+    }
+  },
+  "MARKTTEILNEHMER": {
+    "versionStruktur": {},
+    "geschaeftspartnerrolle": {
+      "enumRef": "GESCHAEFTSPARTNERROLLE",
+      "description": "Rolle, die der Geschäftspartner hat (z.B. Interessent, Kunde)."
+    },
+    "anrede": {
+      "description": "Die Anrede für den GePa, Z.B. Herr."
+    },
+    "name1": {
+      "description": "Erster Teil des Namens. Hier kann der Firmenname oder bei Privatpersonen\nbeispielsweise der Nachname dargestellt werden. Beispiele: Yellow Strom GmbH\noder Hagen"
+    },
+    "name2": {
+      "description": "Zweiter Teil des Namens. Hier kann der eine Erweiterung zum Firmennamen oder\nbei Privatpersonen beispielsweise der Vorname dargestellt werden. Beispiele:\nBereich Süd oder Nina"
+    },
+    "name3": {
+      "description": "Dritter Teil des Namens. Hier können weitere Ergänzungen zum Firmennamen oder\nbei Privatpersonen Zusätze zum Namen dargestellt werden. Beispiele: und Afrika\noder Sängerin"
+    },
+    "name4": {},
+    "partneradresse": {
+      "description": "Adresse des Geschäftspartners, an der sich der Hauptsitz befindet. Details"
+    },
+    "gewerbekennzeichnung": {
+      "description": "Kennzeichnung ob es sich um einen Gewerbe/Unternehmen (gewerbeKennzeichnung = true)\noder eine Privatperson handelt. (gewerbeKennzeichnung = false)"
+    },
+    "externeKundenummerLieferant": {},
+    "marktrolle": {
+      "enumRef": "MARKTROLLE",
+      "description": "Gibt im Klartext die Bezeichnung der Marktrolle an."
+    },
+    "rollencodenummer": {
+      "description": "Gibt die Codenummer der Marktrolle an."
+    },
+    "rollencodetyp": {
+      "enumRef": "ROLLENCODETYP",
+      "description": "Gibt den Typ des Codes an."
+    },
+    "umsatzsteuerId": {
+      "description": "Die Umsatzsteuer-ID des Geschäftspartners. Beispiel: DE 813281825"
+    },
+    "steuernummer": {
+      "description": "Die Steuernummer-ID des Geschäftspartners. Beispiel: 30120345678"
+    },
+    "ansprechpartner": {
+      "description": "Ansprechpartner as in EDIFACT NAD+MS, that includes e.g. the email address of a natural person."
+    },
+    "makoadresse": {
+      "description": "Die 1:1-Kommunikationsadresse des Marktteilnehmers. Diese wird in der\nMarktkommunikation verwendet."
+    },
+    "downloadlinkZertifikat": {},
+    "amtsgericht": {
+      "description": "Amtsgericht bzw Handelsregistergericht, das die Handelsregisternummer herausgegeben hat"
+    },
+    "hrnummer": {
+      "description": "Handelsregisternummer des Geschäftspartners"
+    },
+    "website": {
+      "description": "Internetseite des Marktpartners. Beispiel: www.mp-energie.de"
+    },
+    "faxnummer": {},
+    "kommunikationsrolle": {
+      "enumRef": "KOMMUNIKATIONSROLLE"
+    },
+    "weiterverpflichtet": {},
+    "kommunikationsparameter": {},
+    "messstellenbetreiberEigenschaft": {
+      "enumRef": "MSBEIGENSCHAFT"
+    },
+    "bankverbindung": {},
+    "erreichbarkeit": {
+      "description": "Die Erreichbarkeit eines Unternehmens an Werktagen."
+    },
+    "ipAdresse": {},
+    "ipRange": {},
+    "zuordnungVon": {
+      "description": "Startdatum der Zuordnung des Marktteilnehmers"
+    },
+    "zuordnungBis": {
+      "description": "Enddatum der Zuordnung des Marktteilnehmers"
+    },
+    "bilanzkreis": {},
+    "verwendungszweckBilanzkreis": {
+      "enumRef": "VERWENDUNGSZWECKBILANZKREIS",
+      "description": "Verwendungszweck des Bilanzkreises"
+    }
+  },
+  "MESSLOKATION": {
+    "versionStruktur": {},
+    "messlokationsId": {
+      "description": "Die Messlokations-Identifikation. Das ist die frühere Zählpunktbezeichnung,\nz.B. DE 47108151234567"
+    },
+    "sparte": {
+      "enumRef": "SPARTE",
+      "description": "Strom oder Gas."
+    },
+    "energierichtung": {
+      "enumRef": "ENERGIERICHTUNG"
+    },
+    "netzebenemessung": {
+      "enumRef": "NETZEBENE"
+    },
+    "messgebietNr": {
+      "description": "Die Nummer des Messgebietes in der ene't-Datenbank."
+    },
+    "grundzustaendigerMSBCodeNr": {
+      "description": "Codenummer des grundzuständigen Messstellenbetreibers, der für diese\nMesslokation zuständig ist.( Dieser ist immer dann Messstellenbetreiber, wenn\nkein anderer MSB die Einrichtungen an der Messlokation betreibt.)"
+    },
+    "messadresse": {
+      "description": "Die Adresse, an der die Messeinrichtungen zu finden sind.( Nur angeben, wenn\ndiese von der Adresse der Marktlokation abweicht.)\nAchtung: Es darf immer nur eine Art der Ortsangabe vorhanden sein (entweder\neine Adresse oder eine GeoKoordinate oder eine Katasteradresse."
+    },
+    "bilanzierungsmethode": {
+      "enumRef": "BILANZIERUNGSMETHODE"
+    },
+    "abrechnungmessstellenbetriebnna": {
+      "description": "Dieser Wert ist true, falls die Abrechnungs des Messstellenbetriebs die Netznutzungsabrechnung enthält. false\nandernfalls"
+    },
+    "gasqualitaet": {
+      "enumRef": "GASQUALITAET",
+      "description": "gasqualitaet für EDIFACT mapping"
+    },
+    "verlustfaktor": {
+      "description": "verlustfaktor für EDIFACT mapping"
+    },
+    "betriebszustand": {
+      "enumRef": "BETRIEBSZUSTAND"
+    },
+    "ablesekartenempfaenger": {},
+    "referenzMarktlokationsId": {},
+    "verwendungsumfang": {
+      "enumRef": "VERWENDUNGSUMFANG"
+    },
+    "zukuenftigerMeldepunkt": {},
+    "lokationszuordnung": {
+      "enumRef": "LOKATIONSZUORDNUNG"
+    },
+    "beteiligterMarktpartner": {},
+    "geraete": {
+      "description": "Liste der Geräte, die zu diesem Zähler gehören."
+    },
+    "messdienstleistung": {
+      "description": "Liste der Messdienstleistungen, die zu dieser Messstelle gehört."
+    },
+    "messlokationszaehler": {
+      "description": "Zähler, die zu dieser Messlokation gehören. Details"
+    },
+    "zaehlwerke": {
+      "description": "Die Zählwerke des Zählers."
+    },
+    "marktrollen": {
+      "description": "marktrollen für EDIFACT mapping"
+    },
+    "datenqualitaet": {
+      "enumRef": "DATENQUALITAET"
+    },
+    "gueltigkeitszeitraum": {}
+  },
+  "NETZLOKATION": {
+    "versionStruktur": {},
+    "netzlokationsId": {
+      "description": "Identifikationsnummer einer Netzlokation, an der Energie entweder\nverbraucht, oder erzeugt wird (Like MarktlokationsId Marktlokation)"
+    },
+    "sparte": {
+      "enumRef": "SPARTE",
+      "description": "Sparte der Netzlokation, z.B. Gas oder Strom."
+    },
+    "netzanschlussleistung": {
+      "description": "Netzanschlussleistungsmenge der Netzlokation"
+    },
+    "grundzustaendigerMSBCodeNr": {
+      "description": "Codenummer des grundzuständigen Messstellenbetreibers, der für diese\nNetzlokation zuständig ist."
+    },
+    "steuerkanal": {
+      "description": "Ob ein Steuerkanal der Netzlokation zugeordnet ist und somit die Netzlokation gesteuert\nwerden kann.\nZF2: Kein Steuerkanal vorhanden\nZF3: Steuerkanal vorhanden"
+    },
+    "lokationszuordnung": {
+      "enumRef": "LOKATIONSZUORDNUNG"
+    },
+    "produktdatenRelevanteRolle": {
+      "enumRef": "MARKTROLLE"
+    },
+    "auftraggebenderMarktpartner": {},
+    "konfigurationsprodukt": {},
+    "keinKonfigurationsprodukt": {},
+    "leistungskurvendefinition": {
+      "description": "Code der Zugeordnete Leistungskurvendefinition für das Objekt"
+    },
+    "marktrollen": {},
+    "zaehlwerke": {},
+    "abrechnungsdaten": {},
+    "datenqualitaet": {
+      "enumRef": "DATENQUALITAET"
+    },
+    "gueltigkeitszeitraum": {}
+  },
+  "PREISBLATT": {
+    "versionStruktur": {},
+    "bezeichnung": {
+      "description": "Bezeichnung des Auf-/Abschlags"
+    },
+    "gueltigkeit": {
+      "description": "Der Zeitraum für den der Preis festgelegt ist. Details siehe Zeitraum"
+    },
+    "preisstatus": {
+      "enumRef": "PREISSTATUS",
+      "description": "Gibt den Status des veröffentlichten Preises an"
+    },
+    "sparte": {
+      "enumRef": "SPARTE",
+      "description": "Strom oder Gas."
+    },
+    "preisNetzbetreiberCodenummer": {
+      "description": "Preise des Netzbetreibers"
+    },
+    "bilanzierungsdatum": {},
+    "regelzone": {},
+    "leistungstyp": {
+      "enumRef": "LEISTUNGSTYP",
+      "description": "Standardisierte Bezeichnung für die abgerechnete Leistungserbringung. Details Leistungstyp"
+    },
+    "nichtGenutzt": {},
+    "preispositionen": {
+      "description": "Die einzelnen Positionen, die mit dem Preisblatt abgerechnet werden können. Z.B. Arbeitspreis, Grundpreis etc.\nDetails siehe Preisposition"
+    }
+  },
+  "RECHNUNG": {
+    "versionStruktur": {},
+    "istSelbstausgestellt": {
+      "description": "Kennzeichen, ob es sich um eine selbstausgestellte Rechnung handelt"
+    },
+    "bearbeitungsdatum": {},
+    "rechnungsdatum": {
+      "description": "Ausstellungsdatum der Rechnung."
+    },
+    "faelligkeitsdatum": {
+      "description": "Zu diesem Datum ist die Zahlung fällig."
+    },
+    "rechnungsstatus": {
+      "enumRef": "RECHNUNGSSTATUS",
+      "description": "Status der Rechnung zur Kennzeichnung des Bearbeitungsstandes. Details siehe ENUM Rechnungsstatus"
+    },
+    "vorlaeufigerAbrechnungszeitraum": {},
+    "rechnungsperiode": {
+      "description": "Der Zeitraum der zugrunde liegenden Lieferung zur Rechnung. In der COM Zeitraum können diese angegeben werden."
+    },
+    "rechnungstyp": {
+      "enumRef": "RECHNUNGSTYP",
+      "description": "Ein kontextbezogender Rechnungstyp, z.B. Netznutzungsrechnung. Details siehe ENUM Rechnungstyp"
+    },
+    "istReverseCharge": {
+      "description": "Kennzeichen, ob bei der Rechnung das Reverse Charge verfahren angewendet wird"
+    },
+    "gesamtbrutto": {
+      "description": "Die Summe aus Netto- und Steuerbetrag. Details Betrag"
+    },
+    "zuZahlen": {},
+    "originalRechnungsnummer": {
+      "description": "Im Falle einer Stornorechnung (storno = true) steht hier die Rechnungsnummer der stornierten Rechnung."
+    },
+    "referenzNachrichtendatum": {},
+    "referenzDokumentennummer": {},
+    "referenzVorgaengerrechnung": {},
+    "datumVorgaengerrechnung": {},
+    "preisNetzbetreiberCodenummer": {},
+    "netzkonto": {},
+    "vorausgezahlt": {
+      "description": "Die Summe evtl. vorausgezahlter Beträge, z.B. Abschläge. Angabe als Bruttowert. Details Betrag"
+    },
+    "gemeinderabatt": {},
+    "ausfuehrungsdatum": {
+      "description": "Das Datum an dem die Leistung erbracht wurde."
+    },
+    "sonderrechnungsart": {
+      "enumRef": "SONDERRECHNUNGSART"
+    },
+    "sonderrechnungsarten": {
+      "enumRef": "SONDERRECHNUNGSART",
+      "description": "Sonderrechnungsart"
+    },
+    "energierichtung": {
+      "enumRef": "ENERGIERICHTUNG"
+    },
+    "beginnPeriodeBilanzierung": {},
+    "endePeriodeNetznutzung": {},
+    "steuerbetraege": {
+      "description": "Eine Liste mit Steuerbeträgen pro Steuerkennzeichen/Steuersatz. Die Summe dieser Beträge ergibt den Wert für\ngesamtsteuer. Details Steuerbetrag"
+    },
+    "rechnungspositionen": {
+      "description": "Die Rechnungspositionen. Details siehe Rechnungsposition"
+    }
+  },
+  "REKLAMATION": {
+    "versionStruktur": {},
+    "lokationsId": {
+      "description": "Für welche Markt- oder Messlokation gilt diese Reklamation."
+    },
+    "lokationsTyp": {
+      "enumRef": "LOKATIONSTYP",
+      "description": "Gibt an, ob es sich um eine Markt- oder Messlokation handelt."
+    },
+    "obiskennzahl": {
+      "description": "OBIS-Kennzahl"
+    },
+    "zeitraumMesswertanfrage": {},
+    "reklamationsgrund": {
+      "enumRef": "REKLAMATIONSGRUND",
+      "description": "Hier wird für die Reklamation von Werten der Reklamationsgrund angegeben."
+    },
+    "reklamationsgrundBemerkung": {
+      "description": "Freitext für eine weitere Beschreibung des Reklamationsgrunds"
+    },
+    "konfiguration": {}
+  },
+  "SCHALTZEITDEFINITION": {
+    "versionStruktur": {},
+    "beginndatum": {},
+    "endedatum": {},
+    "version": {},
+    "code": {},
+    "notwendigkeit": {
+      "enumRef": "DEFINITIONENNOTWENDIGKEIT"
+    },
+    "schaltzeiten": {}
+  },
+  "SPERRAUFTRAG": {
+    "versionStruktur": {},
+    "treffpunkt": {},
+    "sperrauftragsart": {
+      "enumRef": "SPERRAUFTRAGSART",
+      "description": "Handelt es sich um einen Auftrag zum SPERREN oder ENTSPERREN?"
+    },
+    "sperrauftragsstatus": {
+      "enumRef": "AUFTRAGSSTATUS",
+      "description": "Auftragsstatus"
+    },
+    "sperrauftragsablehngrund": {
+      "enumRef": "SPERRAUFTRAGSABLEHNGRUND",
+      "description": "Falls Sperrauftragsstatus = ABGELEHNT"
+    },
+    "sperrauftragsverhinderungsgrund": {
+      "enumRef": "SPERRAUFTRAGSVERHINDERUNGSGRUND",
+      "description": "Falls Sperrauftragsstatus = GESCHEITERT"
+    },
+    "zaehlernummer": {
+      "description": "Die Nummer des zu sperrenden Zählers"
+    },
+    "istVomGerichtsvollzieherAngeordnet": {
+      "description": "True, falls die Sperrung vom Gerichtsvollzieher angeordnet ist."
+    }
+  },
+  "STATUSBERICHT": {
+    "versionStruktur": {},
+    "status": {
+      "enumRef": "BERICHTSTATUS",
+      "description": "Status des Berichtes (Fehlerhaft, Erfolgreich)"
+    },
+    "pruefgegenstand": {
+      "description": "Das geprüfte Dokument, z.B. die Referenz auf die EDIFACT-Nachricht die geprüft / beanstandet wurde"
+    },
+    "datumPruefung": {
+      "description": "Pruefdatum (wann wurde der Pruefgegenstand geprüft)"
+    },
+    "fehler": {
+      "description": "Liste der Fehler"
+    },
+    "absenderreferenz": {},
+    "transaktionsReferenznummer": {}
+  },
+  "STATUSMITTEILUNG": {
+    "versionStruktur": {},
+    "statusObjekt": {
+      "enumRef": "STATUSOBJEKT"
+    },
+    "statusanlass": {
+      "enumRef": "STATUS"
+    },
+    "auftragsstatus": {
+      "enumRef": "AUFTRAGSSTATUS"
+    },
+    "positionsdaten": {}
+  },
+  "STEUERBARERESSOURCE": {
+    "versionStruktur": {},
+    "ressourcenId": {},
+    "sparte": {
+      "enumRef": "SPARTE"
+    },
+    "lokationszuordnung": {
+      "enumRef": "LOKATIONSZUORDNUNG"
+    },
+    "konfigurationsprodukt": {},
+    "steuerkanal": {
+      "enumRef": "STEUERKANAL"
+    },
+    "produktdatenRelevanteRolle": {
+      "enumRef": "MARKTROLLE"
+    },
+    "auftraggebenderMarktpartner": {},
+    "zugeordneteDefinition": {},
+    "marktrollen": {},
+    "datenqualitaet": {
+      "enumRef": "DATENQUALITAET"
+    },
+    "gueltigkeitszeitraum": {},
+    "erforderlicheProdukte": {}
+  },
+  "TARIFINFO": {
+    "versionStruktur": {},
+    "anbieter": {
+      "description": "Der Marktteilnehmer (Lieferant), der diesen Tarif anbietet"
+    },
+    "anbietername": {
+      "description": "Der Name des Marktpartners, der den Tarif anbietet"
+    },
+    "anwendung_von": {
+      "description": "Angabe des inklusiven Zeitpunkts, ab dem der Tarif bzw. der Preis angewendet und abgerechnet wird"
+    },
+    "bemerkung": {
+      "description": "Freitext"
+    },
+    "bezeichnung": {
+      "description": "Name des Tarifs"
+    },
+    "energiemix": {
+      "description": "Der Energiemix, der für diesen Tarif gilt"
+    },
+    "kundentypen": {
+      "enumRef": "KUNDENTYP",
+      "description": "Kundentypen für den der Tarif gilt, z.B. Privatkunden"
+    },
+    "registeranzahl": {
+      "enumRef": "REGISTERANZAHL",
+      "description": "Die Art des Tarifes, z.B. Eintarif oder Mehrtarif"
+    },
+    "sparte": {
+      "enumRef": "SPARTE",
+      "description": "Strom oder Gas, etc."
+    },
+    "tarifmerkmale": {
+      "enumRef": "TARIFMERKMAL",
+      "description": "Weitere Merkmale des Tarifs, z.B. Festpreis oder Vorkasse"
+    },
+    "tariftyp": {
+      "enumRef": "TARIFTYP",
+      "description": "Hinweis auf den Tariftyp, z.B. Grundversorgung oder Sondertarif"
+    },
+    "vertragskonditionen": {
+      "description": "Mindestlaufzeiten und Kündigungsfristen zusammengefasst"
+    },
+    "website": {
+      "description": "Internetseite auf dem der Tarif zu finden ist"
+    },
+    "zeitliche_gueltigkeit": {
+      "description": "Angabe, in welchem Zeitraum der Tarif gültig ist"
+    }
+  },
+  "TECHNISCHERESSOURCE": {
+    "versionStruktur": {},
+    "ressourcenId": {},
+    "sparte": {
+      "enumRef": "SPARTE"
+    },
+    "lokationszuordnung": {
+      "enumRef": "LOKATIONSZUORDNUNG"
+    },
+    "referenzMesslokation": {},
+    "referenzMarktlokation": {},
+    "referenzNetzlokation": {},
+    "referenzSteuerbareRessource": {},
+    "nennleistung": {},
+    "speicherkapazitaet": {
+      "description": "Speicherkapazität\nBeispiel: QTY+Z42:100:KWH'"
+    },
+    "verbrauchsart": {
+      "enumRef": "VERBRAUCHSART",
+      "description": "Verbrauchsart der Technischen Ressource\nBeispiel: CAV+Z64'\n    Z64: Kraft/Licht\n    Z65: Wärme\n    ZE5: E-Mobilität\n    ZA8: Straßenbeleuchtung"
+    },
+    "waermenutzung": {
+      "enumRef": "WAERMENUTZUNG",
+      "description": "Wärmenutzung\nBeispiel: CAV+Z56'\n    Z56: Speicherheizung\n    Z57: Wärmepumpe\n    Z61: Direktheizung"
+    },
+    "artEMobilitaet": {
+      "enumRef": "ARTEMOBILITAET"
+    },
+    "erzeugungsart": {
+      "enumRef": "ERZEUGUNGSART",
+      "description": "Art der Erzeugung der Energie. Details Erzeugungsart\nBeispiel: CAV+ZF5'\nErzeugungsart:\n    ZF5: Solar\n    ZF6: Wind\n    ZG0: Gas\n    ZG1: Wasser\n    ZG5: Sonstige Erzeugungsart"
+    },
+    "speicherart": {
+      "enumRef": "SPEICHERART",
+      "description": "Art der speicher. Details Speicherart\nBeispiel: CAV+ZF7'\nSpeicherart:\n    ZF7: Wasserstoffspeicher\n    ZF8: Pumpspeicher\n    ZF9: Batteriespeicher\n    ZG6: Sonstige Speicherart"
+    },
+    "enwg": {},
+    "inbetriebsetzungsdatum": {
+      "enumRef": "INBETRIEBSETZUNG"
+    },
+    "einordnung": {
+      "enumRef": "RESSOURCEWECHSELMOEGLICHKEIT"
+    },
+    "weitereEinrichtung": {},
+    "art": {
+      "enumRef": "TECHNISCHERESSOURCEART"
+    },
+    "datenqualitaet": {
+      "enumRef": "DATENQUALITAET"
+    },
+    "gueltigkeitszeitraum": {},
+    "erforderlicheProdukte": {}
+  },
+  "TRANCHE": {
+    "versionStruktur": {},
+    "tranchenId": {},
+    "sparte": {
+      "enumRef": "SPARTE",
+      "description": "Sparte der Tranche, z.B. Gas oder Strom."
+    },
+    "energierichtung": {
+      "enumRef": "ENERGIERICHTUNG"
+    },
+    "bilanzierungsmethode": {
+      "enumRef": "BILANZIERUNGSMETHODE"
+    },
+    "verbrauchsart": {
+      "enumRef": "VERBRAUCHSART",
+      "description": "Stromverbrauchsart/Verbrauchsart"
+    },
+    "unterbrechbar": {},
+    "netzebene": {
+      "enumRef": "NETZEBENE"
+    },
+    "netzbetreiberCodeNr": {},
+    "gebietTyp": {
+      "enumRef": "GEBIETTYP"
+    },
+    "netzgebietNr": {},
+    "bilanzierungsgebiet": {},
+    "grundversorgerCodeNr": {},
+    "gasqualitaet": {
+      "enumRef": "GASQUALITAET"
+    },
+    "endkunde": {},
+    "lokationsadresse": {},
+    "katasterinformation": {},
+    "regelzone": {},
+    "marktgebiet": {},
+    "zeitreihentyp": {
+      "enumRef": "ZEITREIHENTYP"
+    },
+    "messtechnischeEinordnung": {
+      "enumRef": "MESSTECHNISCHEEINORDNUNG"
+    },
+    "sperrstatus": {
+      "enumRef": "SPERRSTATUS"
+    },
+    "referenzMarktlokationsId": {},
+    "versorgungsart": {
+      "enumRef": "VERSORGUNGSART"
+    },
+    "fernsteuerbarkeit": {
+      "enumRef": "FERNSTEUERBARKEIT"
+    },
+    "verguetungEmpfaenger": {
+      "enumRef": "VERGUETUNGEMPFAENGER"
+    },
+    "foerderungsLand": {},
+    "statusErzeugendeMalo": {
+      "enumRef": "STATUSERZEUGENDEMARKTLOKATION"
+    },
+    "referenzTranche": {},
+    "aufteilungsmenge": {
+      "description": "Prozentualer Anteil der Tranche an der erzeugenden Marktlokation in Prozent mit 2 Nachkommastellen"
+    },
+    "bilanzkreis": {},
+    "bildungTranchengroesse": {
+      "enumRef": "BILDUNGTRANCHENGROESSE"
+    },
+    "zukuenftigerMeldepunkt": {},
+    "lokationszuordnung": {
+      "enumRef": "LOKATIONSZUORDNUNG"
+    },
+    "beteiligterMarktpartner": {},
+    "marktrollen": {},
+    "zaehlwerke": {},
+    "zaehlwerkeBeteiligteMarktrolle": {
+      "enumRef": "MARKTROLLE"
+    },
+    "verbrauchsmenge": {},
+    "zugehoerigeMesslokationen": {},
+    "netznutzungsabrechnungsdaten": {},
+    "energieherkunft": {},
+    "datenqualitaet": {
+      "enumRef": "DATENQUALITAET"
+    },
+    "gueltigkeitszeitraum": {}
+  },
+  "VERTRAG": {
+    "versionStruktur": {
+      "description": "obligatory version of the BO4E definition. Currently hard coded to 1"
+    },
+    "sparte": {
+      "enumRef": "SPARTE",
+      "description": "Unterscheidungsmöglichkeiten für die Sparte. Siehe ENUM Sparte"
+    },
+    "vertragsart": {
+      "description": "Hier ist festgelegt, um welche Art von Vertrag es sich handelt. Z.B. Netznutzungvertrag. Details siehe ENUM\nVertragsart"
+    },
+    "vertragsnummer": {
+      "description": "Eine im Verwendungskontext eindeutige Nummer für den Vertrag"
+    },
+    "beschreibung": {
+      "description": "Freitext zur Beschreibung der Konditionen, z.B. \"Standardkonditionen Gas\""
+    },
+    "lokationsId": {},
+    "lokationsTyp": {
+      "enumRef": "LOKATIONSTYP"
+    },
+    "vertragsstatus": {
+      "enumRef": "VERTRAGSTATUS"
+    },
+    "vertragsbeginn": {
+      "description": "Gibt an, wann der Vertrag beginnt."
+    },
+    "vertragsende": {
+      "description": "Gibt an, wann der Vertrag (voraussichtlich) endet oder beendet wurde."
+    },
+    "gemeinderabatt": {
+      "description": "gemeinderabatt für EDIFACT mapping."
+    },
+    "vertragskonditionen": {
+      "description": "Festlegungen zu Laufzeiten und Kündigungsfristen. Details siehe COM Vertragskonditionen"
+    },
+    "korrespondenzpartner": {
+      "description": "korrespondenzpartner für EDIFACT mapping"
+    },
+    "abrechnungUeberNna": {},
+    "datenqualitaet": {
+      "enumRef": "DATENQUALITAET"
+    },
+    "gueltigkeitszeitraum": {},
+    "vertragspartner1": {
+      "description": "Der \"erstgenannte\" Vertragspartner. In der Regel der Aussteller des Vertrags. Beispiel: \"Vertrag zwischen\nVertagspartner 1 ...\" Siehe BO Geschaeftspartner"
+    },
+    "vertragspartner2": {
+      "description": "Der \"zweitgenannte\" Vertragspartner. In der Regel der Empfänger des Vertrags. Beispiel \"Vertrag zwischen\nVertagspartner 1 und Vertragspartner 2\". Siehe BO Geschaeftspartner"
+    },
+    "enFG": {}
+  },
+  "VERWENDUNGSZEITRAUM": {
+    "versionStruktur": {},
+    "verwendungAb": {},
+    "verwendungBis": {},
+    "zeitraumId": {},
+    "datenqualitaet": {
+      "enumRef": "DATENQUALITAET"
+    }
+  },
+  "WERTENACHTYP2": {
+    "versionStruktur": {},
+    "konfigurationsprodukt": {},
+    "messprodukt": {},
+    "zieladresse": {},
+    "aussteller": {},
+    "zertifikatsNutzer": {},
+    "aenderungsmoeglichkeitKonfiguration": {
+      "enumRef": "AENDERUNGSMOEGLICHKEITKONFIGURATION"
+    },
+    "schwellwerte": {},
+    "zaehlwerke": {
+      "description": "Zählwerke"
+    }
+  },
+  "ZAEHLER": {
+    "versionStruktur": {},
+    "zaehlernummer": {
+      "description": "Nummerierung des Zählers, vergeben durch den Messstellenbetreiber"
+    },
+    "sparte": {
+      "enumRef": "SPARTE",
+      "description": "Strom oder Gas."
+    },
+    "zaehlerauspraegung": {
+      "enumRef": "ZAEHLERAUSPRAEGUNG",
+      "description": "Spezifikation die Richtung des Zählers betreffend."
+    },
+    "zaehlertyp": {
+      "enumRef": "ZAEHLERTYP",
+      "description": "Typisierung des Zählers"
+    },
+    "tarifart": {
+      "enumRef": "TARIFART",
+      "description": "Spezifikation bezüglich unterstützter Tarifarten."
+    },
+    "zaehlerkonstante": {
+      "description": "Zählerkonstante auf dem Zähler."
+    },
+    "eichungBis": {
+      "description": "Bis zu diesem Datum ist der Zähler geeicht."
+    },
+    "zaehlerhersteller": {
+      "description": "Der Hersteller des Zählers. Details Geschaeftspartner"
+    },
+    "gateway": {
+      "description": "Angabe eines SMGW, mit dem der Zaehler parametrisiert ist"
+    },
+    "fernschaltung": {
+      "enumRef": "FERNSCHALTUNG"
+    },
+    "messwerterfassung": {
+      "enumRef": "MESSWERTERFASSUNG",
+      "description": "Messwerterfassung am Zählpunkt"
+    },
+    "zaehlertypspezifikation": {
+      "enumRef": "ZAEHLERTYPSPEZIFIKATION",
+      "description": "Typisierung des Zählers (spezifikation für EHZ und MME)"
+    },
+    "befestigungsart": {
+      "enumRef": "BEFESTIGUNGSART"
+    },
+    "zaehlergroesse": {
+      "enumRef": "GERAETEMERKMAL"
+    },
+    "mengenumwertertyp": {
+      "enumRef": "MENGENUMWERTERTYP"
+    },
+    "volumenerfassung": {
+      "enumRef": "VOLUMENERFASSUNG"
+    },
+    "serialnummer": {},
+    "geraetemerkmal": {
+      "enumRef": "GERAETEMERKMAL",
+      "description": "Weitere Merkmale des Geräts, zum Beispiel Mehrtarif, Eintarif etc.. Details Geraetemerkmal"
+    },
+    "herstellungsdatum": {},
+    "baujahr": {},
+    "messlokationsId": {},
+    "marktlokationsId": {},
+    "geraete": {
+      "description": "Liste der Geräte, die zu diesem Zähler gehören."
+    },
+    "zaehlwerke": {
+      "description": "Die Zählwerke des Zählers."
+    },
+    "datenqualitaet": {
+      "enumRef": "DATENQUALITAET"
+    },
+    "gueltigkeitszeitraum": {}
+  },
+  "ZAEHLZEITDEFINITION": {
+    "versionStruktur": {},
+    "beginndatum": {
+      "description": "Der inklusive Zeitpunkt ab dem die Zaehlzeitdefinitionen ausgerollt sind"
+    },
+    "endedatum": {
+      "description": "Der exklusive Zeitpunkt bis zu dem die Zaehlzeitdefinitionen ausgerollt sind"
+    },
+    "version": {
+      "description": "Version der Zählzeitdefinition als Datum"
+    },
+    "notwendigkeit": {
+      "enumRef": "DEFINITIONENNOTWENDIGKEIT",
+      "description": "Beschreibt ob eine Zaehlzeitdefinitionen notwendig ist"
+    },
+    "versionsangabe": {},
+    "code": {
+      "description": "Zählzeitdefinition"
+    },
+    "zaehlzeiten": {
+      "description": "Liste der Zählzeiten [1 - 99999]"
+    },
+    "zaehlzeitregister": {
+      "description": "Liste der Zählzeitregister"
+    }
+  },
+  "ABSCHLAG": {
+    "typ": {
+      "enumRef": "ABSCHLAGTYP"
+    },
+    "prozent": {
+      "description": "Prozentuale Angabe zum Auf-/Abschlag"
+    }
+  },
+  "ABTRETUNGSERKLAERUNG": {
+    "passwort": {
+      "description": "Passwort zum Abruf"
+    },
+    "link1": {
+      "description": "Link Zeile 1"
+    },
+    "link2": {
+      "description": "Link Zeile 2"
+    },
+    "link3": {
+      "description": "Link Zeile 3"
+    },
+    "link4": {
+      "description": "Link Zeile 4"
+    },
+    "link5": {
+      "description": "Link Zeile 5"
+    }
+  },
+  "ABWEICHUNG": {
+    "abweichungsgrund": {
+      "enumRef": "ABWEICHUNGSGRUND"
+    },
+    "abweichungsgrundBemerkung": {
+      "description": "Bemerkung zum Abweichungsgrund"
+    },
+    "zugehoerigeRechnung": {
+      "description": "Angabe der Rechnungsnummer, auf die sich diese Abweichung bezieht"
+    },
+    "zugehoerigeBestellung": {
+      "description": "Angabe der Bestellungsnummer, auf die sich diese Abweichung bezieht"
+    },
+    "abweichungsgrundCode": {
+      "description": "Code des Abweichungsgrundes"
+    },
+    "abweichungsgrundCodeliste": {
+      "description": "Codeliste des Abweichungsgrund"
+    },
+    "fehlendePositionen1": {
+      "description": "fehlende Positionen 1"
+    },
+    "fehlendePositionen2": {
+      "description": "fehlende Positionen 2"
+    },
+    "fehlendePositionen3": {
+      "description": "fehlende Positionen 3"
+    },
+    "fehlendePositionen4": {
+      "description": "fehlende Positionen 4"
+    },
+    "fehlendePositionen5": {
+      "description": "fehlende Positionen 5"
+    },
+    "abweichungsgrundBemerkung1": {
+      "description": "Abweichungsgrund Bemerkung 1"
+    },
+    "abweichungsgrundBemerkung2": {
+      "description": "Abweichungsgrund Bemerkung 2"
+    },
+    "abweichungsgrundBemerkung3": {
+      "description": "Abweichungsgrund Bemerkung 3"
+    },
+    "abweichungsgrundBemerkung4": {
+      "description": "Abweichungsgrund Bemerkung 4"
+    },
+    "abweichungsgrundBemerkung5": {
+      "description": "Abweichungsgrund Bemerkung 5"
+    },
+    "referenz": {},
+    "abschlagsrechnungen": {}
+  },
+  "ABWEICHUNGSPOSITION": {
+    "abweichungsgrundCode": {
+      "description": "Code des Abweichungsgrundes"
+    },
+    "abweichungsgrundCodeliste": {
+      "description": "Codeliste des Abweichungsgrund"
+    },
+    "abweichungsgrundBemerkung": {
+      "description": "Abweichungsgrund Bemerkung"
+    },
+    "zugehoerigeRechnung": {
+      "description": "Angabe der Rechnungsnummer, auf die sich diese Abweichung bezieht"
+    },
+    "zugehoerigeBestellung": {
+      "description": "Angabe der Bestellungsnummer, auf die sich diese Abweichung bezieht"
+    }
+  },
+  "ADRESSE": {
+    "postleitzahl": {},
+    "ort": {},
+    "strasse": {},
+    "hausnummer": {
+      "description": "Hausnummer und Ergänzung"
+    },
+    "postfach": {},
+    "adresszusatz": {},
+    "coErgaenzung": {},
+    "landescode": {
+      "enumRef": "LANDESCODE"
+    },
+    "ortsteil": {},
+    "zusatzInformation": {}
+  },
+  "ADRESSZUSATZINFORMATION": {
+    "zusatz1": {
+      "description": "Adresszusatz 1"
+    },
+    "zusatz2": {
+      "description": "Adresszusatz 2"
+    },
+    "zusatz3": {
+      "description": "Adresszusatz 3"
+    },
+    "zusatz4": {
+      "description": "Adresszusatz 4"
+    },
+    "zusatz5": {
+      "description": "Adresszusatz 5"
+    }
+  },
+  "ALLGEMEINEINFORMATIONEN": {
+    "info1": {
+      "description": "Allgemeine Info 1"
+    },
+    "info2": {
+      "description": "Allgemeine Info 2"
+    },
+    "info3": {
+      "description": "Allgemeine Info 3"
+    },
+    "info4": {
+      "description": "Allgemeine Info 4"
+    },
+    "info5": {
+      "description": "Allgemeine Info 5"
+    }
+  },
+  "ANGEBOTSPOSITION": {
+    "positionsbezeichung": {
+      "description": "Bezeichnung der Position"
+    },
+    "positionsmenge": {
+      "description": "Menge der Position"
+    },
+    "positionspreis": {
+      "description": "Preisangabe zur Position"
+    },
+    "positionsbetrag": {
+      "description": "Betrag der Postition"
+    },
+    "preisschluesselstamm": {
+      "description": "Preisschlüsselstamm"
+    },
+    "artikelnummer": {
+      "enumRef": "BDEWARTIKELNUMMER",
+      "description": "BDEW Artikelnummer"
+    },
+    "artikelId": {
+      "description": "ArtikelId gem. BDEW"
+    },
+    "anbietbar": {},
+    "freitext": {
+      "description": "Zusätzliche Informationen (für allgemeine Hinweise)"
+    },
+    "verweisKatalognummer": {
+      "description": "APF Verweis auf Katalognummer"
+    },
+    "beteiligterMarktpartner": {
+      "description": "Beteiligter Marktpartner"
+    },
+    "referenzMarktlokationsIds": {
+      "description": "Referenz auf ID weiterer Marktlokationen"
+    }
+  },
+  "ANGEBOTSTEIL": {
+    "anfrageSubreferenz": {
+      "description": "Referenz der ANfrage"
+    },
+    "gesamtmengeangebotsteil": {},
+    "gesamtkostenangebotsteil": {},
+    "lieferzeitraum": {},
+    "verweisKatalognummer": {},
+    "lieferstellenangebotsteil": {
+      "description": "Angebotsteil der Lieferstelle"
+    },
+    "positionen": {
+      "description": "Positionen des Angebots"
+    }
+  },
+  "ANGEBOTSVARIANTE": {
+    "angebotsstatus": {
+      "enumRef": "ANGEBOTSSTATUS"
+    },
+    "beschreibung": {},
+    "erstelldatum": {},
+    "bindefrist": {},
+    "gesamtmenge": {},
+    "gesamtkosten": {},
+    "teile": {}
+  },
+  "ANTWORTSTATUSZEITRAUM": {
+    "code": {},
+    "liste": {},
+    "zeitraumId": {},
+    "freitext": {}
+  },
+  "AUFTRAGPOSITION": {
+    "positionsnummer": {},
+    "positionsnummerAngebot": {
+      "description": "laufende Positionsnummer des Angebot"
+    },
+    "energieerfassung": {
+      "enumRef": "ENERGIEERFASSUNG"
+    },
+    "artikelnummer": {
+      "enumRef": "BDEWARTIKELNUMMER"
+    },
+    "positionsbetrag": {
+      "description": "Betrag der Position"
+    },
+    "startdatum": {},
+    "enddatum": {},
+    "istBestand": {},
+    "obiskennzahl": {
+      "description": "Obis-Kennzahl"
+    },
+    "anfragegrund": {
+      "enumRef": "ANFRAGEGRUND"
+    },
+    "allgemeineInformationen": {},
+    "infoAbweichung": {},
+    "definitionsTyp": {
+      "enumRef": "DEFINITIONSTYP"
+    },
+    "lokationsId": {},
+    "zaehlwerk": {}
+  },
+  "AUSSTELLER": {
+    "aussteller1": {},
+    "aussteller2": {},
+    "aussteller3": {},
+    "aussteller4": {},
+    "aussteller5": {}
+  },
+  "AVISPOSITION": {
+    "rechnungsNummer": {},
+    "rechnungsDatum": {},
+    "istStorno": {},
+    "istSelbstausgestellt": {},
+    "gesamtBrutto": {},
+    "zuZahlen": {},
+    "referenz": {},
+    "abweichung": {},
+    "positionen": {}
+  },
+  "BANKVERBINDUNG": {
+    "verwendungszweck": {
+      "enumRef": "BANKVERBINDUNGVERWENDUNGSZWECK"
+    },
+    "iban": {},
+    "kontoinhaber": {
+      "description": "Der Kontoinhaber"
+    },
+    "bic": {
+      "description": "BIC Code"
+    },
+    "kreditinstitut": {
+      "description": "Name des Kreditinstitut"
+    }
+  },
+  "BEGRUENDUNG": {
+    "begruendung1": {
+      "description": "Begruendung Zeile 1"
+    },
+    "begruendung2": {
+      "description": "Begruendung Zeile 2"
+    },
+    "begruendung3": {
+      "description": "Begruendung Zeile 3"
+    },
+    "begruendung4": {
+      "description": "Begruendung Zeile 4"
+    },
+    "begruendung5": {
+      "description": "Begruendung Zeile 5"
+    }
+  },
+  "BESCHREIBUNG": {
+    "beschreibung1": {
+      "description": "Beschreibung Zeile 1"
+    },
+    "beschreibung2": {
+      "description": "Beschreibung Zeile 2"
+    }
+  },
+  "BETRAG": {
+    "wert": {
+      "description": "Gibt den Betrag des Preises an."
+    },
+    "waehrung": {
+      "description": "Währung des Preises"
+    }
+  },
+  "DIENSTLEISTUNG": {
+    "dienstleistungstyp": {
+      "enumRef": "DIENSTLEISTUNGSTYP",
+      "description": "Eindeutige Nummer der Dienstleistung. Details Dienstleistungstyp"
+    },
+    "bezeichnung": {
+      "description": "Bezeichnung der Dienstleistung."
+    }
+  },
+  "ENFG": {
+    "grundlageVerringerungUmlagen": {
+      "enumRef": "GRUNDLAGEVERRINGERUNGUMLAGEN"
+    },
+    "grund": {
+      "enumRef": "GRUNDLAGEVERRINGERUNGUMLAGENGRUND",
+      "description": "Grund der Umlagenverringerung"
+    }
+  },
+  "ENERGIEHERKUNFT": {
+    "erzeugungsart": {
+      "enumRef": "ERZEUGUNGSART",
+      "description": "Art der Erzeugung"
+    },
+    "anteilProzent": {
+      "description": "Prozentualer Anteil der Erzeugung"
+    }
+  },
+  "ENERGIEMIX": {
+    "anteil": {
+      "description": "Anteile der jeweiligen Erzeugungsart"
+    },
+    "atommuell": {
+      "description": "Höhe des erzeugten Atommülls in g/kWh"
+    },
+    "bemerkung": {
+      "description": "Bemerkung zum Energiemix"
+    },
+    "bezeichnung": {
+      "description": "Bezeichnung des Energiemix"
+    },
+    "co2_emission": {
+      "description": "Höhe des erzeugten CO2-Ausstosses in g/kWh"
+    },
+    "energieart": {
+      "enumRef": "SPARTE",
+      "description": "Strom oder Gas etc."
+    },
+    "energiemixnummer": {
+      "description": "Eindeutige Nummer zur Identifizierung des Energiemixes"
+    },
+    "gueltigkeitsjahr": {
+      "description": "Jahr, für das der Energiemix gilt"
+    },
+    "ist_in_oeko_top_ten": {
+      "description": "Kennzeichen, ob der Versorger zu den Öko Top Ten gehört"
+    },
+    "oekolabel": {
+      "enumRef": "OEKOLABEL",
+      "description": "Ökolabel für den Energiemix"
+    },
+    "oekozertifikate": {
+      "enumRef": "OEKOZERTIFIKAT",
+      "description": "Zertifikate für den Energiemix"
+    },
+    "website": {
+      "description": "Internetseite, auf der die Strommixdaten veröffentlicht sind"
+    }
+  },
+  "ERREICHBARKEIT": {
+    "verfuegbarkeit": {
+      "enumRef": "VERFUEGBARKEIT"
+    },
+    "zeit": {
+      "description": "Zeit der Erreichbarkeit"
+    }
+  },
+  "EXTERNEREFERENZ": {
+    "exRefName": {
+      "description": "Bezeichnung der externen Referenz (z.B. \"hochfrequenz integration services\")"
+    },
+    "exRefWert": {
+      "description": "Wert der externen Referenz (z.B. \"123456\"; \"4711\")"
+    }
+  },
+  "FEHLER": {
+    "typ": {
+      "enumRef": "FEHLERTYP",
+      "description": "Gibt den Typ des Fehlers an."
+    },
+    "fehlerDetails": {}
+  },
+  "FEHLERDETAIL": {
+    "code": {
+      "enumRef": "FEHLERCODE"
+    },
+    "ursache": {},
+    "beschreibung": {}
+  },
+  "FEHLERURSACHE": {
+    "dokument": {},
+    "nachricht": {},
+    "transaktion": {},
+    "gruppe": {},
+    "segment": {},
+    "beschreibung": {}
+  },
+  "FEHLERBESCHREIBUNG": {
+    "beschreibung1": {
+      "description": "Fehler Beschreibung Zeile 1"
+    },
+    "beschreibung2": {
+      "description": "Fehler Beschreibung Zeile 2"
+    },
+    "beschreibung3": {
+      "description": "Fehler Beschreibung Zeile 3"
+    },
+    "beschreibung4": {
+      "description": "Fehler Beschreibung Zeile 4"
+    },
+    "beschreibung5": {
+      "description": "Fehler Beschreibung Zeile 5"
+    }
+  },
+  "FREITEXT": {
+    "freitext1": {
+      "description": "Freitext Zeile 1"
+    },
+    "freitext2": {
+      "description": "Freitext Zeile 2"
+    },
+    "freitext3": {
+      "description": "Freitext Zeile 3"
+    },
+    "freitext4": {
+      "description": "Freitext Zeile 4"
+    },
+    "freitext5": {
+      "description": "Freitext Zeile 5"
+    }
+  },
+  "GEMEINDERABATT": {
+    "wert": {},
+    "einheit": {},
+    "typ": {},
+    "bemessungsgrundlage": {}
+  },
+  "GEOKOORDINATEN": {
+    "breitengrad": {
+      "description": "Gibt den Breitengrad eines entsprechenden Ortes an."
+    },
+    "laengengrad": {
+      "description": "Gibt den Längengrad eines entsprechenden Ortes an."
+    },
+    "ostwert": {
+      "description": "Gibt den Ostwert eines entsprechenden Ortes an."
+    },
+    "nordwert": {
+      "description": "Gibt den Nordwert eines entsprechenden Ortes an."
+    },
+    "zone": {
+      "enumRef": "ZONE"
+    },
+    "hochwert": {
+      "description": "Gibt den Hochwert eines entsprechenden Ortes an."
+    },
+    "rechtswert": {
+      "description": "Gibt den Rechtswert eines entsprechenden Ortes an."
+    }
+  },
+  "GERAET": {
+    "geraetetyp": {
+      "enumRef": "GERAETETYP"
+    },
+    "bezeichnung": {
+      "description": "Bezeichnung des Gerätes"
+    },
+    "geraetenummer": {
+      "description": "Die auf dem Geräte aufgedruckte Nummer, die vom MSB vergeben wird."
+    },
+    "geraetereferenz": {},
+    "geraeteeigenschaften": {
+      "description": "Festlegung der Eigenschaften des Gerätes. Z.B. Wandler MS/NS."
+    },
+    "volumenerfassung": {
+      "enumRef": "VOLUMENERFASSUNG"
+    },
+    "weitereGeraetenummern": {}
+  },
+  "GERAETEEIGENSCHAFTEN": {
+    "geraetetyp": {
+      "enumRef": "GERAETETYP"
+    },
+    "geraetemerkmal": {
+      "enumRef": "GERAETEMERKMAL"
+    },
+    "volumenerfassung": {
+      "enumRef": "VOLUMENERFASSUNG"
+    },
+    "serialnummer": {},
+    "herstellungsdatum": {
+      "description": "Produktions-/Herstellungsdatum"
+    },
+    "baujahr": {
+      "description": "Baujahr/Jahr des in Verkehrs bringens"
+    },
+    "eichungBis": {
+      "description": "Eichgültigkeit"
+    },
+    "faktor": {}
+  },
+  "GRUPPE": {
+    "gruppe1": {
+      "description": "Gruppe Zeile 1"
+    },
+    "gruppe2": {
+      "description": "Gruppe Zeile 2"
+    }
+  },
+  "HANDELSUNSTIMMIGKEITSBEGRUENDUNG": {
+    "richtigkeit": {
+      "enumRef": "HANDELSUNSTIMMIGKEITSRICHTIGKEIT"
+    },
+    "referenzDar": {
+      "description": "Referenzierte Datenaustauschreferenz"
+    },
+    "referenznummer": {
+      "description": "Referenznummer der Nachricht"
+    },
+    "bestaetigungDar": {
+      "description": "bestätigte Datenaustauschreferenz"
+    },
+    "anerkennungsmeldung": {
+      "description": "Nachrichtennummer aus der Anerkennungsmeldung (APERAK)"
+    },
+    "grund": {
+      "enumRef": "HANDELSUNSTIMMIGKEITSGRUND",
+      "description": "Angabe des Handelsunstimmigkeitsgrunds"
+    },
+    "hinweis": {
+      "description": "Hinweis zum Grund"
+    },
+    "referenzen": {
+      "description": "Referenzen auf vorherige Nachrichten"
+    }
+  },
+  "IPADRESSECLSDEVICE": {
+    "IPAdresseCLSDevice1": {},
+    "IPAdresseCLSDevice2": {},
+    "IPAdresseCLSDevice3": {},
+    "IPAdresseCLSDevice4": {},
+    "IPAdresseCLSDevice5": {}
+  },
+  "INFOABWEICHUNG": {
+    "abweichung1": {
+      "description": "Abweichung Zeile 1"
+    },
+    "abweichung2": {
+      "description": "Abweichung Zeile 2"
+    },
+    "abweichung3": {
+      "description": "Abweichung Zeile 3"
+    },
+    "abweichung4": {
+      "description": "Abweichung Zeile 4"
+    },
+    "abweichung5": {
+      "description": "Abweichung Zeile 5"
+    }
+  },
+  "IPRANGE": {
+    "untereGrenze": {},
+    "obereGrenze": {}
+  },
+  "KATALOGVERWEIS": {
+    "katalognummer": {},
+    "zeilennummer": {},
+    "versionsnummer": {}
+  },
+  "KATASTERADRESSE": {
+    "gemarkung_flur": {
+      "description": "Gemarkung Flur"
+    },
+    "flurstueck": {
+      "description": "Flurstück Name"
+    },
+    "flurstueckNummer": {
+      "description": "Flurstück Nummer"
+    }
+  },
+  "KOMMUNIKATIONSPARAMETER": {
+    "zieladresse": {},
+    "zertifikatsAussteller": {},
+    "zertifikatsNutzer": {}
+  },
+  "KONZESSIONSABGABE": {
+    "satz": {
+      "enumRef": "ABGABEART"
+    },
+    "kosten": {},
+    "kategorie": {}
+  },
+  "LASTPROFIL": {
+    "bezeichnung": {
+      "description": "Bezeichnung des Profils"
+    },
+    "verfahren": {
+      "enumRef": "PROFILVERFAHREN"
+    },
+    "profilart": {
+      "enumRef": "PROFILART"
+    },
+    "profilschar": {
+      "description": "Profilschar des Profils"
+    },
+    "einspeisung": {
+      "description": "Kennzeichen Einspeisung"
+    },
+    "herausgeber": {
+      "description": "Herausgeber des Lastprofils"
+    },
+    "tagesparameter": {},
+    "referenzprofilbezeichnung": {
+      "description": "Bezeichnung des Referenzprofils"
+    }
+  },
+  "LEISTUNGSKURVE": {
+    "code": {
+      "description": "Code der Leistungskurve"
+    },
+    "aenderungszeitpunkt": {
+      "description": "Änderungszeitpunkt"
+    },
+    "haeufigkeit": {
+      "enumRef": "HAEUFIGKEITLEISTUNGSKURVE"
+    },
+    "uebermittelbarkeit": {
+      "enumRef": "UEBERMITTELBARKEITLEISTUNGSKURVE"
+    },
+    "schwellwert": {},
+    "konfigurationsprodukt": {}
+  },
+  "MARKTLOKATIONSREFERENZ": {
+    "marktlokationsId": {
+      "description": "Identifikationsnummer einer Marktlokation"
+    },
+    "typ": {
+      "enumRef": "MARKTLOKATIONSTYP"
+    }
+  },
+  "MARKTLOKATIONSTYPISIERUNG": {
+    "typ": {
+      "enumRef": "MARKTLOKATIONSTYP",
+      "description": "Typisierung der Marktlokation als standard Marktlokation, ruhende Marktlokation oder Kundenanlage"
+    },
+    "gueltigAb": {
+      "description": "Startdatum der Typisierung der Marktlokation"
+    },
+    "gueltigBis": {
+      "description": "Enddatum der Typisierung der Marktlokation"
+    }
+  },
+  "MENGE": {
+    "wert": {},
+    "einheit": {
+      "enumRef": "MENGENEINHEIT"
+    }
+  },
+  "MESSLOKATIONSZUORDNUNG": {
+    "messlokationsId": {},
+    "arithmetik": {
+      "enumRef": "ARITHMETISCHEOPERATION"
+    },
+    "gueltigSeit": {
+      "description": "Zuordnung gültig ab"
+    },
+    "gueltigBis": {
+      "description": "Zuordnung gültig bis"
+    }
+  },
+  "MESSSTELLENBETRIEBSABRECHNUNGSDATEN": {
+    "messstellenbetriebsabrechnung": {},
+    "artikelId": {
+      "description": "BDEWArtikelId"
+    },
+    "artikelIdTyp": {
+      "enumRef": "ARTIKELIDTYP"
+    },
+    "anzahl": {},
+    "zuschlag": {},
+    "abschlag": {}
+  },
+  "NENNLEISTUNG": {
+    "aufnahme": {
+      "description": "Aufnahme der Nennleistung"
+    },
+    "abgabe": {
+      "description": "Abgabe der Nennleistung"
+    }
+  },
+  "NETZNUTZUNGSABRECHNUNGSDATEN": {
+    "artikelId": {},
+    "artikelIdTyp": {
+      "enumRef": "ARTIKELIDTYP"
+    },
+    "anzahl": {},
+    "gemeinderabatt": {},
+    "zuschlag": {},
+    "abschlag": {},
+    "singulaereBetriebsmittel": {},
+    "preisSingulaereBetriebsmittel": {},
+    "abrechnungBlindarbeit": {},
+    "zahlerBlindarbeit": {
+      "enumRef": "ZAHLERBLINDARBEIT"
+    },
+    "zahlerBlindarbeitLf": {
+      "description": "Zahlung der Blindarbeit durch den Lieferanten"
+    },
+    "differenzDaten": {},
+    "zaehlzeiten": {}
+  },
+  "OBJECTCODE": {
+    "objectcode": {},
+    "lokationsbuendelNummer": {}
+  },
+  "POSITIONSAUFABSCHLAG": {
+    "bezeichnung": {},
+    "beschreibung": {},
+    "aufAbschlagstyp": {
+      "enumRef": "AUFABSCHLAGSTYP"
+    },
+    "aufAbschlagswert": {},
+    "aufAbschlagswaehrung": {
+      "enumRef": "WAEHRUNGSEINHEIT"
+    }
+  },
+  "PREIS": {
+    "wert": {},
+    "menge": {},
+    "einheit": {
+      "enumRef": "WAEHRUNGSEINHEIT"
+    },
+    "bezugswert": {
+      "enumRef": "MENGENEINHEIT"
+    },
+    "status": {
+      "enumRef": "PREISSTATUS"
+    },
+    "preisart": {
+      "enumRef": "PREISART"
+    }
+  },
+  "PREISPOSITION": {
+    "berechnungsmethode": {
+      "enumRef": "KALKULATIONSMETHODE",
+      "description": "Das Modell, das der Preisbildung zugrunde liegt. Details Kalkulationsmethode"
+    },
+    "leistungstyp": {
+      "enumRef": "LEISTUNGSTYP",
+      "description": "Standardisierte Bezeichnung für die abgerechnete Leistungserbringung. Details Leistungstyp"
+    },
+    "leistungsbezeichnung": {
+      "enumRef": "LEISTUNGSBEZEICHNUNG",
+      "description": "Bezeichnung für die in der Position abgebildete Leistungserbringung"
+    },
+    "preiseinheit": {
+      "enumRef": "WAEHRUNGSEINHEIT",
+      "description": "Festlegung, mit welcher Preiseinheit abgerechnet wird, z.B. Ct. oder €. Details\nWaehrungseinheit"
+    },
+    "bezugsgroesse": {
+      "enumRef": "MENGENEINHEIT",
+      "description": "Hier wird festgelegt, auf welche Bezugsgröße sich der Preis bezieht, z.B. kWh oder Stück. Details\nMengeneinheit"
+    },
+    "zeitbasis": {
+      "enumRef": "ZEITEINHEIT",
+      "description": "Die Zeit(dauer) auf die sich der Preis bezieht. Z.B. ein Jahr für einen Leistungspreis der in €/kW/Jahr\nausgegeben wird."
+    },
+    "tarifzeit": {
+      "enumRef": "TARIFZEIT",
+      "description": "Festlegung, für welche Tarifzeit der Preis hier festgelegt ist."
+    },
+    "bdewArtikelnummer": {
+      "enumRef": "BDEWARTIKELNUMMER",
+      "description": "Eine vom BDEW standardisierte Bezeichnung für die abgerechnete Leistungserbringung. Diese Artikelnummer wird\nauch im Rechnungsteil der INVOIC verwendet."
+    },
+    "zonungsgroesse": {
+      "enumRef": "BEMESSUNGSGROESSE",
+      "description": "Mit der Menge der hier angegebenen Größe wird die Staffelung/Zonung durchgeführt. Z.B. Vollbenutzungsstunden."
+    },
+    "preisschluesselstamm": {
+      "description": "Preisschlüsselstamm>"
+    },
+    "positionsnummer": {
+      "description": "Fortlaufende Nummer für die Preisposition"
+    },
+    "messebene": {
+      "enumRef": "NETZEBENE",
+      "description": "Vgl. PRICAT IMD 7009"
+    },
+    "beschreibung": {
+      "description": "Produkt-/Leistungsbeschreibung, wenn IMD+X vorhanden Vgl. PRICAT IMD 7008"
+    },
+    "beschreibungsformat": {
+      "enumRef": "BESCHREIBUNGSFORMAT",
+      "description": "Vgl. PRICAT IMD 7077"
+    },
+    "verarbeitungszeitraum": {
+      "description": "Verarbeitungszeitraum. Details Zeitraum"
+    },
+    "artikelId": {
+      "description": "Die genauen Bedeutungen der einzelnen Artikel-IDs sind in der EDI@Energy Codeliste der Artikelnummern \n            und Artikel-IDs zu finden, die in der Spalte \"PRICAT Codeverwendung\" ein X haben"
+    },
+    "zu_abschlaege": {
+      "description": "Zuschläge oder Abschläge auf die Position."
+    },
+    "preisstaffeln": {
+      "description": "Preisstaffeln, die zu dieser Preisposition gehören. Details Preisstaffel"
+    }
+  },
+  "PREISSTAFFEL": {
+    "einheitspreis": {},
+    "staffelgrenzeVon": {},
+    "staffelgrenzeBis": {},
+    "sigmoidparameter": {},
+    "einheit": {
+      "enumRef": "MENGENEINHEIT"
+    }
+  },
+  "PRODUKT": {
+    "produktCode": {},
+    "codeProdukteigenschaft": {},
+    "wertedetails": {}
+  },
+  "PRODUKTPAKET": {
+    "produktpaketId": {},
+    "produkt": {},
+    "umsetzungsgradvorgabe": {
+      "enumRef": "UMSETZUNGSGRADVORGABE"
+    },
+    "priorisierung": {
+      "enumRef": "PRIORISIERUNG"
+    }
+  },
+  "RECHENSCHRITT": {
+    "rechenschrittBestandteilId": {},
+    "referenzRechenschrittId": {},
+    "operation": {
+      "enumRef": "ARITHMETISCHEOPERATION"
+    },
+    "verlustfaktorTrafo": {},
+    "verlustfaktorLeitung": {},
+    "aufteilungsfaktorEnergiemenge": {},
+    "messlokationsId": {},
+    "energieflussrichtung": {
+      "enumRef": "ENERGIERICHTUNG"
+    }
+  },
+  "RECHNUNGSPOSITION": {
+    "einzelpreis": {
+      "description": "Der Preis für eine Einheit der energetischen Menge. Details Preis"
+    },
+    "lieferungBis": {
+      "description": "Ende der Lieferung für die abgerechnete Leistung."
+    },
+    "lieferungVon": {
+      "description": "Start der Lieferung für die abgerechnete Leistung."
+    },
+    "positionsMenge": {
+      "description": "Die abgerechnete Menge mit Einheit. Z.B. 4372 kWh. Details Menge"
+    },
+    "positionsnummer": {
+      "description": "Fortlaufende Nummer für die Rechnungsposition."
+    },
+    "artikelnummer": {
+      "description": "Kennzeichnung der Rechnungsposition mit der Standard-Artikelnummer des BDEW. Details\nBDEWArtikelnummer"
+    },
+    "teilsummeNetto": {
+      "description": "Das Ergebnis der Multiplikation aus einzelpreis * positionsMenge * (Faktor aus zeitbezogeneMenge). Z.B. 12,60€\n* 120 kW * 3/12 (für 3 Monate). Details Betrag"
+    },
+    "teilsummeSteuer": {
+      "description": "Auf die Position entfallende Steuer, bestehend aus Steuersatz und Betrag. Details Steuerbetrag"
+    },
+    "zeitbezogeneMenge": {
+      "description": "Eine auf die Zeiteinheit bezogene Untermenge. Z.B. bei einem Jahrespreis, 3 Monate oder 146 Tage. Basierend\ndarauf wird der Preis aufgeteilt. Details Menge"
+    },
+    "abschlag": {},
+    "zuschlag": {},
+    "gemeinderabatt": {},
+    "gesamtZuAbschlagsbetrag": {},
+    "korrekturfaktor": {
+      "description": "Gibt ggf. einen Korrekturfaktor für die Menge an."
+    },
+    "ausfuehrungsdatum": {
+      "description": "Das Datum an dem die Leistung erbracht wurde."
+    }
+  },
+  "REKLAMATIONSGRUNDBEMERKUNG": {
+    "bemerkung1": {},
+    "bemerkung2": {},
+    "bemerkung3": {},
+    "bemerkung4": {},
+    "bemerkung5": {}
+  },
+  "RUECKMELDUNGSPOSITION": {
+    "positionsnummer": {},
+    "abweichung": {}
+  },
+  "RUFNUMMER": {
+    "nummerntyp": {
+      "enumRef": "RUFNUMMERNART"
+    },
+    "rufnummer": {}
+  },
+  "SCHALTZEIT": {
+    "code": {},
+    "aenderungszeitpunkt": {},
+    "haeufigkeit": {
+      "enumRef": "HAEUFIGKEITSCHALTZEIT"
+    },
+    "uebermittelbarkeit": {
+      "enumRef": "UEBERMITTELBARKEITSCHALTZEIT"
+    },
+    "schalthandlung": {
+      "enumRef": "SCHALTHANDLUNG"
+    },
+    "konfigurationsprodukt": {}
+  },
+  "SCHWELLWERT": {
+    "obererSchwellwert": {},
+    "untererSchwellwert": {},
+    "konfigurationsprodukt": {}
+  },
+  "SIGMOIDPARAMETER": {
+    "A": {},
+    "B": {},
+    "C": {},
+    "D": {}
+  },
+  "STATUSZUSATZINFORMATION": {
+    "art": {
+      "enumRef": "STATUSART"
+    },
+    "status": {
+      "enumRef": "STATUS"
+    }
+  },
+  "STATUSMITTEILUNGPOSITION": {
+    "positionsnummer": {},
+    "bearbeitungsdatum": {},
+    "verwendungAb": {},
+    "verwendungBis": {},
+    "enddatum": {},
+    "auftragsstatus": {
+      "enumRef": "AUFTRAGSSTATUS"
+    },
+    "statusanlass": {
+      "enumRef": "STATUSANLASS"
+    },
+    "antwortstatus": {},
+    "fehlerbeschreibung": {},
+    "begruendung": {},
+    "lokationsId": {},
+    "referenzMelo": {},
+    "allgemeineInformationen": {},
+    "statusVeraenderungsZeitpunkt": {},
+    "auftragsStatusListe": {
+      "enumRef": "AUFTRAGSSTATUS"
+    }
+  },
+  "STEUERBETRAG": {
+    "steuerkennzeichen": {
+      "description": "Kennzeichnung des Steuersatzes, bzw. Verfahrens. Details Steuerkennzeichen"
+    },
+    "basiswert": {
+      "description": "Nettobetrag für den die Steuer berechnet wurde. Z.B. 200"
+    },
+    "steuerwert": {
+      "description": "Aus dem Basiswert berechnete Steuer. Z.B. 38 (bei UST_19), falls Basiswert 200 ist."
+    },
+    "waehrung": {
+      "description": "Währung. Z.B. Euro."
+    },
+    "basiswertVorausbezahlt": {},
+    "steuerwertVorausbezahlt": {}
+  },
+  "TAGESPARAMETER": {
+    "klimazone": {},
+    "temperaturmessstelle": {},
+    "dienstanbieter": {},
+    "herausgeber": {
+      "enumRef": "HERAUSGEBER"
+    }
+  },
+  "VERBRAUCH": {
+    "startdatum": {},
+    "enddatum": {},
+    "wertermittlungsverfahren": {
+      "enumRef": "WERTERMITTLUNGSVERFAHREN"
+    },
+    "messwertstatus": {
+      "enumRef": "MESSWERTSTATUS"
+    },
+    "obiskennzahl": {},
+    "wert": {},
+    "einheit": {
+      "enumRef": "MENGENEINHEIT"
+    },
+    "type": {
+      "enumRef": "VERBRAUCHSMENGETYP"
+    },
+    "tarifstufe": {
+      "enumRef": "TARIFSTUFE"
+    },
+    "nutzungszeitpunkt": {},
+    "ausfuehrungszeitpunkt": {},
+    "position": {},
+    "ablesedatum": {},
+    "leistungsperiode": {},
+    "statuszusatzinformationen": {}
+  },
+  "VERTRAGSKONDITIONEN": {
+    "netznutzungszahler": {
+      "enumRef": "NETZNUTZUNGSZAHLER"
+    },
+    "netznutzungsvertrag": {
+      "enumRef": "NETZNUTZUNGSVERTRAG"
+    },
+    "netznutzungsabrechnung": {},
+    "beinhaltetSingulaerGenutzteBetriebsmittel": {
+      "description": "Singulär genutzte Betriebsmittel in der Netznutzungsabrechnung\nHier wird angegeben, ob in der Netznutzungsabrechnung der verbrauchenden Marktlokation singulär \ngenutzte Betriebsmittel abgerechnet werden."
+    },
+    "netznutzungsabrechnungsgrundlage": {
+      "enumRef": "NETZNUTZUNGSABRECHNUNGSGRUNDLAGE"
+    },
+    "netznutzungsabrechnungsvariante": {
+      "enumRef": "NETZNUTZUNGSABRECHNUNGSVARIANTE"
+    },
+    "haushaltskunde": {},
+    "abrechnungUeberNna": {},
+    "gemeinderabatt": {},
+    "startAbrechnungsjahr": {},
+    "naechstenetznutzungsabrechnung": {},
+    "abrechnungsintervall": {},
+    "netznutzungsabrechnungIntervall": {},
+    "geplanteTurnusablesung": {},
+    "beauftragungMsb": {
+      "enumRef": "BEAUFTRAGUNGMSB"
+    },
+    "kuendigungsfrist": {
+      "description": "Innerhalb dieser Frist kann der Vertrag gekündigt werden. Details Zeitraum"
+    },
+    "vertragslaufzeit": {
+      "description": "Über diesen Zeitraum läuft der Vertrag. Details Zeitraum"
+    },
+    "kuendigungstermin": {},
+    "abschlagszyklus": {
+      "description": "In diesen Zyklen werden Abschläge gestellt. Details Zeitraum. Alternativ kann auch die Anzahl\nin den Konditionen angeben werden.\""
+    },
+    "anzahl_abschlaege": {
+      "description": "Anzahl der vereinbarten Abschläge pro Jahr, z.B. 12"
+    },
+    "beschreibung": {
+      "description": "Freitext zur Beschreibung der Konditionen, z.B. \"Standardkonditionen Gas\""
+    },
+    "vertragsverlaengerung": {
+      "description": "Falls der Vertrag nicht gekündigt wird, verlängert er sich automatisch um die hier angegebene Zeit. Details\nZeitraum"
+    }
+  },
+  "VERWENDUNGSZWECK": {
+    "marktrolle": {
+      "enumRef": "MARKTROLLE"
+    },
+    "zweck": {
+      "enumRef": "VERWENDUNGSZWECKVALUE"
+    }
+  },
+  "ZAEHLWERK": {
+    "zaehlwerkId": {
+      "description": "Identifikation des Zählwerks (Registers) innerhalb des Zählers. Oftmals eine laufende Nummer hinter der\nZählernummer. Z.B. 47110815_1"
+    },
+    "bezeichnung": {
+      "description": "Zusätzliche Bezeichnung, z.B. Zählwerk_Wirkarbeit."
+    },
+    "richtung": {
+      "enumRef": "ENERGIERICHTUNG",
+      "description": "Die Energierichtung, Einspeisung oder Ausspeisung. Details Energierichtung"
+    },
+    "obisKennzahl": {
+      "description": "Die OBIS-Kennzahl für das Zählwerk, die festlegt, welche auf die gemessene Größe mit dem Stand gemeldet wird.\nNur Zählwerkstände mit dieser OBIS-Kennzahl werden an diesem Zählwerk registriert. Beispiel:1-0:1.8.1 für\nelektrische Wirkarbeit."
+    },
+    "wandlerfaktor": {
+      "description": "Mit diesem Faktor wird eine Zählerstandsdifferenz multipliziert, um zum eigentlichen Verbrauch im Zeitraum zu\nkommen."
+    },
+    "einheit": {
+      "enumRef": "MENGENEINHEIT",
+      "description": "Die Einheit der gemessenen Größe, z.B. kWh. Details Mengeneinheit"
+    },
+    "schwachlastfaehig": {
+      "enumRef": "SCHWACHLASTFAEHIG"
+    },
+    "verbrauchsart": {
+      "enumRef": "VERBRAUCHSART",
+      "description": "Stromverbrauchsart/Verbrauchsart Marktlokation"
+    },
+    "unterbrechbarkeit": {
+      "enumRef": "UNTERBRECHBARKEIT",
+      "description": "Stromverbrauchsart/Unterbrechbarkeit Marktlokation"
+    },
+    "waermenutzung": {
+      "enumRef": "WAERMENUTZUNG",
+      "description": "Stromverbrauchsart/Wärmenutzung Marktlokation"
+    },
+    "konzessionsabgabe": {},
+    "steuerbefreit": {},
+    "vorkommastelle": {},
+    "nachkommastelle": {},
+    "abrechnungsrelevant": {},
+    "anzahlAblesungen": {},
+    "zaehlzeiten": {},
+    "konfiguration": {
+      "description": "Konfiguration (iMSys) des Zählwerks"
+    },
+    "messprodukt": {},
+    "wertegranularitaet": {
+      "enumRef": "WERTEGRANULARITAET"
+    },
+    "notwendigkeitZweiteMessung": {
+      "enumRef": "NOTWENDIGKEITZWEITEMESSUNG"
+    },
+    "werteuebermittlungVerwendungszweck": {
+      "enumRef": "WERTEUEBERMITTLUNGVERWENDUNGSZWECK"
+    },
+    "artEMobilitaet": {
+      "enumRef": "ARTEMOBILITAET"
+    },
+    "konfigurationsprodukt": {},
+    "keinKonfigurationsprodukt": {},
+    "leistungskurvendefinition": {},
+    "verwendungszwecke": {
+      "description": "Verwendungungszweck der Werte Marktlokation"
+    }
+  },
+  "ZAEHLZEIT": {
+    "code": {
+      "description": "Zählzeitdefinition"
+    },
+    "haeufigkeit": {
+      "enumRef": "HAEUFIGKEITZAEHLZEIT",
+      "description": "Häufigkeit der Übermittlung"
+    },
+    "uebermittelbarkeit": {
+      "enumRef": "UEBERMITTELBARKEITZAEHLZEIT",
+      "description": "Art der Übermittlung"
+    },
+    "ermittlungLeistungsmaximum": {
+      "enumRef": "ERMITTLUNGLEISTUNGSMAXIMUM",
+      "description": "Ermittlung Leistungsmaximum"
+    },
+    "istBestellbar": {
+      "description": "Ist die Zählzeit bestellbar?"
+    },
+    "typ": {
+      "enumRef": "ZAEHLZEITDEFINITIONTYP",
+      "description": "ZählzeitdefinitionTyp"
+    },
+    "beschreibungTyp": {
+      "description": "Beschreibung des ZählzeitdefinitionTyp"
+    },
+    "aenderungszeitpunkt": {},
+    "register": {}
+  },
+  "ZAEHLZEITREGISTER": {
+    "register": {
+      "description": "Zählzeitregister"
+    },
+    "zaehlzeitDefinition": {
+      "description": "Zählzeitdefinition"
+    },
+    "schwachlastfaehig": {
+      "enumRef": "SCHWACHLASTFAEHIG",
+      "description": "Schwachlastfähigkeit des Registers"
+    }
+  },
+  "ZEITRAUM": {
+    "zeiteinheit": {
+      "enumRef": "ZEITEINHEIT"
+    },
+    "dauer": {},
+    "startdatum": {},
+    "enddatum": {},
+    "einheit": {
+      "enumRef": "ZEITEINHEIT"
+    },
+    "ableseZeitraum": {},
+    "abrechnungsZeitraum": {},
+    "zeitraumText": {},
+    "zeitraumId": {}
+  },
+  "ZERTIFIKATSAUSSTELLER": {
+    "zertifikatsAussteller1": {},
+    "zertifikatsAussteller2": {},
+    "zertifikatsAussteller3": {},
+    "zertifikatsAussteller4": {},
+    "zertifikatsAussteller5": {}
+  },
+  "ZERTIFIKATSNUTZER": {
+    "zertifikatsNutzer1": {},
+    "zertifikatsNutzer2": {},
+    "zertifikatsNutzer3": {},
+    "zertifikatsNutzer4": {},
+    "zertifikatsNutzer5": {}
+  },
+  "ZIELADRESSE": {
+    "zieladresse1": {},
+    "zieladresse2": {},
+    "zieladresse3": {},
+    "zieladresse4": {},
+    "zieladresse5": {}
+  },
+  "ZUGEORDNETEDEFINITION": {
+    "schaltzeitdefinition": {},
+    "leistungskurvendefinition": {}
+  },
+  "ZUORDNUNGOBJECTCODE": {
+    "referenzLokationsTyp": {
+      "enumRef": "LOKATIONSTYP"
+    },
+    "referenzLokationsId": {},
+    "vorgelagerteLokationTyp": {
+      "enumRef": "LOKATIONSTYP"
+    },
+    "vorgelagerteLokationId": {},
+    "objectcode": {},
+    "referenzMarktlokationTechnischeRessource": {}
+  },
+  "ZUSCHLAG": {
+    "typ": {
+      "enumRef": "ZUSCHLAGTYP"
+    },
+    "prozent": {}
+  }
+}

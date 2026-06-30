@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 88" role="img" aria-label="Typografie-Skala">
+  <text x="24" y="40" font-family="system-ui,sans-serif" font-size="32" font-weight="800" fill="#eef3f6">Ag</text>
+  <text x="86" y="40" font-family="system-ui,sans-serif" font-size="22" font-weight="700" fill="#cfd6db">Ag</text>
+  <text x="130" y="40" font-family="system-ui,sans-serif" font-size="15" font-weight="600" fill="#8a949c">Ag</text>
+  <rect x="24" y="54" width="150" height="6" rx="3" fill="#3c454d"/>
+  <rect x="24" y="66" width="110" height="6" rx="3" fill="#3c454d"/>
+</svg>

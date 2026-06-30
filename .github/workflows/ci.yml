@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: prince-ui
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4

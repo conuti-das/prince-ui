@@ -1,30 +1,76 @@
-.pg { display: grid; grid-template-columns: 1fr 250px; gap: 1rem; background: var(--prn-bg-elevated); border: 1px solid var(--prn-separator); border-radius: 12px; padding: 1.25rem; }
-.pg-stage { display: flex; align-items: center; justify-content: center; min-height: 200px; }
+/* ============================================================
+   Playground — Grid, Stage, Controls, Code-Panel
+   Nutzt --docs-*/--prn-*-Tokens aus theme.css.
+   ============================================================ */
+.pg {
+  display: grid; grid-template-columns: 1fr 240px; gap: var(--docs-sp-5);
+  background: var(--prn-bg-elevated); border: var(--docs-border);
+  border-radius: var(--docs-radius-card); padding: var(--docs-sp-5);
+}
+.pg-stage {
+  display: flex; align-items: center; justify-content: center;
+  min-height: 220px; border-radius: var(--docs-radius-code);
+  background: var(--docs-fill);
+}
 
-/* Live-Props: kompakte Steuerleiste, oben ausgerichtet statt über die Stage-Höhe gestreckt */
-.pg-controls { align-self: start; display: flex; flex-direction: column; gap: .15rem; background: var(--prn-bg, rgba(0,0,0,.18)); border: 1px solid var(--prn-separator); border-radius: 10px; padding: .4rem; }
-.pg-controls::before { content: "Live-Props"; font-size: .68rem; text-transform: uppercase; letter-spacing: .05em; color: var(--prn-label-3, var(--prn-label-2)); padding: .25rem .45rem .35rem; }
+/* --- Controls --- */
+.pg-controls { display: flex; flex-direction: column; gap: var(--docs-sp-4); }
+.pg-control { display: flex; flex-direction: column; gap: var(--docs-sp-2); font-size: var(--docs-small-size); }
+.pg-control-name { display: flex; align-items: center; justify-content: space-between; gap: var(--docs-sp-2); color: var(--prn-label-2); }
+.pg-control-label { font-weight: 500; color: var(--prn-label); }
+.pg-info { cursor: help; text-decoration: none; color: var(--prn-label-2); border: 0; line-height: 1; }
+.docs-required { color: var(--prn-negative, #c62828); margin-left: 2px; }
 
-/* Eine Zeile pro Prop: Name links, Control rechts */
-.pg-control { display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: .75rem; min-height: 30px; padding: .25rem .45rem; border-radius: 7px; font-size: .8rem; cursor: pointer; }
-.pg-control:hover { background: var(--prn-fill, rgba(255,255,255,.05)); }
-.pg-control-name { color: var(--prn-label-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.docs-segmented { display: inline-flex; gap: 2px; background: var(--docs-fill); border-radius: var(--docs-radius-ctrl); padding: 2px; flex-wrap: wrap; }
+.docs-segment { height: 28px; padding: 0 var(--docs-sp-3); font-size: var(--docs-small-size); border: 0; background: transparent; color: var(--prn-label); border-radius: 6px; cursor: pointer; }
+.docs-segment:hover { background: color-mix(in srgb, var(--prn-label) 6%, transparent); }
+.docs-segment.is-active { background: var(--docs-fill-strong); color: var(--prn-label); font-weight: 500; }
 
-/* Eingaben/Selects nehmen rechts gedeckelt Platz; Checkbox bleibt kompakt */
-.pg-control input[type="text"], .pg-control input[type="number"], .pg-control select { flex: 0 1 130px; min-width: 0; background: var(--prn-bg-elevated); color: var(--prn-label); border: 1px solid var(--prn-separator); border-radius: 6px; padding: .2rem .4rem; font-size: .78rem; }
-.pg-control input[type="checkbox"] { flex: 0 0 auto; width: 16px; height: 16px; accent-color: var(--prn-accent, #a0d22b); cursor: pointer; }
+.docs-select, .docs-field {
+  height: 32px; padding: 0 var(--docs-sp-3); font-size: var(--docs-small-size);
+  font-family: inherit; background: var(--docs-fill); color: var(--prn-label);
+  border: var(--docs-border); border-radius: var(--docs-radius-ctrl);
+  width: 100%; box-sizing: border-box;
+}
+.docs-select:hover, .docs-field:hover { border-color: var(--docs-accent); }
+.docs-select:focus, .docs-field:focus { outline: 2px solid color-mix(in srgb, var(--docs-accent) 50%, transparent); outline-offset: 1px; }
+.docs-select {
+  appearance: none; -webkit-appearance: none; padding-right: 1.75rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='%23888' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right var(--docs-sp-2) center;
+}
 
-.pg-info { margin-left: .35rem; cursor: help; text-decoration: none; color: var(--prn-label-3, var(--prn-label-2)); border: 0; }
+.docs-switch {
+  width: 38px; height: 22px; border-radius: var(--docs-radius-pill);
+  background: var(--docs-fill); border: var(--docs-border); position: relative;
+  cursor: pointer; padding: 0; flex: 0 0 auto; align-self: flex-start;
+  transition: background .15s;
+}
+.docs-switch[aria-checked="true"] { background: var(--docs-accent); border-color: transparent; }
+.docs-switch-knob { position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; border-radius: 50%; background: #fff; transition: left .15s; }
+.docs-switch[aria-checked="true"] .docs-switch-knob { left: 18px; }
+
+/* --- Code-Panel --- */
 .pg-code { grid-column: 1 / -1; position: relative; }
-.pg-code pre { background: var(--prn-bg, #11161b); border-radius: 8px; padding: 1rem; padding-top: 2.6rem; overflow: auto; }
-.pg-actions { position: absolute; top: .5rem; right: .5rem; display: flex; gap: .4rem; z-index: 1; }
-.pg-copy { font-size: .75rem; padding: .25rem .55rem; cursor: pointer; background: var(--prn-bg-elevated); color: var(--prn-label); border: 1px solid var(--prn-separator); border-radius: 6px; }
-.pg-copy:hover { border-color: var(--prn-accent, #a0d22b); }
+.pg-code pre {
+  /* Immer dunkles Code-Panel (Editor-Look) → feste helle Schrift, theme-unabhängig
+     lesbar (sonst dunkel-auf-dunkel im Light-Theme). */
+  background: #1b2129; border-radius: var(--docs-radius-code);
+  padding: var(--docs-sp-4); padding-top: 2.6rem; margin: 0;
+  font: var(--docs-code-size)/var(--docs-code-lh) var(--prn-font-mono, ui-monospace);
+  color: #e6e8eb; overflow: auto;
+}
+.pg-code .pg-icon-btn { color: #aeb4bd; }
+.pg-code .pg-icon-btn:hover { background: rgba(255,255,255,.1); color: #fff; }
+.pg-code.is-expanded pre { max-height: none; }
+.pg-actions { position: absolute; top: var(--docs-sp-2); right: var(--docs-sp-2); display: flex; gap: var(--docs-sp-1); z-index: 1; }
+.pg-icon-btn {
+  width: 24px; height: 24px; display: inline-flex; align-items: center; justify-content: center;
+  background: transparent; border: 0; border-radius: 7px; color: var(--prn-label-2);
+  cursor: pointer; font-size: .85rem; line-height: 1;
+}
+.pg-icon-btn:hover { background: var(--docs-fill); color: var(--prn-label); }
 
-/* Schmale Viewports: Stage und Steuerleiste untereinander, Props als umbrechende Chips */
 @media (max-width: 640px) {
   .pg { grid-template-columns: 1fr; }
-  .pg-controls { flex-direction: row; flex-wrap: wrap; gap: .35rem; }
-  .pg-controls::before { flex-basis: 100%; padding-bottom: 0; }
-  .pg-control { flex: 1 1 auto; border: 1px solid var(--prn-separator); }
 }
