@@ -21,6 +21,12 @@
 .pg-info { cursor: help; text-decoration: none; color: var(--prn-label-2); border: 0; line-height: 1; }
 .docs-required { color: var(--prn-negative, #c62828); margin-left: 2px; }
 
+/* Boolean-Toggles als eine Zeile: Name links, Switch rechts (statt gestapelt).
+   Selects/Text/Segmented bleiben gestapelt — die brauchen die volle Breite. */
+.pg-control:has(.docs-switch) { flex-direction: row; align-items: center; justify-content: space-between; gap: var(--docs-sp-3); }
+.pg-control:has(.docs-switch) .pg-control-name { justify-content: flex-start; }
+.pg-control:has(.docs-switch) .docs-switch { align-self: center; }
+
 .docs-segmented { display: inline-flex; gap: 2px; background: var(--docs-fill); border-radius: var(--docs-radius-ctrl); padding: 2px; flex-wrap: wrap; }
 .docs-segment { height: 28px; padding: 0 var(--docs-sp-3); font-size: var(--docs-small-size); border: 0; background: transparent; color: var(--prn-label); border-radius: 6px; cursor: pointer; }
 .docs-segment:hover { background: color-mix(in srgb, var(--prn-label) 6%, transparent); }
