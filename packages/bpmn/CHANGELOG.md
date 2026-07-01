@@ -15,7 +15,7 @@
 
   - **prince-ui-bpmn**: `BpmnViewer` (read-only mit deklarativem Status-/Historie-Highlighting
     über diagram-js-Overlays/Marker, Camunda-7-Shapes) und `BpmnEditor` (bpmn-js-Modeler im
-    Apple-Look via Custom-Renderer, Original-bpmn.io-Icons, Properties-Panel, bpmnlint,
+    Prince-Look via Custom-Renderer, Original-bpmn.io-Icons, Properties-Panel, bpmnlint,
     camunda-moddle, AnalyticalTable-Ansicht). Theming über `--prn-*`/`data-theme`.
   - **prince-ui-dmn**: `DmnTableEditor` (einstiegsfreundlich auf prince-ui AnalyticalTable mit
     Inline-Edit, voller Umfang inkl. Spaltenpflege, verlustfreie dmn-moddle-Serialisierung,
@@ -26,7 +26,7 @@
 
   Persistenz/Selektion/KI als Props/Slots, Domänenlogik (z. B. Prüfidentifikatoren) als optionales Plugin.
 
-- Prozess-Editoren: Benutzbarkeit, Dark-Mode-Lesbarkeit & Apple-Feinschliff.
+- Prozess-Editoren: Benutzbarkeit, Dark-Mode-Lesbarkeit & Feinschliff.
 
   **BPMN-Editor**
 
@@ -34,11 +34,11 @@
     komplette Palette sichtbar; Diagramm zentriert mit Rand.
   - Kein „Springen" mehr beim Bearbeiten (ResizeObserver-Re-Fit entfernt;
     Lint-Leiste als Overlay statt im Layout-Flow).
-  - Properties-Panel im Dark/CU korrekt eingefärbt (echtes `--color-*`-Mapping
+  - Properties-Panel im Dark/Cu korrekt eingefärbt (echtes `--color-*`-Mapping
     für `@bpmn-io/properties-panel` v3 statt wirkungsloser `--bio-*`-Variablen);
     irrelevante Camunda-Gruppen ausgeblendet.
-  - Palette/Context-Pad/Append-Popup token-getrieben (Apple-Look, alle Themes).
-  - Apple-Renderer: SF-Pro auf SVG-Labels, weiche Schatten/Hairlines, dünnere
+  - Palette/Context-Pad/Append-Popup token-getrieben (Prince-Look, alle Themes).
+  - Prince-Renderer: System-Font auf SVG-Labels, weiche Schatten/Hairlines, dünnere
     Connectoren; Renderer auch im Viewer registriert; bpmn.io-Wasserzeichen aus.
   - Neu: **Minimap**, **Suchfeld** (Toolbar + ⌘/Strg+F), **Element-Templates**
     (`elementTemplates`-Prop). Auto-Resize/Auto-Place aktiv.
@@ -46,7 +46,7 @@
   **DMN**
 
   - Experten-Editor: fehlendes dmn-js-Layout-CSS importiert (Kollaps behoben);
-    vollständige Dark/CU-Theming-Schicht (alle `--color-*`-Primitive); DRD-Shapes
+    vollständige Dark/Cu-Theming-Schicht (alle `--color-*`-Primitive); DRD-Shapes
     über korrekten Renderer-Key; großzügige Höhe.
   - Tabellen-Editor: Spaltentitel & Decision-Name **inline editierbar**;
     Zell-/Header-/Popup-Clipping behoben (Eingabe in neuen Zellen möglich);
@@ -55,7 +55,7 @@
 
   **Forms**
 
-  - Renderer: Datumsfeld auf prince-ui `DatePicker` (de-DE, Apple-Optik) statt
+  - Renderer: Datumsfeld auf prince-ui `DatePicker` (de-DE, Prince-Optik) statt
     nativem `<input type=date>`.
   - Builder: monochrome SVG-Icons statt Emojis; form-js-Experten-Editor lädt das
     korrekte Paket (`@bpmn-io/form-js-editor`) + CSS und zeigt bei fehlgeschlagenem

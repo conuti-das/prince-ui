@@ -8,7 +8,7 @@
 
 ## 1. Kontext & Ziel
 
-In „Prinz" (prince-ui) soll eine Komponentenfamilie entstehen, die **BO4E-Geschäftsobjekte** (Business Objects for Energy) der Marktkommunikation elegant, Apple-artig und **sachbearbeiter-optimiert** darstellt und bearbeitet. Eingabe ist ein **cDoc** — die in MaCo verwendete Datenstruktur — sowie ein **JSON-Schema-Repo** (BO4E), das Feld-Beschreibungen, Enums und Beispiele liefert.
+In „Prinz" (prince-ui) soll eine Komponentenfamilie entstehen, die **BO4E-Geschäftsobjekte** (Business Objects for Energy) der Marktkommunikation elegant, poliert und **sachbearbeiter-optimiert** darstellt und bearbeitet. Eingabe ist ein **cDoc** — die in MaCo verwendete Datenstruktur — sowie ein **JSON-Schema-Repo** (BO4E), das Feld-Beschreibungen, Enums und Beispiele liefert.
 
 Die Komponente ist **datengetrieben und schema-gestützt**, nicht auf konkrete BO-Typen hartcodiert. Das Schema speist Popover-Dokumentation, Edit-Widgets und (später) Monaco-IntelliSense aus einer Quelle.
 
@@ -43,7 +43,7 @@ Die Komponente ist **datengetrieben und schema-gestützt**, nicht auf konkrete B
 - Peers: `react`, `react-dom`, `react-aria-components`, **`prince-ui`** (Primitives/Composites), `prince-ui-tokens`.
 - Dependency: **`ajv`** + `ajv-formats` (klein) für spätere Validierung; in Milestone 1 nur für Schema-Laden optional.
 - **Keine** schweren Deps in Milestone 1 (Monaco erst Slice 5, React Flow erst Slice 3) — sonst zieht jeder Import sie mit.
-- Styling: reines CSS mit `--prn-*`-Tokens, co-located `.css` je Komponente, `cx()`-Utility. Kein Tailwind/CSS-in-JS. 3-Mode-Theming (Light/Dark/CU) erbt automatisch über Tokens.
+- Styling: reines CSS mit `--prn-*`-Tokens, co-located `.css` je Komponente, `cx()`-Utility. Kein Tailwind/CSS-in-JS. 3-Mode-Theming (Light/Dark/Cu) erbt automatisch über Tokens.
 - A11y über React Aria; Klickflächen ≥ `--prn-hit` (44px); `:focus-visible` nutzt `--prn-focus`.
 
 ---
@@ -218,7 +218,7 @@ Die Bausteine bekommen saubere Props-Grenzen, damit Edit (4), Raw/Diagramm (5) u
 - **Schicht 2:** Tabs aus Gruppenschlüsseln; Richtungs-Umschalter; Normalizer-Pfade.
 
 ## 11. Storybook
-Stories für `SchemaField`, `MarktpartnerRow`, `AddressBlock`, `ContactLine`, `ValidityRange`, `SmartObjectCard`, `SydocView` mit dem cDoc-Fixture. Theme-Toolbar deckt Light/Dark/CU ab. Eine Story mit absichtlich „kaputtem" Datensatz zeigt die Auffälligkeiten-Leiste.
+Stories für `SchemaField`, `MarktpartnerRow`, `AddressBlock`, `ContactLine`, `ValidityRange`, `SmartObjectCard`, `SydocView` mit dem cDoc-Fixture. Theme-Toolbar deckt Light/Dark/Cu ab. Eine Story mit absichtlich „kaputtem" Datensatz zeigt die Auffälligkeiten-Leiste.
 
 ## 12. Bewusst außerhalb Milestone 1
 Edit-Mode (4), Raw/JSON-Diagramm (5), Beziehungsgraph (3), echte BDEW-/OBIS-/PrüfId-Resolver (kommen vom Consumer), Monaco/ajv-IntelliSense.

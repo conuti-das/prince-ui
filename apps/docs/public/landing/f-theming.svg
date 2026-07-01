@@ -1,15 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 88" role="img" aria-label="Drei Theme-Modi">
-  <!-- Apple Dark -->
+  <!-- Dunkel -->
   <rect x="20" y="22" width="48" height="44" rx="9" fill="#11161b" stroke="#3c454d"/>
   <circle cx="34" cy="36" r="5" fill="#a0d22b"/>
   <rect x="44" y="33" width="16" height="5" rx="2.5" fill="#5b6770"/>
   <rect x="30" y="50" width="28" height="8" rx="4" fill="#1e252b"/>
-  <!-- Apple Light -->
+  <!-- Hell -->
   <rect x="76" y="22" width="48" height="44" rx="9" fill="#f4f6f8" stroke="#d2d8dd"/>
   <circle cx="90" cy="36" r="5" fill="#6cae0f"/>
   <rect x="100" y="33" width="16" height="5" rx="2.5" fill="#b6bec5"/>
   <rect x="86" y="50" width="28" height="8" rx="4" fill="#e6eaee"/>
-  <!-- CONUTI Community -->
+  <!-- Cu -->
   <rect x="132" y="22" width="48" height="44" rx="9" fill="#142013" stroke="#2f5520"/>
   <circle cx="146" cy="36" r="5" fill="#bfe85a"/>
   <rect x="156" y="33" width="16" height="5" rx="2.5" fill="#557a3f"/>
