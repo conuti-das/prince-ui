@@ -16,20 +16,20 @@
 
 ### Minor Changes
 
-- 7cd49b0: 3-Mode-Theming: Apple Light/Dark als neue Default-Optik, CU als CONUTI-Community-Mode.
+- 7cd49b0: 3-Mode-Theming: Hell/Dunkel als neue Default-Optik, Cu als CONUTI-CI-Mode.
 
-  - `prince-ui-tokens`: `tokens.css` neu strukturiert. `:root` ist jetzt **Apple Dark**
+  - `prince-ui-tokens`: `tokens.css` neu strukturiert. `:root` ist jetzt **Dunkel**
     (Default + Fallback), `@media (prefers-color-scheme: light)` und `[data-theme="light"]`
-    liefern **Apple Light**, `[data-theme="cu"]` das frühere CONUTI-Community-Styling
-    (CI-Grün #A0D22B, Inter-Font, grünes Bento-Mesh). Apple-Modes nutzen SF-Fonts,
-    Apple-System-Farben und Apple-Grün (#34C759 / #30D158) als Akzent.
+    liefern **Hell**, `[data-theme="cu"]` das frühere CONUTI-CI-Styling
+    (CI-Grün #A0D22B, Inter-Font, grünes Bento-Mesh). Hell/Dunkel nutzen System-Schrift,
+    System-Farben und Akzentgrün (#34C759 / #30D158) als Akzent.
     Default folgt dem OS, fällt aber auf Dark zurück.
   - `prince-ui`: `setTheme` akzeptiert nun `"cu"`; neuer Typ `PrinceTheme` und Helfer
     `getTheme()`. `PRINCE_UI_VERSION` = 0.4.0.
 
 - c8f5c49: AppShell + erweitertes Glas-Opt-in.
 
-  - Neue **`AppShell`**-Komponente: Apple-orientierte App-Hülle (Shell-Bar mit
+  - Neue **`AppShell`**-Komponente: App-App-Hülle (Shell-Bar mit
     Logo/Titel/Suche/Aktionen/User + Menü-Toggle, Sidebar, scrollbarer Content).
     Glas auf Shell-Bar + Sidebar per Default; auf schmalen Screens wird die
     Sidebar zum Off-canvas-Overlay mit Scrim. Kontrolliert/unkontrolliert
@@ -58,21 +58,21 @@
 
   Neue Icons: `grid`, `more`, `chevron-down`. Alles bestehende (`title`/`user`/`actions`) bleibt kompatibel.
 
-- Neue **Launchpad**-Komponente: Apple-orientiertes App-/Card-Dashboard
+- Neue **Launchpad**-Komponente: App-App-/Card-Dashboard
   (Fiori-analog, reduziert: Launchpad → Section → Card). Polymorphe Cards
   (`nav`/`kpi`/`trend`/`list`/`custom`), optionales Drag-Reorder (react-aria
   GridList), Drill-down-Popup mit Voll-Visualisierung. Monochrome Icons,
-  theme-fähig in Light/Dark/CU.
-- 3005ab1: Apple-Light-Feinschliff + Liquid-Glass-Stilschicht.
+  theme-fähig in Light/Dark/Cu.
+- 3005ab1: Hell-Feinschliff + Liquid-Glass-Stilschicht.
 
-  **Apple-Feinschliff (Grün-Akzent bleibt):**
+  **Feinschliff (Grün-Akzent bleibt):**
 
-  - Card-Radius 16 → 20px (Apple-„pillowy"), Body 16 → 17px, Metric-Weight 800 → 700 (Apple-Bold).
-  - Light: App-BG flach (`#f2f2f7`) statt Verlauf, Default-Schatten flacher (Apple-Grouped-Look).
+  - Card-Radius 16 → 20px („pillowy"), Body 16 → 17px, Metric-Weight 800 → 700 (Bold).
+  - Light: App-BG flach (`#f2f2f7`) statt Verlauf, Default-Schatten flacher (Grouped-Look).
 
   **Liquid Glass (nur Optik über React Aria, kein Verhaltensumbau):**
 
-  - Neue `--prn-glass-*`-Tokens, abgeleitet aus den mode-spezifischen Flächen → wirken automatisch in Light/Dark/CU.
+  - Neue `--prn-glass-*`-Tokens, abgeleitet aus den mode-spezifischen Flächen → wirken automatisch in Light/Dark/Cu.
   - Neue Stilschicht `.prn-glass` + Varianten `-bar/-sidebar/-overlay/-card/-floating` mit `@supports`-Gate und Fallback auf opak; respektiert `prefers-reduced-transparency` und `prefers-reduced-motion`. Optionaler `--prn-glass-tint` für Branding.
   - Neuer `<GlassSurface variant tintColor as>`-Wrapper.
   - Opt-in `glass`-Prop auf `Toolbar`, `Sidebar`, `Popover` (nur className, keine RA-Logik berührt).
@@ -80,7 +80,7 @@
 - 897e696: Monochrome Icons statt Emoji.
 
   - Neues **`Icon`**-Set: monochrome Linien-SVGs (`currentColor`, lucide-kompatible
-    Optik, kein externer Dependency, theme-fähig in Light/Dark/CU). `Icon`-Komponente
+    Optik, kein externer Dependency, theme-fähig in Light/Dark/Cu). `Icon`-Komponente
     mit `name`/`size`/`title` (dekorativ `aria-hidden`, mit `title` als `img`).
   - Komponenten-interne Emoji ersetzt: `ObjectPage`-Pin (📌/📍 → `pin`/`pin-off`),
     `AppShell`-Toggle (☰ → `menu`), `AnalyticalTable`-Spaltenmenü (⚙ → `settings`).
@@ -89,7 +89,7 @@
 
 ### Patch Changes
 
-- Prozess-Editoren: Benutzbarkeit, Dark-Mode-Lesbarkeit & Apple-Feinschliff.
+- Prozess-Editoren: Benutzbarkeit, Dark-Mode-Lesbarkeit & Feinschliff.
 
   **BPMN-Editor**
 
@@ -97,11 +97,11 @@
     komplette Palette sichtbar; Diagramm zentriert mit Rand.
   - Kein „Springen" mehr beim Bearbeiten (ResizeObserver-Re-Fit entfernt;
     Lint-Leiste als Overlay statt im Layout-Flow).
-  - Properties-Panel im Dark/CU korrekt eingefärbt (echtes `--color-*`-Mapping
+  - Properties-Panel im Dark/Cu korrekt eingefärbt (echtes `--color-*`-Mapping
     für `@bpmn-io/properties-panel` v3 statt wirkungsloser `--bio-*`-Variablen);
     irrelevante Camunda-Gruppen ausgeblendet.
-  - Palette/Context-Pad/Append-Popup token-getrieben (Apple-Look, alle Themes).
-  - Apple-Renderer: SF-Pro auf SVG-Labels, weiche Schatten/Hairlines, dünnere
+  - Palette/Context-Pad/Append-Popup token-getrieben (Prince-Look, alle Themes).
+  - Prince-Renderer: System-Font auf SVG-Labels, weiche Schatten/Hairlines, dünnere
     Connectoren; Renderer auch im Viewer registriert; bpmn.io-Wasserzeichen aus.
   - Neu: **Minimap**, **Suchfeld** (Toolbar + ⌘/Strg+F), **Element-Templates**
     (`elementTemplates`-Prop). Auto-Resize/Auto-Place aktiv.
@@ -109,7 +109,7 @@
   **DMN**
 
   - Experten-Editor: fehlendes dmn-js-Layout-CSS importiert (Kollaps behoben);
-    vollständige Dark/CU-Theming-Schicht (alle `--color-*`-Primitive); DRD-Shapes
+    vollständige Dark/Cu-Theming-Schicht (alle `--color-*`-Primitive); DRD-Shapes
     über korrekten Renderer-Key; großzügige Höhe.
   - Tabellen-Editor: Spaltentitel & Decision-Name **inline editierbar**;
     Zell-/Header-/Popup-Clipping behoben (Eingabe in neuen Zellen möglich);
@@ -118,7 +118,7 @@
 
   **Forms**
 
-  - Renderer: Datumsfeld auf prince-ui `DatePicker` (de-DE, Apple-Optik) statt
+  - Renderer: Datumsfeld auf prince-ui `DatePicker` (de-DE, Prince-Optik) statt
     nativem `<input type=date>`.
   - Builder: monochrome SVG-Icons statt Emojis; form-js-Experten-Editor lädt das
     korrekte Paket (`@bpmn-io/form-js-editor`) + CSS und zeigt bei fehlgeschlagenem

@@ -10,9 +10,9 @@
 
 finops und maco-process-studio nutzen heute BPMN/DMN/Forms über bpmn.io-Bibliotheken (`bpmn-js`, `dmn-js`, `@bpmn-io/form-js`), gemischt mit UI5-Web-Components und teilweise bereits mit `prince-ui@0.3.0`. Es existieren **funktionierende, aber app-gekoppelte Prototypen** aller sechs Deliverables in `maco-process-studio/frontend` plus ein read-only BPMN-Status-Viewer in finops.
 
-**Diese Arbeit extrahiert, generalisiert und „Apple-härtet" diese Prototypen** zu wiederverwendbaren prince-ui-Komponenten:
+**Diese Arbeit extrahiert, generalisiert und „veredelt" diese Prototypen** zu wiederverwendbaren prince-ui-Komponenten:
 
-- **Apple-Look:** Flow und Elemente folgen den prince-ui-Designprinzipien (Klarheit, Zurückhaltung, weiche Tiefe, Token-getrieben, Light/Dark gleichwertig).
+- **Prince-Look:** Flow und Elemente folgen den prince-ui-Designprinzipien (Klarheit, Zurückhaltung, weiche Tiefe, Token-getrieben, Light/Dark gleichwertig).
 - **Wiedererkennung:** Die **Original-bpmn.io-Icons** (`bpmn-font`) bleiben in Palette, Context-Pad, Replace-Menü und Element-Markern erhalten.
 - **Engine vs. nativ:** Wo bpmn.io eine Engine mitbringt (Layout, Serialisierung, FEEL, Validierung) → wrappen und stylen. Wo es nur strukturiertes DOM/Tabelle/Formular ist → nativ in prince-ui auf Basis der bestehenden Primitives/`AnalyticalTable`.
 
@@ -62,11 +62,11 @@ Jedes Paket liegt unter `packages/*` (vom `pnpm-workspace.yaml`-Glob automatisch
 
 ### 3.2 Theme-Bridge (geteiltes Muster, je Paket kolokiert — kein 4. Paket)
 - **SVG-Diagramme (bpmn-js, dmn-js DRD):** Theming läuft **nicht** über CSS, sondern über die Renderer-Config der Library. Ein `getDiagramColors()`-Äquivalent liest **`--prn-*`-Tokens** am `:root` (statt `data-sap-theme`) und liefert `{ defaultFillColor, defaultStrokeColor, defaultLabelColor }` an `bpmnRenderer`/`textRenderer`. Theme-Wechsel über `MutationObserver` auf `data-theme` → Modeler/Viewer-Remount (`themeTick`-Muster).
-- **Apple-Look-Flow:** Ein Custom-Renderer (`additionalModules`, `super(eventBus, 1500)`) erbt vom `BpmnRenderer`, delegiert für unveränderte Typen und passt nur Stroke/Fill/Radius/Schatten an (Task-Rundung, Hairline-Verbinder). Geometrie/Hit-Boxes/Bendpoints bleiben unangetastet.
+- **Prince-Look-Flow:** Ein Custom-Renderer (`additionalModules`, `super(eventBus, 1500)`) erbt vom `BpmnRenderer`, delegiert für unveränderte Typen und passt nur Stroke/Fill/Radius/Schatten an (Task-Rundung, Hairline-Verbinder). Geometrie/Hit-Boxes/Bendpoints bleiben unangetastet.
 - **HTML-Teile (Properties-Panel, dmn-decision-table, form-js):** Restyle-Layer **per Token-CSS** (nicht `!important`-Hacks). Carbon-/Catppuccin-Hardcodes (`FeelPlayground` `#1e1e2e`/`#cdd6f4`) durch `--prn-*` ersetzen.
 
 ### 3.3 Original-Icons
-`bpmn-font/dist/css/bpmn-embedded.css` (Font als Data-URI, kein separates Asset) einbinden. Klassen `bpmn-icon-*` in Palette/Context-Pad/Replace-Menü/Property-Buttons. **Der Flow selbst nutzt keinen Icon-Font** (reines SVG) → unabhängig vom Apple-Styling.
+`bpmn-font/dist/css/bpmn-embedded.css` (Font als Data-URI, kein separates Asset) einbinden. Klassen `bpmn-icon-*` in Palette/Context-Pad/Replace-Menü/Property-Buttons. **Der Flow selbst nutzt keinen Icon-Font** (reines SVG) → unabhängig vom Prince-Styling.
 
 ### 3.4 Datenvertrag (Camunda-7-Shapes)
 Pro Paket ein `types.ts` mit den kanonischen Camunda-7-Typen als Props (Quelle: finops `models.py`/`api.ts`):
@@ -102,11 +102,11 @@ fitOnResize?: boolean
 **Akzeptanz:** rendert valides BPMN-XML; Overlays für gemischte History+runtime-active+incident-Sets; Dark-Mode an `data-theme`; Klick liefert Element-Daten; keine imperative SVG-Recoloring-Logik mehr.
 
 ### ② `<BpmnEditor>` — `prince-ui-bpmn`
-**Zweck:** vollwertiger Editor im Apple-Look.
-**Ansatz:** `bpmn-js/lib/Modeler` + extrahiertes `BpmnPropertiesPanelModule`/`CamundaPlatformPropertiesProviderModule` + `lintModule` (bpmnlint) + `moddleExtensions: { camunda }`. Apple-Look-Layer (§3.2). Eigene Palette/Context-Pad-Provider mit Original-Icons. `BpmnTableView` (AnalyticalTable) als Tabellen-Umschaltung inklusive.
+**Zweck:** vollwertiger Editor im Prince-Look.
+**Ansatz:** `bpmn-js/lib/Modeler` + extrahiertes `BpmnPropertiesPanelModule`/`CamundaPlatformPropertiesProviderModule` + `lintModule` (bpmnlint) + `moddleExtensions: { camunda }`. Prince-Look-Layer (§3.2). Eigene Palette/Context-Pad-Provider mit Original-Icons. `BpmnTableView` (AnalyticalTable) als Tabellen-Umschaltung inklusive.
 **Übernommen aus maco:** `lintConfig` (4 Regeln: label-required, no-disconnected, no-implicit-split, no-complex-gateway), `lintHints` (dt. Erklärungen), `ErrorPanel` (Klick→Element, optionaler KI-Fix-Slot). Linter-Ergebnisse via `linting.completed`-Event → `LintIssue[]`.
 **Props (Skizze):** `value`/`defaultValue`/`onChange`/`onSave`, `lintRules?`, `onElementSelect?`, `actionsSlot?`, `colorScheme?`, `propertiesPanel?: boolean`.
-**Akzeptanz:** voller Modeling-Umfang (Palette, Context-Pad, Resize, Bendpoints, Undo, camunda-Properties); Apple-Look ohne Funktionsverlust; Original-Icons sichtbar; bpmnlint-Strip + ErrorPanel; `saveXML({format:true})`; Light/Dark.
+**Akzeptanz:** voller Modeling-Umfang (Palette, Context-Pad, Resize, Bendpoints, Undo, camunda-Properties); Prince-Look ohne Funktionsverlust; Original-Icons sichtbar; bpmnlint-Strip + ErrorPanel; `saveXML({format:true})`; Light/Dark.
 **Abhängigkeit:** nutzt den Renderer/Theme-Layer aus ①.
 
 ### ⑤ `<DmnTableEditor>` — `prince-ui-dmn`
@@ -121,7 +121,7 @@ fitOnResize?: boolean
 - Umschalter zum Expertenmodus ⑥.
 **Logik-Kern:** `useDmnModel`-Äquivalent neu gegen `dmn-moddle` (parse → `DmnTableModel`, serialize zurück, **inkl. Spaltenänderungen**). Tests aus `useDmnModel.test.ts` als Basis erweitern.
 **Plugin-Slot:** `cellPlugins` (z. B. Prüfi-Autocomplete für `expression === 'pruefidentifikator'`) — optional, kein MaCo-Default.
-**Akzeptanz:** vollständige DMN-Decision-Table erzeug- und editierbar inkl. Spalten; Round-trip XML→Modell→XML verlustfrei; FEEL-Lint; Light/Dark/Apple-Look; ⌘S-Save-Callback.
+**Akzeptanz:** vollständige DMN-Decision-Table erzeug- und editierbar inkl. Spalten; Round-trip XML→Modell→XML verlustfrei; FEEL-Lint; Light/Dark/Prince-Look; ⌘S-Save-Callback.
 
 ### ⑥ `<DmnExpertEditor>` — `prince-ui-dmn`
 **Zweck:** voller dmn-js-Funktionsumfang als Backup/Expertenmodus.
@@ -140,7 +140,7 @@ fitOnResize?: boolean
 **Zweck:** eleganter, einstiegsfreundlicher Drag&Drop-Builder mit vollem Funktionsumfang.
 **Ansatz:** nativer Builder auf prince-ui — Palette (Feldtypen) + Canvas (Drop/Reorder, `Tree`/`GridList`-basiert) + Eigenschafts-Panel (Label/key/Validierung/Optionen). **Live-Vorschau über `<FormRenderer>`**. Erzeugt **form-js-kompatibles Schema**. Für FEEL-Conditions/Expression/Tables/Spezialfelder **`@bpmn-io/form-js` FormEditor als Experten-Fallback** (Token-restyled), analog zum BPMN/DMN-Muster (nativ + Experte).
 **Props:** `value`/`defaultValue`/`onChange`/`onSave`, `mode?: "design"|"expert"`, `fieldTypes?` (erweiterbar).
-**Akzeptanz:** Standard-Feldtypen per Drag&Drop anlegbar; Eigenschaften editierbar; Vorschau live; Schema form-js-rund-trip-fähig; Experten-Fallback erreichbar; Light/Dark/Apple-Look.
+**Akzeptanz:** Standard-Feldtypen per Drag&Drop anlegbar; Eigenschaften editierbar; Vorschau live; Schema form-js-rund-trip-fähig; Experten-Fallback erreichbar; Light/Dark/Prince-Look.
 
 ---
 
@@ -189,7 +189,7 @@ fitOnResize?: boolean
 ## 8. Nicht im Umfang (YAGNI)
 
 - Eigener FEEL-Parser/-Interpreter (Lint bleibt heuristisch).
-- Pixelgleiches Apple-Theming des gewrappten form-js-Editors.
+- Pixelgleiches Prince-Theming des gewrappten form-js-Editors.
 - DMN-Auswertung/Deploy in den Editoren (bleibt App-/Camunda-Sache; Editoren liefern nur Save-Callbacks).
 - ProcessFlow (reactflow) — separates Thema, nicht Teil dieses Add-ons.
 - Backend-Änderungen (z. B. DMN-XML-Endpoint in finops) — App-seitig, nicht im Paket.
