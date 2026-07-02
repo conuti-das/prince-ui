@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { SegmentedControl, Segment, Switch } from "@conuti-das/prince-ui";
+import { SegmentedControl, Segment, Switch, PrinceSizeProvider } from "@conuti-das/prince-ui";
 import type { Bo4eResolvers, Density } from "./types";
 import type { Bo4eSchema } from "./schema/load-schema";
 import { normalizeToCDoc, type CDocInput } from "./normalize";
@@ -93,6 +93,7 @@ export function CDocView({ doc, schema, resolvers, now, defaultDensity = "fachli
   };
 
   return (
+    <PrinceSizeProvider size="s">
     <div className="prn-bo-app">
       {directions.length > 1 ? (
         <div className="prn-bo-tabs" role="tablist" aria-label="Richtung">
@@ -174,5 +175,6 @@ export function CDocView({ doc, schema, resolvers, now, defaultDensity = "fachli
 
       <div>{renderActive()}</div>
     </div>
+    </PrinceSizeProvider>
   );
 }

@@ -15,7 +15,7 @@
  */
 
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
-import { Button } from "@conuti-das/prince-ui";
+import { Button, PrinceSizeProvider } from "@conuti-das/prince-ui";
 import type { DiagramColorScheme } from "../types";
 import { getDiagramColors, onThemeChange } from "../theme/diagram-theme";
 import "./DmnExpertEditor.css";
@@ -201,6 +201,7 @@ export function DmnExpertEditor({
   }, [onSave]);
 
   return (
+    <PrinceSizeProvider size="s">
     <div className={cls("prn-dmn-expert", className)} data-prn-dmn-expert>
       <div className="prn-dmn-toolbar">
         <span className="prn-dmn-title__name">DMN — Experten-Modus</span>
@@ -244,6 +245,7 @@ export function DmnExpertEditor({
         )}
       </div>
     </div>
+    </PrinceSizeProvider>
   );
 }
 

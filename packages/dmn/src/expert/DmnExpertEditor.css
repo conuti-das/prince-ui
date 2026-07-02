@@ -96,6 +96,24 @@
   width: 18rem;
 }
 
+/* Kompaktmodus (Größe s): kleinste Inputs/Dropdowns im dmn-js-Properties-Panel. */
+.prn-dmn-expert__panel .bio-properties-panel {
+  --input-height: 24px;
+  font-size: 0.75rem;
+}
+.prn-dmn-expert__panel .bio-properties-panel input,
+.prn-dmn-expert__panel .bio-properties-panel select,
+.prn-dmn-expert__panel .bio-properties-panel textarea {
+  font-size: 0.75rem;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  min-height: var(--input-height);
+}
+.prn-dmn-expert__panel .bio-properties-panel-label {
+  font-size: 0.7rem;
+  margin-bottom: 2px;
+}
+
 .prn-dmn-expert__loading {
   position: absolute;
   inset: 0;

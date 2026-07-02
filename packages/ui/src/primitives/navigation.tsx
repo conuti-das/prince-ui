@@ -14,6 +14,7 @@ import {
   type TabPanelProps,
 } from "react-aria-components";
 import { cx } from "../utils";
+import { useFieldSize, type FieldSize } from "./size";
 import "./navigation.css";
 
 /* ---------------- SegmentedControl ----------------
@@ -21,14 +22,18 @@ import "./navigation.css";
 
 export interface SegmentedControlProps extends Omit<ToggleButtonGroupProps, "className" | "selectionMode"> {
   className?: string;
+  /** Feldgröße (s|m|l). Ohne Angabe erbt sie vom PrinceSizeProvider (Default m). */
+  size?: FieldSize;
 }
 
-export function SegmentedControl({ className, disallowEmptySelection = true, ...props }: SegmentedControlProps) {
+export function SegmentedControl({ className, disallowEmptySelection = true, size, ...props }: SegmentedControlProps) {
+  const resolvedSize = useFieldSize(size);
   return (
     <ToggleButtonGroup
       {...props}
       selectionMode="single"
       disallowEmptySelection={disallowEmptySelection}
+      data-size={resolvedSize}
       className={cx("prn-segmented", className)}
     />
   );

@@ -24,6 +24,7 @@ import {
   SelectItem,
   TextField,
   Modal,
+  PrinceSizeProvider,
 } from "@conuti-das/prince-ui";
 import type {
   Aggregation,
@@ -393,6 +394,7 @@ export function DmnTableEditor({
   }
 
   return (
+    <PrinceSizeProvider size="s">
     <div className={cls("prn-dmn-table", className)} data-prn-dmn-table>
       {/* Toolbar */}
       <div className="prn-dmn-toolbar">
@@ -599,6 +601,7 @@ export function DmnTableEditor({
         />
       )}
     </div>
+    </PrinceSizeProvider>
   );
 }
 
