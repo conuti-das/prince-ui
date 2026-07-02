@@ -1,5 +1,11 @@
 # prince-ui-dmn
 
+## 1.0.2
+
+### Patch Changes
+
+- DmnExpertEditor & DmnTableEditor auf kompakte Größe (s) umgestellt (Buttons, Dropdowns, Properties-Panel-Inputs via `PrinceSizeProvider`).
+
 ## 1.0.1
 
 ### Patch Changes

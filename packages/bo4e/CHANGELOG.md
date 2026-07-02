@@ -1,5 +1,11 @@
 # prince-ui-bo4e
 
+## 0.4.1
+
+### Patch Changes
+
+- CDocView auf kompakte Größe (s) umgestellt (Detailgrad-SegmentedControl, Tabs, Editier-Felder via `PrinceSizeProvider`).
+
 ## 0.4.0
 
 ### Minor Changes

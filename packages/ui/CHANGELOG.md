@@ -1,5 +1,11 @@
 # prince-ui
 
+## 0.11.0
+
+### Minor Changes
+
+- SegmentedControl: neue `size`-Prop (s|m|l), erbt aus `PrinceSizeProvider` (Default m). Ermöglicht kompakte Segmented-Controls in den Editoren.
+
 ## 0.9.1
 
 ### Patch Changes

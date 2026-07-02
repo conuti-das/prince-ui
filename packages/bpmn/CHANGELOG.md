@@ -1,5 +1,11 @@
 # prince-ui-bpmn
 
+## 1.0.7
+
+### Patch Changes
+
+- BpmnEditor auf kompakte Größe (s) umgestellt: Toolbar-Controls, SegmentedControl und Properties-Panel-Inputs kompakter (via `PrinceSizeProvider`). Peer auf `prince-ui@0.11.0` aktualisiert.
+
 ## 1.0.1
 
 ### Patch Changes
