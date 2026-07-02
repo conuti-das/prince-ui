@@ -63,8 +63,8 @@
 .prn-bpmn-editor-toolbar {
   display: flex;
   align-items: center;
-  gap: var(--prn-space-2, 8px);
-  padding: var(--prn-space-2, 8px) var(--prn-space-3, 12px);
+  gap: 6px;
+  padding: 6px 10px;
   background: var(--prn-bg-bar);
   backdrop-filter: var(--prn-blur, blur(20px));
   border-bottom: 1px solid var(--prn-separator);
@@ -76,7 +76,19 @@
 .prn-bpmn-editor-zoom {
   display: flex;
   align-items: center;
-  gap: var(--prn-space-1, 4px);
+  gap: 2px;
+}
+
+/* Kompaktmodus (Größe s): Toolbar-Controls durchgängig klein halten.
+   Buttons und SegmentedControl erben size="s" via PrinceSizeProvider. */
+.prn-bpmn-editor-toolbar .prn-button[data-variant="plain"] {
+  min-height: 28px;
+  padding: 0 6px;
+}
+.prn-bpmn-editor-toolbar .prn-button svg,
+.prn-bpmn-editor-toolbar .prn-button .prn-icon {
+  width: 18px;
+  height: 18px;
 }
 
 .prn-bpmn-editor-main {
@@ -467,14 +479,27 @@
   background: var(--prn-bg-elevated, #2c2c2e);
 }
 
-/* Kompaktere Inputs im Property-Panel (wirkten überdimensioniert). */
+/* Kompaktmodus (Größe s): kleinste Inputs/Dropdowns im Property-Panel. */
 .prn-bpmn-editor-properties .bio-properties-panel {
-  --input-height: 26px;
+  --input-height: 24px;
+  font-size: 0.75rem;
 }
 .prn-bpmn-editor-properties .bio-properties-panel input,
 .prn-bpmn-editor-properties .bio-properties-panel select,
 .prn-bpmn-editor-properties .bio-properties-panel textarea {
-  font-size: 0.8125rem;
-  padding-top: 3px;
-  padding-bottom: 3px;
+  font-size: 0.75rem;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  min-height: var(--input-height);
+}
+/* Feld-Labels und Gruppen enger setzen, damit das Panel wirklich kompakt wird. */
+.prn-bpmn-editor-properties .bio-properties-panel-label {
+  font-size: 0.7rem;
+  margin-bottom: 2px;
+}
+.prn-bpmn-editor-properties .bio-properties-panel-entry {
+  margin-bottom: 6px;
+}
+.prn-bpmn-editor-properties .bio-properties-panel-group-header {
+  min-height: 34px;
 }

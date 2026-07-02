@@ -18,6 +18,7 @@ import {
   Select,
   SelectItem,
   TextField,
+  PrinceSizeProvider,
 } from "@conuti-das/prince-ui";
 import type { FormField, FormFieldOption, FormSchema } from "../types";
 import { FormRenderer } from "../renderer/FormRenderer";
@@ -164,6 +165,7 @@ export function FormBuilder({
   }, [selectedIndex, schema, commit]);
 
   return (
+    <PrinceSizeProvider size="s">
     <div className={cx("prn-form-builder", className)} data-mode={activeMode}>
       <div className="prn-fb-toolbar">
         <SegmentedControl
@@ -298,6 +300,7 @@ export function FormBuilder({
         </div>
       )}
     </div>
+    </PrinceSizeProvider>
   );
 }
 

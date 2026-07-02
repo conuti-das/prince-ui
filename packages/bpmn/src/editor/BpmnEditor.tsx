@@ -17,7 +17,7 @@
  */
 
 import { useEffect, useRef, useState, useCallback, type ReactNode } from "react";
-import { Button, SegmentedControl, Segment, Notice, Icon } from "@conuti-das/prince-ui";
+import { Button, SegmentedControl, Segment, Notice, Icon, PrinceSizeProvider } from "@conuti-das/prince-ui";
 import type { DiagramColorScheme } from "../types";
 import { getDiagramColors, onThemeChange } from "../theme/diagram-theme";
 import { buildRendererConfig, createAppleRendererModule } from "../theme/apple-renderer";
@@ -487,6 +487,7 @@ export function BpmnEditor({
   const warnings = lintIssues.filter((i) => i.category === "warning");
 
   return (
+    <PrinceSizeProvider size="s">
     <div
       className={["prn-bpmn", "prn-bpmn-editor", className].filter(Boolean).join(" ")}
       data-color-scheme={colorScheme}
@@ -625,6 +626,7 @@ export function BpmnEditor({
         />
       )}
     </div>
+    </PrinceSizeProvider>
   );
 }
 

@@ -29,6 +29,10 @@
 .prn-segment[data-focus-visible] { box-shadow: var(--prn-focus); }
 .prn-segment[data-disabled] { opacity: 0.45; cursor: not-allowed; }
 
+/* Größen (s|m|l) — analog zu den Form-Controls, gesteuert per size-Prop bzw. PrinceSizeProvider. */
+.prn-segmented[data-size="s"] .prn-segment { padding: 3px 10px; font: var(--prn-text-footnote); font-weight: 590; }
+.prn-segmented[data-size="l"] .prn-segment { padding: 8px 18px; }
+
 /* ---- Tabs ---- */
 .prn-tabs { display: flex; flex-direction: column; gap: 14px; }
 .prn-tablist {
