@@ -1,5 +1,11 @@
 # prince-ui-forms
 
+## 1.0.2
+
+### Patch Changes
+
+- FormBuilder auf kompakte Größe (s) umgestellt (Toolbar, Properties-Panel, Vorschau via `PrinceSizeProvider`). FormRenderer (Laufzeit-Renderer) bleibt bewusst bei Default-Größe.
+
 ## 1.0.1
 
 ### Patch Changes
