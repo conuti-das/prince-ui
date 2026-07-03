@@ -48,6 +48,7 @@ export * from "./data/table";
 export * from "./data/filterbar";
 export * from "./data/objectpage";
 export * from "./data/use-filter-state";
+export * from "./data/timeline";
 
 // W1 — weitere Form-Primitives (RadioGroup/CheckboxGroup/NumberField/Slider/ComboBox/Form)
 export * from "./primitives/choice";

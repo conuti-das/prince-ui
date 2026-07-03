@@ -1,5 +1,11 @@
 # prince-ui-bpmn
 
+## 1.0.8
+
+### Patch Changes
+
+- Republish für prince-ui 0.12.0 (neue `Timeline`-Komponente): exakter Peer `@conuti-das/prince-ui` auf 0.12.0 aktualisiert. Keine funktionalen Änderungen am Editor.
+
 ## 1.0.7
 
 ### Patch Changes
