@@ -22,6 +22,35 @@ describe("CDocView", () => {
     expect(screen.getByText(/Auffälligkeiten erkannt/)).toBeInTheDocument();
   });
 
+  it("ignoriert Auffälligkeiten in Zusatzdaten (keine Anomalie-Leiste)", () => {
+    const d: CDoc = {
+      id: "x",
+      businessKey: "x",
+      content: {
+        OUTBOUND: {
+          stammdaten: { MARKTLOKATION: [{ boTyp: "MARKTLOKATION", marktlokationsId: "1" }] },
+          zusatzdaten: { boTyp: "ZUSATZDATEN", intern: "#PLATZHALTER#" },
+        },
+      },
+    };
+    render(<CDocView doc={d} schema={schema} now={now} />);
+    expect(screen.queryByText(/Auffälligkeiten erkannt/)).toBeNull();
+  });
+
+  it("zeigt Auffälligkeiten in Stammdaten weiter", () => {
+    const d: CDoc = {
+      id: "y",
+      businessKey: "y",
+      content: {
+        OUTBOUND: {
+          stammdaten: { MARKTLOKATION: [{ boTyp: "MARKTLOKATION", marktlokationsId: "#PLATZHALTER#" }] },
+        },
+      },
+    };
+    render(<CDocView doc={d} schema={schema} now={now} />);
+    expect(screen.getByText(/Auffälligkeiten erkannt/)).toBeInTheDocument();
+  });
+
   it("switches to the Energieliefervertrag tab", async () => {
     render(<CDocView doc={doc} schema={schema} now={now} />);
     await userEvent.click(screen.getByRole("tab", { name: /energieliefervertrag/i }));
