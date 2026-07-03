@@ -26,4 +26,31 @@ describe("GenericBody density", () => {
     );
     expect(screen.getByText("Köln")).toBeInTheDocument();
   });
+
+  it("versteckt BoTyp und Versionsstruktur in fachlich", () => {
+    render(
+      <GenericBody
+        schema={schema}
+        boTyp="GESCHAEFTSPARTNER"
+        obj={{ boTyp: "GESCHAEFTSPARTNER", versionStruktur: "1", name1: "Fisch" }}
+        density="fachlich"
+      />,
+    );
+    expect(screen.getByText("Fisch")).toBeInTheDocument();
+    expect(screen.queryByText("BO-Typ")).toBeNull();
+    expect(screen.queryByText("Versionsstruktur")).toBeNull();
+  });
+
+  it("zeigt BoTyp und Versionsstruktur in alle", () => {
+    render(
+      <GenericBody
+        schema={schema}
+        boTyp="GESCHAEFTSPARTNER"
+        obj={{ boTyp: "GESCHAEFTSPARTNER", versionStruktur: "1", name1: "Fisch" }}
+        density="alle"
+      />,
+    );
+    expect(screen.getByText("Versionsstruktur")).toBeInTheDocument();
+    expect(screen.getByText("BO-Typ")).toBeInTheDocument();
+  });
 });
