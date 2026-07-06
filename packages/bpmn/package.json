@@ -1,6 +1,6 @@
 {
   "name": "@conuti-das/prince-ui-bpmn",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "BPMN-Viewer und -Editor im prince-ui-Look auf Basis von bpmn-js (Original-bpmn.io-Icons, Prince-Designsprache).",
   "license": "MIT",
   "private": false,

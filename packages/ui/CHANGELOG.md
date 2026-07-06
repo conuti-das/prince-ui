@@ -1,5 +1,14 @@
 # prince-ui
 
+## 0.13.0
+
+### Minor Changes
+
+- `PrinceTheme` um `"cu-dark"` und `"cu-light"` erweitert — die CONUTI-CI in
+  Hell/Dunkel (electric blue, Cabinet Grotesk, siehe `prince-ui-tokens` 0.5.0).
+  `"cu"` bleibt als Alias auf `"cu-dark"`. `setTheme`/`getTheme` unverändert;
+  `PRINCE_UI_VERSION` auf 0.13.0.
+
 ## 0.12.0
 
 ### Minor Changes

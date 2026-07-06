@@ -1,5 +1,12 @@
 # prince-ui-forms
 
+## 1.0.4
+
+### Patch Changes
+
+- Republish für prince-ui 0.13.0 + prince-ui-tokens 0.5.0 (CONUTI-CI-Redesign,
+  CU Hell/Dunkel). Keine funktionalen Änderungen am Editor.
+
 ## 1.0.3
 
 ### Patch Changes

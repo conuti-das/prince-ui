@@ -1,5 +1,21 @@
 # prince-ui-tokens
 
+## 0.5.0
+
+### Minor Changes
+
+- CONUTI-CI-Redesign (2026) des CU-Themes. Das bisherige grüne `cu`-Theme
+  (CI-Grün #A0D22B, Inter-Font) ist ersetzt durch das neue CI mit **electric
+  blue** in zwei Ausprägungen:
+  - `[data-theme="cu-dark"]` — **CU Dunkel**: schwarze Canvas (#000), Akzent
+    #4F9EE8, Blau→Schwarz-Signatur-Mesh.
+  - `[data-theme="cu-light"]` — **CU Hell**: off-white (#F2F2F2), Akzent #2B7FD6.
+  - `[data-theme="cu"]` bleibt als **Alias** auf CU Dunkel (rückwärtskompatibel).
+
+  Beide CU-Themes ziehen die self-hosted Hausschrift **Cabinet Grotesk**
+  (neu: `fonts.css` + `src/fonts/*.woff2`, neue Package-Exports `./fonts.css`
+  und `./fonts/*`) und quadratische Radien. Hell/Dunkel bleiben unverändert.
+
 ## 0.4.0
 
 ### Minor Changes

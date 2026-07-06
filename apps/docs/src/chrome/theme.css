@@ -46,11 +46,11 @@
   /* Semantik-Aliase auf prince-ui-Tokens (mit Fallback) */
   --docs-fill: var(--prn-fill, rgba(127,127,127,.10));
   --docs-fill-strong: var(--prn-bg-2, rgba(127,127,127,.18));
-  --docs-accent: var(--prn-accent, #a0d22b);
+  --docs-accent: var(--prn-accent, #4f9ee8);
   --docs-code-bg: var(--prn-bg-2, rgba(127,127,127,.10));
   /* AA-sichere TEXT-Farben (Akzent/Muted/Positiv). Default = Dark-Theme:
-     Lime & helle Grautöne haben auf dunklem Grund genug Kontrast. */
-  --docs-accent-text: var(--prn-accent, #a0d22b);
+     helle Grautöne haben auf dunklem Grund genug Kontrast. */
+  --docs-accent-text: var(--prn-accent, #4f9ee8);
   --docs-positive-text: #6cc070;
   --docs-negative-text: #f08a82;
   --docs-muted: rgba(235, 235, 245, 0.72);

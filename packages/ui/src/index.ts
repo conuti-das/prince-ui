@@ -5,16 +5,20 @@
  * (dist/index.css → Import via "@conuti-das/prince-ui/styles.css").
  */
 
-export const PRINCE_UI_VERSION = "0.11.0";
+export const PRINCE_UI_VERSION = "0.13.0";
 
-/** Die drei Prince-Modes. `null` = System folgen (prefers-color-scheme, Fallback Dunkel). */
-export type PrinceTheme = "light" | "dark" | "cu";
+/**
+ * Die Prince-Modes. `null` = System folgen (prefers-color-scheme, Fallback Dunkel).
+ * `"cu"` bleibt als Alias auf `"cu-dark"` bestehen (Rückwärtskompatibilität).
+ */
+export type PrinceTheme = "light" | "dark" | "cu-dark" | "cu-light" | "cu";
 
 /**
  * Setzt das Theme am <html>-Element.
- * - `"light"` / `"dark"` → Hell / Dunkel (neutrale System-Themes: System-Font-Stack, System-Farben, Grün)
- * - `"cu"`               → CONUTI-CI-Theme (CI-Grün)
- * - `null`               → System folgen (Hell bei OS-Light, sonst Dunkel)
+ * - `"light"` / `"dark"`     → Hell / Dunkel (neutrale System-Themes: System-Font, System-Farben, Grün)
+ * - `"cu-dark"` / `"cu-light"` → CONUTI-CI (Cabinet Grotesk, electric blue) als Dunkel- bzw. Hell-Ausprägung
+ * - `"cu"`                   → Alias auf `"cu-dark"`
+ * - `null`                   → System folgen (Hell bei OS-Light, sonst Dunkel)
  */
 export function setTheme(theme: PrinceTheme | null): void {
   const root = document.documentElement;

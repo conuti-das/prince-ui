@@ -1,0 +1,47 @@
+/*
+ * prince-ui-tokens — Cabinet Grotesk (CONUTI-CI-Font), self-hosted.
+ *
+ * Cabinet Grotesk (Indian Type Foundry) ist die offizielle CONUTI-Hausschrift
+ * laut PowerPoint-Master-Theme. woff2 aus dem Fontshare-CDN einmalig lokal
+ * abgelegt (packages/tokens/src/fonts/) — keine Laufzeit-Abhängigkeit zum CDN,
+ * damit auch die vendored Bundles (finops/studio) offline korrekt rendern.
+ *
+ * Wird nur in den CU-Themes (data-theme="cu"/"cu-dark"/"cu-light") als
+ * --prn-font aktiv; Hell/Dunkel bleiben beim System-Font-Stack.
+ */
+
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("./fonts/cabinet-grotesk-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("./fonts/cabinet-grotesk-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("./fonts/cabinet-grotesk-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("./fonts/cabinet-grotesk-800.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("./fonts/cabinet-grotesk-900.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}

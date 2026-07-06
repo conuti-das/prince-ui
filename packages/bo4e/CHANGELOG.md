@@ -1,5 +1,13 @@
 # prince-ui-bo4e
 
+## 0.4.4
+
+### Patch Changes
+
+- Republish für prince-ui 0.13.0 + prince-ui-tokens 0.5.0 (CONUTI-CI-Redesign,
+  CU Hell/Dunkel). Enthält zugleich die bislang unveröffentlichten 0.4.3-Änderungen:
+  Anomalie-Scan ignoriert Zusatzdaten; BoTyp/Versionsstruktur nur bei `density=alle`.
+
 ## 0.4.2
 
 ### Patch Changes

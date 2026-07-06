@@ -3,8 +3,9 @@
 Das Farbsystem ist semantisch, nicht literal: Tokens beschreiben die **Rolle** einer Farbe
 (Akzent, Fläche, Label, Status) — nicht ihren Hex-Wert. Dieselbe Rolle löst je Theme in
 einen anderen Wert auf. Dunkel und Hell folgen einer neutralen System-Farbpalette mit grünem
-Akzent, Cu bringt das CONUTI-CI-Grün `#a0d22b`. Alle Swatches auf dieser Seite rendern live
-aus den Tokens und ändern sich mit dem Theme-Switcher.
+Akzent, CU Hell/Dunkel bringen den CONUTI-CI-Akzent electric blue (`#4f9ee8` dunkel, `#2b7fd6`
+hell). Alle Swatches auf dieser Seite rendern live aus den Tokens und ändern sich mit dem
+Theme-Switcher.
 
 ## Akzent
 
@@ -68,7 +69,8 @@ für eine Fehler-Notice). `--prn-on-status-fill` ist die lesbare Textfarbe auf g
 
 Diagramme ziehen ihre Serienfarben aus acht durchnummerierten Tokens
 (`--prn-chart-1` … `--prn-chart-8`). Die Reihenfolge ist auf maximale Unterscheidbarkeit
-benachbarter Serien optimiert. In Cu ist die Palette auf die CONUTI-CI-Töne abgestimmt.
+benachbarter Serien optimiert. In CU Hell/Dunkel ist die Palette blau-geführt auf die
+CONUTI-CI-Töne abgestimmt (electric blue plus warme Horizon-Akzente).
 
 <Example code={`<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))', gap: 16 }}>
   {['--prn-chart-1', '--prn-chart-2', '--prn-chart-3', '--prn-chart-4', '--prn-chart-5', '--prn-chart-6', '--prn-chart-7', '--prn-chart-8'].map((n) => (

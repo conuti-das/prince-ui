@@ -1,14 +1,17 @@
 # Theming
 
-prince-ui kennt drei Themes, gesteuert über das Attribut `data-theme` am `<html>`-Element:
+prince-ui kennt vier Themes, gesteuert über das Attribut `data-theme` am `<html>`-Element —
+zwei neutrale System-Themes und die CONUTI-CI in Hell und Dunkel:
 
 - **Dunkel** (`data-theme="dark"`) — der Default und Fallback. Dunkle System-Farben, grüner Akzent.
 - **Hell** (`data-theme="light"`) — die helle Variante mit WCAG-AA-justiertem Sekundärtext.
-- **Cu** (`data-theme="cu"`) — das CONUTI-CI-Theme: CI-Grün `#a0d22b`, Inter-Font, grünes Bento-Mesh.
+- **CU Dunkel** (`data-theme="cu-dark"`) — CONUTI-CI: schwarze Canvas, ein electric-blue Akzent
+  `#4f9ee8`, **Cabinet Grotesk** und quadratische Radien. `data-theme="cu"` bleibt als Alias.
+- **CU Hell** (`data-theme="cu-light"`) — der helle CONUTI-Scope (off-white), Akzent `#2b7fd6`.
 
 Ohne `data-theme` folgt prince-ui dem Betriebssystem (`prefers-color-scheme`) und fällt bei
 fehlender Präferenz auf **Dunkel** zurück. Hell und Dunkel sind die neutralen System-Themes,
-Cu ist die CONUTI-CI-Variante.
+CU Hell/Dunkel sind die CONUTI-CI-Varianten (Cabinet Grotesk, electric blue).
 
 ## setTheme / getTheme
 
@@ -18,10 +21,11 @@ setzt bzw. entfernt `data-theme` am Wurzelelement. `null` bedeutet „dem System
 ```ts
 import { setTheme, getTheme, type PrinceTheme } from '@conuti-das/prince-ui';
 
-setTheme('cu');     // erzwingt das Cu-Theme (CONUTI-CI)
-setTheme('light');  // erzwingt Hell
-setTheme(null);     // wieder dem OS folgen
-getTheme();         // => "cu" | "light" | "dark" | null
+setTheme('cu-dark');   // erzwingt CU Dunkel (CONUTI-CI)
+setTheme('cu-light');  // erzwingt CU Hell
+setTheme('light');     // erzwingt Hell
+setTheme(null);        // wieder dem OS folgen
+getTheme();            // => "cu-dark" | "cu-light" | "light" | "dark" | "cu" | null
 ```
 
 Probiere es direkt aus — die Buttons schalten das Theme dieser Doku-Seite live um:
@@ -29,7 +33,8 @@ Probiere es direkt aus — die Buttons schalten das Theme dieser Doku-Seite live
 <Example code={`<div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
   <Button variant="filled" onPress={() => setTheme('dark')}>Dunkel</Button>
   <Button variant="tinted" onPress={() => setTheme('light')}>Hell</Button>
-  <Button variant="tinted" onPress={() => setTheme('cu')}>Cu</Button>
+  <Button variant="tinted" onPress={() => setTheme('cu-dark')}>CU Dunkel</Button>
+  <Button variant="tinted" onPress={() => setTheme('cu-light')}>CU Hell</Button>
   <Button variant="plain" onPress={() => setTheme(null)}>System folgen</Button>
 </div>`} />
 
@@ -71,7 +76,7 @@ import '@conuti-das/prince-ui/styles.css';
 
 ## Accessibility
 
-Die drei Themes sind nicht nur kosmetisch: Hell justiert `--prn-label-2` auf 75 %
+Die Themes sind nicht nur kosmetisch: Hell justiert `--prn-label-2` auf 75 %
 Deckkraft, damit Sekundärtext WCAG-AA erreicht, und jedes Theme setzt das passende
 `color-scheme` (`dark`/`light`), sodass native Controls und Scrollbars korrekt rendern. Wenn
 du einen Theme-Umschalter ins UI baust, gib ihm ein zugängliches Label (`aria-label="Theme"`)
