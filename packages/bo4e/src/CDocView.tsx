@@ -38,7 +38,12 @@ export function CDocView({ doc, schema, resolvers, now, defaultDensity = "fachli
   const [editMode, setEditMode] = useState(false);
 
   const dd = cdoc.content[dir];
-  const anomalies = useMemo(() => (dd ? scanAnomalies(dd, { now }) : []), [dd, now]);
+  const anomalies = useMemo(() => {
+    if (!dd) return [];
+    // Zusatzdaten enthalten interne Rohwerte/Platzhalter → nicht als Auffälligkeit werten.
+    const { zusatzdaten: _zusatz, ...rest } = dd;
+    return scanAnomalies(rest, { now });
+  }, [dd, now]);
 
   if (!dd) return null;
 

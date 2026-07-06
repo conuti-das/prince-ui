@@ -34,7 +34,7 @@ Verbindliche Prop-APIs. App-Sessions (Wave 3) codieren gegen diese Signaturen;
 | `Tabs` / `TabBar` / `Tab` / `TabPanel` | RAC `Tabs`-Familie (`selectedKey`, `onSelectionChange`). |
 
 ### Theming
-- `setTheme("light" \| "dark" \| null)` — setzt/entfernt `data-theme` am `<html>`.
+- `setTheme("light" \| "dark" \| "cu-dark" \| "cu-light" \| "cu" \| null)` — setzt/entfernt `data-theme` am `<html>`. `"cu-*"` = CONUTI-CI (Cabinet Grotesk, electric blue), `"cu"` = Alias auf `"cu-dark"`.
 - CSS-Import: `prince-ui-tokens/tokens.css` **und** `prince-ui/styles.css`.
 
 ## Wave 2 — L2-Komposita + Charts + L3-Datenschicht

@@ -1,5 +1,20 @@
 # prince-ui
 
+## 0.13.0
+
+### Minor Changes
+
+- `PrinceTheme` um `"cu-dark"` und `"cu-light"` erweitert — die CONUTI-CI in
+  Hell/Dunkel (electric blue, Cabinet Grotesk, siehe `prince-ui-tokens` 0.5.0).
+  `"cu"` bleibt als Alias auf `"cu-dark"`. `setTheme`/`getTheme` unverändert;
+  `PRINCE_UI_VERSION` auf 0.13.0.
+
+## 0.12.0
+
+### Minor Changes
+
+- Neue Komponente `Timeline` (L3-Datenschicht): generische Event-/Activity-Timeline (Feed) mit durchlaufender Status-Rail (Farbe + Glyph, A11y-redundant), Punkt- vs. Zeitraum-Events, Gruppierung nach Tag oder Marktpartner, Marktpartner-Kodierung als zweiter Kanal (Chip + Node-Ring + Richtungs-Icon), aufklappbaren Detail-Panels (Attribute, Actor, Dauer), Auswahl und Dichte (s|m|l). Props: `events`, `partners`, `groupBy`, `order`, `selectedId`/`onSelectEvent`, `expandedIds`/`defaultExpandedIds`/`onExpandedChange`, `size`, `locale`.
+
 ## 0.11.0
 
 ### Minor Changes

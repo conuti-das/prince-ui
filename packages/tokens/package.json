@@ -1,6 +1,6 @@
 {
   "name": "@conuti-das/prince-ui-tokens",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "Prince-Designsprache als CSS-Custom-Properties (Single Source of Truth).",
   "license": "MIT",
   "private": false,
@@ -10,6 +10,8 @@
   ],
   "exports": {
     "./tokens.css": "./src/tokens.css",
+    "./fonts.css": "./src/fonts.css",
+    "./fonts/*": "./src/fonts/*",
     "./package.json": "./package.json"
   },
   "publishConfig": {

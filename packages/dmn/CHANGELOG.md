@@ -1,5 +1,20 @@
 # prince-ui-dmn
 
+## 1.0.4
+
+### Patch Changes
+
+- CONUTI-CI-Redesign: Diagramm-Theme-Bridge erkennt `cu-dark`/`cu-light`; die
+  invertierte Grau-Rampe des DmnExpertEditor greift zusätzlich bei `cu-dark`
+  (CU Hell bleibt auf der hellen Basis-Rampe). Peer `@conuti-das/prince-ui` auf
+  0.13.0, `prince-ui-tokens` auf 0.5.0.
+
+## 1.0.3
+
+### Patch Changes
+
+- Republish für prince-ui 0.12.0 (neue `Timeline`-Komponente): exakter Peer `@conuti-das/prince-ui` auf 0.12.0 aktualisiert. Keine funktionalen Änderungen am Editor.
+
 ## 1.0.2
 
 ### Patch Changes

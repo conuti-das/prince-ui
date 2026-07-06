@@ -171,11 +171,14 @@
   --color-red-360-100-97: var(--prn-tint-negative);
 }
 
-/* ---- Dark + CU: Grau-Rampe invertieren (helle Schrift, dunkle Flächen) ---- */
+/* ---- Dark + CU Dunkel: Grau-Rampe invertieren (helle Schrift, dunkle Flächen).
+       CU Hell bleibt bei der hellen Basis-Rampe (nichts zu überschreiben). ---- */
 [data-theme="dark"] .prn-dmn-expert .dmn-js-parent,
 [data-theme="dark"] .prn-dmn-expert .djs-container,
 [data-theme="cu"] .prn-dmn-expert .dmn-js-parent,
-[data-theme="cu"] .prn-dmn-expert .djs-container {
+[data-theme="cu"] .prn-dmn-expert .djs-container,
+[data-theme="cu-dark"] .prn-dmn-expert .dmn-js-parent,
+[data-theme="cu-dark"] .prn-dmn-expert .djs-container {
   --color-white: var(--prn-bg-elevated);
   --color-black: var(--prn-label);
   --color-grey-225-10-15: var(--prn-label);

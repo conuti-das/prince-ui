@@ -1,23 +1,29 @@
 /*
  * prince-ui-tokens — Single Source of Truth für die Prince-Designsprache.
  *
- * Drei Modes (Namespace: --prn-*):
- *   - Dunkel → :root (Default + Fallback) und :root[data-theme="dark"]
- *   - Hell   → @media (prefers-color-scheme: light) ohne data-theme,
- *              sowie :root[data-theme="light"]
- *   - Cu     → :root[data-theme="cu"] — das CONUTI-CI-Theme
- *              (CI-Grün #A0D22B, Inter-Font, grünes Bento-Mesh)
+ * Modes (Namespace: --prn-*):
+ *   - Dunkel  → :root (Default + Fallback) und :root[data-theme="dark"]
+ *   - Hell    → @media (prefers-color-scheme: light) ohne data-theme,
+ *               sowie :root[data-theme="light"]
+ *   - CU       → CONUTI-CI (2026-Redesign): schwarze Canvas, ein electric-blue
+ *               Akzent (#4F9EE8), Cabinet Grotesk, quadratische Radien.
+ *       · CU Dunkel → :root[data-theme="cu-dark"] (Alias: [data-theme="cu"])
+ *       · CU Hell   → :root[data-theme="cu-light"]
  *
  * Theme-Logik:
  *   1. Ohne data-theme folgt es dem OS, fällt aber auf DUNKEL zurück
  *      (System-Light → Hell, sonst Dunkel).
- *   2. data-theme="light" | "dark" | "cu" erzwingt den jeweiligen Mode.
+ *   2. data-theme="light" | "dark" | "cu-dark" | "cu-light" erzwingt den Mode.
+ *      "cu" bleibt als Alias auf CU Dunkel bestehen (Rückwärtskompatibilität).
  *
  * Hell/Dunkel sind die neutralen System-Themes (System-Font-Stack,
- * System-Farben, Akzentgrün). Cu ist die CONUTI-CI-Variante.
+ * System-Farben, Akzentgrün). CU ist die CONUTI-CI-Variante (Cabinet Grotesk,
+ * electric blue) — als Hell- und Dunkel-Ausprägung.
  *
  * Regel: niemals rohe Hex/RGB in Komponenten — immer diese Tokens.
  */
+
+@import "./fonts.css";
 
 :root {
   /* ============================================================
@@ -394,88 +400,188 @@
 }
 
 /* ============================================================
- *  Cu — CONUTI-CI-Theme (CI-Grün #A0D22B)
- *  Frühere Dark-Optik, 1:1 erhalten: Inter-Font + grünes Bento-Mesh.
+ *  CU — CONUTI-CI (2026-Redesign)
+ *  Gemeinsame Marken-Grundlage für CU Hell + CU Dunkel:
+ *  Cabinet Grotesk als Hausschrift, quadratische Radien (square-leaning;
+ *  volle Kreise bleiben dem Dot-Motiv / Pills vorbehalten).
  * ============================================================ */
-:root[data-theme="cu"] {
-  /* Cu-Font (Inter-geführt) */
-  --prn-font: system-ui, "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+:root[data-theme="cu"],
+:root[data-theme="cu-dark"],
+:root[data-theme="cu-light"] {
+  --prn-font: "Cabinet Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif;
   --prn-font-rounded: var(--prn-font);
 
-  --prn-bg: #222a31;
-  --prn-app-bg: radial-gradient(130% 130% at 12% 0%, #2b343d 0%, #222a31 48%, #1b2229 100%);
-  --prn-bg-elevated: #2a333b;
-  --prn-bg-elevated-2: #333e48;
-  --prn-bg-elevated-translucent: rgba(34, 42, 49, 0.52); /* Glas-Card (Bento), Blur-tauglich */
-  --prn-bg-head: #1e252b;
-  --prn-bg-bar: rgba(34, 42, 49, 0.55);
-  --prn-bg-sidebar: rgba(34, 42, 49, 0.6);
+  /* Quadratisch-lastige Ecken (CI): 4px als Default, große Panels bis 16px. */
+  --prn-radius-xs: 3px;
+  --prn-radius-sm: 4px;
+  --prn-radius-md: 6px;
+  --prn-radius: 8px;
+  --prn-radius-lg: 12px;
+  --prn-radius-xl: 16px;
+  --prn-radius-card: 12px;
+  /* --prn-radius-pill: 999px bleibt (Pills/Dot-Motiv) */
+}
+
+/* ============================================================
+ *  CU Dunkel — schwarze Canvas, electric blue (#4F9EE8)
+ *  ([data-theme="cu"] = Alias auf CU Dunkel)
+ * ============================================================ */
+:root[data-theme="cu"],
+:root[data-theme="cu-dark"] {
+  --prn-bg: #000000;
+  --prn-app-bg: radial-gradient(130% 130% at 88% 0%, #071233 0%, #05060a 45%, #000000 100%);
+  --prn-bg-elevated: #1e1e1e;
+  --prn-bg-elevated-2: #2a2a2f;
+  --prn-bg-elevated-translucent: rgba(18, 18, 22, 0.55); /* Glas-Card, Blur-tauglich */
+  --prn-bg-head: #060608;
+  --prn-bg-bar: rgba(6, 6, 8, 0.6);
+  --prn-bg-sidebar: rgba(6, 6, 8, 0.66);
   --prn-fill: rgba(255, 255, 255, 0.08);
   --prn-fill-strong: rgba(255, 255, 255, 0.14);
   --prn-hover: rgba(255, 255, 255, 0.06);
   --prn-pressed: rgba(255, 255, 255, 0.12);
 
-  --prn-label: #f3f4f2;
-  --prn-label-2: rgba(236, 238, 233, 0.78);
-  --prn-label-3: rgba(235, 238, 233, 0.46);
-  --prn-label-4: rgba(235, 235, 245, 0.18);
+  --prn-label: #ffffff;
+  --prn-label-2: rgba(236, 240, 247, 0.72);
+  --prn-label-3: rgba(236, 240, 247, 0.44);
+  --prn-label-4: rgba(236, 240, 247, 0.18);
 
-  --prn-separator: rgba(255, 255, 255, 0.08);
-  --prn-separator-opaque: #38383a;
-  --prn-hairline: rgba(255, 255, 255, 0.06);
-  --prn-border: rgba(255, 255, 255, 0.1);
+  --prn-separator: rgba(255, 255, 255, 0.12);
+  --prn-separator-opaque: #2a2a2f;
+  --prn-hairline: rgba(255, 255, 255, 0.07);
+  --prn-border: rgba(255, 255, 255, 0.12);
 
-  --prn-accent: #a0d22b;
-  --prn-accent-strong: #b4de5a;
-  --prn-accent-hover: #aedd44;
-  --prn-accent-pressed: #8cba20;
-  --prn-accent-soft: rgba(160, 210, 43, 0.16);
-  --prn-on-accent: #1b2410;
+  /* electric blue (#4F9EE8), Deep-End royal/navy, Hover = THINK-AI-Tint */
+  --prn-accent: #4f9ee8;
+  --prn-accent-strong: #2b7fd6;
+  --prn-accent-hover: #7cb5f7;
+  --prn-accent-pressed: #2b7fd6;
+  --prn-accent-soft: rgba(79, 158, 232, 0.18);
+  --prn-on-accent: #ffffff;
 
-  --prn-green: #a0d22b;
-  --prn-red: #ff5a52;
-  --prn-orange: #ff9f62;
-  --prn-yellow: #ffe665;
-  --prn-blue: #5ec8fa;
-  --prn-teal: #b5dec2;
-  --prn-neutral: #9b9f9a;
-  --prn-on-status-fill: #14150f;
+  --prn-green: #4fb477;
+  --prn-red: #e2604f;
+  --prn-orange: #e8a24f;
+  --prn-yellow: #f0c24b;
+  --prn-blue: #4f9ee8;
+  --prn-teal: #4fc3d6;
+  --prn-neutral: #8a8a90;
+  --prn-on-status-fill: #ffffff;
 
-  --prn-tint-positive: rgba(160, 210, 43, 0.18);
-  --prn-tint-critical: rgba(255, 159, 98, 0.18);
-  --prn-tint-negative: rgba(255, 90, 82, 0.18);
-  --prn-tint-info: rgba(94, 200, 250, 0.2);
-  --prn-warn-soft: rgba(255, 159, 98, 0.16);
+  --prn-tint-positive: rgba(79, 180, 119, 0.18);
+  --prn-tint-critical: rgba(232, 162, 79, 0.18);
+  --prn-tint-negative: rgba(226, 96, 79, 0.18);
+  --prn-tint-info: rgba(79, 158, 232, 0.2);
+  --prn-warn-soft: rgba(232, 162, 79, 0.16);
 
-  --prn-chart-1: #a0d22b;
-  --prn-chart-2: #b5dec2;
-  --prn-chart-3: #ff9f62;
-  --prn-chart-4: #ffe665;
-  --prn-chart-5: #6aa6bd;
-  --prn-chart-6: #c6cd83;
-  --prn-chart-7: #9b9f9a;
-  --prn-chart-8: #5ec8c0;
+  /* Charts: Blau-geführt, Horizon-warm als sparsamer Kontrapunkt */
+  --prn-chart-1: #4f9ee8;
+  --prn-chart-2: #7cb5f7;
+  --prn-chart-3: #e8a24f;
+  --prn-chart-4: #ac733a;
+  --prn-chart-5: #4fb477;
+  --prn-chart-6: #debe9e;
+  --prn-chart-7: #2b7fd6;
+  --prn-chart-8: #b9d6fa;
 
-  --prn-scrim: rgba(0, 0, 0, 0.5);
-  --prn-backdrop: rgba(0, 0, 0, 0.5);
-  --prn-focus: 0 0 0 3px rgba(160, 210, 43, 0.42);
+  --prn-scrim: rgba(0, 0, 0, 0.55);
+  --prn-backdrop: rgba(0, 0, 0, 0.6);
+  --prn-focus: 0 0 0 3px rgba(124, 181, 247, 0.5);
 
-  --prn-shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 10px 30px rgba(0, 0, 0, 0.35);
-  --prn-shadow-pop: 0 16px 48px rgba(0, 0, 0, 0.6);
-  --prn-shadow-raised: 0 4px 12px rgba(0, 0, 0, 0.5), 0 16px 48px rgba(0, 0, 0, 0.6);
+  --prn-shadow: 0 1px 2px rgba(0, 0, 0, 0.6), 0 10px 30px rgba(0, 0, 0, 0.4);
+  --prn-shadow-pop: 0 16px 48px rgba(0, 0, 0, 0.66);
+  --prn-shadow-raised: 0 4px 12px rgba(0, 0, 0, 0.55), 0 16px 48px rgba(0, 0, 0, 0.6);
   --prn-shadow-bar: 0 1px 0 var(--prn-separator);
 
-  --prn-card-border: 1px solid rgba(255, 255, 255, 0.07);
+  --prn-card-border: 1px solid rgba(255, 255, 255, 0.12);
+  --prn-card-blur: saturate(160%) blur(22px);
+
+  /* Signatur: blau→schwarz-Mesh mit royalem Boden + zartem Horizon-Bronze */
+  --prn-bento-bg:
+    radial-gradient(1100px 780px at 88% 8%, rgba(79, 158, 232, 0.24) 0%, rgba(79, 158, 232, 0) 55%),
+    radial-gradient(900px 720px at 10% 96%, rgba(6, 29, 149, 0.5) 0%, rgba(6, 29, 149, 0) 55%),
+    radial-gradient(760px 640px at 70% 100%, rgba(172, 115, 58, 0.16) 0%, rgba(172, 115, 58, 0) 52%),
+    linear-gradient(135deg, #05060a 0%, #04061a 45%, #000000 100%);
+
+  color-scheme: dark;
+}
+
+/* ============================================================
+ *  CU Hell — heller CONUTI-Scope (off-white), electric blue (#2B7FD6)
+ * ============================================================ */
+:root[data-theme="cu-light"] {
+  --prn-bg: #f2f2f2;
+  --prn-app-bg: radial-gradient(130% 130% at 88% 0%, #ffffff 0%, #f2f4f7 52%, #e9edf3 100%);
+  --prn-bg-elevated: #ffffff;
+  --prn-bg-elevated-2: #ffffff;
+  --prn-bg-elevated-translucent: rgba(255, 255, 255, 0.72);
+  --prn-bg-head: #ffffff;
+  --prn-bg-bar: rgba(255, 255, 255, 0.72);
+  --prn-bg-sidebar: rgba(246, 247, 249, 0.8);
+  --prn-fill: rgba(30, 30, 30, 0.06);
+  --prn-fill-strong: rgba(30, 30, 30, 0.12);
+  --prn-hover: rgba(0, 0, 0, 0.04);
+  --prn-pressed: rgba(0, 0, 0, 0.08);
+
+  --prn-label: #1e1e1e;
+  --prn-label-2: rgba(30, 30, 30, 0.72);
+  --prn-label-3: rgba(30, 30, 30, 0.42);
+  --prn-label-4: rgba(30, 30, 30, 0.18);
+
+  --prn-separator: rgba(30, 30, 30, 0.14);
+  --prn-separator-opaque: #d4d4d6;
+  --prn-hairline: rgba(30, 30, 30, 0.07);
+  --prn-border: rgba(30, 30, 30, 0.14);
+
+  --prn-accent: #2b7fd6;
+  --prn-accent-strong: #1a57c2;
+  --prn-accent-hover: #4f9ee8;
+  --prn-accent-pressed: #1a57c2;
+  --prn-accent-soft: rgba(43, 127, 214, 0.14);
+  --prn-on-accent: #ffffff;
+
+  --prn-green: #2e9e5b;
+  --prn-red: #d14435;
+  --prn-orange: #c8791f;
+  --prn-yellow: #b8901f;
+  --prn-blue: #2b7fd6;
+  --prn-teal: #2c93a8;
+  --prn-neutral: #6b6b72;
+  --prn-on-status-fill: #ffffff;
+
+  --prn-tint-positive: rgba(46, 158, 91, 0.14);
+  --prn-tint-critical: rgba(200, 121, 31, 0.16);
+  --prn-tint-negative: rgba(209, 68, 53, 0.12);
+  --prn-tint-info: rgba(43, 127, 214, 0.12);
+  --prn-warn-soft: rgba(200, 121, 31, 0.16);
+
+  --prn-chart-1: #2b7fd6;
+  --prn-chart-2: #4f9ee8;
+  --prn-chart-3: #c8791f;
+  --prn-chart-4: #ac733a;
+  --prn-chart-5: #2e9e5b;
+  --prn-chart-6: #b58a5e;
+  --prn-chart-7: #061d95;
+  --prn-chart-8: #7cb5f7;
+
+  --prn-scrim: rgba(0, 0, 0, 0.32);
+  --prn-backdrop: rgba(0, 0, 0, 0.32);
+  --prn-focus: 0 0 0 3px rgba(43, 127, 214, 0.4);
+
+  --prn-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --prn-shadow-pop: 0 12px 40px rgba(6, 29, 149, 0.14);
+  --prn-shadow-raised: 0 2px 6px rgba(0, 0, 0, 0.08), 0 12px 32px rgba(6, 29, 149, 0.1);
+  --prn-shadow-bar: 0 1px 0 var(--prn-separator);
+
+  --prn-card-border: 1px solid rgba(30, 30, 30, 0.1);
   --prn-card-blur: saturate(160%) blur(22px);
 
   --prn-bento-bg:
-    radial-gradient(1000px 760px at 10% 92%, rgba(96, 132, 64, 0.55) 0%, rgba(96, 132, 64, 0) 58%),
-    radial-gradient(1100px 720px at 92% 8%, rgba(150, 120, 72, 0.5) 0%, rgba(150, 120, 72, 0) 55%),
-    radial-gradient(900px 720px at 78% 96%, rgba(86, 70, 50, 0.45) 0%, rgba(86, 70, 50, 0) 52%),
-    radial-gradient(760px 760px at 36% 16%, rgba(70, 86, 96, 0.4) 0%, rgba(70, 86, 96, 0) 52%),
-    linear-gradient(135deg, #191b18 0%, #232318 45%, #14160f 100%);
+    radial-gradient(1000px 760px at 10% 92%, rgba(43, 127, 214, 0.1) 0%, rgba(43, 127, 214, 0) 58%),
+    radial-gradient(1100px 720px at 92% 8%, rgba(124, 181, 247, 0.14) 0%, rgba(124, 181, 247, 0) 55%),
+    linear-gradient(135deg, #ffffff 0%, #f2f4f7 55%, #e9edf3 100%);
 
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 /* ---------- Globale Basis-Helfer ---------- */

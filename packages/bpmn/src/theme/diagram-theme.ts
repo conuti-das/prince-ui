@@ -39,9 +39,9 @@ export function isDarkMode(scheme: DiagramColorScheme = "auto"): boolean {
   if (scheme === "light") return false;
   if (typeof document !== "undefined") {
     const attr = document.documentElement.getAttribute("data-theme");
-    // CU ist ein dunkler Surface → wie dark behandeln (Diagramm-Shapes dunkel).
-    if (attr === "dark" || attr === "cu") return true;
-    if (attr === "light") return false;
+    // CU Dunkel (Alias "cu") ist ein dunkler Surface → wie dark behandeln.
+    if (attr === "dark" || attr === "cu" || attr === "cu-dark") return true;
+    if (attr === "light" || attr === "cu-light") return false;
   }
   if (typeof window !== "undefined" && window.matchMedia) {
     return window.matchMedia("(prefers-color-scheme: dark)").matches;
