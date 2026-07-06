@@ -74,6 +74,18 @@
   --docs-muted: #54565c;
 }
 
+/* CU Hell — heller CONUTI-Scope: dieselben dunklen, AA-konformen Textfarben,
+   Akzent-Text aber im electric-blue der CI (#1A57C2 ≈ 5.9:1 auf Weiß).
+   Ohne diesen Block würde cu-light die hellen Dark-Defaults erben → helle
+   Schrift auf hellem Grund (Sidebar-Rubriken, FeatureCard-Text, TOC unlesbar).
+   cu-dark braucht keinen Override (dunkler Grund, helle Defaults passen). */
+:root[data-theme="cu-light"] {
+  --docs-accent-text: #1a57c2;
+  --docs-positive-text: #1b6e29;
+  --docs-negative-text: #a8160c;
+  --docs-muted: #54565c;
+}
+
 body { margin: 0; background: var(--prn-bg); color: var(--prn-label); font-family: var(--prn-font); }
 
 /* ============================================================
