@@ -5,7 +5,7 @@
  * (dist/index.css → Import via "@conuti-das/prince-ui/styles.css").
  */
 
-export const PRINCE_UI_VERSION = "0.13.0";
+export const PRINCE_UI_VERSION = "0.14.0";
 
 /**
  * Die Prince-Modes. `null` = System folgen (prefers-color-scheme, Fallback Dunkel).

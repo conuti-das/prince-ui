@@ -1,6 +1,6 @@
 {
   "name": "@conuti-das/prince-ui-forms",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Schema-getriebener Formular-Renderer und nativer Form-Builder im prince-ui-Look (form-js-kompatibel, form-js-editor als Experten-Fallback).",
   "license": "MIT",
   "private": false,
