@@ -5,7 +5,7 @@
  * ============================================================ */
 .prn-card {
   background: var(--prn-bg-elevated);
-  border: var(--prn-card-border);
+  /* Neuer Look (Apple-Health): Fläche + weicher Schatten trennen, keine Hairline. */
   border-radius: var(--prn-radius-card);
   box-shadow: var(--prn-shadow);
   -webkit-backdrop-filter: var(--prn-card-blur);
@@ -82,7 +82,7 @@
   gap: 6px;
   padding: 18px;
   background: var(--prn-bg-elevated);
-  border: var(--prn-card-border);
+  /* Neuer Look (Apple-Health): Fläche + Schatten trennen, keine Hairline. */
   border-radius: var(--prn-radius-card);
   box-shadow: var(--prn-shadow);
   -webkit-backdrop-filter: var(--prn-card-blur);
@@ -368,7 +368,7 @@
   background: var(--prn-bg-sidebar);
   -webkit-backdrop-filter: var(--prn-blur);
   backdrop-filter: var(--prn-blur);
-  border-right: 1px solid var(--prn-separator);
+  /* Neuer Look: randlos — das frosted Sidebar-Material trennt vom Feld. */
 }
 .prn-sidebar-header {
   padding: 14px 16px;

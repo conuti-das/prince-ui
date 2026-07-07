@@ -12,6 +12,12 @@
   height: 100%;
   background: var(--prn-app-bg);
   color: var(--prn-label);
+  /* Neuer Look (Apple-Health-artig): Chrome (Bar/Sidebar) ist ein frosted,
+   * leicht ANGEHOBENES Material — die Trennung vom Feld kommt aus dem Material
+   * (heller + Blur), nicht aus einer gezogenen Linie. Nur innerhalb der Shell
+   * gescopt; portalierte Overlays behalten ihr Standard-Glas. */
+  --prn-glass-bg: var(--prn-bg-elevated-translucent);
+  --prn-glass-bg-opaque: var(--prn-bg-elevated);
 }
 
 /* ---- Shell-Bar ---- */
@@ -179,10 +185,9 @@
   vertical-align: -3px;
 }
 
-/* Aufgeklappte Such-Zeile (Mobile) */
+/* Aufgeklappte Such-Zeile (Mobile) — randlos, sitzt auf angehobenem Material. */
 .prn-shellbar-searchrow {
   padding: 8px 12px;
-  border-bottom: 1px solid var(--prn-glass-border);
   background: var(--prn-bg-elevated);
 }
 
@@ -191,6 +196,7 @@
   display: grid;
   grid-template-columns: var(--prn-appshell-sidebar-w, 260px) 1fr;
   min-height: 0;
+  transition: grid-template-columns var(--prn-dur) var(--prn-ease-out);
 }
 .prn-appshell[data-collapsed] .prn-appshell-body {
   grid-template-columns: 0 1fr;
@@ -272,7 +278,8 @@
     z-index: 50;
     transform: translateX(-100%);
     transition: transform var(--prn-dur) var(--prn-ease-out);
-    border-right: 1px solid var(--prn-glass-border);
+    /* Off-canvas: schwebt über dem Content → Schatten statt Hairline. */
+    box-shadow: var(--prn-shadow-pop);
   }
   .prn-appshell:not([data-collapsed]) .prn-appshell-sidebar {
     transform: translateX(0);
