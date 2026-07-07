@@ -109,7 +109,9 @@ body { margin: 0; background: var(--prn-bg); color: var(--prn-label); font-famil
   display: flex; align-items: center; gap: var(--docs-sp-4);
   height: var(--docs-header-h); padding: 0 var(--docs-sp-5);
   position: sticky; top: 0; z-index: 30;
-  background: var(--prn-bg); border-bottom: var(--docs-border);
+  /* Neuer Look: frosted, angehobenes Material statt harter Unterkante. */
+  background: var(--prn-bg-elevated-translucent);
+  -webkit-backdrop-filter: var(--prn-blur); backdrop-filter: var(--prn-blur);
 }
 .docs-header-brand { display: flex; align-items: center; gap: var(--docs-sp-2); font-weight: 700; color: var(--prn-label); text-decoration: none; }
 .docs-header-logo { width: 24px; height: 24px; border-radius: 6px; background: linear-gradient(135deg, var(--docs-accent), var(--prn-accent, #6cae0f)); flex: 0 0 auto; }
@@ -157,7 +159,7 @@ body { margin: 0; background: var(--prn-bg); color: var(--prn-label); font-famil
   padding: var(--docs-sp-5) var(--docs-sp-3);
   position: sticky; top: var(--docs-header-h); align-self: start;
   max-height: calc(100vh - var(--docs-header-h)); overflow-y: auto;
-  border-right: var(--docs-border);
+  /* Neuer Look: randlos — Trennung über Weißraum/Material statt Hairline. */
 }
 .docs-nav-group + .docs-nav-group { margin-top: var(--docs-sp-5); }
 .docs-nav-group-title { font-size: .7rem; text-transform: uppercase; letter-spacing: .06em; color: var(--docs-muted); padding: 0 var(--docs-sp-3); margin-bottom: var(--docs-sp-2); }

@@ -36,16 +36,15 @@
 
 /* ---- Varianten: nur Kanten/Radius/Schatten; das Material kommt von .prn-glass ---- */
 
-/* Top-Bar / Header / Toolbar — randlos, nur untere Hairline. */
+/* Top-Bar / Header / Toolbar — randlos. Trennung übers frosted Material +
+ * Blur (Apple-Health-artig), keine gezogene Hairline mehr. */
 .prn-glass-bar {
   border-radius: 0;
-  border-bottom: 1px solid var(--prn-glass-border);
 }
 
-/* Sidebar / Navigationsleiste — randlos, nur rechte Hairline. */
+/* Sidebar / Navigationsleiste — randlos. Das frosted Material trennt vom Feld. */
 .prn-glass-sidebar {
   border-radius: 0;
-  border-right: 1px solid var(--prn-glass-border);
 }
 
 /* Overlays: Popover, Menu, Dialog, Tooltip, Toast. */
