@@ -62,7 +62,7 @@ export type DiagramColorScheme = "auto" | "light" | "dark";
 
 /**
  * Optionales Zell-Plugin (z. B. Prüfidentifikator-Autocomplete) — hält die
- * Pakete frei von MaCo-Domänenwissen.
+ * Pakete frei von MACO-Domänenwissen.
  */
 export interface DmnCellPlugin {
   /** trifft zu, wenn die Spalte dieses Plugin nutzen soll */

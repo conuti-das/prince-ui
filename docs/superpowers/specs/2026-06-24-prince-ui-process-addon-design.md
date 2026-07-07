@@ -79,7 +79,7 @@ Pro Paket ein `types.ts` mit den kanonischen Camunda-7-Typen als Props (Quelle: 
 Editoren erhalten Persistenz und App-Orchestrierung als Callbacks/Slots:
 - `value`/`defaultValue` (XML bzw. Schema) + `onChange` + `onSave(serialized) => Promise<void>` (controlled/uncontrolled-Muster wie prince-ui).
 - `onElementSelect`, `onDirtyChange`, optionale `toolbarSlot`/`actionsSlot` (z. B. für KI-„Fix"-Button).
-- Domänen-Erweiterungen (Prüfi-Autocomplete) als **optionales Plugin**: `cellPlugins?` / `feelSuggestionsProvider?` — Default ohne MaCo-Abhängigkeit.
+- Domänen-Erweiterungen (Prüfi-Autocomplete) als **optionales Plugin**: `cellPlugins?` / `feelSuggestionsProvider?` — Default ohne MACO-Abhängigkeit.
 
 ---
 
@@ -120,7 +120,7 @@ fitOnResize?: boolean
 - Annotation-Spalte.
 - Umschalter zum Expertenmodus ⑥.
 **Logik-Kern:** `useDmnModel`-Äquivalent neu gegen `dmn-moddle` (parse → `DmnTableModel`, serialize zurück, **inkl. Spaltenänderungen**). Tests aus `useDmnModel.test.ts` als Basis erweitern.
-**Plugin-Slot:** `cellPlugins` (z. B. Prüfi-Autocomplete für `expression === 'pruefidentifikator'`) — optional, kein MaCo-Default.
+**Plugin-Slot:** `cellPlugins` (z. B. Prüfi-Autocomplete für `expression === 'pruefidentifikator'`) — optional, kein MACO-Default.
 **Akzeptanz:** vollständige DMN-Decision-Table erzeug- und editierbar inkl. Spalten; Round-trip XML→Modell→XML verlustfrei; FEEL-Lint; Light/Dark/Prince-Look; ⌘S-Save-Callback.
 
 ### ⑥ `<DmnExpertEditor>` — `prince-ui-dmn`
