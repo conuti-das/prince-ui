@@ -9,7 +9,7 @@ import type { ControlSchema } from "../../src/playground/schema";
 const schema: ControlSchema = {
   component: "AppShell",
   controls: [
-    { name: "title", type: "text", default: "MaCo" },
+    { name: "title", type: "text", default: "MACO" },
     { name: "subtitle", type: "text", default: "Marktkommunikation" },
     { name: "notifications", type: "toggle", default: true },
     { name: "productSwitch", type: "toggle", default: true },

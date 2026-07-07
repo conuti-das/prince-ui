@@ -5,7 +5,7 @@
  *
  * Persistenz nur über Callbacks (`value`/`defaultValue` (XML) + `onChange` +
  * `onSave(xml)`). Domänen-Erweiterungen (z. B. Prüfi-Autocomplete) über den
- * optionalen `cellPlugins`-Slot — Default ohne MaCo-Abhängigkeit.
+ * optionalen `cellPlugins`-Slot — Default ohne MACO-Abhängigkeit.
  */
 
 import {

@@ -7,11 +7,11 @@ import { AppShell } from "./appshell";
 describe("AppShell", () => {
   it("renders the title and the main content", () => {
     render(
-      <AppShell title="MaCo" sidebar={<nav>Navi</nav>}>
+      <AppShell title="MACO" sidebar={<nav>Navi</nav>}>
         <p>Inhalt</p>
       </AppShell>,
     );
-    expect(screen.getByText("MaCo")).toBeInTheDocument();
+    expect(screen.getByText("MACO")).toBeInTheDocument();
     expect(screen.getByRole("main")).toHaveTextContent("Inhalt");
   });
 
@@ -91,7 +91,7 @@ describe("AppShell", () => {
   });
 
   it("renders a subtitle", () => {
-    render(<AppShell title="MaCo" subtitle="Marktkommunikation">x</AppShell>);
+    render(<AppShell title="MACO" subtitle="Marktkommunikation">x</AppShell>);
     expect(screen.getByText("Marktkommunikation")).toBeInTheDocument();
   });
 
@@ -141,7 +141,7 @@ describe("AppShell", () => {
     const onMenuItemClick = vi.fn();
     render(
       <AppShell
-        title="MaCo"
+        title="MACO"
         menuItems={[{ id: "home", label: "Startseite" }, { id: "settings", label: "Einstellungen" }]}
         onMenuItemClick={onMenuItemClick}
       >
@@ -149,7 +149,7 @@ describe("AppShell", () => {
       </AppShell>,
     );
     // Titel ist jetzt ein Button (Menü-Trigger)
-    const trigger = screen.getByRole("button", { name: /MaCo/ });
+    const trigger = screen.getByRole("button", { name: /MACO/ });
     await user.click(trigger);
     await user.click(await screen.findByRole("menuitem", { name: "Einstellungen" }));
     expect(onMenuItemClick).toHaveBeenCalledWith("settings");

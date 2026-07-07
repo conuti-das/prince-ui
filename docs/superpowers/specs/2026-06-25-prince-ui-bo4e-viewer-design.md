@@ -8,7 +8,7 @@
 
 ## 1. Kontext & Ziel
 
-In „Prinz" (prince-ui) soll eine Komponentenfamilie entstehen, die **BO4E-Geschäftsobjekte** (Business Objects for Energy) der Marktkommunikation elegant, poliert und **sachbearbeiter-optimiert** darstellt und bearbeitet. Eingabe ist ein **cDoc** — die in MaCo verwendete Datenstruktur — sowie ein **JSON-Schema-Repo** (BO4E), das Feld-Beschreibungen, Enums und Beispiele liefert.
+In „Prinz" (prince-ui) soll eine Komponentenfamilie entstehen, die **BO4E-Geschäftsobjekte** (Business Objects for Energy) der Marktkommunikation elegant, poliert und **sachbearbeiter-optimiert** darstellt und bearbeitet. Eingabe ist ein **cDoc** — die in MACO verwendete Datenstruktur — sowie ein **JSON-Schema-Repo** (BO4E), das Feld-Beschreibungen, Enums und Beispiele liefert.
 
 Die Komponente ist **datengetrieben und schema-gestützt**, nicht auf konkrete BO-Typen hartcodiert. Das Schema speist Popover-Dokumentation, Edit-Widgets und (später) Monaco-IntelliSense aus einer Quelle.
 
