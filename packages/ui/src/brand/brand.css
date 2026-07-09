@@ -116,6 +116,39 @@
   z-index: 1;
 }
 
+/* Horizon — Planet/Globe-Ersatz: atmosphärische Licht-Kante am unteren Rand
+   (Planeten-Limbus) + feine Horizontlinie. Kein Clipart, nur CSS. */
+.prn-resonance--horizon .prn-resonance__waves {
+  display: none;
+}
+.prn-horizon-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 78% at 50% 130%, color-mix(in srgb, var(--prn-accent) 42%, transparent) 0%, transparent 60%),
+    radial-gradient(88% 58% at 50% 142%, rgba(6, 29, 149, 0.5) 0%, rgba(6, 29, 149, 0) 62%);
+}
+.prn-horizon-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 34%;
+  height: 1px;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--prn-hairline) 18%,
+    var(--prn-accent) 50%,
+    var(--prn-hairline) 82%,
+    transparent
+  );
+  opacity: 0.55;
+}
+
 /* ---------------- Fine-Line Contour (section-accent) ----------------
    Optionale, ruhende Fine-Lines-Textur für Sektionen/Cards: EINE Richtung
    feiner Diagonal-Hairlines (--prn-hairline), radial ausmaskiert — nur

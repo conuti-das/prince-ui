@@ -90,7 +90,11 @@ export function FineLine({ orientation = "horizontal", node, decorative = false,
  * präsentativ — Inhalte tragen die Semantik. */
 
 export interface ResonanceFieldProps extends Omit<HTMLAttributes<HTMLDivElement>, "className"> {
-  /** Resonanz-Feldlinien einblenden. Default `true`. */
+  /** Hintergrund-Motiv: `"resonance"` (Feldlinien, Default), `"horizon"`
+   *  (atmosphärische Horizont-Kante — der moderne Planet/Globe-Ersatz) oder
+   *  `"plain"` (nur der Tidal-Field-Gradient). */
+  variant?: "resonance" | "horizon" | "plain";
+  /** Resonanz-Feldlinien einblenden (nur bei `variant="resonance"`). Default `true`. */
   waves?: boolean;
   /** Ursprung der Wellen als CSS-Position. Default rechts oben (`82% / 12%`). */
   origin?: { x: string; y: string };
@@ -98,15 +102,41 @@ export interface ResonanceFieldProps extends Omit<HTMLAttributes<HTMLDivElement>
   children?: ReactNode;
 }
 
-export function ResonanceField({ waves = true, origin, className, children, style, ...props }: ResonanceFieldProps) {
+export function ResonanceField({
+  variant = "resonance",
+  waves = true,
+  origin,
+  className,
+  children,
+  style,
+  ...props
+}: ResonanceFieldProps) {
   const cssVars = origin
     ? ({ "--prn-resonance-x": origin.x, "--prn-resonance-y": origin.y } as CSSProperties)
     : undefined;
   return (
-    <div {...props} className={cx("prn-resonance", className)} style={{ ...cssVars, ...style }}>
-      {waves ? <ResonanceWaves /> : null}
+    <div
+      {...props}
+      className={cx("prn-resonance", variant === "horizon" && "prn-resonance--horizon", className)}
+      style={{ ...cssVars, ...style }}
+    >
+      {variant === "resonance" && waves ? <ResonanceWaves /> : null}
+      {variant === "horizon" ? <HorizonGlow /> : null}
       <div className="prn-resonance__content">{children}</div>
     </div>
+  );
+}
+
+/** „Horizon" (dekorativ): moderner Ersatz für das Planet/Globe-Motiv der
+ *  Bildsprache („Horizont — Weitblick, Innovation"). Eine atmosphärische
+ *  Licht-Kante am unteren Rand (Planeten-Limbus) plus eine feine Horizontlinie
+ *  — komplett CSS, kein Clipart-Planet. Farbe folgt `--prn-accent`. */
+function HorizonGlow() {
+  return (
+    <>
+      <div className="prn-horizon-glow" aria-hidden="true" />
+      <div className="prn-horizon-line" aria-hidden="true" />
+    </>
   );
 }
 

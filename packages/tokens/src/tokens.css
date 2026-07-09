@@ -651,7 +651,10 @@
   /* Pulse Blue (#7cb5f7) = Akzent; Text darauf = Core Black (Marken-Combo).
      Deep Azure (#061d95) als tiefer Anker/Strong. */
   --prn-accent: #7cb5f7;
-  --prn-accent-strong: #061d95;
+  /* Pulse Blue statt Deep Azure: --prn-accent-strong wird repo-weit NUR als
+     Textfarbe/Stroke genutzt (nie als Fill). Deep Azure #061d95 auf Core Black
+     = 1.39:1 (blaue Schrift auf blauem Grund). #7cb5f7 → 8.0:1 / 5.98:1. */
+  --prn-accent-strong: #7cb5f7;
   --prn-accent-hover: #a9d0fb;
   --prn-accent-pressed: #5f9ae6;
   --prn-accent-soft: rgba(124, 181, 247, 0.18);
