@@ -7,6 +7,8 @@ const OPTIONS: { value: PrinceTheme | "system"; label: string }[] = [
   { value: "light", label: "Hell" },
   { value: "cu-dark", label: "CU Dunkel" },
   { value: "cu-light", label: "CU Hell" },
+  { value: "c3u-dark", label: "C3U Dunkel" },
+  { value: "c3u-light", label: "C3U Hell" },
 ];
 
 export function ThemeSwitcher() {

@@ -9,16 +9,27 @@ export const PRINCE_UI_VERSION = "0.14.0";
 
 /**
  * Die Prince-Modes. `null` = System folgen (prefers-color-scheme, Fallback Dunkel).
- * `"cu"` bleibt als Alias auf `"cu-dark"` bestehen (Rückwärtskompatibilität).
+ * `"cu"` bzw. `"c3u"` bleiben als Alias auf die jeweilige Dunkel-Ausprägung
+ * bestehen (Rückwärtskompatibilität).
  */
-export type PrinceTheme = "light" | "dark" | "cu-dark" | "cu-light" | "cu";
+export type PrinceTheme =
+  | "light"
+  | "dark"
+  | "cu-dark"
+  | "cu-light"
+  | "cu"
+  | "c3u-dark"
+  | "c3u-light"
+  | "c3u";
 
 /**
  * Setzt das Theme am <html>-Element.
- * - `"light"` / `"dark"`     → Hell / Dunkel (neutrale System-Themes: System-Font, System-Farben, Grün)
- * - `"cu-dark"` / `"cu-light"` → CONUTI-CI (Cabinet Grotesk, electric blue) als Dunkel- bzw. Hell-Ausprägung
- * - `"cu"`                   → Alias auf `"cu-dark"`
- * - `null`                   → System folgen (Hell bei OS-Light, sonst Dunkel)
+ * - `"light"` / `"dark"`       → Hell / Dunkel (neutrale System-Themes: System-Font, System-Farben, Grün)
+ * - `"cu-dark"` / `"cu-light"` → CONUTI-CI (Vorläufer: Cabinet Grotesk, electric blue) als Dunkel- bzw. Hell-Ausprägung
+ * - `"cu"`                     → Alias auf `"cu-dark"`
+ * - `"c3u-dark"` / `"c3u-light"` → CONUTI-CI aus dem offiziellen Brandguide (Pulse Blue / Deep Azure, Cabinet Grotesk)
+ * - `"c3u"`                    → Alias auf `"c3u-dark"`
+ * - `null`                     → System folgen (Hell bei OS-Light, sonst Dunkel)
  */
 export function setTheme(theme: PrinceTheme | null): void {
   const root = document.documentElement;
@@ -77,6 +88,9 @@ export * from "./primitives/color-pickers";
 export * from "./primitives/status";
 export * from "./primitives/toast";
 export * from "./primitives/dropzone";
+
+// Brand — CONUTI Corporate Elements (Circle Dot, Fine Lines, Resonance Field)
+export * from "./brand/brand";
 
 // Liquid-Glass-Optik-Schicht — zuletzt, damit glass.css NACH dem Komponenten-CSS
 // gebündelt wird und die opt-in Glas-Klassen (z. B. auf Popover) gewinnen.
