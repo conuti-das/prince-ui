@@ -228,7 +228,7 @@
 }
 .c3u-swatch figcaption span {
   font-size: 12px;
-  color: var(--prn-label-3);
+  color: var(--prn-label-2); /* label-3 (α .42) auf weißer Swatch-Card = 2.7:1 (AA-Fail) */
 }
 
 /* ---- Pairings ---- */
@@ -254,7 +254,127 @@
   justify-content: center;
   gap: 10px;
   padding: 40px 24px 56px;
-  color: var(--prn-label-3);
+  color: var(--prn-label-2); /* label-3 auf App-BG = ~2.7:1 (AA-Fail) → label-2 */
   font-size: 13px;
   border-top: 1px solid var(--prn-separator);
+}
+
+/* ---- Sections (Brand-Guide-Aufbau, wiederverwendete Backgrounds) ---- */
+.c3u-sections-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.c3u-panel {
+  position: relative;
+  border-radius: var(--prn-radius-lg);
+  overflow: hidden;
+  min-height: 210px;
+  border: 1px solid var(--prn-separator);
+}
+.c3u-panel--wide {
+  grid-column: span 2;
+}
+/* Padding: bei div-Panels direkt, bei ResonanceField-Panels auf den Content. */
+.c3u-panel:not(.prn-resonance) {
+  padding: 28px;
+}
+.c3u-panel.prn-resonance .prn-resonance__content {
+  height: 100%;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+}
+.c3u-panel--warm {
+  background: #debe9e;
+  color: #4f2b1e;
+}
+.c3u-panel--pulse {
+  background: #7cb5f7;
+  color: #171717;
+}
+.c3u-panel-title {
+  margin: 12px 0 8px;
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 700;
+  line-height: 1.15;
+}
+.c3u-panel-text {
+  margin: 0;
+  line-height: 1.6;
+  color: var(--prn-label-2);
+}
+.c3u-panel--warm .c3u-panel-text {
+  color: #4f2b1e;
+  opacity: 0.82;
+}
+.c3u-panel--pulse .c3u-panel-text {
+  color: #171717;
+  opacity: 0.82;
+}
+.c3u-panel-list {
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+  font-weight: 600;
+  color: #171717;
+}
+
+/* ---- Horizont-CTA (Planet-Ersatz vollflächig) ---- */
+.c3u-cta-horizon {
+  min-height: 440px;
+}
+.c3u-cta-horizon .prn-resonance__content {
+  min-height: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(48px, 9vw, 110px) clamp(16px, 5vw, 56px);
+}
+.c3u-cta-title {
+  margin: 16px 0 0;
+  max-width: 22ch;
+  font-size: clamp(24px, 4vw, 44px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+}
+.c3u-cta-sub {
+  margin: 16px 0 24px;
+  max-width: 54ch;
+  color: var(--prn-label-2);
+  line-height: 1.6;
+}
+
+/* ---- Eingebettete Produktkomponenten ---- */
+.c3u-demo {
+  margin-top: 24px;
+}
+.c3u-demo-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--prn-label-2);
+}
+.c3u-demo-loading {
+  padding: 48px;
+  text-align: center;
+  color: var(--prn-label-2);
+}
+
+@media (max-width: 720px) {
+  .c3u-sections-grid {
+    grid-template-columns: 1fr;
+  }
+  .c3u-panel--wide {
+    grid-column: auto;
+  }
 }

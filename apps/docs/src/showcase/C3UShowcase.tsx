@@ -1,6 +1,8 @@
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
+  AnalyticalTable,
+  type AnalyticalColumn,
   Button,
   Card,
   CircleDot,
@@ -11,6 +13,11 @@ import {
   type PrinceTheme,
 } from "@conuti-das/prince-ui";
 import "./c3u-showcase.css";
+
+// Schwer-Editoren lazy (Demo-Wrapper mit eingebackenen Fixtures; CSS-Assets lädt
+// die Doku-App global in main.tsx). So bleibt der Showcase-Erststart leicht.
+const DmnTableEditorDemo = lazy(() => import("../heavy/DmnTableEditorDemo"));
+const Bo4eCDocViewDemo = lazy(() => import("../heavy/Bo4eCDocViewDemo"));
 
 /* ============================================================
  *  C3U — CONUTI Brand Showcase / Starter-Template
@@ -44,6 +51,28 @@ const KOMPETENZ = [
   { tag: "Substanziell", text: "Langfristiges Denken mit echter Verbindlichkeit und nachhaltiger Wirkung." },
   { tag: "KI-nativ", text: "Innovation ist der erste Impuls — Lösungen, bevor Herausforderungen sichtbar werden." },
   { tag: "Menschen & Organisation", text: "Wirkung entsteht durch Menschen, die Verantwortung übernehmen." },
+];
+
+/** Energie-Domänen-Beispieldaten für die eingebettete AnalyticalTable. */
+type GridRow = { id: string; partner: string; rolle: string; messungen: number; status: string };
+const GRID_DATA: GridRow[] = [
+  { id: "9903", partner: "Netze BW GmbH", rolle: "VNB", messungen: 1284000, status: "aktiv" },
+  { id: "4033", partner: "TransnetBW GmbH", rolle: "ÜNB", messungen: 486200, status: "aktiv" },
+  { id: "9906", partner: "Westnetz Messung GmbH", rolle: "MSB", messungen: 933100, status: "aktiv" },
+  { id: "9904", partner: "E.ON Energie Dialog GmbH", rolle: "LF", messungen: 210400, status: "pausiert" },
+];
+const GRID_COLS: AnalyticalColumn<GridRow>[] = [
+  { header: "Code", accessorKey: "id", width: "90px" },
+  { header: "Marktpartner", accessorKey: "partner", width: "minmax(180px, 1.4fr)" },
+  { header: "Rolle", accessorKey: "rolle", width: "90px" },
+  {
+    header: "Messungen",
+    accessorKey: "messungen",
+    align: "end",
+    width: "130px",
+    cellRender: (r) => r.messungen.toLocaleString("de-DE"),
+  },
+  { header: "Status", accessorKey: "status", width: "110px" },
 ];
 
 export function C3UShowcase() {
@@ -192,6 +221,109 @@ export function C3UShowcase() {
               Alle prince-ui-Komponenten ziehen ihre Farben aus <code>--prn-*</code> und erscheinen
               automatisch in der CONUTI-Marke, sobald <code>data-theme="c3u-dark"</code> gesetzt ist.
             </p>
+          </Card>
+        </div>
+      </section>
+
+      {/* Sections — Aufbau wie im Brandguide, veraltete Bilder durch die modernen
+          Ersatz-Backgrounds ersetzt (Tidal Field, Field Lines, Horizont). */}
+      <section className="c3u-section">
+        <h2 className="c3u-h2">Sections</h2>
+        <p className="c3u-lead">
+          Aufbau wie im Brandguide — die veralteten Verläufe, das Planet- und das Wellen-Motiv
+          sind durch die modernen Backgrounds ersetzt und auf Elementen wiederverwendet.
+        </p>
+        <div className="c3u-sections-grid">
+          <ResonanceField className="c3u-panel c3u-panel--wide" origin={{ x: "84%", y: "16%" }}>
+            <CircleDot tone="accent" size={20} />
+            <h3 className="c3u-panel-title">KI-native Lösungen für eine Branche im Wandel.</h3>
+            <p className="c3u-panel-text">
+              Technologie <span className="c3u-accent">+</span> Menschen{" "}
+              <span className="c3u-accent">=</span> Wirkung.
+            </p>
+          </ResonanceField>
+
+          <div className="c3u-panel c3u-panel--warm">
+            <h3 className="c3u-panel-title">Partnerschaftlich. Verbindlich. Wirksam.</h3>
+            <p className="c3u-panel-text">
+              Transformation gelingt dort, wo Technologie, Fachlichkeit und Menschen zusammenkommen.
+            </p>
+          </div>
+
+          <div className="c3u-panel c3u-panel--pulse">
+            <h3 className="c3u-panel-title">Was wir tun</h3>
+            <ul className="c3u-panel-list">
+              <li>01 · Consulting — Energiewirtschaft &amp; SAP</li>
+              <li>02 · Marktkommunikation — Beratung &amp; Betrieb</li>
+              <li>03 · BPO — Business Process Outsourcing</li>
+            </ul>
+          </div>
+
+          <ResonanceField
+            variant="horizon"
+            className="c3u-panel c3u-panel--wide c3u-panel--onhorizon"
+          >
+            <CircleDot tone="accent" size={20} />
+            <h3 className="c3u-panel-title">Weitblick</h3>
+            <p className="c3u-panel-text">
+              Horizont — Innovation und Weitblick. Der moderne, atmosphärische Ersatz für das
+              Planet-Motiv der Bildsprache.
+            </p>
+          </ResonanceField>
+        </div>
+      </section>
+
+      {/* Horizont-CTA — der Planet-Ersatz vollflächig in Aktion */}
+      <ResonanceField variant="horizon" origin={{ x: "50%", y: "120%" }} className="c3u-cta-horizon">
+        <CircleDot tone="accent" size={22} />
+        <h2 className="c3u-cta-title">Zukunft entsteht dort, wo Strategie auf Umsetzung trifft.</h2>
+        <p className="c3u-cta-sub">
+          CONUTI entwickelt digitale Strukturen für die Energiebranche — intelligent, effizient
+          und nachhaltig.
+        </p>
+        <Button className="c3u-pill">Zusammenarbeit mit CONUTI →</Button>
+      </ResonanceField>
+
+      {/* prince-ui in Aktion unter C3U — echte Produktkomponenten */}
+      <section className="c3u-section">
+        <h2 className="c3u-h2">prince-ui in Aktion unter C3U</h2>
+        <p className="c3u-lead">
+          Dieselben Produktkomponenten — automatisch in der CONUTI-Marke, in beiden Modi.
+        </p>
+
+        <div className="c3u-demo">
+          <div className="c3u-demo-label">
+            <CircleDot tone="accent" size={14} /> AnalyticalTable
+          </div>
+          <Card className="c3u-card" padding="none">
+            <AnalyticalTable
+              aria-label="Marktpartner"
+              getRowId={(r) => r.id}
+              data={GRID_DATA}
+              columns={GRID_COLS}
+            />
+          </Card>
+        </div>
+
+        <div className="c3u-demo">
+          <div className="c3u-demo-label">
+            <CircleDot tone="accent" size={14} /> DMN-Editor
+          </div>
+          <Card className="c3u-card" padding="none">
+            <Suspense fallback={<div className="c3u-demo-loading">Editor lädt …</div>}>
+              <DmnTableEditorDemo />
+            </Suspense>
+          </Card>
+        </div>
+
+        <div className="c3u-demo">
+          <div className="c3u-demo-label">
+            <CircleDot tone="accent" size={14} /> BO4E cDoc-Viewer
+          </div>
+          <Card className="c3u-card" padding="none">
+            <Suspense fallback={<div className="c3u-demo-loading">Viewer lädt …</div>}>
+              <Bo4eCDocViewDemo />
+            </Suspense>
           </Card>
         </div>
       </section>
