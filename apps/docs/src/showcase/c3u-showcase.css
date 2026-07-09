@@ -81,7 +81,7 @@
   text-transform: uppercase;
   letter-spacing: 0.22em;
   font-size: 12px;
-  color: var(--prn-label-3);
+  color: var(--prn-label-2); /* label-3 (α .44) auf blauem Hero-Gradient = AA-Fail; label-2 → ~7.7:1 / 5.9:1 */
 }
 .c3u-hero-title {
   margin: 0 auto;

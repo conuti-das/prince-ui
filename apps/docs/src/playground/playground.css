@@ -19,7 +19,7 @@
 .pg-control-name { display: flex; align-items: center; justify-content: space-between; gap: var(--docs-sp-2); color: var(--prn-label-2); }
 .pg-control-label { font-weight: 500; color: var(--prn-label); }
 .pg-info { cursor: help; text-decoration: none; color: var(--prn-label-2); border: 0; line-height: 1; }
-.docs-required { color: var(--prn-negative, #c62828); margin-left: 2px; }
+.docs-required { color: var(--docs-negative-text); margin-left: 2px; }
 
 /* Boolean-Toggles als eine Zeile: Name links, Switch rechts (statt gestapelt).
    Selects/Text/Segmented bleiben gestapelt — die brauchen die volle Breite. */
