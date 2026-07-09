@@ -26,6 +26,10 @@ export function Header({ onOpenSearch }: { onOpenSearch: () => void }) {
         <button type="button" className="docs-icon-btn docs-searchbar-mobile" onClick={onOpenSearch} aria-label="Suchen">
           ⌕
         </button>
+        <Link className="docs-c3u-link" to="/c3u" aria-label="C3U — CONUTI Brand-Showcase">
+          <span className="docs-c3u-dot" aria-hidden="true" />
+          C3U
+        </Link>
         <ThemeSwitcher />
         <span className="docs-header-divider" aria-hidden="true" />
         <a className="docs-icon-btn" href={GH_URL} target="_blank" rel="noreferrer" aria-label="GitHub">

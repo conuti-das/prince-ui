@@ -149,6 +149,25 @@ body { margin: 0; background: var(--prn-bg); color: var(--prn-label); font-famil
 }
 .docs-theme-select:hover { border-color: var(--docs-accent); }
 
+/* C3U-Showcase-Link (Akzent-Pille mit Circle-Dot) — führt zur Full-Bleed-Route /c3u */
+.docs-c3u-link {
+  display: inline-flex; align-items: center; gap: 7px;
+  height: 32px; padding: 0 var(--docs-sp-3);
+  border-radius: var(--docs-radius-ctrl);
+  background: var(--docs-accent); color: var(--prn-on-accent, #fff);
+  font-size: var(--docs-small-size); font-weight: 600; letter-spacing: 0.02em;
+  text-decoration: none; white-space: nowrap;
+}
+.docs-c3u-link:hover { filter: brightness(1.08); }
+.docs-c3u-dot {
+  width: 11px; height: 11px; border-radius: 50%;
+  border: 1.5px solid currentColor; box-sizing: border-box;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.docs-c3u-dot::after {
+  content: ""; width: 3px; height: 3px; border-radius: 50%; background: currentColor;
+}
+
 /* Mobile-Suchknopf (Icon) im Header — nur < 768px sichtbar */
 .docs-searchbar-mobile { display: none; }
 
