@@ -99,6 +99,25 @@ for (const file of files) {
   written++;
 }
 
+// Zusätzliche, nicht-MDX-Routen (z. B. das Full-Bleed-Showcase). Gleiche
+// Shell-Behandlung, damit Deep-Links HTTP 200 + eigenen Titel/Meta liefern.
+const EXTRA_ROUTES: { path: string; title: string; description: string }[] = [
+  {
+    path: "/c3u",
+    title: "C3U — CONUTI Brand",
+    description:
+      "CONUTI-Markenvorlage auf prince-ui: Circle Dot, Fine Lines, Resonance Field und die offiziellen Markenfarben (Pulse Blue, Deep Azure, Warm Stone, Earth Code).",
+  },
+];
+
+for (const { path, title, description } of EXTRA_ROUTES) {
+  const html = injectHead(template, headTags(title, description, path));
+  const outDir = join(distDir, path.replace(/^\//, ""));
+  mkdirSync(outDir, { recursive: true });
+  writeFileSync(join(outDir, "index.html"), html);
+  written++;
+}
+
 // 404.html bleibt der generische SPA-Fallback (für unbekannte Pfade).
 writeFileSync(join(distDir, "404.html"), template);
 

@@ -5,20 +5,30 @@
  *   - Dunkel  → :root (Default + Fallback) und :root[data-theme="dark"]
  *   - Hell    → @media (prefers-color-scheme: light) ohne data-theme,
  *               sowie :root[data-theme="light"]
- *   - CU       → CONUTI-CI (2026-Redesign): schwarze Canvas, ein electric-blue
- *               Akzent (#4F9EE8), Cabinet Grotesk, quadratische Radien.
+ *   - CU       → CONUTI-CI (2026-Redesign, Vorläufer): schwarze Canvas, ein
+ *               electric-blue Akzent (#4F9EE8), Cabinet Grotesk, quadratische Radien.
  *       · CU Dunkel → :root[data-theme="cu-dark"] (Alias: [data-theme="cu"])
  *       · CU Hell   → :root[data-theme="cu-light"]
+ *   - C3U      → CONUTI-CI aus dem offiziellen Brandguide ("Look & Feel").
+ *               Sechs Markenfarben: Pulse Blue (#7cb5f7), Deep Azure (#061d95),
+ *               Warm Stone (#debe9e), Earth Code (#4f2b1e), Core Black (#171717),
+ *               Clear White (#ffffff). 60/40 blau-geführt, Cabinet Grotesk.
+ *       · C3U Dunkel → :root[data-theme="c3u-dark"] (Alias: [data-theme="c3u"])
+ *                      Core-Black-Canvas, Pulse-Blue-Akzent (Marken-Leitkombi).
+ *       · C3U Hell   → :root[data-theme="c3u-light"]
+ *                      Warm-Off-White-Canvas, Deep-Azure-Akzent.
  *
  * Theme-Logik:
  *   1. Ohne data-theme folgt es dem OS, fällt aber auf DUNKEL zurück
  *      (System-Light → Hell, sonst Dunkel).
- *   2. data-theme="light" | "dark" | "cu-dark" | "cu-light" erzwingt den Mode.
- *      "cu" bleibt als Alias auf CU Dunkel bestehen (Rückwärtskompatibilität).
+ *   2. data-theme="light" | "dark" | "cu-dark" | "cu-light" | "c3u-dark" |
+ *      "c3u-light" erzwingt den Mode. "cu" bzw. "c3u" bleiben als Alias auf die
+ *      jeweilige Dunkel-Ausprägung bestehen (Rückwärtskompatibilität).
  *
  * Hell/Dunkel sind die neutralen System-Themes (System-Font-Stack,
- * System-Farben, Akzentgrün). CU ist die CONUTI-CI-Variante (Cabinet Grotesk,
- * electric blue) — als Hell- und Dunkel-Ausprägung.
+ * System-Farben, Akzentgrün). CU und C3U sind die CONUTI-CI-Varianten (Cabinet
+ * Grotesk) — je als Hell- und Dunkel-Ausprägung. C3U ist die offizielle,
+ * Brandguide-treue Marke; CU bleibt als Vorläufer erhalten.
  *
  * Regel: niemals rohe Hex/RGB in Komponenten — immer diese Tokens.
  */
@@ -580,6 +590,200 @@
     radial-gradient(1000px 760px at 10% 92%, rgba(43, 127, 214, 0.1) 0%, rgba(43, 127, 214, 0) 58%),
     radial-gradient(1100px 720px at 92% 8%, rgba(124, 181, 247, 0.14) 0%, rgba(124, 181, 247, 0) 55%),
     linear-gradient(135deg, #ffffff 0%, #f2f4f7 55%, #e9edf3 100%);
+
+  color-scheme: light;
+}
+
+/* ============================================================
+ *  C3U — CONUTI-CI (offizieller Brandguide "Look & Feel")
+ *  Gemeinsame Marken-Grundlage für C3U Hell + C3U Dunkel:
+ *  Cabinet Grotesk als Hausschrift, quadratisch-lastige Radien
+ *  (volle Kreise bleiben dem Circle-Dot-Motiv / Pills vorbehalten).
+ * ============================================================ */
+:root[data-theme="c3u"],
+:root[data-theme="c3u-dark"],
+:root[data-theme="c3u-light"] {
+  --prn-font: "Cabinet Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif;
+  --prn-font-rounded: var(--prn-font);
+
+  /* Quadratisch-lastige Ecken (CI): 4px als Default, große Panels bis 16px. */
+  --prn-radius-xs: 3px;
+  --prn-radius-sm: 4px;
+  --prn-radius-md: 6px;
+  --prn-radius: 8px;
+  --prn-radius-lg: 12px;
+  --prn-radius-xl: 16px;
+  --prn-radius-card: 12px;
+  /* --prn-radius-pill: 999px bleibt (Pills / Circle-Dot) */
+}
+
+/* ============================================================
+ *  C3U Dunkel — Core-Black-Canvas (#171717), Pulse Blue (#7cb5f7)
+ *  Marken-Leitkombination: Pulse Blue auf Core Black.
+ *  Deep Azure (#061d95) als tiefer Anker, Warm Stone / Earth Code
+ *  als warmer Kontrapunkt (Erdtöne). ([data-theme="c3u"] = Alias)
+ * ============================================================ */
+:root[data-theme="c3u"],
+:root[data-theme="c3u-dark"] {
+  --prn-bg: #171717;
+  --prn-app-bg: linear-gradient(180deg, #1c1d22 0%, #171717 55%, #101012 100%);
+  --prn-bg-elevated: #1f2024;
+  --prn-bg-elevated-2: #26272c;
+  --prn-bg-elevated-translucent: rgba(23, 23, 23, 0.55); /* Glas-Card, Blur-tauglich */
+  --prn-bg-head: #121214;
+  --prn-bg-bar: rgba(18, 18, 20, 0.6);
+  --prn-bg-sidebar: rgba(18, 18, 20, 0.66);
+  --prn-fill: rgba(255, 255, 255, 0.08);
+  --prn-fill-strong: rgba(255, 255, 255, 0.14);
+  --prn-hover: rgba(255, 255, 255, 0.06);
+  --prn-pressed: rgba(255, 255, 255, 0.12);
+
+  --prn-label: #ffffff; /* Clear White */
+  --prn-label-2: rgba(236, 240, 247, 0.72);
+  --prn-label-3: rgba(236, 240, 247, 0.44);
+  --prn-label-4: rgba(236, 240, 247, 0.18);
+
+  --prn-separator: rgba(255, 255, 255, 0.12);
+  --prn-separator-opaque: #26272c;
+  --prn-hairline: rgba(255, 255, 255, 0.08); /* Fine Lines */
+  --prn-border: rgba(255, 255, 255, 0.12);
+
+  /* Pulse Blue (#7cb5f7) = Akzent; Text darauf = Core Black (Marken-Combo).
+     Deep Azure (#061d95) als tiefer Anker/Strong. */
+  --prn-accent: #7cb5f7;
+  --prn-accent-strong: #061d95;
+  --prn-accent-hover: #a9d0fb;
+  --prn-accent-pressed: #5f9ae6;
+  --prn-accent-soft: rgba(124, 181, 247, 0.18);
+  --prn-on-accent: #171717;
+
+  --prn-green: #4fb477;
+  --prn-red: #e2604f;
+  --prn-orange: #d9964e;
+  --prn-yellow: #e6c05a;
+  --prn-blue: #7cb5f7;
+  --prn-teal: #5bc0d0;
+  --prn-neutral: #8a8a90;
+  --prn-on-status-fill: #ffffff;
+
+  --prn-tint-positive: rgba(79, 180, 119, 0.18);
+  --prn-tint-critical: rgba(217, 150, 78, 0.18);
+  --prn-tint-negative: rgba(226, 96, 79, 0.18);
+  --prn-tint-info: rgba(124, 181, 247, 0.2);
+  --prn-warn-soft: rgba(217, 150, 78, 0.16);
+
+  /* Charts: Blau-geführt (Pulse/Deep Azure) + Erdtöne als warmer Kontrapunkt.
+     Dunkle Markenfarben (Deep Azure, Earth Code) aufgehellt, damit sie auf
+     Core Black lesbar bleiben. */
+  --prn-chart-1: #7cb5f7; /* Pulse Blue */
+  --prn-chart-2: #a9d0fb;
+  --prn-chart-3: #debe9e; /* Warm Stone */
+  --prn-chart-4: #b98a63; /* Earth Code, aufgehellt */
+  --prn-chart-5: #4fb477;
+  --prn-chart-6: #c9a06f;
+  --prn-chart-7: #5b83e8; /* Deep Azure, aufgehellt */
+  --prn-chart-8: #cfe0fb;
+
+  --prn-scrim: rgba(0, 0, 0, 0.55);
+  --prn-backdrop: rgba(0, 0, 0, 0.6);
+  --prn-focus: 0 0 0 3px rgba(124, 181, 247, 0.5);
+
+  --prn-shadow: 0 1px 2px rgba(0, 0, 0, 0.6), 0 10px 30px rgba(0, 0, 0, 0.4);
+  --prn-shadow-pop: 0 16px 48px rgba(0, 0, 0, 0.66);
+  --prn-shadow-raised: 0 4px 12px rgba(0, 0, 0, 0.55), 0 16px 48px rgba(0, 0, 0, 0.6);
+  --prn-shadow-bar: 0 1px 0 var(--prn-separator);
+
+  --prn-card-border: 1px solid rgba(255, 255, 255, 0.12);
+  --prn-card-blur: saturate(160%) blur(22px);
+
+  /* Signatur: Deep-Azure-Glow → Core Black mit zartem Warm-Stone-Hauch
+     (Gradients-Bildsprache: Licht, Tiefe, Markenfarben). */
+  --prn-bento-bg:
+    radial-gradient(1100px 780px at 85% 6%, rgba(124, 181, 247, 0.22) 0%, rgba(124, 181, 247, 0) 55%),
+    radial-gradient(900px 760px at 8% 98%, rgba(6, 29, 149, 0.55) 0%, rgba(6, 29, 149, 0) 58%),
+    radial-gradient(760px 640px at 72% 100%, rgba(222, 190, 158, 0.12) 0%, rgba(222, 190, 158, 0) 52%),
+    linear-gradient(140deg, #0b0e1a 0%, #0a0f24 45%, #171717 100%);
+
+  color-scheme: dark;
+}
+
+/* ============================================================
+ *  C3U Hell — warm-off-white Canvas (#f7f5f2), Deep Azure (#061d95)
+ *  Weiß auf Deep Azure (Marken-Hero); Clear White als Elevated-Fläche,
+ *  Warm Stone / Earth Code als warmer Kontrapunkt.
+ * ============================================================ */
+:root[data-theme="c3u-light"] {
+  --prn-bg: #f7f5f2; /* warm off-white, Warm-Stone-nah */
+  --prn-app-bg: linear-gradient(180deg, #faf9f6 0%, #f7f5f2 60%, #f1efea 100%);
+  --prn-bg-elevated: #ffffff; /* Clear White */
+  --prn-bg-elevated-2: #ffffff;
+  --prn-bg-elevated-translucent: rgba(255, 255, 255, 0.72);
+  --prn-bg-head: #ffffff;
+  --prn-bg-bar: rgba(255, 255, 255, 0.72);
+  --prn-bg-sidebar: rgba(247, 245, 242, 0.8);
+  --prn-fill: rgba(23, 23, 23, 0.06);
+  --prn-fill-strong: rgba(23, 23, 23, 0.12);
+  --prn-hover: rgba(0, 0, 0, 0.04);
+  --prn-pressed: rgba(0, 0, 0, 0.08);
+
+  --prn-label: #171717; /* Core Black */
+  --prn-label-2: rgba(23, 23, 23, 0.72);
+  --prn-label-3: rgba(23, 23, 23, 0.42);
+  --prn-label-4: rgba(23, 23, 23, 0.18);
+
+  --prn-separator: rgba(23, 23, 23, 0.14);
+  --prn-separator-opaque: #dcd8d1;
+  --prn-hairline: rgba(23, 23, 23, 0.08); /* Fine Lines */
+  --prn-border: rgba(23, 23, 23, 0.14);
+
+  /* Deep Azure (#061d95) = Akzent auf Clear White; Text darauf = Weiß. */
+  --prn-accent: #061d95;
+  --prn-accent-strong: #04166f;
+  --prn-accent-hover: #0a2ec2;
+  --prn-accent-pressed: #04166f;
+  --prn-accent-soft: rgba(6, 29, 149, 0.12);
+  --prn-on-accent: #ffffff;
+
+  --prn-green: #2e9e5b;
+  --prn-red: #d14435;
+  --prn-orange: #b3701a;
+  --prn-yellow: #a5811a;
+  --prn-blue: #1a57c2;
+  --prn-teal: #2c93a8;
+  --prn-neutral: #6b6b72;
+  --prn-on-status-fill: #ffffff;
+
+  --prn-tint-positive: rgba(46, 158, 91, 0.14);
+  --prn-tint-critical: rgba(179, 112, 26, 0.16);
+  --prn-tint-negative: rgba(209, 68, 53, 0.12);
+  --prn-tint-info: rgba(6, 29, 149, 0.1);
+  --prn-warn-soft: rgba(179, 112, 26, 0.16);
+
+  --prn-chart-1: #061d95; /* Deep Azure */
+  --prn-chart-2: #2b7fd6;
+  --prn-chart-3: #b58a5e; /* Warm Stone, vertieft */
+  --prn-chart-4: #4f2b1e; /* Earth Code */
+  --prn-chart-5: #2e9e5b;
+  --prn-chart-6: #7cb5f7; /* Pulse Blue */
+  --prn-chart-7: #9a6a3f;
+  --prn-chart-8: #1a3fb8;
+
+  --prn-scrim: rgba(23, 23, 23, 0.32);
+  --prn-backdrop: rgba(23, 23, 23, 0.32);
+  --prn-focus: 0 0 0 3px rgba(6, 29, 149, 0.35);
+
+  --prn-shadow: 0 1px 2px rgba(23, 23, 23, 0.06);
+  --prn-shadow-pop: 0 12px 40px rgba(6, 29, 149, 0.14);
+  --prn-shadow-raised: 0 2px 6px rgba(23, 23, 23, 0.08), 0 12px 32px rgba(6, 29, 149, 0.1);
+  --prn-shadow-bar: 0 1px 0 var(--prn-separator);
+
+  --prn-card-border: 1px solid rgba(23, 23, 23, 0.1);
+  --prn-card-blur: saturate(160%) blur(22px);
+
+  --prn-bento-bg:
+    radial-gradient(1000px 760px at 10% 92%, rgba(6, 29, 149, 0.08) 0%, rgba(6, 29, 149, 0) 58%),
+    radial-gradient(1100px 720px at 92% 8%, rgba(124, 181, 247, 0.16) 0%, rgba(124, 181, 247, 0) 55%),
+    linear-gradient(135deg, #ffffff 0%, #f6f4f1 55%, #efe9e2 100%);
 
   color-scheme: light;
 }

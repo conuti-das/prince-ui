@@ -1,0 +1,80 @@
+/* ============================================================
+ *  CONUTI Corporate Elements — Circle Dot, Fine Lines, Resonance
+ *  Alles token-getrieben (--prn-*), damit es in jedem Theme trägt.
+ * ============================================================ */
+
+/* ---------------- CircleDot ---------------- */
+.prn-circledot {
+  display: inline-block;
+  flex: none;
+  vertical-align: middle;
+  color: inherit;
+}
+.prn-circledot--accent {
+  color: var(--prn-accent);
+}
+
+/* ---------------- FineLine ---------------- */
+.prn-fineline {
+  display: flex;
+  align-items: center;
+}
+.prn-fineline--horizontal {
+  width: 100%;
+}
+.prn-fineline--vertical {
+  flex-direction: column;
+  height: 100%;
+  min-height: 24px;
+}
+
+.prn-fineline__seg {
+  flex: 1 1 auto;
+  background: var(--prn-separator);
+}
+.prn-fineline--horizontal .prn-fineline__seg {
+  height: 1px;
+  min-width: 8px;
+}
+.prn-fineline--vertical .prn-fineline__seg {
+  width: 1px;
+  min-height: 8px;
+}
+
+.prn-fineline__node {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  color: var(--prn-label-2);
+}
+.prn-fineline--vertical .prn-fineline__node {
+  padding: 10px 0;
+}
+
+/* ---------------- ResonanceField ---------------- */
+.prn-resonance {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--prn-bento-bg);
+  color: var(--prn-label);
+}
+
+.prn-resonance__waves {
+  position: absolute;
+  top: var(--prn-resonance-y, 12%);
+  left: var(--prn-resonance-x, 82%);
+  width: min(130%, 960px);
+  aspect-ratio: 1 / 1;
+  transform: translate(-50%, -50%);
+  color: var(--prn-accent);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.prn-resonance__content {
+  position: relative;
+  z-index: 1;
+}
