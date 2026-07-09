@@ -1,4 +1,5 @@
 import type { CSSProperties, HTMLAttributes, ReactNode, SVGProps } from "react";
+import { useId } from "react";
 import { cx } from "../utils";
 import "./brand.css";
 
@@ -84,12 +85,12 @@ export function FineLine({ orientation = "horizontal", node, decorative = false,
 
 /* ---------------- ResonanceField ----------------
  * Signatur-Hintergrund der Bildsprache: der Marken-Gradient
- * (`--prn-bento-bg`, Deep-Azure→Core-Black) plus optionale
- * konzentrische Resonanz-Wellen (Wasser/Frequenz-Motiv). Rein
+ * (`--prn-bento-bg`, „Tidal Field") plus optionale, aus einem Noise-Feld
+ * gebogene Feldlinien (Resonanz-/Frequenz-Motiv, kein Sonar-Ring). Rein
  * präsentativ — Inhalte tragen die Semantik. */
 
 export interface ResonanceFieldProps extends Omit<HTMLAttributes<HTMLDivElement>, "className"> {
-  /** Konzentrische Resonanz-Wellen einblenden. Default `true`. */
+  /** Resonanz-Feldlinien einblenden. Default `true`. */
   waves?: boolean;
   /** Ursprung der Wellen als CSS-Position. Default rechts oben (`82% / 12%`). */
   origin?: { x: string; y: string };
@@ -109,29 +110,46 @@ export function ResonanceField({ waves = true, origin, className, children, styl
   );
 }
 
-/** Konzentrische Wellen (dekorativ). Die Farbe kommt aus `currentColor`
- *  (via `.prn-resonance__waves` = `--prn-accent`), die Ringe verblassen nach außen. */
+/** „Field Lines" (dekorativ): waagerechte Hairlines, die über EIN kohärentes
+ *  fractalNoise-Feld (feTurbulence → feDisplacementMap) zu Äquipotential-/
+ *  Feldlinien gebogen werden — geordnet statt zufällig, „als würde sich Energie
+ *  geordnet ausbreiten". Eine radiale Maske zieht Dichte/Fokus auf EINEN Punkt
+ *  (Circle-Dot-Ursprung). Farbe = `currentColor` (= `--prn-accent`). Die IDs
+ *  werden per `useId` isoliert, damit mehrere Felder pro Seite nicht kollidieren. */
 function ResonanceWaves() {
-  const rings = [40, 80, 120, 160, 200, 240, 280];
+  const uid = useId().replace(/:/g, "");
+  const warp = `prn-field-warp-${uid}`;
+  const focus = `prn-field-focus-${uid}`;
+  const maskId = `prn-field-mask-${uid}`;
+  const lines = Array.from({ length: 21 }, (_, i) => 20 + i * 18);
   return (
     <svg
       className="prn-resonance__waves"
-      viewBox="0 0 600 600"
+      viewBox="0 0 600 400"
       preserveAspectRatio="xMidYMid slice"
       aria-hidden="true"
     >
-      {rings.map((r, i) => (
-        <circle
-          key={r}
-          cx="300"
-          cy="300"
-          r={r}
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1"
-          opacity={Math.max(0.04, 0.18 - i * 0.02)}
-        />
-      ))}
+      <defs>
+        <filter id={warp} x="-20%" y="-20%" width="140%" height="140%" colorInterpolationFilters="sRGB">
+          <feTurbulence type="fractalNoise" baseFrequency="0.008 0.014" numOctaves="2" seed="9" result="noise" />
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="38" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+        <radialGradient id={focus} cx="82%" cy="16%" r="78%">
+          <stop offset="0%" stopColor="#fff" stopOpacity="0.9" />
+          <stop offset="48%" stopColor="#fff" stopOpacity="0.4" />
+          <stop offset="100%" stopColor="#fff" stopOpacity="0" />
+        </radialGradient>
+        <mask id={maskId}>
+          <rect width="600" height="400" fill={`url(#${focus})`} />
+        </mask>
+      </defs>
+      <g mask={`url(#${maskId})`}>
+        <g filter={`url(#${warp})`} fill="none" stroke="currentColor" strokeWidth="1" strokeOpacity="0.5">
+          {lines.map((y) => (
+            <line key={y} x1="-40" y1={y} x2="640" y2={y} />
+          ))}
+        </g>
+      </g>
     </svg>
   );
 }

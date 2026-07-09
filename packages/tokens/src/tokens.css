@@ -696,13 +696,16 @@
   --prn-card-border: 1px solid rgba(255, 255, 255, 0.12);
   --prn-card-blur: saturate(160%) blur(22px);
 
-  /* Signatur: Deep-Azure-Glow → Core Black mit zartem Warm-Stone-Hauch
-     (Gradients-Bildsprache: Licht, Tiefe, Markenfarben). */
+  /* Signatur „Tidal Field": alle Verlaufszentren liegen OFF-CANVAS
+     (112%/-12%, -18%/118%, 60%/128%) → kein sichtbarer Hotspot, nur die
+     Flanke einer gerichteten Strömung (Blau = konstante, gerichtete Wirkung
+     von Wasser). 60/40 Duotone + Core-Black-Stop gegen Neon-Kippen; das
+     Grain gegen Banding liefert .prn-resonance::after (brand.css). */
   --prn-bento-bg:
-    radial-gradient(1100px 780px at 85% 6%, rgba(124, 181, 247, 0.22) 0%, rgba(124, 181, 247, 0) 55%),
-    radial-gradient(900px 760px at 8% 98%, rgba(6, 29, 149, 0.55) 0%, rgba(6, 29, 149, 0) 58%),
-    radial-gradient(760px 640px at 72% 100%, rgba(222, 190, 158, 0.12) 0%, rgba(222, 190, 158, 0) 52%),
-    linear-gradient(140deg, #0b0e1a 0%, #0a0f24 45%, #171717 100%);
+    radial-gradient(135% 100% at 112% -12%, rgba(124, 181, 247, 0.2) 0%, rgba(124, 181, 247, 0) 58%),
+    radial-gradient(120% 130% at -18% 118%, rgba(6, 29, 149, 0.52) 0%, rgba(6, 29, 149, 0) 60%),
+    radial-gradient(95% 85% at 60% 128%, rgba(222, 190, 158, 0.11) 0%, rgba(222, 190, 158, 0) 62%),
+    linear-gradient(152deg, #0d1020 0%, #0a0f24 40%, #121317 76%, #171717 100%);
 
   color-scheme: dark;
 }
@@ -780,10 +783,13 @@
   --prn-card-border: 1px solid rgba(23, 23, 23, 0.1);
   --prn-card-blur: saturate(160%) blur(22px);
 
+  /* „Tidal Field" hell: dieselbe Off-Canvas-Strömung, Warm-Stone-Auftrieb
+     stärker (heller Modus = mehr sichtbare Wärme, ~40 %). */
   --prn-bento-bg:
-    radial-gradient(1000px 760px at 10% 92%, rgba(6, 29, 149, 0.08) 0%, rgba(6, 29, 149, 0) 58%),
-    radial-gradient(1100px 720px at 92% 8%, rgba(124, 181, 247, 0.16) 0%, rgba(124, 181, 247, 0) 55%),
-    linear-gradient(135deg, #ffffff 0%, #f6f4f1 55%, #efe9e2 100%);
+    radial-gradient(130% 100% at 110% -10%, rgba(124, 181, 247, 0.18) 0%, rgba(124, 181, 247, 0) 58%),
+    radial-gradient(120% 130% at -16% 118%, rgba(6, 29, 149, 0.1) 0%, rgba(6, 29, 149, 0) 60%),
+    radial-gradient(95% 90% at 62% 126%, rgba(222, 190, 158, 0.3) 0%, rgba(222, 190, 158, 0) 64%),
+    linear-gradient(152deg, #ffffff 0%, #f7f5f1 52%, #efe9e1 100%);
 
   color-scheme: light;
 }

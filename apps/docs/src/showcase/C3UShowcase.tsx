@@ -109,7 +109,7 @@ export function C3UShowcase() {
       </ResonanceField>
 
       {/* Die CONUTI Formel — Fine-Line-Verbinder */}
-      <section className="c3u-section c3u-formula">
+      <section className="c3u-section c3u-formula prn-contour">
         <CircleDot tone="accent" size={16} />
         <h2 className="c3u-formula-title">Die CONUTI Formel</h2>
         <div className="c3u-formula-line">

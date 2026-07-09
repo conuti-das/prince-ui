@@ -62,19 +62,84 @@
   color: var(--prn-label);
 }
 
+/* Grain-/Dither-Ebene über dem Verlauf — verhindert Banding (v. a. im
+   Azure→Core-Black-Ramp). Entsättigtes fractalNoise als inline data-URI. */
+.prn-resonance::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='c3ug'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23c3ug)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+  opacity: 0.16;
+  mix-blend-mode: overlay;
+}
+:root[data-theme="c3u-light"] .prn-resonance::after {
+  opacity: 0.08;
+  mix-blend-mode: soft-light;
+}
+
+/* „Field Lines": per Noise gebogene Hairlines statt konzentrischer Ringe.
+   Farbe = --prn-accent (currentColor) → flippt automatisch je Modus. */
 .prn-resonance__waves {
   position: absolute;
-  top: var(--prn-resonance-y, 12%);
-  left: var(--prn-resonance-x, 82%);
-  width: min(130%, 960px);
-  aspect-ratio: 1 / 1;
-  transform: translate(-50%, -50%);
+  inset: -8% -4%;
   color: var(--prn-accent);
+  opacity: 0.5;
   pointer-events: none;
   z-index: 0;
+  animation: prn-field-drift 46s ease-in-out infinite alternate;
+}
+:root[data-theme="c3u-light"] .prn-resonance__waves {
+  opacity: 0.4;
+}
+
+/* Ruhige Dynamik: kaum merkliches „Atmen" des Feldes — nie Puls/Ping. */
+@keyframes prn-field-drift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1.02);
+  }
+  to {
+    transform: translate3d(-1.6%, -1%, 0) scale(1.05);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .prn-resonance__waves {
+    animation: none;
+    transform: scale(1.02);
+  }
 }
 
 .prn-resonance__content {
   position: relative;
   z-index: 1;
+}
+
+/* ---------------- Fine-Line Contour (section-accent) ----------------
+   Optionale, ruhende Fine-Lines-Textur für Sektionen/Cards: EINE Richtung
+   feiner Diagonal-Hairlines (--prn-hairline), radial ausmaskiert — nur
+   andeutend, kein Muster-Käfig. Rein additiv (Overlay). */
+.prn-contour {
+  position: relative;
+  isolation: isolate;
+}
+.prn-contour > * {
+  position: relative;
+  z-index: 1;
+}
+.prn-contour::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: repeating-linear-gradient(115deg, var(--prn-hairline) 0 1px, transparent 1px 26px);
+  -webkit-mask-image: radial-gradient(130% 100% at 50% 0%, #000 28%, transparent 84%);
+  mask-image: radial-gradient(130% 100% at 50% 0%, #000 28%, transparent 84%);
+  opacity: 0.9;
+}
+.prn-contour--wide::before {
+  background: repeating-linear-gradient(115deg, var(--prn-hairline) 0 1px, transparent 1px 34px);
 }
