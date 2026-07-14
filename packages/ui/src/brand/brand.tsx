@@ -8,9 +8,9 @@ import "./brand.css";
  *
  *  Circle Dot, Fine Lines und Resonance Field sind die grafischen
  *  Leitelemente der CONUTI-Markensprache. Sie sind token-getrieben
- *  (--prn-*) und funktionieren daher in jedem Theme — im C3U-Theme
- *  spielen sie die Marke aber voll aus (Pulse Blue / Deep Azure,
- *  Core-Black-Canvas, konzentrische Wellen der Bildsprache).
+ *  (--prn-*) und funktionieren daher in jedem Theme — im CU-Theme
+ *  spielen sie die Marke aber voll aus (electric blue, dunkle Canvas,
+ *  konzentrische Wellen der Bildsprache).
  * ============================================================ */
 
 /* ---------------- CircleDot ----------------

@@ -55,7 +55,7 @@
   --docs-negative-text: #f08a82;
   --docs-muted: rgba(235, 235, 245, 0.72);
   --docs-link: var(--docs-accent-text);
-  --docs-on-accent: #10140a; /* dunkler Text — korrekt auf HELLEN Akzenten (Grün/Pulse-Blue). c3u-light überschreibt auf #fff. */
+  --docs-on-accent: #10140a; /* dunkler Text — korrekt auf HELLEN Akzenten (z. B. Grün). */
 }
 
 /* Light-Themes (System-Light ohne data-theme + erzwungenes light): Lime/gedämpftes
@@ -85,21 +85,6 @@
   --docs-positive-text: #1b6e29;
   --docs-negative-text: #a8160c;
   --docs-muted: #54565c;
-}
-
-/* C3U Hell — analog zu light/cu-light. Ohne diesen Block würde c3u-light die
-   hellen Dark-Defaults (--docs-muted/positive/negative) auf warm-off-white
-   (#f7f5f2) erben → praktisch unsichtbar (Ratio ~1.06). --docs-accent-text
-   NICHT setzen: erbt --prn-accent=#061d95 (Deep Azure) = 11.9:1, bereits AA. */
-:root[data-theme="c3u-light"] {
-  --docs-positive-text: #1b6e29;  /* 5.83:1 auf #f7f5f2 */
-  --docs-negative-text: #a8160c;  /* 6.6:1  auf #f7f5f2 */
-  --docs-muted:         #54565c;  /* 6.74:1 auf #f7f5f2 */
-  --docs-on-accent:     #ffffff;  /* Btn-Text, 12.98:1 auf #061d95 */
-}
-/* Dropdown-Chevron auf hellem c3u-Fill dunkler (WCAG 1.4.11 Non-Text-Kontrast). */
-:root[data-theme="c3u-light"] .docs-theme-select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='%23555' stroke-width='1.5'/%3E%3C/svg%3E");
 }
 
 body { margin: 0; background: var(--prn-bg); color: var(--prn-label); font-family: var(--prn-font); }
@@ -164,25 +149,6 @@ body { margin: 0; background: var(--prn-bg); color: var(--prn-label); font-famil
   background-repeat: no-repeat; background-position: right var(--docs-sp-2) center;
 }
 .docs-theme-select:hover { border-color: var(--docs-accent); }
-
-/* C3U-Showcase-Link (Akzent-Pille mit Circle-Dot) — führt zur Full-Bleed-Route /c3u */
-.docs-c3u-link {
-  display: inline-flex; align-items: center; gap: 7px;
-  height: 32px; padding: 0 var(--docs-sp-3);
-  border-radius: var(--docs-radius-ctrl);
-  background: var(--docs-accent); color: var(--docs-on-accent);
-  font-size: var(--docs-small-size); font-weight: 600; letter-spacing: 0.02em;
-  text-decoration: none; white-space: nowrap;
-}
-.docs-c3u-link:hover { filter: brightness(1.08); }
-.docs-c3u-dot {
-  width: 11px; height: 11px; border-radius: 50%;
-  border: 1.5px solid currentColor; box-sizing: border-box;
-  display: inline-flex; align-items: center; justify-content: center;
-}
-.docs-c3u-dot::after {
-  content: ""; width: 3px; height: 3px; border-radius: 50%; background: currentColor;
-}
 
 /* Mobile-Suchknopf (Icon) im Header — nur < 768px sichtbar */
 .docs-searchbar-mobile { display: none; }
