@@ -36,13 +36,9 @@ import "./chrome/theme.css";
 import { AppLayout } from "./chrome/AppLayout";
 import { mdxComponents } from "./mdx/components";
 import { routeObjects } from "./routes";
-import { C3UShowcase } from "./showcase/C3UShowcase";
 
 const router = createBrowserRouter(
   [
-    // Full-bleed CONUTI-Brand-Showcase (setzt selbst data-theme="c3u-*"),
-    // bewusst außerhalb des AppLayout-Chrome.
-    { path: "/c3u", element: <C3UShowcase /> },
     { element: <AppLayout />, children: routeObjects },
   ],
   { basename: import.meta.env.BASE_URL.replace(/\/$/, "") || "/" },
