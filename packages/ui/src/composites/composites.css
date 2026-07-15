@@ -5,7 +5,11 @@
  * ============================================================ */
 .prn-card {
   background: var(--prn-bg-elevated);
-  /* Neuer Look (Apple-Health): Fläche + weicher Schatten trennen, keine Hairline. */
+  /* Neuer Look (Apple-Health): Fläche + weicher Schatten trennen, keine Hairline.
+   * `border: none` ist essenziell: die pressable-Variante ist ein <button>, der
+   * sonst die native 2px-outset-UA-Border zeigt (schlägt durch den entfernten
+   * Card-Rahmen durch). */
+  border: none;
   border-radius: var(--prn-radius-card);
   box-shadow: var(--prn-shadow);
   -webkit-backdrop-filter: var(--prn-card-blur);
