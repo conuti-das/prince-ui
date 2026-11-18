@@ -65,7 +65,7 @@ describe("disclosure primitives", () => {
       </Disclosure>,
     );
     const css = readFileSync(resolve(process.cwd(), "src/primitives/disclosure.css"), "utf8");
-    const rule = css.match(/^([^{}]*\.prn-disclosure-chevron)\s*\{[^}]*rotate/m)?.[1].trim();
+    const rule = css.match(/^([^{}]*\.prn-disclosure-chevron)\s*\{[^}]*rotate/m)?.[1]?.trim();
     expect(rule).toBeTruthy();
     expect(container.querySelector(rule!)).not.toBeNull();
   });

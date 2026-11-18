@@ -56,7 +56,7 @@ describe("tree primitive", () => {
     // RAC wraps the row content in a gridcell (display: contents); a child combinator from the item to .prn-tree-row never matches.
     const { container } = render(<Hierarchy selectionMode="single" defaultExpandedKeys={["lf"]} />);
     const css = readFileSync(resolve(process.cwd(), "src/primitives/tree.css"), "utf8");
-    const selectors = [...css.matchAll(/^(\.prn-tree-item\[data-[a-z-]+\][^{,]*)\{/gm)].map((m) => m[1].trim());
+    const selectors = [...css.matchAll(/^(\.prn-tree-item\[data-[a-z-]+\][^{,]*)\{/gm)].map((m) => (m[1] ?? "").trim());
     expect(selectors.length).toBeGreaterThanOrEqual(5);
     for (const s of selectors) {
       const structure = s.replace(/\[data-[a-z-]+\]/, "");
