@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import "@testing-library/jest-dom/vitest";
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
@@ -220,6 +222,20 @@ describe("composites", () => {
     expect(toggle).toHaveAttribute("aria-expanded", "false");
     // Items stehen in einem [hidden] Container → nicht mehr sichtbar
     expect(benutzer).not.toBeVisible();
+  });
+
+  it("Sidebar: Gruppentitel steuert die Items (aria-controls), Chevron als Icon", async () => {
+    render(<Sidebar groups={[{ label: "Verwaltung", collapsible: true, items: [{ id: "x", label: "Benutzer" }] }]} />);
+    const toggle = screen.getByRole("button", { name: /Verwaltung/ });
+    const ziel = document.getElementById(toggle.getAttribute("aria-controls") ?? "");
+    expect(ziel).not.toBeNull();
+    expect(ziel).toContainElement(screen.getByText("Benutzer"));
+    expect(toggle.querySelector(".prn-sidebar-group-chevron svg")).not.toBeNull();
+  });
+
+  it("Sidebar: CSS blendet zugeklappte Gruppen aus ([hidden] gegen display:flex)", () => {
+    const css = readFileSync(resolve(process.cwd(), "src/composites/composites.css"), "utf8");
+    expect(css).toMatch(/\.prn-sidebar-group-items\[hidden\]\s*\{\s*display:\s*none;/);
   });
 
   it("Sidebar honors defaultCollapsed", () => {

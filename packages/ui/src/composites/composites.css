@@ -403,6 +403,10 @@
   flex-direction: column;
   gap: 1px;
 }
+/* zugeklappte Gruppe: `hidden` muss gegen das display oben gewinnen */
+.prn-sidebar-group-items[hidden] {
+  display: none;
+}
 /* aufklappbarer Gruppentitel (Button) */
 .prn-sidebar-group-toggle {
   display: flex;
@@ -424,8 +428,8 @@
 }
 .prn-sidebar-group-chevron {
   display: inline-flex;
+  align-items: center;
   flex: none;
-  font-size: 0.9em;
   color: var(--prn-label-3);
   transition: transform var(--prn-dur-fast) var(--prn-ease-out);
   transform: rotate(90deg);

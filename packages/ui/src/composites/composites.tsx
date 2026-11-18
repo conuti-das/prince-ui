@@ -1,6 +1,7 @@
-import { useState, type CSSProperties, type ReactNode } from "react";
+import { useId, useState, type CSSProperties, type ReactNode } from "react";
 import { Button as RACButton } from "react-aria-components";
 import { cx } from "../utils";
+import { Icon } from "../icons/icons";
 import "./composites.css";
 
 /* ============================================================
@@ -428,9 +429,10 @@ function SidebarGroupView({
   const [collapsed, setCollapsed] = useState(
     collapsible ? group.defaultCollapsed === true : false,
   );
+  const itemsId = useId();
 
   const items = (
-    <div className="prn-sidebar-group-items" role={collapsible ? "group" : undefined} hidden={collapsed}>
+    <div id={itemsId} className="prn-sidebar-group-items" role={collapsible ? "group" : undefined} hidden={collapsed}>
       {group.items.map((item) => (
         <RACButton
           key={item.id}
@@ -459,11 +461,12 @@ function SidebarGroupView({
           <RACButton
             className="prn-sidebar-group-label prn-sidebar-group-toggle"
             aria-expanded={!collapsed}
+            aria-controls={itemsId}
             data-collapsed={collapsed ? "" : undefined}
             onPress={() => setCollapsed((c) => !c)}
           >
             <span className="prn-sidebar-group-chevron" aria-hidden>
-              ›
+              <Icon name="chevron-right" size={14} />
             </span>
             <span className="prn-sidebar-group-label-text">{group.label}</span>
           </RACButton>
