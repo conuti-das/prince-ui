@@ -73,8 +73,9 @@ Glas-Cards (Bento). Ergänzt die `--prn-bg-elevated*`-Reihe.
   Kern: `data`, `columns: AnalyticalColumn<T>[]`, `getRowId`, Sort (Klick+Tastatur, aria-sort),
   Sticky-Header, Zeilen-Virtualisierung, Skeleton/Empty. Erweiterungen:
   - **Selektion (B5):** `selectionMode` none|single|multiple, `selectionBehavior` row|rowOnly|rowSelector,
-    `selectedKeys`/`onSelectionChange`, `onRowSelect`, `onRowClick`, `onRowContextMenu`,
-    `onRowAction` (Alias), `selectable` (Alias → multiple).
+    `selectedKeys`/`onSelectionChange`, `onRowSelect`, `onRowClick` (nur Maus), `onRowContextMenu`,
+    `onRowAction` (Klick **und** Enter/Leertaste auf einer Zelle der Zeile), `selectable` (Alias → multiple),
+    **`getRowProps?`** (`data-*`-Attribute je Datenzeile, z. B. `data-testid`).
   - **Sortierung (B2):** `sortable`, `sorting`/`defaultSorting`/`onSortingChange`, `onSort`,
     `enableMultiSort` (Shift), pro Spalte `disableSortBy`/`sortType`.
   - **Filterung (B3):** `filterable` (Header-Popover), `globalFilterValue`, `onFilter`,
