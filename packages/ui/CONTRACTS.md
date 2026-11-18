@@ -56,7 +56,8 @@ Abschwächung der Nachkommastellen), `List`/`ListRow`
 `Sidebar` (groups, selectedKey/onSelect) — `SidebarGroup` zusätzlich **`collapsible?`** /
 **`defaultCollapsed?`** (aufklappbare Gruppe: Chevron + Tastatur via React-Aria-Button,
 `aria-expanded`; Persistenz bleibt App-Sache),
-`Toolbar` (leading/title/subtitle/actions), `EmptyState` (icon, title, description, action?),
+`Toolbar` (leading/title/subtitle/actions), `EmptyState` (icon, title, description, action?, **`illustration?`** no-data|no-results|error|done,
+**`size?`** s|m|l),
 `Notice` (tone: info|positive|critical|negative),
 **`DescriptionList`** (children, `layout?: "stacked"|"inline"`) + **`Field`** (label,
 value? | children) — schlankes read-only Label/Wert-Primitive (semantisches `<dl>`/`<dt>`/`<dd>`).

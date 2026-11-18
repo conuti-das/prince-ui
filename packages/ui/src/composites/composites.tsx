@@ -549,8 +549,49 @@ export function Toolbar({ title, subtitle, leading, actions, glass, className }:
 
 /* ---------------- EmptyState ---------------- */
 
+/** Illustrationen des Leerzustands (Parität zu IllustratedMessage: NoData, NoSearchResults, UnableToLoad, NoTasks). */
+export type EmptyStateIllustration = "no-data" | "no-results" | "error" | "done";
+export type EmptyStateSize = "s" | "m" | "l";
+
+/* Linienbilder aus Tokens: Fläche --prn-fill, Linie --prn-label-3, Akzent --prn-accent (Fehler: --prn-red, erledigt: --prn-green). */
+const ILLUSTRATION: Record<EmptyStateIllustration, ReactNode> = {
+  "no-data": (
+    <>
+      <rect x="22" y="30" width="76" height="46" rx="10" className="prn-ill-fill" />
+      <path d="M22 54h20l6 9h24l6-9h20" className="prn-ill-line" />
+      <path d="M38 20h44M46 12h28" className="prn-ill-line prn-ill-soft" />
+    </>
+  ),
+  "no-results": (
+    <>
+      <circle cx="54" cy="44" r="24" className="prn-ill-fill" />
+      <circle cx="54" cy="44" r="24" className="prn-ill-line" />
+      <path d="m72 62 18 18" className="prn-ill-line prn-ill-thick" />
+      <path d="m46 36 16 16M62 36 46 52" className="prn-ill-accent" />
+    </>
+  ),
+  error: (
+    <>
+      <path d="M36 70h50a16 16 0 0 0 2-32 22 22 0 0 0-42-6 18 18 0 0 0-10 38Z" className="prn-ill-fill" />
+      <path d="M36 70h50a16 16 0 0 0 2-32 22 22 0 0 0-42-6 18 18 0 0 0-10 38Z" className="prn-ill-line" />
+      <path d="M60 40v14M60 61v.5" className="prn-ill-accent prn-ill-negative" />
+    </>
+  ),
+  done: (
+    <>
+      <circle cx="60" cy="44" r="28" className="prn-ill-fill" />
+      <circle cx="60" cy="44" r="28" className="prn-ill-line" />
+      <path d="m47 45 9 9 18-19" className="prn-ill-accent prn-ill-positive" />
+    </>
+  ),
+};
+
 export interface EmptyStateProps {
   icon?: ReactNode;
+  /** Illustration statt Icon (Linienbild in den Farben des Themes). */
+  illustration?: EmptyStateIllustration;
+  /** Größe: s in Tabellen und Spalten, m Standard, l für ganze Seiten. Default „m“. */
+  size?: EmptyStateSize;
   title: ReactNode;
   description?: ReactNode;
   /** Aktions-Slot (z. B. <Button>). */
@@ -558,13 +599,19 @@ export interface EmptyStateProps {
   className?: string;
 }
 
-export function EmptyState({ icon, title, description, action, className }: EmptyStateProps) {
+export function EmptyState({ icon, illustration, size = "m", title, description, action, className }: EmptyStateProps) {
   return (
-    <div className={cx("prn-empty", className)}>
-      {icon != null && (
-        <div className="prn-empty-icon" aria-hidden>
-          {icon}
-        </div>
+    <div className={cx("prn-empty", className)} data-size={size}>
+      {illustration != null ? (
+        <svg className="prn-empty-illustration" viewBox="0 0 120 90" aria-hidden focusable="false" data-illustration={illustration}>
+          {ILLUSTRATION[illustration]}
+        </svg>
+      ) : (
+        icon != null && (
+          <div className="prn-empty-icon" aria-hidden>
+            {icon}
+          </div>
+        )
       )}
       <div className="prn-empty-title">{title}</div>
       {description != null && <div className="prn-empty-desc">{description}</div>}

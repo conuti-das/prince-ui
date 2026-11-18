@@ -568,6 +568,22 @@
 .prn-empty-action {
   margin-top: 8px;
 }
+/* Größen und Illustration */
+.prn-empty[data-size="s"] { padding: 24px 16px; gap: 6px; }
+.prn-empty[data-size="s"] .prn-empty-title { font: var(--prn-text-callout); font-weight: 600; }
+.prn-empty[data-size="s"] .prn-empty-desc { font: var(--prn-text-footnote); }
+.prn-empty[data-size="l"] { padding: 72px 24px; gap: 10px; }
+.prn-empty[data-size="l"] .prn-empty-title { font: var(--prn-text-title); }
+.prn-empty-illustration { width: 120px; height: 90px; margin-bottom: 4px; overflow: visible; }
+.prn-empty[data-size="s"] .prn-empty-illustration { width: 80px; height: 60px; }
+.prn-empty[data-size="l"] .prn-empty-illustration { width: 168px; height: 126px; }
+.prn-ill-fill { fill: var(--prn-fill); stroke: none; }
+.prn-ill-line { fill: none; stroke: var(--prn-label-3); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.prn-ill-soft { stroke: var(--prn-separator); }
+.prn-ill-thick { stroke-width: 5; }
+.prn-ill-accent { fill: none; stroke: var(--prn-accent); stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
+.prn-ill-negative { stroke: var(--prn-red); }
+.prn-ill-positive { stroke: var(--prn-green); }
 
 /* ============================================================
  * Notice — Inline-Banner
