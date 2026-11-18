@@ -90,6 +90,9 @@
 }
 /* Klickbare KPI-Kachel (Drill-down) mit Hover-Lift */
 .prn-kpi-pressable {
+  /* Knopf ohne Browser-Rahmen: die Kachel trennt sich über Fläche und Schatten wie die nicht klickbare */
+  border: none;
+  color: inherit;
   text-align: left;
   cursor: pointer;
   font-family: inherit;
