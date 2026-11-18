@@ -47,7 +47,7 @@ Beim Öffnen geht der Fokus auf die Überschrift des Details (`[data-detail-focu
 
 ## Accessibility
 
-Liste und Detail sind benannte Bereiche (`section` mit `aria-label`, Texte über `labels`). Der Fokus folgt dem Öffnen und Schließen, Esc schließt das Detail – nicht, solange ein Dialog, Menü oder eine Auswahlliste offen ist, und nicht aus einem Eingabefeld der Liste heraus (dort leert Esc das Feld). Die Knöpfe Vollbild und Schließen haben zugängliche Namen (`labels` am `DetailHeader`) und auf Wunsch `data-testid`.
+Liste und Detail sind benannte Bereiche (`section` mit `aria-label`, Texte über `labels`). Der Fokus folgt dem Öffnen und Schließen, Esc schließt das Detail – nicht, solange ein Dialog, Menü oder eine Auswahlliste offen ist (Overlays anderer Bibliotheken, deren Rolle im Shadow DOM liegt, nennt `overlaySelector`), und nicht aus einem Eingabefeld der Liste heraus (dort leert Esc das Feld). Die Knöpfe Vollbild und Schließen haben zugängliche Namen (`labels` am `DetailHeader`) und auf Wunsch `data-testid`.
 
 ## Props
 

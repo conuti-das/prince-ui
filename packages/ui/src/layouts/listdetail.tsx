@@ -29,6 +29,12 @@ export interface ListDetailLayoutProps {
   fullscreen?: boolean;
   /** Esc im offenen Detail. Ohne Handler schließt Esc nichts. */
   onClose?: () => void;
+  /**
+   * Weitere Selektoren für offene Overlays, solange Esc das Detail nicht schließen soll – etwa Dialoge einer anderen
+   * Bibliothek, deren Rolle im Shadow DOM liegt (z. B. `"ui5-dialog[open]"`). Dialoge, Menüs und Listboxen mit ARIA-Rolle
+   * im DOM erkennt das Layout selbst.
+   */
+  overlaySelector?: string;
   /** Breiten der beiden Spalten als CSS-Grid-Werte. Default `["minmax(320px, 2fr)", "minmax(360px, 3fr)"]`. */
   columns?: [string, string];
   labels?: ListDetailLayoutLabels;
@@ -39,13 +45,15 @@ export interface ListDetailLayoutProps {
 const OVERLAY = '[role="dialog"], [role="alertdialog"], [role="menu"], [role="listbox"]';
 const EINGABE = /^(INPUT|TEXTAREA|SELECT)$/;
 
-export function ListDetailLayout({ list, detail, fullscreen = false, onClose, columns, labels, className, "data-testid": testId }: ListDetailLayoutProps) {
+export function ListDetailLayout({ list, detail, fullscreen = false, onClose, overlaySelector, columns, labels, className, "data-testid": testId }: ListDetailLayoutProps) {
   const offen = detail != null && detail !== false;
   const spalte = useRef<HTMLDivElement>(null);
   const vorher = useRef<HTMLElement | null>(null);
   const war = useRef(offen);
   const zu = useRef(onClose);
   zu.current = onClose;
+  const overlay = useRef(overlaySelector);
+  overlay.current = overlaySelector;
 
   // Fokus: beim Öffnen auf die Überschrift des Details, beim Schließen zurück
   useEffect(() => {
@@ -84,7 +92,7 @@ export function ListDetailLayout({ list, detail, fullscreen = false, onClose, co
     if (!offen) return;
     const taste = (e: KeyboardEvent) => {
       if (e.key !== "Escape" || e.defaultPrevented || !zu.current) return;
-      if (document.querySelector(OVERLAY)) return;
+      if (document.querySelector(overlay.current ? `${OVERLAY}, ${overlay.current}` : OVERLAY)) return;
       const ziel = e.target instanceof HTMLElement ? e.target : null;
       const imDetail = !!ziel && !!spalte.current?.contains(ziel);
       if (!imDetail && ziel && EINGABE.test(ziel.tagName)) return;
