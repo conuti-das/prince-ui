@@ -44,7 +44,8 @@ Verbindliche Prop-APIs. App-Sessions (Wave 3) codieren gegen diese Signaturen;
 `--prn-bg-elevated-translucent` + `backdrop-filter: var(--prn-blur)`, in Light & Dark;
 seit 0.3.1 **`onPress?`** — klickbar als react-aria `<button>` mit Hover-Lift, **`style?`** —
 Inline-Styles für App-lokale Maße/Status-Border),
-`KpiCard` (label, value, delta?, trend?, icon?, **`tone?: "positive"|"critical"|"negative"`**
+`KpiCard` (label, value, delta?, trend?, icon?, **`subtitle?`**, **`unit?`**, **`status?`** (Zustandswort in der Farbe von `tone`),
+**`sideValues?`** (≤ 3: label, value, tone?), **`children?`** (Inhalt unter dem Wert), **`aria-label?`**, **`data-testid?`**, **`tone?: "positive"|"critical"|"negative"`**
 — färbt den Wert, **`onPress?`** — klickbar als `<button>` mit Hover-Lift, **`accent?`** —
 Vollflächen-Akzent-„Hero"-Kachel mit dunkler Schrift),
 `Badge` (tone, seit 0.3.1 **`icon?`** — Leading-Icon-Slot; seit 0.3.2 **`variant?: "soft"|"solid"`**
@@ -136,6 +137,8 @@ Glas-Cards (Bento). Ergänzt die `--prn-bg-elevated*`-Reihe.
   mit Mehrfachauswahl; Toolbar, Zahl in `aria-live`.
 - `Spinner` (size s|m|l, `label`, `showLabel`; `role=status`) und `BusyArea` (`busy`, `delay` (Default 300 ms),
   `label`, `showLabel`, `size`) — Lade-Indikator über einem Bereich: `aria-busy`, Inhalt `inert`, Overlay mit Spinner.
+- `ShareBar` (parts: id/label/value/tone, `total?` (Rest als leere Spur), `height` 4–12, `neutral`, `legend`, `showZero`,
+  `caption`, `aria-label` (Pflicht; Werte werden angehängt), `locale`, `data-testid`) — Anteilsbalken, `role=img`.
 - `ObjectPage` — SAP-UI5-ObjectPage-Floorplan-Parität (Stand 2026-06-24, ~96 % Feature-Coverage),
   `forwardRef<ObjectPageHandle>`. Komposition: `ObjectPageSection` (id, titleText, hideTitleText,
   titleTextUppercase, wrapTitleText, titleTextLevel H1–H6, header) + `ObjectPageSubSection`
