@@ -23,6 +23,41 @@ Modal wird nicht direkt gerendert, sondern über einen `DialogTrigger` geöffnet
   </Modal>
 </DialogTrigger>`} />
 
+### Fußzeile, Zustand und Größe
+
+`footer` nimmt die Aktionen auf (rechts; als Funktion mit `close`), `footerStart` einen Status links („1 von 3 erledigt“). Titel und Fußzeile bleiben stehen, der Inhalt rollt. `tone` setzt Zeichen und Farbe am Titel (info, positive, critical, negative), `size` die Breite (s, m, l). `isKeyboardDismissDisabled` sperrt Esc, solange eine Aktion läuft. Auf dem Telefon sitzt der Dialog unten und die Knöpfe teilen sich die Breite.
+
+<Example code={`function Beispiel() {
+  const [offen, setOffen] = React.useState(false);
+  const [text, setText] = React.useState('');
+  return (
+    <>
+      <Button onPress={() => setOffen(true)}>Klärfall erledigen</Button>
+      <Modal isOpen={offen} onOpenChange={setOffen} title="Klärfall erledigen" subtitle="Zählpunkt nicht eindeutig · MaLo-ID 50975489349" tone="critical"
+        footerStart="Die Entscheidung geht an den Prozess."
+        footer={({ close }) => <><Button variant="plain" onPress={close}>Abbrechen</Button><Button isDisabled={text.trim().length < 5} onPress={close}>Erledigen</Button></>}>
+        <TextArea label="Begründung" isRequired rows={3} maxLength={500} showCount value={text} onChange={setText} description="Mindestens 5 Zeichen." />
+      </Modal>
+    </>
+  );
+}`} />
+
+### Bestätigung
+
+`ConfirmDialog` ist die Vorlage für Rückfragen (MessageBox): `alertdialog`, der Fokus startet auf „Abbrechen“, `destructive` färbt die Aktion rot.
+
+<Example code={`function Bestaetigung() {
+  const [offen, setOffen] = React.useState(false);
+  return (
+    <>
+      <Button variant="tinted" onPress={() => setOffen(true)}>Massenauftrag stoppen</Button>
+      <ConfirmDialog isOpen={offen} onOpenChange={setOffen} title="Massenauftrag stoppen?" confirmLabel="Stoppen" destructive onConfirm={() => {}}>
+        Bereits ausgeführte Posten bleiben ausgeführt, offene Posten bleiben offen.
+      </ConfirmDialog>
+    </>
+  );
+}`} />
+
 ## Accessibility
 
 Modal basiert auf react-aria-components `ModalOverlay`/`Modal`/`Dialog`: Der Fokus wird beim Öffnen in den Dialog verschoben und beim Schließen an den Auslöser zurückgegeben, der Rest der Seite ist per `aria-hidden`/Fokus-Trap unzugänglich, und Escape schließt (sofern nicht unterdrückt). Der `title` wird automatisch als `aria-labelledby` mit dem Dialog verknüpft — ein Titel ist daher Pflicht, damit Screenreader den Dialog beim Öffnen ansagen.

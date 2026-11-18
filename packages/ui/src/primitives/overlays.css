@@ -18,7 +18,9 @@
   max-width: 560px;
   width: 100%;
   max-height: 85vh;
-  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
   background: var(--prn-bg-elevated);
   border: var(--prn-card-border);
   border-radius: var(--prn-radius-lg);
@@ -27,17 +29,56 @@
 }
 .prn-modal[data-entering] { animation: prn-modal-in var(--prn-dur) var(--prn-ease-spring); }
 
+.prn-modal[data-size="s"] { max-width: 420px; }
+.prn-modal[data-size="l"] { max-width: 760px; }
+
 .prn-dialog {
   padding: 22px;
   outline: none;
   display: flex;
   flex-direction: column;
   gap: 14px;
+  min-height: 0;
+  max-height: 85vh;
 }
+.prn-dialog-head { display: flex; flex-direction: column; gap: 4px; flex: none; }
 .prn-dialog-title {
   margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font: var(--prn-text-title);
   color: var(--prn-label);
+}
+.prn-dialog-subtitle { font: var(--prn-text-subhead); color: var(--prn-label-2); }
+.prn-dialog-tone { display: inline-flex; flex: none; }
+.prn-dialog[data-tone="info"] .prn-dialog-tone { color: var(--prn-accent); }
+.prn-dialog[data-tone="positive"] .prn-dialog-tone { color: var(--prn-green); }
+.prn-dialog[data-tone="critical"] .prn-dialog-tone { color: var(--prn-orange); }
+.prn-dialog[data-tone="negative"] .prn-dialog-tone { color: var(--prn-red); }
+.prn-dialog-body { display: flex; flex-direction: column; gap: 14px; min-height: 0; overflow: auto; flex: 1 1 auto; }
+/* Fußzeile: klebt unten, Aktionen rechts, Status links; trennt sich über eine Linie vom rollenden Inhalt */
+.prn-dialog-mit-fuss { padding-bottom: 0; }
+.prn-dialog-footer {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  flex-wrap: wrap;
+  margin: 0 -22px;
+  padding: 12px 22px 16px;
+  box-shadow: 0 -1px 0 var(--prn-separator);
+}
+.prn-dialog-footer-start { font: var(--prn-text-footnote); color: var(--prn-label-2); min-width: 0; }
+.prn-dialog-footer-actions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; margin-left: auto; }
+.prn-button-destructive.prn-button { background: var(--prn-red); color: var(--prn-on-accent); }
+@media (max-width: 599px) {
+  .prn-modal-overlay { padding: 12px; align-items: end; }
+  .prn-dialog { padding: 18px; }
+  .prn-dialog-footer { margin: 0 -18px; padding: 10px 18px 14px; }
+  .prn-dialog-footer-actions { flex: 1 1 100%; }
+  .prn-dialog-footer-actions .prn-button { flex: 1 1 auto; }
 }
 
 @keyframes prn-overlay-in { from { opacity: 0; } to { opacity: 1; } }
