@@ -1,5 +1,12 @@
 # prince-ui-bo4e
 
+## 0.4.6
+
+### Patch Changes
+
+- Republish für prince-ui 0.15.0 + prince-ui-tokens 0.5.2 (exakter Peer `@conuti-das/prince-ui` und
+  Abhängigkeit `prince-ui-tokens` nachgezogen). Keine funktionalen Änderungen am Viewer.
+
 ## 0.4.4
 
 ### Patch Changes
