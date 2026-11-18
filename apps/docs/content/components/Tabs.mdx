@@ -24,6 +24,19 @@ Drei Sichten auf eine Transaktion:
   <TabPanel id="logs">System-Logs …</TabPanel>
 </Tabs>`} />
 
+Viele Reiter auf schmaler Breite: die Leiste rollt waagrecht (Wischen, Trackpad, Pfeiltasten holen den fokussierten Reiter ins Bild) statt abzuschneiden oder umzubrechen:
+
+<Example code={`<div style={{ maxWidth: 360 }}>
+  <Tabs defaultSelectedKey="alle">
+    <TabBar aria-label="Sichten">
+      <Tab id="alle">Alle 248</Tab>
+      <Tab id="handlung">Handlungsbedarf 3</Tab>
+      <Tab id="frist">Frist überschritten 0</Tab>
+      <Tab id="klaer">Klärfall offen 1</Tab>
+    </TabBar>
+  </Tabs>
+</div>`} />
+
 ## Accessibility
 
 Tabs basieren auf react-aria `Tabs`: Die `TabBar` hat die Rolle `tablist`, jeder `Tab` die Rolle `tab` mit `aria-selected`, jedes `TabPanel` die Rolle `tabpanel` und ist über `aria-labelledby` mit seinem Reiter verknüpft. Die Tastatur folgt dem ARIA-Pattern — ←/→ wechselt zwischen den Reitern, nur der aktive Reiter liegt im Tab-Fokusfluss (Roving Tabindex), Pos1/Ende springen zum ersten/letzten Reiter. Inaktive Panels sind aus dem Lesefluss genommen.
