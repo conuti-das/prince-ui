@@ -55,6 +55,7 @@ export * from "./composites/selectionbar";
 export * from "./launchpad/launchpad";
 // Wave 2 — Charts (eigene SVG)
 export * from "./charts/charts";
+export * from "./charts/sharebar";
 // Wave 2 — L3-Datenschicht
 export * from "./data/table";
 export * from "./data/filterbar";
