@@ -49,7 +49,7 @@
   stroke-linejoin: round;
   transition: transform var(--prn-dur) var(--prn-ease-spring);
 }
-.prn-disclosure-trigger[data-expanded] .prn-disclosure-chevron {
+.prn-disclosure-trigger[aria-expanded="true"] .prn-disclosure-chevron {
   transform: rotate(90deg);
 }
 

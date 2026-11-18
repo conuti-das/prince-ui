@@ -31,17 +31,17 @@
   transition: background var(--prn-dur-fast) var(--prn-ease-standard);
 }
 
-.prn-tree-item[data-hovered] > .prn-tree-row {
+.prn-tree-item[data-hovered] .prn-tree-row {
   background: var(--prn-fill);
 }
-.prn-tree-item[data-selected] > .prn-tree-row {
+.prn-tree-item[data-selected] .prn-tree-row {
   background: var(--prn-accent-soft);
   color: var(--prn-accent-strong);
 }
-.prn-tree-item[data-focus-visible] > .prn-tree-row {
+.prn-tree-item[data-focus-visible] .prn-tree-row {
   box-shadow: var(--prn-focus);
 }
-.prn-tree-item[data-disabled] > .prn-tree-row {
+.prn-tree-item[data-disabled] .prn-tree-row {
   opacity: 0.45;
   cursor: not-allowed;
 }
@@ -66,7 +66,7 @@
 .prn-tree-chevron svg { width: 14px; height: 14px; }
 .prn-tree-chevron[data-hovered] { color: var(--prn-label); }
 .prn-tree-chevron[data-focus-visible] { box-shadow: var(--prn-focus); }
-.prn-tree-item[data-expanded] > .prn-tree-row .prn-tree-chevron { transform: rotate(90deg); }
+.prn-tree-item[data-expanded] .prn-tree-row .prn-tree-chevron { transform: rotate(90deg); }
 .prn-tree-chevron-spacer { cursor: default; }
 
 /* ---- Auswahl-Checkbox ---- */
