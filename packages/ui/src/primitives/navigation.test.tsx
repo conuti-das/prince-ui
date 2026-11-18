@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import "@testing-library/jest-dom/vitest";
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
@@ -38,5 +40,14 @@ describe("navigation primitives", () => {
     await userEvent.click(screen.getByRole("tab", { name: "Logs" }));
     expect(screen.getByText("System-Logs")).toBeInTheDocument();
     expect(screen.queryByText("Transaktionsdaten")).not.toBeInTheDocument();
+  });
+  it("TabBar rollt waagrecht bei Überlauf, Reiter umbrechen nicht (CSS)", () => {
+    const css = readFileSync(resolve(process.cwd(), "src/primitives/navigation.css"), "utf8");
+    const liste = /\.prn-tablist\s*\{([^}]*)\}/.exec(css)?.[1] ?? "";
+    expect(liste).toMatch(/overflow-x:\s*auto/);
+    expect(liste).not.toMatch(/border-bottom/);
+    const tab = /\.prn-tab\s*\{([^}]*)\}/.exec(css)?.[1] ?? "";
+    expect(tab).toMatch(/white-space:\s*nowrap/);
+    expect(tab).not.toMatch(/margin-bottom:\s*-1px/);
   });
 });
