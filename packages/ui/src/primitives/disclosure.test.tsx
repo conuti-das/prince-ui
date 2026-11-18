@@ -1,4 +1,6 @@
 import "@testing-library/jest-dom/vitest";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
@@ -54,5 +56,17 @@ describe("disclosure primitives", () => {
     await userEvent.click(second);
     expect(first).toHaveAttribute("aria-expanded", "true");
     expect(second).toHaveAttribute("aria-expanded", "true");
+  });
+
+  it("the chevron rule of disclosure.css matches an expanded trigger", () => {
+    const { container } = render(
+      <Disclosure title="Offen" defaultExpanded>
+        Inhalt
+      </Disclosure>,
+    );
+    const css = readFileSync(resolve(process.cwd(), "src/primitives/disclosure.css"), "utf8");
+    const rule = css.match(/^([^{}]*\.prn-disclosure-chevron)\s*\{[^}]*rotate/m)?.[1].trim();
+    expect(rule).toBeTruthy();
+    expect(container.querySelector(rule!)).not.toBeNull();
   });
 });
