@@ -1,4 +1,5 @@
 import { readFileSync } from "node:fs";
+import { RouterProvider } from "react-aria-components";
 import { resolve } from "node:path";
 import "@testing-library/jest-dom/vitest";
 import { describe, it, expect, vi } from "vitest";
@@ -236,6 +237,34 @@ describe("composites", () => {
   it("Sidebar: CSS blendet zugeklappte Gruppen aus ([hidden] gegen display:flex)", () => {
     const css = readFileSync(resolve(process.cwd(), "src/composites/composites.css"), "utf8");
     expect(css).toMatch(/\.prn-sidebar-group-items\[hidden\]\s*\{\s*display:\s*none;/);
+  });
+
+  it("Sidebar: Einträge mit href sind Links, der aktive trägt aria-current=page, testid und aria-label durchgereicht", async () => {
+    const onSelect = vi.fn();
+    render(
+      <Sidebar aria-label="Hauptmenü" data-testid="menue" selectedKey="b" onSelect={onSelect}
+        groups={[{ items: [{ id: "a", label: "Start", href: "#/start", "data-testid": "nav-start" }, { id: "b", label: "Liste", href: "#/liste" }, { id: "c", label: "Knopf" }] }]} />,
+    );
+    expect(screen.getByRole("navigation", { name: "Hauptmenü" })).toHaveAttribute("data-testid", "menue");
+    const start = screen.getByRole("link", { name: "Start" });
+    expect(start).toHaveAttribute("href", "#/start");
+    expect(start).toHaveAttribute("data-testid", "nav-start");
+    expect(start).not.toHaveAttribute("aria-current");
+    expect(screen.getByRole("link", { name: "Liste" })).toHaveAttribute("aria-current", "page");
+    expect(screen.getByRole("button", { name: "Knopf" })).toBeInTheDocument();
+    await userEvent.click(start);
+    expect(onSelect).toHaveBeenCalledWith("a");
+  });
+
+  it("Sidebar: Links nutzen den RouterProvider von React Aria (Client-Routing)", async () => {
+    const navigate = vi.fn();
+    render(
+      <RouterProvider navigate={navigate}>
+        <Sidebar groups={[{ items: [{ id: "a", label: "Start", href: "/start" }] }]} />
+      </RouterProvider>,
+    );
+    await userEvent.click(screen.getByRole("link", { name: "Start" }));
+    expect(navigate).toHaveBeenCalledWith("/start", undefined);
   });
 
   it("Sidebar honors defaultCollapsed", () => {

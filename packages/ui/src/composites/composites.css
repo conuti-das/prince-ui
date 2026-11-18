@@ -457,6 +457,12 @@
   cursor: pointer;
   transition: background var(--prn-dur-fast) var(--prn-ease-standard);
 }
+/* Eintrag als Link (`href`): wie der Knopf, ohne Unterstreichung */
+a.prn-sidebar-item {
+  box-sizing: border-box;
+  text-decoration: none;
+  outline: none;
+}
 .prn-sidebar-item[data-hovered] { background: var(--prn-hover); }
 .prn-sidebar-item[data-pressed] { background: var(--prn-pressed); }
 .prn-sidebar-item[data-active] {
