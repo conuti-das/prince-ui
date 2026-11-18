@@ -46,6 +46,25 @@ Leerzustand mit eigener Botschaft (gleiche Spalten, ohne Daten):
 
 Weitere Features (Gruppierung & Aggregation, Multi-Sort, Tree-Table, Personalisierung, Infinite-Scroll, responsive Pop-In) werden durch die entsprechenden Flags aktiviert — Kombinationen davon zeigt der Kitchen-Sink-Fall in der ursprünglichen Story.
 
+Zeile öffnen mit Maus und Tastatur: `onRowAction` feuert bei Klick und bei Enter/Leertaste in einer Zelle (Pfeiltasten wandern zwischen den Zellen); `getRowProps` hängt `data-*`-Attribute an jede Zeile – etwa für Tests oder Styles nach Status:
+
+<Example code={`function ZeileOeffnen() {
+  const [offen, setOffen] = React.useState('–');
+  return (
+    <div style={{ display: 'grid', gap: 8 }}>
+      <AnalyticalTable
+        accessibleName="Vorgänge"
+        data={[{ id: 'V-1', stand: 'Wartet auf Antwort' }, { id: 'V-2', stand: 'Störung' }]}
+        columns={[{ accessorKey: 'id', header: 'Vorgang' }, { accessorKey: 'stand', header: 'Stand' }]}
+        getRowId={(r) => r.id}
+        getRowProps={(r) => ({ 'data-testid': 'vorgang-zeile', 'data-stand': r.stand })}
+        onRowAction={(r) => setOffen(r.id)}
+      />
+      <span style={{ font: 'var(--prn-text-footnote)', color: 'var(--prn-label-2)' }}>Geöffnet: {offen}</span>
+    </div>
+  );
+}`} />
+
 ## Accessibility
 
 Die Tabelle setzt ARIA-Grid-Rollen und unterstützt Grid-Tastaturnavigation (Pfeiltasten zwischen Zellen, Sortier-Header per Enter/Space). Ein `aria-label` ist Pflicht, da die Tabelle sonst keinen zugänglichen Namen hat. Status und Highlights werden zusätzlich zur Färbung als Text bzw. über `withRowHighlight`/`highlightField` mit semantischem `ValueState` vermittelt — verlasse dich in `cellRender` nicht allein auf Farbe (kombiniere z. B. eine Status-Pill mit Label und Punkt). Bei Selektion kennzeichnet die Komponente ausgewählte Zeilen für Screenreader.

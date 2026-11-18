@@ -205,10 +205,15 @@ export interface AnalyticalTableProps<T> {
   onRowSelect?: (info: { row: T; selected: boolean; selectedKeys: Set<string> }) => void;
   /** Aktion bei Zeilen-Aktivierung (Klick/Enter/Space) — rückwärtskompatibel. */
   onRowAction?: (row: T) => void;
-  /** Klick-Event auf eine Zeile (mit Event-Objekt). */
+  /** Klick-Event auf eine Zeile (mit Event-Objekt, nur Maus). Für Maus **und** Tastatur `onRowAction` verwenden. */
   onRowClick?: (info: { row: T; event: ReactMouseEvent }) => void;
   /** Rechtsklick-Kontextmenü auf eine Zeile. */
   onRowContextMenu?: (info: { row: T; event: ReactMouseEvent }) => void;
+  /**
+   * Zusätzliche `data-*`-Attribute je Datenzeile (z. B. `data-testid`, `data-status`) am
+   * Element mit `role="row"`.
+   */
+  getRowProps?: (row: T) => { [key: `data-${string}`]: string | undefined };
 
   /* ---- Sortierung (B2) ---- */
   /** Globales Sortier-Flag (Default true für Spalten ohne explizites sortable). */
@@ -509,6 +514,7 @@ export function AnalyticalTable<T>(props: AnalyticalTableProps<T>) {
     onRowAction,
     onRowClick,
     onRowContextMenu,
+    getRowProps,
     sortable = true,
     sorting: sortingProp,
     defaultSorting,
@@ -1405,6 +1411,7 @@ export function AnalyticalTable<T>(props: AnalyticalTableProps<T>) {
                       onRowAction={onRowAction}
                       onRowClick={onRowClick}
                       onRowContextMenu={onRowContextMenu}
+                      getRowProps={getRowProps}
                       onRowSelect={onRowSelect}
                       onRowExpandChange={onRowExpandChange}
                       withRowHighlight={withRowHighlight}
@@ -1522,6 +1529,7 @@ interface TableRowProps<T> {
   onRowAction?: (row: T) => void;
   onRowClick?: (info: { row: T; event: ReactMouseEvent }) => void;
   onRowContextMenu?: (info: { row: T; event: ReactMouseEvent }) => void;
+  getRowProps?: (row: T) => { [key: `data-${string}`]: string | undefined };
   onRowSelect?: (info: { row: T; selected: boolean; selectedKeys: Set<string> }) => void;
   onRowExpandChange?: (info: { row: T; expanded: boolean }) => void;
   withRowHighlight: boolean;
@@ -1551,6 +1559,7 @@ function TableRow<T>({
   onRowAction,
   onRowClick,
   onRowContextMenu,
+  getRowProps,
   onRowSelect,
   onRowExpandChange,
   withRowHighlight,
@@ -1598,6 +1607,18 @@ function TableRow<T>({
     if (selectionSelectsRow) doSelect();
   };
 
+  /* Tastatur: Enter/Leertaste auf einer Zelle der Zeile aktivieren sie wie ein Klick
+   * (onRowAction, Auswahl bei selectionBehavior row/rowOnly) – nicht, wenn ein Steuerelement
+   * in der Zelle (Knopf, Link, Feld) die Taste bekommt. */
+  const handleKeyDown = (e: ReactKeyboardEvent<HTMLDivElement>) => {
+    if (e.defaultPrevented || (e.key !== "Enter" && e.key !== " ")) return; // Leertaste am Baum-Chevron klappt nur auf
+    if ((e.target as HTMLElement).getAttribute("role") !== "gridcell") return;
+    if (!onRowAction && !selectionSelectsRow) return;
+    e.preventDefault();
+    onRowAction?.(row.original);
+    if (selectionSelectsRow) doSelect();
+  };
+
   const highlight = withRowHighlight && highlightField ? highlightField(row.original) : undefined;
   const navigated = withNavigationHighlight && markNavigatedRow ? markNavigatedRow(row.original) : false;
 
@@ -1617,6 +1638,8 @@ function TableRow<T>({
       onMouseEnter={interactive ? () => setHovered(true) : undefined}
       onMouseLeave={interactive ? () => setHovered(false) : undefined}
       onClick={interactive ? handleClick : undefined}
+      onKeyDown={interactive ? handleKeyDown : undefined}
+      {...getRowProps?.(row.original)}
       onContextMenu={
         onRowContextMenu
           ? (e) => {
