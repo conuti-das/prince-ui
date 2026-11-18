@@ -59,8 +59,6 @@ Abschwächung der Nachkommastellen), `List`/`ListRow`
 `aria-expanded`/`aria-controls`; Persistenz bleibt App-Sache); `SidebarItem` zusätzlich **`href?`** — Eintrag als
 React-Aria-`Link` (`<a href>`, neuer Tab mit Strg/⌘, Client-Routing über `RouterProvider`), **`data-testid?`**;
 der aktive Eintrag trägt `aria-current="page"`,
-`Toolbar` (leading/title/subtitle/actions), `EmptyState` (icon, title, description, action?),
-`aria-expanded`; Persistenz bleibt App-Sache),
 `Toolbar` (leading/title/subtitle/actions), `EmptyState` (icon, title, description, action?, **`illustration?`** no-data|no-results|error|done,
 **`size?`** s|m|l),
 `Notice` (tone: info|positive|critical|negative),
