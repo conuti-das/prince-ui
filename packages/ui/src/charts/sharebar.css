@@ -1,0 +1,12 @@
+/* ============================================================
+ * ShareBar — Anteilsbalken mit Legende (Wort und Zahl)
+ * ============================================================ */
+.prn-sharebar { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.prn-sharebar-caption { font: var(--prn-text-footnote); color: var(--prn-label-2); font-variant-numeric: tabular-nums; }
+.prn-sharebar-track { display: flex; width: 100%; overflow: hidden; background: var(--prn-fill); }
+.prn-sharebar-part { display: block; height: 100%; min-width: 2px; }
+.prn-sharebar-part + .prn-sharebar-part { box-shadow: -1px 0 0 var(--prn-bg-elevated); }
+.prn-sharebar-legend { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 0; padding: 0; list-style: none; font: var(--prn-text-footnote); color: var(--prn-label-2); }
+.prn-sharebar-legend li { display: inline-flex; align-items: center; gap: 6px; }
+.prn-sharebar-dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+.prn-sharebar-value { color: var(--prn-label); font-weight: 600; }
