@@ -137,6 +137,8 @@ Glas-Cards (Bento). Ergänzt die `--prn-bg-elevated*`-Reihe.
   mit Mehrfachauswahl; Toolbar, Zahl in `aria-live`.
 - `Spinner` (size s|m|l, `label`, `showLabel`; `role=status`) und `BusyArea` (`busy`, `delay` (Default 300 ms),
   `label`, `showLabel`, `size`) — Lade-Indikator über einem Bereich: `aria-busy`, Inhalt `inert`, Overlay mit Spinner.
+- `ShareBar` (parts: id/label/value/tone, `total?` (Rest als leere Spur), `height` 4–12, `neutral`, `legend`, `showZero`,
+  `caption`, `aria-label` (Pflicht; Werte werden angehängt), `locale`, `data-testid`) — Anteilsbalken, `role=img`.
 - `ObjectPage` — SAP-UI5-ObjectPage-Floorplan-Parität (Stand 2026-06-24, ~96 % Feature-Coverage),
   `forwardRef<ObjectPageHandle>`. Komposition: `ObjectPageSection` (id, titleText, hideTitleText,
   titleTextUppercase, wrapTitleText, titleTextLevel H1–H6, header) + `ObjectPageSubSection`

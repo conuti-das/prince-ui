@@ -1,0 +1,29 @@
+# ShareBar
+
+Anteilsbalken: ein schmaler, waagrechter Balken aus den Teilen einer Menge, darunter die Legende mit Wort und Zahl. Für Aufteilungen wie „ausgeführt, Fehler, übersprungen“ eines Massenauftrags oder „bestanden, fehlgeschlagen, offen“ eines Testlaufs.
+
+## Verwendung
+
+`parts` sind die Teile (`label`, `value`, `tone`). Ist `total` größer als die Summe, bleibt der Rest als leere Spur – so wird der Balken zum Fortschritt (`caption` „402 von 1.200“). In Zellen und Listen `neutral` setzen: alle Teile in Grautönen, die Bedeutung trägt allein die Legende. Der Balken ist ein Bild mit einem Namen, der alle Werte nennt.
+
+<DoDont kind="do">Die Teile so wählen, dass sie die Zahl daneben ergeben, und den Zustand (gut, kritisch) über `tone` aus derselben Zuordnung wie die Badges der Anwendung setzen.</DoDont>
+<DoDont kind="dont">Einen Kopfwert, der schon groß in der Kachel steht, im Balken wiederholen – der Balken zeigt nur, was neu ist (Aufteilung, Rest).</DoDont>
+
+## Beispiele
+
+<Example code={`<div style={{ display: 'grid', gap: 20, maxWidth: 420 }}>
+  <ShareBar aria-label="Posten des Massenauftrags" total={1200} caption="402 von 1.200"
+    parts={[{ id: 'ok', label: 'ausgeführt', value: 380, tone: 'green' }, { id: 'fehler', label: 'Fehler', value: 22, tone: 'red' }]} />
+  <ShareBar aria-label="Szenarien des Testlaufs" height={12}
+    parts={[{ id: 'ok', label: 'bestanden', value: 41, tone: 'green' }, { id: 'f', label: 'fehlgeschlagen', value: 3, tone: 'red' }, { id: 'o', label: 'offen', value: 6, tone: 'gray' }]} />
+  <ShareBar aria-label="Nachrichten nach Art" neutral height={4}
+    parts={[{ id: 'u', label: 'UTILMD', value: 820 }, { id: 'm', label: 'MSCONS', value: 310 }, { id: 'a', label: 'APERAK', value: 74 }]} />
+</div>`} />
+
+## Accessibility
+
+Der Balken hat `role="img"` und einen Namen aus `aria-label` und allen Werten (auch dem offenen Rest); die sichtbare Legende ist für Screenreader ausgeblendet, damit nichts doppelt angesagt wird. Farbe trägt nie allein: jedes Teil steht mit Wort und Zahl in der Legende.
+
+## Props
+
+<PropsTable name="ShareBar" />
