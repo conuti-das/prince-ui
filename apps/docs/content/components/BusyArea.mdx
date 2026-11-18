@@ -1,0 +1,47 @@
+# BusyArea
+
+Lade-Indikator: `Spinner` allein oder `BusyArea` über einem Bereich, der gerade lädt oder speichert. Gegenstück zum BusyIndicator aus UI5.
+
+## Verwendung
+
+`BusyArea` umschließt den Bereich (Tabelle, Detailspalte, Formular). Solange `busy` gilt, ist der Inhalt gesperrt (`inert`, kein Fokus, keine Klicks) und `aria-busy` gesetzt; der Spinner erscheint erst nach `delay` Millisekunden (Vorgabe 300), damit kurze Ladevorgänge nicht flackern. `Spinner` steht allein, etwa in einer Zeile „wird geladen“ oder in einem Knopf.
+
+<DoDont kind="do">Beim ersten Laden einer Tabelle Skeleton-Zeilen zeigen (`loading` der AnalyticalTable) und `BusyArea` für das Nachladen und Speichern eines vorhandenen Bereichs nutzen.</DoDont>
+<DoDont kind="dont">Die ganze Seite sperren, wenn nur ein Bereich lädt.</DoDont>
+
+## Beispiele
+
+<Example code={`function Beispiel() {
+  const [busy, setBusy] = React.useState(true);
+  return (
+    <div style={{ display: 'grid', gap: 12, maxWidth: 420 }}>
+      <Switch isSelected={busy} onChange={setBusy}>Lädt</Switch>
+      <BusyArea busy={busy} delay={0} label="Klärfall wird gespeichert" showLabel>
+        <Card>
+          <DescriptionList>
+            <Field label="Grund" value="Zuordnung prüfen" />
+            <Field label="MaLo-ID" value="50975489349" />
+          </DescriptionList>
+        </Card>
+      </BusyArea>
+    </div>
+  );
+}`} />
+
+Spinner in drei Größen:
+
+<Example code={`<div style={{ display: 'flex', gap: 24, alignItems: 'center' }}>
+  <Spinner size="s" />
+  <Spinner />
+  <Spinner size="l" label="Wird geladen" showLabel />
+</div>`} />
+
+## Accessibility
+
+`Spinner` ist ein `role="status"` mit Text (ohne `showLabel` nur für Screenreader). `BusyArea` setzt `aria-busy` am Bereich und `inert` am Inhalt, damit Tastatur und Maus während des Ladens nichts darunter auslösen. Bei `prefers-reduced-motion` dreht der Spinner langsamer.
+
+## Props
+
+<PropsTable name="BusyArea" />
+
+<PropsTable name="Spinner" />
