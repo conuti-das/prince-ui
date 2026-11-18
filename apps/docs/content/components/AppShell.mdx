@@ -6,7 +6,7 @@ Die App-Hülle bündelt die komplette ShellBar — Logo, Titel mit Untertitel un
 
 Die AppShell ist reine Layout- und Kompositionsschicht: das Verhalten der Menüs und Overlays kommt aus den React-Aria-Primitiven. Den Inhalt der Ansicht übergibst du als `children`, die Navigation als `sidebar` (typischerweise eine `<Sidebar/>` **ohne** eigenes `glass`, da die Shell den Glas-Effekt setzt). Titel-Dropdown-Einträge kommen über `menuItems` + `onMenuItemClick`, die Aktions-Items rechts über `items`.
 
-`glass` (Default `true`) legt die „Liquid-Glass"-Optik auf Shell-Bar und Sidebar. Das responsive Verhalten steckt in CSS-Breakpoints: ab Tablet (≤1024 px) verschwindet der Untertitel und Items wandern ins „…"-Overflow-Menü, ab Phone (≤767 px) kollabiert die Suche zu einem Icon und die Sidebar wird zum Off-canvas-Overlay.
+`glass` (Default `true`) legt die „Liquid-Glass"-Optik auf Shell-Bar und Sidebar. Am Desktop bekommt die Sidebar dabei nur das Material ohne `backdrop-filter`, weil unter ihr nichts liegt; echtes Glas hat sie als Off-canvas auf dem Telefon. Das responsive Verhalten steckt in CSS-Breakpoints: ab Tablet (≤1024 px) verschwindet der Untertitel und Items wandern ins „…"-Overflow-Menü, ab Phone (≤767 px) kollabiert die Suche zu einem Icon und die Sidebar wird zum Off-canvas-Overlay.
 
 <DoDont kind="do">Genau eine `AppShell` als äußersten Rahmen der Anwendung verwenden und ihr volle Höhe geben (z. B. `height: 100vh`), damit Sidebar und Content korrekt füllen.</DoDont>
 <DoDont kind="dont">Der eingebetteten `<Sidebar/>` ein eigenes `glass` setzen — die Shell steuert den Glas-Effekt zentral, doppeltes Glas überlagert sich.</DoDont>
