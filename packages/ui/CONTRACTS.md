@@ -64,6 +64,12 @@ der aktive Eintrag trägt `aria-current="page"`,
 **`DescriptionList`** (children, `layout?: "stacked"|"inline"`) + **`Field`** (label,
 value? | children) — schlankes read-only Label/Wert-Primitive (semantisches `<dl>`/`<dt>`/`<dd>`).
 
+`AppShell` (title, subtitle?, logo?/onLogoClick?, menuItems?, search?, actions?, items?, notifications?,
+productSwitch?, user?/onProfileClick?, startButton?, sidebar?, sidebarCollapsed?/onSidebarCollapsedChange?, glass?,
+toggleLabel?) — zusätzlich **`labels?: Partial<AppShellLabels>`** (home, account, moreActions, toggleSearch,
+notifications, productSwitch), **`toggleTestId?`**, **`contentAs?: "main" | "div"`** (Default `main`);
+`AppShellItem` zusätzlich **`expanded?`** (`aria-expanded`) und **`data-testid?`** (auch am Eintrag im Überlauf-Menü, `-menue`).
+
 **Neues Token:** `--prn-bg-elevated-translucent` (Light + Dark, Blur-taugliches rgba) für
 Glas-Cards (Bento). Ergänzt die `--prn-bg-elevated*`-Reihe.
 

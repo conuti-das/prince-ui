@@ -166,4 +166,33 @@ describe("AppShell", () => {
     await user.click(screen.getByRole("button", { name: "Konto" }));
     expect(onClick).toHaveBeenCalledTimes(1);
   });
+  it("labels überschreiben die festen Texte (Logo, Konto, Überlauf, Benachrichtigungen)", () => {
+    render(
+      <AppShell title="MACO" logo={<span>L</span>} onLogoClick={() => {}} user={<span>U</span>} onProfileClick={() => {}} notifications
+        items={[{ id: "i", label: "Inbox", icon: <span>i</span> }]}
+        labels={{ home: "Zur Startseite, MACO", account: "Benutzermenü", moreActions: "Mehr", notifications: "Hinweise" }} />,
+    );
+    expect(screen.getByRole("button", { name: "Zur Startseite, MACO" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Benutzermenü" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Mehr" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Hinweise" })).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Konto" })).toBeNull();
+  });
+
+  it("Items: data-testid und aria-expanded; Umschalter mit toggleTestId", () => {
+    render(
+      <AppShell title="MACO" sidebar={<nav>Navi</nav>} toggleTestId="menue-knopf"
+        items={[{ id: "h", label: "Hilfe", icon: <span>?</span>, expanded: true, "data-testid": "hilfe-knopf" }]} />,
+    );
+    const hilfe = screen.getByTestId("hilfe-knopf");
+    expect(hilfe).toHaveAttribute("aria-label", "Hilfe");
+    expect(hilfe).toHaveAttribute("aria-expanded", "true");
+    expect(screen.getByTestId("menue-knopf")).toHaveAttribute("aria-controls");
+  });
+
+  it('contentAs="div": kein eigenes <main> (die Anwendung setzt ihre Landmark selbst)', () => {
+    render(<AppShell title="MACO" contentAs="div"><main>App</main></AppShell>);
+    expect(screen.getAllByRole("main")).toHaveLength(1);
+    expect(document.querySelector(".prn-appshell-content")?.tagName).toBe("DIV");
+  });
 });
