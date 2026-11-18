@@ -1,0 +1,52 @@
+# ListReportPage
+
+Seitenfloorplan für Listen und Dashboards: Titelzeile mit Aktionen, darunter ein Kopfbereich für Filter oder Kennzahlen, dann der Inhalt und – wenn nötig – eine Fußleiste. Gegenstück zur DynamicPage aus SAP Fiori.
+
+## Verwendung
+
+`title` wird die Überschrift der Seite (h1, mit `titleLevel` h2). Neben dem Titel steht `titleContent` (Zähler, Badge), darunter `subtitle`. `actions` sitzen rechts und brechen auf schmalen Breiten unter den Titel. `header` nimmt die `FilterBar` auf; mit `headerCollapsible` lässt er sich über einen Knopf in der Titelzeile ein- und ausklappen. `children` sind der Inhalt (Reiter, Sammelleiste, Tabelle). `footer` ist eine klebende Fußleiste für Aktionen, die für die ganze Seite gelten.
+
+<DoDont kind="do">Die Seitenaktion, die am häufigsten gebraucht wird, als einzigen gefüllten Knopf in `actions` setzen.</DoDont>
+<DoDont kind="dont">Zeilenaktionen in die Titelzeile legen – sie gehören an die Zeile oder in die Sammelleiste über der Tabelle.</DoDont>
+
+## Beispiele
+
+<Example code={`<div style={{ maxWidth: 900 }}>
+  <ListReportPage
+    title="Klärfälle"
+    titleContent={<Badge tone="red">2 überfällig</Badge>}
+    subtitle="Offene Klärfälle des Mandanten CONUTI LF Strom"
+    breadcrumbs={<Breadcrumbs><Breadcrumb><Link href="#">Marktkommunikation</Link></Breadcrumb><Breadcrumb><Link>Klärfälle</Link></Breadcrumb></Breadcrumbs>}
+    actions={<><Button variant="plain">Aktualisieren</Button><Button>Alle übernehmen</Button></>}
+    headerCollapsible
+    header={
+      <FilterBar aria-label="Filter der Klärfälle">
+        <FilterField label="Suche"><SearchField aria-label="Suche" placeholder="MaLo-ID, Grund…" /></FilterField>
+        <FilterField label="Priorität">
+          <Select aria-label="Priorität" defaultSelectedKey="alle">
+            <SelectItem id="alle">Alle</SelectItem>
+            <SelectItem id="hoch">Hoch</SelectItem>
+          </Select>
+        </FilterField>
+      </FilterBar>
+    }
+  >
+    <Card padding="compact">Tabelle der Klärfälle</Card>
+  </ListReportPage>
+</div>`} />
+
+Mit Fußleiste, etwa für das Erledigen mehrerer Einträge:
+
+<Example code={`<div style={{ maxWidth: 640 }}>
+  <ListReportPage title="Auswahl prüfen" titleLevel={2} footer={<><Button variant="plain">Abbrechen</Button><Button>Erledigen</Button></>}>
+    <Notice tone="info">3 Klärfälle gewählt.</Notice>
+  </ListReportPage>
+</div>`} />
+
+## Accessibility
+
+Der Titel ist die Überschrift der Seite. Der Knopf zum Einklappen des Kopfbereichs meldet `aria-expanded` und zeigt mit `aria-controls` auf den Bereich; seine Texte kommen aus `labels`. Die Fußleiste ist eine Toolbar. Mit `stickyTitle` bleiben Titel und Kopf beim Rollen sichtbar.
+
+## Props
+
+<PropsTable name="ListReportPage" />

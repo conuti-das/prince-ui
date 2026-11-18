@@ -1,0 +1,57 @@
+/* ============================================================
+ * ListReportPage — Seitenfloorplan für Listen und Dashboards
+ * ============================================================ */
+.prn-listreport {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+  color: var(--prn-label);
+}
+.prn-listreport-top { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.prn-listreport[data-sticky] > .prn-listreport-top {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  padding-bottom: 12px;
+  background: var(--prn-app-bg);
+  box-shadow: 0 1px 0 var(--prn-separator);
+}
+.prn-listreport-breadcrumbs { font: var(--prn-text-footnote); }
+.prn-listreport-titlebar { display: flex; align-items: flex-start; gap: 8px 16px; flex-wrap: wrap; min-width: 0; }
+.prn-listreport-titles { flex: 1 1 18rem; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.prn-listreport-titleline { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; min-width: 0; }
+.prn-listreport-title {
+  margin: 0;
+  font: var(--prn-text-large-title);
+  letter-spacing: -0.01em;
+  color: var(--prn-label);
+  overflow-wrap: anywhere;
+}
+.prn-listreport-subtitle { font: var(--prn-text-subhead); color: var(--prn-label-2); }
+.prn-listreport-actions { flex: 0 1 auto; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-left: auto; }
+.prn-listreport-actions .prn-button { white-space: nowrap; }
+.prn-listreport-headertoggle.prn-button { width: 34px; padding: 0; }
+.prn-listreport-header { min-width: 0; }
+.prn-listreport-header[hidden] { display: none; }
+.prn-listreport-content { display: flex; flex-direction: column; gap: 12px; min-width: 0; flex: 1 1 auto; }
+.prn-listreport-footer {
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 10px 12px;
+  border-radius: var(--prn-radius-lg);
+  background: var(--prn-glass-bg-opaque, var(--prn-bg-elevated));
+  box-shadow: var(--prn-shadow-pop);
+}
+
+@media (max-width: 767px) {
+  .prn-listreport { gap: 12px; }
+  .prn-listreport-title { font: var(--prn-text-title); }
+  .prn-listreport-actions { margin-left: 0; flex: 1 1 100%; }
+}
