@@ -86,9 +86,35 @@ Opake Variante ohne Transluzenz — `glass={false}` für Kontexte ohne Glas-Look
   </AppShell>
 </div>`} />
 
+Anwendung mit eigener Sprache, eigenem `<main>` und Test-Kennungen: `labels` überschreibt die festen Texte, `contentAs="div"` lässt die Landmark der Anwendung, Items tragen `data-testid` und `expanded` (für Panel-Knöpfe wie Hilfe):
+
+<Example code={`function ShellMitTexten() {
+  const [hilfe, setHilfe] = React.useState(false);
+  return (
+    <div style={{ height: 300 }}>
+      <AppShell
+        title="MACO APP"
+        logo={<CircleDot size={22} />}
+        onLogoClick={() => {}}
+        labels={{ home: 'Zur Startseite, MACO APP', moreActions: 'Weitere Aktionen' }}
+        toggleLabel="Menü ein- und ausblenden"
+        toggleTestId="menue-knopf"
+        contentAs="div"
+        items={[
+          { id: 'inbox', label: 'Inbox', icon: <Icon name="inbox" size={20} />, count: 3, 'data-testid': 'inbox-eintrag' },
+          { id: 'hilfe', label: 'Hilfe', icon: <Icon name="compass" size={20} />, expanded: hilfe, onClick: () => setHilfe(!hilfe), 'data-testid': 'hilfe-knopf' },
+        ]}
+        sidebar={<Sidebar aria-label="Hauptmenü" selectedKey="m" groups={[{ items: [{ id: 'm', label: 'Transaktionsmonitor' }] }]} />}
+      >
+        <main style={{ font: 'var(--prn-text-body)', color: 'var(--prn-label-2)' }}>Hilfe {hilfe ? 'offen' : 'zu'} – das main gehört der Anwendung.</main>
+      </AppShell>
+    </div>
+  );
+}`} />
+
 ## Accessibility
 
-Die Shell-Bar-Icon-Buttons (Suche, Benachrichtigungen, Produkt-Wechsler, Menü-Toggle) tragen jeweils ein `aria-label`/`title`, sind also auch ohne sichtbaren Text benannt. Der Navigations-Toggle nutzt `toggleLabel` (Default „Navigation umschalten") — passe ihn an, wenn deine App eine andere Sprache oder Terminologie verlangt. Auf Phone wird die Sidebar zum Off-canvas-Overlay; das Ein-/Ausklappen kannst du über `sidebarCollapsed`/`onSidebarCollapsedChange` kontrollieren, um den Zustand mit eigener Logik (z. B. Route-Wechsel) zu synchronisieren. Übergib für den `user`-Slot ein benanntes Element (z. B. `aria-label="Konto"`), da ein reiner Avatar sonst stumm bleibt. Menü- und Overlay-Verhalten (Tastatur, Fokus-Falle) stammt aus den React-Aria-`Menu`-Primitiven.
+Die Shell-Bar-Icon-Buttons (Suche, Benachrichtigungen, Produkt-Wechsler, Menü-Toggle) tragen jeweils ein `aria-label`/`title`, sind also auch ohne sichtbaren Text benannt. Der Navigations-Toggle nutzt `toggleLabel` (Default „Navigation umschalten") — passe ihn an, wenn deine App eine andere Sprache oder Terminologie verlangt; die übrigen festen Texte (Logo „Startseite", Profil „Konto", Überlauf, Such-Umschalter, Benachrichtigungen, Produkte) über `labels`. Setzt die Anwendung ihr `<main>` selbst, `contentAs="div"` wählen – sonst gibt es zwei `main`-Landmarks. Auf Phone wird die Sidebar zum Off-canvas-Overlay; das Ein-/Ausklappen kannst du über `sidebarCollapsed`/`onSidebarCollapsedChange` kontrollieren, um den Zustand mit eigener Logik (z. B. Route-Wechsel) zu synchronisieren. Übergib für den `user`-Slot ein benanntes Element (z. B. `aria-label="Konto"`), da ein reiner Avatar sonst stumm bleibt. Menü- und Overlay-Verhalten (Tastatur, Fokus-Falle) stammt aus den React-Aria-`Menu`-Primitiven.
 
 ## Props
 

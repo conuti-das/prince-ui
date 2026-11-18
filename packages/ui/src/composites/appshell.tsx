@@ -23,7 +23,31 @@ export interface AppShellItem {
   /** Optionaler Zähler-Badge. */
   count?: ReactNode;
   onClick?: () => void;
+  /** Zustand eines Panels, das der Knopf öffnet (`aria-expanded`), z. B. Hilfe. */
+  expanded?: boolean;
+  /** Test-Kennung am Knopf und am Eintrag im Überlauf-Menü (`data-testid`). */
+  "data-testid"?: string;
 }
+
+/** Feste Texte der Shell-Bar (Tooltips, `aria-label`) – für Sprache und Wortwahl der Anwendung. */
+export interface AppShellLabels {
+  /** Logo-Knopf (Default „Startseite"). */
+  home: string;
+  /** Profil-Knopf (Default „Konto"). */
+  account: string;
+  /** Überlauf-Menü der Items (Default „Weitere Aktionen"). */
+  moreActions: string;
+  /** Such-Umschalter auf dem Telefon (Default „Suche umschalten"). */
+  toggleSearch: string;
+  /** Benachrichtigungen (Default „Benachrichtigungen"). */
+  notifications: string;
+  /** Produkt-Wechsler (Default „Produkte"). */
+  productSwitch: string;
+}
+const LABELS: AppShellLabels = {
+  home: "Startseite", account: "Konto", moreActions: "Weitere Aktionen", toggleSearch: "Suche umschalten",
+  notifications: "Benachrichtigungen", productSwitch: "Produkte",
+};
 
 export interface AppShellProps {
   /** App-Titel (Primärtitel). */
@@ -62,6 +86,15 @@ export interface AppShellProps {
   /** „Liquid Glass"-Optik auf Shell-Bar + Sidebar (Default: true). */
   glass?: boolean;
   toggleLabel?: string;
+  /** Test-Kennung am Navigations-Umschalter (`data-testid`). */
+  toggleTestId?: string;
+  /** Feste Texte überschreiben (Teilmenge genügt). */
+  labels?: Partial<AppShellLabels>;
+  /**
+   * Element des Inhaltsbereichs: `"main"` (Default) oder `"div"`, wenn die Anwendung ihr
+   * `<main>` selbst setzt – zwei `main`-Landmarks sind ein Fehler der Zugänglichkeit.
+   */
+  contentAs?: "main" | "div";
   children?: ReactNode;
   className?: string;
 }
@@ -71,12 +104,16 @@ function BarButton({
   label,
   count,
   onClick,
+  expanded,
+  testId,
   className,
   children,
 }: {
   label: string;
   count?: ReactNode;
   onClick?: () => void;
+  expanded?: boolean;
+  testId?: string;
   className?: string;
   children: ReactNode;
 }) {
@@ -85,7 +122,9 @@ function BarButton({
       type="button"
       className={cx("prn-shellbar-btn", className)}
       aria-label={label}
+      aria-expanded={expanded}
       title={label}
+      data-testid={testId}
       onClick={onClick}
     >
       {children}
@@ -128,9 +167,14 @@ export function AppShell({
   onSidebarCollapsedChange,
   glass = true,
   toggleLabel = "Navigation umschalten",
+  toggleTestId,
+  labels,
+  contentAs = "main",
   children,
   className,
 }: AppShellProps) {
+  const l = { ...LABELS, ...labels };
+  const Inhalt = contentAs;
   const isControlled = sidebarCollapsed !== undefined;
   // Auf Phone (≤767px) standardmäßig eingeklappt starten — sonst läge die
   // Off-canvas-Sidebar beim Laden über dem Content. Flash-frei via Lazy-Init.
@@ -195,6 +239,7 @@ export function AppShell({
             aria-label={toggleLabel}
             aria-expanded={!collapsed}
             aria-controls={sidebarId}
+            data-testid={toggleTestId}
             onClick={() => setCollapsed(!collapsed)}
           >
             <Icon name="menu" size={20} />
@@ -202,7 +247,7 @@ export function AppShell({
         )}
         {logo != null &&
           (onLogoClick ? (
-            <button type="button" className="prn-shellbar-logo prn-shellbar-logobtn" aria-label="Startseite" onClick={onLogoClick}>
+            <button type="button" className="prn-shellbar-logo prn-shellbar-logobtn" aria-label={l.home} onClick={onLogoClick}>
               {logo}
             </button>
           ) : (
@@ -222,7 +267,7 @@ export function AppShell({
           <>
             <div className="prn-shellbar-items">
               {items!.map((it) => (
-                <BarButton key={it.id} label={it.label} count={it.count} onClick={it.onClick}>
+                <BarButton key={it.id} label={it.label} count={it.count} onClick={it.onClick} expanded={it.expanded} testId={it["data-testid"]}>
                   {it.icon}
                 </BarButton>
               ))}
@@ -230,13 +275,13 @@ export function AppShell({
             <div className="prn-shellbar-overflow">
               <Menu
                 trigger={
-                  <Button variant="plain" className="prn-shellbar-btn" aria-label="Weitere Aktionen">
+                  <Button variant="plain" className="prn-shellbar-btn" aria-label={l.moreActions}>
                     <Icon name="more" size={20} />
                   </Button>
                 }
               >
                 {items!.map((it) => (
-                  <MenuItem key={it.id} onAction={it.onClick}>
+                  <MenuItem key={it.id} onAction={it.onClick} data-testid={it["data-testid"] ? `${it["data-testid"]}-menue` : undefined}>
                     {it.icon}
                     {it.label}
                     {it.count != null && it.count !== "" ? ` (${it.count})` : ""}
@@ -251,7 +296,7 @@ export function AppShell({
           <button
             type="button"
             className="prn-shellbar-searchtoggle"
-            aria-label="Suche umschalten"
+            aria-label={l.toggleSearch}
             aria-expanded={searchOpen}
             onClick={() => setSearchOpen((o) => !o)}
           >
@@ -260,19 +305,19 @@ export function AppShell({
         )}
 
         {notifications && (
-          <BarButton label="Benachrichtigungen" count={notificationsCount} onClick={onNotificationsClick}>
+          <BarButton label={l.notifications} count={notificationsCount} onClick={onNotificationsClick}>
             <Icon name="bell" size={20} />
           </BarButton>
         )}
         {productSwitch && (
-          <BarButton label="Produkte" className="prn-shellbar-productswitch" onClick={onProductSwitchClick}>
+          <BarButton label={l.productSwitch} className="prn-shellbar-productswitch" onClick={onProductSwitchClick}>
             <Icon name="grid" size={20} />
           </BarButton>
         )}
 
         {user != null &&
           (onProfileClick ? (
-            <button type="button" className="prn-shellbar-user prn-shellbar-userbtn" aria-label="Konto" onClick={onProfileClick}>
+            <button type="button" className="prn-shellbar-user prn-shellbar-userbtn" aria-label={l.account} onClick={onProfileClick}>
               {user}
             </button>
           ) : (
@@ -297,7 +342,7 @@ export function AppShell({
             <div className="prn-appshell-scrim" onClick={() => setCollapsed(true)} aria-hidden />
           </>
         )}
-        <main className="prn-appshell-content">{children}</main>
+        <Inhalt className="prn-appshell-content">{children}</Inhalt>
       </div>
     </div>
   );

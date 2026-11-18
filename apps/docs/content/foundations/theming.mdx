@@ -78,7 +78,9 @@ import '@conuti-das/prince-ui/styles.css';
 
 Die Themes sind nicht nur kosmetisch: Hell justiert `--prn-label-2` auf 75 %
 Deckkraft, damit Sekundärtext WCAG-AA erreicht, und jedes Theme setzt das passende
-`color-scheme` (`dark`/`light`), sodass native Controls und Scrollbars korrekt rendern. Wenn
+`color-scheme` (`dark`/`light`), sodass native Controls und Scrollbars korrekt rendern. Steht am
+`<html>` ein `data-theme`, das kein prince-Theme ist (etwa wenn prince-ui neben einem anderen
+Design-System läuft), setzt prince-ui kein `color-scheme` – die Anwendung behält ihres. Wenn
 du einen Theme-Umschalter ins UI baust, gib ihm ein zugängliches Label (`aria-label="Theme"`)
 und respektiere die System-Präferenz als sinnvollen Default, indem du initial `setTheme(null)`
 verwendest.
