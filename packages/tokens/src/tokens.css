@@ -172,7 +172,12 @@
 
   /* ---- Bento-Ambient (neutral, Dark) ---- */
   --prn-bento-bg: linear-gradient(135deg, #232325 0%, #1a1a1c 55%, #161618 100%);
+}
 
+/* color-scheme nur, wenn prince-ui das Theme führt: ohne data-theme (Fallback Dunkel) oder mit
+ * einem prince-Theme (eigene Blöcke unten). Ein data-theme der Host-Anwendung (z. B. "hell")
+ * bleibt unberührt – sonst kippen Rollbalken und native Felder der Anwendung auf Dunkel. */
+:root:not([data-theme]) {
   color-scheme: dark;
 }
 
