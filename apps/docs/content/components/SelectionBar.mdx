@@ -1,0 +1,42 @@
+# SelectionBar
+
+Sammelleiste über einer Tabelle mit Mehrfachauswahl: wie viele Zeilen gewählt sind, Hinweise dazu, die Sammelaktionen und „Auswahl aufheben“.
+
+## Verwendung
+
+Die Leiste erscheint, sobald `count` größer als 0 ist. `actions` sind die Sammelaktionen; `info` ergänzt die Zahl (etwa „davon 2 nicht möglich“), `error` meldet eine Grenze und blendet die Aktionen aus. Mit `reserveSpace` bleibt der Platz der Leiste auch ohne Auswahl frei – sonst rückt die Tabelle beim ersten Haken nach unten, und der nächste Klick trifft die falsche Zeile. Texte und testids setzt die Anwendung (`countLabel`, `clearLabel`, `clearTestId`, `data-testid`).
+
+<DoDont kind="do">Jede Sammelaktion einzeln je Zeile prüfen und das Ergebnis danach zusammenfassen – welche Zeilen gingen, welche nicht und warum.</DoDont>
+<DoDont kind="dont">Sammelaktionen ohne sichtbare Auswahl anbieten (etwa „Alle wiederholen“ in der Titelzeile) – die Anwendung kann sonst nicht zeigen, was betroffen ist.</DoDont>
+
+## Beispiele
+
+<Example code={`function Beispiel() {
+  const zeilen = [
+    { id: 'kf-1', grund: 'Zuordnung prüfen' },
+    { id: 'kf-2', grund: 'Frist läuft ab' },
+    { id: 'kf-3', grund: 'APERAK negativ' },
+  ];
+  const [gewaehlt, setGewaehlt] = React.useState(new Set(['kf-1', 'kf-3']));
+  return (
+    <div style={{ display: 'grid', gap: 8 }}>
+      <SelectionBar
+        count={gewaehlt.size}
+        reserveSpace
+        info={gewaehlt.has('kf-3') ? 'davon 1 nicht übernehmbar' : undefined}
+        actions={<><Button variant="tinted">Übernehmen</Button><Button>Erledigen</Button></>}
+        onClear={() => setGewaehlt(new Set())}
+      />
+      <AnalyticalTable accessibleName="Klärfälle" data={zeilen} columns={[{ accessorKey: 'grund', header: 'Grund' }]} getRowId={(r) => r.id}
+        selectionMode="multiple" selectedKeys={gewaehlt} onSelectionChange={setGewaehlt} />
+    </div>
+  );
+}`} />
+
+## Accessibility
+
+Die Leiste ist eine benannte Toolbar (`aria-label`). Die Zahl steht in einem `aria-live`-Bereich und wird beim Wählen angesagt; `error` hat `role="alert"`.
+
+## Props
+
+<PropsTable name="SelectionBar" />

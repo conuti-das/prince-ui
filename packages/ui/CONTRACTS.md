@@ -102,6 +102,9 @@ Glas-Cards (Bento). Ergänzt die `--prn-bg-elevated*`-Reihe.
     `VisibleRowCountMode`, `ValueState`, `NoDataReason`.
 - `FilterBar` (children, `moreFields?`, `activeFilters`/`onRemoveFilter`/`onClearAll`,
   `actions?`) + `FilterField` (label + Control-Slot).
+- `SelectionBar` (count, `countLabel`, `info`, `error` (role=alert, blendet Aktionen aus), `actions`, `onClear`/
+  `clearLabel`/`clearTestId`, `visible`, `reserveSpace`, `aria-label`, `data-testid`) — Sammelleiste über einer Tabelle
+  mit Mehrfachauswahl; Toolbar, Zahl in `aria-live`.
 - `ObjectPage` — SAP-UI5-ObjectPage-Floorplan-Parität (Stand 2026-06-24, ~96 % Feature-Coverage),
   `forwardRef<ObjectPageHandle>`. Komposition: `ObjectPageSection` (id, titleText, hideTitleText,
   titleTextUppercase, wrapTitleText, titleTextLevel H1–H6, header) + `ObjectPageSubSection`
