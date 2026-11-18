@@ -65,9 +65,36 @@ Zeile öffnen mit Maus und Tastatur: `onRowAction` feuert bei Klick und bei Ente
   );
 }`} />
 
+Aktionen am Ende jeder Zeile (`rowActions`, Gegenstück zu TableRowAction): eine rechts angeheftete Spalte mit Knöpfen. Ein Klick oder Enter auf eine Aktion löst nur die Aktion aus, nie `onRowAction`. `hidden` lässt den Platz frei, damit die Knöpfe der Zeilen bündig bleiben.
+
+<Example code={`function Zeilenaktionen() {
+  const [zuletzt, setZuletzt] = React.useState('–');
+  const stoerungen = [
+    { id: 'S-1', schritt: 'Nachricht senden', offen: true },
+    { id: 'S-2', schritt: 'Antwort zuordnen', offen: false },
+    { id: 'S-3', schritt: 'Quittung prüfen', offen: true },
+  ];
+  return (
+    <div style={{ display: 'grid', gap: 8 }}>
+      <AnalyticalTable
+        accessibleName="Störungen"
+        data={stoerungen}
+        columns={[{ accessorKey: 'schritt', header: 'Prozessschritt' }, { id: 'zustand', header: 'Zustand', cellRender: (r) => <Badge tone={r.offen ? 'red' : 'gray'}>{r.offen ? 'Offen' : 'Geschlossen'}</Badge> }]}
+        getRowId={(r) => r.id}
+        onRowAction={(r) => setZuletzt('Zeile ' + r.id)}
+        rowActions={(r) => [
+          { id: 'wiederholen', label: 'Wiederholen', icon: 'bolt', hidden: !r.offen, onAction: () => setZuletzt('Wiederholen ' + r.id) },
+          { id: 'mehr', label: 'Weitere Aktionen', icon: 'more', onAction: () => setZuletzt('Weitere ' + r.id) },
+        ]}
+      />
+      <span style={{ font: 'var(--prn-text-footnote)', color: 'var(--prn-label-2)' }}>Zuletzt: {zuletzt}</span>
+    </div>
+  );
+}`} />
+
 ## Accessibility
 
-Die Tabelle setzt ARIA-Grid-Rollen und unterstützt Grid-Tastaturnavigation (Pfeiltasten zwischen Zellen, Sortier-Header per Enter/Space). Ein `aria-label` ist Pflicht, da die Tabelle sonst keinen zugänglichen Namen hat. Status und Highlights werden zusätzlich zur Färbung als Text bzw. über `withRowHighlight`/`highlightField` mit semantischem `ValueState` vermittelt — verlasse dich in `cellRender` nicht allein auf Farbe (kombiniere z. B. eine Status-Pill mit Label und Punkt). Bei Selektion kennzeichnet die Komponente ausgewählte Zeilen für Screenreader.
+Die Tabelle setzt ARIA-Grid-Rollen und unterstützt Grid-Tastaturnavigation (Pfeiltasten zwischen Zellen, Sortier-Header per Enter/Space). Ein `aria-label` ist Pflicht, da die Tabelle sonst keinen zugänglichen Namen hat. Status und Highlights werden zusätzlich zur Färbung als Text bzw. über `withRowHighlight`/`highlightField` mit semantischem `ValueState` vermittelt — verlasse dich in `cellRender` nicht allein auf Farbe (kombiniere z. B. eine Status-Pill mit Label und Punkt). Bei Selektion kennzeichnet die Komponente ausgewählte Zeilen für Screenreader. Zeilenaktionen sind Knöpfe mit zugänglichem Namen (`label`, auch wenn nur das Icon sichtbar ist); die Aktionsspalte hat einen unsichtbaren Kopf (`rowActionsLabel`).
 
 ## Props
 
