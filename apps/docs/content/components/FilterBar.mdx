@@ -27,9 +27,49 @@ Einzelnes `FilterField` mit Label und Control — der Baustein der FilterBar:
 
 Eine vollständige Leiste kombiniert sichtbare `FilterField`-`children`, `moreFields`, `activeFilters` (mit `onRemoveFilter`/`onClearAll`) und rechts platzierte `actions` — siehe den Playground-Fall der ursprünglichen Story, der die aktiven Chips zustandsbehaftet entfernt.
 
+### Kompakt auf schmalen Breiten
+
+Auf dem Telefon nimmt eine offene Filterleiste die halbe Höhe ein. Mit `collapsible` liegen die Felder hinter einem Umschalter, der die Zahl der aktiven Filter zeigt; `pinned` (typisch die Suche) und die Chips bleiben sichtbar. Die `moreFields` stehen im aufgeklappten Bereich direkt unter den Feldern statt im Popover. Die Anwendung entscheidet, wann sie kompakt rendert – etwa unter 600 px.
+
+<Example code={`function Beispiel() {
+  const [aktiv, setAktiv] = React.useState([{ id: 'status', label: 'Status', value: 'Offen' }]);
+  return (
+    <div style={{ maxWidth: 360 }}>
+      <FilterBar
+        collapsible
+        aria-label="Transaktionsfilter"
+        pinned={<SearchField aria-label="Suche" placeholder="MaLo-ID, Prüfidentifikator…" />}
+        moreFields={<FilterField label="Prüfidentifikator"><TextField aria-label="Prüfidentifikator" /></FilterField>}
+        activeFilters={aktiv}
+        onRemoveFilter={(id) => setAktiv(aktiv.filter((f) => f.id !== id))}
+        labels={{ toggle: 'Filter', removeFilter: 'Filter entfernen' }}
+      >
+        <FilterField label="Status">
+          <Select aria-label="Status" defaultSelectedKey="offen">
+            <SelectItem id="offen">Offen</SelectItem>
+            <SelectItem id="fertig">Abgeschlossen</SelectItem>
+          </Select>
+        </FilterField>
+        <FilterField label="Sparte">
+          <Select aria-label="Sparte" placeholder="Alle">
+            <SelectItem id="strom">Strom</SelectItem>
+            <SelectItem id="gas">Gas</SelectItem>
+          </Select>
+        </FilterField>
+      </FilterBar>
+    </div>
+  );
+}`} />
+
+<DoDont kind="do">Auf schmalen Breiten `collapsible` setzen und die Suche als `pinned` sichtbar lassen – die Liste beginnt dann oben.</DoDont>
+
+### Eigene Texte
+
+`labels` überschreibt die festen Texte (`removeFilter`, `activeFilters`, `clearAll`, `toggle`), etwa für eine andere Sprache oder die Begriffe der Anwendung.
+
 ## Accessibility
 
-Jedes `FilterField` koppelt ein sichtbares `label` an sein Control; setze zusätzlich ein `aria-label` am Control selbst, wenn dieses (wie `Select`/`SearchField`) ohne eigenes sichtbares Label rendert. Die aktiven Filter sind als bedienbare Chips mit Entfernen-Schaltfläche umgesetzt und damit per Tastatur erreichbar. Der `moreFields`-Popover ist ein fokussierbares Overlay, das den Fokus beim Öffnen aufnimmt und beim Schließen zurückgibt. `moreLabel` sollte den Inhalt des Überlaufs benennen.
+Jedes `FilterField` koppelt ein sichtbares `label` an sein Control; setze zusätzlich ein `aria-label` am Control selbst, wenn dieses (wie `Select`/`SearchField`) ohne eigenes sichtbares Label rendert. Die aktiven Filter sind als bedienbare Chips mit Entfernen-Schaltfläche umgesetzt und damit per Tastatur erreichbar. Der `moreFields`-Popover ist ein fokussierbares Overlay, das den Fokus beim Öffnen aufnimmt und beim Schließen zurückgibt. `moreLabel` sollte den Inhalt des Überlaufs benennen. Mit `collapsible` ist der Umschalter ein Button mit `aria-expanded` und `aria-controls` auf den Bereich; die Chips stehen in einer benannten Gruppe (`labels.activeFilters`).
 
 ## Props
 

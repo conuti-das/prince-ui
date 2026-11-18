@@ -112,6 +112,13 @@ Glas-Cards (Bento). Ergänzt die `--prn-bg-elevated*`-Reihe.
     `VisibleRowCountMode`, `ValueState`, `NoDataReason`.
 - `FilterBar` (children, `moreFields?`, `activeFilters`/`onRemoveFilter`/`onClearAll`,
   `actions?`) + `FilterField` (label + Control-Slot).
+  - Der „Mehr Filter“-Auslöser steht in einem eigenen `FilterField` (`.prn-filterbar-more`) und hat die Höhe
+    der Nachbar-Controls (Zeile `align-items: stretch`, Felder unten bündig).
+  - `collapsible` (+ `pinned`, `expanded`/`defaultExpanded`/`onExpandedChange`): kompakte Darstellung –
+    Felder, `moreFields` (dann inline) und `actions` hinter einem Umschalter (`aria-expanded`, `aria-controls`,
+    Zahl der aktiven Filter); `pinned` und die Chips bleiben sichtbar.
+  - `labels` (`removeFilter`, `activeFilters`, `clearAll`, `toggle`) überschreibt die festen Texte; die Chips
+    stehen in `role="group"`.
 - `ObjectPage` — SAP-UI5-ObjectPage-Floorplan-Parität (Stand 2026-06-24, ~96 % Feature-Coverage),
   `forwardRef<ObjectPageHandle>`. Komposition: `ObjectPageSection` (id, titleText, hideTitleText,
   titleTextUppercase, wrapTitleText, titleTextLevel H1–H6, header) + `ObjectPageSubSection`
