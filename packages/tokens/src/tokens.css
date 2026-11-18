@@ -588,3 +588,44 @@
 
   color-scheme: light;
 }
+
+/* ---------- Globale Basis-Helfer ---------- */
+
+/* Sichtbarer Fokus-Ring (A11y) statt outline:none */
+:where(:focus-visible) {
+  outline: none;
+  box-shadow: var(--prn-focus);
+  border-radius: var(--prn-radius-sm);
+}
+
+/* Tabellenzahlen: gleichmäßige Ziffernbreite */
+.prn-tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* Loading-Skeleton-Shimmer */
+@keyframes prn-shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.prn-skeleton {
+  border-radius: 6px;
+  background: linear-gradient(90deg, var(--prn-fill) 25%, var(--prn-fill-strong) 37%, var(--prn-fill) 63%);
+  background-size: 800px 100%;
+  animation: prn-shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes prn-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* A11y: Animationen bei prefers-reduced-motion quasi anhalten */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
