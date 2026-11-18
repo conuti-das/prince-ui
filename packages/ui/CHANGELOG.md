@@ -1,5 +1,63 @@
 # prince-ui
 
+## 0.15.0
+
+### Minor Changes
+
+- AnalyticalTable:
+  - Enter/Leertaste auf einer Zelle aktivieren die Zeile wie ein Klick (`onRowAction`, Auswahl bei
+    `selectionBehavior` `row`/`rowOnly`) – bisher ging das nur per Maus, obwohl `onRowAction` „Klick/Enter/Space“
+    versprach. Steuerelemente in der Zelle behalten ihre Tasten.
+  - `getRowProps(row)` setzt `data-*`-Attribute an jede Datenzeile (z. B. `data-testid`).
+
+- AnalyticalTable: `rowActions` – Aktionen am Ende jeder Zeile (Knöpfe mit Icon und/oder Text in einer rechts angehefteten Spalte, verborgen mit gehaltenem Platz, gesperrt). Klick und Enter auf eine Aktion lösen nie `onRowAction` aus. Dazu `rowActionsLabel` und `rowActionsWidth`.
+
+- AppShell für Anwendungen mit eigener Sprache und eigener Landmark:
+  - `labels` überschreibt die festen Texte (Startseite, Konto, Weitere Aktionen, Suche umschalten, Benachrichtigungen, Produkte).
+  - `contentAs="div"` – der Inhaltsbereich ist dann kein zweites `<main>`.
+  - `AppShellItem.expanded` (`aria-expanded`, z. B. für einen Hilfe-Knopf) und `AppShellItem["data-testid"]`; `toggleTestId` am Navigations-Umschalter.
+
+- CONUTI Corporate Elements — neues `brand/`-Modul
+
+  - **ui:** neues `brand/`-Modul mit `CircleDot`, `FineLine` und `ResonanceField`
+    (token-getrieben über `--prn-*`, in jedem Theme nutzbar) — die grafischen
+    Leitelemente der CONUTI-Markensprache.
+
+- EmptyState: `illustration` (no-data, no-results, error, done – Linienbilder aus den Farben des Themes) und `size` (s, m, l) für Tabellen, Spalten und ganze Seiten.
+
+- FilterBar:
+  - Der „Mehr Filter“-Auslöser hat die Höhe der Nachbar-Controls (stand bisher tiefer und niedriger als die Auswahlfelder).
+  - `collapsible` mit `pinned`, `expanded`/`defaultExpanded`/`onExpandedChange`: kompakte Darstellung für schmale Breiten – Felder hinter einem Umschalter mit der Zahl der aktiven Filter, Suche und Chips bleiben sichtbar.
+  - `labels` (`removeFilter`, `activeFilters`, `clearAll`, `toggle`) für eigene Texte; die Chips stehen in `role="group"`.
+
+- `Spinner` und `BusyArea`: Lade-Indikator allein oder über einem Bereich (aria-busy, Inhalt gesperrt, Spinner erst nach einer Verzögerung).
+
+- `ListReportPage`: Seitenfloorplan für Listen und Dashboards – Titelzeile mit Krumen, Inhalt neben dem Titel, Untertitel und Aktionen; einklappbarer Kopfbereich für Filter; Inhalt; klebende Fußleiste. Titel und Kopf auf Wunsch klebend (`stickyTitle`).
+
+- `ListDetailLayout` und `DetailHeader`: Liste mit Detail (zwei Spalten, Vollbild, auf dem Telefon nacheinander) mit Fokusführung und Esc zum Schließen; Kopf der Detailspalte mit Titel, Aktionen, Vollbild und Schließen. Neues Icon `minimize`.
+
+- `SelectionBar`: Sammelleiste über einer Tabelle mit Mehrfachauswahl – Zahl der gewählten Zeilen (angesagt), Hinweise, Grenze als Fehler, Sammelaktionen, „Auswahl aufheben“; Platz auf Wunsch freigehalten (`reserveSpace`).
+
+- Sidebar für App-Navigation:
+  - `SidebarItem.href` macht den Eintrag zu einem React-Aria-`Link` (`<a href>`): Strg-/⌘-Klick öffnet einen
+    neuen Tab, Client-Routing über React-Arias `RouterProvider`. Ohne `href` bleibt der Eintrag ein Knopf.
+  - Der aktive Eintrag trägt `aria-current="page"` (bisher nur `data-active`).
+  - `aria-label` an `Sidebar` (Default „Seitenleiste") und `data-testid` an `Sidebar` und `SidebarItem`.
+
+### Patch Changes
+
+- AppShell: Die Seitenleiste am Desktop nutzt kein `backdrop-filter` mehr. Darunter liegt nur der flache App-Hintergrund, der Blur änderte das Bild nicht, erzeugte in Chromium aber helle Rechtecke in der Leiste (sichtbar in cu-light). Farbe und Transparenz bleiben; das Off-canvas am Telefon behält das Glas.
+
+- Sidebar: zugeklappte Gruppen (`collapsible`/`defaultCollapsed`) blenden ihre Einträge jetzt wirklich aus –
+  `display: flex` hob das `hidden`-Attribut auf. Der Gruppentitel verweist mit `aria-controls` auf seine Einträge,
+  der Chevron ist ein Icon statt des Zeichens „›“ (wirkte in kleiner Schrift wie ein Punkt).
+
+- Tabs: die `TabBar` rollt bei Überlauf waagrecht (ohne sichtbaren Rollbalken) statt Reiter abzuschneiden;
+  Reiter brechen nicht um. Die Trennlinie ist ein Inset-Schatten, der Fokusring liegt innen – beides bleibt
+  beim Rollen sichtbar.
+
+- Abhängigkeit `@conuti-das/prince-ui-tokens` auf 0.5.2; `PRINCE_UI_VERSION` auf 0.15.0.
+
 ## 0.13.0
 
 ### Minor Changes
