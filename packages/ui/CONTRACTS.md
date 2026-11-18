@@ -123,7 +123,6 @@ Glas-Cards (Bento). Ergänzt die `--prn-bg-elevated*`-Reihe.
     Zahl der aktiven Filter); `pinned` und die Chips bleiben sichtbar.
   - `labels` (`removeFilter`, `activeFilters`, `clearAll`, `toggle`) überschreibt die festen Texte; die Chips
     stehen in `role="group"`.
-- `ListDetailLayout` (`list`, `detail?`, `fullscreen?`, `onClose?`, `columns?`, `labels`) — Liste mit Detail
 - `ListDetailLayout` (`list`, `detail?`, `fullscreen?`, `onClose?`, `overlaySelector?`, `columns?`, `labels`) — Liste mit Detail
   (FlexibleColumnLayout, zwei Spalten): `data-layout` list|split|detail; Telefon (≤767 px) nacheinander. Fokus beim Öffnen
   auf `[data-detail-focus]`/h1–h3, Esc schließt (nicht aus Overlays und Eingabefeldern der Liste), Fokus zurück.
