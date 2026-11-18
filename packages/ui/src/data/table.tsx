@@ -40,7 +40,7 @@ import { DialogTrigger } from "react-aria-components";
 import { Checkbox, Button, TextField } from "../primitives/forms";
 import { Menu, MenuItem, Popover } from "../primitives/overlays";
 import { cx } from "../utils";
-import { Icon } from "../icons/icons";
+import { Icon, type IconName } from "../icons/icons";
 import "./data.css";
 import "./table.css";
 
@@ -52,6 +52,7 @@ interface ColMeta {
   minWidth?: number;
   maxWidth?: number;
   isSelect?: boolean;
+  isActions?: boolean;
   isTree?: boolean;
   headerTooltip?: string;
   headerLabel?: string;
@@ -91,6 +92,23 @@ export type AggregateType =
 export type SortType = "alphanumeric" | "basic" | "datetime";
 
 export type ColumnFilterType = "text" | "exactText" | "exactTextCase" | "equals";
+
+/** Aktion am Ende einer Tabellenzeile (Parität zu TableRowAction). */
+export interface AnalyticalRowAction {
+  /** Stabile ID der Aktion. */
+  id: string;
+  /** Zugänglicher Name; sichtbar, wenn `showLabel` oder kein `icon`. */
+  label: string;
+  /** Icon-Name oder eigenes Element. */
+  icon?: IconName | ReactNode;
+  /** Text neben dem Icon zeigen. */
+  showLabel?: boolean;
+  onAction: () => void;
+  /** Nicht anzeigen, Platz bleibt (Spalten bleiben bündig). */
+  hidden?: boolean;
+  disabled?: boolean;
+  "data-testid"?: string;
+}
 
 export interface AnalyticalColumn<T> {
   /** Stabile ID. Default: `accessorKey` falls gesetzt. */
@@ -214,6 +232,15 @@ export interface AnalyticalTableProps<T> {
    * Element mit `role="row"`.
    */
   getRowProps?: (row: T) => { [key: `data-${string}`]: string | undefined };
+  /**
+   * Aktionen am Ende jeder Zeile (Knöpfe in einer eigenen, rechts angehefteten Spalte). Ein Klick
+   * auf eine Aktion löst nie `onRowAction` aus; Enter/Leertaste auf dem Knopf nur die Aktion.
+   */
+  rowActions?: (row: T) => AnalyticalRowAction[];
+  /** Name der Aktionsspalte (für Screenreader, im Kopf unsichtbar). Default „Aktionen“. */
+  rowActionsLabel?: string;
+  /** Breite der Aktionsspalte. Default aus der Zahl der Aktionen der ersten Zeile. */
+  rowActionsWidth?: string;
 
   /* ---- Sortierung (B2) ---- */
   /** Globales Sortier-Flag (Default true für Spalten ohne explizites sortable). */
@@ -385,6 +412,35 @@ export interface AnalyticalTableProps<T> {
 }
 
 const SELECT_COL_ID = "__select__";
+const ACTIONS_COL_ID = "__actions__";
+
+/** Knöpfe der Zeilenaktionen; Klicks und Tasten bleiben in der Zelle (kein onRowAction). */
+function RowActions({ actions }: { actions: AnalyticalRowAction[] }) {
+  return (
+    <span className="prn-row-actions" onClick={(e) => e.stopPropagation()} onKeyDown={(e) => e.stopPropagation()}>
+      {actions.map((a) => {
+        const mitText = a.showLabel || !a.icon;
+        // verborgen: gleich breiter Platzhalter, damit die Knöpfe der Zeilen bündig bleiben
+        if (a.hidden) return <span key={a.id} className={cx("prn-row-action-slot", !mitText && "prn-row-action-icon")} aria-hidden />;
+        return (
+          <Button
+            key={a.id}
+            variant="plain"
+            size="s"
+            className={cx("prn-row-action", !mitText && "prn-row-action-icon")}
+            aria-label={mitText ? undefined : a.label}
+            isDisabled={a.disabled}
+            onPress={a.onAction}
+            data-testid={a["data-testid"]}
+          >
+            {a.icon != null && (typeof a.icon === "string" ? <Icon name={a.icon as IconName} size={16} /> : a.icon)}
+            {mitText && <span>{a.label}</span>}
+          </Button>
+        );
+      })}
+    </span>
+  );
+}
 const NAV_COL_ID = "__nav__";
 
 /* Feste Track-Breiten für die Zusatzspalten. Bewusst ohne CSS-var(…, fallback),
@@ -515,6 +571,9 @@ export function AnalyticalTable<T>(props: AnalyticalTableProps<T>) {
     onRowClick,
     onRowContextMenu,
     getRowProps,
+    rowActions,
+    rowActionsLabel = "Aktionen",
+    rowActionsWidth,
     sortable = true,
     sorting: sortingProp,
     defaultSorting,
@@ -661,9 +720,13 @@ export function AnalyticalTable<T>(props: AnalyticalTableProps<T>) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const [internalPinning, setInternalPinning] = useState<ColumnPinningState>(seededPinning);
-  const columnPinning = columnPinningProp
+  const columnPinningBasis = columnPinningProp
     ? { left: columnPinningProp.left ?? [], right: columnPinningProp.right ?? [] }
     : internalPinning;
+  /* Zeilenaktionen stehen immer rechts angeheftet. */
+  const columnPinning = rowActions
+    ? { left: columnPinningBasis.left ?? [], right: [...(columnPinningBasis.right ?? []).filter((id) => id !== ACTIONS_COL_ID), ACTIONS_COL_ID] }
+    : columnPinningBasis;
   const setColumnPinning = (next: ColumnPinningState) => {
     if (columnPinningProp === undefined) setInternalPinning(next);
     onColumnPinningChange?.({ left: next.left, right: next.right });
@@ -898,9 +961,24 @@ export function AnalyticalTable<T>(props: AnalyticalTableProps<T>) {
 
       defs.push(def);
     });
+
+    if (rowActions) {
+      const erste = data[0] ? rowActions(data[0]) : [];
+      const breite = rowActionsWidth ?? `${Math.max(1, erste.length) * 36 + 24 + erste.filter((a) => a.showLabel || !a.icon).length * 72}px`;
+      defs.push({
+        id: ACTIONS_COL_ID,
+        enableSorting: false,
+        enableColumnFilter: false,
+        enableResizing: false,
+        enableHiding: false,
+        meta: { align: "end", width: breite, isActions: true, headerLabel: rowActionsLabel } satisfies ColMeta,
+        header: () => <span className="prn-visually-hidden">{rowActionsLabel}</span>,
+        cell: ({ row }) => <RowActions actions={rowActions(row.original)} />,
+      });
+    }
     return defs;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [columns, showSelectColumn, selectionMode, sortable, filterable, enableColumnResizing, isTreeTable]);
+  }, [columns, showSelectColumn, selectionMode, sortable, filterable, enableColumnResizing, isTreeTable, rowActions, rowActionsLabel, rowActionsWidth, data.length > 0]);
 
   /* getSubRows für Tree-Tables. */
   const getSubRows = useMemo(() => {
