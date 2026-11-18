@@ -53,9 +53,12 @@ bereits formatierter String wird unverändert übernommen; currency?, locale?,
 minimum/maximumFractionDigits?, colored?, signed?, **`dimDecimals?`** — optische
 Abschwächung der Nachkommastellen), `List`/`ListRow`
 (leading/title/subtitle/trailing, onPress?),
-`Sidebar` (groups, selectedKey/onSelect) — `SidebarGroup` zusätzlich **`collapsible?`** /
+`Sidebar` (groups, selectedKey/onSelect, **`aria-label?`** — Name der Landmark, Default „Seitenleiste",
+**`data-testid?`**) — `SidebarGroup` zusätzlich **`collapsible?`** /
 **`defaultCollapsed?`** (aufklappbare Gruppe: Chevron + Tastatur via React-Aria-Button,
-`aria-expanded`; Persistenz bleibt App-Sache),
+`aria-expanded`/`aria-controls`; Persistenz bleibt App-Sache); `SidebarItem` zusätzlich **`href?`** — Eintrag als
+React-Aria-`Link` (`<a href>`, neuer Tab mit Strg/⌘, Client-Routing über `RouterProvider`), **`data-testid?`**;
+der aktive Eintrag trägt `aria-current="page"`,
 `Toolbar` (leading/title/subtitle/actions), `EmptyState` (icon, title, description, action?),
 `Notice` (tone: info|positive|critical|negative),
 **`DescriptionList`** (children, `layout?: "stacked"|"inline"`) + **`Field`** (label,

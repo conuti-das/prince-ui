@@ -1,6 +1,7 @@
-import { useState, type CSSProperties, type ReactNode } from "react";
-import { Button as RACButton } from "react-aria-components";
+import { useId, useState, type CSSProperties, type ReactNode } from "react";
+import { Button as RACButton, Link as RACLink } from "react-aria-components";
 import { cx } from "../utils";
+import { Icon } from "../icons/icons";
 import "./composites.css";
 
 /* ============================================================
@@ -402,6 +403,15 @@ export interface SidebarItem {
   icon?: ReactNode;
   /** Optionales Badge/Counter rechts. */
   trailing?: ReactNode;
+  /**
+   * Ziel als Link: der Eintrag wird ein `<a href>` (React-Aria `Link`) statt eines Knopfs –
+   * Strg-/⌘-/Mittelklick öffnen einen neuen Tab, „Link kopieren" geht. Für Client-Routing
+   * die Anwendung in React-Arias `RouterProvider` hüllen (`navigate`, optional `useHref`).
+   * `onSelect` wird zusätzlich aufgerufen.
+   */
+  href?: string;
+  /** Test-Kennung am Eintrag (`data-testid`). */
+  "data-testid"?: string;
 }
 
 export interface SidebarGroup {
@@ -428,27 +438,42 @@ function SidebarGroupView({
   const [collapsed, setCollapsed] = useState(
     collapsible ? group.defaultCollapsed === true : false,
   );
+  const itemsId = useId();
 
   const items = (
-    <div className="prn-sidebar-group-items" role={collapsible ? "group" : undefined} hidden={collapsed}>
-      {group.items.map((item) => (
-        <RACButton
-          key={item.id}
-          className="prn-sidebar-item"
-          data-active={item.id === selectedKey ? "" : undefined}
-          onPress={() => onSelect?.(item.id)}
-        >
-          {item.icon != null && (
-            <span className="prn-sidebar-item-icon" aria-hidden>
-              {item.icon}
-            </span>
-          )}
-          <span className="prn-sidebar-item-label">{item.label}</span>
-          {item.trailing != null && (
-            <span className="prn-sidebar-item-trailing">{item.trailing}</span>
-          )}
-        </RACButton>
-      ))}
+    <div id={itemsId} className="prn-sidebar-group-items" role={collapsible ? "group" : undefined} hidden={collapsed}>
+      {group.items.map((item) => {
+        const active = item.id === selectedKey;
+        const inhalt = (
+          <>
+            {item.icon != null && (
+              <span className="prn-sidebar-item-icon" aria-hidden>
+                {item.icon}
+              </span>
+            )}
+            <span className="prn-sidebar-item-label">{item.label}</span>
+            {item.trailing != null && (
+              <span className="prn-sidebar-item-trailing">{item.trailing}</span>
+            )}
+          </>
+        );
+        const gemeinsam = {
+          className: "prn-sidebar-item",
+          "data-active": active ? "" : undefined,
+          "aria-current": active ? ("page" as const) : undefined,
+          "data-testid": item["data-testid"],
+          onPress: () => onSelect?.(item.id),
+        };
+        return item.href != null ? (
+          <RACLink key={item.id} {...gemeinsam} href={item.href}>
+            {inhalt}
+          </RACLink>
+        ) : (
+          <RACButton key={item.id} {...gemeinsam}>
+            {inhalt}
+          </RACButton>
+        );
+      })}
     </div>
   );
 
@@ -459,11 +484,12 @@ function SidebarGroupView({
           <RACButton
             className="prn-sidebar-group-label prn-sidebar-group-toggle"
             aria-expanded={!collapsed}
+            aria-controls={itemsId}
             data-collapsed={collapsed ? "" : undefined}
             onPress={() => setCollapsed((c) => !c)}
           >
             <span className="prn-sidebar-group-chevron" aria-hidden>
-              ›
+              <Icon name="chevron-right" size={14} />
             </span>
             <span className="prn-sidebar-group-label-text">{group.label}</span>
           </RACButton>
@@ -486,6 +512,10 @@ export interface SidebarProps {
   footer?: ReactNode;
   /** „Liquid Glass"-Optik (transluzent + Blur). Nur über Content sinnvoll. */
   glass?: boolean;
+  /** Zugänglicher Name der Navigation (Landmark). Default „Seitenleiste". */
+  "aria-label"?: string;
+  /** Test-Kennung an der Navigation (`data-testid`). */
+  "data-testid"?: string;
   className?: string;
 }
 
@@ -496,12 +526,15 @@ export function Sidebar({
   header,
   footer,
   glass,
+  "aria-label": ariaLabel = "Seitenleiste",
+  "data-testid": testId,
   className,
 }: SidebarProps) {
   return (
     <nav
       className={cx("prn-sidebar", glass && "prn-glass prn-glass-sidebar", className)}
-      aria-label="Seitenleiste"
+      aria-label={ariaLabel}
+      data-testid={testId}
     >
       {header != null && <div className="prn-sidebar-header">{header}</div>}
       <div className="prn-sidebar-scroll">
