@@ -295,7 +295,8 @@
 .prn-filterbar-head { align-items: flex-end; flex-wrap: nowrap; }
 .prn-filterbar-pinned { flex: 1 1 auto; min-width: 0; display: flex; }
 .prn-filterbar-pinned > * { flex: 1 1 auto; min-width: 0; }
-.prn-filterbar-toggle { flex: none; gap: 6px; }
+/* Umschalter so hoch wie die Eingabefelder daneben (.prn-input: Schrift body 1.0625rem/1.47 + 2 × 7px) */
+.prn-filterbar-toggle { flex: none; gap: 6px; min-height: calc(1.0625rem * 1.47 + 14px); }
 .prn-filterbar-count {
   display: inline-grid;
   place-items: center;
