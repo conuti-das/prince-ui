@@ -102,6 +102,8 @@ Glas-Cards (Bento). Ergänzt die `--prn-bg-elevated*`-Reihe.
     `VisibleRowCountMode`, `ValueState`, `NoDataReason`.
 - `FilterBar` (children, `moreFields?`, `activeFilters`/`onRemoveFilter`/`onClearAll`,
   `actions?`) + `FilterField` (label + Control-Slot).
+- `Spinner` (size s|m|l, `label`, `showLabel`; `role=status`) und `BusyArea` (`busy`, `delay` (Default 300 ms),
+  `label`, `showLabel`, `size`) — Lade-Indikator über einem Bereich: `aria-busy`, Inhalt `inert`, Overlay mit Spinner.
 - `ObjectPage` — SAP-UI5-ObjectPage-Floorplan-Parität (Stand 2026-06-24, ~96 % Feature-Coverage),
   `forwardRef<ObjectPageHandle>`. Komposition: `ObjectPageSection` (id, titleText, hideTitleText,
   titleTextUppercase, wrapTitleText, titleTextLevel H1–H6, header) + `ObjectPageSubSection`
