@@ -216,3 +216,9 @@ Glas-Cards (Bento). Ergänzt die `--prn-bg-elevated*`-Reihe.
 | `ToastRegion` + `toastQueue` | RAC `Toast`/`ToastRegion` + `ToastQueue`; `toastQueue.add({ title, description?, variant? })`. |
 | `DropZone` | RAC `DropZone` (`onDrop`, `[data-drop-target]`). |
 | `FileTrigger` | RAC `FileTrigger` (`onSelect`, `acceptedFileTypes`, `allowsMultiple`). |
+
+## Icons
+
+`Icon` (`name: IconName`, `size?`, `title?` – mit `title` bedeutungstragend, sonst `aria-hidden`). Seit 0.16: 30 weitere Namen für Zustände, Aktionen und Bereiche
+(info, help, x-circle, ban, octagon-alert, hourglass, pause, play, redo, undo, send, message, edit, signature, user-check, headset, wrench, shield,
+lock, unlock, download, upload, unlink, compare, folder, filter, copy, external-link, calendar, activity).
