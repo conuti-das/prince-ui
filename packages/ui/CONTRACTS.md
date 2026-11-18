@@ -102,7 +102,7 @@ Glas-Cards (Bento). Ergänzt die `--prn-bg-elevated*`-Reihe.
     `VisibleRowCountMode`, `ValueState`, `NoDataReason`.
 - `FilterBar` (children, `moreFields?`, `activeFilters`/`onRemoveFilter`/`onClearAll`,
   `actions?`) + `FilterField` (label + Control-Slot).
-- `ListDetailLayout` (`list`, `detail?`, `fullscreen?`, `onClose?`, `columns?`, `labels`) — Liste mit Detail
+- `ListDetailLayout` (`list`, `detail?`, `fullscreen?`, `onClose?`, `overlaySelector?`, `columns?`, `labels`) — Liste mit Detail
   (FlexibleColumnLayout, zwei Spalten): `data-layout` list|split|detail; Telefon (≤767 px) nacheinander. Fokus beim Öffnen
   auf `[data-detail-focus]`/h1–h3, Esc schließt (nicht aus Overlays und Eingabefeldern der Liste), Fokus zurück.
   `DetailHeader` (title, subtitle, titleContent, actions, `fullscreen`/`onFullscreenChange`, `onClose`, `level`,

@@ -5,6 +5,11 @@ import userEvent from "@testing-library/user-event";
 import { useState } from "react";
 import { DetailHeader, ListDetailLayout } from "./listdetail";
 
+declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
+  namespace JSX { interface IntrinsicElements { "x-dialog": { open?: string } } }
+}
+
 function Demo({ onClose }: { onClose?: () => void }) {
   const [id, setId] = useState<string | null>(null);
   const [voll, setVoll] = useState(false);
@@ -48,6 +53,20 @@ describe("ListDetailLayout", () => {
     render(<Demo onClose={onClose} />);
     await userEvent.click(screen.getByRole("button", { name: "Fall A" }));
     await userEvent.click(screen.getByRole("textbox", { name: "Suche" }));
+    await userEvent.keyboard("{Escape}");
+    expect(onClose).not.toHaveBeenCalled();
+  });
+
+  it("Esc schließt nicht, solange ein Overlay offen ist (eigene Rolle oder overlaySelector)", async () => {
+    const onClose = vi.fn();
+    function MitOverlay({ fremd }: { fremd: boolean }) {
+      return <ListDetailLayout onClose={onClose} overlaySelector="x-dialog[open]" list={<span />}
+        detail={<>{fremd ? <x-dialog open="" /> : <div role="dialog" aria-label="Erledigen" />}<button>im Detail</button></>} />;
+    }
+    const { rerender } = render(<MitOverlay fremd={false} />);
+    screen.getByRole("button", { name: "im Detail" }).focus();
+    await userEvent.keyboard("{Escape}");
+    rerender(<MitOverlay fremd />);
     await userEvent.keyboard("{Escape}");
     expect(onClose).not.toHaveBeenCalled();
   });
