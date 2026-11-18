@@ -624,6 +624,12 @@ a.prn-sidebar-item {
   border-radius: var(--prn-radius-md);
   color: var(--prn-label);
 }
+.prn-notice-body { flex: 1 1 auto; }
+.prn-notice-actions { flex: none; display: flex; gap: 8px; align-items: center; margin: -4px 0; }
+.prn-notice-close { flex: none; display: inline-grid; place-items: center; width: 24px; height: 24px; margin: -2px -4px -2px 0; border: none; border-radius: var(--prn-radius-pill);
+  background: transparent; color: var(--prn-label-2); cursor: pointer; }
+.prn-notice-close[data-hovered] { background: var(--prn-hover); color: var(--prn-label); }
+.prn-notice-close[data-focus-visible] { outline: none; box-shadow: var(--prn-focus); }
 .prn-notice[data-tone="info"] { background: var(--prn-tint-info); }
 .prn-notice[data-tone="positive"] { background: var(--prn-tint-positive); }
 .prn-notice[data-tone="critical"] { background: var(--prn-tint-critical); }

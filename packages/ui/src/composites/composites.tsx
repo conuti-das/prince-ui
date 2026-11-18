@@ -708,6 +708,15 @@ export interface NoticeProps {
   /** Optionales Leading-Icon (überschreibt Default-Glyph). */
   icon?: ReactNode;
   children?: ReactNode;
+  /** Aktionen rechts (z. B. „Erneut laden“). */
+  actions?: ReactNode;
+  /** Schließen-Knopf; ohne Handler keiner. */
+  onClose?: () => void;
+  /** Name des Schließen-Knopfs. Default „Hinweis schließen“. */
+  closeLabel?: string;
+  /** Rolle: `alert` für Fehler, die sofort angesagt werden sollen. Default `status`. */
+  role?: "status" | "alert";
+  "data-testid"?: string;
   className?: string;
 }
 
@@ -718,9 +727,9 @@ const NOTICE_GLYPH: Record<NoticeTone, string> = {
   negative: "✕",
 };
 
-export function Notice({ tone = "info", title, icon, children, className }: NoticeProps) {
+export function Notice({ tone = "info", title, icon, children, actions, onClose, closeLabel = "Hinweis schließen", role = "status", "data-testid": testId, className }: NoticeProps) {
   return (
-    <div className={cx("prn-notice", className)} data-tone={tone} role="status">
+    <div className={cx("prn-notice", className)} data-tone={tone} role={role} data-testid={testId}>
       <span className="prn-notice-icon" aria-hidden>
         {icon ?? NOTICE_GLYPH[tone] ?? ""}
       </span>
@@ -728,6 +737,12 @@ export function Notice({ tone = "info", title, icon, children, className }: Noti
         {title != null && <div className="prn-notice-title">{title}</div>}
         {children != null && <div className="prn-notice-text">{children}</div>}
       </div>
+      {actions != null && <div className="prn-notice-actions">{actions}</div>}
+      {onClose && (
+        <RACButton className="prn-notice-close" aria-label={closeLabel} onPress={onClose}>
+          <Icon name="x" size={16} />
+        </RACButton>
+      )}
     </div>
   );
 }

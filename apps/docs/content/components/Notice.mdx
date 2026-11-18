@@ -20,6 +20,20 @@ Wähle die `tone` nach Bedeutung: **info** für neutrale Hinweise, **positive** 
   <Notice tone="negative" title="Verarbeitungsfehler">EDIFACT-Segment UNH konnte nicht validiert werden.</Notice>
 </div>`} />
 
+### Schließen und Aktionen
+
+`onClose` setzt einen Schließen-Knopf (Name über `closeLabel`), `actions` eine Aktion rechts – etwa „Erneut laden“. Für Fehler, die sofort angesagt werden sollen, `role="alert"`.
+
+<Example code={`function Beispiel() {
+  const [offen, setOffen] = React.useState(true);
+  return offen ? (
+    <Notice tone="negative" role="alert" title="Senden fehlgeschlagen" onClose={() => setOffen(false)} closeLabel="Meldung schließen"
+      actions={<Button variant="plain">Erneut senden</Button>}>
+      Die Gegenstelle hat die Datei abgewiesen (HTTP 400).
+    </Notice>
+  ) : <Button variant="tinted" onPress={() => setOffen(true)}>Meldung zeigen</Button>;
+}`} />
+
 ## Accessibility
 
 Notice ist eine rein visuelle Box ohne eigene ARIA-Live-Region — der Glyph kodiert die Tonalität nur farblich/ikonisch, daher trägt der `title` (oder der Textinhalt) die eigentliche Bedeutung in Klartext. Bei dynamisch eingeblendeten Fehlern, die sofort angesagt werden sollen, umschließe das Notice mit einem `role="alert"`-Container. Verlasse dich nicht allein auf die Farbe: Titel und Text müssen die Aussage auch ohne Farbwahrnehmung tragen.
