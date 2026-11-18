@@ -197,7 +197,7 @@
 .prn-select-chevron { color: var(--prn-label-2); }
 
 /* ---- TextArea ---- */
-.prn-textarea { display: block; resize: vertical; min-height: 0; line-height: 1.47; font-family: inherit; }
+.prn-textarea { display: block; box-sizing: border-box; resize: vertical; min-height: 0; line-height: 1.47; font-family: inherit; }
 .prn-textarea-foot { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
 .prn-textarea-count { flex: none; font: var(--prn-text-footnote); color: var(--prn-label-3); font-variant-numeric: tabular-nums; }
 .prn-textarea-count[data-full] { color: var(--prn-orange); }

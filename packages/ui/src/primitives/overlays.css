@@ -56,7 +56,8 @@
 .prn-dialog[data-tone="positive"] .prn-dialog-tone { color: var(--prn-green); }
 .prn-dialog[data-tone="critical"] .prn-dialog-tone { color: var(--prn-orange); }
 .prn-dialog[data-tone="negative"] .prn-dialog-tone { color: var(--prn-red); }
-.prn-dialog-body { display: flex; flex-direction: column; gap: 14px; min-height: 0; overflow: auto; flex: 1 1 auto; }
+/* rollt; 3px Luft rundum, damit Fokusringe der Felder nicht abgeschnitten werden */
+.prn-dialog-body { display: flex; flex-direction: column; gap: 14px; min-height: 0; overflow: auto; flex: 1 1 auto; padding: 3px; margin: -3px; }
 /* Fußzeile: klebt unten, Aktionen rechts, Status links; trennt sich über eine Linie vom rollenden Inhalt */
 .prn-dialog-mit-fuss { padding-bottom: 0; }
 .prn-dialog-footer {
