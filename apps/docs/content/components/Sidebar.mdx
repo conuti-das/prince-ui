@@ -72,9 +72,32 @@ Aufklappbare Gruppen (`collapsible`, Start zugeklappt mit `defaultCollapsed`) �
   );
 }`} />
 
+Einträge als Links (`href`): echte `<a>`-Elemente – Strg-/⌘-Klick öffnet einen neuen Tab. Für Client-Routing (React Router & Co.) die Anwendung in React-Arias `RouterProvider` hüllen; der aktive Eintrag trägt `aria-current="page"`:
+
+<Example code={`function SidebarLinks() {
+  const [pfad, setPfad] = React.useState("/transaktionen");
+  return (
+    <RouterProvider navigate={setPfad}>
+      <div style={{ height: 260, display: 'flex', border: '1px solid var(--prn-separator)', borderRadius: 14, overflow: 'hidden' }}>
+        <Sidebar
+          aria-label="Hauptmenü"
+          selectedKey={pfad}
+          groups={[{ label: 'Marktkommunikation', items: [
+            { id: '/transaktionen', label: 'Transaktionsmonitor', href: '/transaktionen', icon: <Icon name="mail" /> },
+            { id: '/fristen', label: 'Fristenmonitor', href: '/fristen', icon: <Icon name="clock" /> },
+          ]}]}
+        />
+        <div style={{ flex: 1, padding: 20, font: 'var(--prn-text-body)', color: 'var(--prn-label-2)' }}>
+          Route: <strong style={{ color: 'var(--prn-label)' }}>{pfad}</strong>
+        </div>
+      </div>
+    </RouterProvider>
+  );
+}`} />
+
 ## Accessibility
 
-Die Sidebar rendert als `<nav>` mit `aria-label="Seitenleiste"` — Screenreader können sie als Landmark anspringen. Die Einträge sind react-aria-`Button`s: per Tabulator erreichbar, mit Enter/Space auslösbar und mit sichtbarem Fokus-Ring. Der aktive Eintrag (`selectedKey`) wird visuell hervorgehoben; übergib `selectedKey` synchron zur tatsächlich angezeigten Ansicht, damit der visuelle Zustand der Realität entspricht. Icons sind `aria-hidden` — die Bedeutung trägt allein das Label, gib also jedem Item ein aussagekräftiges `label`.
+Die Sidebar rendert als `<nav>` mit `aria-label="Seitenleiste"` (über `aria-label` anpassbar, etwa „Hauptmenü“) — Screenreader können sie als Landmark anspringen. Die Einträge sind react-aria-`Button`s: per Tabulator erreichbar, mit Enter/Space auslösbar und mit sichtbarem Fokus-Ring. Der aktive Eintrag (`selectedKey`) wird visuell hervorgehoben; übergib `selectedKey` synchron zur tatsächlich angezeigten Ansicht, damit der visuelle Zustand der Realität entspricht. Icons sind `aria-hidden` — die Bedeutung trägt allein das Label, gib also jedem Item ein aussagekräftiges `label`.
 
 ## Props
 

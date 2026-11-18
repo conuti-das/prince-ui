@@ -5,6 +5,7 @@ import {
   parseDate, parseTime, parseDateTime, parseAbsolute,
   today, getLocalTimeZone,
 } from "@internationalized/date";
+import { RouterProvider } from "react-aria-components";
 import * as ui from "@conuti-das/prince-ui";
 
 // react-live wertet den Beispiel-Code zur Laufzeit aus; alle darin referenzierten
@@ -16,6 +17,8 @@ const scope = {
   CalendarDate, CalendarDateTime, Time,
   parseDate, parseTime, parseDateTime, parseAbsolute,
   today, getLocalTimeZone,
+  // Client-Routing für Link-Beispiele (Sidebar mit href)
+  RouterProvider,
   ...ui,
 };
 
