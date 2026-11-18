@@ -45,6 +45,33 @@ Gruppierte Navigation mit aktivem Zustand, Trailing-Zählern und Footer-Account:
   );
 }`} />
 
+Aufklappbare Gruppen (`collapsible`, Start zugeklappt mit `defaultCollapsed`) – der Gruppentitel ist ein Knopf mit `aria-expanded` und `aria-controls`:
+
+<Example code={`function SidebarAufklappbar() {
+  const [sel, setSel] = React.useState("monitor");
+  return (
+    <div style={{ height: 360, display: 'flex', border: '1px solid var(--prn-separator)', borderRadius: 14, overflow: 'hidden' }}>
+      <Sidebar
+        selectedKey={sel}
+        onSelect={setSel}
+        groups={[
+          { label: 'Marktkommunikation', collapsible: true, items: [
+            { id: 'monitor', label: 'Transaktionsmonitor' },
+            { id: 'fristen', label: 'Fristenmonitor' },
+          ]},
+          { label: 'Betrieb', collapsible: true, defaultCollapsed: true, items: [
+            { id: 'leitstand', label: 'Leitstand' },
+            { id: 'auftraege', label: 'Massenaufträge' },
+          ]},
+        ]}
+      />
+      <div style={{ flex: 1, padding: 20, font: 'var(--prn-text-body)', color: 'var(--prn-label-2)' }}>
+        Aktiv: <strong style={{ color: 'var(--prn-label)' }}>{sel}</strong>
+      </div>
+    </div>
+  );
+}`} />
+
 ## Accessibility
 
 Die Sidebar rendert als `<nav>` mit `aria-label="Seitenleiste"` — Screenreader können sie als Landmark anspringen. Die Einträge sind react-aria-`Button`s: per Tabulator erreichbar, mit Enter/Space auslösbar und mit sichtbarem Fokus-Ring. Der aktive Eintrag (`selectedKey`) wird visuell hervorgehoben; übergib `selectedKey` synchron zur tatsächlich angezeigten Ansicht, damit der visuelle Zustand der Realität entspricht. Icons sind `aria-hidden` — die Bedeutung trägt allein das Label, gib also jedem Item ein aussagekräftiges `label`.
