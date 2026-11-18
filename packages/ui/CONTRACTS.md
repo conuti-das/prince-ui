@@ -19,7 +19,8 @@ Verbindliche Prop-APIs. App-Sessions (Wave 3) codieren gegen diese Signaturen;
 ### Overlays (`primitives/overlays`)
 | Komponente | Wesentliche Props |
 |---|---|
-| `Modal` | `isOpen?`, `onOpenChange?`, `title?`, `isDismissable?` (Default true), `children`. Fokus-Trap/Escape/Fokus-Rückgabe via React Aria. |
+| `Modal` | `isOpen?`, `onOpenChange?`, `title?`, `subtitle?`, `isDismissable?` (Default true), `isKeyboardDismissDisabled?`, `children` (auch `({close}) =>`), **`footer?`** (Aktionen, auch `({close}) =>`), **`footerStart?`**, **`tone?`** info|positive|critical|negative, **`size?`** s|m|l, `role?`, `data-testid?`. Inhalt rollt, Titel und Fußzeile stehen. Fokus-Trap/Escape/Fokus-Rückgabe via React Aria. |
+| `ConfirmDialog` | `title`, `children`, `confirmLabel`, `cancelLabel?`, `onConfirm`, `onCancel?`, `tone?`, `destructive?`, `confirmTestId?`/`cancelTestId?`, `isOpen`/`onOpenChange`. `alertdialog`, Fokus auf Abbrechen. |
 | `DialogTrigger` | Re-Export aus RAC (deklaratives Öffnen). |
 | `Menu` | `trigger` (z. B. `<Button>`), `children` (`MenuItem`s). |
 | `MenuItem` | RAC `MenuItem` (`onAction`, `id`, …). |
