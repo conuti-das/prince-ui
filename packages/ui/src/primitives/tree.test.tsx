@@ -1,4 +1,6 @@
 import "@testing-library/jest-dom/vitest";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
@@ -48,5 +50,18 @@ describe("tree primitive", () => {
   it("applies the prn-tree class to the tree container", () => {
     render(<Hierarchy selectionMode="none" />);
     expect(screen.getByRole("treegrid")).toHaveClass("prn-tree");
+  });
+
+  it("state selectors of tree.css reach the row inside the gridcell (expanded item rotates its chevron)", () => {
+    // RAC wraps the row content in a gridcell (display: contents); a child combinator from the item to .prn-tree-row never matches.
+    const { container } = render(<Hierarchy selectionMode="single" defaultExpandedKeys={["lf"]} />);
+    const css = readFileSync(resolve(process.cwd(), "src/primitives/tree.css"), "utf8");
+    const selectors = [...css.matchAll(/^(\.prn-tree-item\[data-[a-z-]+\][^{,]*)\{/gm)].map((m) => m[1].trim());
+    expect(selectors.length).toBeGreaterThanOrEqual(5);
+    for (const s of selectors) {
+      const structure = s.replace(/\[data-[a-z-]+\]/, "");
+      expect(container.querySelector(structure), s).not.toBeNull();
+    }
+    expect(container.querySelector(".prn-tree-item[data-expanded] .prn-tree-chevron")).not.toBeNull();
   });
 });
