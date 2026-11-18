@@ -1,0 +1,32 @@
+# TextArea
+
+Mehrzeiliges Textfeld für Begründungen, Kommentare und Notizen – mit Label, Hinweis, Fehler, Zähler und auf Wunsch mitwachsender Höhe.
+
+## Verwendung
+
+`label` benennt das Feld, `description` gibt den Hinweis darunter („Mindestens 5 Zeichen, wird protokolliert“), `errorMessage` mit `isInvalid` den Fehler. `rows` setzt die Höhe; mit `maxRows` wächst das Feld mit dem Inhalt bis zu dieser Zeilenzahl und rollt danach. `maxLength` begrenzt die Länge, `showCount` zeigt den Zähler rechts unter dem Feld (Text über `countLabel`).
+
+<DoDont kind="do">Für Pflichtbegründungen `isRequired`, die Mindestlänge im Hinweis und den Zähler zeigen – die Person sieht vor dem Absenden, was fehlt.</DoDont>
+<DoDont kind="dont">Ein TextArea für einzeilige Eingaben wie Kennungen nutzen – dafür ist das TextField da.</DoDont>
+
+## Beispiele
+
+<Example code={`function Beispiel() {
+  const [text, setText] = React.useState('');
+  const zuKurz = text.length > 0 && text.trim().length < 5;
+  return (
+    <div style={{ maxWidth: 420, display: 'grid', gap: 16 }}>
+      <TextArea label="Begründung" isRequired rows={3} maxRows={8} maxLength={500} showCount value={text} onChange={setText}
+        description="Mindestens 5 Zeichen. Die Begründung steht im Protokoll." isInvalid={zuKurz} errorMessage="Bitte mindestens 5 Zeichen." />
+      <TextArea label="Kommentar" placeholder="Optional" rows={2} />
+    </div>
+  );
+}`} />
+
+## Accessibility
+
+Das Feld ist ein `textarea` mit Label, Hinweis (`aria-describedby`) und Fehlermeldung aus React Aria (`TextField`). Der Zähler ist für Screenreader ausgeblendet; die Grenze setzt `maxLength` am Feld selbst.
+
+## Props
+
+<PropsTable name="TextArea" />
