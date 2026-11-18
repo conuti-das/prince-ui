@@ -1,0 +1,56 @@
+# ListDetailLayout
+
+Liste mit Detail: links die Liste (Filter, Tabelle), daneben das Detail des gewählten Eintrags. Das Detail kann die ganze Breite einnehmen; auf dem Telefon stehen Liste und Detail nacheinander. Gegenstück zum zweispaltigen FlexibleColumnLayout aus SAP Fiori.
+
+## Verwendung
+
+`list` ist die Listenseite, `detail` der Inhalt des gewählten Eintrags – `null`, solange keiner gewählt ist. Welcher Eintrag offen ist und ob das Detail im Vollbild steht, hält die Anwendung (z. B. in der URL); das Layout zeigt nur an: `data-layout` ist `list`, `split` oder `detail`. Den Kopf der Detailspalte baut `DetailHeader` mit Titel, Aktionen, Vollbild und Schließen.
+
+Beim Öffnen geht der Fokus auf die Überschrift des Details (`[data-detail-focus]`, sonst die erste h1–h3), Esc schließt es (`onClose`) und der Fokus kehrt zum Element zurück, das ihn vorher hatte – typisch die Tabellenzeile.
+
+<DoDont kind="do">Den offenen Eintrag in der URL halten (`?fall=…`), damit Neuladen, Zurück und geteilte Links dasselbe Detail zeigen.</DoDont>
+<DoDont kind="dont">Ein Detail mit eigenem Formularfluss (Anlegen, mehrere Schritte) in die Spalte legen – dafür ist ein Modal oder eine eigene Seite richtig.</DoDont>
+
+## Beispiele
+
+<Example code={`function Beispiel() {
+  const faelle = [
+    { id: 'kf-1', grund: 'Zuordnung prüfen', malo: '50975489349' },
+    { id: 'kf-2', grund: 'Frist läuft ab', malo: '50973604359' },
+  ];
+  const [id, setId] = React.useState('kf-1');
+  const [voll, setVoll] = React.useState(false);
+  const fall = faelle.find((f) => f.id === id);
+  const zu = () => { setId(null); setVoll(false); };
+  return (
+    <div style={{ height: 320 }}>
+      <ListDetailLayout
+        fullscreen={voll}
+        onClose={zu}
+        labels={{ list: 'Klärfälle', detail: 'Klärfall' }}
+        list={
+          <List>
+            {faelle.map((f) => <ListRow key={f.id} title={f.grund} subtitle={'MaLo-ID ' + f.malo} onPress={() => setId(f.id)} />)}
+          </List>
+        }
+        detail={fall ? (
+          <>
+            <DetailHeader title={fall.grund} subtitle={'MaLo-ID ' + fall.malo} titleContent={<Badge tone="orange">Offen</Badge>}
+              actions={<Button variant="tinted">Übernehmen</Button>} fullscreen={voll} onFullscreenChange={setVoll} onClose={zu} />
+            <DescriptionList><Field label="Nachricht" value="55001 Anmeldung" /><Field label="Frist" value="in 3 Std." /></DescriptionList>
+          </>
+        ) : null}
+      />
+    </div>
+  );
+}`} />
+
+## Accessibility
+
+Liste und Detail sind benannte Bereiche (`section` mit `aria-label`, Texte über `labels`). Der Fokus folgt dem Öffnen und Schließen, Esc schließt das Detail – nicht, solange ein Dialog, Menü oder eine Auswahlliste offen ist (Overlays anderer Bibliotheken, deren Rolle im Shadow DOM liegt, nennt `overlaySelector`), und nicht aus einem Eingabefeld der Liste heraus (dort leert Esc das Feld). Die Knöpfe Vollbild und Schließen haben zugängliche Namen (`labels` am `DetailHeader`) und auf Wunsch `data-testid`.
+
+## Props
+
+<PropsTable name="ListDetailLayout" />
+
+<PropsTable name="DetailHeader" />

@@ -1,0 +1,54 @@
+/* ============================================================
+ * ListDetailLayout — Liste mit Detail (zwei Spalten, Vollbild, Telefon nacheinander)
+ * ============================================================ */
+.prn-listdetail {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+}
+.prn-listdetail[data-layout="split"] {
+  grid-template-columns: var(--prn-listdetail-list) var(--prn-listdetail-detail);
+}
+.prn-listdetail[data-layout="detail"] > .prn-listdetail-list { display: none; }
+.prn-listdetail-list,
+.prn-listdetail-detail {
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+}
+/* Detail als ruhige, angehobene Fläche neben der Liste */
+.prn-listdetail-detail {
+  background: var(--prn-bg-elevated);
+  border-radius: var(--prn-radius-card);
+  box-shadow: var(--prn-shadow);
+  padding: 16px 20px 20px;
+}
+.prn-listdetail[data-layout="detail"] > .prn-listdetail-detail { border-radius: var(--prn-radius-card); }
+
+/* Telefon: nacheinander – das offene Detail ersetzt die Liste */
+@media (max-width: 767px) {
+  .prn-listdetail[data-layout="split"] { grid-template-columns: minmax(0, 1fr); }
+  .prn-listdetail[data-layout="split"] > .prn-listdetail-list { display: none; }
+  .prn-listdetail-detail { padding: 12px 14px 16px; }
+}
+
+/* ---- DetailHeader ---- */
+.prn-detailheader { margin: 0 0 12px; }
+/* Titel und Aktionen teilen sich die Zeile; wird es eng, rücken die Aktionen unter den Titel (nie den Titel zerdrücken) */
+.prn-detailheader-row { display: flex; align-items: flex-start; flex-wrap: wrap; gap: 8px 12px; }
+.prn-detailheader-titles { flex: 1 1 14rem; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.prn-detailheader-titleline { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; min-width: 0; }
+.prn-detailheader-title {
+  margin: 0;
+  font: var(--prn-text-title);
+  color: var(--prn-label);
+  overflow-wrap: break-word;
+  outline: none;
+}
+.prn-detailheader-title:focus-visible { box-shadow: var(--prn-focus); border-radius: var(--prn-radius-xs); }
+.prn-detailheader-subtitle { font: var(--prn-text-subhead); color: var(--prn-label-2); overflow-wrap: break-word; }
+.prn-detailheader-actions { flex: 0 1 auto; display: flex; align-items: center; gap: 4px; flex-wrap: wrap; justify-content: flex-end; margin-left: auto; }
+.prn-detailheader-icon.prn-button { min-height: 32px; width: 32px; padding: 0; }
