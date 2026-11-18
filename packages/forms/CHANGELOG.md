@@ -1,5 +1,12 @@
 # prince-ui-forms
 
+## 1.0.6
+
+### Patch Changes
+
+- Republish für prince-ui 0.15.0 + prince-ui-tokens 0.5.2 (exakter Peer `@conuti-das/prince-ui` und
+  Abhängigkeit `prince-ui-tokens` nachgezogen). Keine funktionalen Änderungen am Editor.
+
 ## 1.0.4
 
 ### Patch Changes

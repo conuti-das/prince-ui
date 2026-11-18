@@ -24,4 +24,11 @@ describe("tokens.css", () => {
     for (const t of ["light", "dark", "cu-light", "cu-dark", "cu"]) expect(sels).toContain(`:root[data-theme="${t}"]`);
     expect(sels).toContain(":root:not([data-theme])");
   });
+
+  it("bringt die globalen Basis-Helfer mit, die die Komponenten voraussetzen (Fokus-Ring, Tabellenziffern, Skeleton, Keyframes, reduzierte Bewegung)", () => {
+    // .prn-tnum (Kennzahlen, Timeline, Beträge) und .prn-skeleton (AnalyticalTable beim Laden) stehen nur hier; der Block fiel in #27 mit dem C3U-Theme heraus
+    const css = readFileSync(resolve(process.cwd(), "../tokens/src/tokens.css"), "utf8").replace(/\/\*[\s\S]*?\*\//g, "");
+    for (const teil of [":where(:focus-visible) {", ".prn-tnum {", ".prn-skeleton {", "@keyframes prn-shimmer {", "@keyframes prn-spin {", "@media (prefers-reduced-motion: reduce) {"])
+      expect(css).toContain(teil);
+  });
 });
