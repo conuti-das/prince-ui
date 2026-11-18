@@ -20,6 +20,20 @@ Kennzahlen-Kachel mit Label, großem Wert und optionalem farbig getöntem Delta 
   <KpiCard label="Ø Laufzeit" value="2,4 s" delta="−0,2 s" trend="up" icon="⤓" />
 </div>`} />
 
+### Grundlage, Einheit, Zustandswort, Nebenwerte
+
+Für Lagebilder trägt die Kachel mehr als die Zahl: `subtitle` nennt die Grundlage („offen · alle Mandanten“), `unit` die Einheit, `status` das Zustandswort in der Farbe von `tone` – die Farbe steht nie allein. `sideValues` zeigt bis zu drei Nebenwerte rechts vom Wert, `children` ein Diagramm darunter. `aria-label` fasst die Kachel für Screenreader zusammen, `data-testid` sitzt an der Fläche bzw. am Knopf.
+
+<Example code={`<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 12 }}>
+  <KpiCard label="Klärfälle" value="12" subtitle="offen · alle Mandanten" status="3 überfällig" tone="negative"
+    sideValues={[{ label: 'Meine', value: '4' }, { label: 'Frei', value: '8', tone: 'critical' }]}
+    aria-label="Klärfälle: 12 offen, 3 überfällig" onPress={() => {}} />
+  <KpiCard label="Kontingent" value="78" unit="%" subtitle="Nachrichten im Monat" status="fast ausgeschöpft" tone="critical">
+    <ProgressBar aria-label="Kontingent" value={78} />
+  </KpiCard>
+  <KpiCard label="Quittungen" value="1.204" subtitle="heute" status="alle fristgerecht" tone="positive" />
+</div>`} />
+
 ## Accessibility
 
 `label`, `value` und `delta` sind echter Textinhalt und damit von Screenreadern erfassbar. Der Trend wird zusätzlich zur Färbung über einen Pfeil und das Delta-Vorzeichen vermittelt, sodass die Richtung nicht allein an der Farbe hängt. Verwende ein `icon` dekorativ — die Kennzahl muss auch ohne das Icon vollständig verständlich sein.
