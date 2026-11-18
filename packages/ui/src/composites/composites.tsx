@@ -99,7 +99,27 @@ export interface KpiCardProps {
   accent?: boolean;
   /** Optionales Leading-Icon (z. B. SVG/Emoji). */
   icon?: ReactNode;
+  /** Grundlage der Zahl unter dem Label (z. B. „offen · alle Mandanten“). */
+  subtitle?: ReactNode;
+  /** Einheit hinter dem Wert (kleiner gesetzt). */
+  unit?: ReactNode;
+  /** Zustandswort zum Wert (z. B. „überfällig“) – in der Farbe von `tone`; Farbe trägt nie allein. */
+  status?: ReactNode;
+  /** Bis zu drei Nebenwerte rechts vom Wert (Label, Wert, optional Ton). */
+  sideValues?: KpiSideValue[];
+  /** Inhalt unter dem Wert (z. B. ein Diagramm oder Anteilsbalken). Nicht interaktiv, wenn `onPress` gesetzt ist. */
+  children?: ReactNode;
+  /** Zugänglicher Name der Kachel (Default: Inhalt). */
+  "aria-label"?: string;
+  "data-testid"?: string;
   className?: string;
+}
+
+/** Nebenwert einer KpiCard. */
+export interface KpiSideValue {
+  label: ReactNode;
+  value: ReactNode;
+  tone?: KpiTone;
 }
 
 const TREND_GLYPH: Record<Trend, string> = { up: "↑", down: "↓", flat: "→" };
@@ -113,6 +133,13 @@ export function KpiCard({
   onPress,
   accent = false,
   icon,
+  subtitle,
+  unit,
+  status,
+  sideValues,
+  children,
+  "aria-label": ariaLabel,
+  "data-testid": testId,
   className,
 }: KpiCardProps) {
   const inner = (
@@ -125,9 +152,24 @@ export function KpiCard({
         )}
         <span className="prn-kpi-label">{label}</span>
       </div>
-      <div className="prn-kpi-value prn-tnum" data-tone={tone}>
-        {value}
+      {subtitle != null && <div className="prn-kpi-subtitle">{subtitle}</div>}
+      <div className="prn-kpi-main">
+        <div className="prn-kpi-value prn-tnum" data-tone={tone}>
+          {value}
+          {unit != null && <span className="prn-kpi-unit">{unit}</span>}
+        </div>
+        {sideValues && sideValues.length > 0 && (
+          <dl className="prn-kpi-side">
+            {sideValues.slice(0, 3).map((v, i) => (
+              <div key={i} className="prn-kpi-side-item">
+                <dt>{v.label}</dt>
+                <dd className="prn-tnum" data-tone={v.tone}>{v.value}</dd>
+              </div>
+            ))}
+          </dl>
+        )}
       </div>
+      {status != null && <div className="prn-kpi-status" data-tone={tone}>{status}</div>}
       {delta != null && (
         <div className="prn-kpi-delta" data-trend={trend ?? "flat"}>
           {trend != null && (
@@ -138,6 +180,7 @@ export function KpiCard({
           <span>{delta}</span>
         </div>
       )}
+      {children != null && <div className="prn-kpi-content">{children}</div>}
     </>
   );
 
@@ -147,6 +190,8 @@ export function KpiCard({
         className={cx("prn-kpi prn-kpi-pressable", className)}
         data-accent={accent ? "" : undefined}
         onPress={onPress}
+        aria-label={ariaLabel}
+        data-testid={testId}
       >
         {inner}
       </RACButton>
@@ -154,7 +199,7 @@ export function KpiCard({
   }
 
   return (
-    <section className={cx("prn-kpi", className)} data-accent={accent ? "" : undefined}>
+    <section className={cx("prn-kpi", className)} data-accent={accent ? "" : undefined} aria-label={ariaLabel} data-testid={testId}>
       {inner}
     </section>
   );
