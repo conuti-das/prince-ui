@@ -1043,3 +1043,37 @@ describe("AnalyticalTable nested accessor + minWidth (B1)", () => {
     expect(screen.getByText("Segeln")).toBeInTheDocument();
   });
 });
+
+describe("AnalyticalTable Tastatur und Zeilenattribute", () => {
+  it("Enter und Leertaste auf einer Zelle lösen onRowAction aus (wie ein Klick)", async () => {
+    const user = userEvent.setup();
+    const onRowAction = vi.fn();
+    render(<AnalyticalTable aria-label="Posten" data={DATA} columns={COLS} onRowAction={onRowAction} getRowId={(r) => r.name} />);
+    const zelle = screen.getAllByRole("gridcell")[0]!;
+    zelle.focus();
+    await user.keyboard("{Enter}");
+    expect(onRowAction).toHaveBeenLastCalledWith(DATA[0]);
+    await user.keyboard(" ");
+    expect(onRowAction).toHaveBeenCalledTimes(2);
+  });
+
+  it("Enter auf einem Knopf in der Zelle bleibt beim Knopf", async () => {
+    const user = userEvent.setup();
+    const onRowAction = vi.fn();
+    const onKnopf = vi.fn();
+    const cols: AnalyticalColumn<Row>[] = [{ id: "a", header: "Aktion", cellRender: () => <button type="button" onClick={onKnopf}>Öffnen</button> }, ...COLS];
+    render(<AnalyticalTable aria-label="Posten" data={DATA} columns={cols} onRowAction={onRowAction} getRowId={(r) => r.name} />);
+    screen.getAllByRole("button", { name: "Öffnen" })[0]!.focus();
+    await user.keyboard("{Enter}");
+    expect(onKnopf).toHaveBeenCalled();
+    expect(onRowAction).toHaveBeenCalledTimes(1); // nur der Klick des Knopfs, der zur Zeile durchschlägt – keine zweite Auslösung per Taste
+  });
+
+  it("getRowProps setzt data-Attribute an jede Datenzeile", () => {
+    render(<AnalyticalTable aria-label="Posten" data={DATA} columns={COLS} getRowId={(r) => r.name} getRowProps={(r) => ({ "data-testid": "zeile", "data-sparte": r.sparte })} />);
+    const zeilen = screen.getAllByTestId("zeile");
+    expect(zeilen).toHaveLength(3);
+    expect(zeilen[0]).toHaveAttribute("role", "row");
+    expect(zeilen[2]).toHaveAttribute("data-sparte", "Gas");
+  });
+});
