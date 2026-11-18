@@ -226,6 +226,17 @@
   display: none;
 }
 
+/* Seitenleiste am Desktop: darunter liegt nur der flache App-Hintergrund (sie ist eine Grid-Spalte, nichts rollt
+ * unter ihr durch). Das Glas behält Farbe und Transparenz, aber ohne backdrop-filter – der Blur über einer
+ * einfarbigen Fläche ändert nichts am Bild, erzeugte in Chromium aber helle Kachel-Rechtecke beim Neuzeichnen.
+ * Auf dem Telefon (Off-canvas über dem Inhalt, unten) bleibt das echte Glas. */
+@media (min-width: 768px) {
+  .prn-appshell-sidebar.prn-glass {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
 /* ============================================================
  *  Tablet / iPad (≤1024px): Untertitel aus, Items → Overflow.
  * ============================================================ */
