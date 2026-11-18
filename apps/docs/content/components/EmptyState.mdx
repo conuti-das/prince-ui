@@ -9,7 +9,7 @@ Leerzustand für Bereiche ohne Daten — mit Icon, Titel, erklärender Beschreib
 Setze EmptyState ein, wenn eine Liste, Tabelle oder Karte (noch) keinen Inhalt hat. Die `description` sollte erklären, *warum* nichts da ist und *was* der Nutzer tun kann; der `action`-Slot bietet den nächsten Schritt an (Filter zurücksetzen, Datensatz anlegen). Unterscheide „leer, weil noch nichts angelegt" von „leer, weil der Filter nichts trifft" — die Texte und Aktionen sind verschieden.
 
 <DoDont kind="do">Eine konkrete Folgeaktion anbieten (`action`), statt den Nutzer in der Sackgasse zu lassen.</DoDont>
-<DoDont kind="dont">EmptyState als Fehleranzeige missbrauchen — für fehlgeschlagene Ladevorgänge ist ein Notice/Fehlerzustand passender.</DoDont>
+<DoDont kind="dont">EmptyState für Fehler in einzelnen Feldern oder Aktionen nutzen — dafür ist ein Notice passender. Kann ein ganzer Bereich nicht laden, zeigt `illustration="error"` mit „Erneut laden“ als Aktion den Zustand an seiner Stelle.</DoDont>
 
 ## Beispiele
 
@@ -22,9 +22,20 @@ Setze EmptyState ein, wenn eine Liste, Tabelle oder Karte (noch) keinen Inhalt h
   />
 </Card>`} />
 
+### Illustrationen und Größen
+
+`illustration` setzt ein ruhiges Linienbild in den Farben des Themes statt des Icons: `no-data` (noch nichts da), `no-results` (Filter trifft nichts), `error` (Bereich konnte nicht laden), `done` (alles erledigt). `size` passt Abstände und Schrift an den Ort an: `s` in Tabellen und Spalten, `m` Standard, `l` für eine ganze Seite.
+
+<Example code={`<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 12 }}>
+  <Card padding="none"><EmptyState size="s" illustration="no-data" title="Noch keine Klärfälle" description="Neue Klärfälle erscheinen hier." /></Card>
+  <Card padding="none"><EmptyState size="s" illustration="no-results" title="Keine Treffer" description="Kein Klärfall passt zu den Filtern." action={<Button variant="tinted">Filter zurücksetzen</Button>} /></Card>
+  <Card padding="none"><EmptyState size="s" illustration="error" title="Liste konnte nicht geladen werden" description="Der Dienst antwortet nicht." action={<Button variant="tinted">Erneut laden</Button>} /></Card>
+  <Card padding="none"><EmptyState size="s" illustration="done" title="Alles erledigt" description="Keine offenen Klärfälle." /></Card>
+</div>`} />
+
 ## Accessibility
 
-EmptyState ist ein zusammengesetzter, nicht-interaktiver Inhaltsblock: `title` und `description` tragen die Botschaft in Klartext, das `icon` ist dekorativ und sollte für Screenreader nicht zusätzlich vorgelesen werden. Achte darauf, dass das im `action`-Slot platzierte Element selbst zugänglich ist — ein anklickbares „Filter zurücksetzen" gehört in einen [Button](/components/button) oder [Link](/components/link), nicht in ein rein visuelles [Badge](/components/badge), wenn es tatsächlich eine Aktion auslöst.
+EmptyState ist ein zusammengesetzter, nicht-interaktiver Inhaltsblock: `title` und `description` tragen die Botschaft in Klartext, das `icon` und die `illustration` sind dekorativ (`aria-hidden`) und werden nicht vorgelesen. Achte darauf, dass das im `action`-Slot platzierte Element selbst zugänglich ist — ein anklickbares „Filter zurücksetzen" gehört in einen [Button](/components/button) oder [Link](/components/link), nicht in ein rein visuelles [Badge](/components/badge), wenn es tatsächlich eine Aktion auslöst.
 
 ## Props
 
