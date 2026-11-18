@@ -82,4 +82,78 @@ describe("FilterBar", () => {
     await userEvent.click(screen.getByRole("button", { name: "Mehr Filter" }));
     expect(screen.getByLabelText("Typ")).toBeInTheDocument();
   });
+
+  it("gives the 'more filters' trigger its own field so it can match the control height", () => {
+    const { container } = render(
+      <FilterBar moreFields={<input aria-label="Typ" />}>
+        <FilterField label="Suche"><input aria-label="Suche" /></FilterField>
+      </FilterBar>,
+    );
+    const more = container.querySelector(".prn-filterbar-more");
+    expect(more).not.toBeNull();
+    // Label-Zeile mit geschütztem Leerzeichen: gleiche Höhe wie die Labels der Nachbarfelder
+    expect(more!.querySelector(".prn-filter-field-label")!.textContent).toBe("\u00a0");
+  });
+
+  it("uses custom labels for chips and the reset action", async () => {
+    const onRemove = vi.fn();
+    render(
+      <FilterBar
+        activeFilters={[{ id: "sparte", label: "Sparte", value: "Strom" }]}
+        onRemoveFilter={onRemove}
+        onClearAll={() => {}}
+        labels={{ removeFilter: "Sparte entfernen", activeFilters: "Gesetzte Filter", clearAll: "Filter zurücksetzen" }}
+      >
+        <span />
+      </FilterBar>,
+    );
+    expect(screen.getByRole("group", { name: "Gesetzte Filter" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Filter zurücksetzen" })).toBeInTheDocument();
+    await userEvent.click(screen.getByRole("button", { name: "Sparte entfernen" }));
+    expect(onRemove).toHaveBeenCalledWith("sparte");
+  });
+
+  describe("collapsible", () => {
+    const bar = (props: Partial<Parameters<typeof FilterBar>[0]> = {}) => (
+      <FilterBar
+        collapsible
+        pinned={<input aria-label="Suche" />}
+        moreFields={<input aria-label="Typ" />}
+        activeFilters={[{ id: "a", label: "Status", value: "Offen" }, { id: "b", value: "Strom" }]}
+        labels={{ toggle: "Filter" }}
+        {...props}
+      >
+        <FilterField label="Status"><input aria-label="Status" /></FilterField>
+      </FilterBar>
+    );
+
+    it("keeps pinned field and chips visible, hides fields until expanded", async () => {
+      render(bar());
+      expect(screen.getByLabelText("Suche")).toBeVisible();
+      expect(screen.getByText("Offen")).toBeVisible();
+      const toggle = screen.getByRole("button", { name: /Filter/ });
+      expect(toggle).toHaveAttribute("aria-expanded", "false");
+      expect(toggle).toHaveTextContent("2");
+      expect(screen.getByLabelText("Status")).not.toBeVisible();
+      await userEvent.click(toggle);
+      expect(toggle).toHaveAttribute("aria-expanded", "true");
+      expect(screen.getByLabelText("Status")).toBeVisible();
+      // moreFields stehen im Bereich, nicht im Popover
+      expect(screen.getByLabelText("Typ")).toBeVisible();
+      expect(document.getElementById(toggle.getAttribute("aria-controls")!)).toContainElement(screen.getByLabelText("Typ"));
+    });
+
+    it("supports controlled expansion", async () => {
+      const onExpandedChange = vi.fn();
+      render(bar({ expanded: false, onExpandedChange }));
+      await userEvent.click(screen.getByRole("button", { name: /Filter/ }));
+      expect(onExpandedChange).toHaveBeenCalledWith(true);
+      expect(screen.getByRole("button", { name: /Filter/ })).toHaveAttribute("aria-expanded", "false");
+    });
+
+    it("opens with defaultExpanded", () => {
+      render(bar({ defaultExpanded: true }));
+      expect(screen.getByLabelText("Status")).toBeVisible();
+    });
+  });
 });
