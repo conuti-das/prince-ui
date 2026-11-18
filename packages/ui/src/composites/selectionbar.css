@@ -1,0 +1,27 @@
+/* ============================================================
+ * SelectionBar — Sammelleiste über einer Tabelle mit Mehrfachauswahl
+ * ============================================================ */
+.prn-selectionbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  min-height: 48px;
+  padding: 6px 8px 6px 16px;
+  border-radius: var(--prn-radius-lg);
+  background: var(--prn-accent-soft);
+  color: var(--prn-label);
+}
+.prn-selectionbar-status { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 12px; min-width: 0; }
+.prn-selectionbar-count { font: var(--prn-text-callout); font-weight: 700; color: var(--prn-label); font-variant-numeric: tabular-nums; }
+.prn-selectionbar-info { font: var(--prn-text-footnote); color: var(--prn-label-2); }
+.prn-selectionbar-error { font: var(--prn-text-footnote); font-weight: 600; color: var(--prn-red); }
+.prn-selectionbar-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+.prn-selectionbar-actions .prn-button { white-space: nowrap; }
+/* Platz freihalten: eine Zeile am Desktop, zwei am Telefon */
+.prn-selectionbar-space { min-height: 48px; }
+@media (max-width: 767px) {
+  .prn-selectionbar-space { min-height: 92px; }
+  .prn-selectionbar { padding: 8px 8px 8px 12px; }
+}

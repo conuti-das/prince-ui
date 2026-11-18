@@ -130,6 +130,9 @@ Glas-Cards (Bento). Ergänzt die `--prn-bg-elevated*`-Reihe.
 - `ListReportPage` (title, `titleLevel`, `titleContent`, subtitle, breadcrumbs, actions, `header` +
   `headerCollapsible`/`headerExpanded`/`defaultHeaderExpanded`/`onHeaderExpandedChange`, `footer` (klebt, `role=toolbar`),
   `stickyTitle`, `labels`) — Seitenfloorplan für Listen und Dashboards (DynamicPage-Parität).
+- `SelectionBar` (count, `countLabel`, `info`, `error` (role=alert, blendet Aktionen aus), `actions`, `onClear`/
+  `clearLabel`/`clearTestId`, `visible`, `reserveSpace`, `aria-label`, `data-testid`) — Sammelleiste über einer Tabelle
+  mit Mehrfachauswahl; Toolbar, Zahl in `aria-live`.
 - `ObjectPage` — SAP-UI5-ObjectPage-Floorplan-Parität (Stand 2026-06-24, ~96 % Feature-Coverage),
   `forwardRef<ObjectPageHandle>`. Komposition: `ObjectPageSection` (id, titleText, hideTitleText,
   titleTextUppercase, wrapTitleText, titleTextLevel H1–H6, header) + `ObjectPageSubSection`
