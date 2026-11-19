@@ -54,7 +54,7 @@ Vollflächen-Akzent-„Hero"-Kachel mit dunkler Schrift),
 bereits formatierter String wird unverändert übernommen; currency?, locale?,
 minimum/maximumFractionDigits?, colored?, signed?, **`dimDecimals?`** — optische
 Abschwächung der Nachkommastellen), `List`/`ListRow`
-(leading/title/subtitle/trailing, onPress?),
+(leading/title/subtitle/trailing, onPress?; **`href?`** — Zeile als React-Aria-`Link` (`<a href>`, neuer Tab mit Strg/⌘/Mittelklick), **`data-testid?`/`data-*`** — am Listeneintrag (`role="listitem"`; pressbare und Link-Zeilen liegen in `.prn-row-item`), **`aria-label?`**, **`tone?: "critical"|"negative"`** — Randstrich links, **`trailingPlacement?: "end"|"below"`** — Trailing unter dem Text (schmale Breiten), **`wrap?`** — Titel und Untertitel brechen um),
 `Sidebar` (groups, selectedKey/onSelect, **`aria-label?`** — Name der Landmark, Default „Seitenleiste",
 **`data-testid?`**) — `SidebarGroup` zusätzlich **`collapsible?`** /
 **`defaultCollapsed?`** (aufklappbare Gruppe: Chevron + Tastatur via React-Aria-Button,

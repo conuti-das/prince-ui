@@ -104,6 +104,65 @@ describe("composites", () => {
     expect(onPress).toHaveBeenCalledOnce();
   });
 
+  it("ListRow as link: <a href> inside a listitem that carries testid and data-*", () => {
+    render(
+      <List label="Aufgaben">
+        <ListRow title="Änderung freigeben" subtitle="Marktpartner 9900000000002" href="#/admin/freigaben" data-testid="aufgabe" data-id="a1" tone="critical" />
+        <ListRow title="Klärfall" href="#/klaerfaelle?fall=1" data-testid="aufgabe" data-id="a2" aria-label="Klärfall, überfällig" />
+      </List>,
+    );
+    const links = screen.getAllByRole("link");
+    expect(links).toHaveLength(2);
+    expect(links[0]).toHaveAttribute("href", "#/admin/freigaben");
+    expect(links[0]).toHaveAttribute("data-tone", "critical");
+    expect(links[1]).toHaveAccessibleName("Klärfall, überfällig");
+    const items = screen.getAllByRole("listitem");
+    expect(items[0]).toHaveAttribute("data-testid", "aufgabe");
+    expect(items[0]).toHaveAttribute("data-id", "a1");
+    expect(items[0]).toContainElement(links[0] ?? null);
+    expect(items[0]?.parentElement).toHaveAttribute("role", "list");
+  });
+
+  it("pressable ListRow sits in a listitem; data-* never land on the button", async () => {
+    const onPress = vi.fn();
+    render(
+      <List>
+        <ListRow title="Eins" onPress={onPress} data-testid="zeile" />
+        <ListRow title="Zwei" onPress={onPress} />
+      </List>,
+    );
+    const knopf = screen.getByRole("button", { name: /Eins/ });
+    expect(knopf).not.toHaveAttribute("data-testid");
+    expect(knopf.closest("[role=listitem]")).toHaveAttribute("data-testid", "zeile");
+    await userEvent.click(knopf);
+    expect(onPress).toHaveBeenCalledOnce();
+  });
+
+  it("separator rule reaches wrapped rows (pressable and link rows sit in .prn-row-item)", () => {
+    const { container } = render(
+      <List>
+        <ListRow title="A" onPress={() => {}} />
+        <ListRow title="B" href="#b" />
+        <ListRow title="C" />
+      </List>,
+    );
+    const css = readFileSync(resolve(process.cwd(), "src/composites/composites.css"), "utf8");
+    const regel = css.match(/^(\.prn-list-rows > [^{]+)\{\s*border-top: 1px/m)?.[1]?.trim();
+    expect(regel).toBeTruthy();
+    expect(container.querySelectorAll(regel!)).toHaveLength(2);
+  });
+
+  it("ListRow trailingPlacement=below and wrap set data attributes for the layout", () => {
+    render(
+      <List>
+        <ListRow title="Lang" subtitle="sehr lang" trailing="Zustand" trailingPlacement="below" wrap />
+      </List>,
+    );
+    const zeile = screen.getByRole("listitem");
+    expect(zeile).toHaveAttribute("data-trailing", "below");
+    expect(zeile).toHaveAttribute("data-wrap", "");
+  });
+
   it("Sidebar renders groups and selects an item", async () => {
     const onSelect = vi.fn();
     render(

@@ -379,18 +379,33 @@ export function List({ children, label, inset = false, className }: ListProps) {
   );
 }
 
-export interface ListRowProps {
+export type ListRowDataAttributes = { [key: `data-${string}`]: string | number | boolean | undefined };
+
+export interface ListRowProps extends ListRowDataAttributes {
   /** Linkes Element (Icon/Avatar). */
   leading?: ReactNode;
   title?: ReactNode;
   subtitle?: ReactNode;
   /** Rechtes Element (Wert, Badge, Chevron). */
   trailing?: ReactNode;
-  /** Macht die Zeile pressbar (react-aria Button). */
+  /** Macht die Zeile pressbar (react-aria Button; mit `href` zusätzlich zur Navigation aufgerufen). */
   onPress?: () => void;
+  /**
+   * Ziel als Link: die Zeile wird ein `<a href>` (React-Aria `Link`) statt eines Knopfs – Strg-/⌘-/Mittelklick öffnen einen
+   * neuen Tab, „Link kopieren“ geht. Für Client-Routing die Anwendung in React-Arias `RouterProvider` hüllen.
+   */
+  href?: string;
+  /** Name der Zeile für Screenreader, wenn der sichtbare Inhalt nicht genügt (sonst ergibt er sich aus dem Inhalt). */
+  "aria-label"?: string;
   /** Aktiver/ausgewählter Zustand. */
   isActive?: boolean;
   isDisabled?: boolean;
+  /** Hervorhebung als Randstrich links (nur mit Wort im Inhalt, z. B. einem Badge – Farbe allein trägt keine Bedeutung). */
+  tone?: "critical" | "negative";
+  /** Trailing neben dem Text (Standard) oder darunter – für schmale Breiten, auf denen dem Text sonst keine Breite bleibt. */
+  trailingPlacement?: "end" | "below";
+  /** Titel und Untertitel brechen um statt mit „…“ abzuschneiden. */
+  wrap?: boolean;
   className?: string;
 }
 
@@ -400,10 +415,18 @@ export function ListRow({
   subtitle,
   trailing,
   onPress,
+  href,
+  "aria-label": ariaLabel,
   isActive,
   isDisabled,
+  tone,
+  trailingPlacement = "end",
+  wrap = false,
   className,
+  ...rest
 }: ListRowProps) {
+  const data: Record<string, unknown> = {};
+  for (const [k, v] of Object.entries(rest)) if (k.startsWith("data-")) data[k] = v;
   const inner = (
     <>
       {leading != null && <span className="prn-row-leading">{leading}</span>}
@@ -414,17 +437,20 @@ export function ListRow({
       {trailing != null && <span className="prn-row-trailing">{trailing}</span>}
     </>
   );
+  const zustand = {
+    "data-active": isActive ? "" : undefined,
+    "data-tone": tone,
+    "data-trailing": trailingPlacement === "below" ? "below" : undefined,
+    "data-wrap": wrap ? "" : undefined,
+  };
 
-  if (onPress) {
+  if (onPress || href != null) {
+    // Interaktiv: Listeneintrag (role=listitem, trägt testid und data-*) mit Knopf bzw. Link über die ganze Zeile
+    const gemeinsam = { className: cx("prn-row prn-row-pressable", className), onPress, isDisabled, "aria-label": ariaLabel, ...zustand };
     return (
-      <RACButton
-        className={cx("prn-row prn-row-pressable", className)}
-        onPress={onPress}
-        isDisabled={isDisabled}
-        data-active={isActive ? "" : undefined}
-      >
-        {inner}
-      </RACButton>
+      <div className="prn-row-item" role="listitem" {...data}>
+        {href != null ? <RACLink {...gemeinsam} href={href}>{inner}</RACLink> : <RACButton {...gemeinsam}>{inner}</RACButton>}
+      </div>
     );
   }
 
@@ -432,8 +458,10 @@ export function ListRow({
     <div
       className={cx("prn-row", className)}
       role="listitem"
-      data-active={isActive ? "" : undefined}
+      aria-label={ariaLabel}
       aria-disabled={isDisabled || undefined}
+      {...zustand}
+      {...data}
     >
       {inner}
     </div>

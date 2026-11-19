@@ -47,9 +47,48 @@ Statische, eingerückte Liste als Detail-Kachel:
   <ListRow title="Betrag" trailing={<Amount value={-129.9} currency="EUR" colored signed />} />
 </List>`} />
 
+Zeilen als Link mit Test-Kennung, Hervorhebung und schmaler Breite (Zustand unter dem Text, Text bricht um):
+
+<Example code={`<div style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) 320px", gap: 24, alignItems: "start" }}>
+  <List label="Zu entscheiden">
+    <ListRow
+      leading={<Icon name="clock" />}
+      title="Änderung freigeben"
+      subtitle="Marktpartner 9900000000002 · Freigabefrist bis 20.11., 00:03"
+      trailing={<Badge tone="orange">läuft ab in 2 h</Badge>}
+      href="#/admin/freigaben"
+      data-testid="aufgabe"
+      data-id="a1"
+      tone="critical"
+    />
+    <ListRow
+      leading={<Icon name="alert" />}
+      title="Zuordnung der Marktlokation prüfen"
+      subtitle="55001 Anmeldung · MaLo-ID 50970161789"
+      trailing={<Badge tone="red">überfällig seit 2 h</Badge>}
+      href="#/klaerfaelle?fall=1"
+      tone="negative"
+    />
+  </List>
+  <List label="Telefon">
+    <ListRow
+      leading={<Icon name="clock" />}
+      title="Änderung freigeben"
+      subtitle="Marktpartner 9900000000002 · Mandant Stadtwerke Musterstadt · Freigabefrist bis 20.11., 00:03"
+      trailing={<Badge tone="orange">läuft ab in 2 h · bis 20.11.2026, 00:03</Badge>}
+      href="#/admin/freigaben"
+      tone="critical"
+      trailingPlacement="below"
+      wrap
+    />
+  </List>
+</div>`} />
+
 ## Accessibility
 
 Pressbare `ListRow`-Zeilen nutzen React Aria und sind damit per Tastatur fokussierbar und mit Enter/Space auslösbar; der Fokus-Ring kommt aus den prince-ui-Tokens. `isDisabled` nimmt die Zeile aus dem Tab-Fluss und kennzeichnet sie als deaktiviert. Achte darauf, dass ein rein dekoratives Trailing-Chevron (`›`) keine eigene Bedeutung trägt — die Aktion liegt auf der ganzen Zeile, nicht auf dem Pfeil. Statische Zeilen ohne `onPress` bleiben reiner Text und werden nicht als interaktiv angekündigt.
+
+Mit `href` wird die Zeile ein echter Link (`<a href>`): Strg-/⌘-/Mittelklick öffnen einen neuen Tab, das Kontextmenü bietet „Link kopieren“. Pressbare und Link-Zeilen liegen in einem Listeneintrag (`role="listitem"`), der `data-testid` und alle weiteren `data-*` trägt; der Knopf bzw. Link selbst hat seinen Namen aus dem Inhalt oder aus `aria-label`. `tone` zeichnet nur einen Randstrich – das Wort dazu gehört in den Inhalt (z. B. ein Badge).
 
 ## Props
 
