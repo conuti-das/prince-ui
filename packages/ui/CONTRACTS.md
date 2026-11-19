@@ -14,8 +14,9 @@ Verbindliche Prop-APIs. App-Sessions (Wave 3) codieren gegen diese Signaturen;
 | `SearchField` | `label?`, `placeholder?`, + RAC `SearchField` (`value`, `onChange`, `onClear`, …) |
 | `Checkbox` | `children?` (Label), + RAC `Checkbox` (`isSelected`, `onChange`, `isIndeterminate`, …) |
 | `Switch` | `children?` (Label), + RAC `Switch` (`isSelected`, `onChange`, …) |
-| `Select<T>` | `label?`, `placeholder?`, `children` (Items), + RAC `Select` (`selectedKey`, `onSelectionChange`, …) |
-| `SelectItem` | RAC `ListBoxItem` (`id`, `textValue`, …) |
+| `Select<T>` | `label?`, `placeholder?`, **`description?`**, **`errorMessage?`**, `children` (Items), + RAC `Select` (`selectedKey`, `onSelectionChange`, …) |
+| `SelectItem` | RAC `ListBoxItem` (`id`, `textValue`, …), **`description?`** (Hinweis je Option, als Beschreibung vorgelesen) |
+| `DecisionDialog` | `title`, `tone?`, `notice?`, `question`, `options` (`{id,label,hint?}`), `defaultOption?`, `reasonLabel?`/`reasonRequired?`/`reasonMinLength?`/`reasonMaxLength?`, `confirmLabel`, `cancelLabel?`, `onConfirm({option,reason})` (auch Promise), `links?` (`{label,href}`, Links mit „›“), `errorMessage?`, `isPending?`, testids. Primäre erst mit Antwort; wartet auf Promise. |
 
 ### Overlays (`primitives/overlays`)
 | Komponente | Wesentliche Props |
@@ -183,7 +184,7 @@ Glas-Cards (Bento). Ergänzt die `--prn-bg-elevated*`-Reihe.
 | `GridList`/`GridListItem` | RAC `GridList`/`GridListItem` (`selectionMode`, `onAction`; Items brauchen `textValue` bei Nicht-Text-Inhalt). |
 | `TagGroup`/`Tag` | RAC `TagGroup`/`TagList`/`Tag` (`onRemove` am Group; `selectionMode`). |
 | `Breadcrumbs`/`Breadcrumb` | RAC `Breadcrumbs<T>`/`Breadcrumb` (`onAction`; letzter = `data-current`). |
-| `Link` | RAC `Link` (`href?`, `onPress`, `isDisabled`). |
+| `Link` | RAC `Link` (`href?`, `onPress`, `isDisabled`), **`arrow?`** (Sprung: „›“ dekorativ, `data-arrow`). |
 | `Disclosure`/`DisclosureGroup` | `title` + `children`; RAC `Disclosure` (`isExpanded`/`defaultExpanded`/`onExpandedChange`), Group `allowsMultipleExpanded`/`expandedKeys`. |
 | `Tree`/`TreeItem` | RAC `Tree`/`TreeItem`/`TreeItemContent` (`title`, `selectionMode`, expand via Chevron). |
 | `Table`/`TableHeader`/`TableBody`/`Column`/`Row`/`Cell` | RAC `Table`-Primitive (präsentationell; getrennt von `AnalyticalTable`). |
