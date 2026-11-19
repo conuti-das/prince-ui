@@ -389,6 +389,13 @@
         "required": false,
         "defaultValue": null,
         "description": ""
+      },
+      {
+        "name": "size",
+        "type": "enum",
+        "required": false,
+        "defaultValue": null,
+        "description": "Feldgröße (s|m|l). Ohne Angabe erbt sie vom PrinceSizeProvider (Default m)."
       }
     ]
   },
@@ -557,6 +564,55 @@
         "required": false,
         "defaultValue": null,
         "description": "Optionales Leading-Icon (z. B. SVG/Emoji)."
+      },
+      {
+        "name": "subtitle",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Grundlage der Zahl unter dem Label (z. B. „offen · alle Mandanten“)."
+      },
+      {
+        "name": "unit",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Einheit hinter dem Wert (kleiner gesetzt)."
+      },
+      {
+        "name": "status",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Zustandswort zum Wert (z. B. „überfällig“) – in der Farbe von `tone`; Farbe trägt nie allein."
+      },
+      {
+        "name": "sideValues",
+        "type": "KpiSideValue[]",
+        "required": false,
+        "defaultValue": null,
+        "description": "Bis zu drei Nebenwerte rechts vom Wert (Label, Wert, optional Ton)."
+      },
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Inhalt unter dem Wert (z. B. ein Diagramm oder Anteilsbalken). Nicht interaktiv, wenn `onPress` gesetzt ist."
+      },
+      {
+        "name": "aria-label",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Zugänglicher Name der Kachel (Default: Inhalt)."
+      },
+      {
+        "name": "data-testid",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
       },
       {
         "name": "className",
@@ -817,6 +873,20 @@
         "description": "„Liquid Glass\"-Optik (transluzent + Blur). Nur über Content sinnvoll."
       },
       {
+        "name": "aria-label",
+        "type": "string",
+        "required": false,
+        "defaultValue": "Seitenleiste",
+        "description": "Zugänglicher Name der Navigation (Landmark). Default „Seitenleiste\"."
+      },
+      {
+        "name": "data-testid",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Test-Kennung an der Navigation (`data-testid`)."
+      },
+      {
         "name": "className",
         "type": "string",
         "required": false,
@@ -879,6 +949,20 @@
         "required": false,
         "defaultValue": null,
         "description": ""
+      },
+      {
+        "name": "illustration",
+        "type": "enum",
+        "required": false,
+        "defaultValue": null,
+        "description": "Illustration statt Icon (Linienbild in den Farben des Themes)."
+      },
+      {
+        "name": "size",
+        "type": "enum",
+        "required": false,
+        "defaultValue": "m",
+        "description": "Größe: s in Tabellen und Spalten, m Standard, l für ganze Seiten. Default „m“."
       },
       {
         "name": "title",
@@ -978,6 +1062,91 @@
       },
       {
         "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "Spinner": {
+    "props": [
+      {
+        "name": "size",
+        "type": "enum",
+        "required": false,
+        "defaultValue": "m",
+        "description": ""
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": false,
+        "defaultValue": "Wird geladen",
+        "description": "Zugänglicher Text und – mit `showLabel` – sichtbare Zeile unter dem Spinner. Default „Wird geladen“."
+      },
+      {
+        "name": "showLabel",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": false,
+        "description": ""
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "BusyArea": {
+    "props": [
+      {
+        "name": "busy",
+        "type": "boolean",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Text des Spinners. Default „Wird geladen“."
+      },
+      {
+        "name": "showLabel",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "Text sichtbar unter dem Spinner."
+      },
+      {
+        "name": "delay",
+        "type": "number",
+        "required": false,
+        "defaultValue": 300,
+        "description": "Verzögerung in ms, bevor der Indikator erscheint. Default 300."
+      },
+      {
+        "name": "size",
+        "type": "enum",
+        "required": false,
+        "defaultValue": "m",
+        "description": ""
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "data-testid",
         "type": "string",
         "required": false,
         "defaultValue": null,
@@ -1146,6 +1315,122 @@
         "type": "string",
         "required": false,
         "defaultValue": "Navigation umschalten",
+        "description": ""
+      },
+      {
+        "name": "toggleTestId",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Test-Kennung am Navigations-Umschalter (`data-testid`)."
+      },
+      {
+        "name": "labels",
+        "type": "Partial<AppShellLabels>",
+        "required": false,
+        "defaultValue": null,
+        "description": "Feste Texte überschreiben (Teilmenge genügt)."
+      },
+      {
+        "name": "contentAs",
+        "type": "enum",
+        "required": false,
+        "defaultValue": "main",
+        "description": "Element des Inhaltsbereichs: `\"main\"` (Default) oder `\"div\"`, wenn die Anwendung ihr\n`<main>` selbst setzt – zwei `main`-Landmarks sind ein Fehler der Zugänglichkeit."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "SelectionBar": {
+    "props": [
+      {
+        "name": "count",
+        "type": "number",
+        "required": true,
+        "defaultValue": null,
+        "description": "Zahl der gewählten Zeilen."
+      },
+      {
+        "name": "countLabel",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Text zur Zahl. Default: „{count} ausgewählt“."
+      },
+      {
+        "name": "info",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Weitere Angaben neben der Zahl (z. B. „davon 2 nicht möglich“)."
+      },
+      {
+        "name": "error",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Fehler oder Grenze (wird mit `role=\"alert\"` angesagt); blendet die Aktionen aus."
+      },
+      {
+        "name": "actions",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Sammelaktionen (Buttons)."
+      },
+      {
+        "name": "onClear",
+        "type": "(() => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Auswahl aufheben; ohne Handler kein Knopf."
+      },
+      {
+        "name": "clearLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "Auswahl aufheben",
+        "description": "Text des Aufheben-Knopfs. Default „Auswahl aufheben“."
+      },
+      {
+        "name": "clearTestId",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "visible",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "Auch ohne Auswahl zeigen."
+      },
+      {
+        "name": "reserveSpace",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": false,
+        "description": "Platz der Leiste auch ohne Auswahl freihalten."
+      },
+      {
+        "name": "aria-label",
+        "type": "string",
+        "required": false,
+        "defaultValue": "Sammelaktionen",
+        "description": "Name der Toolbar. Default „Sammelaktionen“."
+      },
+      {
+        "name": "data-testid",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
         "description": ""
       },
       {
@@ -1394,6 +1679,87 @@
       }
     ]
   },
+  "ShareBar": {
+    "props": [
+      {
+        "name": "parts",
+        "type": "SharePart[]",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "total",
+        "type": "number",
+        "required": false,
+        "defaultValue": null,
+        "description": "Gesamtmenge; größer als die Summe → Rest als leere Spur. Default: Summe der Teile."
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "required": false,
+        "defaultValue": 8,
+        "description": "Höhe in px (4–12). Default 8."
+      },
+      {
+        "name": "neutral",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": false,
+        "description": "Alle Teile in Grautönen (in Zellen und Listen); Bedeutung nur über Wort und Zahl."
+      },
+      {
+        "name": "legend",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": true,
+        "description": "Legende mit Wort und Zahl. Default true."
+      },
+      {
+        "name": "showZero",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": false,
+        "description": "Teile mit 0 in der Legende zeigen. Default false."
+      },
+      {
+        "name": "caption",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Zeile über dem Balken, z. B. „240 von 1.200“."
+      },
+      {
+        "name": "aria-label",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Name des Bildes; die Werte hängt die Komponente an („Szenarien: bestanden 12, offen 3“)."
+      },
+      {
+        "name": "locale",
+        "type": "string",
+        "required": false,
+        "defaultValue": "de-DE",
+        "description": "Zahlformat. Default de-DE."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "data-testid",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
   "AnalyticalTable": {
     "props": [
       {
@@ -1471,7 +1837,7 @@
         "type": "((info: { row: T; event: MouseEvent<Element, MouseEvent>; }) => void)",
         "required": false,
         "defaultValue": null,
-        "description": "Klick-Event auf eine Zeile (mit Event-Objekt)."
+        "description": "Klick-Event auf eine Zeile (mit Event-Objekt, nur Maus). Für Maus **und** Tastatur `onRowAction` verwenden."
       },
       {
         "name": "onRowContextMenu",
@@ -1479,6 +1845,34 @@
         "required": false,
         "defaultValue": null,
         "description": "Rechtsklick-Kontextmenü auf eine Zeile."
+      },
+      {
+        "name": "getRowProps",
+        "type": "((row: T) => { [key: `data-${string}`]: string; })",
+        "required": false,
+        "defaultValue": null,
+        "description": "Zusätzliche `data-*`-Attribute je Datenzeile (z. B. `data-testid`, `data-status`) am\nElement mit `role=\"row\"`."
+      },
+      {
+        "name": "rowActions",
+        "type": "((row: T) => AnalyticalRowAction[])",
+        "required": false,
+        "defaultValue": null,
+        "description": "Aktionen am Ende jeder Zeile (Knöpfe in einer eigenen, rechts angehefteten Spalte). Ein Klick\nauf eine Aktion löst nie `onRowAction` aus; Enter/Leertaste auf dem Knopf nur die Aktion."
+      },
+      {
+        "name": "rowActionsLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Name der Aktionsspalte (für Screenreader, im Kopf unsichtbar). Default „Aktionen“."
+      },
+      {
+        "name": "rowActionsWidth",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Breite der Aktionsspalte. Default aus der Zahl der Aktionen der ersten Zeile."
       },
       {
         "name": "sortable",
@@ -2056,6 +2450,48 @@
         "description": "Zusätzliche Aktionen rechts (z. B. \"Anwenden\", Suche)."
       },
       {
+        "name": "collapsible",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": false,
+        "description": "Kompakte Darstellung (z. B. Telefon): die Felder (`children`, `moreFields`, `actions`) liegen in einem\naufklappbaren Bereich hinter einem Umschalter mit der Zahl der aktiven Filter; `moreFields` stehen dort\ndirekt unter den Feldern statt im Popover. Die Chips bleiben sichtbar."
+      },
+      {
+        "name": "pinned",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Immer sichtbar neben dem Umschalter, auch eingeklappt (typisch: die Suche). Nur mit `collapsible`."
+      },
+      {
+        "name": "expanded",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "Aufgeklappt (gesteuert). Nur mit `collapsible`."
+      },
+      {
+        "name": "defaultExpanded",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": false,
+        "description": "Anfangszustand (ungesteuert). Default `false`."
+      },
+      {
+        "name": "onExpandedChange",
+        "type": "((expanded: boolean) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Wechsel auf-/zugeklappt."
+      },
+      {
+        "name": "labels",
+        "type": "FilterBarLabels",
+        "required": false,
+        "defaultValue": null,
+        "description": "Feste Texte überschreiben."
+      },
+      {
         "name": "className",
         "type": "string",
         "required": false,
@@ -2419,6 +2855,122 @@
       }
     ]
   },
+  "ListReportPage": {
+    "props": [
+      {
+        "name": "title",
+        "type": "ReactNode",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "titleLevel",
+        "type": "enum",
+        "required": false,
+        "defaultValue": 1,
+        "description": "Ebene der Überschrift. Default 1."
+      },
+      {
+        "name": "titleContent",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Neben dem Titel (Zähler, Badge, Zustand)."
+      },
+      {
+        "name": "subtitle",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "breadcrumbs",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Krumen über dem Titel."
+      },
+      {
+        "name": "actions",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Aktionen rechts in der Titelzeile; brechen auf schmalen Breiten unter den Titel."
+      },
+      {
+        "name": "header",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Kopfbereich unter dem Titel (FilterBar, Kennzahlen)."
+      },
+      {
+        "name": "headerCollapsible",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": false,
+        "description": "Kopfbereich über einen Knopf ein- und ausklappbar."
+      },
+      {
+        "name": "headerExpanded",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "Kopfbereich sichtbar (gesteuert)."
+      },
+      {
+        "name": "defaultHeaderExpanded",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": true,
+        "description": "Anfangszustand (ungesteuert). Default `true`."
+      },
+      {
+        "name": "onHeaderExpandedChange",
+        "type": "((expanded: boolean) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "footer",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Fußleiste mit Aktionen (z. B. Speichern, Erledigen), klebt am unteren Rand."
+      },
+      {
+        "name": "stickyTitle",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": false,
+        "description": "Titel und Kopf kleben beim Rollen oben."
+      },
+      {
+        "name": "labels",
+        "type": "ListReportPageLabels",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "data-testid",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
   "useFilterState": {
     "props": [
       {
@@ -2448,6 +3000,256 @@
         "required": false,
         "defaultValue": null,
         "description": "Ob ein Wert als „aktiv\" zählt. Default: != default und nicht leer."
+      }
+    ]
+  },
+  "Timeline": {
+    "props": [
+      {
+        "name": "events",
+        "type": "TimelineEvent[]",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "partners",
+        "type": "TimelinePartner[]",
+        "required": false,
+        "defaultValue": null,
+        "description": "Marktpartner-Registry für `groupBy=\"partner\"` und die Partner-Kodierung."
+      },
+      {
+        "name": "groupBy",
+        "type": "enum",
+        "required": false,
+        "defaultValue": "day",
+        "description": "Gruppierung. Default `\"day\"`."
+      },
+      {
+        "name": "order",
+        "type": "enum",
+        "required": false,
+        "defaultValue": "asc",
+        "description": "Sortierrichtung nach Zeit. Default `\"asc\"` (älteste zuerst)."
+      },
+      {
+        "name": "selectedId",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Kontrolliert ausgewähltes Event (Hervorhebung)."
+      },
+      {
+        "name": "onSelectEvent",
+        "type": "((id: string) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "expandedIds",
+        "type": "string[]",
+        "required": false,
+        "defaultValue": null,
+        "description": "Kontrollierte aufgeklappte Events."
+      },
+      {
+        "name": "defaultExpandedIds",
+        "type": "string[]",
+        "required": false,
+        "defaultValue": null,
+        "description": "Initial aufgeklappte Events (unkontrolliert)."
+      },
+      {
+        "name": "onExpandedChange",
+        "type": "((ids: string[]) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "size",
+        "type": "enum",
+        "required": false,
+        "defaultValue": null,
+        "description": "Dichte (s|m|l). Ohne → Context/Default."
+      },
+      {
+        "name": "locale",
+        "type": "string",
+        "required": false,
+        "defaultValue": "de-DE",
+        "description": "BCP-47-Locale für Datums-/Zeitformatierung. Default „de-DE\"."
+      },
+      {
+        "name": "emptyLabel",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": "Keine Ereignisse",
+        "description": "Leerzustand-Titel, wenn `events` leer ist."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "ListDetailLayout": {
+    "props": [
+      {
+        "name": "list",
+        "type": "ReactNode",
+        "required": true,
+        "defaultValue": null,
+        "description": "Inhalt der Listenspalte (Seite mit Filter und Tabelle)."
+      },
+      {
+        "name": "detail",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Inhalt der Detailspalte; `null`/`undefined` = kein Detail offen."
+      },
+      {
+        "name": "fullscreen",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": false,
+        "description": "Nur das Detail zeigen (Vollbild)."
+      },
+      {
+        "name": "onClose",
+        "type": "(() => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Esc im offenen Detail. Ohne Handler schließt Esc nichts."
+      },
+      {
+        "name": "overlaySelector",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Weitere Selektoren für offene Overlays, solange Esc das Detail nicht schließen soll – etwa Dialoge einer anderen\nBibliothek, deren Rolle im Shadow DOM liegt (z. B. `\"ui5-dialog[open]\"`). Dialoge, Menüs und Listboxen mit ARIA-Rolle\nim DOM erkennt das Layout selbst."
+      },
+      {
+        "name": "columns",
+        "type": "[string, string]",
+        "required": false,
+        "defaultValue": null,
+        "description": "Breiten der beiden Spalten als CSS-Grid-Werte. Default `[\"minmax(320px, 2fr)\", \"minmax(360px, 3fr)\"]`."
+      },
+      {
+        "name": "labels",
+        "type": "ListDetailLayoutLabels",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "data-testid",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "DetailHeader": {
+    "props": [
+      {
+        "name": "title",
+        "type": "ReactNode",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "subtitle",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Zeile unter dem Titel (z. B. Kennung, Zustand)."
+      },
+      {
+        "name": "titleContent",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Neben dem Titel, z. B. Badge mit Zustand."
+      },
+      {
+        "name": "actions",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Aktionen vor Vollbild und Schließen."
+      },
+      {
+        "name": "fullscreen",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": false,
+        "description": ""
+      },
+      {
+        "name": "onFullscreenChange",
+        "type": "((fullscreen: boolean) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Ohne Handler kein Vollbild-Knopf."
+      },
+      {
+        "name": "onClose",
+        "type": "(() => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Ohne Handler kein Schließen-Knopf."
+      },
+      {
+        "name": "level",
+        "type": "enum",
+        "required": false,
+        "defaultValue": 2,
+        "description": "Ebene der Überschrift. Default 2."
+      },
+      {
+        "name": "labels",
+        "type": "DetailHeaderLabels",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "fullscreenTestId",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "closeTestId",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
       }
     ]
   },
@@ -3448,6 +4250,102 @@
         "required": false,
         "defaultValue": "Datei wählen",
         "description": "Button-Beschriftung; Standard „Datei wählen\"."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "CircleDot": {
+    "props": [
+      {
+        "name": "size",
+        "type": "number",
+        "required": false,
+        "defaultValue": 16,
+        "description": "Kantenlänge in px. Default 16."
+      },
+      {
+        "name": "tone",
+        "type": "enum",
+        "required": false,
+        "defaultValue": "current",
+        "description": "`\"current\"` erbt die Textfarbe (Default), `\"accent\"` nutzt `--prn-accent`."
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Barrierefreier Name. Ohne Angabe ist der Dot dekorativ (`aria-hidden`)."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "FineLine": {
+    "props": [
+      {
+        "name": "orientation",
+        "type": "enum",
+        "required": false,
+        "defaultValue": "horizontal",
+        "description": "Ausrichtung der Linie. Default `\"horizontal\"`."
+      },
+      {
+        "name": "node",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Zentraler Knoten (Verbinder-Muster). `true` → CircleDot in Akzentfarbe."
+      },
+      {
+        "name": "decorative",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": false,
+        "description": "Rein dekorativ (`aria-hidden`) statt semantischer Separator."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "ResonanceField": {
+    "props": [
+      {
+        "name": "variant",
+        "type": "enum",
+        "required": false,
+        "defaultValue": "resonance",
+        "description": "Hintergrund-Motiv: `\"resonance\"` (Feldlinien, Default), `\"horizon\"`\n(atmosphärische Horizont-Kante — der moderne Planet/Globe-Ersatz) oder\n`\"plain\"` (nur der Tidal-Field-Gradient)."
+      },
+      {
+        "name": "waves",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": true,
+        "description": "Resonanz-Feldlinien einblenden (nur bei `variant=\"resonance\"`). Default `true`."
+      },
+      {
+        "name": "origin",
+        "type": "{ x: string; y: string; }",
+        "required": false,
+        "defaultValue": null,
+        "description": "Ursprung der Wellen als CSS-Position. Default rechts oben (`82% / 12%`)."
       },
       {
         "name": "className",

@@ -31,7 +31,7 @@ Verbindliche Prop-APIs. App-Sessions (Wave 3) codieren gegen diese Signaturen;
 |---|---|
 | `SegmentedControl` | `selectedKeys`/`onSelectionChange` (single), `disallowEmptySelection?` (Default true). |
 | `Segment` | `id`, + RAC `ToggleButton`. |
-| `Tabs` / `TabBar` / `Tab` / `TabPanel` | RAC `Tabs`-Familie (`selectedKey`, `onSelectionChange`). |
+| `Tabs` / `TabBar` / `Tab` / `TabPanel` | RAC `Tabs`-Familie (`selectedKey`, `onSelectionChange`). `TabBar` rollt bei Überlauf waagrecht, setzt `data-overflow="start"\|"end"\|"both"` (Verlauf am verdeckten Rand) und rollt den gewählten Reiter in Sicht. |
 
 ### Theming
 - `setTheme("light" \| "dark" \| "cu-dark" \| "cu-light" \| "cu" \| null)` — setzt/entfernt `data-theme` am `<html>`. `"cu-*"` = CONUTI-CI (Cabinet Grotesk, electric blue), `"cu"` = Alias auf `"cu-dark"`.

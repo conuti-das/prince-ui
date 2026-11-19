@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 import {
   ToggleButtonGroup,
   type ToggleButtonGroupProps,
@@ -56,8 +56,51 @@ export function Tabs({ className, ...props }: TabsProps) {
   return <RACTabs {...props} className={cx("prn-tabs", className)} />;
 }
 
+/** Rand, an dem die Leiste noch Reiter verbirgt: "start", "end", "both" oder keiner. */
+function ueberlauf(el: HTMLElement): "start" | "end" | "both" | undefined {
+  const start = el.scrollLeft > 1;
+  const ende = el.scrollLeft + el.clientWidth < el.scrollWidth - 1;
+  return start && ende ? "both" : start ? "start" : ende ? "end" : undefined;
+}
+
+/** Rollt die Leiste waagrecht so, dass der gewählte Reiter ganz sichtbar ist (die Seite selbst rollt nicht). */
+function gewaehltenZeigen(el: HTMLElement) {
+  const tab = el.querySelector<HTMLElement>('[role="tab"][data-selected]');
+  if (!tab) return;
+  const r = tab.getBoundingClientRect(), l = el.getBoundingClientRect();
+  const links = r.left - l.left + el.scrollLeft, rechts = links + r.width; // Lage im Rollbereich, unabhängig vom offsetParent
+  const rand = 24; // Platz für den Randverlauf
+  if (links - rand < el.scrollLeft) el.scrollLeft = Math.max(0, links - rand);
+  else if (rechts + rand > el.scrollLeft + el.clientWidth) el.scrollLeft = rechts + rand - el.clientWidth;
+}
+
+/**
+ * Reiterleiste. Passt sie nicht in die Breite, rollt sie waagrecht; ein Verlauf am Rand zeigt, dass dort weitere Reiter
+ * liegen (`data-overflow="start|end|both"`), und der gewählte Reiter rollt beim Öffnen und bei jedem Wechsel in Sicht.
+ */
 export function TabBar({ className, ...props }: Omit<TabListProps<object>, "className"> & { className?: string }) {
-  return <TabList {...props} className={cx("prn-tablist", className)} />;
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const setzen = () => {
+      const u = ueberlauf(el);
+      if (u) el.setAttribute("data-overflow", u);
+      else el.removeAttribute("data-overflow");
+    };
+    // Leiste und jeder Reiter: Reiter werden breiter, wenn die Schrift nachlädt oder sich eine Zahl ändert
+    const ro = typeof ResizeObserver !== "undefined" ? new ResizeObserver(() => { gewaehltenZeigen(el); setzen(); }) : null;
+    const beobachten = () => { ro?.observe(el); el.querySelectorAll('[role="tab"]').forEach((t) => ro?.observe(t)); };
+    gewaehltenZeigen(el);
+    setzen();
+    beobachten();
+    el.addEventListener("scroll", setzen, { passive: true });
+    // Wechsel des gewählten Reiters (Maus, Tastatur oder von außen über selectedKey), neue Reiter
+    const mo = new MutationObserver(() => { beobachten(); gewaehltenZeigen(el); setzen(); });
+    mo.observe(el, { subtree: true, attributes: true, attributeFilter: ["data-selected"], childList: true });
+    return () => { el.removeEventListener("scroll", setzen); ro?.disconnect(); mo.disconnect(); };
+  }, []);
+  return <TabList {...props} ref={ref} className={cx("prn-tablist", className)} />;
 }
 
 export function Tab({ className, ...props }: Omit<TabProps, "className"> & { className?: string }) {
