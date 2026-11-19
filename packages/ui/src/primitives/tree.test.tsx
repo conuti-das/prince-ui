@@ -37,6 +37,32 @@ describe("tree primitive", () => {
     expect(screen.getByRole("row", { name: /Gas/ })).toBeInTheDocument();
   });
 
+  it("puts chevronTestId on the chevron and switches its label with the state", async () => {
+    render(
+      <Tree aria-label="Baum">
+        <TreeItem id="a" title="Eltern" chevronTestId="zeile-klapp">
+          <TreeItem id="b" title="Kind" />
+        </TreeItem>
+      </Tree>,
+    );
+    const pfeil = screen.getByTestId("zeile-klapp");
+    expect(pfeil).toHaveAttribute("aria-label", "Aufklappen");
+    await userEvent.click(pfeil);
+    expect(screen.getByRole("row", { name: /Kind/ })).toBeInTheDocument();
+    expect(screen.getByTestId("zeile-klapp")).toHaveAttribute("aria-label", "Zuklappen");
+  });
+
+  it("uses chevronLabel when given", () => {
+    render(
+      <Tree aria-label="Baum">
+        <TreeItem id="a" title="Eltern" chevronLabel="Instanz aufklappen">
+          <TreeItem id="b" title="Kind" />
+        </TreeItem>
+      </Tree>,
+    );
+    expect(screen.getByRole("button", { name: /^Instanz aufklappen/ })).toBeInTheDocument();
+  });
+
   it("supports multiple selection via the selection checkbox", async () => {
     const onSelectionChange = vi.fn();
     render(
