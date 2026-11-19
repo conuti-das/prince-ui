@@ -1,0 +1,84 @@
+# HeaderActions
+
+Die **Aktionsleiste im Kopf eines Objekts**: rechts im Kopf, eine Zeile, überall gleich gebaut (Regelwerk „Aktion, Hilfsaktion,
+Navigation, Ansicht“, entschieden am 19.11.2026). Unten rechts bleibt frei – es gibt keine Fußleiste mit Aktionen.
+
+## Aufbau
+
+Feste Reihenfolge von links nach rechts – unabhängig von der Reihenfolge, in der die Aktionen übergeben werden:
+
+1. **Rücknahme** (`kind: "withdraw"`) – rot getönt, ganz links.
+2. **Sekundär** (`kind: "secondary"`) – getönt in der Leitfarbe.
+3. **Primär** (`kind: "primary"`) – gefüllt in der Leitfarbe; **höchstens eine** (eine zweite wird sekundär gezeigt und gemeldet).
+4. Trenner.
+5. **Hilfsaktionen** (`helpers`) – neutrale Icon-Knöpfe (Aktualisieren), Name und Tooltip Pflicht.
+6. **Menü „⋯“** – immer als Letztes, mit festem Aufbau: *Weitere Aktionen* (dieselbe Farbcodierung) · *Ansicht und Export* · *Hilfe*.
+
+**Überlauf:** Was nicht in die Breite passt, wandert ins Menü – zuerst die Rücknahmen, dann die sekundären Aktionen (je von links),
+dann die Hilfsaktionen. Die primäre Aktion bleibt immer sichtbar. Die Leiste füllt die Breite, die ihr der Kopf gibt, und misst darin
+(auch beim Ändern der Fenstergröße).
+
+**Deaktiviert:** Recht vorhanden, Voraussetzung fehlt → Knopf sichtbar und deaktiviert, `disabledReason` steht dabei. Ohne Recht
+die Aktion gar nicht übergeben.
+
+<DoDont kind="do">Eine Leiste je Objekt, rechts im Kopf; Freigeben gefüllt, Ablehnen rot getönt links davon.</DoDont>
+<DoDont kind="dont">Ansichtssteuerung (Zoom, Filter, Diagramm/Tabelle) in die Aktionsleiste legen – sie gehört an die Ansicht.</DoDont>
+
+## Beispiele
+
+<Example code={`<div style={{ display: 'flex', width: '100%' }}>
+  <HeaderActions
+    actions={[
+      { id: 'frei', label: 'Freigeben', kind: 'primary', icon: 'send', onAction: () => {} },
+      { id: 'komm', label: 'Kommentieren', kind: 'secondary', onAction: () => {} },
+      { id: 'abl', label: 'Ablehnen', kind: 'withdraw', onAction: () => {} },
+    ]}
+    helpers={[{ id: 'akt', label: 'Aktualisieren', icon: 'redo', onAction: () => {} }]}
+    menu={[
+      { id: 'export', label: 'Exportieren', section: 'view', icon: 'download', onAction: () => {} },
+      { id: 'hilfe', label: 'Hilfe zu Freigaben', section: 'help', icon: 'help', onAction: () => {} },
+    ]}
+  />
+</div>`} />
+
+Schmal (Überlauf ins Menü, die primäre bleibt):
+
+<Example code={`<div style={{ display: 'flex', width: 260, border: '1px dashed var(--prn-separator)' }}>
+  <HeaderActions
+    actions={[
+      { id: 'frei', label: 'Freigeben', kind: 'primary', onAction: () => {} },
+      { id: 'komm', label: 'Kommentieren', kind: 'secondary', onAction: () => {} },
+      { id: 'abl', label: 'Ablehnen', kind: 'withdraw', onAction: () => {} },
+    ]}
+    helpers={[{ id: 'akt', label: 'Aktualisieren', icon: 'redo', onAction: () => {} }]}
+  />
+</div>`} />
+
+Variante „alle Aktionen im Menü“ (`layout="menu"`, Entwurf zur Entscheidung):
+
+<Example code={`<div style={{ display: 'flex', width: '100%' }}>
+  <HeaderActions layout="menu"
+    actions={[
+      { id: 'frei', label: 'Freigeben', kind: 'primary', onAction: () => {} },
+      { id: 'abl', label: 'Ablehnen', kind: 'withdraw', onAction: () => {} },
+    ]}
+    helpers={[{ id: 'akt', label: 'Aktualisieren', icon: 'redo', onAction: () => {} }]}
+  />
+</div>`} />
+
+Deaktiviert mit Grund:
+
+<Example code={`<div style={{ display: 'flex', width: '100%' }}>
+  <HeaderActions actions={[{ id: 'frei', label: 'Freigeben', kind: 'primary', isDisabled: true,
+    disabledReason: 'Vier-Augen: Sie haben die Änderung selbst eingereicht', onAction: () => {} }]} />
+</div>`} />
+
+## Accessibility
+
+Die Leiste ist eine benannte Gruppe (`aria-label`, Default „Aktionen“). Knöpfe und Menü basieren auf React Aria (Tastatur, Fokus,
+Rollen `menu`/`menuitem`); die Abschnitte des Menüs sind benannte Gruppen. Hilfsaktionen haben Pflicht-Namen. Eingeklappte
+Einträge sind im Menü erreichbar, nie nur ausgeblendet.
+
+## Props
+
+<PropsTable name="HeaderActions" />

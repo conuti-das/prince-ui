@@ -23,8 +23,10 @@ Verbindliche Prop-APIs. App-Sessions (Wave 3) codieren gegen diese Signaturen;
 | `Modal` | `isOpen?`, `onOpenChange?`, `title?`, `subtitle?`, `isDismissable?` (Default true), `isKeyboardDismissDisabled?`, `children` (auch `({close}) =>`), **`footer?`** (Aktionen, auch `({close}) =>`), **`footerStart?`**, **`tone?`** info|positive|critical|negative, **`size?`** s|m|l, `role?`, `data-testid?`. Inhalt rollt, Titel und Fußzeile stehen. Fokus-Trap/Escape/Fokus-Rückgabe via React Aria. |
 | `ConfirmDialog` | `title`, `children`, `confirmLabel`, `cancelLabel?`, `onConfirm`, `onCancel?`, `tone?`, `destructive?`, `confirmTestId?`/`cancelTestId?`, `isOpen`/`onOpenChange`. `alertdialog`, Fokus auf Abbrechen. |
 | `DialogTrigger` | Re-Export aus RAC (deklaratives Öffnen). |
-| `Menu` | `trigger` (z. B. `<Button>`), `children` (`MenuItem`s). |
-| `MenuItem` | RAC `MenuItem` (`onAction`, `id`, …). |
+| `Menu` | `trigger` (z. B. `<Button>`), `children` (`MenuItem`s, `MenuSection`, `MenuSeparator`). |
+| `MenuSection` / `MenuSeparator` | `title?` – benannte Gruppe im Menü; Trennlinie zwischen Abschnitten. |
+| `MenuItem` | RAC `MenuItem` (`onAction`, `id`, …), **`tone?`** `action` \| `danger` (Farbcodierung wie die Knöpfe, `data-tone`), **`icon?`**. |
+| `HeaderActions` | Aktionsleiste im Kopf: `actions?` (`{id,label,kind: withdraw\|secondary\|primary,onAction,icon?,isDisabled?,disabledReason?}`), `helpers?` (Icon-Knöpfe), `menu?` (`{id,label,section: actions\|view\|help,kind?,icon?,onAction}`), `layout?` `row` \| `menu`, `menuLabel?`, `sectionLabels?`. Feste Reihenfolge, höchstens eine primäre, Überlauf ins Menü (Rücknahme → sekundär → Hilfsaktionen; primäre bleibt). |
 | `Popover` | RAC `Popover` (`placement`, …). |
 | `Tooltip` | `trigger`, `children`, `delay?` (Default 600). |
 
