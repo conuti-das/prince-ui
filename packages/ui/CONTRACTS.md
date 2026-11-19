@@ -182,7 +182,7 @@ Glas-Cards (Bento). Ergänzt die `--prn-bg-elevated*`-Reihe.
 | `Breadcrumbs`/`Breadcrumb` | RAC `Breadcrumbs<T>`/`Breadcrumb` (`onAction`; letzter = `data-current`). |
 | `Link` | RAC `Link` (`href?`, `onPress`, `isDisabled`). |
 | `Disclosure`/`DisclosureGroup` | `title` + `children`; RAC `Disclosure` (`isExpanded`/`defaultExpanded`/`onExpandedChange`), Group `allowsMultipleExpanded`/`expandedKeys`. |
-| `Tree`/`TreeItem` | RAC `Tree`/`TreeItem`/`TreeItemContent` (`title`, `selectionMode`, expand via Chevron). |
+| `Tree`/`TreeItem` | RAC `Tree`/`TreeItem`/`TreeItemContent` (`title`, `selectionMode`, expand via Chevron; `chevronTestId`, `chevronLabel` am Pfeil). |
 | `Table`/`TableHeader`/`TableBody`/`Column`/`Row`/`Cell` | RAC `Table`-Primitive (präsentationell; getrennt von `AnalyticalTable`). |
 
 ## W3 — Date & Time (React Aria + @internationalized/date)
