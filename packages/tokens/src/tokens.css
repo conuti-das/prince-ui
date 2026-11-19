@@ -129,9 +129,9 @@
   --prn-on-accent: #ffffff;
   /* ---- Rollen (Regelwerk „Aktion, Hilfsaktion, Navigation, Ansicht“) ----
    * Aktion (Knöpfe, die am Server etwas auslösen) und Link sind getrennte Token, damit die Leitfarbe der
-   * Aktion umgestellt werden kann, ohne Links mitzuziehen. Heute zeigen beide auf den Akzent (keine sichtbare
-   * Änderung); eine Umstellung setzt nur --prn-action* im Theme. --prn-action-text: Text auf getönt/schlicht,
-   * je Theme mit Kontrast ≥ 4,5:1. Rücknahme (ablehnen, stoppen, zurückziehen) = --prn-danger*. */
+   * Aktion umgestellt werden kann, ohne Links mitzuziehen. Grundwert: der Akzent; die CU-Themes setzen die Leitfarbe
+   * Deep Azure (Entscheidung 19.11.2026), Links und Ansichtssteuerung bleiben beim Akzent. --prn-action-text: Text auf
+   * getönt/schlicht, je Theme mit Kontrast ≥ 4,5:1. Rücknahme (ablehnen, stoppen, zurückziehen) = --prn-danger*. */
   --prn-action: var(--prn-accent);
   --prn-action-hover: var(--prn-accent-hover);
   --prn-action-pressed: var(--prn-accent-pressed);
@@ -492,7 +492,14 @@
   --prn-accent-pressed: #2b7fd6;
   --prn-accent-soft: rgba(79, 158, 232, 0.18);
   --prn-on-accent: #ffffff;
-  --prn-action-text: #7cb5f7;
+  /* Leitfarbe der Aktion (Entscheidung 19.11.2026): Deep Azure, im Dunklen aufgehellt auf gleichen Rang –
+   * Weiß darauf 4,64:1, Fläche gegen #1e1e1e 3,59:1 und gegen #000 4,53:1. Links und Akzent bleiben Blau. */
+  --prn-action: #4c69eb;
+  --prn-action-hover: #4361ea;
+  --prn-action-pressed: #3f5de6;
+  --prn-action-soft: rgba(76, 105, 235, 0.24);
+  --prn-on-action: #ffffff;
+  --prn-action-text: #a9b8fa;
   --prn-danger-text: #f29486;
   --prn-danger-soft: rgba(226, 96, 79, 0.2);
   --prn-danger-fill: #c4473a;
@@ -577,7 +584,13 @@
   --prn-accent-pressed: #1a57c2;
   --prn-accent-soft: rgba(43, 127, 214, 0.14);
   --prn-on-accent: #ffffff;
-  --prn-action-text: #1a57c2;
+  /* Leitfarbe der Aktion (Entscheidung 19.11.2026): Deep Azure #061D95 – Weiß darauf 12,98:1. Links und Akzent bleiben Blau. */
+  --prn-action: #061d95;
+  --prn-action-hover: #0a27b8;
+  --prn-action-pressed: #04146b;
+  --prn-action-soft: rgba(6, 29, 149, 0.08);
+  --prn-on-action: #ffffff;
+  --prn-action-text: #061d95;
   --prn-danger-text: #b0372a;
   --prn-danger-soft: rgba(209, 68, 53, 0.12);
   --prn-danger-fill: #c0392b;

@@ -53,17 +53,30 @@ const THEMES: [string, string][] = [
 ];
 
 describe("Token des Regelwerks", () => {
-  it("Aktion und Link sind eigene Token; heute zeigen beide auf den Akzent (keine sichtbare Änderung, Leitfarbe umschaltbar)", () => {
+  it("Aktion und Link sind eigene Token: Grundwert Akzent; CU-Themes mit Leitfarbe Deep Azure, Links bleiben beim Akzent", () => {
     const basis = theme(":root");
     expect(basis["--prn-action"]).toBe("var(--prn-accent)");
-    expect(basis["--prn-action-soft"]).toBe("var(--prn-accent-soft)");
     expect(basis["--prn-link"]).toBe("var(--prn-accent-strong)");
-    // kein Theme stellt die Leitfarbe um (Entscheidung des Auftraggebers offen)
-    for (const [, sel] of THEMES.slice(1)) {
-      const eigen = bloecke().filter(([s]) => s.includes(sel)).map(([, w]) => w);
-      for (const w of eigen) expect(w["--prn-action"], sel).toBeUndefined();
+    expect(theme(':root[data-theme="cu-light"]')["--prn-action"]).toBe("#061d95");
+    expect(theme(':root[data-theme="cu-dark"]')["--prn-action"]).toBe("#4c69eb");
+    for (const sel of [':root[data-theme="cu-light"]', ':root[data-theme="cu-dark"]']) {
+      const v = theme(sel);
+      expect(v["--prn-link"], sel).toBe("var(--prn-accent-strong)");
+      expect(farbe(v, "--prn-link"), sel).not.toEqual(farbe(v, "--prn-action"));
     }
+    // die übrigen Themes stellen die Leitfarbe nicht um
+    for (const [, sel] of THEMES.slice(1, 4)) for (const [, w] of bloecke().filter(([s]) => s.includes(sel))) expect(w["--prn-action"], sel).toBeUndefined();
   });
+
+  for (const sel of [':root[data-theme="cu-light"]', ':root[data-theme="cu-dark"]']) {
+    it(`${sel}: gefüllte Aktion – Text darauf ≥ 4,5:1, Fläche gegen den Grund ≥ 3:1 (auch Hover und Gedrückt)`, () => {
+      const v = theme(sel);
+      for (const f of ["--prn-action", "--prn-action-hover", "--prn-action-pressed"]) {
+        expect(kontrast(farbe(v, "--prn-on-action"), farbe(v, f)), f).toBeGreaterThanOrEqual(4.5);
+        for (const grund of ["--prn-bg-elevated", "--prn-bg"]) expect(kontrast(farbe(v, f), farbe(v, grund)), `${f} auf ${grund}`).toBeGreaterThanOrEqual(3);
+      }
+    });
+  }
 
   for (const [name, sel] of THEMES) {
     it(`${name}: Text auf getönt, schlicht und Rot ist lesbar (≥ 4,5:1)`, () => {
