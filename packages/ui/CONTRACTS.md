@@ -160,6 +160,7 @@ Glas-Cards (Bento). Ergänzt die `--prn-bg-elevated*`-Reihe.
 
 | Komponente | Wesentliche Props |
 |---|---|
+| `TextArea` | `label?`, `description?`, `errorMessage?`, `placeholder?`, `rows?` (Default 3), `maxRows?` (wächst mit dem Inhalt), `maxLength?` + `showCount?` + `countLabel?`, `size?`, + RAC `TextField` (`value`, `onChange`, `isRequired`, `isInvalid`, …). |
 | `RadioGroup` | `label?`, `description?`, `errorMessage?`, `children` (`Radio`s), + RAC `RadioGroup` (`value`, `onChange`, `orientation`, `isInvalid`, `isDisabled`). |
 | `Radio` | `children?` (Label), + RAC `Radio` (`value`, …). |
 | `CheckboxGroup` | `label?`, `description?`, `errorMessage?`, `children` (`Checkbox`s), + RAC `CheckboxGroup` (`value`, `onChange`, …). |
