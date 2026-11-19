@@ -151,7 +151,7 @@ export function ConfirmDialog({ title, children, confirmLabel, cancelLabel = "Ab
       footer={({ close }) => (
         <>
           <Button variant="plain" autoFocus onPress={() => { onCancel?.(); close(); }} data-testid={cancelTestId}>{cancelLabel}</Button>
-          <Button variant="filled" className={destructive ? "prn-button-destructive" : undefined} onPress={() => { onConfirm(); close(); }} data-testid={confirmTestId}>{confirmLabel}</Button>
+          <Button variant="filled" destructive={destructive} className={destructive ? "prn-button-destructive" : undefined} onPress={() => { onConfirm(); close(); }} data-testid={confirmTestId}>{confirmLabel}</Button>
         </>
       )}>
       {children}

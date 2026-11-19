@@ -40,14 +40,14 @@
 
 /* ---- Link ---- */
 .prn-link {
-  color: var(--prn-accent-strong);
+  color: var(--prn-link);
   text-decoration: none;
   cursor: pointer;
   border-radius: var(--prn-radius-sm);
   transition: color var(--prn-dur-fast) var(--prn-ease-standard);
 }
 .prn-link[data-hovered] { text-decoration: underline; }
-.prn-link[data-pressed] { color: var(--prn-accent); }
+.prn-link[data-pressed] { color: var(--prn-link-pressed); }
 .prn-link[data-focus-visible] {
   outline: none;
   box-shadow: var(--prn-focus);

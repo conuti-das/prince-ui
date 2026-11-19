@@ -127,6 +127,23 @@
   --prn-accent-pressed: #28b14a;
   --prn-accent-soft: rgba(48, 209, 88, 0.18);
   --prn-on-accent: #ffffff;
+  /* ---- Rollen (Regelwerk „Aktion, Hilfsaktion, Navigation, Ansicht“) ----
+   * Aktion (Knöpfe, die am Server etwas auslösen) und Link sind getrennte Token, damit die Leitfarbe der
+   * Aktion umgestellt werden kann, ohne Links mitzuziehen. Heute zeigen beide auf den Akzent (keine sichtbare
+   * Änderung); eine Umstellung setzt nur --prn-action* im Theme. --prn-action-text: Text auf getönt/schlicht,
+   * je Theme mit Kontrast ≥ 4,5:1. Rücknahme (ablehnen, stoppen, zurückziehen) = --prn-danger*. */
+  --prn-action: var(--prn-accent);
+  --prn-action-hover: var(--prn-accent-hover);
+  --prn-action-pressed: var(--prn-accent-pressed);
+  --prn-action-soft: var(--prn-accent-soft);
+  --prn-on-action: var(--prn-on-accent);
+  --prn-link: var(--prn-accent-strong);
+  --prn-link-pressed: var(--prn-accent);
+  --prn-on-danger: #ffffff;
+  --prn-action-text: #30d158;
+  --prn-danger-text: #ff8a82;
+  --prn-danger-soft: rgba(255, 69, 58, 0.2);
+  --prn-danger-fill: #d93a2f;
 
   /* ---- Semantik (System-Farben, Dunkel) ---- */
   --prn-green: #30d158;
@@ -214,6 +231,10 @@
     --prn-accent-pressed: #248a3d;
     --prn-accent-soft: rgba(52, 199, 89, 0.16);
     --prn-on-accent: #ffffff;
+    --prn-action-text: #17692d;
+    --prn-danger-text: #b3241b;
+    --prn-danger-soft: rgba(255, 59, 48, 0.12);
+    --prn-danger-fill: #d70015;
 
     --prn-green: #34c759;
     --prn-red: #ff3b30;
@@ -289,6 +310,10 @@
   --prn-accent-pressed: #248a3d;
   --prn-accent-soft: rgba(52, 199, 89, 0.16);
   --prn-on-accent: #ffffff;
+  --prn-action-text: #17692d;
+  --prn-danger-text: #b3241b;
+  --prn-danger-soft: rgba(255, 59, 48, 0.12);
+  --prn-danger-fill: #d70015;
 
   --prn-green: #34c759;
   --prn-red: #ff3b30;
@@ -362,6 +387,10 @@
   --prn-accent-pressed: #28b14a;
   --prn-accent-soft: rgba(48, 209, 88, 0.18);
   --prn-on-accent: #ffffff;
+  --prn-action-text: #30d158;
+  --prn-danger-text: #ff8a82;
+  --prn-danger-soft: rgba(255, 69, 58, 0.2);
+  --prn-danger-fill: #d93a2f;
 
   --prn-green: #30d158;
   --prn-red: #ff453a;
@@ -463,6 +492,10 @@
   --prn-accent-pressed: #2b7fd6;
   --prn-accent-soft: rgba(79, 158, 232, 0.18);
   --prn-on-accent: #ffffff;
+  --prn-action-text: #7cb5f7;
+  --prn-danger-text: #f29486;
+  --prn-danger-soft: rgba(226, 96, 79, 0.2);
+  --prn-danger-fill: #c4473a;
 
   --prn-green: #4fb477;
   --prn-red: #e2604f;
@@ -544,6 +577,10 @@
   --prn-accent-pressed: #1a57c2;
   --prn-accent-soft: rgba(43, 127, 214, 0.14);
   --prn-on-accent: #ffffff;
+  --prn-action-text: #1a57c2;
+  --prn-danger-text: #b0372a;
+  --prn-danger-soft: rgba(209, 68, 53, 0.12);
+  --prn-danger-fill: #c0392b;
 
   --prn-green: #2e9e5b;
   --prn-red: #d14435;

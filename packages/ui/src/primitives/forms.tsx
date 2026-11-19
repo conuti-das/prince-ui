@@ -31,14 +31,19 @@ import "./forms.css";
 export interface ButtonProps extends Omit<RACButtonProps, "className"> {
   /** Prince-Varianten: gefüllt (Akzent), getönt (soft) oder schlicht. */
   variant?: "filled" | "tinted" | "plain";
+  /**
+   * Rolle „Rücknahme“ (ablehnen, stoppen, zurückziehen, verwerfen): rot statt Leitfarbe. Auf der Seite `tinted`;
+   * `filled` nur als Bestätigung im Dialog (`ConfirmDialog destructive`). Deaktiviert bleibt der Knopf neutral.
+   */
+  destructive?: boolean;
   /** Größe: s (kompakt) | m (Default) | l. Ohne Angabe greift der PrinceSizeProvider-Context. */
   size?: FieldSize;
   className?: string;
 }
 
-export function Button({ variant = "filled", size, className, ...props }: ButtonProps) {
+export function Button({ variant = "filled", destructive, size, className, ...props }: ButtonProps) {
   const resolvedSize = useFieldSize(size);
-  return <RACButton {...props} data-variant={variant} data-size={resolvedSize} className={cx("prn-button", className)} />;
+  return <RACButton {...props} data-variant={variant} data-destructive={destructive || undefined} data-size={resolvedSize} className={cx("prn-button", className)} />;
 }
 
 /* ---------------- TextField ---------------- */

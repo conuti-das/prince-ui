@@ -8,7 +8,8 @@ Verbindliche Prop-APIs. App-Sessions (Wave 3) codieren gegen diese Signaturen;
 ### Forms (`primitives/forms`)
 | Komponente | Wesentliche Props |
 |---|---|
-| `Button` | `variant?: "filled" \| "tinted" \| "plain"` (Default `filled`), + alle React-Aria `Button`-Props (`onPress`, `isDisabled`, …) |
+| `Button` | `variant?: "filled" \| "tinted" \| "plain"` (Default `filled`), **`destructive?`** (Rolle „Rücknahme“: rot getönt, gefüllt rot nur im Bestätigungsdialog; `data-destructive`), + alle React-Aria `Button`-Props (`onPress`, `isDisabled`, …). Farben über `--prn-action*`/`--prn-danger*`; deaktiviert neutral grau in jeder Variante. |
+| `IconButton` | `icon`, **`label`** (Pflicht: `aria-label` und Tooltip), `tooltip?` (Text oder `false`), `size?`, + RAC `Button`-Props. Grau (`.prn-iconbutton`), nie Leitfarbe; Trefferfläche ≥ 44 px bei Touch/< 600 px. |
 | `TextField` | `label?`, `description?`, `errorMessage?`, `placeholder?`, + RAC `TextField` (`value`, `onChange`, `isInvalid`, …) |
 | `SearchField` | `label?`, `placeholder?`, + RAC `SearchField` (`value`, `onChange`, `onClear`, …) |
 | `Checkbox` | `children?` (Label), + RAC `Checkbox` (`isSelected`, `onChange`, `isIndeterminate`, …) |

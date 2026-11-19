@@ -73,7 +73,7 @@
 }
 .prn-dialog-footer-start { font: var(--prn-text-footnote); color: var(--prn-label-2); min-width: 0; }
 .prn-dialog-footer-actions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; margin-left: auto; }
-.prn-button-destructive.prn-button { background: var(--prn-red); color: var(--prn-on-accent); }
+.prn-button-destructive.prn-button { background: var(--prn-danger-fill); color: var(--prn-on-danger); }
 @media (max-width: 599px) {
   .prn-modal-overlay { padding: 12px; align-items: end; }
   .prn-dialog { padding: 18px; }

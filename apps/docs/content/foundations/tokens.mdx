@@ -28,6 +28,21 @@ Die Tokens gliedern sich in zwei Klassen:
   (`--prn-label*`), Linien (`--prn-separator`, `--prn-border`), Akzent (`--prn-accent*`),
   Semantikfarben und die Chart-Palette (`--prn-chart-1` … `--prn-chart-8`).
 
+### Rollen-Token: Aktion, Link, Rücknahme
+
+Knöpfe und Links lesen nicht den Akzent direkt, sondern eigene Rollen-Token. So lässt sich die **Leitfarbe der Aktion**
+umstellen, ohne Links mitzuziehen (und umgekehrt):
+
+- `--prn-action`, `--prn-action-hover`, `--prn-action-pressed`, `--prn-action-soft`, `--prn-on-action` – Knopf gefüllt und
+  getönt; zeigen heute auf `--prn-accent*`.
+- `--prn-action-text` – Text auf getönt und schlicht, je Theme mit mindestens 4,5:1.
+- `--prn-link`, `--prn-link-pressed` – Links; zeigen heute auf `--prn-accent-strong` und `--prn-accent`.
+- `--prn-danger-text`, `--prn-danger-soft`, `--prn-danger-fill`, `--prn-on-danger` – Rolle „Rücknahme“ (rot getönt; gefüllt
+  nur im Bestätigungsdialog).
+
+Eine Umstellung der Leitfarbe setzt nur `--prn-action*` (und `--prn-action-text`) im Theme. Wer `--prn-accent` nur in einem
+Teilbaum überschreibt, muss dort auch die Rollen-Token setzen – sie werden an `:root` aufgelöst.
+
 ## Radien
 
 Die Radius-Skala reicht vom feinen `--prn-radius-xs` (6px) bis zur Pille
