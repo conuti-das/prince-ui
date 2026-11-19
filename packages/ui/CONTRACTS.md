@@ -63,7 +63,7 @@ React-Aria-`Link` (`<a href>`, neuer Tab mit Strg/⌘, Client-Routing über `Rou
 der aktive Eintrag trägt `aria-current="page"`,
 `Toolbar` (leading/title/subtitle/actions), `EmptyState` (icon, title, description, action?, **`illustration?`** no-data|no-results|error|done,
 **`size?`** s|m|l),
-`Notice` (tone: info|positive|critical|negative),
+`Notice` (tone: info|positive|critical|negative, **`onClose?`**/**`closeLabel?`**, **`actions?`**, **`role?`** status|alert, **`data-testid?`**),
 **`DescriptionList`** (children, `layout?: "stacked"|"inline"`) + **`Field`** (label,
 value? | children) — schlankes read-only Label/Wert-Primitive (semantisches `<dl>`/`<dt>`/`<dd>`).
 
