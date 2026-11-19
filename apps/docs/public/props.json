@@ -232,6 +232,80 @@
       }
     ]
   },
+  "TextArea": {
+    "props": [
+      {
+        "name": "label",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "description",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Hinweis unter dem Feld (z. B. „Mindestens 5 Zeichen“)."
+      },
+      {
+        "name": "errorMessage",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "placeholder",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "rows",
+        "type": "number",
+        "required": false,
+        "defaultValue": 3,
+        "description": "Sichtbare Zeilen. Default 3."
+      },
+      {
+        "name": "maxRows",
+        "type": "number",
+        "required": false,
+        "defaultValue": null,
+        "description": "Wächst mit dem Inhalt bis zu so vielen Zeilen (danach rollt das Feld). Ohne Angabe: feste Höhe."
+      },
+      {
+        "name": "showCount",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "Zähler unter dem Feld (braucht `maxLength`)."
+      },
+      {
+        "name": "countLabel",
+        "type": "((count: number, max: number) => string)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Text des Zählers. Default „{n} / {max}“."
+      },
+      {
+        "name": "size",
+        "type": "enum",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
   "Modal": {
     "props": [
       {
@@ -263,11 +337,60 @@
         "description": "Titel als Überschrift mit slot=\"title\" (für aria-labelledby)."
       },
       {
+        "name": "subtitle",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Zeile unter dem Titel."
+      },
+      {
+        "name": "children",
+        "type": "MitSchliessen",
+        "required": false,
+        "defaultValue": null,
+        "description": "Inhalt; als Funktion mit `close`. Rollt, wenn er höher ist als der Dialog – Titel und Fußzeile bleiben stehen."
+      },
+      {
+        "name": "footer",
+        "type": "MitSchliessen",
+        "required": false,
+        "defaultValue": null,
+        "description": "Fußzeile mit den Aktionen (rechts), als Funktion mit `close`."
+      },
+      {
+        "name": "footerStart",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Links in der Fußzeile, z. B. Fortschritt oder Hinweis („3 von 10 erledigt“)."
+      },
+      {
+        "name": "tone",
+        "type": "enum",
+        "required": false,
+        "defaultValue": null,
+        "description": "Zustand: Zeichen und Farbe am Titel."
+      },
+      {
+        "name": "size",
+        "type": "enum",
+        "required": false,
+        "defaultValue": "m",
+        "description": "Breite: s 420 px, m 560 px (Default), l 760 px."
+      },
+      {
         "name": "isDismissable",
         "type": "boolean",
         "required": false,
         "defaultValue": true,
         "description": "Klick auf Scrim schließt (Default true)."
+      },
+      {
+        "name": "isKeyboardDismissDisabled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": "Esc schließt nicht (z. B. während eine Aktion läuft)."
       },
       {
         "name": "glass",
@@ -296,6 +419,115 @@
         "required": false,
         "defaultValue": null,
         "description": "ID-Referenz für den barrierefreien Namen (Alternative zu `title`/`aria-label`)."
+      },
+      {
+        "name": "role",
+        "type": "enum",
+        "required": false,
+        "defaultValue": null,
+        "description": "Rolle: `alertdialog` für Bestätigungen. Default `dialog`."
+      },
+      {
+        "name": "data-testid",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      }
+    ]
+  },
+  "ConfirmDialog": {
+    "props": [
+      {
+        "name": "isOpen",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "onOpenChange",
+        "type": "((isOpen: boolean) => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "title",
+        "type": "ReactNode",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Was passiert, wenn bestätigt wird."
+      },
+      {
+        "name": "confirmLabel",
+        "type": "ReactNode",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "cancelLabel",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": "Abbrechen",
+        "description": "Default „Abbrechen“."
+      },
+      {
+        "name": "onConfirm",
+        "type": "() => void",
+        "required": true,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "onCancel",
+        "type": "(() => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "tone",
+        "type": "enum",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "destructive",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "confirmTestId",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "cancelTestId",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
+      },
+      {
+        "name": "data-testid",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
       }
     ]
   },
@@ -1051,6 +1283,41 @@
         "required": false,
         "defaultValue": null,
         "description": "Optionales Leading-Icon (überschreibt Default-Glyph)."
+      },
+      {
+        "name": "actions",
+        "type": "ReactNode",
+        "required": false,
+        "defaultValue": null,
+        "description": "Aktionen rechts (z. B. „Erneut laden“)."
+      },
+      {
+        "name": "onClose",
+        "type": "(() => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Schließen-Knopf; ohne Handler keiner."
+      },
+      {
+        "name": "closeLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "Hinweis schließen",
+        "description": "Name des Schließen-Knopfs. Default „Hinweis schließen“."
+      },
+      {
+        "name": "role",
+        "type": "enum",
+        "required": false,
+        "defaultValue": "status",
+        "description": "Rolle: `alert` für Fehler, die sofort angesagt werden sollen. Default `status`."
+      },
+      {
+        "name": "data-testid",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": ""
       },
       {
         "name": "className",

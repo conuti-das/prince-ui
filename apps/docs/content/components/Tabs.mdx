@@ -24,17 +24,29 @@ Drei Sichten auf eine Transaktion:
   <TabPanel id="logs">System-Logs …</TabPanel>
 </Tabs>`} />
 
-Viele Reiter auf schmaler Breite: die Leiste rollt waagrecht (Wischen, Trackpad, Pfeiltasten holen den fokussierten Reiter ins Bild) statt abzuschneiden oder umzubrechen:
+Viele Reiter auf schmaler Breite: die Leiste rollt waagrecht (Wischen, Trackpad, Pfeiltasten holen den fokussierten Reiter ins Bild) statt abzuschneiden oder umzubrechen. Ein Verlauf am Rand zeigt, dass dort weitere Reiter liegen, und der gewählte Reiter rollt beim Öffnen und bei jedem Wechsel ganz in Sicht – auch wenn er von außen über `selectedKey` kommt (rechts: gewählt ist der letzte Reiter):
 
-<Example code={`<div style={{ maxWidth: 360 }}>
-  <Tabs defaultSelectedKey="alle">
-    <TabBar aria-label="Sichten">
-      <Tab id="alle">Alle 248</Tab>
-      <Tab id="handlung">Handlungsbedarf 3</Tab>
-      <Tab id="frist">Frist überschritten 0</Tab>
-      <Tab id="klaer">Klärfall offen 1</Tab>
-    </TabBar>
-  </Tabs>
+<Example code={`<div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
+  <div style={{ width: 300 }}>
+    <Tabs defaultSelectedKey="alle">
+      <TabBar aria-label="Sichten">
+        <Tab id="alle">Alle 248</Tab>
+        <Tab id="handlung">Handlungsbedarf 3</Tab>
+        <Tab id="frist">Frist überschritten 0</Tab>
+        <Tab id="klaer">Klärfall offen 1</Tab>
+      </TabBar>
+    </Tabs>
+  </div>
+  <div style={{ width: 300 }}>
+    <Tabs defaultSelectedKey="klaer">
+      <TabBar aria-label="Sichten, letzter gewählt">
+        <Tab id="alle">Alle 248</Tab>
+        <Tab id="handlung">Handlungsbedarf 3</Tab>
+        <Tab id="frist">Frist überschritten 0</Tab>
+        <Tab id="klaer">Klärfall offen 1</Tab>
+      </TabBar>
+    </Tabs>
+  </div>
 </div>`} />
 
 ## Accessibility
