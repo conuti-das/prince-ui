@@ -292,15 +292,15 @@
   border-radius: var(--prn-radius);
   overflow: hidden;
 }
-.prn-list-rows > .prn-row + .prn-row {
+.prn-list-rows > :is(.prn-row, .prn-row-item) + :is(.prn-row, .prn-row-item) {
   border-top: 1px solid var(--prn-separator);
 }
-.prn-list[data-inset] .prn-list-rows > .prn-row + .prn-row {
+.prn-list[data-inset] .prn-list-rows > :is(.prn-row, .prn-row-item) + :is(.prn-row, .prn-row-item) {
   border-top-color: transparent;
   background-clip: padding-box;
   position: relative;
 }
-.prn-list[data-inset] .prn-list-rows > .prn-row + .prn-row::before {
+.prn-list[data-inset] .prn-list-rows > :is(.prn-row, .prn-row-item) + :is(.prn-row, .prn-row-item)::before {
   content: "";
   position: absolute;
   top: 0;
@@ -313,6 +313,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  box-sizing: border-box; /* <a> (href) wäre sonst content-box: 100 % + Innenabstand ragt aus der Liste */
   width: 100%;
   padding: 11px 14px;
   text-align: left;
@@ -321,6 +322,20 @@
   font: var(--prn-text-body);
 }
 .prn-row[data-active] { background: var(--prn-accent-soft); }
+.prn-row-item { display: block; min-width: 0; }
+/* Link-Zeile: Unterstreichung und Linkfarbe des Browsers aus */
+.prn-row-item > a.prn-row { color: var(--prn-label); text-decoration: none; }
+/* Hervorhebung: Randstrich links (der Inhalt trägt das Wort) */
+.prn-row[data-tone="critical"] { box-shadow: inset 3px 0 0 var(--prn-orange); }
+.prn-row[data-tone="negative"] { box-shadow: inset 3px 0 0 var(--prn-red); }
+/* Trailing unter dem Text: Zeile bricht um, Trailing beginnt unter dem Titel */
+.prn-row[data-trailing="below"] { flex-wrap: wrap; align-items: flex-start; row-gap: 6px; }
+.prn-row[data-trailing="below"] > .prn-row-main { flex: 1 1 0; }
+.prn-row[data-trailing="below"] > .prn-row-trailing { flex: 1 0 100%; min-width: 0; flex-wrap: wrap; }
+.prn-row[data-trailing="below"] > .prn-row-leading + .prn-row-main + .prn-row-trailing { padding-inline-start: var(--prn-row-leading-width, 30px); }
+/* Umbrechen statt abschneiden */
+.prn-row[data-wrap] .prn-row-title,
+.prn-row[data-wrap] .prn-row-subtitle { white-space: normal; overflow-wrap: anywhere; }
 
 .prn-row-pressable {
   border: none;
