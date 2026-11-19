@@ -493,7 +493,10 @@
   --prn-accent-soft: rgba(79, 158, 232, 0.18);
   --prn-on-accent: #ffffff;
   /* Leitfarbe der Aktion (Entscheidung 19.11.2026): Deep Azure, im Dunklen aufgehellt auf gleichen Rang –
-   * Weiß darauf 4,64:1, Fläche gegen #1e1e1e 3,59:1 und gegen #000 4,53:1. Links und Akzent bleiben Blau. */
+   * Weiß darauf 4,64:1, Fläche gegen #1e1e1e 3,59:1 und gegen #000 4,53:1. Links und Akzent bleiben Blau.
+   * Der Wert ist je Theme getrennt (nur dieser Block). Offen (Auftraggeber): Pulse Blue mit dunkler Schrift –
+   * --prn-action: #7cb5f7; --prn-on-action: #061d95 (6,06:1); Fläche gegen #1e1e1e 7,79:1, gegen #000 9,81:1;
+   * Hover/Gedrückt z. B. #93c3f9 (7,06:1) / #68a8f2 (5,24:1). Umstellen = diese Zeilen tauschen, der Test misst mit. */
   --prn-action: #4c69eb;
   --prn-action-hover: #4361ea;
   --prn-action-pressed: #3f5de6;
