@@ -45,6 +45,8 @@ export * from "./primitives/size";
 export * from "./primitives/forms";
 export * from "./primitives/icon-button";
 export * from "./primitives/header-actions";
+export * from "./primitives/decision-dialog";
+export * from "./primitives/view-toolbar";
 export * from "./primitives/textarea";
 export * from "./primitives/overlays";
 export * from "./primitives/navigation";
@@ -52,6 +54,7 @@ export * from "./primitives/navigation";
 // Wave 2 — L2-Komposita
 export * from "./composites/composites";
 export * from "./composites/busy";
+export * from "./composites/stepbar";
 export * from "./composites/appshell";
 export * from "./composites/selectionbar";
 export * from "./launchpad/launchpad";

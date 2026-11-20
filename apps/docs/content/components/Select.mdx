@@ -19,6 +19,16 @@ Nutze das Select für eine überschaubare, feste Liste, aus der genau ein Wert g
   <SelectItem id="wasser">Wasser</SelectItem>
 </Select>`} />
 
+### Hinweis je Option, Hinweis und Fehler unter dem Feld
+
+`SelectItem description` setzt einen Hinweis unter die Option (als Beschreibung vorgelesen) – etwa, was eine Antwort auslöst.
+`Select description` und `errorMessage` stehen unter dem Feld.
+
+<Example code={`<Select label="Wie soll der Prozess weitergehen?" placeholder="Bitte wählen" description="Der Hinweis der gewählten Antwort steht hier.">
+  <SelectItem id="lesen" textValue="Daten neu lesen" description="Der Prozess liest die Stammdaten erneut und läuft weiter.">Daten neu lesen</SelectItem>
+  <SelectItem id="ignorieren" textValue="Abweichung ignorieren" description="Der Prozess läuft mit den vorhandenen Daten weiter.">Abweichung ignorieren</SelectItem>
+</Select>`} />
+
 ## Accessibility
 
 Select basiert auf react-aria-components `Select`. Der Trigger-Button trägt das `label` als zugänglichen Namen und `aria-expanded`; das Popover ist eine `listbox`. Pfeiltasten navigieren die Optionen, Tippen springt per Type-ahead zum passenden Eintrag, Enter wählt und Escape schließt. Die aktuelle Auswahl wird Screenreadern am Trigger gemeldet.

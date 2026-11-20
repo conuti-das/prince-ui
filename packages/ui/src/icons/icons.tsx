@@ -74,7 +74,11 @@ export type IconName =
   | "external-link"
   | "calendar"
   | "activity"
-  | "file-text";
+  | "file-text"
+  | "zoom-in"
+  | "zoom-out"
+  | "fit"
+  | "route";
 
 const PATHS: Record<IconName, ReactNode> = {
   /* Zustände, Aktionen, Bereiche (für Anwendungen mit Zustandsgrammatik, z. B. MACO APP) */
@@ -255,6 +259,11 @@ const PATHS: Record<IconName, ReactNode> = {
       <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" />
     </>
   ),
+  /* Ansichtssteuerung (Werkzeugleiste der Ansicht): Zoom, Einpassen, Auf Pfad */
+  "zoom-in": <><circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35M11 8v6M8 11h6" /></>,
+  "zoom-out": <><circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35M8 11h6" /></>,
+  fit: <path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2" />,
+  route: <><circle cx="6" cy="19" r="3" /><circle cx="18" cy="5" r="3" /><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15" /></>,
 };
 
 export interface IconProps extends Omit<SVGProps<SVGSVGElement>, "name"> {

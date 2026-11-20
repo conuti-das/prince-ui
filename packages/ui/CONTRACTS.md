@@ -14,8 +14,14 @@ Verbindliche Prop-APIs. App-Sessions (Wave 3) codieren gegen diese Signaturen;
 | `SearchField` | `label?`, `placeholder?`, + RAC `SearchField` (`value`, `onChange`, `onClear`, …) |
 | `Checkbox` | `children?` (Label), + RAC `Checkbox` (`isSelected`, `onChange`, `isIndeterminate`, …) |
 | `Switch` | `children?` (Label), + RAC `Switch` (`isSelected`, `onChange`, …) |
-| `Select<T>` | `label?`, `placeholder?`, `children` (Items), + RAC `Select` (`selectedKey`, `onSelectionChange`, …) |
-| `SelectItem` | RAC `ListBoxItem` (`id`, `textValue`, …) |
+| `Select<T>` | `label?`, `placeholder?`, **`description?`**, **`errorMessage?`**, `children` (Items), + RAC `Select` (`selectedKey`, `onSelectionChange`, …) |
+| `SelectItem` | RAC `ListBoxItem` (`id`, `textValue`, …), **`description?`** (Hinweis je Option, als Beschreibung vorgelesen) |
+| `DecisionDialog` | `title`, `tone?`, `notice?`, `question`, `options` (`{id,label,hint?}`), `defaultOption?`, `reasonLabel?`/`reasonRequired?`/`reasonMinLength?`/`reasonMaxLength?`, `confirmLabel`, `cancelLabel?`, `onConfirm({option,reason})` (auch Promise), `links?` (`{label,href}`, Links mit „›“), `errorMessage?`, `isPending?`, testids. Primäre erst mit Antwort; wartet auf Promise. |
+| `ViewToolbar` | **`aria-label`** (Pflicht), `children`. RAC `Toolbar` (Pfeiltasten, ein Tab-Stopp); rollt nie, ganze Gruppen brechen um. Neutral, nie Leit- oder Linkfarbe. |
+| `ViewToolbarGroup` | `aria-label?`, `align?: "start" \| "end"`, `wrap?` (Default: Gruppe bleibt ganz in einer Zeile). `ViewToolbarSeparator` ohne Props. |
+| `ViewButton` | `icon?`, `children` (Text), `tooltip?`, `size?`, + RAC `Button`-Props. Grau wie `IconButton` (z. B. „Auf Pfad“, „Einpassen“). |
+| `FilterChip` | `children`, `count?` (Teil des Namens), `mark?` (dekorativ), + RAC `ToggleButton` (`isSelected`, `onChange`, …). Gedrückt = Fläche und Rand. |
+| `ZoomGroup` | `onZoomOut`, `onZoomIn`, `onFit?`, `canZoomOut?`/`canZoomIn?`, `fitLabel?` („Einpassen“), `zoomOutLabel?`/`zoomInLabel?`, `info?` (`{label,tooltip?,onPress?}`), `children?` (vor „Einpassen“), testids. Feste Reihenfolge: [weitere] · Einpassen · − · + · Info. |
 
 ### Overlays (`primitives/overlays`)
 | Komponente | Wesentliche Props |
@@ -183,9 +189,10 @@ Glas-Cards (Bento). Ergänzt die `--prn-bg-elevated*`-Reihe.
 | `GridList`/`GridListItem` | RAC `GridList`/`GridListItem` (`selectionMode`, `onAction`; Items brauchen `textValue` bei Nicht-Text-Inhalt). |
 | `TagGroup`/`Tag` | RAC `TagGroup`/`TagList`/`Tag` (`onRemove` am Group; `selectionMode`). |
 | `Breadcrumbs`/`Breadcrumb` | RAC `Breadcrumbs<T>`/`Breadcrumb` (`onAction`; letzter = `data-current`). |
-| `Link` | RAC `Link` (`href?`, `onPress`, `isDisabled`). |
+| `Link` | RAC `Link` (`href?`, `onPress`, `isDisabled`), **`arrow?`** (Sprung: „›“ dekorativ, `data-arrow`). |
 | `Disclosure`/`DisclosureGroup` | `title` + `children`; RAC `Disclosure` (`isExpanded`/`defaultExpanded`/`onExpandedChange`), Group `allowsMultipleExpanded`/`expandedKeys`. |
-| `Tree`/`TreeItem` | RAC `Tree`/`TreeItem`/`TreeItemContent` (`title`, `selectionMode`, expand via Chevron). |
+| `Tree`/`TreeItem` | RAC `Tree`/`TreeItem`/`TreeItemContent` (`title`, `selectionMode`, expand via Chevron). **Kästchen nur bei `selectionMode="multiple"`**; `single` ohne Kästchen, gewählte Zeile mit Balken links (`data-selection` am Tree). |
+| `StepBar` | `steps` (`{id,label,detail?,state,stateLabel?}`; `state`: `done`\|`current`\|`upcoming`\|`warning`\|`problem`\|`rejected`\|`skipped`), **`aria-label`**, `stateLabels?` (für `t()`), `density?: "regular"\|"compact"`. `<ol>`, `aria-current="step"`, Zustand immer als Text; keine Leitfarbe. |
 | `Table`/`TableHeader`/`TableBody`/`Column`/`Row`/`Cell` | RAC `Table`-Primitive (präsentationell; getrennt von `AnalyticalTable`). |
 
 ## W3 — Date & Time (React Aria + @internationalized/date)
