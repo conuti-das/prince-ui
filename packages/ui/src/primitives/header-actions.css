@@ -20,3 +20,13 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+/* Im Aktions-Slot eines Kopfs (DetailHeader, ObjectPage) bekommt die Leiste den freien Platz der Zeile.
+ * Ohne das ist der Slot nur so breit wie sein Inhalt: die Leiste misst dann ihre eigene Breite, und was einmal ins Menü
+ * gewandert ist, kommt nie zurück (gesehen in E: Ablehnen, Kommentieren, Aktualisieren im „⋯“ trotz viel Platz bei 1440 px). */
+.prn-detailheader-actions:has(> .prn-hab),
+.prn-objectpage-actions:has(> .prn-hab) {
+  /* nimmt fast den ganzen freien Platz der Zeile (der Titel behält seine Grundbreite) – so hängt das Gemessene nicht vom eigenen Inhalt ab */
+  flex: 1000 1 auto;
+  min-width: 0;
+}

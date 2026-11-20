@@ -102,6 +102,27 @@ describe("HeaderActions (Aktionsleiste im Kopf)", () => {
   });
 });
 
+describe("HeaderActions menuTestId", () => {
+  it("Menüknopf trägt die vorgegebene testid, sonst `${data-testid}-menu`", () => {
+    const { unmount } = render(<HeaderActions helpers={HELFER} menu={MENU} data-testid="kopf" menuTestId="kopf-mehr" />);
+    expect(screen.getByTestId("kopf-mehr")).toHaveAccessibleName("Weitere Aktionen");
+    unmount();
+    render(<HeaderActions helpers={HELFER} menu={MENU} data-testid="kopf" />);
+    expect(screen.getByTestId("kopf-menu")).toBeInTheDocument();
+  });
+});
+
+describe("HeaderActions im Kopf-Slot", () => {
+  it("CSS: der Aktions-Slot von DetailHeader und ObjectPage wächst, wenn er die Leiste trägt (sonst misst sie nur ihren Inhalt)", async () => {
+    const { readFileSync } = await import("node:fs");
+    const { resolve } = await import("node:path");
+    const css = readFileSync(resolve(process.cwd(), "src/primitives/header-actions.css"), "utf8");
+    const regel = css.match(/\.prn-detailheader-actions:has\(> \.prn-hab\),\s*\.prn-objectpage-actions:has\(> \.prn-hab\) \{([^}]*)\}/);
+    expect(regel?.[1]).toMatch(/flex:\s*1000 1 auto/);
+    expect(regel?.[1]).toMatch(/min-width:\s*0/);
+  });
+});
+
 describe("berechneUeberlauf", () => {
   it("nimmt in der vorgegebenen Reihenfolge weg, bis es passt", () => {
     const b = { "a:x": 100, "a:y": 100, "a:p": 100, "h:h": 40 };
@@ -109,5 +130,12 @@ describe("berechneUeberlauf", () => {
     expect([...berechneUeberlauf({ reihenfolge: ["a:x", "a:y", "h:h"], breiten: b, feste: 50, verfuegbar: 1000, schluessel })]).toEqual([]);
     expect([...berechneUeberlauf({ reihenfolge: ["a:x", "a:y", "h:h"], breiten: b, feste: 50, verfuegbar: 320, schluessel })]).toEqual(["a:x"]);
     expect([...berechneUeberlauf({ reihenfolge: ["a:x", "a:y", "h:h"], breiten: b, feste: 50, verfuegbar: 10, schluessel })]).toEqual(["a:x", "a:y", "h:h"]);
+  });
+
+  it("der Menüknopf zählt erst, wenn etwas ins Menü wandert (eine einzelne Aktion passt ohne Platz für „⋯“)", () => {
+    const b = { "a:s": 90 };
+    // 90 + Lücke 8 = 98 passt in 100 – mit fest gerechnetem Menüknopf (34) hätte „Sperren“ ins Menü gemusst (so in E: Benutzer, 1440 px)
+    expect([...berechneUeberlauf({ reihenfolge: ["a:s"], breiten: b, feste: 0, menuBreite: 34, verfuegbar: 100, schluessel: ["a:s"] })]).toEqual([]);
+    expect([...berechneUeberlauf({ reihenfolge: ["a:s"], breiten: b, feste: 0, menuBreite: 34, verfuegbar: 90, schluessel: ["a:s"] })]).toEqual(["a:s"]);
   });
 });
