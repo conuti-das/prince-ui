@@ -102,6 +102,16 @@ describe("HeaderActions (Aktionsleiste im Kopf)", () => {
   });
 });
 
+describe("HeaderActions menuTestId", () => {
+  it("Menüknopf trägt die vorgegebene testid, sonst `${data-testid}-menu`", () => {
+    const { unmount } = render(<HeaderActions helpers={HELFER} menu={MENU} data-testid="kopf" menuTestId="kopf-mehr" />);
+    expect(screen.getByTestId("kopf-mehr")).toHaveAccessibleName("Weitere Aktionen");
+    unmount();
+    render(<HeaderActions helpers={HELFER} menu={MENU} data-testid="kopf" />);
+    expect(screen.getByTestId("kopf-menu")).toBeInTheDocument();
+  });
+});
+
 describe("berechneUeberlauf", () => {
   it("nimmt in der vorgegebenen Reihenfolge weg, bis es passt", () => {
     const b = { "a:x": 100, "a:y": 100, "a:p": 100, "h:h": 40 };

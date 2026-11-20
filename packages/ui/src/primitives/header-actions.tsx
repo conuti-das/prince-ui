@@ -71,6 +71,8 @@ export interface HeaderActionsProps {
   "aria-label"?: string;
   className?: string;
   "data-testid"?: string;
+  /** data-testid des Menüknopfs „⋯“. Default `${data-testid}-menu` (bestehende testids einer Seite bleiben so erhalten). */
+  menuTestId?: string;
 }
 
 const RANG: Record<HeaderActionKind, number> = { withdraw: 0, secondary: 1, primary: 2 };
@@ -110,7 +112,7 @@ export function berechneUeberlauf(o: { reihenfolge: string[]; breiten: Record<st
   return weg;
 }
 
-export function HeaderActions({ actions = [], helpers = [], menu = [], layout = "row", menuLabel = "Weitere Aktionen", sectionLabels, className, "aria-label": ariaLabel = "Aktionen", "data-testid": testId }: HeaderActionsProps) {
+export function HeaderActions({ actions = [], helpers = [], menu = [], layout = "row", menuLabel = "Weitere Aktionen", sectionLabels, className, "aria-label": ariaLabel = "Aktionen", "data-testid": testId, menuTestId }: HeaderActionsProps) {
   const geordnet = ordneAktionen(actions);
   const ref = useRef<HTMLDivElement>(null);
   const breiten = useRef<Record<string, number>>({});
@@ -183,7 +185,7 @@ export function HeaderActions({ actions = [], helpers = [], menu = [], layout = 
       ))}
       {mitMenu && (
         <span className="prn-hab-eintrag" data-hab-menu>
-          <Menu trigger={<IconButton icon="more" label={menuLabel} tooltip={menuLabel} data-testid={testId ? `${testId}-menu` : undefined} />}>
+          <Menu trigger={<IconButton icon="more" label={menuLabel} tooltip={menuLabel} data-testid={menuTestId ?? (testId ? `${testId}-menu` : undefined)} />}>
             {abschnitte.map((s, i) => (
               <Fragment key={s}>
                 {i > 0 && <MenuSeparator />}

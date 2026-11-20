@@ -32,7 +32,7 @@ Verbindliche Prop-APIs. App-Sessions (Wave 3) codieren gegen diese Signaturen;
 | `Menu` | `trigger` (z. B. `<Button>`), `children` (`MenuItem`s, `MenuSection`, `MenuSeparator`). |
 | `MenuSection` / `MenuSeparator` | `title?` – benannte Gruppe im Menü; Trennlinie zwischen Abschnitten. |
 | `MenuItem` | RAC `MenuItem` (`onAction`, `id`, …), **`tone?`** `action` \| `danger` (Farbcodierung wie die Knöpfe, `data-tone`), **`icon?`**. |
-| `HeaderActions` | Aktionsleiste im Kopf: `actions?` (`{id,label,kind: withdraw\|secondary\|primary,onAction,icon?,isDisabled?,disabledReason?}`), `helpers?` (Icon-Knöpfe), `menu?` (`{id,label,section: actions\|view\|help,kind?,icon?,onAction}`), `layout?` `row` \| `menu`, `menuLabel?`, `sectionLabels?`. Feste Reihenfolge, höchstens eine primäre, Überlauf ins Menü (Rücknahme → sekundär → Hilfsaktionen; primäre bleibt). |
+| `HeaderActions` | Aktionsleiste im Kopf: `actions?` (`{id,label,kind: withdraw\|secondary\|primary,onAction,icon?,isDisabled?,disabledReason?}`), `helpers?` (Icon-Knöpfe), `menu?` (`{id,label,section: actions\|view\|help,kind?,icon?,onAction}`), `layout?` `row` \| `menu`, `menuLabel?`, **`menuTestId?`** (testid des „⋯“, Default `${data-testid}-menu`), `sectionLabels?`. Feste Reihenfolge, höchstens eine primäre, Überlauf ins Menü (Rücknahme → sekundär → Hilfsaktionen; primäre bleibt). |
 | `Popover` | RAC `Popover` (`placement`, …). |
 | `Tooltip` | `trigger`, `children`, `delay?` (Default 600). |
 
