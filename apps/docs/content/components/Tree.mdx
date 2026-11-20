@@ -25,6 +25,18 @@ Hierarchie mit Einfachauswahl:
   <TreeItem id="wasser" title="Wasser" />
 </Tree>`} />
 
+### Auswahl: einfach ohne Kästchen, mehrfach mit Kästchen
+
+`selectionMode="single"` zeigt **kein** Kästchen: Die gewählte Zeile ist hervorgehoben und trägt links einen Balken (nicht nur
+Farbe). Das passt für „eine Instanz, eine Datei, ein Knoten wird rechts gezeigt“. Kästchen gibt es nur bei `selectionMode="multiple"`.
+
+<Example code={`<Tree aria-label="Instanzen" selectionMode="single" disallowEmptySelection defaultSelectedKeys={['e0615']} style={{ width: 320 }} defaultExpandedKeys={['e0615']}>
+  <TreeItem id="e0615" title="E_0615 Anmeldung EoG prüfen">
+    <TreeItem id="e0615-k" title="Kündigung senden" />
+  </TreeItem>
+  <TreeItem id="e0620" title="E_0620 Abmeldung" />
+</Tree>`} />
+
 ## Accessibility
 
 Tree basiert auf react-aria `Tree`: Der Container hat die Rolle `tree`, Knoten die Rolle `treeitem` mit `aria-expanded` (für Knoten mit Kindern) und `aria-level` für die Verschachtelungstiefe. Tastatur ist vollständig eingebaut — ↑/↓ wandert durch die sichtbaren Knoten, →/← klappt auf bzw. zu, Type-ahead springt zu Titeln. Auswahl per Enter/Space, sofern `selectionMode` aktiv ist. Das Aufklapp-Chevron ist visuell; der Zustand wird über `aria-expanded` transportiert. Gib dem Tree ein `aria-label`.
