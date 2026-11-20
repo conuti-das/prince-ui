@@ -5,6 +5,7 @@ const schema: ControlSchema = {
   controls: [
     { name: "children", type: "text", default: "Button" },
     { name: "variant", type: "segmented", options: ["filled", "tinted", "plain"], default: "filled" },
+    { name: "destructive", type: "toggle", default: false },
     { name: "isDisabled", type: "toggle", default: false },
   ],
 };

@@ -1,0 +1,48 @@
+# DecisionDialog
+
+Dialog für **eine Entscheidung im Pop-up** – Klärfälle und Störungen dort bearbeiten, wo man sie sieht (Liste, Vorgang), ohne die Seite
+zu wechseln (Regelwerk, Abschnitt „Bearbeiten im Pop-up“, entschieden am 19.11.2026).
+
+## Aufbau
+
+- **Titel** (mit Zustand am Titel, z. B. `tone="critical"`) und **Hinweistext** zur Lage.
+- **Eine klare Frage**; die Antworten als **Auswahlliste** mit Hinweis je Option – nie als Freitext. Der Hinweis der gewählten Antwort
+  steht unter dem Feld.
+- **Begründung** freiwillig (`reasonRequired` für die Fälle, in denen die Regel sie noch verlangt; dann mindestens 5 Zeichen).
+- **Fußzeile:** links die Sprünge als Links mit „›“ („Zum Klärfall ›“, „Zum Vorgang ›“), rechts Abbrechen und die eine primäre Aktion.
+  Die primäre Aktion geht erst mit gewählter Antwort.
+- Gibt `onConfirm` ein Promise zurück, wartet der Dialog (Knöpfe gesperrt, nicht schließbar) und schließt bei Erfolg; bei einem Fehler
+  bleibt er offen und zeigt `errorMessage`.
+
+<DoDont kind="do">Die Frage aus dem Modell („Wie soll der Prozess weitergehen?“), Antworten aus den Zweigen, je mit Hinweis, was sie auslöst.</DoDont>
+<DoDont kind="dont">Ein freies Textfeld, das wie die Prozessvariable heißt (`datenLesen`).</DoDont>
+
+## Beispiel
+
+<Example code={`function Beispiel() {
+  const [offen, setOffen] = React.useState(false);
+  return (
+    <>
+      <Button variant="tinted" onPress={() => setOffen(true)}>Klärfall bearbeiten</Button>
+      <DecisionDialog isOpen={offen} onOpenChange={setOffen} title="Klärfall bearbeiten" tone="critical"
+        notice="Die Antwort des Netzbetreibers passt nicht zur Anmeldung."
+        question="Wie soll der Prozess weitergehen?"
+        options={[
+          { id: 'lesen', label: 'Daten neu lesen', hint: 'Der Prozess liest die Stammdaten erneut und läuft weiter.' },
+          { id: 'ignorieren', label: 'Abweichung ignorieren', hint: 'Der Prozess läuft mit den vorhandenen Daten weiter.' },
+        ]}
+        links={[{ label: 'Zum Klärfall', href: '#' }, { label: 'Zum Vorgang', href: '#' }]}
+        confirmLabel="Entscheidung senden" onConfirm={() => {}} />
+    </>
+  );
+}`} />
+
+## Accessibility
+
+Basiert auf `Modal` (Fokus im Dialog, Escape, Fokus-Rückgabe), `Select` (Rollen `listbox`/`option`; der Hinweis je Option ist die
+Beschreibung der Option) und `TextArea`. Die Link-Zeile ist eine benannte Navigation („Springen“). Alle Texte sind über Props
+übersetzbar (`cancelLabel`, `reasonLabel`, `placeholder`, `linksLabel`, `reasonTooShort`).
+
+## Props
+
+<PropsTable name="DecisionDialog" />

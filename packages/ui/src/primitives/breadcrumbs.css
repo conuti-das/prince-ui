@@ -40,14 +40,17 @@
 
 /* ---- Link ---- */
 .prn-link {
-  color: var(--prn-accent-strong);
+  color: var(--prn-link);
   text-decoration: none;
   cursor: pointer;
   border-radius: var(--prn-radius-sm);
   transition: color var(--prn-dur-fast) var(--prn-ease-standard);
 }
 .prn-link[data-hovered] { text-decoration: underline; }
-.prn-link[data-pressed] { color: var(--prn-accent); }
+.prn-link[data-arrow] { display: inline-flex; align-items: baseline; gap: 0.25em; }
+.prn-link-pfeil { font-weight: 600; text-decoration: none; transition: transform var(--prn-dur-fast) var(--prn-ease-standard); }
+.prn-link[data-arrow][data-hovered] .prn-link-pfeil { transform: translateX(2px); }
+.prn-link[data-pressed] { color: var(--prn-link-pressed); }
 .prn-link[data-focus-visible] {
   outline: none;
   box-shadow: var(--prn-focus);

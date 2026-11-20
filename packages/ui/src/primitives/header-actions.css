@@ -1,0 +1,22 @@
+/* Aktionsleiste im Kopf eines Objekts (HeaderActions) – Regelwerk „Aktion, Hilfsaktion, Navigation, Ansicht“ */
+.prn-hab {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  flex: 1 1 auto;
+  min-width: 0;
+  flex-wrap: nowrap;
+  overflow: hidden; /* nie umbrechen, nie rollen: Überzähliges wandert ins Menü */
+}
+.prn-hab-eintrag { display: inline-flex; flex: none; }
+.prn-hab-trenner { flex: none; width: 1px; align-self: stretch; margin: 4px 0; background: var(--prn-separator); }
+.prn-hab-grund {
+  flex: 0 1 auto;
+  min-width: 0;
+  font: var(--prn-text-caption);
+  color: var(--prn-label-2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -12,14 +12,18 @@ import { cx } from "../utils";
 import "./forms.css";
 import "./tree.css";
 
-/* ---------------- Tree ---------------- */
+/* ---------------- Tree ----------------
+ * Auswahl: `selectionMode="multiple"` zeigt je Zeile ein Kästchen; `selectionMode="single"` zeigt KEIN Kästchen –
+ * die gewählte Zeile ist hervorgehoben und trägt links einen Balken (nicht nur Farbe), `aria-selected` bleibt.
+ * (Regelwerk: „Baum mit Einfachauswahl ohne Kästchen“, z. B. Instanzen im Reiter Prozessinstanzen.)
+ */
 
 export interface TreeProps<T extends object> extends Omit<RACTreeProps<T>, "className"> {
   className?: string;
 }
 
 export function Tree<T extends object>({ className, ...props }: TreeProps<T>) {
-  return <RACTree {...props} className={cx("prn-tree", className)} />;
+  return <RACTree {...props} className={cx("prn-tree", className)} data-selection={props.selectionMode ?? "none"} />;
 }
 
 /* ---------------- TreeItem ---------------- */
@@ -49,7 +53,7 @@ export function TreeItem({ title, textValue, children, className, chevronTestId,
       <RACTreeItemContent>
         {({ hasChildItems, selectionMode, isExpanded }) => (
           <div className="prn-tree-row">
-            {selectionMode !== "none" && (
+            {selectionMode === "multiple" && (
               <RACCheckbox slot="selection" className="prn-tree-check">
                 <span className="prn-tree-check-box" aria-hidden>
                   <svg viewBox="0 0 18 18" className="prn-tree-check-mark">

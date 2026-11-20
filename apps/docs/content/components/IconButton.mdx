@@ -1,0 +1,44 @@
+# IconButton
+
+Neutraler Icon-Knopf für **Hilfsaktionen** (aktualisieren, kopieren) und die **Ansichtssteuerung** (Zoom, Einpassen, Info).
+Grau, nie in der Leitfarbe: Er ändert die Ansicht oder hilft – er löst am Server keine fachliche Aktion aus.
+
+<Playground component="IconButton" />
+
+## Verwendung
+
+- `label` ist Pflicht: Name für Vorleseprogramme **und** Text des Tooltips. Ein Verb oder Gegenstand, überall gleich
+  („Aktualisieren“, „Einpassen“).
+- Hilfsaktionen stehen im Seitenkopf rechts, immer an derselben Stelle; Kopieren direkt am Wert.
+- Auf dem Telefon (Touch oder schmaler als 600 px) ist die Trefferfläche mindestens 44 × 44 px; das Bild bleibt gleich groß.
+
+<DoDont kind="do">„Aktualisieren“ als grauer Icon-Knopf rechts im Seitenkopf.</DoDont>
+<DoDont kind="dont">Einen Icon-Knopf für Freigeben oder Versenden – Aktionen am Server sind Knöpfe mit Text in der Leitfarbe.</DoDont>
+
+## Beispiele
+
+<Example code={`<div style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
+  <IconButton icon="redo" label="Aktualisieren" />
+  <IconButton icon="copy" label="Kopieren" />
+  <IconButton icon="download" label="Exportieren" />
+  <IconButton icon="info" label="Legende" tooltip="Legende anzeigen" />
+  <IconButton icon="redo" label="Aktualisieren" isDisabled />
+</div>`} />
+
+Größen:
+
+<Example code={`<div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+  <IconButton icon="maximize" label="Vollbild" size="s" />
+  <IconButton icon="maximize" label="Vollbild" size="m" />
+  <IconButton icon="maximize" label="Vollbild" size="l" />
+</div>`} />
+
+## Accessibility
+
+Basiert auf `Button` (React Aria): Enter/Leertaste, Fokus-Ring, `isDisabled`. Der Name kommt aus `label` (`aria-label`),
+das Icon ist dekorativ (`aria-hidden`). Der Tooltip erscheint bei Hover und bei Tastaturfokus; `tooltip={false}` nur, wenn
+der Zweck schon sichtbar daneben steht.
+
+## Props
+
+<PropsTable name="IconButton" />

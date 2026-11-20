@@ -17,30 +17,61 @@
   transition: filter var(--prn-dur-fast) var(--prn-ease-standard),
     background var(--prn-dur-fast) var(--prn-ease-standard);
 }
+/* Aktion (Server): Leitfarbe über --prn-action* (getrennt vom Link-Token, siehe tokens.css) */
 .prn-button[data-variant="filled"] {
-  background: var(--prn-accent);
-  color: var(--prn-on-accent);
+  background: var(--prn-action);
+  color: var(--prn-on-action);
 }
-.prn-button[data-variant="filled"][data-hovered] { background: var(--prn-accent-hover); }
-.prn-button[data-variant="filled"][data-pressed] { background: var(--prn-accent-pressed); }
+.prn-button[data-variant="filled"][data-hovered] { background: var(--prn-action-hover); }
+.prn-button[data-variant="filled"][data-pressed] { background: var(--prn-action-pressed); }
 .prn-button[data-variant="tinted"] {
-  background: var(--prn-accent-soft);
-  color: var(--prn-accent-strong);
+  background: var(--prn-action-soft);
+  color: var(--prn-action-text);
 }
 .prn-button[data-variant="tinted"][data-hovered] { filter: brightness(1.05); }
 .prn-button[data-variant="plain"] {
   background: transparent;
-  color: var(--prn-accent-strong);
+  color: var(--prn-action-text);
   padding: 0 8px;
 }
 .prn-button[data-variant="plain"][data-hovered] { background: var(--prn-fill); }
-.prn-button[data-disabled] { opacity: 0.5; cursor: not-allowed; }
-/* Deaktivierter gefüllter Button: neutrale Fläche statt gedimmtem Akzent →
-   liest klar als inaktiv (statt „aktiver als getönt"). */
-.prn-button[data-variant="filled"][data-disabled] {
-  background: var(--prn-fill-strong);
-  color: var(--prn-label-3);
-  opacity: 1;
+
+/* Rücknahme (ablehnen, stoppen, zurückziehen): rot getönt; gefüllt rot nur im Bestätigungsdialog */
+.prn-button[data-destructive][data-variant="tinted"] { background: var(--prn-danger-soft); color: var(--prn-danger-text); }
+.prn-button[data-destructive][data-variant="plain"] { color: var(--prn-danger-text); }
+.prn-button[data-destructive][data-variant="filled"] { background: var(--prn-danger-fill); color: var(--prn-on-danger); }
+.prn-button[data-destructive][data-variant="filled"][data-hovered] { filter: brightness(1.08); }
+
+/* Deaktiviert: neutral in allen Varianten und Rollen (keine Leitfarbe, kein Rot) – liest klar als inaktiv,
+   statt als gedimmte, „schwächere“ Aktion. Ohne Deckkraft-Trick, damit Text und Fläche ruhig bleiben. */
+.prn-button[data-disabled] { cursor: not-allowed; opacity: 1; filter: none; }
+.prn-button[data-variant="filled"][data-disabled] { background: var(--prn-fill-strong); color: var(--prn-label-3); }
+.prn-button[data-variant="tinted"][data-disabled] { background: var(--prn-fill); color: var(--prn-label-3); }
+.prn-button[data-variant="plain"][data-disabled] { background: transparent; color: var(--prn-label-3); }
+
+/* ---- IconButton: neutrale Hilfsaktion und Ansichtssteuerung (grau, nie Leitfarbe) ---- */
+.prn-iconbutton.prn-button {
+  position: relative;
+  min-width: 34px;
+  padding: 0;
+  background: transparent;
+  color: var(--prn-label-2);
+}
+.prn-iconbutton.prn-button[data-hovered] { background: var(--prn-fill); color: var(--prn-label); }
+.prn-iconbutton.prn-button[data-pressed] { background: var(--prn-fill-strong); color: var(--prn-label); }
+.prn-iconbutton.prn-button[data-disabled] { background: transparent; color: var(--prn-label-4); }
+.prn-iconbutton.prn-button[data-size="s"] { min-width: 28px; min-height: 28px; }
+.prn-iconbutton.prn-button[data-size="l"] { min-width: 40px; min-height: 40px; }
+/* Telefon/Touch: Trefferfläche mindestens 44 × 44 px, das Bild bleibt gleich groß */
+@media (pointer: coarse), (max-width: 599px) {
+  .prn-iconbutton.prn-button::before {
+    content: "";
+    position: absolute;
+    inset: 50% auto auto 50%;
+    width: max(100%, 44px);
+    height: max(100%, 44px);
+    transform: translate(-50%, -50%);
+  }
 }
 .prn-button[data-focus-visible] { box-shadow: var(--prn-focus); }
 

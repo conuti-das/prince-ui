@@ -11,6 +11,25 @@ Nutze **filled** für die primäre Aktion einer Ansicht, **tinted** für sekund�
 <DoDont kind="do">Pro Ansicht genau eine `filled`-Primäraktion.</DoDont>
 <DoDont kind="dont">Mehrere `filled`-Buttons nebeneinander um Aufmerksamkeit konkurrieren lassen.</DoDont>
 
+## Rollen (Regelwerk)
+
+Die Farbe sagt, **was** ein Knopf tut, nicht nur wie wichtig er ist: Fläche in der Leitfarbe = es passiert etwas am Server;
+grau = nur die Ansicht ändert sich (dafür [IconButton](/components/iconbutton)); Text mit „›“ = Sie gehen woanders hin
+([Link](/components/link)); **rot = nimmt etwas zurück**.
+
+- **Aktion, primär** – `filled`, höchstens einer je Ansicht.
+- **Aktion, sekundär** – `tinted`.
+- **Rücknahme** (ablehnen, stoppen, zurückziehen, verwerfen) – `tinted` mit `destructive`; gefüllt rot nur als Bestätigung im
+  Dialog (`ConfirmDialog destructive`). Rücknahmen fragen immer nach.
+- **Deaktiviert** – in jeder Variante und Rolle neutral grau, ohne Leitfarbe und ohne Rot; den Grund daneben nennen.
+
+Die Farben kommen aus eigenen Token (`--prn-action*` für die Aktion, `--prn-danger*` für die Rücknahme, `--prn-link` für Links),
+damit die Leitfarbe der Aktion (in den CU-Themes Deep Azure) nicht die Links mitzieht. Text auf getönt und schlicht hat in allen
+Themes – hell und dunkel – mindestens 4,5:1 Kontrast (geprüft in `regelwerk-token.test.ts`).
+
+<DoDont kind="do">„Ablehnen“ rot getönt links in der Fußleiste, „Freigeben“ gefüllt rechts.</DoDont>
+<DoDont kind="dont">Eine Rücknahme gefüllt rot auf der Seite – gefüllt rot gibt es nur im Bestätigungsdialog.</DoDont>
+
 ## Beispiele
 
 <Example code={`<div style={{ display: 'flex', gap: 16 }}>
@@ -19,9 +38,23 @@ Nutze **filled** für die primäre Aktion einer Ansicht, **tinted** für sekund�
   <Button variant="plain">Schlicht</Button>
 </div>`} />
 
+Rollen und deaktivierter Zustand (mit dem Theme-Umschalter oben hell und dunkel ansehen):
+
+<Example code={`<div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, max-content)', gap: 12, alignItems: 'center' }}>
+  <Button variant="tinted" destructive>Ablehnen</Button>
+  <Button variant="tinted">Kommentieren</Button>
+  <Button variant="filled">Freigeben</Button>
+  <Button variant="tinted" destructive isDisabled>Ablehnen</Button>
+  <Button variant="tinted" isDisabled>Kommentieren</Button>
+  <Button variant="filled" isDisabled>Freigeben</Button>
+  <Button variant="plain" destructive>Verwerfen</Button>
+  <Button variant="plain">Bearbeiten</Button>
+  <Button variant="filled" destructive>Zurückziehen (nur im Dialog)</Button>
+</div>`} />
+
 ## Accessibility
 
-Button basiert auf react-aria `Button`: Fokus-Ring, Tastatur (Enter/Space) und `isDisabled` sind eingebaut. Für reine Icon-Buttons ein `aria-label` setzen.
+Button basiert auf react-aria `Button`: Fokus-Ring, Tastatur (Enter/Space) und `isDisabled` sind eingebaut. Für reine Icon-Knöpfe [IconButton](/components/iconbutton) verwenden (Name ist Pflicht, Tooltip inklusive). Deaktivierte Knöpfe sind nicht fokussierbar – den Grund als Text daneben nennen, nicht nur im Tooltip.
 
 ## Props
 
