@@ -112,6 +112,17 @@ describe("HeaderActions menuTestId", () => {
   });
 });
 
+describe("HeaderActions im Kopf-Slot", () => {
+  it("CSS: der Aktions-Slot von DetailHeader und ObjectPage wächst, wenn er die Leiste trägt (sonst misst sie nur ihren Inhalt)", async () => {
+    const { readFileSync } = await import("node:fs");
+    const { resolve } = await import("node:path");
+    const css = readFileSync(resolve(process.cwd(), "src/primitives/header-actions.css"), "utf8");
+    const regel = css.match(/\.prn-detailheader-actions:has\(> \.prn-hab\),\s*\.prn-objectpage-actions:has\(> \.prn-hab\) \{([^}]*)\}/);
+    expect(regel?.[1]).toMatch(/flex:\s*1 1 auto/);
+    expect(regel?.[1]).toMatch(/min-width:\s*0/);
+  });
+});
+
 describe("berechneUeberlauf", () => {
   it("nimmt in der vorgegebenen Reihenfolge weg, bis es passt", () => {
     const b = { "a:x": 100, "a:y": 100, "a:p": 100, "h:h": 40 };
