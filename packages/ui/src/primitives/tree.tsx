@@ -36,9 +36,13 @@ export interface TreeItemProps extends Omit<RACTreeItemProps, "className" | "chi
   /** Verschachtelte TreeItems. */
   children?: ReactNode;
   className?: string;
+  /** data-testid des Aufklapp-Pfeils (nur bei Zeilen mit Kindern), z. B. für Oberflächentests. */
+  chevronTestId?: string;
+  /** Beschriftung des Aufklapp-Pfeils für Screenreader; Standard „Aufklappen“ bzw. „Zuklappen“ je nach Zustand. */
+  chevronLabel?: string;
 }
 
-export function TreeItem({ title, textValue, children, className, ...props }: TreeItemProps) {
+export function TreeItem({ title, textValue, children, className, chevronTestId, chevronLabel, ...props }: TreeItemProps) {
   const resolvedTextValue = textValue ?? (typeof title === "string" ? title : "");
   return (
     <RACTreeItem
@@ -47,7 +51,7 @@ export function TreeItem({ title, textValue, children, className, ...props }: Tr
       className={cx("prn-tree-item", className)}
     >
       <RACTreeItemContent>
-        {({ hasChildItems, selectionMode }) => (
+        {({ hasChildItems, selectionMode, isExpanded }) => (
           <div className="prn-tree-row">
             {selectionMode === "multiple" && (
               <RACCheckbox slot="selection" className="prn-tree-check">
@@ -59,7 +63,12 @@ export function TreeItem({ title, textValue, children, className, ...props }: Tr
               </RACCheckbox>
             )}
             {hasChildItems ? (
-              <RACButton slot="chevron" className="prn-tree-chevron" aria-label="Aufklappen">
+              <RACButton
+                slot="chevron"
+                className="prn-tree-chevron"
+                aria-label={chevronLabel ?? (isExpanded ? "Zuklappen" : "Aufklappen")}
+                data-testid={chevronTestId}
+              >
                 <svg viewBox="0 0 16 16" aria-hidden>
                   <path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>

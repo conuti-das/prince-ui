@@ -191,7 +191,7 @@ Glas-Cards (Bento). Ergänzt die `--prn-bg-elevated*`-Reihe.
 | `Breadcrumbs`/`Breadcrumb` | RAC `Breadcrumbs<T>`/`Breadcrumb` (`onAction`; letzter = `data-current`). |
 | `Link` | RAC `Link` (`href?`, `onPress`, `isDisabled`), **`arrow?`** (Sprung: „›“ dekorativ, `data-arrow`). |
 | `Disclosure`/`DisclosureGroup` | `title` + `children`; RAC `Disclosure` (`isExpanded`/`defaultExpanded`/`onExpandedChange`), Group `allowsMultipleExpanded`/`expandedKeys`. |
-| `Tree`/`TreeItem` | RAC `Tree`/`TreeItem`/`TreeItemContent` (`title`, `selectionMode`, expand via Chevron). **Kästchen nur bei `selectionMode="multiple"`**; `single` ohne Kästchen, gewählte Zeile mit Balken links (`data-selection` am Tree). |
+| `Tree`/`TreeItem` | RAC `Tree`/`TreeItem`/`TreeItemContent` (`title`, `selectionMode`, expand via Chevron; `chevronTestId`, `chevronLabel` am Pfeil). **Kästchen nur bei `selectionMode="multiple"`**; `single` ohne Kästchen, gewählte Zeile mit Balken links (`data-selection` am Tree). |
 | `StepBar` | `steps` (`{id,label,detail?,state,stateLabel?}`; `state`: `done`\|`current`\|`upcoming`\|`warning`\|`problem`\|`rejected`\|`skipped`), **`aria-label`**, `stateLabels?` (für `t()`), `density?: "regular"\|"compact"`. `<ol>`, `aria-current="step"`, Zustand immer als Text; keine Leitfarbe. |
 | `Table`/`TableHeader`/`TableBody`/`Column`/`Row`/`Cell` | RAC `Table`-Primitive (präsentationell; getrennt von `AnalyticalTable`). |
 

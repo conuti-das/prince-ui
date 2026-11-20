@@ -39,7 +39,7 @@ Farbe). Das passt für „eine Instanz, eine Datei, ein Knoten wird rechts gezei
 
 ## Accessibility
 
-Tree basiert auf react-aria `Tree`: Der Container hat die Rolle `tree`, Knoten die Rolle `treeitem` mit `aria-expanded` (für Knoten mit Kindern) und `aria-level` für die Verschachtelungstiefe. Tastatur ist vollständig eingebaut — ↑/↓ wandert durch die sichtbaren Knoten, →/← klappt auf bzw. zu, Type-ahead springt zu Titeln. Auswahl per Enter/Space, sofern `selectionMode` aktiv ist. Das Aufklapp-Chevron ist visuell; der Zustand wird über `aria-expanded` transportiert. Gib dem Tree ein `aria-label`.
+Tree basiert auf react-aria `Tree`: Der Container hat die Rolle `tree`, Knoten die Rolle `treeitem` mit `aria-expanded` (für Knoten mit Kindern) und `aria-level` für die Verschachtelungstiefe. Tastatur ist vollständig eingebaut — ↑/↓ wandert durch die sichtbaren Knoten, →/← klappt auf bzw. zu, Type-ahead springt zu Titeln. Auswahl per Enter/Space, sofern `selectionMode` aktiv ist. Der Zustand wird über `aria-expanded` transportiert; der Aufklapp-Pfeil heißt „Aufklappen“ bzw. „Zuklappen“ (eigene Beschriftung mit `chevronLabel`). Für Oberflächentests trägt der Pfeil mit `chevronTestId` ein `data-testid`. Gib dem Tree ein `aria-label`.
 
 ## Props
 
