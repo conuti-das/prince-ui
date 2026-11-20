@@ -1,0 +1,69 @@
+/* Stufenleiste: reine Anzeige, Zustand als Zeichen, Farbe UND Text; keine Leitfarbe. */
+.prn-stepbar {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  min-width: 0;
+}
+.prn-step {
+  --prn-step-farbe: var(--prn-label-3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+/* Verbindungslinie vor jeder Stufe außer der ersten */
+.prn-step + .prn-step::before {
+  content: "";
+  width: 20px;
+  height: 0;
+  border-top: 1px dashed var(--prn-separator);
+  flex: none;
+}
+.prn-step[data-state="done"] { --prn-step-farbe: var(--prn-green); }
+.prn-step[data-state="current"] { --prn-step-farbe: var(--prn-blue); }
+.prn-step[data-state="warning"] { --prn-step-farbe: var(--prn-orange); }
+.prn-step[data-state="problem"],
+.prn-step[data-state="rejected"] { --prn-step-farbe: var(--prn-red); }
+.prn-step[data-state="done"] + .prn-step::before { border-top-style: solid; border-color: var(--prn-green); }
+
+.prn-step-marke {
+  display: inline-grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  flex: none;
+  border-radius: 50%;
+  border: 1.5px solid var(--prn-step-farbe);
+  color: var(--prn-step-farbe);
+  font: var(--prn-text-footnote);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.prn-step[data-state="upcoming"] .prn-step-marke,
+.prn-step[data-state="skipped"] .prn-step-marke { color: var(--prn-label-2); }
+.prn-step[data-state="skipped"] .prn-step-marke { border-style: dashed; }
+.prn-step[data-state="current"] .prn-step-marke { border-width: 2.5px; }
+
+.prn-step-text { display: flex; flex-direction: column; min-width: 0; }
+.prn-step-name { font-weight: 600; color: var(--prn-label); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.prn-step[data-state="upcoming"] .prn-step-name,
+.prn-step[data-state="skipped"] .prn-step-name { font-weight: 500; color: var(--prn-label-2); }
+.prn-step-detail { font: var(--prn-text-footnote); color: var(--prn-label-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.prn-step-zustand { flex: none; }
+
+.prn-step-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}

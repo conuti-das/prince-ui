@@ -144,6 +144,8 @@
   --prn-danger-text: #ff8a82;
   --prn-danger-soft: rgba(255, 69, 58, 0.2);
   --prn-danger-fill: #d93a2f;
+  /* Ansichtssteuerung: Ring um den gewählten Umschalter (dunkel: Fläche allein hebt sich nicht ab; hell transparent) */
+  --prn-toggle-ring: var(--prn-label-2);
 
   /* ---- Semantik (System-Farben, Dunkel) ---- */
   --prn-green: #30d158;
@@ -235,6 +237,7 @@
     --prn-danger-text: #b3241b;
     --prn-danger-soft: rgba(255, 59, 48, 0.12);
     --prn-danger-fill: #d70015;
+    --prn-toggle-ring: transparent;
 
     --prn-green: #34c759;
     --prn-red: #ff3b30;
@@ -314,6 +317,7 @@
   --prn-danger-text: #b3241b;
   --prn-danger-soft: rgba(255, 59, 48, 0.12);
   --prn-danger-fill: #d70015;
+  --prn-toggle-ring: transparent;
 
   --prn-green: #34c759;
   --prn-red: #ff3b30;
@@ -391,6 +395,7 @@
   --prn-danger-text: #ff8a82;
   --prn-danger-soft: rgba(255, 69, 58, 0.2);
   --prn-danger-fill: #d93a2f;
+  --prn-toggle-ring: var(--prn-label-2);
 
   --prn-green: #30d158;
   --prn-red: #ff453a;
@@ -506,6 +511,7 @@
   --prn-danger-text: #f29486;
   --prn-danger-soft: rgba(226, 96, 79, 0.2);
   --prn-danger-fill: #c4473a;
+  --prn-toggle-ring: var(--prn-label-2);
 
   --prn-green: #4fb477;
   --prn-red: #e2604f;
@@ -597,6 +603,7 @@
   --prn-danger-text: #b0372a;
   --prn-danger-soft: rgba(209, 68, 53, 0.12);
   --prn-danger-fill: #c0392b;
+  --prn-toggle-ring: transparent;
 
   --prn-green: #2e9e5b;
   --prn-red: #d14435;

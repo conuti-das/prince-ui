@@ -100,4 +100,19 @@ describe("Token des Regelwerks", () => {
     const link = readFileSync(resolve(process.cwd(), "src/primitives/breadcrumbs.css"), "utf8");
     expect(link).toMatch(/\.prn-link \{\s*color: var\(--prn-link\)/);
   });
+  it("Umschalter (Ansichtssteuerung): im dunklen Thema hebt ein Ring den gewählten Teil ≥ 3:1 von der Spur ab; hell ohne Ring", () => {
+    const SPUR: Farbe = [0, 0, 0, 0.2]; // .prn-segmented: rgba(0, 0, 0, 0.2) über der Fläche
+    for (const [name, sel] of THEMES) {
+      const v = theme(sel);
+      const dunkel = ["Fallback dunkel", "dunkel", "CU dunkel"].includes(name);
+      if (!dunkel) { expect(v["--prn-toggle-ring"], name).toBe("transparent"); continue; }
+      for (const flaeche of ["--prn-bg", "--prn-bg-elevated"]) {
+        const spur = ueber(SPUR, farbe(v, flaeche));
+        const ring = ueber(farbe(v, "--prn-toggle-ring"), spur);
+        expect(kontrast(ring, spur), `${name} auf ${flaeche}`).toBeGreaterThanOrEqual(3);
+      }
+    }
+    const nav = readFileSync(resolve(process.cwd(), "src/primitives/navigation.css"), "utf8");
+    expect(nav).toMatch(/\.prn-segment\[data-selected\] \{[^}]*inset 0 0 0 1px var\(--prn-toggle-ring/);
+  });
 });
