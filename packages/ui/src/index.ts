@@ -46,6 +46,7 @@ export * from "./primitives/forms";
 export * from "./primitives/icon-button";
 export * from "./primitives/header-actions";
 export * from "./primitives/decision-dialog";
+export * from "./primitives/view-toolbar";
 export * from "./primitives/textarea";
 export * from "./primitives/overlays";
 export * from "./primitives/navigation";

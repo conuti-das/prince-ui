@@ -17,6 +17,11 @@ Verbindliche Prop-APIs. App-Sessions (Wave 3) codieren gegen diese Signaturen;
 | `Select<T>` | `label?`, `placeholder?`, **`description?`**, **`errorMessage?`**, `children` (Items), + RAC `Select` (`selectedKey`, `onSelectionChange`, …) |
 | `SelectItem` | RAC `ListBoxItem` (`id`, `textValue`, …), **`description?`** (Hinweis je Option, als Beschreibung vorgelesen) |
 | `DecisionDialog` | `title`, `tone?`, `notice?`, `question`, `options` (`{id,label,hint?}`), `defaultOption?`, `reasonLabel?`/`reasonRequired?`/`reasonMinLength?`/`reasonMaxLength?`, `confirmLabel`, `cancelLabel?`, `onConfirm({option,reason})` (auch Promise), `links?` (`{label,href}`, Links mit „›“), `errorMessage?`, `isPending?`, testids. Primäre erst mit Antwort; wartet auf Promise. |
+| `ViewToolbar` | **`aria-label`** (Pflicht), `children`. RAC `Toolbar` (Pfeiltasten, ein Tab-Stopp); rollt nie, ganze Gruppen brechen um. Neutral, nie Leit- oder Linkfarbe. |
+| `ViewToolbarGroup` | `aria-label?`, `align?: "start" \| "end"`, `wrap?` (Default: Gruppe bleibt ganz in einer Zeile). `ViewToolbarSeparator` ohne Props. |
+| `ViewButton` | `icon?`, `children` (Text), `tooltip?`, `size?`, + RAC `Button`-Props. Grau wie `IconButton` (z. B. „Auf Pfad“, „Einpassen“). |
+| `FilterChip` | `children`, `count?` (Teil des Namens), `mark?` (dekorativ), + RAC `ToggleButton` (`isSelected`, `onChange`, …). Gedrückt = Fläche und Rand. |
+| `ZoomGroup` | `onZoomOut`, `onZoomIn`, `onFit?`, `canZoomOut?`/`canZoomIn?`, `fitLabel?` („Einpassen“), `zoomOutLabel?`/`zoomInLabel?`, `info?` (`{label,tooltip?,onPress?}`), `children?` (vor „Einpassen“), testids. Feste Reihenfolge: [weitere] · Einpassen · − · + · Info. |
 
 ### Overlays (`primitives/overlays`)
 | Komponente | Wesentliche Props |

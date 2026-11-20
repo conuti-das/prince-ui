@@ -24,7 +24,8 @@
 .prn-segment[data-selected] {
   background: var(--prn-bg-elevated);
   color: var(--prn-label);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.28);
+  /* Ring nur im dunklen Thema sichtbar (Token je Thema; hell transparent) */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.28), inset 0 0 0 1px var(--prn-toggle-ring, transparent);
 }
 .prn-segment[data-focus-visible] { box-shadow: var(--prn-focus); }
 .prn-segment[data-disabled] { opacity: 0.45; cursor: not-allowed; }
