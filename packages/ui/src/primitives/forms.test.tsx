@@ -1,4 +1,6 @@
 import "@testing-library/jest-dom/vitest";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
@@ -93,6 +95,13 @@ describe("forms primitives", () => {
       </Select>,
     );
     expect(screen.getByRole("button", { name: /Sparte/ })).toHaveTextContent("Strom");
+  });
+
+  it("Eingabefeld rechnet den Innenabstand in die Breite (box-sizing: border-box) – ragt nicht über den Rand", () => {
+    const css = readFileSync(resolve(process.cwd(), "src/primitives/forms.css"), "utf8");
+    const regel = css.match(/^\.prn-input \{([^}]*)\}/m)?.[1] ?? "";
+    expect(regel).toMatch(/width:\s*100%/);
+    expect(regel).toMatch(/box-sizing:\s*border-box/);
   });
 
   it("TextField defaults to size m", () => {
