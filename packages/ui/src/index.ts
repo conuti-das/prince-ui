@@ -54,6 +54,7 @@ export * from "./primitives/navigation";
 // Wave 2 — L2-Komposita
 export * from "./composites/composites";
 export * from "./composites/busy";
+export * from "./composites/stepbar";
 export * from "./composites/appshell";
 export * from "./composites/selectionbar";
 export * from "./launchpad/launchpad";

@@ -1,0 +1,54 @@
+# StepBar
+
+Die **Stufenleiste** zeigt, wo ein Objekt auf seinem Weg steht – etwa ein Massenauftrag (angelegt → freigegeben → läuft →
+abgeschlossen) oder ein Änderungspaket (angelegt → getestet → freigegeben → transportiert). Reine Anzeige: keine Knöpfe,
+keine Leitfarbe (Regelwerk „Aktion, Hilfsaktion, Navigation, Ansicht“). Vorlage ist der Lagekopf des Massenauftrags in E.
+
+## Verwendung
+
+- Im Kopf des Objekts unter Titel und Zustand, eine Zeile; bei schmaler Fläche brechen ganze Stufen um.
+- Je Stufe Nummer oder Zeichen, Name, optional eine zweite Zeile (Datum, Person, Zahl) und der Zustand **als Text** – Farbe allein trägt nie die Bedeutung.
+- Genau eine Stufe ist `current`; sie trägt `aria-current="step"`.
+- Abweichende Zustandstexte („überfällig“) über `stateLabel` je Stufe, übersetzte Texte über `stateLabels`.
+
+<DoDont kind="do">Zustand „mit Problem“ an der Stufe, die hängt – mit Zeichen und Text.</DoDont>
+<DoDont kind="dont">Knöpfe in die Stufenleiste setzen; Aktionen gehören in die Aktionsleiste im Kopf.</DoDont>
+
+## Beispiele
+
+<Example code={`<StepBar aria-label="Stufen des Auftrags" steps={[
+  { id: 'angelegt', label: 'Angelegt', detail: '19.11., 14:02', state: 'done' },
+  { id: 'freigabe', label: 'Freigegeben', detail: 'Vier-Augen', state: 'done' },
+  { id: 'laeuft', label: 'Läuft', detail: '412 von 1 000', state: 'current' },
+  { id: 'abschluss', label: 'Abgeschlossen', state: 'upcoming' },
+]} />`} />
+
+Alle Zustände:
+
+<Example code={`<StepBar aria-label="Zustände" steps={[
+  { id: 'a', label: 'Erledigt', state: 'done' },
+  { id: 'b', label: 'Aktuell', state: 'current' },
+  { id: 'c', label: 'Hinweis', state: 'warning', stateLabel: 'überfällig' },
+  { id: 'd', label: 'Problem', state: 'problem' },
+  { id: 'e', label: 'Abgelehnt', state: 'rejected' },
+  { id: 'f', label: 'Übersprungen', state: 'skipped' },
+  { id: 'g', label: 'Folgt', state: 'upcoming' },
+]} />`} />
+
+Kompakt (ohne zweite Zeile und ohne Marke; der Zustand bleibt für Vorleseprogramme):
+
+<Example code={`<StepBar aria-label="Stufen" density="compact" steps={[
+  { id: 'a', label: 'Angelegt', state: 'done' },
+  { id: 'b', label: 'Getestet', state: 'current' },
+  { id: 'c', label: 'Freigegeben', state: 'upcoming' },
+  { id: 'd', label: 'Transportiert', state: 'upcoming' },
+]} />`} />
+
+## Accessibility
+
+Eine geordnete Liste (`<ol>`) mit Namen (`aria-label`). Nummer und Zeichen sind dekorativ (`aria-hidden`); die Reihenfolge
+kommt aus der Liste, der Zustand aus dem Text. Die aktuelle Stufe trägt `aria-current="step"`.
+
+## Props
+
+<PropsTable name="StepBar" />
