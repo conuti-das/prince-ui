@@ -38,6 +38,10 @@
   background: var(--prn-accent-soft);
   color: var(--prn-accent-strong);
 }
+/* Einfachauswahl ohne Kästchen: Balken links an der gewählten Zeile */
+.prn-tree[data-selection="single"] .prn-tree-item[data-selected] .prn-tree-row {
+  box-shadow: inset 3px 0 0 var(--prn-accent);
+}
 .prn-tree-item[data-focus-visible] .prn-tree-row {
   box-shadow: var(--prn-focus);
 }

@@ -1,0 +1,66 @@
+# ViewToolbar
+
+Die **Werkzeugleiste der Ansicht**: Zoom, Einpassen, Darstellung umschalten und Filter-Marken – direkt an der Ansicht, die sie
+steuert (Prozessbild, Systembild, Tabelle), nie in der Aktionsleiste des Kopfes. Alles darin ist **neutral (grau), nie in der
+Leitfarbe**: Es ändert nur die Ansicht, nichts geht an den Server (Regelwerk „Ansichtssteuerung“, entschieden am 19.11.2026).
+
+## Verwendung
+
+- Links die Gruppen für Teilmengen (Filter-Marken mit Zahl) und Darstellungen derselben Daten (`SegmentedControl`), rechts die
+  `ZoomGroup` (`align="end"`).
+- **Dieselbe Funktion sieht überall gleich aus und heißt überall gleich:** die `ZoomGroup` hat eine feste Reihenfolge –
+  weitere Knöpfe der Ansicht (z. B. „Auf Pfad“) · Einpassen · Verkleinern · Vergrößern · Info.
+- Die Leiste **rollt nie**. Was in der Breite nicht passt, bricht als ganze Gruppe in die nächste Zeile um; eine Gruppe mit `wrap`
+  (Filter-Marken) darf in sich umbrechen. So entstehen auch mit festen Rollbalken keine Rollbalken in der Leiste.
+- Text-Knöpfe der Ansicht sind `ViewButton`, reine Icon-Knöpfe `IconButton` – beide grau.
+
+<DoDont kind="do">„Einpassen“, −, + und Info rechts über dem Prozessbild, grau.</DoDont>
+<DoDont kind="dont">„Aktualisieren“ oder „Neu laden“ in dieser Leiste – das ist eine Hilfsaktion und gehört in die Aktionsleiste im Kopf.</DoDont>
+<DoDont kind="dont">Zoom- oder Umschaltknöpfe getönt oder gefüllt in der Leitfarbe – Leitfarbe heißt: es passiert etwas am Server.</DoDont>
+
+## Beispiel: Prozessbild
+
+<Example code={`function Beispiel() {
+  const [fehler, setFehler] = React.useState(false);
+  const [zoom, setZoom] = React.useState(1);
+  const punkt = (farbe) => <i style={{ width: 10, height: 10, borderRadius: '50%', border: '2px solid ' + farbe }} />;
+  return (
+    <ViewToolbar aria-label="Ansicht des Prozessbilds">
+      <ViewToolbarGroup aria-label="Hervorheben" wrap>
+        <FilterChip mark={punkt('var(--prn-red)')} count={2} isSelected={fehler} onChange={setFehler}>Fehler</FilterChip>
+        <FilterChip mark={punkt('var(--prn-green)')} count={7}>begangen</FilterChip>
+        <FilterChip mark={punkt('var(--prn-blue)')} count={1}>aktiv</FilterChip>
+      </ViewToolbarGroup>
+      <ViewToolbarSeparator />
+      <SegmentedControl aria-label="Darstellung" defaultSelectedKeys={['diagramm']} size="s">
+        <Segment id="diagramm">Diagramm</Segment>
+        <Segment id="tabelle">Tabelle</Segment>
+      </SegmentedControl>
+      <ZoomGroup onZoomOut={() => setZoom((z) => z / 1.2)} onZoomIn={() => setZoom((z) => z * 1.2)} onFit={() => setZoom(1)}
+        canZoomIn={zoom < 3} canZoomOut={zoom > 0.3}
+        info={{ label: 'Bedienung', tooltip: 'Klick auf einen Schritt zeigt seine Variablen' }}>
+        <ViewButton icon="route" tooltip="Begangenen Weg und aktiven Schritt zeigen">Auf Pfad</ViewButton>
+      </ZoomGroup>
+    </ViewToolbar>
+  );
+}`} />
+
+## FilterChip
+
+Filter-Marke zum Umschalten: hebt eine Teilmenge hervor oder filtert sie. Gedrückt zeigt sie Fläche **und** kräftigen Rand
+(nicht nur eine Farbe); die Zahl ist Teil des Namens („Fehler 2“).
+
+<Playground component="FilterChip" />
+
+## Accessibility
+
+`ViewToolbar` ist eine React-Aria-`Toolbar`: ein Tab-Stopp, die Pfeiltasten wandern zwischen den Elementen. Gruppen tragen einen
+Namen (`aria-label`). `FilterChip` ist ein Umschalter (`aria-pressed`). Icon-Knöpfe haben einen Namen, der zugleich Tooltip ist.
+Auf dem Telefon sind Filter-Marken und Icon-Knöpfe mindestens 44 px hoch.
+
+## Props
+
+<PropsTable name="ViewToolbar" />
+<PropsTable name="ZoomGroup" />
+<PropsTable name="FilterChip" />
+<PropsTable name="ViewButton" />

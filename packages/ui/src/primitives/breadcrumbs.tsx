@@ -35,8 +35,18 @@ export function Breadcrumb({ className, ...props }: BreadcrumbProps) {
 export interface LinkProps extends Omit<RACLinkProps, "className"> {
   children?: ReactNode;
   className?: string;
+  /**
+   * Sprung woandershin (Regelwerk: „Text mit ›“): hängt den Pfeil „›“ an (dekorativ, nicht vorgelesen). Für „Zum Klärfall ›“, „Vorgang öffnen ›“ –
+   * Sprünge sind Links, nie Knöpfe.
+   */
+  arrow?: boolean;
 }
 
-export function Link({ className, ...props }: LinkProps) {
-  return <RACLink {...props} className={cx("prn-link", className)} />;
+export function Link({ className, arrow, children, ...props }: LinkProps) {
+  if (!arrow) return <RACLink {...props} className={cx("prn-link", className)}>{children}</RACLink>;
+  return (
+    <RACLink {...props} data-arrow className={cx("prn-link", className)}>
+      {(r) => <>{typeof children === "function" ? (children as (x: typeof r) => ReactNode)(r) : children}<span className="prn-link-pfeil" aria-hidden>›</span></>}
+    </RACLink>
+  );
 }

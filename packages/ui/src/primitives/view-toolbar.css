@@ -1,0 +1,69 @@
+/* Werkzeugleiste der Ansicht: neutral (grau), nie Leitfarbe; rollt nie – ganze Gruppen brechen um. */
+.prn-vtb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 12px;
+  min-width: 0;
+  overflow: visible;
+}
+.prn-vtb-gruppe {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+}
+.prn-vtb-gruppe[data-wrap] { flex-wrap: wrap; }
+.prn-vtb-gruppe[data-align="end"] { margin-left: auto; }
+.prn-vtb-trenner {
+  align-self: stretch;
+  width: 1px;
+  margin: 4px 2px;
+  border: none;
+  background: var(--prn-separator);
+}
+
+/* Knopf der Ansicht mit Text: wie der IconButton grau */
+.prn-viewbutton.prn-button[data-variant] {
+  gap: 6px;
+  background: transparent;
+  color: var(--prn-label-2);
+}
+.prn-viewbutton.prn-button[data-variant][data-hovered] { background: var(--prn-fill); color: var(--prn-label); }
+.prn-viewbutton.prn-button[data-variant][data-pressed] { background: var(--prn-fill-strong); color: var(--prn-label); }
+.prn-viewbutton.prn-button[data-variant][data-disabled] { background: transparent; color: var(--prn-label-4); }
+
+/* Filter-Marke: Umriss; gedrückt = Fläche und kräftiger Rand (nicht nur Farbe) */
+.prn-filterchip {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 28px;
+  padding: 0 10px;
+  border: 1px solid var(--prn-separator);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--prn-label-2);
+  font: var(--prn-text-footnote);
+  white-space: nowrap;
+  cursor: pointer;
+  outline: none;
+}
+.prn-filterchip[data-hovered] { background: var(--prn-fill); color: var(--prn-label); }
+.prn-filterchip[data-selected] {
+  background: var(--prn-fill-strong);
+  border-color: var(--prn-label-2);
+  box-shadow: inset 0 0 0 1px var(--prn-label-2);
+  color: var(--prn-label);
+}
+.prn-filterchip[data-focus-visible] { box-shadow: var(--prn-focus); }
+.prn-filterchip[data-disabled] { opacity: 0.45; cursor: not-allowed; }
+.prn-filterchip-marke { display: inline-flex; }
+.prn-filterchip-zahl { color: var(--prn-label-3); font-variant-numeric: tabular-nums; }
+.prn-filterchip[data-selected] .prn-filterchip-zahl { color: var(--prn-label-2); }
+
+@media (pointer: coarse), (max-width: 599px) {
+  .prn-filterchip { min-height: 44px; }
+}

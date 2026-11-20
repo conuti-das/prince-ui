@@ -64,4 +64,19 @@ describe("tree primitive", () => {
     }
     expect(container.querySelector(".prn-tree-item[data-expanded] .prn-tree-chevron")).not.toBeNull();
   });
+  it("Einfachauswahl ohne Kästchen: Zeile wählbar, aria-selected, Balken statt Kästchen; Mehrfachauswahl behält die Kästchen", async () => {
+    const onSelectionChange = vi.fn();
+    const { container, unmount } = render(<Hierarchy selectionMode="single" onSelectionChange={onSelectionChange} />);
+    expect(container.querySelector(".prn-tree")).toHaveAttribute("data-selection", "single");
+    expect(container.querySelectorAll(".prn-tree-check")).toHaveLength(0);
+    expect(screen.queryAllByRole("checkbox")).toHaveLength(0);
+    await userEvent.click(screen.getByText("Netzbetreiber"));
+    expect(screen.getByRole("row", { name: /Netzbetreiber/ })).toHaveAttribute("aria-selected", "true");
+    expect([...(onSelectionChange.mock.calls[0]![0] as Set<string>)]).toEqual(["nb"]);
+    const css = readFileSync(resolve(process.cwd(), "src/primitives/tree.css"), "utf8");
+    expect(css).toMatch(/\.prn-tree\[data-selection="single"\] \.prn-tree-item\[data-selected\] \.prn-tree-row \{\s*box-shadow: inset 3px 0 0/);
+    unmount();
+    render(<Hierarchy selectionMode="multiple" />);
+    expect(screen.getAllByRole("checkbox").length).toBeGreaterThan(0);
+  });
 });

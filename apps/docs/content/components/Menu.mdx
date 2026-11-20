@@ -19,6 +19,27 @@ Aktionsmenü mit destruktivem Eintrag am Ende:
   <MenuItem id="del">Löschen</MenuItem>
 </Menu>`} />
 
+### Abschnitte, Trenner und Rollen
+
+`MenuSection` gruppiert Einträge unter einer Überschrift (für Vorleseprogramme als benannte Gruppe), `MenuSeparator` trennt
+Abschnitte. `MenuItem tone="action"` (Leitfarbe, etwas passiert am Server) und `tone="danger"` (Rücknahme) tragen dieselbe
+Farbcodierung wie die Knöpfe; `icon` setzt ein Icon vor den Text.
+
+<Example code={`<Menu trigger={<IconButton icon="more" label="Weitere Aktionen" />}>
+  <MenuSection title="Weitere Aktionen">
+    <MenuItem id="zuweisen" tone="action">Zuweisen</MenuItem>
+    <MenuItem id="abgeben" tone="danger">Abgeben</MenuItem>
+  </MenuSection>
+  <MenuSeparator />
+  <MenuSection title="Ansicht und Export">
+    <MenuItem id="export" icon="download">Exportieren</MenuItem>
+  </MenuSection>
+  <MenuSeparator />
+  <MenuSection title="Hilfe">
+    <MenuItem id="hilfe" icon="help">Hilfe zu dieser Seite</MenuItem>
+  </MenuSection>
+</Menu>`} />
+
 ## Accessibility
 
 Menu basiert auf react-aria `MenuTrigger`/`Menu`: Der Trigger trägt `aria-haspopup` und `aria-expanded`, das Popover hat die Rolle `menu`, die Einträge `menuitem`. Tastatur ist vollständig eingebaut — Öffnen mit Enter/Space/Pfeiltaste, Navigation mit ↑/↓ inkl. Type-ahead, Schließen mit Esc, Fokus kehrt beim Schließen zum Trigger zurück. Außen-Klick und Fokus-Falle übernimmt React Aria. Da der Auslöser den Menü-Inhalt benennt, braucht ein Icon-only-Trigger ein `aria-label`.
