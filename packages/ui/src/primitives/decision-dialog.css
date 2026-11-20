@@ -1,0 +1,12 @@
+/* DecisionDialog – eine Entscheidung im Pop-up (Regelwerk „Bearbeiten im Pop-up“) */
+.prn-decision-body { display: flex; flex-direction: column; gap: 16px; }
+.prn-decision-notice {
+  font: var(--prn-text-body);
+  color: var(--prn-label);
+  padding: 10px 12px;
+  border-radius: var(--prn-radius-sm);
+  background: var(--prn-fill);
+  overflow-wrap: anywhere;
+}
+.prn-decision-error { font: var(--prn-text-footnote); color: var(--prn-danger-text); }
+.prn-decision-links { display: flex; flex-wrap: wrap; gap: 4px 16px; font: var(--prn-text-callout); }

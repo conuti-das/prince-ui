@@ -11,6 +11,9 @@ import {
   Menu as RACMenu,
   MenuItem as RACMenuItem,
   type MenuItemProps,
+  MenuSection as RACMenuSection,
+  Header as RACHeader,
+  Separator as RACSeparator,
   Popover as RACPopover,
   type PopoverProps,
   TooltipTrigger,
@@ -185,10 +188,34 @@ export function Menu({ trigger, children, glass, className }: MenuProps) {
 
 export interface MenuItemPropsExt extends Omit<MenuItemProps, "className"> {
   className?: string;
+  /** Rolle des Eintrags in derselben Farbcodierung wie die Knöpfe: `action` (Leitfarbe, am Server), `danger` (Rücknahme, rot); ohne = neutral. */
+  tone?: "action" | "danger";
+  /** Icon vor dem Text (rein dekorativ). */
+  icon?: IconName;
 }
 
-export function MenuItem({ className, ...props }: MenuItemPropsExt) {
-  return <RACMenuItem {...props} className={cx("prn-menu-item", className)} />;
+export function MenuItem({ className, tone, icon, children, textValue, ...props }: MenuItemPropsExt) {
+  const text = textValue ?? (typeof children === "string" ? children : undefined);
+  return (
+    <RACMenuItem {...props} textValue={text} data-tone={tone} className={cx("prn-menu-item", className)}>
+      {icon || tone ? <>{icon ? <Icon name={icon} size={16} /> : null}<span className="prn-menu-item-text">{children as ReactNode}</span></> : children}
+    </RACMenuItem>
+  );
+}
+
+/** Abschnitt im Menü mit Überschrift (für Vorleseprogramme als Gruppe benannt). */
+export function MenuSection({ title, children, className }: { title?: ReactNode; children: ReactNode; className?: string }) {
+  return (
+    <RACMenuSection className={cx("prn-menu-section", className)}>
+      {title ? <RACHeader className="prn-menu-section-title">{title}</RACHeader> : null}
+      {children}
+    </RACMenuSection>
+  );
+}
+
+/** Trennlinie zwischen Abschnitten des Menüs. */
+export function MenuSeparator() {
+  return <RACSeparator className="prn-menu-separator" />;
 }
 
 /* ---------------- Popover (frei) ---------------- */

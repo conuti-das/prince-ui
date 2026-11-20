@@ -47,6 +47,9 @@
   transition: color var(--prn-dur-fast) var(--prn-ease-standard);
 }
 .prn-link[data-hovered] { text-decoration: underline; }
+.prn-link[data-arrow] { display: inline-flex; align-items: baseline; gap: 0.25em; }
+.prn-link-pfeil { font-weight: 600; text-decoration: none; transition: transform var(--prn-dur-fast) var(--prn-ease-standard); }
+.prn-link[data-arrow][data-hovered] .prn-link-pfeil { transform: translateX(2px); }
 .prn-link[data-pressed] { color: var(--prn-link-pressed); }
 .prn-link[data-focus-visible] {
   outline: none;

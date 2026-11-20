@@ -118,6 +118,16 @@
   background: var(--prn-accent-soft);
 }
 .prn-menu-item[data-disabled], .prn-option[data-disabled] { opacity: 0.4; cursor: default; }
+.prn-option-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.prn-option-desc { font: var(--prn-text-caption); color: var(--prn-label-2); white-space: normal; }
+.prn-menu-item[data-tone="action"] { color: var(--prn-action-text); }
+.prn-menu-item[data-tone="danger"] { color: var(--prn-danger-text); }
+.prn-menu-item[data-tone="danger"][data-focused] { background: var(--prn-danger-soft); }
+.prn-menu-item > svg { flex: none; }
+.prn-menu-item-text { min-width: 0; }
+.prn-menu-section { display: flex; flex-direction: column; gap: 2px; }
+.prn-menu-section-title { padding: 6px 10px 2px; font: var(--prn-text-caption, var(--prn-text-footnote)); font-weight: 600; color: var(--prn-label-2); }
+.prn-menu-separator { height: 1px; margin: 4px 6px; background: var(--prn-separator); border: none; }
 .prn-option[data-selected]::after {
   content: "✓";
   margin-left: auto;

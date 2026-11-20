@@ -133,6 +133,10 @@ export function Switch({ children, className, ...props }: SwitchProps) {
 
 export interface SelectProps<T extends object> extends Omit<RACSelectProps<T>, "className" | "children"> {
   label?: ReactNode;
+  /** Hinweis unter dem Feld (z. B. der Hinweis der gewählten Option). */
+  description?: ReactNode;
+  /** Fehlertext (mit `isInvalid` oder aus der Validierung). */
+  errorMessage?: ReactNode;
   placeholder?: string;
   children: ReactNode | ((item: T) => ReactNode);
   /** Größe: s (kompakt) | m (Default) | l. Ohne Angabe greift der PrinceSizeProvider-Context. */
@@ -140,7 +144,7 @@ export interface SelectProps<T extends object> extends Omit<RACSelectProps<T>, "
   className?: string;
 }
 
-export function Select<T extends object>({ label, placeholder, children, size, className, ...props }: SelectProps<T>) {
+export function Select<T extends object>({ label, description, errorMessage, placeholder, children, size, className, ...props }: SelectProps<T>) {
   const resolvedSize = useFieldSize(size);
   return (
     <RACSelect {...props} data-size={resolvedSize} className={cx("prn-field prn-select", className)}>
@@ -152,6 +156,8 @@ export function Select<T extends object>({ label, placeholder, children, size, c
           <path d="M2.75 4.5 6 7.75 9.25 4.5" />
         </svg>
       </RACButton>
+      {description && <Text slot="description" className="prn-field-desc">{description}</Text>}
+      <FieldError className="prn-field-error">{errorMessage}</FieldError>
       <Popover className="prn-popover prn-select-popover">
         <ListBox className="prn-listbox">{children}</ListBox>
       </Popover>
@@ -161,8 +167,18 @@ export function Select<T extends object>({ label, placeholder, children, size, c
 
 export interface SelectItemProps extends Omit<ListBoxItemProps, "className"> {
   className?: string;
+  /** Hinweis zur Option (zweite Zeile, als Beschreibung vorgelesen), z. B. was die Antwort auslöst. */
+  description?: ReactNode;
 }
 
-export function SelectItem({ className, ...props }: SelectItemProps) {
-  return <ListBoxItem {...props} className={cx("prn-option", className)} />;
+export function SelectItem({ className, description, children, textValue, ...props }: SelectItemProps) {
+  if (description == null) return <ListBoxItem {...props} textValue={textValue} className={cx("prn-option", className)}>{children}</ListBoxItem>;
+  return (
+    <ListBoxItem {...props} textValue={textValue ?? (typeof children === "string" ? children : undefined)} data-description className={cx("prn-option", className)}>
+      <span className="prn-option-text">
+        <Text slot="label" className="prn-option-label">{children as ReactNode}</Text>
+        <Text slot="description" className="prn-option-desc">{description}</Text>
+      </span>
+    </ListBoxItem>
+  );
 }

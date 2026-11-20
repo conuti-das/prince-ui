@@ -22,6 +22,16 @@ Link führt den Nutzer **woandershin** (Seite, Anker, externe Ressource). Für A
   <Link href="#" isDisabled>Deaktiviert</Link>
 </div>`} />
 
+### Sprung mit Pfeil „›“
+
+Sprünge woandershin („Vorgang öffnen“, „Zum Klärfall“) sind Links mit `arrow` – nie Knöpfe (Regelwerk). Der Pfeil ist dekorativ;
+vorgelesen wird nur der Text.
+
+<Example code={`<div style={{ display: 'flex', gap: 20 }}>
+  <Link href="#" arrow>Zum Klärfall</Link>
+  <Link href="#" arrow>Vorgang öffnen</Link>
+</div>`} />
+
 ## Accessibility
 
 Link basiert auf react-aria `Link`: Fokus-Ring, Tastaturbedienung (Enter) und das Disabled-Handling sind eingebaut. Ohne `href` setzt React Aria die korrekte Link-Rolle und Fokussierbarkeit selbst, sodass auch JavaScript-Navigation zugänglich bleibt. Der Linktext sollte das Ziel beschreiben; führt der Link aus der Anwendung heraus oder öffnet er ein neues Fenster, mache das im Text oder per `aria-label` kenntlich.
