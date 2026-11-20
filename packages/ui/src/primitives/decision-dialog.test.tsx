@@ -71,6 +71,18 @@ describe("DecisionDialog (Bearbeiten im Pop-up)", () => {
 });
 
 describe("Select mit Hinweis und Fehler, Link mit Pfeil", () => {
+  it("das Feld zeigt die gewählte Antwort; eine Vorauswahl (defaultOption) steht sofort im Feld", async () => {
+    const { unmount } = render(<Dialog />);
+    const feld = screen.getByRole("button", { name: /Wie soll der Prozess weitergehen\?/ });
+    expect(feld).toHaveTextContent("Bitte wählen");
+    await userEvent.click(feld);
+    await userEvent.click(screen.getByRole("option", { name: /Abweichung ignorieren/ }));
+    expect(screen.getByRole("button", { name: /Wie soll der Prozess weitergehen\?/ })).toHaveTextContent("Abweichung ignorieren");
+    unmount();
+    render(<Dialog defaultOption="lesen" />);
+    expect(screen.getByRole("button", { name: /Wie soll der Prozess weitergehen\?/ })).toHaveTextContent("Daten neu lesen");
+  });
+
   it("Select: Hinweis und Fehlertext unter dem Feld", () => {
     render(<Select label="Status" description="Wirkt sofort" errorMessage="Bitte wählen" isInvalid><SelectItem id="a">A</SelectItem></Select>);
     expect(screen.getByText("Wirkt sofort")).toBeInTheDocument();

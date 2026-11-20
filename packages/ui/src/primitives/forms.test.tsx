@@ -74,6 +74,25 @@ describe("forms primitives", () => {
     await userEvent.click(screen.getByRole("button", { name: /Sparte/ }));
     await userEvent.click(screen.getByRole("option", { name: "Gas" }));
     expect(onSelectionChange).toHaveBeenCalledWith("gas");
+    // das Feld zeigt danach die Wahl, nicht mehr den Platzhalter
+    expect(screen.getByRole("button", { name: /Sparte/ })).toHaveTextContent("Gas");
+    expect(screen.getByRole("button", { name: /Sparte/ })).not.toHaveTextContent("Bitte wählen");
+  });
+
+  it("Select zeigt den Platzhalter ohne Wahl und eine Vorauswahl sofort", () => {
+    const { unmount } = render(
+      <Select label="Sparte" placeholder="Bitte wählen">
+        <SelectItem id="strom">Strom</SelectItem>
+      </Select>,
+    );
+    expect(screen.getByRole("button", { name: /Sparte/ })).toHaveTextContent("Bitte wählen");
+    unmount();
+    render(
+      <Select label="Sparte" placeholder="Bitte wählen" defaultSelectedKey="strom">
+        <SelectItem id="strom">Strom</SelectItem>
+      </Select>,
+    );
+    expect(screen.getByRole("button", { name: /Sparte/ })).toHaveTextContent("Strom");
   });
 
   it("TextField defaults to size m", () => {
