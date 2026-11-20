@@ -90,6 +90,8 @@
 .prn-field-error { font: var(--prn-text-footnote); color: var(--prn-red); }
 
 .prn-input {
+  /* Breite samt Innenabstand: sonst ragt das Feld um 24 px über den Rand (wie .prn-textarea) */
+  box-sizing: border-box;
   width: 100%;
   min-height: 34px;
   padding: 7px 12px;
