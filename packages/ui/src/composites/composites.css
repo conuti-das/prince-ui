@@ -671,10 +671,11 @@ a.prn-sidebar-item {
   font-weight: 700;
   line-height: 1;
 }
-.prn-notice[data-tone="info"] .prn-notice-icon { background: var(--prn-blue); color: #fff; }
-.prn-notice[data-tone="positive"] .prn-notice-icon { background: var(--prn-green); color: #fff; }
-.prn-notice[data-tone="critical"] .prn-notice-icon { background: var(--prn-orange); color: var(--prn-on-status-fill); }
-.prn-notice[data-tone="negative"] .prn-notice-icon { background: var(--prn-red); color: #fff; }
+/* Zeichen der Notice: Schrift je Ton lesbar (--prn-on-<ton>, CU-Themes; gerechnet in kontrast-cu.test.ts) */
+.prn-notice[data-tone="info"] .prn-notice-icon { background: var(--prn-blue); color: var(--prn-on-blue, #fff); }
+.prn-notice[data-tone="positive"] .prn-notice-icon { background: var(--prn-green); color: var(--prn-on-green, #fff); }
+.prn-notice[data-tone="critical"] .prn-notice-icon { background: var(--prn-orange); color: var(--prn-on-orange, var(--prn-on-status-fill)); }
+.prn-notice[data-tone="negative"] .prn-notice-icon { background: var(--prn-red); color: var(--prn-on-red, #fff); }
 
 .prn-notice-body {
   display: flex;

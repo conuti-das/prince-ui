@@ -63,6 +63,7 @@ const PAARE: Paar[] = [
   ["Marke blau", "var(--prn-info-text, var(--prn-blue))", AUF("var(--prn-tint-info)")],
   ["Marke grau", "var(--prn-label-2)", AUF("var(--prn-fill-strong)")],
   ["ShellBar-Zähler", "var(--prn-on-status-fill)", AUF("var(--prn-danger-fill, var(--prn-red))")],
+  // Zeichen auf Statusflächen: Timeline-Knoten und Notice-Zeichen nutzen dieselben Paare
   ["Timeline-Zeichen grün", "var(--prn-on-green, var(--prn-on-status-fill))", AUF("var(--prn-green)")],
   ["Timeline-Zeichen orange", "var(--prn-on-orange, var(--prn-on-status-fill))", AUF("var(--prn-orange)")],
   ["Timeline-Zeichen rot", "var(--prn-on-red, var(--prn-on-status-fill))", AUF("var(--prn-red)")],
@@ -99,6 +100,12 @@ describe("Komponenten nutzen die gerechneten Token", () => {
     expect(css("primitives/breadcrumbs.css")).toMatch(/\.prn-link \{[^}]*color: var\(--prn-link\)/);
     expect(css("primitives/navigation.css")).toMatch(/\.prn-tab\[data-selected\] \{[^}]*color: var\(--prn-accent-strong\)/);
     expect(css("data/objectpage.css")).toMatch(/\.prn-op-anchor\[data-selected\] \{[^}]*color: var\(--prn-accent-strong\)/);
+  });
+  it("Notice: Zeichen je Ton mit --prn-on-<ton> (gleiche Paare wie die Timeline-Zeichen)", () => {
+    const c = css("composites/composites.css");
+    for (const [ton, f] of [["info", "blue"], ["positive", "green"], ["critical", "orange"], ["negative", "red"]]) {
+      expect(c).toMatch(new RegExp(`\\.prn-notice\\[data-tone="${ton}"\\] \\.prn-notice-icon \\{[^}]*background: var\\(--prn-${f}\\); color: var\\(--prn-on-${f},`));
+    }
   });
   it("Timeline: Zeichen je Status mit --prn-on-<ton>, Avatar mit --prn-tl-avatar-text", () => {
     const t = css("data/timeline.css");
