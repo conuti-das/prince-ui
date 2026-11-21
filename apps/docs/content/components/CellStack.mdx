@@ -1,0 +1,28 @@
+# CellStack
+
+Eine Zelle mit Hauptwert und kleinem Zweitwert darunter, etwa „Lieferbeginn“ über der MaLo-ID. Gedacht für Tabellen und Listen. Jede Zeile wird mit „…“ gekürzt. Mit `wrap` bricht der Text um, was für Kennungen gedacht ist, die nie gekürzt werden dürfen.
+
+## Verwendung
+
+- `primary`: Hauptwert, mit `emphasized` fett.
+- `secondary`: Zweitwert, mit `mono` in Festbreitenschrift.
+- `title`: voller Text als Tooltip, wenn gekürzt wird.
+- `data-*` landet am Element.
+
+<DoDont kind="do">Kennungen (MaLo-ID, Instanz) mit `wrap` zeigen.</DoDont>
+<DoDont kind="dont">Mehr als zwei Zeilen in eine Zelle legen.</DoDont>
+
+## Beispiele
+
+<Example code={`<div style={{ display: 'grid', gap: 12, maxWidth: 220 }}>
+  <CellStack primary="Lieferbeginn" secondary="Marktlokation 50970000019" emphasized title="Lieferbeginn · Marktlokation 50970000019" />
+  <CellStack primary="LF-202610-Aperak_MSCONS" secondary="lf:LF:7b1c0e2a-5d3f-4e8a-9c1b-2f6d8e4a0b3c" mono wrap />
+</div>`} />
+
+## Accessibility
+
+Reiner Text ohne Rolle. Die Reihenfolge Hauptwert vor Zweitwert ist auch die Lesereihenfolge.
+
+## Props
+
+<PropsTable name="CellStack" />

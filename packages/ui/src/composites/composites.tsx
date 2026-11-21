@@ -11,9 +11,18 @@ import "./composites.css";
 
 /* ---------------- Card ---------------- */
 
-export interface CardProps {
+/** data-* am äußeren Element (testid und Merkmale für Tests und Stile). */
+export type DataAttributes = { [key: `data-${string}`]: string | number | boolean | undefined };
+/** nur die data-*-Schlüssel aus den restlichen Props */
+const nurDaten = (rest: Record<string, unknown>): DataAttributes => Object.fromEntries(Object.entries(rest).filter(([k]) => k.startsWith("data-"))) as DataAttributes;
+
+export interface CardProps extends DataAttributes {
   /** Optionaler Titel oben links (alternativ via `header` voll überschreibbar). */
   title?: ReactNode;
+  /** Zahl neben dem Titel (z. B. Anzahl der Einträge der Karte). */
+  count?: ReactNode;
+  /** Zeile unter dem Titel. */
+  subtitle?: ReactNode;
   /** Freier Header-Slot rechts (z. B. Aktionen) — neben dem Titel. */
   header?: ReactNode;
   /** Innenabstand-Variante. */
@@ -37,13 +46,22 @@ export function Card({
   style,
   children,
   className,
+  count,
+  subtitle,
+  ...rest
 }: CardProps) {
+  const daten = nurDaten(rest);
   const hasHeader = title != null || header != null;
   const inner = (
     <>
       {hasHeader && (
         <header className="prn-card-head">
-          {title != null && <h3 className="prn-card-title">{title}</h3>}
+          {title != null && (count != null || subtitle != null ? (
+            <div className="prn-card-titles">
+              <h3 className="prn-card-title">{title}{count != null && <span className="prn-card-count prn-tnum">{count}</span>}</h3>
+              {subtitle != null && <p className="prn-card-subtitle">{subtitle}</p>}
+            </div>
+          ) : <h3 className="prn-card-title">{title}</h3>)}
           {header != null && <div className="prn-card-head-slot">{header}</div>}
         </header>
       )}
@@ -54,6 +72,7 @@ export function Card({
   if (onPress) {
     return (
       <RACButton
+        {...daten}
         className={cx("prn-card", "prn-card-pressable", className)}
         style={style}
         data-padding={padding}
@@ -67,6 +86,7 @@ export function Card({
 
   return (
     <section
+      {...daten}
       className={cx("prn-card", className)}
       style={style}
       data-padding={padding}
@@ -206,6 +226,47 @@ export function KpiCard({
 }
 
 /* ---------------- Badge ---------------- */
+
+/* ---------------- KpiGrid ----------------
+ * Raster für KpiCards: so viele Spalten, wie Platz ist (auto-fit), höchstens `columns`; 4er-Reihe mit schmaleren Karten. Auf dem Telefon eine Spalte. */
+
+export interface KpiGridProps extends DataAttributes {
+  /** höchstens so viele Spalten (Default 3). */
+  columns?: 2 | 3 | 4;
+  children?: ReactNode;
+  className?: string;
+  "aria-label"?: string;
+}
+
+export function KpiGrid({ columns = 3, children, className, "aria-label": ariaLabel, ...rest }: KpiGridProps) {
+  return <div {...nurDaten(rest)} className={cx("prn-kpi-grid", className)} data-columns={columns} role={ariaLabel ? "group" : undefined} aria-label={ariaLabel}>{children}</div>;
+}
+
+/* ---------------- CellStack ----------------
+ * Zelle mit Hauptwert und kleinem Zweitwert darunter (Tabellen, Listen). Kürzt je Zeile mit „…“ (voller Text als `title`) oder bricht um (`wrap`, z. B. Kennungen). */
+
+export interface CellStackProps extends DataAttributes {
+  primary: ReactNode;
+  secondary?: ReactNode;
+  /** Hauptwert fett. */
+  emphasized?: boolean;
+  /** Zweitwert in Festbreitenschrift (Kennungen). */
+  mono?: boolean;
+  /** umbrechen statt kürzen. */
+  wrap?: boolean;
+  /** voller Text als Tooltip (beim Kürzen). */
+  title?: string;
+  className?: string;
+}
+
+export function CellStack({ primary, secondary, emphasized, mono, wrap, title, className, ...rest }: CellStackProps) {
+  return (
+    <span {...nurDaten(rest)} className={cx("prn-cell-stack", className)} data-wrap={wrap ? "" : undefined} title={title}>
+      <span className="prn-cell-stack-primary" data-emphasized={emphasized ? "" : undefined}>{primary}</span>
+      {secondary != null && secondary !== "" && <span className="prn-cell-stack-secondary" data-mono={mono ? "" : undefined}>{secondary}</span>}
+    </span>
+  );
+}
 
 export type BadgeTone =
   | "neutral"
@@ -714,7 +775,7 @@ const ILLUSTRATION: Record<EmptyStateIllustration, ReactNode> = {
   ),
 };
 
-export interface EmptyStateProps {
+export interface EmptyStateProps extends DataAttributes {
   icon?: ReactNode;
   /** Illustration statt Icon (Linienbild in den Farben des Themes). */
   illustration?: EmptyStateIllustration;
@@ -727,9 +788,9 @@ export interface EmptyStateProps {
   className?: string;
 }
 
-export function EmptyState({ icon, illustration, size = "m", title, description, action, className }: EmptyStateProps) {
+export function EmptyState({ icon, illustration, size = "m", title, description, action, className, ...rest }: EmptyStateProps) {
   return (
-    <div className={cx("prn-empty", className)} data-size={size}>
+    <div {...nurDaten(rest)} className={cx("prn-empty", className)} data-size={size}>
       {illustration != null ? (
         <svg className="prn-empty-illustration" viewBox="0 0 120 90" aria-hidden focusable="false" data-illustration={illustration}>
           {ILLUSTRATION[illustration]}

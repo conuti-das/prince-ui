@@ -1,0 +1,24 @@
+# KpiGrid
+
+Raster für `KpiCard`: so viele Spalten, wie Platz ist, höchstens `columns` (2, 3 oder 4; Standard 3). Bei 4 werden die Karten schmaler, auf dem Telefon steht eine Spalte.
+
+## Verwendung
+
+Kennzahlen einer Seite gehören in ein Raster. Mit `aria-label` wird das Raster zu einer benannten Gruppe.
+
+## Beispiele
+
+<Example code={`<KpiGrid columns={4} aria-label="Lage">
+  <KpiCard label="Offene Klärfälle" value="12" status="3 über Frist" tone="critical" />
+  <KpiCard label="Störungen" value="2" />
+  <KpiCard label="Durchsatz" value="1.240" unit="/h" />
+  <KpiCard label="Quote fristgerecht" value="98,4" unit="%" tone="positive" status="im Ziel" />
+</KpiGrid>`} />
+
+## Accessibility
+
+Mit `aria-label` ist das Raster `role="group"`, die Karten bleiben eigenständig.
+
+## Props
+
+<PropsTable name="KpiGrid" />

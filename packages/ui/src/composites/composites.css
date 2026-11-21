@@ -732,3 +732,23 @@ a.prn-sidebar-item {
 .prn-dl[data-layout="inline"] .prn-field-value {
   text-align: right;
 }
+
+/* Card: Zahl neben dem Titel, Zeile darunter */
+.prn-card-titles { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.prn-card-title .prn-card-count { margin-left: 8px; font-weight: 400; color: var(--prn-label-2); }
+.prn-card-subtitle { margin: 0; font: var(--prn-text-footnote); color: var(--prn-label-2); }
+
+/* KpiGrid: so viele Spalten wie Platz, höchstens data-columns */
+.prn-kpi-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); min-width: 0; }
+.prn-kpi-grid[data-columns="4"] { grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); }
+.prn-kpi-grid[data-columns="2"] { grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); }
+@media (max-width: 599px) { .prn-kpi-grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* CellStack: Hauptwert und Zweitwert, je Zeile gekürzt oder (data-wrap) umbrochen */
+.prn-cell-stack { display: flex; flex-direction: column; gap: 2px; min-width: 0; max-width: 100%; }
+.prn-cell-stack > * { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; max-width: 100%; }
+.prn-cell-stack[data-wrap] > * { white-space: normal; overflow-wrap: anywhere; text-overflow: clip; }
+.prn-cell-stack-primary { font: var(--prn-text-subhead); color: var(--prn-label); }
+.prn-cell-stack-primary[data-emphasized] { font-weight: 600; }
+.prn-cell-stack-secondary { font: var(--prn-text-footnote); color: var(--prn-label-2); }
+.prn-cell-stack-secondary[data-mono] { font-family: var(--prn-font-mono); }

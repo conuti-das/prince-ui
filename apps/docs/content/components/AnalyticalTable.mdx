@@ -92,6 +92,24 @@ Aktionen am Ende jeder Zeile (`rowActions`, Gegenstück zu TableRowAction): eine
   );
 }`} />
 
+### Telefon und „Mehr laden“
+
+Mit `scaleWidthMode="fit"` teilen sich alle Spalten die Breite ohne Mindestbreite. Die Tabelle rollt dann nie waagrecht, Inhalte kürzen oder brechen um. Das ist für Telefonbreite gedacht, zusammen mit weniger Spalten.
+
+`growing` setzt unter die Tabelle den Stand („2 von 1.200 geladen“) und einen Knopf „Mehr laden“, solange nicht alles geladen ist. Das ist die Parität zu UI5 `growing="Button"`. `onLoadMore(offset)` bekommt die Zahl der geladenen Zeilen.
+
+<Example code={`function Beispiel() {
+  const alle = Array.from({ length: 12 }, (_, i) => ({ id: String(i + 1), name: 'Vorgang ' + (i + 1), art: i % 2 ? 'Lieferbeginn' : 'Kündigung' }));
+  const [n, setN] = React.useState(4);
+  return (
+    <div style={{ maxWidth: 390 }}>
+      <AnalyticalTable data={alle.slice(0, n)} getRowId={(z) => z.id} accessibleName="Vorgänge" scaleWidthMode="fit" visibleRowCountMode="auto" maxHeight="none"
+        columns={[{ id: 'name', header: 'Vorgang', width: '1.2fr', cellRender: (z) => <CellStack primary={z.name} secondary="50970000019" mono /> }, { id: 'art', header: 'Art', cellRender: (z) => z.art }]}
+        growing={{ total: alle.length, onLoadMore: (ab) => setN(ab + 4) }} />
+    </div>
+  );
+}`} />
+
 ## Accessibility
 
 Die Tabelle setzt ARIA-Grid-Rollen und unterstützt Grid-Tastaturnavigation (Pfeiltasten zwischen Zellen, Sortier-Header per Enter/Space). Ein `aria-label` ist Pflicht, da die Tabelle sonst keinen zugänglichen Namen hat. Status und Highlights werden zusätzlich zur Färbung als Text bzw. über `withRowHighlight`/`highlightField` mit semantischem `ValueState` vermittelt — verlasse dich in `cellRender` nicht allein auf Farbe (kombiniere z. B. eine Status-Pill mit Label und Punkt). Bei Selektion kennzeichnet die Komponente ausgewählte Zeilen für Screenreader. Zeilenaktionen sind Knöpfe mit zugänglichem Namen (`label`, auch wenn nur das Icon sichtbar ist); die Aktionsspalte hat einen unsichtbaren Kopf (`rowActionsLabel`).

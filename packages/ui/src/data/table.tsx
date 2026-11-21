@@ -198,7 +198,30 @@ export type VisibleRowCountMode = "fixed" | "auto" | "autoWithEmptyRows";
 export type ValueState = "none" | "information" | "positive" | "critical" | "negative";
 export type NoDataReason = "empty" | "filtered";
 export type SubComponentsBehavior = "expandable" | "visible";
-export type ScaleWidthMode = "default" | "smart" | "grow";
+/** default: Breiten wie angegeben · smart · grow: Spalten füllen den Platz ab ihrer Mindestbreite · fit: alle Spalten teilen sich die Breite ohne Mindestbreite –
+ *  die Tabelle rollt nie waagrecht (Telefon); Inhalte kürzen bzw. brechen um. */
+export type ScaleWidthMode = "default" | "smart" | "grow" | "fit";
+
+/** „Mehr laden“ unter der Tabelle (Parität zu UI5 growing="Button"): Stand „n von m geladen“ und ein Knopf, solange nicht alles geladen ist. */
+export interface AnalyticalGrowing {
+  /** geladene Zeilen (Default: Länge von `data`). */
+  loaded?: number;
+  /** Gesamtzahl laut Server; ohne Angabe nur „n geladen“ und der Knopf, solange `hasMore`. */
+  total?: number | null;
+  /** ohne `total`: ob es mehr gibt. */
+  hasMore?: boolean;
+  /** lädt die nächsten Zeilen ab `offset` (= geladene Zeilen). */
+  onLoadMore: (offset: number) => void;
+  /** Default „Mehr laden“. */
+  moreLabel?: ReactNode;
+  /** Text des Stands (Default „n von m geladen“ bzw. „n geladen“, Zahlen nach de-DE). */
+  status?: (loaded: number, total: number | null) => ReactNode;
+  /** testid des Knopfs. */
+  moreTestId?: string;
+  /** Knopf gesperrt, solange geladen wird (Default: `loading` der Tabelle). */
+  isLoading?: boolean;
+}
+const STAND = (n: number, m: number | null) => (m != null && n < m ? `${n.toLocaleString("de-DE")} von ${m.toLocaleString("de-DE")} geladen` : `${n.toLocaleString("de-DE")} geladen`);
 
 export interface AnalyticalTableProps<T> {
   /** Datenzeilen. */
@@ -318,6 +341,8 @@ export interface AnalyticalTableProps<T> {
   infiniteScrollThreshold?: number;
   /** Callback zum Nachladen. */
   onLoadMore?: () => void;
+  /** „Mehr laden“ als Knopf unter der Tabelle mit dem Stand (statt oder neben `infiniteScroll`). */
+  growing?: AnalyticalGrowing;
 
   /* ---- Highlights & Navigation (B10) ---- */
   /** Zebra-Streifen. */
@@ -609,6 +634,7 @@ export function AnalyticalTable<T>(props: AnalyticalTableProps<T>) {
     infiniteScroll = false,
     infiniteScrollThreshold = 20,
     onLoadMore,
+    growing,
     alternateRowColor = false,
     withRowHighlight = false,
     highlightField,
@@ -1078,6 +1104,8 @@ export function AnalyticalTable<T>(props: AnalyticalTableProps<T>) {
       const sized = columnSizing[c.id];
       if (enableColumnResizing && sized) return `${sized}px`;
       const base = meta?.width ?? "1fr";
+      // scaleWidthMode "fit": Spalten teilen sich die Breite, keine Mindestbreite – nichts rollt waagrecht (fr-Angaben bleiben als Gewicht)
+      if (scaleWidthMode === "fit" && !meta?.isSelect) return `minmax(0, ${/^\d*\.?\d+fr$/.test(base) ? base : "1fr"})`;
       // scaleWidthMode "grow": Spalten füllen verfügbaren Platz (min..1fr).
       if (scaleWidthMode === "grow" && !meta?.isSelect) {
         const min = meta?.minWidth ? `${meta.minWidth}px` : base.includes("px") ? base : "120px";
@@ -1528,11 +1556,28 @@ export function AnalyticalTable<T>(props: AnalyticalTableProps<T>) {
           </div>
         )}
       </div>
+      {growing && <GrowingFooter growing={growing} loaded={growing.loaded ?? data.length} loading={!!loadingActive} />}
     </div>
   );
 }
 
 /* ---------------- Hilfstypen / Subkomponenten ---------------- */
+
+function GrowingFooter({ growing, loaded, loading }: { growing: AnalyticalGrowing; loaded: number; loading: boolean }) {
+  const total = growing.total ?? null;
+  const mehr = total != null ? loaded < total : !!growing.hasMore;
+  if (loaded === 0 && !mehr) return null;
+  return (
+    <div className="prn-table-growing">
+      <span className="prn-table-growing-status" aria-live="polite">{(growing.status ?? STAND)(loaded, total)}</span>
+      {mehr && (
+        <Button variant="plain" size="s" isDisabled={growing.isLoading ?? loading} onPress={() => growing.onLoadMore(loaded)} data-testid={growing.moreTestId}>
+          {growing.moreLabel ?? "Mehr laden"}
+        </Button>
+      )}
+    </div>
+  );
+}
 
 function Spacer({ height, span }: { height: number; span: number }) {
   return <div aria-hidden style={{ gridColumn: `1 / ${span + 1}`, height }} />;
