@@ -203,6 +203,15 @@
   line-height: 1.5;
   white-space: nowrap;
 }
+/* Umbruch (wrap): langes Wort bricht um, Radius wie ein Feld statt Pille */
+.prn-badge[data-wrap] {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  max-width: 100%;
+  line-height: 1.3;
+  padding-block: 3px;
+  border-radius: var(--prn-radius-md);
+}
 .prn-badge[data-tone="neutral"] {
   background: var(--prn-fill-strong);
   color: var(--prn-label-2);

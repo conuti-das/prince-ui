@@ -1,4 +1,6 @@
 /// <reference types="@testing-library/jest-dom" />
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import { describe, it, expect, beforeAll } from "vitest";
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
@@ -84,5 +86,14 @@ describe("AnalyticalTable personalization", () => {
     render(<AnalyticalTable aria-label="P" data={DATA} columns={cols} enablePersonalization getRowId={(r) => r.name} />);
     const head = screen.getByRole("columnheader", { name: "Sparte" });
     expect(head).toHaveAttribute("data-pinned", "left");
+  });
+});
+
+describe("Pop-in inline", () => {
+  it("Etikett und Wert stehen in einer Zeile, der Wert bricht in seiner Spalte um (kein display: inline)", () => {
+    const css = readFileSync(resolve(process.cwd(), "src/data/table.css"), "utf8");
+    const regel = /\.prn-popin-item\[data-display="inline"\]\s*\{([^}]*)\}/.exec(css)?.[1] ?? "";
+    expect(regel).toMatch(/display:\s*flex/);
+    expect(/\.prn-popin-item\[data-display="inline"\]\s*>\s*\.prn-popin-value\s*\{([^}]*)\}/.exec(css)?.[1] ?? "").toMatch(/min-width:\s*0/);
   });
 });

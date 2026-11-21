@@ -44,6 +44,15 @@ describe("composites", () => {
     expect(badge).toHaveAttribute("data-tone", "green");
   });
 
+  it("Badge wrap: langes Wort darf umbrechen (data-wrap), ohne wrap bleibt die Pille einzeilig", () => {
+    render(<><Badge wrap>Gilt als angenommen – keine APERAK in der Frist</Badge><Badge>kurz</Badge></>);
+    expect(screen.getByText(/Gilt als angenommen/)).toHaveAttribute("data-wrap", "");
+    expect(screen.getByText("kurz")).not.toHaveAttribute("data-wrap");
+    const css = readFileSync(resolve(process.cwd(), "src/composites/composites.css"), "utf8");
+    const regel = /\.prn-badge\[data-wrap\]\s*\{([^}]*)\}/.exec(css)?.[1] ?? "";
+    expect(regel).toMatch(/white-space:\s*normal/);
+  });
+
   it("Badge renders a leading icon", () => {
     render(<Badge tone="blue" icon={<svg data-testid="ic" />}>Live</Badge>);
     expect(screen.getByTestId("ic")).toBeInTheDocument();

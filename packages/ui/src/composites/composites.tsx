@@ -228,6 +228,11 @@ export interface BadgeProps {
   textColor?: string;
   /** Escape-Hatch: Inline-Styles (z. B. fixe Größe/Radius/Font für Tabellen-Chips). */
   style?: CSSProperties;
+  /**
+   * Langes Wort darf umbrechen statt einzeilig zu bleiben (z. B. Zustandswörter unter einem Listentext oder in schmalen Spalten);
+   * der Radius passt sich an, die Pille wird zum abgerundeten Block.
+   */
+  wrap?: boolean;
   children?: ReactNode;
   className?: string;
 }
@@ -239,6 +244,7 @@ export function Badge({
   color,
   textColor,
   style,
+  wrap,
   children,
   className,
 }: BadgeProps) {
@@ -253,6 +259,7 @@ export function Badge({
       data-tone={tone}
       data-variant={variant}
       data-custom-color={color != null ? "" : undefined}
+      data-wrap={wrap ? "" : undefined}
       style={mergedStyle}
     >
       {icon != null && (

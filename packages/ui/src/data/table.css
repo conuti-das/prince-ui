@@ -245,8 +245,20 @@
   font: var(--prn-text-footnote);
   color: var(--prn-label-2);
 }
+/* inline: Etikett und Wert in einer Zeile; der Wert bricht in seiner eigenen Spalte um, statt als Ganzes unter das Etikett zu rutschen */
 .prn-popin-item[data-display="inline"] {
-  display: inline;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  min-width: 0;
+  max-width: 100%;
+}
+.prn-popin-item[data-display="inline"] > .prn-popin-label {
+  flex: none;
+}
+.prn-popin-item[data-display="inline"] > .prn-popin-value {
+  flex: 0 1 auto;
+  min-width: 0;
 }
 .prn-popin-label {
   color: var(--prn-label-3);

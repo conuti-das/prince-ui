@@ -70,6 +70,12 @@ export interface TimelineEvent {
   icon?: ReactNode;
   /** Detail-Attribute, im aufgeklappten Panel als Label/Wert-Liste. */
   attrs?: TimelineAttr[];
+  /** Test-Kennung am Ereignis (Wurzel des Eintrags). */
+  "data-testid"?: string;
+  /** Weitere `data-*` am Ereignis, Schlüssel ohne Präfix (`{ von: "bea" }` → `data-von="bea"`). */
+  data?: Record<string, string | number | boolean | undefined>;
+  /** Aktion am Ereignis (Link oder Knopf), steht unter dem Kopf, außerhalb des Auf-/Zuklappers. */
+  action?: ReactNode;
 }
 
 export interface TimelineProps {
@@ -194,8 +200,12 @@ function TimelineRow({
   const hasDetail =
     event.description != null || (event.attrs != null && event.attrs.length > 0) || isRange;
 
+  const dataAttrs: Record<string, string> = {};
+  for (const [k, v] of Object.entries(event.data ?? {})) if (v !== undefined) dataAttrs[`data-${k}`] = String(v);
   return (
     <div
+      {...dataAttrs}
+      data-testid={event["data-testid"]}
       className="prn-tl-item"
       data-status={status}
       data-range={isRange ? "" : undefined}
@@ -278,6 +288,7 @@ function TimelineRow({
             )}
           </RACButton>
         </Heading>
+        {event.action != null && <div className="prn-tl-action">{event.action}</div>}
 
         {hasDetail && (
           <RACDisclosurePanel className="prn-tl-panel">
