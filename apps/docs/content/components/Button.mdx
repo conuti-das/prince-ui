@@ -52,6 +52,14 @@ Rollen und deaktivierter Zustand (mit dem Theme-Umschalter oben hell und dunkel 
   <Button variant="filled" destructive>Zurückziehen (nur im Dialog)</Button>
 </div>`} />
 
+Mit Icon (dekorativ, vor dem Text; `iconPosition="end"` danach – z. B. „Weiter“ mit Pfeil):
+
+<Example code={`<div style={{ display: 'flex', gap: 16 }}>
+  <Button variant="plain" icon="arrow-left">Zurück</Button>
+  <Button variant="tinted" icon="download">Herunterladen</Button>
+  <Button variant="filled" icon="arrow-right" iconPosition="end">Weiter</Button>
+</div>`} />
+
 ## Accessibility
 
 Button basiert auf react-aria `Button`: Fokus-Ring, Tastatur (Enter/Space) und `isDisabled` sind eingebaut. Für reine Icon-Knöpfe [IconButton](/components/iconbutton) verwenden (Name ist Pflicht, Tooltip inklusive). Deaktivierte Knöpfe sind nicht fokussierbar – den Grund als Text daneben nennen, nicht nur im Tooltip.

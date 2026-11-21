@@ -114,6 +114,30 @@ describe("forms primitives", () => {
     expect(screen.getByLabelText("Name").closest(".prn-field")).toHaveAttribute("data-size", "s");
   });
 
+  it("Button with icon: decorative svg before the text (or after with iconPosition=end), name stays the text", () => {
+    const { container } = render(
+      <>
+        <Button icon="arrow-left">Zurück</Button>
+        <Button icon="arrow-right" iconPosition="end" variant="tinted">Weiter</Button>
+        <Button>Ohne</Button>
+      </>,
+    );
+    const zurueck = screen.getByRole("button", { name: "Zurück" });
+    const weiter = screen.getByRole("button", { name: "Weiter" });
+    expect(zurueck.firstElementChild?.tagName.toLowerCase()).toBe("svg");
+    expect(zurueck.firstElementChild).toHaveAttribute("aria-hidden", "true");
+    expect(zurueck).toHaveAttribute("data-icon", "start");
+    expect(weiter.lastElementChild?.tagName.toLowerCase()).toBe("svg");
+    expect(weiter).toHaveAttribute("data-icon", "end");
+    expect(screen.getByRole("button", { name: "Ohne" })).not.toHaveAttribute("data-icon");
+    expect(container.querySelectorAll("svg.prn-button-icon")).toHaveLength(2);
+  });
+
+  it("Button with icon keeps render-prop children", () => {
+    render(<Button icon="check">{({ isDisabled }) => (isDisabled ? "aus" : "an")}</Button>);
+    expect(screen.getByRole("button", { name: "an" }).querySelector("svg")).not.toBeNull();
+  });
+
   it("Button reflects an explicit size", () => {
     render(<Button size="s">Klick</Button>);
     expect(screen.getByRole("button", { name: "Klick" })).toHaveAttribute("data-size", "s");

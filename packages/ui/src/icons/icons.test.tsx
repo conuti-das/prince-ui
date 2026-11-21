@@ -12,6 +12,13 @@ describe("Icon", () => {
     expect(svg.getAttribute("fill")).toBe("none");
   });
 
+  it("has direction icons (arrow-left/right, chevron-left) with a path", () => {
+    for (const name of ["arrow-left", "arrow-right", "chevron-left"] as const) {
+      const { container } = render(<Icon name={name} />);
+      expect(container.querySelector("svg path")).not.toBeNull();
+    }
+  });
+
   it("is decorative (aria-hidden) without a title", () => {
     const { container } = render(<Icon name="menu" />);
     expect(container.querySelector("svg")).toHaveAttribute("aria-hidden", "true");
