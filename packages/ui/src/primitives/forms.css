@@ -229,7 +229,10 @@
 }
 .prn-select-button[data-focus-visible] { box-shadow: var(--prn-focus); }
 .prn-select-value[data-placeholder] { color: var(--prn-label-3); }
-.prn-select-chevron { color: var(--prn-label-2); }
+/* gewählter Wert: linksbündig, eine Zeile, bei Überlänge „…“ (der volle Text steht als title am Wert); der Pfeil schrumpft nie.
+   Vorher stand ein langer Wert zentriert und zweizeilig im Feld (Knopf-Vorgaben des Browsers: text-align center, Umbruch). */
+.prn-select-value { flex: 1 1 auto; min-width: 0; display: block; text-align: start; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.prn-select-chevron { flex: none; color: var(--prn-label-2); }
 
 /* ---- TextArea ---- */
 .prn-textarea { display: block; box-sizing: border-box; resize: vertical; min-height: 0; line-height: 1.47; font-family: inherit; }

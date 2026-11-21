@@ -182,7 +182,8 @@ export function Select<T extends object>({ label, description: beschreibung, err
       <RACButton className="prn-select-button">
         {/* Anzeige als Render-Funktion: ein festes Kind ersetzt die Anzeige immer (dann blieb „Bitte wählen“ stehen, auch nach der Wahl). Gezeigt wird der Text
             der gewählten Option (textValue) – ohne ihren Hinweis, der steht unter dem Feld (DecisionDialog) und sonst doppelt im Feld */}
-        <SelectValue className="prn-select-value">{({ isPlaceholder, selectedText, defaultChildren }) => (isPlaceholder ? placeholder ?? defaultChildren : selectedText || defaultChildren)}</SelectValue>
+        <SelectValue className="prn-select-value">{({ isPlaceholder, selectedText, defaultChildren }) => (isPlaceholder ? placeholder ?? defaultChildren
+          : <span title={selectedText || undefined}>{selectedText || defaultChildren}</span>)}</SelectValue>
         <svg className="prn-select-chevron" viewBox="0 0 12 12" width="12" height="12" aria-hidden
           fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
           <path d="M2.75 4.5 6 7.75 9.25 4.5" />
