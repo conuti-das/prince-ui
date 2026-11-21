@@ -17,6 +17,8 @@
   transition: filter var(--prn-dur-fast) var(--prn-ease-standard),
     background var(--prn-dur-fast) var(--prn-ease-standard);
 }
+/* Icon im Knopf: Farbe vom Text, schrumpft nie */
+.prn-button-icon { flex: 0 0 auto; }
 /* Aktion (Server): Leitfarbe über --prn-action* (getrennt vom Link-Token, siehe tokens.css) */
 .prn-button[data-variant="filled"] {
   background: var(--prn-action);

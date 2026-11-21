@@ -36,11 +36,14 @@ export type IconName =
   | "check"
   | "x"
   | "chevron-right"
+  | "chevron-left"
   | "chevron-down"
   | "chevron-up"
   | "phone"
   | "clock"
   | "link"
+  | "arrow-left"
+  | "arrow-right"
   | "arrow-down-right"
   | "arrow-up-right"
   | "droplet"
@@ -223,6 +226,7 @@ const PATHS: Record<IconName, ReactNode> = {
   check: <path d="M20 6 9 17l-5-5" />,
   x: <path d="M18 6 6 18M6 6l12 12" />,
   "chevron-right": <path d="m9 6 6 6-6 6" />,
+  "chevron-left": <path d="m15 6-6 6 6 6" />,
   "chevron-down": <path d="m6 9 6 6 6-6" />,
   "chevron-up": <path d="m18 15-6-6-6 6" />,
   phone: (
@@ -240,6 +244,9 @@ const PATHS: Record<IconName, ReactNode> = {
       <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
     </>
   ),
+  /* Richtungen (zurück/weiter, Vorgänger/Nachfolger) */
+  "arrow-left": <path d="M19 12H5M12 19l-7-7 7-7" />,
+  "arrow-right": <path d="M5 12h14M12 5l7 7-7 7" />,
   "arrow-down-right": (
     <>
       <path d="M7 7l10 10" />

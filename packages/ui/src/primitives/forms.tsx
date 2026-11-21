@@ -23,6 +23,7 @@ import {
   Popover,
 } from "react-aria-components";
 import { cx } from "../utils";
+import { Icon, type IconName } from "../icons/icons";
 import { useFieldSize, type FieldSize } from "./size";
 import "./forms.css";
 
@@ -38,12 +39,29 @@ export interface ButtonProps extends Omit<RACButtonProps, "className"> {
   destructive?: boolean;
   /** Größe: s (kompakt) | m (Default) | l. Ohne Angabe greift der PrinceSizeProvider-Context. */
   size?: FieldSize;
+  /**
+   * Icon im Knopf (dekorativ, aria-hidden), vor dem Text bzw. mit `iconPosition="end"` danach. Ohne sichtbaren Text braucht der Knopf `aria-label`
+   * (für reine Icon-Knöpfe ist `IconButton` gedacht).
+   */
+  icon?: IconName;
+  iconPosition?: "start" | "end";
   className?: string;
 }
 
-export function Button({ variant = "filled", destructive, size, className, ...props }: ButtonProps) {
+export function Button({ variant = "filled", destructive, size, icon, iconPosition = "start", className, children, ...props }: ButtonProps) {
   const resolvedSize = useFieldSize(size);
-  return <RACButton {...props} data-variant={variant} data-destructive={destructive || undefined} data-size={resolvedSize} className={cx("prn-button", className)} />;
+  const zeichen = icon ? <Icon name={icon} size={resolvedSize === "s" ? 14 : 16} className="prn-button-icon" /> : null;
+  const inhalt: ButtonProps["children"] = !zeichen
+    ? children
+    : (rp) => {
+        const text = typeof children === "function" ? children(rp) : children;
+        return iconPosition === "end" ? <>{text}{zeichen}</> : <>{zeichen}{text}</>;
+      };
+  return (
+    <RACButton {...props} data-variant={variant} data-destructive={destructive || undefined} data-size={resolvedSize} data-icon={icon ? iconPosition : undefined} className={cx("prn-button", className)}>
+      {inhalt}
+    </RACButton>
+  );
 }
 
 /* ---------------- TextField ---------------- */
