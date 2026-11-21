@@ -1,0 +1,68 @@
+# FormDialog
+
+Formular im Modal mit Laufzustand: „Abbrechen“ links, die Hauptaktion rechts. Während eine Aktion läuft, schließen weder Esc noch ein Klick daneben, und beide Knöpfe sind gesperrt. Ein Fehler des Servers bleibt im Dialog. Dazu gehören `ReasonField` (Begründung mit Mindestlänge) und `useSubmitState` (Laufzustand, Fehlertext, erster Versuch).
+
+## Verwendung
+
+- `onSubmit` prüft und sendet. Der Dialog bleibt offen, bis die Seite `isOpen` auf false setzt oder ihn entfernt.
+- `isBusy` sperrt den Dialog, solange gesendet wird. Die Hauptaktion zeigt dann `busyLabel` und trägt `data-busy`.
+- `error` zeigt den Fehler als Notice mit `role="alert"` unter dem Inhalt.
+- `isSubmitDisabled` setzen Sie nur, wenn die Aktion grundsätzlich nicht geht. Der Grund steht als `disabledReason` links in der Fußzeile.
+- Eingabefehler zeigt das Feld nach dem ersten Absenden (`attempted` aus `useSubmitState`, `showError` am `ReasonField`).
+- `destructive` färbt die Hauptaktion rot (Rücknahme) und setzt den Ton `negative`.
+
+<DoDont kind="do">Den Knopf bedienbar lassen und Eingabefehler nach dem Absenden am Feld zeigen.</DoDont>
+<DoDont kind="dont">Den Sperrgrund nur im Tooltip nennen oder den Dialog bei einem Serverfehler schließen.</DoDont>
+
+## Beispiele
+
+<Example code={`function Beispiel() {
+  const [offen, setOffen] = React.useState(false);
+  const [text, setText] = React.useState('');
+  const s = useSubmitState();
+  const senden = async () => {
+    s.setAttempted(true);
+    if (!reasonValid(text)) return;
+    const ok = await s.submit(() => new Promise((_, nein) => setTimeout(() => nein(new Error('Die Freigabe ist inzwischen abgelaufen.')), 800)));
+    if (ok) setOffen(false);
+  };
+  return (
+    <>
+      <Button onPress={() => setOffen(true)}>Ablehnen</Button>
+      <FormDialog isOpen={offen} onClose={() => setOffen(false)} onSubmit={senden} title="Änderung ablehnen" submitLabel="Ablehnen" busyLabel="Wird abgelehnt …"
+        destructive isBusy={s.isBusy} error={s.error}>
+        <ReasonField value={text} onChange={setText} showError={s.attempted} />
+      </FormDialog>
+    </>
+  );
+}`} />
+
+### Leere Wahl im Select und Zahl beim Tippen
+
+`Select` nimmt einen Eintrag mit `id=""` an, etwa „unbefristet“ oder „keiner“. Gemeldet wird dann `""`. `NumberField` mit `commitOnInput` meldet den Wert schon beim Tippen. So wird auch eine Zahl gesendet, die zuletzt getippt wurde, ohne dass das Feld verlassen wurde.
+
+<Example code={`function Beispiel() {
+  const [frist, setFrist] = React.useState('');
+  const [anzahl, setAnzahl] = React.useState(3);
+  return (
+    <div style={{ display: 'grid', gap: 12, maxWidth: 320 }}>
+      <Select label="Befristung" selectedKey={frist} onSelectionChange={(k) => setFrist(String(k))}>
+        <SelectItem id="" textValue="unbefristet">unbefristet</SelectItem>
+        <SelectItem id="30" textValue="30 Tage">30 Tage</SelectItem>
+      </Select>
+      <NumberField label="Wiederholungen" value={anzahl} onChange={setAnzahl} minValue={0} maxValue={10} commitOnInput />
+      <span>Befristung: {frist === '' ? 'unbefristet' : frist + ' Tage'} · Wiederholungen: {anzahl}</span>
+    </div>
+  );
+}`} />
+
+## Accessibility
+
+- Den Dialog stellt `Modal`: Fokusfalle, Esc und Rückgabe des Fokus.
+- Der Fehler des Servers wird über `role="alert"` vorgelesen.
+- Der Sperrgrund steht als Text in der Fußzeile, nicht nur im Tooltip.
+- `ReasonField` setzt `isInvalid` und den Fehlertext erst nach dem Absenden.
+
+## Props
+
+<PropsTable name="FormDialog" />
