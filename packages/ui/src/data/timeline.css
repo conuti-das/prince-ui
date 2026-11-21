@@ -159,10 +159,10 @@
   line-height: 1;
 }
 
-.prn-tl-node[data-status="success"] { background: var(--prn-green); }
-.prn-tl-node[data-status="info"] { background: var(--prn-blue); }
-.prn-tl-node[data-status="warning"] { background: var(--prn-orange); }
-.prn-tl-node[data-status="error"] { background: var(--prn-red); }
+.prn-tl-node[data-status="success"] { background: var(--prn-green); color: var(--prn-on-green, var(--prn-on-status-fill)); }
+.prn-tl-node[data-status="info"] { background: var(--prn-blue); color: var(--prn-on-blue, var(--prn-on-status-fill)); }
+.prn-tl-node[data-status="warning"] { background: var(--prn-orange); color: var(--prn-on-orange, var(--prn-on-status-fill)); }
+.prn-tl-node[data-status="error"] { background: var(--prn-red); color: var(--prn-on-red, var(--prn-on-status-fill)); }
 .prn-tl-node[data-status="pending"] {
   background: transparent;
   color: var(--prn-neutral);
@@ -283,7 +283,7 @@
   place-items: center;
   border-radius: var(--prn-radius-pill);
   background: var(--prn-tl-avatar, var(--prn-neutral));
-  color: var(--prn-on-accent);
+  color: var(--prn-tl-avatar-text, var(--prn-on-accent)); /* Kürzel je Diagrammfarbe lesbar (--prn-on-chart-n) */
   font: var(--prn-text-caption);
   font-weight: 700;
 }
