@@ -64,7 +64,7 @@
   height: 16px;
   padding: 0 4px;
   border-radius: var(--prn-radius-pill);
-  background: var(--prn-red);
+  background: var(--prn-danger-fill, var(--prn-red)); /* Weiß darauf ≥ 4,5:1 in allen Themes (auf --prn-red dunkel nur 3,5:1) */
   color: #fff;
   font: var(--prn-text-caption);
   line-height: 16px;

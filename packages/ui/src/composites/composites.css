@@ -222,19 +222,19 @@
 }
 .prn-badge[data-tone="green"] {
   background: var(--prn-tint-positive);
-  color: var(--prn-green);
+  color: var(--prn-positive-text, var(--prn-green));
 }
 .prn-badge[data-tone="red"] {
   background: var(--prn-tint-negative);
-  color: var(--prn-red);
+  color: var(--prn-negative-text, var(--prn-red));
 }
 .prn-badge[data-tone="orange"] {
   background: var(--prn-tint-critical);
-  color: var(--prn-orange);
+  color: var(--prn-critical-text, var(--prn-orange));
 }
 .prn-badge[data-tone="blue"] {
   background: var(--prn-tint-info);
-  color: var(--prn-blue);
+  color: var(--prn-info-text, var(--prn-blue));
 }
 .prn-badge[data-tone="teal"] {
   background: color-mix(in srgb, var(--prn-teal) 16%, transparent);
@@ -385,7 +385,7 @@
 }
 .prn-row-subtitle {
   font: var(--prn-text-footnote);
-  color: var(--prn-label-3);
+  color: var(--prn-label-2); /* Sekundärtext: label-3 (Deaktiviert, Platzhalter) erreichte nur 2,6 bzw. 3,9:1 */
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

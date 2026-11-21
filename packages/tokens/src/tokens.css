@@ -459,6 +459,25 @@
   --prn-radius-xl: 16px;
   --prn-radius-card: 12px;
   /* --prn-radius-pill: 999px bleibt (Pills/Dot-Motiv) */
+  /* Kontrast der Texte (WCAG AA ≥ 4,5:1, gerechnet in ui/src/kontrast-cu.test.ts; Leitfarbe Deep Azure unverändert):
+   * Text der Marken je Ton dunkler als die Statusfarbe (auf der Tönung 5,2 bis 5,7:1); Zeichen auf Statusflächen und Kürzel auf Diagrammfarben
+   * dunkel, auf Rot und Deep Azure weiß. */
+  --prn-positive-text: #1e6e3f;
+  --prn-critical-text: #8f5212;
+  --prn-negative-text: #b0372a;
+  --prn-info-text: #1a57c2;
+  --prn-on-green: #000000;
+  --prn-on-orange: #000000;
+  --prn-on-red: #ffffff;
+  --prn-on-blue: #000000;
+  --prn-on-chart-1: #000000;
+  --prn-on-chart-2: #000000;
+  --prn-on-chart-3: #000000;
+  --prn-on-chart-4: #000000;
+  --prn-on-chart-5: #000000;
+  --prn-on-chart-6: #000000;
+  --prn-on-chart-7: #ffffff;
+  --prn-on-chart-8: #000000;
 }
 
 /* ============================================================
@@ -558,6 +577,26 @@
     linear-gradient(135deg, #05060a 0%, #04061a 45%, #000000 100%);
 
   color-scheme: dark;
+  /* Kontrast der Texte (WCAG AA ≥ 4,5:1, gerechnet in ui/src/kontrast-cu.test.ts; Leitfarbe Deep Azure unverändert):
+   * Links, gewählter Reiter und Anker heller als der Akzent (auf #1e1e1e 6,86:1, auf der Tönung des Ankers 5,16:1); Text der Marken je Ton;
+   * Zeichen auf Statusflächen und Kürzel auf Diagrammfarben dunkel (Weiß hatte 1,5 bis 4,1:1). */
+  --prn-accent-strong: #6aaaf2;
+  --prn-positive-text: #4fb477;
+  --prn-critical-text: #e8a24f;
+  --prn-negative-text: #f29486;
+  --prn-info-text: #7cb5f7;
+  --prn-on-green: #000000;
+  --prn-on-orange: #000000;
+  --prn-on-red: #000000;
+  --prn-on-blue: #000000;
+  --prn-on-chart-1: #000000;
+  --prn-on-chart-2: #000000;
+  --prn-on-chart-3: #000000;
+  --prn-on-chart-4: #000000;
+  --prn-on-chart-5: #000000;
+  --prn-on-chart-6: #000000;
+  --prn-on-chart-7: #000000;
+  --prn-on-chart-8: #000000;
 }
 
 /* ============================================================

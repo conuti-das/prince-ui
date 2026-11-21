@@ -149,6 +149,13 @@ function avatarColor(name: string): string {
   return `var(--prn-chart-${(h % 8) + 1})`;
 }
 
+/** Schrift auf der Avatar-Farbe: je Theme lesbar (--prn-on-chart-n, Standard Weiß). */
+function avatarText(name: string): string {
+  let h = 0;
+  for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) >>> 0;
+  return `var(--prn-on-chart-${(h % 8) + 1}, var(--prn-on-accent))`;
+}
+
 function formatDuration(startMs: number, endMs: number): string | null {
   const mins = Math.round((endMs - startMs) / 60000);
   if (mins <= 0) return null;
@@ -273,7 +280,7 @@ function TimelineRow({
             {event.actor != null && (
               <span
                 className="prn-tl-avatar"
-                style={{ "--prn-tl-avatar": avatarColor(event.actor.name) } as CSSProperties}
+                style={{ "--prn-tl-avatar": avatarColor(event.actor.name), "--prn-tl-avatar-text": avatarText(event.actor.name) } as CSSProperties}
                 title={event.actor.name}
                 aria-hidden
               >
