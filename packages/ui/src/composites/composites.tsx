@@ -1,4 +1,4 @@
-import { useId, useState, type CSSProperties, type ReactNode } from "react";
+import { useId, useState, type CSSProperties, type ReactNode, type SyntheticEvent } from "react";
 import { Button as RACButton, Link as RACLink } from "react-aria-components";
 import { cx } from "../utils";
 import { Icon } from "../icons/icons";
@@ -455,7 +455,7 @@ export function ListRow({
     // Interaktiv: Listeneintrag (role=listitem, trägt testid und data-*) mit Knopf bzw. Link über die ganze Zeile
     const gemeinsam = { className: cx("prn-row prn-row-pressable", className), onPress, isDisabled, "aria-label": ariaLabel, ...zustand };
     return (
-      <div className="prn-row-item" role="listitem" {...data}>
+      <div className="prn-row-item" role="listitem" {...data} {...(href != null ? browserKlick : undefined)}>
         {href != null ? <RACLink {...gemeinsam} href={href}>{inner}</RACLink> : <RACButton {...gemeinsam}>{inner}</RACButton>}
       </div>
     );
@@ -474,6 +474,21 @@ export function ListRow({
     </div>
   );
 }
+
+/**
+ * Geänderte Klicks auf eine Link-Zeile (Strg/⌘/Umschalt oder Mittelklick) gehören dem Browser: neuer Tab bzw. Fenster. Die Ereignisse werden in der
+ * Capture-Phase vor dem Press-Handling von React-Aria angehalten (kein preventDefault), sonst ging der neue Tab in einem Teil der Fälle verloren.
+ */
+const geaendert = (e: { ctrlKey: boolean; metaKey: boolean; shiftKey: boolean; button: number }) => e.ctrlKey || e.metaKey || e.shiftKey || e.button === 1;
+const anhalten = (e: SyntheticEvent & { ctrlKey: boolean; metaKey: boolean; shiftKey: boolean; button: number }) => { if (geaendert(e)) e.stopPropagation(); };
+const browserKlick = {
+  onPointerDownCapture: anhalten,
+  onPointerUpCapture: anhalten,
+  onMouseDownCapture: anhalten,
+  onMouseUpCapture: anhalten,
+  onClickCapture: anhalten,
+  onAuxClickCapture: anhalten,
+};
 
 /* ---------------- Sidebar ---------------- */
 

@@ -3,7 +3,7 @@ import { RouterProvider } from "react-aria-components";
 import { resolve } from "node:path";
 import "@testing-library/jest-dom/vitest";
 import { describe, it, expect, vi } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import {
   Card,
@@ -130,6 +130,28 @@ describe("composites", () => {
     expect(items[0]).toHaveAttribute("data-id", "a1");
     expect(items[0]).toContainElement(links[0] ?? null);
     expect(items[0]?.parentElement).toHaveAttribute("role", "list");
+  });
+
+  it("link ListRow leaves Ctrl/⌘/Shift/middle clicks to the browser (no onPress, no preventDefault); a plain click still calls onPress", async () => {
+    const onPress = vi.fn();
+    render(
+      <List>
+        <ListRow title="Aufgabe" href="#/inbox?aufgabe=1" onPress={onPress} />
+      </List>,
+    );
+    const link = screen.getByRole("link", { name: /Aufgabe/ });
+    for (const art of [{ ctrlKey: true }, { metaKey: true }, { shiftKey: true }]) {
+      expect(fireEvent.pointerDown(link, { ...art, button: 0, pointerType: "mouse" })).toBe(true);
+      expect(fireEvent.mouseDown(link, { ...art, button: 0 })).toBe(true);
+      expect(fireEvent.pointerUp(link, { ...art, button: 0, pointerType: "mouse" })).toBe(true);
+      expect(fireEvent.mouseUp(link, { ...art, button: 0 })).toBe(true);
+      expect(fireEvent.click(link, { ...art, button: 0 })).toBe(true);
+    }
+    expect(fireEvent.mouseDown(link, { button: 1 })).toBe(true);
+    expect(fireEvent(link, new MouseEvent("auxclick", { bubbles: true, cancelable: true, button: 1 }))).toBe(true);
+    expect(onPress).not.toHaveBeenCalled();
+    await userEvent.click(link);
+    expect(onPress).toHaveBeenCalledOnce();
   });
 
   it("pressable ListRow sits in a listitem; data-* never land on the button", async () => {
