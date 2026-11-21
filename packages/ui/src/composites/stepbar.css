@@ -1,4 +1,4 @@
-/* Stufenleiste: reine Anzeige, Zustand als Zeichen, Farbe UND Text; keine Leitfarbe. */
+/* Stufenleiste: Anzeige (wählbar nur mit onSelect), Zustand als Zeichen, Farbe UND Text; keine Leitfarbe. */
 .prn-stepbar {
   list-style: none;
   margin: 0;
@@ -55,6 +55,27 @@
 .prn-step[data-state="skipped"] .prn-step-name { font-weight: 500; color: var(--prn-label-2); }
 .prn-step-detail { font: var(--prn-text-footnote); color: var(--prn-label-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .prn-step-zustand { flex: none; }
+
+/* Wählbare Stufen (Assistent): ganze Stufe als Knopf ohne eigenen Rahmen; Fokusring und Überfahren wie bei Listenzeilen */
+.prn-step-knopf {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  min-height: 34px;
+  padding: 4px 8px;
+  margin: -4px -8px;
+  border: 0;
+  border-radius: var(--prn-radius-md);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.prn-step-knopf:hover:not(:disabled) { background: var(--prn-fill); }
+.prn-step-knopf:focus-visible { outline: 2px solid var(--prn-focus); outline-offset: 1px; }
+.prn-step-knopf:disabled { cursor: default; opacity: 0.6; }
 
 .prn-step-sr {
   position: absolute;

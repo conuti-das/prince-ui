@@ -1,7 +1,7 @@
 # StepBar
 
 Die **Stufenleiste** zeigt, wo ein Objekt auf seinem Weg steht – etwa ein Massenauftrag (angelegt → freigegeben → läuft →
-abgeschlossen) oder ein Änderungspaket (angelegt → getestet → freigegeben → transportiert). Reine Anzeige: keine Knöpfe,
+abgeschlossen) oder ein Änderungspaket (angelegt → getestet → freigegeben → transportiert). Ohne `onSelect` reine Anzeige,
 keine Leitfarbe (Regelwerk „Aktion, Hilfsaktion, Navigation, Ansicht“). Vorlage ist der Lagekopf des Massenauftrags in E.
 
 ## Verwendung
@@ -44,10 +44,19 @@ Kompakt (ohne zweite Zeile und ohne Marke; der Zustand bleibt für Vorleseprogra
   { id: 'd', label: 'Transportiert', state: 'upcoming' },
 ]} />`} />
 
+Als Schrittleiste eines Assistenten: mit `onSelect` wird jede Stufe ein Knopf. Die Prüfung vor dem Wechsel macht die Anwendung in `onSelect`; Befunde am Schritt zeigt `state: 'problem'` mit `stateLabel`, noch nicht erreichbare Schritte tragen `isDisabled`.
+
+<Example code={`<StepBar aria-label="Schritte: Mandant anlegen" onSelect={(id) => console.log(id)} steps={[
+  { id: 'stamm', label: 'Stammdaten', state: 'done' },
+  { id: 'rollen', label: 'Rollen', state: 'problem', stateLabel: '2 Befunde' },
+  { id: 'kanal', label: 'Kanäle', state: 'current' },
+  { id: 'pruefen', label: 'Prüfen', state: 'upcoming', isDisabled: true },
+]} />`} />
+
 ## Accessibility
 
 Eine geordnete Liste (`<ol>`) mit Namen (`aria-label`). Nummer und Zeichen sind dekorativ (`aria-hidden`); die Reihenfolge
-kommt aus der Liste, der Zustand aus dem Text. Die aktuelle Stufe trägt `aria-current="step"`.
+kommt aus der Liste, der Zustand aus dem Text. Die aktuelle Stufe trägt `aria-current="step"`. Mit `onSelect` sind die Stufen Knöpfe in der Liste (Tab, Enter/Leertaste); `aria-current` sitzt dann am Knopf.
 
 ## Props
 
