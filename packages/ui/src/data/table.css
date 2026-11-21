@@ -346,3 +346,7 @@
   white-space: nowrap;
   border: 0;
 }
+
+/* growing: Stand und „Mehr laden“ unter der Tabelle (die Seite rollt, nicht die Tabelle) */
+.prn-table-growing { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 12px; padding: 10px 4px 0; min-width: 0; }
+.prn-table-growing-status { font: var(--prn-text-footnote); color: var(--prn-label-2); }

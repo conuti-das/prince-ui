@@ -22,6 +22,14 @@ Glas-Container mit optionalem Titel-Header, freiem Header-Slot rechts und konfig
   </Card>
 </div>`} />
 
+### Zahl und Untertitel, data-*
+
+`count` steht neben dem Titel (etwa die Zahl der Einträge), `subtitle` darunter. `data-*` (etwa `data-testid`) landet am äußeren Element. Gleiches gilt für `EmptyState`, `KpiGrid` und `CellStack`.
+
+<Example code={`<Card title="Als Nächstes" count={3} subtitle="heute fällig" data-testid="karte-aufgaben" header={<Link href="#">Alle anzeigen</Link>}>
+  <p style={{ margin: 0 }}>Drei Aufgaben warten auf Sie.</p>
+</Card>`} />
+
 ## Accessibility
 
 Ein gesetzter `title` gibt der Karte eine sichtbare Überschrift, die den Inhalt einordnet — nutze ihn, wenn die Karte einen abgrenzbaren Bereich bildet. Der `header`-Slot ist normaler DOM-Inhalt; interaktive Elemente darin (Buttons, Links) bleiben eigenständig fokussierbar und in der Tab-Reihenfolge. Die Karte selbst ist ein passiver Container und fängt keinen Fokus ab.

@@ -76,6 +76,10 @@ der aktive Eintrag trägt `aria-current="page"`,
 **`DescriptionList`** (children, `layout?: "stacked"|"inline"`) + **`Field`** (label,
 value? | children) — schlankes read-only Label/Wert-Primitive (semantisches `<dl>`/`<dt>`/`<dd>`).
 
+Seit 0.16: `Card` zusätzlich **`count?`** (Zahl neben dem Titel), **`subtitle?`** und **`data-*`**; `EmptyState` **`data-*`**;
+neu **`KpiGrid`** (`columns?` 2|3|4, Default 3, auto-fit, Telefon eine Spalte; `aria-label?` → `role=group`; `data-*`) und
+**`CellStack`** (`primary`, `secondary?`, `emphasized?`, `mono?`, `wrap?` umbrechen statt kürzen, `title?`, `data-*`).
+
 `AppShell` (title, subtitle?, logo?/onLogoClick?, menuItems?, search?, actions?, items?, notifications?,
 productSwitch?, user?/onProfileClick?, startButton?, sidebar?, sidebarCollapsed?/onSidebarCollapsedChange?, glass?,
 toggleLabel?) — zusätzlich **`labels?: Partial<AppShellLabels>`** (home, account, moreActions, toggleSearch,
@@ -97,6 +101,8 @@ Glas-Cards (Bento). Ergänzt die `--prn-bg-elevated*`-Reihe.
     `selectedKeys`/`onSelectionChange`, `onRowSelect`, `onRowClick` (nur Maus), `onRowContextMenu`,
     `onRowAction` (Klick **und** Enter/Leertaste auf einer Zelle der Zeile), `selectable` (Alias → multiple),
     **`getRowProps?`** (`data-*`-Attribute je Datenzeile, z. B. `data-testid`).
+  - **Breite und Wachsen (seit 0.16):** `scaleWidthMode="fit"` – alle Spalten `minmax(0, …)` (fr bleibt Gewicht), nie waagrechtes Rollen (Telefon);
+    **`growing?`** `{ loaded?, total?, hasMore?, onLoadMore(offset), moreLabel?, status?(n, m), moreTestId?, isLoading? }` – Stand „n von m geladen“ und „Mehr laden“ unter der Tabelle.
   - **Zeilenaktionen:** `rowActions?: (row) => AnalyticalRowAction[]` (id, label, icon?, showLabel?, onAction, hidden?,
     disabled?, `data-testid`) in einer rechts angehefteten Spalte; Klick/Enter auf eine Aktion löst nie `onRowAction` aus;
     `hidden` hält den Platz. `rowActionsLabel` (Name der Spalte, unsichtbar im Kopf), `rowActionsWidth`.
