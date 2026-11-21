@@ -15,6 +15,7 @@ Verbindliche Prop-APIs. App-Sessions (Wave 3) codieren gegen diese Signaturen;
 | `Checkbox` | `children?` (Label), + RAC `Checkbox` (`isSelected`, `onChange`, `isIndeterminate`, …) |
 | `Switch` | `children?` (Label), + RAC `Switch` (`isSelected`, `onChange`, …) |
 | `Select<T>` | `label?`, `placeholder?`, **`description?`**, **`errorMessage?`**, `children` (Items), + RAC `Select` (`selectedKey`, `onSelectionChange`, …) |
+| `Select` (Ergänzung) | **`disabledReason?`**: mit `isDisabled` unter dem Feld statt `description` (Sperrgrund am Ort, nicht im Tooltip). |
 | `SelectItem` | RAC `ListBoxItem` (`id`, `textValue`, …), **`description?`** (Hinweis je Option, als Beschreibung vorgelesen); **`id=""`** erlaubt (leere Wahl, `Select` meldet `""`) |
 | `DecisionDialog` | `title`, `tone?`, `notice?`, `question`, `options` (`{id,label,hint?}`), `defaultOption?`, `reasonLabel?`/`reasonRequired?`/`reasonMinLength?`/`reasonMaxLength?`, `confirmLabel`, `cancelLabel?`, `onConfirm({option,reason})` (auch Promise), `links?` (`{label,href}`, Links mit „›“), `errorMessage?`, `isPending?`, testids. Primäre erst mit Antwort; wartet auf Promise. |
 | `ViewToolbar` | **`aria-label`** (Pflicht), `children`. RAC `Toolbar` (Pfeiltasten, ein Tab-Stopp); rollt nie, ganze Gruppen brechen um. Neutral, nie Leit- oder Linkfarbe. |

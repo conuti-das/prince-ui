@@ -108,3 +108,14 @@ describe("NumberField commitOnInput", () => {
     expect(geaendert).not.toHaveBeenCalled();
   });
 });
+
+describe("Select disabledReason", () => {
+  it("zeigt den Sperrgrund unter dem Feld nur, wenn gesperrt", () => {
+    const { rerender } = render(<Select aria-label="Mandant" isDisabled disabledReason="Im Reiter „Meine“ fest" description="Hinweis"><SelectItem id="a">A</SelectItem></Select>);
+    expect(screen.getByText("Im Reiter „Meine“ fest")).toBeInTheDocument();
+    expect(screen.queryByText("Hinweis")).toBeNull();
+    rerender(<Select aria-label="Mandant" disabledReason="Im Reiter „Meine“ fest" description="Hinweis"><SelectItem id="a">A</SelectItem></Select>);
+    expect(screen.queryByText("Im Reiter „Meine“ fest")).toBeNull();
+    expect(screen.getByText("Hinweis")).toBeInTheDocument();
+  });
+});
