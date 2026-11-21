@@ -36,6 +36,19 @@ const events: TimelineEvent[] = [
 ];
 
 describe("Timeline", () => {
+  it("Ereignis trägt data-testid, weitere data-* und eine Aktion außerhalb des Auf-/Zuklappers", () => {
+    const mit: TimelineEvent[] = [{ id: "x", ts: "2026-06-30T08:13:00", title: "Freigegeben", "data-testid": "verlauf-eintrag", data: { von: "bea", ok: true, leer: undefined },
+      action: <a href="#/objekt/1">Öffnen</a> }];
+    render(<Timeline events={mit} groupBy="none" />);
+    const item = screen.getByTestId("verlauf-eintrag");
+    expect(item).toHaveAttribute("data-von", "bea");
+    expect(item).toHaveAttribute("data-ok", "true");
+    expect(item).not.toHaveAttribute("data-leer");
+    const link = screen.getByRole("link", { name: "Öffnen" });
+    expect(item).toContainElement(link);
+    expect(link.closest("button")).toBeNull();
+  });
+
   it("renders all event titles", () => {
     render(<Timeline events={events} />);
     expect(screen.getByText("Automatische Validierung")).toBeInTheDocument();

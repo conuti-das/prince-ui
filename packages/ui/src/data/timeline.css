@@ -321,3 +321,9 @@
 .prn-tl-attrs {
   font: var(--prn-text-footnote);
 }
+
+/* Aktion am Ereignis (Link/Knopf) unter dem Kopf */
+.prn-tl-action {
+  padding: 2px 0 6px;
+  font: var(--prn-text-footnote);
+}
