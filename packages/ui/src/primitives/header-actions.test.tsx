@@ -152,8 +152,19 @@ describe("berechneUeberlauf", () => {
 
   it("der Menüknopf zählt erst, wenn etwas ins Menü wandert (eine einzelne Aktion passt ohne Platz für „⋯“)", () => {
     const b = { "a:s": 90 };
-    // 90 + Lücke 8 = 98 passt in 100 – mit fest gerechnetem Menüknopf (34) hätte „Sperren“ ins Menü gemusst (so in E: Benutzer, 1440 px)
+    // 90 passt in 100 – mit fest gerechnetem Menüknopf (34) hätte „Sperren“ ins Menü gemusst (so in E: Benutzer, 1440 px)
     expect([...berechneUeberlauf({ reihenfolge: ["a:s"], breiten: b, feste: 0, menuBreite: 34, verfuegbar: 100, schluessel: ["a:s"] })]).toEqual([]);
-    expect([...berechneUeberlauf({ reihenfolge: ["a:s"], breiten: b, feste: 0, menuBreite: 34, verfuegbar: 90, schluessel: ["a:s"] })]).toEqual(["a:s"]);
+    expect([...berechneUeberlauf({ reihenfolge: ["a:s"], breiten: b, feste: 0, menuBreite: 34, verfuegbar: 89, schluessel: ["a:s"] })]).toEqual(["a:s"]);
+  });
+
+  it("zählt n − 1 Lücken: zwei Einträge à 100 passen genau in 208, nicht erst in 216 (in E fehlte sonst „Aktualisieren“ in einer Spalte so breit wie ihr Inhalt)", () => {
+    const b = { "a:x": 100, "a:p": 100 };
+    expect([...berechneUeberlauf({ reihenfolge: ["a:x"], breiten: b, feste: 0, verfuegbar: 208, schluessel: ["a:x", "a:p"] })]).toEqual([]);
+    expect([...berechneUeberlauf({ reihenfolge: ["a:x"], breiten: b, feste: 0, verfuegbar: 207, schluessel: ["a:x", "a:p"] })]).toEqual(["a:x"]);
+    // Trenner (1 px samt Lücke davor) und Hilfsaktion 34: 100 + 8 + 100 + 9 + 34 + 8 = 259
+    const c = { "a:x": 100, "a:p": 100, "h:h": 34 };
+    expect([...berechneUeberlauf({ reihenfolge: ["a:x", "h:h"], breiten: c, feste: 9, verfuegbar: 259, schluessel: ["a:x", "a:p", "h:h"] })]).toEqual([]);
+    // wandert etwas ins Menü, kommt der Menüknopf samt Lücke dazu: 100 + 9 + 34 + 8 + 34 + 8 = 193
+    expect([...berechneUeberlauf({ reihenfolge: ["a:x", "h:h"], breiten: c, feste: 9, menuBreite: 34, verfuegbar: 258, schluessel: ["a:x", "a:p", "h:h"] })]).toEqual(["a:x"]);
   });
 });

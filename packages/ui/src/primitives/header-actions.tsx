@@ -101,11 +101,15 @@ export function ueberlaufReihenfolge(actions: HeaderAction[], helpers: HeaderHel
   return [...actions.filter((a) => a.kind === "withdraw"), ...actions.filter((a) => a.kind === "secondary")].map((a) => `a:${a.id}`).concat(helpers.map((h) => `h:${h.id}`));
 }
 
-/** Welche Einträge ins Menü müssen, damit die Zeile in `verfuegbar` px passt (Breiten je Schlüssel; `feste`: immer da, z. B. Trenner;
- * `menuBreite`: der Menüknopf zählt erst, wenn etwas ins Menü wandert – steht er ohnehin da, gehört seine Breite in `feste`). */
+/** Welche Einträge ins Menü müssen, damit die Zeile in `verfuegbar` px passt (Breiten je Schlüssel; `feste`: immer da, z. B. Trenner, je mit der Lücke davor;
+ * `menuBreite`: der Menüknopf zählt erst, wenn etwas ins Menü wandert – steht er ohnehin da, gehört seine Breite samt Lücke in `feste`).
+ * Lücken: zwischen n Elementen der Zeile liegen n − 1 (flex gap) – jeder Eintrag zählt seine Lücke mit, die erste fällt weg. */
 export function berechneUeberlauf(o: { reihenfolge: string[]; breiten: Record<string, number>; feste: number; verfuegbar: number; schluessel: string[]; menuBreite?: number }): Set<string> {
   const weg = new Set<string>();
-  const summe = () => o.schluessel.filter((k) => !weg.has(k)).reduce((s, k) => s + (o.breiten[k] ?? 0) + LUECKE, 0) + o.feste + (weg.size > 0 ? (o.menuBreite ?? 0) : 0);
+  const summe = () => {
+    const s = o.schluessel.filter((k) => !weg.has(k)).reduce((x, k) => x + (o.breiten[k] ?? 0) + LUECKE, 0) + o.feste + (weg.size > 0 && o.menuBreite ? o.menuBreite + LUECKE : 0);
+    return s > 0 ? s - LUECKE : 0;
+  };
   for (const k of o.reihenfolge) {
     if (summe() <= o.verfuegbar) break;
     weg.add(k);
@@ -130,11 +134,11 @@ export function HeaderActions({ actions = [], helpers = [], menu = [], layout = 
       if (b > 0) breiten.current[k.dataset.habKey!] = b;
     }
     const menuKnopf = el.querySelector<HTMLElement>("[data-hab-menu]")?.getBoundingClientRect().width ?? 34;
-    const trenner = el.querySelector<HTMLElement>("[data-hab-trenner]") ? 1 + 2 * LUECKE : 0;
+    const trenner = el.querySelector<HTMLElement>("[data-hab-trenner]") ? 1 + LUECKE : 0;
     // Menüknopf: fest, wenn es feste Menüeinträge gibt; sonst zählt er erst, wenn etwas ins Menü wandert
     const menuFest = menu.length > 0;
     const neu = layout === "menu" ? new Set<string>() : berechneUeberlauf({
-      reihenfolge: ueberlaufReihenfolge(geordnet, helpers), breiten: breiten.current, feste: trenner + (menuFest ? menuKnopf : 0),
+      reihenfolge: ueberlaufReihenfolge(geordnet, helpers), breiten: breiten.current, feste: trenner + (menuFest ? menuKnopf + LUECKE : 0),
       menuBreite: menuFest ? 0 : menuKnopf, verfuegbar: el.clientWidth, schluessel,
     });
     setWeg((alt) => (alt.size === neu.size && [...neu].every((k) => alt.has(k)) ? alt : neu));
