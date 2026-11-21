@@ -3,6 +3,8 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import { render, screen, within } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { vi } from "vitest";
 import { StepBar, type Step } from "./stepbar";
 
 const STUFEN: Step[] = [
@@ -45,6 +47,30 @@ describe("StepBar (Stufenleiste)", () => {
     rerender(<StepBar aria-label="Weg" density="compact" steps={STUFEN} />);
     expect(screen.queryByText("19.11., 14:02")).not.toBeInTheDocument();
     expect(screen.getAllByText("erledigt")[0]).toHaveClass("prn-step-sr");
+  });
+
+  it("ohne onSelect keine Knöpfe; mit onSelect jede Stufe ein Knopf (aktuelle mit aria-current), gesperrte nicht wählbar", async () => {
+    const { rerender } = render(<StepBar aria-label="Schritte" steps={STUFEN} />);
+    expect(screen.queryAllByRole("button")).toHaveLength(0);
+    const onSelect = vi.fn();
+    const SCHRITTE: Step[] = [
+      { id: "stamm", label: "Stammdaten", state: "done" },
+      { id: "rollen", label: "Rollen", state: "problem", stateLabel: "2 Befunde" },
+      { id: "kanal", label: "Kanäle", state: "current" },
+      { id: "pruefen", label: "Prüfen", state: "upcoming", isDisabled: true, "data-testid": "schritt-pruefen" },
+    ];
+    rerender(<StepBar aria-label="Schritte" steps={SCHRITTE} onSelect={onSelect} />);
+    const knoepfe = screen.getAllByRole("button");
+    expect(knoepfe).toHaveLength(4);
+    expect(screen.getByRole("button", { name: /Rollen.*2 Befunde/ })).toBeEnabled();
+    expect(screen.getByRole("button", { name: /Kanäle/ })).toHaveAttribute("aria-current", "step");
+    expect(screen.getByTestId("schritt-pruefen")).not.toHaveAttribute("aria-current");
+    await userEvent.click(screen.getByRole("button", { name: /Rollen/ }));
+    expect(onSelect).toHaveBeenCalledWith("rollen");
+    const gesperrt = screen.getByRole("button", { name: /Prüfen/ });
+    expect(gesperrt).toBeDisabled();
+    await userEvent.click(gesperrt);
+    expect(onSelect).toHaveBeenCalledTimes(1);
   });
 
   it("CSS: keine Leitfarbe, keine Knöpfe; Umbruch statt Rollen", () => {
