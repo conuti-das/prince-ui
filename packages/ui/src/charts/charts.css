@@ -89,6 +89,24 @@
   color: var(--prn-label);
 }
 
+/* ---- ComboChart: Legende als Zeile, Form nach Art (Quadrat = Balken, Strich = Linie) ---- */
+.prn-chart-combo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+.prn-chart-legend--row {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+}
+.prn-chart-legend-swatch[data-kind="line"] {
+  width: 14px;
+  height: 3px;
+  border-radius: 2px;
+}
+
 /* ---- Leerzustand ---- */
 .prn-chart-empty {
   display: flex;

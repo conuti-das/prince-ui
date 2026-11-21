@@ -1,0 +1,31 @@
+# ComboChart
+
+Mehrere Reihen über gemeinsamen x-Werten in einem Diagramm: Balken (gruppiert) und Linien, mit Legende und optionaler Werteachse – z. B. „gestartet“ und „fertig“ als Balken, „Soll“ als Linie.
+
+## Verwendung
+
+`labels` sind die x-Werte, `series` die Reihen mit je einem Wert pro x-Wert (`null` = kein Wert: Lücke in der Linie, kein Balken). `kind` wählt Balken (Vorgabe) oder Linie. `showValueAxis` zeigt links 0, Mitte und Höchstwert mit Hilfslinien; `labelEvery` dünnt dichte x-Achsen aus. Ohne Werte rendert der Chart seinen Leerzustand.
+
+<DoDont kind="do">Höchstens drei bis vier Reihen; die Legende nennt jede Reihe mit Wort und Form (Quadrat = Balken, Strich = Linie).</DoDont>
+<DoDont kind="dont">Reihen nur über die Farbe unterscheiden oder die Legende ausblenden, wenn mehr als eine Reihe gezeigt wird.</DoDont>
+
+## Beispiele
+
+<Example code={`<ComboChart
+  aria-label="Starts je Minute"
+  labels={['10:00', '10:01', '10:02', '10:03', '10:04', '10:05']}
+  series={[
+    { id: 'gestartet', label: 'gestartet', values: [42, 55, 61, 58, 64, 60] },
+    { id: 'fertig', label: 'fertig', values: [38, 50, 59, 57, 60, null] },
+    { id: 'soll', label: 'Soll', kind: 'line', values: [60, 60, 60, 60, 60, 60] },
+  ]}
+  showValueAxis
+/>`} />
+
+## Accessibility
+
+Mit `aria-label` ist das SVG ein benanntes Bild, ohne ist es dekorativ. Die einzelnen Werte sind nicht als Text exponiert – nennen Sie die wichtigen Zahlen im umgebenden Markup (Kartentitel, Summe, Wertetabelle).
+
+## Props
+
+<PropsTable name="ComboChart" />
