@@ -161,6 +161,8 @@ export interface SelectProps<T extends object> extends Omit<RACSelectProps<T>, "
   /** Größe: s (kompakt) | m (Default) | l. Ohne Angabe greift der PrinceSizeProvider-Context. */
   size?: FieldSize;
   className?: string;
+  /** Warum die Auswahl gesperrt ist: steht mit `isDisabled` unter dem Feld (statt `description`), nie nur im Tooltip. */
+  disabledReason?: ReactNode;
 }
 
 /* Leere Kennung als Wahl („keiner“, „unbefristet“): React Aria braucht nicht-leere Schlüssel – ein Eintrag mit `id=""` ließe sich nicht wählen.
@@ -168,8 +170,9 @@ export interface SelectProps<T extends object> extends Omit<RACSelectProps<T>, "
 const LEER = "__prn-leer__";
 const nachInnen = (k: Key | null | undefined) => (k === "" ? LEER : k);
 
-export function Select<T extends object>({ label, description, errorMessage, placeholder, children, size, className, selectedKey, defaultSelectedKey, onSelectionChange, ...props }: SelectProps<T>) {
+export function Select<T extends object>({ label, description: beschreibung, errorMessage, placeholder, children, size, className, selectedKey, defaultSelectedKey, onSelectionChange, disabledReason, ...props }: SelectProps<T>) {
   const resolvedSize = useFieldSize(size);
+  const description = props.isDisabled && disabledReason != null ? disabledReason : beschreibung;
   return (
     <RACSelect {...props} placeholder={placeholder}
       {...(selectedKey !== undefined ? { selectedKey: nachInnen(selectedKey) } : {})}
