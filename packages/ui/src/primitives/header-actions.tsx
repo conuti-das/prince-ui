@@ -146,9 +146,17 @@ export function HeaderActions({ actions = [], helpers = [], menu = [], layout = 
   useLayoutEffect(() => { messen(); });
   useLayoutEffect(() => {
     const el = ref.current;
+    // Leiste und jeder Eintrag: Einträge werden breiter, wenn eine Schrift nachlädt oder sich ein Text ändert – ohne neue Messung
+    // liefe die Zeile dann über den Rand, statt Überzähliges ins Menü zu legen
     const ro = typeof ResizeObserver !== "undefined" && el ? new ResizeObserver(() => messen()) : null;
-    if (ro && el) ro.observe(el);
-    return () => ro?.disconnect();
+    if (ro && el) {
+      ro.observe(el);
+      el.querySelectorAll("[data-hab-key]").forEach((k) => ro.observe(k));
+    }
+    const schriften = typeof document !== "undefined" ? document.fonts : undefined;
+    const nachSchrift = () => messen();
+    schriften?.addEventListener?.("loadingdone", nachSchrift);
+    return () => { ro?.disconnect(); schriften?.removeEventListener?.("loadingdone", nachSchrift); };
   }, [messen]);
 
   const imMenu = layout === "menu" ? geordnet : geordnet.filter((a) => weg.has(`a:${a.id}`));

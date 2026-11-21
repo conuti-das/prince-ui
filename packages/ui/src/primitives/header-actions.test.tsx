@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom/vitest";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { render, screen, within } from "@testing-library/react";
+import { act, render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { HeaderActions, berechneUeberlauf, type HeaderAction, type HeaderHelper, type HeaderMenuEntry } from "./header-actions";
 
@@ -73,6 +73,24 @@ describe("HeaderActions (Aktionsleiste im Kopf)", () => {
     await userEvent.click(screen.getByRole("button", { name: "Weitere Aktionen" }));
     const item = await screen.findByRole("menuitem", { name: "Ablehnen" });
     expect(item).toHaveAttribute("data-tone", "danger");
+  });
+
+  it("misst neu, wenn ein Eintrag breiter wird (Schrift lädt nach): die Hilfsaktion wandert ins Menü statt über den Rand", async () => {
+    const beobachtet: Element[] = [];
+    let melden: (() => void) | null = null;
+    vi.stubGlobal("ResizeObserver", class { constructor(cb: () => void) { melden = cb; } observe(e: Element) { beobachtet.push(e); } unobserve() {} disconnect() {} });
+    const einzeln: HeaderAction[] = [{ id: "plan", label: "Transport planen", kind: "primary", onAction: leer, "data-testid": "plan" }];
+    breite["a:plan"] = 150; breite["h:akt"] = 34;
+    leiste = 150 + 8 + 17 + 34 + 8; // passt knapp
+    render(<HeaderActions actions={einzeln} helpers={HELFER} />);
+    expect(screen.getByTestId("akt")).toBeInTheDocument();
+    expect(beobachtet.some((e) => (e as HTMLElement).dataset?.habKey === "a:plan"), "Einträge werden beobachtet").toBe(true);
+    breite["a:plan"] = 170; // breitere Schrift: der Knopf wächst, die Leiste nicht
+    await act(async () => { melden?.(); });
+    expect(screen.queryByTestId("akt")).not.toBeInTheDocument();
+    expect(screen.getByTestId("plan")).toBeInTheDocument();
+    delete breite["a:plan"]; delete breite["h:akt"];
+    vi.unstubAllGlobals();
   });
 
   it("sehr schmal (Telefon): nur die primäre und „⋯“ bleiben; alles andere im Menü in fester Reihenfolge", async () => {
