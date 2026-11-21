@@ -119,3 +119,13 @@ describe("Select disabledReason", () => {
     expect(screen.getByText("Hinweis")).toBeInTheDocument();
   });
 });
+
+describe("Select: langer Wert", () => {
+  it("steht in einer Zeile mit vollem Text als title", () => {
+    const lang = "CONUTI LF Strom (Clone E im k3s, Gegenstelle Sparring-Mandant clone-e) (lf)";
+    render(<Select label="Mandant" selectedKey="lf"><SelectItem id="lf" textValue={lang}>{lang}</SelectItem></Select>);
+    const wert = document.querySelector(".prn-select-value span[title]") as HTMLElement;
+    expect(wert).toHaveAttribute("title", lang);
+    expect(wert).toHaveTextContent(lang);
+  });
+});
