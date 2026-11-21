@@ -1,0 +1,37 @@
+# StatusGlyphRow
+
+Feste Reihe kleiner Zustandszeichen – z. B. vier Dimensionen einer Datei (Versand · Bestätigung · technische · fachliche Prüfung) in einer Tabellenzelle oder Listenzeile. Zeichen = Zustand, Farbe = Folge für den Betrachter, das Wort steht im Namen der Reihe.
+
+## Verwendung
+
+`items` sind die Zeichen mit `id`, `icon`, `tone` (`positive`, `negative`, `critical`, `info`, `neutral`) und `variant` (`outline`, `filled`, `empty` = kein Wert, gestrichelt). `aria-label` ist Pflicht und nennt alle Zustände als Text. Die Reihe ist nicht bedienbar und bleibt auf dem Telefon gleich klein. Einzelne Zeichen (z. B. in einer Legende neben dem Wort) gibt es als `StatusGlyph`.
+
+<DoDont kind="do">Den vollständigen Zustand je Zeichen in `aria-label` nennen und in einer Legende oder im Detail als Wort zeigen.</DoDont>
+<DoDont kind="dont">Die Reihe anklickbar machen oder die Bedeutung nur über die Farbe transportieren.</DoDont>
+
+## Beispiele
+
+<Example code={`<div style={{ display: 'flex', gap: 24, alignItems: 'center' }}>
+  <StatusGlyphRow aria-label="Versand: zugestellt, Bestätigung: ausstehend, technische Prüfung: positiv, fachliche Prüfung: keine"
+    items={[
+      { id: 'v', icon: 'check', tone: 'positive' },
+      { id: 'b', icon: 'hourglass', tone: 'critical' },
+      { id: 't', icon: 'check', tone: 'positive' },
+      { id: 'f', variant: 'empty' },
+    ]} />
+  <StatusGlyphRow aria-label="Versand: zugestellt, Bestätigung: abgelehnt, technische Prüfung: negativ, fachliche Prüfung: keine"
+    items={[
+      { id: 'v', icon: 'check', tone: 'positive' },
+      { id: 'b', icon: 'x', tone: 'negative', variant: 'filled' },
+      { id: 't', icon: 'x-circle', tone: 'negative' },
+      { id: 'f', variant: 'empty' },
+    ]} />
+</div>`} />
+
+## Accessibility
+
+Die Reihe ist ein Bild (`role="img"`) mit vollständigem Namen; die Zeichen selbst sind `aria-hidden`. Keine Tastaturbedienung, kein Tooltip.
+
+## Props
+
+<PropsTable name="StatusGlyphRow" />
