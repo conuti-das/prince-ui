@@ -93,6 +93,7 @@ export * from "./primitives/color";
 export * from "./primitives/color-pickers";
 // W5 — Status & Misc
 export * from "./primitives/status";
+export * from "./primitives/status-glyph";
 export * from "./primitives/toast";
 export * from "./primitives/dropzone";
 

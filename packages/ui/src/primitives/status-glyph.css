@@ -1,0 +1,29 @@
+/* StatusGlyph — feste Zustandszeichen. Tokens: prince-ui-tokens; niemals rohe Hex/RGB. */
+.prn-glyph-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex: 0 0 auto;
+  vertical-align: middle;
+}
+.prn-glyph {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  border: 1px solid var(--prn-separator-opaque);
+  border-radius: var(--prn-radius-sm);
+  color: var(--prn-label-3);
+  background: transparent;
+}
+.prn-glyph[data-variant="empty"] { border-style: dashed; }
+.prn-glyph[data-tone="positive"] { color: var(--prn-green); border-color: var(--prn-green); }
+.prn-glyph[data-tone="negative"] { color: var(--prn-red); border-color: var(--prn-red); }
+.prn-glyph[data-tone="critical"] { color: var(--prn-orange); border-color: var(--prn-orange); }
+.prn-glyph[data-tone="info"] { color: var(--prn-accent); border-color: var(--prn-accent); }
+.prn-glyph[data-variant="filled"][data-tone="positive"] { background: var(--prn-tint-positive); }
+.prn-glyph[data-variant="filled"][data-tone="negative"] { background: var(--prn-tint-negative); }
+.prn-glyph[data-variant="filled"][data-tone="critical"] { background: var(--prn-tint-critical); }
+.prn-glyph[data-variant="filled"][data-tone="info"] { background: var(--prn-tint-info); }
+.prn-glyph[data-variant="filled"][data-tone="neutral"] { background: var(--prn-fill); }
