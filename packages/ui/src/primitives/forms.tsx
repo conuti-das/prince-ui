@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import type { Key } from "react-aria-components";
 import {
   Button as RACButton,
   type ButtonProps as RACButtonProps,
@@ -162,10 +163,18 @@ export interface SelectProps<T extends object> extends Omit<RACSelectProps<T>, "
   className?: string;
 }
 
-export function Select<T extends object>({ label, description, errorMessage, placeholder, children, size, className, ...props }: SelectProps<T>) {
+/* Leere Kennung als Wahl („keiner“, „unbefristet“): React Aria braucht nicht-leere Schlüssel – ein Eintrag mit `id=""` ließe sich nicht wählen.
+ * Select und SelectItem bilden "" deshalb intern auf einen eigenen Schlüssel ab; nach außen (`selectedKey`, `defaultSelectedKey`, `onSelectionChange`) bleibt es "". */
+const LEER = "__prn-leer__";
+const nachInnen = (k: Key | null | undefined) => (k === "" ? LEER : k);
+
+export function Select<T extends object>({ label, description, errorMessage, placeholder, children, size, className, selectedKey, defaultSelectedKey, onSelectionChange, ...props }: SelectProps<T>) {
   const resolvedSize = useFieldSize(size);
   return (
-    <RACSelect {...props} placeholder={placeholder} data-size={resolvedSize} className={cx("prn-field prn-select", className)}>
+    <RACSelect {...props} placeholder={placeholder}
+      {...(selectedKey !== undefined ? { selectedKey: nachInnen(selectedKey) } : {})}
+      {...(defaultSelectedKey !== undefined ? { defaultSelectedKey: nachInnen(defaultSelectedKey) } : {})}
+      onSelectionChange={onSelectionChange ? (k) => onSelectionChange(k === LEER ? "" : k) : undefined} data-size={resolvedSize} className={cx("prn-field prn-select", className)}>
       {label && <Label className="prn-field-label">{label}</Label>}
       <RACButton className="prn-select-button">
         {/* Anzeige als Render-Funktion: ein festes Kind ersetzt die Anzeige immer (dann blieb „Bitte wählen“ stehen, auch nach der Wahl). Gezeigt wird der Text
@@ -191,7 +200,8 @@ export interface SelectItemProps extends Omit<ListBoxItemProps, "className"> {
   description?: ReactNode;
 }
 
-export function SelectItem({ className, description, children, textValue, ...props }: SelectItemProps) {
+export function SelectItem({ className, description, children, textValue, id: rohId, ...rest }: SelectItemProps) {
+  const props = { ...rest, id: rohId === "" ? LEER : rohId };
   if (description == null) return <ListBoxItem {...props} textValue={textValue} className={cx("prn-option", className)}>{children}</ListBoxItem>;
   return (
     <ListBoxItem {...props} textValue={textValue ?? (typeof children === "string" ? children : undefined)} data-description className={cx("prn-option", className)}>

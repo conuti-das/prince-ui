@@ -15,7 +15,7 @@ Verbindliche Prop-APIs. App-Sessions (Wave 3) codieren gegen diese Signaturen;
 | `Checkbox` | `children?` (Label), + RAC `Checkbox` (`isSelected`, `onChange`, `isIndeterminate`, …) |
 | `Switch` | `children?` (Label), + RAC `Switch` (`isSelected`, `onChange`, …) |
 | `Select<T>` | `label?`, `placeholder?`, **`description?`**, **`errorMessage?`**, `children` (Items), + RAC `Select` (`selectedKey`, `onSelectionChange`, …) |
-| `SelectItem` | RAC `ListBoxItem` (`id`, `textValue`, …), **`description?`** (Hinweis je Option, als Beschreibung vorgelesen) |
+| `SelectItem` | RAC `ListBoxItem` (`id`, `textValue`, …), **`description?`** (Hinweis je Option, als Beschreibung vorgelesen); **`id=""`** erlaubt (leere Wahl, `Select` meldet `""`) |
 | `DecisionDialog` | `title`, `tone?`, `notice?`, `question`, `options` (`{id,label,hint?}`), `defaultOption?`, `reasonLabel?`/`reasonRequired?`/`reasonMinLength?`/`reasonMaxLength?`, `confirmLabel`, `cancelLabel?`, `onConfirm({option,reason})` (auch Promise), `links?` (`{label,href}`, Links mit „›“), `errorMessage?`, `isPending?`, testids. Primäre erst mit Antwort; wartet auf Promise. |
 | `ViewToolbar` | **`aria-label`** (Pflicht), `children`. RAC `Toolbar` (Pfeiltasten, ein Tab-Stopp); rollt nie, ganze Gruppen brechen um. Neutral, nie Leit- oder Linkfarbe. |
 | `ViewToolbarGroup` | `aria-label?`, `align?: "start" \| "end"`, `wrap?` (Default: Gruppe bleibt ganz in einer Zeile). `ViewToolbarSeparator` ohne Props. |
@@ -28,6 +28,8 @@ Verbindliche Prop-APIs. App-Sessions (Wave 3) codieren gegen diese Signaturen;
 |---|---|
 | `Modal` | `isOpen?`, `onOpenChange?`, `title?`, `subtitle?`, `isDismissable?` (Default true), `isKeyboardDismissDisabled?`, `children` (auch `({close}) =>`), **`footer?`** (Aktionen, auch `({close}) =>`), **`footerStart?`**, **`tone?`** info|positive|critical|negative, **`size?`** s|m|l, `role?`, `data-testid?`. Inhalt rollt, Titel und Fußzeile stehen. Fokus-Trap/Escape/Fokus-Rückgabe via React Aria. |
 | `ConfirmDialog` | `title`, `children`, `confirmLabel`, `cancelLabel?`, `onConfirm`, `onCancel?`, `tone?`, `destructive?`, `confirmTestId?`/`cancelTestId?`, `isOpen`/`onOpenChange`. `alertdialog`, Fokus auf Abbrechen. |
+| `FormDialog` | `onClose`, `onSubmit`, `title`, `subtitle?`, `tone?`, `size?`, `submitLabel`, `busyLabel?`, `cancelLabel?` (Default „Abbrechen“), `destructive?`, `isSubmitDisabled?` + `disabledReason?` (links in der Fußzeile, testid `<data-testid>-sperrgrund`), **`isBusy?`** (Esc/Klick daneben schließen nicht, Knöpfe gesperrt, `data-busy`), **`error?`** (Notice `role=alert`, testid `<data-testid>-fehler`), `extraActions?`, `footerStart?`, `submitTestId?`/`cancelTestId?`/`errorTestId?`, `isOpen?` (Default true), `data-testid?`. Dazu `useSubmitState()` → `{ isBusy, error, setError, attempted, setAttempted, submit(f) }`. |
+| `ReasonField` | `value`, `onChange`, `minLength?` (5), `maxLength?` (500), `isRequired?` (true), **`showError?`** (Fehler erst nach dem Absenden), `label?`, `description?`, `tooShort?(min)`, `isDisabled?`, `rows?`, `maxRows?`, `data-testid?`. Dazu `reasonValid(value, min?, isRequired?)`. |
 | `DialogTrigger` | Re-Export aus RAC (deklaratives Öffnen). |
 | `Menu` | `trigger` (z. B. `<Button>`), `children` (`MenuItem`s, `MenuSection`, `MenuSeparator`). |
 | `MenuSection` / `MenuSeparator` | `title?` – benannte Gruppe im Menü; Trennlinie zwischen Abschnitten. |
@@ -174,7 +176,7 @@ Glas-Cards (Bento). Ergänzt die `--prn-bg-elevated*`-Reihe.
 | `RadioGroup` | `label?`, `description?`, `errorMessage?`, `children` (`Radio`s), + RAC `RadioGroup` (`value`, `onChange`, `orientation`, `isInvalid`, `isDisabled`). |
 | `Radio` | `children?` (Label), + RAC `Radio` (`value`, …). |
 | `CheckboxGroup` | `label?`, `description?`, `errorMessage?`, `children` (`Checkbox`s), + RAC `CheckboxGroup` (`value`, `onChange`, …). |
-| `NumberField` | `label?`, `description?`, `errorMessage?`, `placeholder?`, + RAC `NumberField` (`value`, `onChange`, `minValue`, `maxValue`, `step`, `formatOptions`). −/+ Stepper. |
+| `NumberField` | `label?`, `description?`, `errorMessage?`, `placeholder?`, + RAC `NumberField` (`value`, `onChange`, `minValue`, `maxValue`, `step`, `formatOptions`). −/+ Stepper. **`commitOnInput?`**: `onChange` schon beim Tippen (nach Gebietsschema, innerhalb `minValue`/`maxValue`); `parseLocaleNumber(text, locale)`. |
 | `Slider` | `label?`, `showValue?` (Default true), + RAC `Slider` (`value`, `onChange`, `minValue`, `maxValue`, `step`, `formatOptions`). Ein Thumb. |
 | `ComboBox<T>` | `label?`, `placeholder?`, `description?`, `errorMessage?`, `children` (Items), + RAC `ComboBox` (`selectedKey`, `onSelectionChange`, `inputValue`, `onInputChange`, `allowsCustomValue`, `items`). |
 | `ComboBoxItem` | RAC `ListBoxItem` (`id`, `textValue`, …). |
