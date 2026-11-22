@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import "@testing-library/jest-dom/vitest";
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
@@ -5,6 +7,12 @@ import userEvent from "@testing-library/user-event";
 import { FilterBar, FilterField } from "./filterbar";
 
 describe("FilterField", () => {
+  it("Control füllt das Feld; am Telefon zwei Felder je Zeile", () => {
+    const css = readFileSync(resolve(process.cwd(), "src/data/data.css"), "utf8");
+    expect(/\.prn-filter-field-control > \*\s*\{([^}]*)\}/.exec(css)?.[1] ?? "").toMatch(/min-width:\s*0/);
+    expect(/\.prn-filter-field-control :is\(\.prn-select, \.prn-select-button, \.prn-searchfield\)\s*\{([^}]*)\}/.exec(css)?.[1] ?? "").toMatch(/width:\s*100%/);
+    expect(/@media \(max-width: 599px\)\s*\{\s*\.prn-filterbar-row > \.prn-filter-field\s*\{([^}]*)\}/.exec(css)?.[1] ?? "").toMatch(/flex:\s*1 1 calc\(50% - 6px\)/);
+  });
   it("renders its label and control slot", () => {
     render(
       <FilterField label="Sparte">
