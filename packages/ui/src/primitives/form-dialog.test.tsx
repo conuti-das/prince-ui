@@ -107,6 +107,16 @@ describe("NumberField commitOnInput", () => {
     fireEvent.input(feld, { target: { value: "420" } });
     expect(geaendert).not.toHaveBeenCalled();
   });
+  it("meldet ein geleertes Feld als NaN (optionales Zahlfeld bleibt leer), ein halbes Minus nicht", () => {
+    const geaendert = vi.fn();
+    render(<NumberField label="Zeitlimit" defaultValue={30} onChange={geaendert} commitOnInput />);
+    const feld = screen.getByRole("textbox");
+    fireEvent.input(feld, { target: { value: "-" } });
+    expect(geaendert).not.toHaveBeenCalled();
+    fireEvent.input(feld, { target: { value: "" } });
+    expect(geaendert).toHaveBeenCalledTimes(1);
+    expect(Number.isNaN(geaendert.mock.calls[0]![0])).toBe(true);
+  });
 });
 
 describe("Select disabledReason", () => {
