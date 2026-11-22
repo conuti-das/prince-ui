@@ -323,6 +323,13 @@
   display: flex;
   align-items: center;
 }
+/* das Control füllt sein Feld: Auswahl, Suchfeld und Eingabe sind so breit wie das Feld (sonst nur so breit wie ihr Inhalt, Felder einer Zeile ungleich) */
+.prn-filter-field-control > * { flex: 1 1 auto; min-width: 0; }
+.prn-filter-field-control :is(.prn-select, .prn-select-button, .prn-searchfield) { width: 100%; }
+/* Telefon: zwei Felder je Zeile statt eines je Zeile mit fester Mindestbreite */
+@media (max-width: 599px) {
+  .prn-filterbar-row > .prn-filter-field { min-width: 0; flex: 1 1 calc(50% - 6px); }
+}
 
 .prn-filterbar-spacer { flex: 1 1 auto; }
 
