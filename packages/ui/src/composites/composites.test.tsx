@@ -53,6 +53,13 @@ describe("composites", () => {
     expect(regel).toMatch(/white-space:\s*normal/);
   });
 
+  it("Card: Kopf bricht um statt überzulaufen (Titel schrumpft und bricht in sich um, Slot rutscht notfalls nach unten)", () => {
+    const css = readFileSync(resolve(process.cwd(), "src/composites/composites.css"), "utf8");
+    expect(/\.prn-card-head\s*\{([^}]*)\}/.exec(css)?.[1] ?? "").toMatch(/flex-wrap:\s*wrap/);
+    expect(/\.prn-card-head > \.prn-card-title, \.prn-card-head > \.prn-card-titles\s*\{([^}]*)\}/.exec(css)?.[1] ?? "").toMatch(/min-width:\s*0/);
+    expect(/\.prn-card-title\s*\{([^}]*)\}/.exec(css)?.[1] ?? "").toMatch(/overflow-wrap:\s*break-word/);
+  });
+
   it("Badge renders a leading icon", () => {
     render(<Badge tone="blue" icon={<svg data-testid="ic" />}>Live</Badge>);
     expect(screen.getByTestId("ic")).toBeInTheDocument();
