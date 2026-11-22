@@ -139,6 +139,15 @@ describe("HeaderActions im Kopf-Slot", () => {
     expect(regel?.[1]).toMatch(/flex:\s*1000 1 auto/);
     expect(regel?.[1]).toMatch(/min-width:\s*0/);
   });
+  it("CSS: ebenso im Seitenkopf der ListReportPage ab 768 px; am Telefon bricht die Leiste um statt abzuschneiden", async () => {
+    const { readFileSync } = await import("node:fs");
+    const { resolve } = await import("node:path");
+    const css = readFileSync(resolve(process.cwd(), "src/primitives/header-actions.css"), "utf8");
+    expect(css.match(/@media \(min-width: 768px\) \{\s*\.prn-listreport-actions:has\(> \.prn-hab\) \{([^}]*)\}/)?.[1]).toMatch(/flex:\s*1000 1 auto/);
+    const telefon = css.match(/@media \(max-width: 599px\) \{\s*\.prn-hab \{([^}]*)\}/)?.[1];
+    expect(telefon).toMatch(/flex-wrap:\s*wrap/);
+    expect(telefon).toMatch(/overflow:\s*visible/);
+  });
 });
 
 describe("berechneUeberlauf", () => {

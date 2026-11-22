@@ -30,3 +30,14 @@
   flex: 1000 1 auto;
   min-width: 0;
 }
+/* ebenso im Seitenkopf der ListReportPage – nur ab 768 px: darunter steht der Slot in einer eigenen vollen Zeile (listreport.css) */
+@media (min-width: 768px) {
+  .prn-listreport-actions:has(> .prn-hab) { flex: 1000 1 auto; min-width: 0; }
+}
+/* Telefon: die Leiste schneidet nie ab – reicht die gemessene Breite nicht (Schrift breiter als beim Messen), bricht sie um, statt über den Rand zu laufen.
+ * Am Desktop bleibt sie einzeilig mit Überlauf ins Menü. */
+@media (max-width: 599px) {
+  .prn-hab { flex-wrap: wrap; overflow: visible; row-gap: 8px; }
+  .prn-hab > .prn-hab-eintrag { flex: 0 1 auto; min-width: 0; max-width: 100%; }
+  .prn-hab > .prn-hab-eintrag > :is(button, a) { max-width: 100%; white-space: normal; text-align: center; }
+}
