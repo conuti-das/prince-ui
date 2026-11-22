@@ -1281,7 +1281,7 @@ export function AnalyticalTable<T>(props: AnalyticalTableProps<T>) {
   const showBusy = showLoading && alwaysShowBusyIndicator && !showOverlay;
 
   return (
-    <div className={cx("prn-table", className)} ref={containerRef}>
+    <div className={cx("prn-table", className)} ref={containerRef} data-scale-width-mode={scaleWidthMode === "fit" ? "fit" : undefined}>
       {header && (
         <div id={titleId} className="prn-table-title" role="heading" aria-level={2}>
           {header}

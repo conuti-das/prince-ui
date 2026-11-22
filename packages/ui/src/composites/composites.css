@@ -209,7 +209,10 @@
   white-space: nowrap;
 }
 /* Umbruch (wrap): langes Wort bricht um, Radius wie ein Feld statt Pille */
-.prn-badge[data-wrap] {
+/* umbrechende Marke: mit `wrap`, ebenso unter dem Text einer Zeile (ListRow trailingPlacement="below") und in schmalen Tabellen (scaleWidthMode "fit") – dort ist Platz für eine zweite Zeile, sonst würde abgeschnitten */
+.prn-badge[data-wrap],
+.prn-row[data-trailing="below"] .prn-badge,
+.prn-table[data-scale-width-mode="fit"] .prn-badge {
   white-space: normal;
   overflow-wrap: anywhere;
   max-width: 100%;
@@ -754,6 +757,8 @@ a.prn-sidebar-item {
 .prn-cell-stack { display: flex; flex-direction: column; gap: 2px; min-width: 0; max-width: 100%; }
 .prn-cell-stack > * { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; max-width: 100%; }
 .prn-cell-stack[data-wrap] > * { white-space: normal; overflow-wrap: anywhere; text-overflow: clip; }
+/* schmale Tabelle (scaleWidthMode "fit", Telefon): Haupt- und Zweitwert brechen um, höchstens zwei Zeilen mit „…“ – die Zeile wächst statt abzuschneiden */
+.prn-table[data-scale-width-mode="fit"] .prn-cell-stack > * { white-space: normal; overflow-wrap: anywhere; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
 .prn-cell-stack-primary { font: var(--prn-text-subhead); color: var(--prn-label); }
 .prn-cell-stack-primary[data-emphasized] { font-weight: 600; }
 .prn-cell-stack-secondary { font: var(--prn-text-footnote); color: var(--prn-label-2); }

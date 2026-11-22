@@ -39,6 +39,16 @@ describe("AnalyticalTable fit und growing", () => {
     render(<AnalyticalTable data={DATEN} columns={SPALTEN} getRowId={(z) => z.id} accessibleName="T" scaleWidthMode="fit" />);
     expect((screen.getByRole("grid") as HTMLElement).style.gridTemplateColumns).toBe("minmax(0, 2fr) minmax(0, 1fr)");
   });
+  it("fit: Tabelle trägt data-scale-width-mode; Marken brechen um, Zellstapel höchstens zwei Zeilen (auch Marken unter dem Text einer Zeile)", async () => {
+    const { container } = render(<AnalyticalTable data={DATEN} columns={SPALTEN} getRowId={(z) => z.id} accessibleName="T" scaleWidthMode="fit" />);
+    expect(container.querySelector(".prn-table")).toHaveAttribute("data-scale-width-mode", "fit");
+    const { readFileSync } = await import("node:fs");
+    const { resolve } = await import("node:path");
+    const css = readFileSync(resolve(process.cwd(), "src/composites/composites.css"), "utf8");
+    const marke = css.match(/\.prn-badge\[data-wrap\],\s*\.prn-row\[data-trailing="below"\] \.prn-badge,\s*\.prn-table\[data-scale-width-mode="fit"\] \.prn-badge \{([^}]*)\}/)?.[1];
+    expect(marke).toMatch(/white-space:\s*normal/);
+    expect(css.match(/\.prn-table\[data-scale-width-mode="fit"\] \.prn-cell-stack > \* \{([^}]*)\}/)?.[1]).toMatch(/-webkit-line-clamp:\s*2/);
+  });
   it("growing: Stand und Mehr laden mit Offset; ohne Rest kein Knopf", () => {
     const mehr = vi.fn();
     const { rerender } = render(<AnalyticalTable data={DATEN} columns={SPALTEN} getRowId={(z) => z.id} accessibleName="T" growing={{ total: 1200, onLoadMore: mehr, moreTestId: "mehr" }} />);
