@@ -49,7 +49,7 @@ describe("composites", () => {
     expect(screen.getByText(/Gilt als angenommen/)).toHaveAttribute("data-wrap", "");
     expect(screen.getByText("kurz")).not.toHaveAttribute("data-wrap");
     const css = readFileSync(resolve(process.cwd(), "src/composites/composites.css"), "utf8");
-    const regel = /\.prn-badge\[data-wrap\]\s*\{([^}]*)\}/.exec(css)?.[1] ?? "";
+    const regel = /\.prn-badge\[data-wrap\][^{]*\{([^}]*)\}/.exec(css)?.[1] ?? ""; // Selektorliste: auch Zeile „below“ und Tabelle „fit“
     expect(regel).toMatch(/white-space:\s*normal/);
   });
 
