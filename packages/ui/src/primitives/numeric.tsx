@@ -15,7 +15,8 @@ export interface NumberFieldProps extends Omit<RACNumberFieldProps, "className">
   /** Größe: s (kompakt) | m (Default) | l. Ohne Angabe greift der PrinceSizeProvider-Context. */
   size?: FieldSize; className?: string;
   /** Wert gilt schon beim Tippen: `onChange` bei jeder gültigen Eingabe, nicht erst beim Verlassen des Feldes (wer die Zahl zuletzt tippt und gleich sendet,
-   *  sendet den getippten Wert). Gelesen nach dem Gebietsschema (Tausender- und Dezimalzeichen); Grenzen und Rundung gelten wie bisher beim Verlassen. */
+   *  sendet den getippten Wert). Gelesen nach dem Gebietsschema (Tausender- und Dezimalzeichen); Grenzen und Rundung gelten wie bisher beim Verlassen.
+   *  Ein geleertes Feld meldet `NaN` (wie React Aria beim Verlassen) – so bleibt ein optionales Zahlfeld leer, auch wenn gleich gesendet wird. */
   commitOnInput?: boolean;
 }
 
@@ -37,6 +38,7 @@ export function NumberField({ label, description, errorMessage, placeholder, siz
   const { locale } = useLocale();
   const { onChange, minValue, maxValue } = props;
   const beimTippen = useMemo(() => (commitOnInput && onChange ? (e: FormEvent<HTMLInputElement>) => {
+    if (e.currentTarget.value.trim() === "") { onChange(NaN); return; }
     const n = parseLocaleNumber(e.currentTarget.value, locale);
     if (n !== null && (minValue === undefined || n >= minValue) && (maxValue === undefined || n <= maxValue)) onChange(n);
   } : undefined), [commitOnInput, onChange, locale, minValue, maxValue]);
