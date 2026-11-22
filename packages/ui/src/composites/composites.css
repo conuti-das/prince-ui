@@ -54,18 +54,23 @@
   align-items: center;
 }
 
+/* Kopf bricht um statt überzulaufen (schmale Karte, Telefon): der Titel nimmt den Platz und bricht in sich um, der Kopf-Slot rutscht notfalls in die nächste Zeile */
 .prn-card-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  flex-wrap: wrap;
+  gap: 4px 12px;
   margin-bottom: 14px;
 }
+.prn-card-head > .prn-card-title, .prn-card-head > .prn-card-titles { flex: 1 1 auto; min-width: 0; }
 .prn-card[data-padding="none"] .prn-card-head { margin: 14px 18px; }
 .prn-card-title {
   margin: 0;
   font: var(--prn-text-headline);
   color: var(--prn-label);
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 .prn-card-head-slot {
   display: inline-flex;
